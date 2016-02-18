@@ -81,7 +81,7 @@ public class TimeSeries extends JFrame {
 		JButton btnDistance = new JButton("Distance");
 		toolBar_1.add(btnDistance);
 		
-		JButton btnHeartDisance = new JButton("Heart Disance");
+		JButton btnHeartDisance = new JButton("Heart Rate");
 		toolBar_1.add(btnHeartDisance);
 		
 		JToolBar toolBar_2 = new JToolBar();
