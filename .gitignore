@@ -1,2 +1,4 @@
 *.class
 target/
+.DS_Store
+Desktop.ini
