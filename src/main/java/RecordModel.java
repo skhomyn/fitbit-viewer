@@ -1,5 +1,5 @@
 public class RecordModel {
 	
-	//date field
+	//fields and methods common to all models will be added here later to eliminate redundant code
 
 }
