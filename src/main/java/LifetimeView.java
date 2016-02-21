@@ -40,7 +40,8 @@ public class LifetimeView extends JFrame {
 
 	JLabel distanceVal = new JLabel();
 	JLabel floorsVal = new JLabel();
-	
+	JLabel stepsVal = new JLabel();
+
 	//menu button declarations
 	JButton btnDailyDashboard = new JButton("Daily Dashboard");
 	JButton btnBestDays = new JButton("Best Days");
@@ -79,6 +80,12 @@ public class LifetimeView extends JFrame {
 		lifetimePane.add(lblFloors);
 		lifetimePane.add(floorsVal);
 		
+		//displays lifetime total for steps
+		lblSteps.setBounds(72, 126, 100, 16);
+		stepsVal.setBounds(250, 126, 100, 16);
+		lifetimePane.add(lblSteps);
+		lifetimePane.add(stepsVal);
+
 		lblSteps.setBounds(72, 126, 189, 16);
 		lifetimePane.add(lblSteps);
 		
@@ -109,6 +116,11 @@ public class LifetimeView extends JFrame {
 	//method used by controller to update view with floors data
 	public void setFloors(int floors) {
 		floorsVal.setText(Integer.toString(floors));
+	}
+	
+	//method used by controller to update view with steps data
+	public void setSteps(int steps) {
+		stepsVal.setText(Integer.toString(steps));
 	}
 	
 	//if the Lifetime totals button in the side bar menu is clicked,

@@ -7,6 +7,7 @@ public class LifetimeController {
 	
 	//properties
 	private LifetimeRecord model;
+	private LifetimeView view;
 	LifetimeView view;
 	
 	//constructor
@@ -23,6 +24,7 @@ public class LifetimeController {
 	public void updateView() {
 		view.setDistance(model.getDistance());
 		view.setFloors(model.getFloors());
+		view.setSteps(model.getSteps());
 	}
 	
 	//refresh listener implementation (lifetime totals button in side menu)
