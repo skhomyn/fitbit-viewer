@@ -21,6 +21,7 @@ public class LifetimeRecord extends RecordModel {
 	public int getFloors() {
 		return floors;
 	}
+
 	public int getSteps() {
 		return steps;
 	}

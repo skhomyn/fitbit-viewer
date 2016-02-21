@@ -6,7 +6,7 @@ class FakeAPI {
 	private static float ltDistance = 143;
 	private static int ltFloors = 54;
 	private static int ltSteps = 189770;
-	
+
 	public static float getLtDistance() {
 		return ltDistance;
 	}
@@ -17,5 +17,4 @@ class FakeAPI {
 	public static int getLtSteps() {
 		return ltSteps;
 	}
-	
 }

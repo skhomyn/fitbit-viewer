@@ -41,7 +41,7 @@ public class LifetimeView extends JFrame {
 	JLabel distanceVal = new JLabel();
 	JLabel floorsVal = new JLabel();
 	JLabel stepsVal = new JLabel();
-	
+
 	//menu button declarations
 	JButton btnDailyDashboard = new JButton("Daily Dashboard");
 	JButton btnBestDays = new JButton("Best Days");
@@ -85,6 +85,9 @@ public class LifetimeView extends JFrame {
 		stepsVal.setBounds(250, 126, 100, 16);
 		lifetimePane.add(lblSteps);
 		lifetimePane.add(stepsVal);
+
+		lblSteps.setBounds(72, 126, 189, 16);
+		lifetimePane.add(lblSteps);
 		
 		//add something to display error 
 		

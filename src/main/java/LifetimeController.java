@@ -8,6 +8,7 @@ public class LifetimeController {
 	//properties
 	private LifetimeRecord model;
 	private LifetimeView view;
+	LifetimeView view;
 	
 	//constructor
 	public LifetimeController(LifetimeRecord model, LifetimeView view) {
