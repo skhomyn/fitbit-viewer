@@ -1,16 +1,17 @@
+package sharkzilla;
+
 public class LifetimeRecord extends RecordModel {
 	
 	private float distance;
-	private float floors;
-	private float steps;
 	
 	//constructor which populates fields with data from API call
 	//currently we are using fake sample data instead of an API call
-	LifetimeRecord( ) {
-		
-		
+	LifetimeRecord() {
+		distance = FakeAPI.getLtDistance();
 	}
 	
-	//accessor methods
-	
+	//access methods
+	public float getDistance() {
+		return distance;
+	}
 }
