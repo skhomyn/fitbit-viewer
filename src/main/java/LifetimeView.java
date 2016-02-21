@@ -1,4 +1,4 @@
-package fitbit_interface;
+package sharkzilla;
 
 import java.awt.event.ActionListener;
 
@@ -11,20 +11,20 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 public class LifetimeView extends JFrame {
 
-	private JPanel contentPane;
+	private JPanel lifetimePane;
 
-	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LifetimeTotals frame = new LifetimeTotals();
+					LifetimeView frame = new LifetimeView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,58 +33,101 @@ public class LifetimeView extends JFrame {
 		});
 	}
 
+	//text field declarations
+	JLabel lblDistance = new JLabel("Distance:");
+	JLabel lblFloors = new JLabel("Floors:");
+	JLabel lblSteps = new JLabel("Steps:");
+
+	JLabel distanceVal = new JLabel();
+	JLabel floorsVal = new JLabel();
+	JLabel stepsVal = new JLabel();
 	
-	public LifetimeTotals() {		
+	//menu button declarations
+	JButton btnDailyDashboard = new JButton("Daily Dashboard");
+	JButton btnBestDays = new JButton("Best Days");
+	JButton btnDailyGoals = new JButton("Daily Goals");
+	JButton btnLifeTimeTotals = new JButton("Lifetime Totals");
+	JButton btnAccolades = new JButton("Accolades");
+	JButton btnTimeSeries = new JButton("Time Series");
+
+	//constructor
+	public LifetimeView() {		
+		
+		//set panel layout
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		lifetimePane = new JPanel();
+		lifetimePane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(lifetimePane);
+		lifetimePane.setLayout(null);
 		
-		/*
-		JToolBar toolBar = new JToolBar();
-		toolBar.setOrientation(SwingConstants.VERTICAL);
-		toolBar.setBackground(Color.DARK_GRAY);
-		toolBar.setBounds(332, 0, 118, 278);
-		contentPane.add(toolBar);
-		
-		JButton btnDailyDashboard = new JButton("Daily Dashboard");
-		toolBar.add(btnDailyDashboard);
-		
-		JButton btnBestDays = new JButton("Best Days");
-		toolBar.add(btnBestDays);
-		
-		JButton btnDailyGoals = new JButton("Daily Goals");
-		toolBar.add(btnDailyGoals);
-		
-		JButton btnLifeTimeGoals = new JButton("Lifetime Totals");
-		toolBar.add(btnLifeTimeGoals);
-		
-		JButton btnAccolades = new JButton("Accolades");
-		toolBar.add(btnAccolades);
-		
-		JButton btnTimeSeries = new JButton("Time Series");
-		toolBar.add(btnTimeSeries);
-		*/
-		
+		//page title
 		JLabel lblNewLabel = new JLabel("Lifetime Totals");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 		lblNewLabel.setBounds(31, 16, 205, 42);
-		contentPane.add(lblNewLabel);
+		lifetimePane.add(lblNewLabel);
 		
-		JLabel lblDistance = new JLabel("Distance: <distance>");
-		lblDistance.setBounds(72, 70, 189, 16);
-		contentPane.add(lblDistance);
+		//displays lifetime total for distance
+		lblDistance.setBounds(72, 70, 100, 16);
+		distanceVal.setBounds(250, 70, 100, 16);
+		lifetimePane.add(lblDistance);
+		lifetimePane.add(distanceVal);
 		
-		JLabel lblFloors = new JLabel("Floors: <floors>");
-		lblFloors.setBounds(72, 98, 189, 16);
-		contentPane.add(lblFloors);
+		//displays lifetime total for floors
+		lblFloors.setBounds(72, 98, 100, 16);
+		floorsVal.setBounds(250, 98, 100, 16);
+		lifetimePane.add(lblFloors);
+		lifetimePane.add(floorsVal);
 		
-		JLabel lblSteps = new JLabel("Steps: <steps>");
-		lblSteps.setBounds(72, 126, 189, 16);
-		contentPane.add(lblSteps);
+		//displays lifetime total for steps
+		lblSteps.setBounds(72, 126, 100, 16);
+		stepsVal.setBounds(250, 126, 100, 16);
+		lifetimePane.add(lblSteps);
+		lifetimePane.add(stepsVal);
+		
+		//add something to display error 
+		
+		//create side bar menu object
+		JToolBar toolBar = new JToolBar();
+		toolBar.setOrientation(SwingConstants.VERTICAL);
+		toolBar.setBackground(Color.DARK_GRAY);
+		toolBar.setBounds(332, 0, 118, 278);
+		lifetimePane.add(toolBar);
+		
+		//add menu bar components
+		toolBar.add(btnDailyDashboard);
+		toolBar.add(btnBestDays);
+		toolBar.add(btnDailyGoals);
+		toolBar.add(btnLifeTimeTotals);
+		toolBar.add(btnAccolades);
+		toolBar.add(btnTimeSeries);
+
+	}
+	
+	//method used by controller to update view with distance data
+	public void setDistance(float distance) {
+		distanceVal.setText(Float.toString(distance));
+	}
+	
+	//method used by controller to update view with floors data
+	public void setFloors(int floors) {
+		floorsVal.setText(Integer.toString(floors));
+	}
+	
+	//method used by controller to update view with steps data
+	public void setSteps(int steps) {
+		stepsVal.setText(Integer.toString(steps));
+	}
+	
+	//if the Lifetime totals button in the side bar menu is clicked,
+	//execute "action performed" method in the controller
+	void addRefreshListener(ActionListener listenForRefresh) {
+		btnLifeTimeTotals.addActionListener(listenForRefresh);
+	}
+	
+	void displayErrorMessage() {
+		//do something
 	}
 
 }
