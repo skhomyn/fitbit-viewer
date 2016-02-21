@@ -10,10 +10,6 @@ public class TestRun {
 		
 		ltView.setVisible(true);
 		
-		//called manually here for initial testing purposes,
-		//but will be triggered upon the page loading
-		ltController.updateView();
-		
 	}
 	
 

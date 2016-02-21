@@ -36,6 +36,14 @@ public class LifetimeView extends JFrame {
 	//text field declarations
 	JLabel lblDistance = new JLabel("Distance: ");
 	JLabel distanceVal = new JLabel();
+	
+	//menu button declarations
+	JButton btnDailyDashboard = new JButton("Daily Dashboard");
+	JButton btnBestDays = new JButton("Best Days");
+	JButton btnDailyGoals = new JButton("Daily Goals");
+	JButton btnLifeTimeTotals = new JButton("Lifetime Totals");
+	JButton btnAccolades = new JButton("Accolades");
+	JButton btnTimeSeries = new JButton("Time Series");
 
 	//constructor
 	public LifetimeView() {		
@@ -71,37 +79,36 @@ public class LifetimeView extends JFrame {
 		
 		//add something to display error 
 		
-		/*
+		//create side bar menu object
 		JToolBar toolBar = new JToolBar();
 		toolBar.setOrientation(SwingConstants.VERTICAL);
 		toolBar.setBackground(Color.DARK_GRAY);
 		toolBar.setBounds(332, 0, 118, 278);
-		contentPane.add(toolBar);
+		lifetimePane.add(toolBar);
 		
-		JButton btnDailyDashboard = new JButton("Daily Dashboard");
+		//add menu bar components
 		toolBar.add(btnDailyDashboard);
-		
-		JButton btnBestDays = new JButton("Best Days");
 		toolBar.add(btnBestDays);
-		
-		JButton btnDailyGoals = new JButton("Daily Goals");
 		toolBar.add(btnDailyGoals);
-		
-		JButton btnLifeTimeGoals = new JButton("Lifetime Totals");
-		toolBar.add(btnLifeTimeGoals);
-		
-		JButton btnAccolades = new JButton("Accolades");
+		toolBar.add(btnLifeTimeTotals);
 		toolBar.add(btnAccolades);
-		
-		JButton btnTimeSeries = new JButton("Time Series");
 		toolBar.add(btnTimeSeries);
-		*/
-		
+
 	}
 	
 	//method used by controller to update view with distance data
 	public void setDistance(float distance) {
 		distanceVal.setText(Float.toString(distance));
+	}
+	
+	//if the Lifetime totals button in the side bar menu is clicked,
+	//execute "action performed" method in the controller
+	void addRefreshListener(ActionListener listenForRefresh) {
+		btnLifeTimeTotals.addActionListener(listenForRefresh);
+	}
+	
+	void displayErrorMessage() {
+		//do something
 	}
 
 }
