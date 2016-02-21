@@ -19,14 +19,10 @@ public class LifetimeController {
 		view.addRefreshListener(new RefreshListener());
 	}
 	
-	//access methods
-	public float getDistance(){
-		return model.getDistance();
-	}
-	
 	//action methods
 	public void updateView() {
 		view.setDistance(model.getDistance());
+		view.setFloors(model.getFloors());
 	}
 	
 	//refresh listener implementation (lifetime totals button in side menu)

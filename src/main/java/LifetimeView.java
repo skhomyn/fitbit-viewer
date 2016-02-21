@@ -34,8 +34,12 @@ public class LifetimeView extends JFrame {
 	}
 
 	//text field declarations
-	JLabel lblDistance = new JLabel("Distance: ");
+	JLabel lblDistance = new JLabel("Distance:");
+	JLabel lblFloors = new JLabel("Floors:");
+	JLabel lblSteps = new JLabel("Steps:");
+
 	JLabel distanceVal = new JLabel();
+	JLabel floorsVal = new JLabel();
 	
 	//menu button declarations
 	JButton btnDailyDashboard = new JButton("Daily Dashboard");
@@ -64,16 +68,17 @@ public class LifetimeView extends JFrame {
 		lifetimePane.add(lblNewLabel);
 		
 		//displays lifetime total for distance
-		lblDistance.setBounds(72, 70, 189, 16);
-		distanceVal.setBounds(300, 70, 100, 16);
+		lblDistance.setBounds(72, 70, 100, 16);
+		distanceVal.setBounds(250, 70, 100, 16);
 		lifetimePane.add(lblDistance);
 		lifetimePane.add(distanceVal);
-				
-		JLabel lblFloors = new JLabel("Floors: <floors>");
-		lblFloors.setBounds(72, 98, 189, 16);
-		lifetimePane.add(lblFloors);
 		
-		JLabel lblSteps = new JLabel("Steps: <steps>");
+		//displays lifetime total for floors
+		lblFloors.setBounds(72, 98, 100, 16);
+		floorsVal.setBounds(250, 98, 100, 16);
+		lifetimePane.add(lblFloors);
+		lifetimePane.add(floorsVal);
+		
 		lblSteps.setBounds(72, 126, 189, 16);
 		lifetimePane.add(lblSteps);
 		
@@ -99,6 +104,11 @@ public class LifetimeView extends JFrame {
 	//method used by controller to update view with distance data
 	public void setDistance(float distance) {
 		distanceVal.setText(Float.toString(distance));
+	}
+	
+	//method used by controller to update view with floors data
+	public void setFloors(int floors) {
+		floorsVal.setText(Integer.toString(floors));
 	}
 	
 	//if the Lifetime totals button in the side bar menu is clicked,
