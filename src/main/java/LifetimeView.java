@@ -1,4 +1,4 @@
-package fitbit_interface;
+package sharkzilla;
 
 import java.awt.event.ActionListener;
 
@@ -11,20 +11,20 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 public class LifetimeView extends JFrame {
 
-	private JPanel contentPane;
+	private JPanel lifetimePane;
 
-	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LifetimeTotals frame = new LifetimeTotals();
+					LifetimeView frame = new LifetimeView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,14 +33,43 @@ public class LifetimeView extends JFrame {
 		});
 	}
 
-	
-	public LifetimeTotals() {		
+	//text field declarations
+	JLabel lblDistance = new JLabel("Distance: ");
+	JLabel distanceVal = new JLabel();
+
+	//constructor
+	public LifetimeView() {		
+		
+		//set panel layout
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		lifetimePane = new JPanel();
+		lifetimePane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(lifetimePane);
+		lifetimePane.setLayout(null);
+		
+		//page title
+		JLabel lblNewLabel = new JLabel("Lifetime Totals");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
+		lblNewLabel.setBounds(31, 16, 205, 42);
+		lifetimePane.add(lblNewLabel);
+		
+		//displays lifetime total for distance
+		lblDistance.setBounds(72, 70, 189, 16);
+		distanceVal.setBounds(300, 70, 100, 16);
+		lifetimePane.add(lblDistance);
+		lifetimePane.add(distanceVal);
+				
+		JLabel lblFloors = new JLabel("Floors: <floors>");
+		lblFloors.setBounds(72, 98, 189, 16);
+		lifetimePane.add(lblFloors);
+		
+		JLabel lblSteps = new JLabel("Steps: <steps>");
+		lblSteps.setBounds(72, 126, 189, 16);
+		lifetimePane.add(lblSteps);
+		
+		//add something to display error 
 		
 		/*
 		JToolBar toolBar = new JToolBar();
@@ -68,23 +97,11 @@ public class LifetimeView extends JFrame {
 		toolBar.add(btnTimeSeries);
 		*/
 		
-		JLabel lblNewLabel = new JLabel("Lifetime Totals");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblNewLabel.setBounds(31, 16, 205, 42);
-		contentPane.add(lblNewLabel);
-		
-		JLabel lblDistance = new JLabel("Distance: <distance>");
-		lblDistance.setBounds(72, 70, 189, 16);
-		contentPane.add(lblDistance);
-		
-		JLabel lblFloors = new JLabel("Floors: <floors>");
-		lblFloors.setBounds(72, 98, 189, 16);
-		contentPane.add(lblFloors);
-		
-		JLabel lblSteps = new JLabel("Steps: <steps>");
-		lblSteps.setBounds(72, 126, 189, 16);
-		contentPane.add(lblSteps);
+	}
+	
+	//method used by controller to update view with distance data
+	public void setDistance(float distance) {
+		distanceVal.setText(Float.toString(distance));
 	}
 
 }

@@ -1,9 +1,27 @@
+package sharkzilla;
+
 public class LifetimeController {
 	
-	//something something model object
-	LifetimeRecord model = new LifetimeRecord(); 
+	//properties
+	private LifetimeRecord model;
+	LifetimeView view;
 	
-	//something something view object
-	LifetimeView view = new LifetimeView();
+	//constructor
+	public LifetimeController(LifetimeRecord model, LifetimeView view) {
+		this.model = model;
+		this.view = view;
+	}
 	
-}
+	//access methods
+	public float getDistance(){
+		return model.getDistance();
+	}
+	
+	//action methods
+	public void updateView() {
+		view.setDistance(model.getDistance());
+	}
+	
+	//error handling to be added
+ }	
+	
