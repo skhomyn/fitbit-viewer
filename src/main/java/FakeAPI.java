@@ -1,5 +1,3 @@
-package sharkzilla;
-
 class FakeAPI {
 
 	//for Lifetime Totals
@@ -20,9 +18,14 @@ class FakeAPI {
 
 	//for Best Days
 	private static float bdDistance = 125;
+	private static int bdFloors = 25;
 
 	public static float getbdDistance() {
 		return bdDistance;
+	}
+	
+	public static int getbdFloors() {
+		return bdFloors;
 	}
 
 }
