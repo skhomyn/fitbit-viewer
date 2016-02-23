@@ -29,7 +29,9 @@ public class BestDaysView extends JFrame {
 
 	//text field declarations
 	JLabel lblDistance = new JLabel("Distance:");
+	JLabel lblFloors = new JLabel("Floors:");
 	JLabel distanceVal = new JLabel();
+	JLabel floorsVal = new JLabel();
 
 
 	//menu button declarations
@@ -43,7 +45,7 @@ public class BestDaysView extends JFrame {
 
 	//constructor
 	public BestDaysView() {		
-		
+
 		//set panel layout
 		//same for all pages
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,7 +54,7 @@ public class BestDaysView extends JFrame {
 		BestDaysPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(BestDaysPanel);
 		BestDaysPanel.setLayout(null);
-		
+
 		//page title
 		//same for all days
 		JLabel lblNewLabel = new JLabel("Best Days");
@@ -60,15 +62,19 @@ public class BestDaysView extends JFrame {
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 		lblNewLabel.setBounds(31, 16, 205, 42);
 		BestDaysPanel.add(lblNewLabel);
-		
-		//displays best day for distance
+
+		//displays best day for distance and floors
 		lblDistance.setBounds(72, 70, 100, 16);
 		distanceVal.setBounds(250, 70, 100, 16);
-		//CHECK
 		BestDaysPanel.add(lblDistance);
 		BestDaysPanel.add(distanceVal);
 		
-		
+		lblFloors.setBounds(72, 98, 100, 16);
+		floorsVal.setBounds(250, 98, 100, 16);
+		BestDaysPanel.add(lblFloors);
+		BestDaysPanel.add(floorsVal);
+
+
 		//create side bar menu object
 		//Same as all pages
 		JToolBar toolBar = new JToolBar();
@@ -76,7 +82,7 @@ public class BestDaysView extends JFrame {
 		toolBar.setBackground(Color.DARK_GRAY);
 		toolBar.setBounds(332, 0, 118, 278);
 		BestDaysPanel.add(toolBar);
-		
+
 		//add menu bar components
 		//same as all pages
 		toolBar.add(btnDailyDashboard);
@@ -87,20 +93,24 @@ public class BestDaysView extends JFrame {
 		toolBar.add(btnTimeSeries);
 
 	}
-	
+
 
 	//method used by controller to update view with distance data
 	public void setDistance(float distance) {
 		distanceVal.setText(Float.toString(distance));
 	}
-	
-	
+
+	//method used by controller to update view with floors data
+	public void setFloors(float floors) {
+		floorsVal.setText(Float.toString(floors));
+	}
+
 	//if the Lifetime totals button in the side bar menu is clicked,
 	//execute "action performed" method in the controller
 	void addRefreshListener(ActionListener listenForRefresh) {
 		btnBestDays.addActionListener(listenForRefresh);
 	}
-	
+
 	void displayErrorMessage() {
 		//do something
 	}

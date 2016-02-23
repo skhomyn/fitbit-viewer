@@ -13,16 +13,18 @@ public class BestDaysController {
 		this.view = view;
 		
 		//call method in view to add an event listener to the
-		// refresh (or lifetime totals) button in the side menu
+		// refresh (or Best Days) button in the side menu
 		view.addRefreshListener(new RefreshListener());
 	}
 	
 	//action methods
 	public void updateView() {
 		view.setDistance(model.getDistance());
+		view.setFloors(model.getFloors());
 	} 
 	
-	//refresh listener implementation (lifetime totals button in side menu)
+	
+	//refresh listener implementation (Best Days button in side menu)
 	class RefreshListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
