@@ -19,6 +19,7 @@ class FakeAPI {
 	//for Best Days
 	private static float bdDistance = 125;
 	private static int bdFloors = 25;
+	private static int bdSteps = 325;
 
 	public static float getbdDistance() {
 		return bdDistance;
@@ -26,6 +27,10 @@ class FakeAPI {
 	
 	public static int getbdFloors() {
 		return bdFloors;
+	}
+	
+	public static int getbdSteps() {
+		return bdSteps;
 	}
 
 }

@@ -21,6 +21,7 @@ public class BestDaysController {
 	public void updateView() {
 		view.setDistance(model.getDistance());
 		view.setFloors(model.getFloors());
+		view.setSteps(model.getSteps());
 	} 
 	
 	
