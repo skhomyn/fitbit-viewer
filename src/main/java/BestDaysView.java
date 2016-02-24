@@ -30,8 +30,11 @@ public class BestDaysView extends JFrame {
 	//text field declarations
 	JLabel lblDistance = new JLabel("Distance:");
 	JLabel lblFloors = new JLabel("Floors:");
+	JLabel lblSteps = new JLabel("Steps:");
+
 	JLabel distanceVal = new JLabel();
 	JLabel floorsVal = new JLabel();
+	JLabel stepsVal = new JLabel();
 
 
 	//menu button declarations
@@ -63,16 +66,21 @@ public class BestDaysView extends JFrame {
 		lblNewLabel.setBounds(31, 16, 205, 42);
 		BestDaysPanel.add(lblNewLabel);
 
-		//displays best day for distance and floors
+		//displays best day for distance, steps and floors
 		lblDistance.setBounds(72, 70, 100, 16);
 		distanceVal.setBounds(250, 70, 100, 16);
 		BestDaysPanel.add(lblDistance);
 		BestDaysPanel.add(distanceVal);
-		
+
 		lblFloors.setBounds(72, 98, 100, 16);
 		floorsVal.setBounds(250, 98, 100, 16);
 		BestDaysPanel.add(lblFloors);
 		BestDaysPanel.add(floorsVal);
+
+		lblSteps.setBounds(72, 126, 100, 16);
+		stepsVal.setBounds(250, 126, 100, 16);
+		BestDaysPanel.add(lblSteps);
+		BestDaysPanel.add(stepsVal);
 
 
 		//create side bar menu object
@@ -101,11 +109,16 @@ public class BestDaysView extends JFrame {
 	}
 
 	//method used by controller to update view with floors data
-	public void setFloors(float floors) {
-		floorsVal.setText(Float.toString(floors));
+	public void setFloors(int floors) {
+		floorsVal.setText(Integer.toString(floors));
 	}
 
-	//if the Lifetime totals button in the side bar menu is clicked,
+	//method used by controller to update view with steps data
+	public void setSteps(int steps) {
+		stepsVal.setText(Integer.toString(steps));
+	}
+
+	//if the Best Day button in the side bar menu is clicked,
 	//execute "action performed" method in the controller
 	void addRefreshListener(ActionListener listenForRefresh) {
 		btnBestDays.addActionListener(listenForRefresh);
