@@ -1,14 +1,11 @@
 package sharkzilla;
 
+// Import necessary libraries:
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.List;
-
-import javax.swing.JFrame;
-
 import java.awt.CardLayout;
-
+import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
@@ -16,19 +13,17 @@ import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.awt.Insets;
-
 import javax.swing.border.LineBorder;
 
 public class InterfaceView {
 
 	// Attributes:
 	private JFrame frame;
-	
+
 	private JButton btnBestDays;
 	private JButton btnDailyDashboard;
 	private JButton btnDailyGoals;
@@ -62,9 +57,7 @@ public class InterfaceView {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	// Launch the program:
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(0, 0, 600, 400);
@@ -96,11 +89,10 @@ public class InterfaceView {
 		panelTimeSeriesView = new JPanel();
 		CardLayout.add(panelTimeSeriesView, "name_1456451744019523000");
 		panelTimeSeriesView.setLayout(null);
-		
+
 		panelDailyGoalsView = new JPanel();
 		CardLayout.add(panelDailyGoalsView, "name_1456456744677539000");
 		panelDailyGoalsView.setLayout(null);
-
 
 		menuBar();
 
@@ -111,11 +103,11 @@ public class InterfaceView {
 		actionEvents();
 
 		accoladesView();
-		
+
 		lifetimetotalsView();
-		
+
 		timeseriesView();
-		
+
 		dailygoalsView();
 	}
 
@@ -233,12 +225,12 @@ public class InterfaceView {
 		JLabel lblDailyProgress = new JLabel("Daily Progress");
 		lblDailyProgress.setBounds(241, 171, 125, 30);
 		panelDashboardView.add(lblDailyProgress);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Last Updated: Date");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewLabel_1.setBounds(341, 356, 125, 16);
 		panelDashboardView.add(lblNewLabel_1);
-		
+
 		JButton btnNewButton_2 = new JButton("Heart Zone");
 		btnNewButton_2.setBounds(0, 351, 117, 29);
 		panelDashboardView.add(btnNewButton_2);
@@ -270,52 +262,52 @@ public class InterfaceView {
 		lblAccolades.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 		lblAccolades.setBounds(0, 0, 472, 32);
 		panelAccoladesView.add(lblAccolades);
-		
+
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(457, 6, 15, 372);
 		panelAccoladesView.add(scrollBar);
-		
+
 		JCheckBox chckbxTask = new JCheckBox("Task #1: <description>");
 		chckbxTask.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		chckbxTask.setBounds(10, 60, 294, 23);
 		panelAccoladesView.add(chckbxTask);
-		
+
 		JCheckBox chckbxTask_1 = new JCheckBox("Task #2: <description>");
 		chckbxTask_1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		chckbxTask_1.setBounds(10, 95, 294, 23);
 		panelAccoladesView.add(chckbxTask_1);
-		
+
 		JCheckBox chckbxTask_2 = new JCheckBox("Task #3: <description>");
 		chckbxTask_2.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		chckbxTask_2.setBounds(10, 130, 294, 23);
 		panelAccoladesView.add(chckbxTask_2);
-		
+
 		JCheckBox chckbxTask_3 = new JCheckBox("Task #4: <description>");
 		chckbxTask_3.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		chckbxTask_3.setBounds(10, 165, 294, 23);
 		panelAccoladesView.add(chckbxTask_3);
-		
+
 		JCheckBox chckbxTask_4 = new JCheckBox("Task #5: <description>");
 		chckbxTask_4.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		chckbxTask_4.setBounds(10, 200, 294, 23);
 		panelAccoladesView.add(chckbxTask_4);
 	}
-	
+
 	private void lifetimetotalsView() {
 		JLabel lblNewLabel = new JLabel("Lifetime Totals");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 		lblNewLabel.setBounds(0, 0, 472, 32);
 		panelLifetimeTotalsView.add(lblNewLabel);
-		
+
 		JLabel lblDistance = new JLabel("Distance: <distance>");
 		lblDistance.setBounds(72, 70, 189, 16);
 		panelLifetimeTotalsView.add(lblDistance);
-		
+
 		JLabel lblFloors = new JLabel("Floors: <floors>");
 		lblFloors.setBounds(72, 98, 189, 16);
 		panelLifetimeTotalsView.add(lblFloors);
-		
+
 		JLabel lblSteps = new JLabel("Steps: <steps>");
 		lblSteps.setBounds(72, 126, 189, 16);
 		panelLifetimeTotalsView.add(lblSteps);
@@ -327,35 +319,35 @@ public class InterfaceView {
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 		lblNewLabel.setBounds(0, 0, 472, 32);
 		panelTimeSeriesView.add(lblNewLabel);
-		
+
 		JToolBar graphTitle = new JToolBar();
 		graphTitle.setFloatable(false);
 		graphTitle.setBounds(128, 44, 235, 20);
 		panelTimeSeriesView.add(graphTitle);
-		
+
 		JButton btnSteps = new JButton("Steps");
 		graphTitle.add(btnSteps);
-		
+
 		JButton btnCalories = new JButton("Calories");
 		graphTitle.add(btnCalories);
-		
+
 		JButton btnDistance = new JButton("Distance");
 		graphTitle.add(btnDistance);
-		
+
 		JButton btnHeartDisance = new JButton("Heart Rate");
 		graphTitle.add(btnHeartDisance);
-		
+
 		JToolBar zoom = new JToolBar();
 		zoom.setFloatable(false);
 		zoom.setBounds(173, 352, 130, 20);
 		panelTimeSeriesView.add(zoom);
-		
+
 		JButton btnZoomIn = new JButton("Zoom In");
 		zoom.add(btnZoomIn);
-		
+
 		JButton btnZoomOut = new JButton("Zoom Out");
 		zoom.add(btnZoomOut);
-		
+
 		JLabel lblGraph = new JLabel("Graph");
 		lblGraph.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 		lblGraph.setHorizontalAlignment(SwingConstants.CENTER);
@@ -363,7 +355,7 @@ public class InterfaceView {
 		lblGraph.setBounds(0, 148, 472, 41);
 		panelTimeSeriesView.add(lblGraph);		
 	}
-	
+
 	private void dailygoalsView() {
 		JLabel lblDailyGoals = new JLabel("Daily Goals");
 		lblDailyGoals.setForeground(Color.BLACK);
@@ -372,34 +364,34 @@ public class InterfaceView {
 		lblDailyGoals.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 		lblDailyGoals.setBounds(0, 0, 472, 28);
 		panelDailyGoalsView.add(lblDailyGoals);
-		
+
 		JLabel lblSteps = new JLabel("Steps:");
 		lblSteps.setBounds(16, 52, 61, 16);
 		panelDailyGoalsView.add(lblSteps);
-		
+
 		JLabel lblDistance = new JLabel("Distance:");
 		lblDistance.setBounds(16, 80, 61, 16);
 		panelDailyGoalsView.add(lblDistance);
-		
+
 		JLabel lblCalories = new JLabel("Calories:");
 		lblCalories.setBounds(16, 108, 61, 16);
 		panelDailyGoalsView.add(lblCalories);
-		
+
 		JLabel lblFloors = new JLabel("Floors:");
 		lblFloors.setBounds(16, 136, 61, 16);
 		panelDailyGoalsView.add(lblFloors);
-		
+
 		JButton btnAddNewGoal = new JButton("Add \nNew Goal");
 		btnAddNewGoal.setBounds(145, 163, 144, 22);
 		panelDailyGoalsView.add(btnAddNewGoal);
-		
+
 		JLabel lblMyGoals = new JLabel("My Goals:");
 		lblMyGoals.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		lblMyGoals.setBounds(16, 206, 85, 28);
 		panelDailyGoalsView.add(lblMyGoals);
-		
+
 	}
-	
+
 	private void actionEvents() {
 		// Switch window to Best Days screen:
 		btnBestDays.addActionListener(new ActionListener() {
@@ -413,6 +405,7 @@ public class InterfaceView {
 			}
 		});
 
+		// Switch window to Daily Dashboard screen:
 		btnDailyDashboard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(true);
@@ -423,7 +416,8 @@ public class InterfaceView {
 				panelTimeSeriesView.setVisible(false);
 			}
 		});
-		
+
+		// Switch window to Lifetime Totals screen:
 		btnLifeTimeGoals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -434,7 +428,7 @@ public class InterfaceView {
 				panelTimeSeriesView.setVisible(false);
 			}
 		});
-		
+
 		btnDailyGoals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -445,7 +439,8 @@ public class InterfaceView {
 				panelTimeSeriesView.setVisible(false);
 			}
 		});
-		
+
+		// Switch window to Accolades screen:
 		btnAccolades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -456,7 +451,8 @@ public class InterfaceView {
 				panelTimeSeriesView.setVisible(false);
 			}
 		});
-		
+
+		// Switch window to Timeseries screen:
 		btnTimeSeries.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -467,7 +463,6 @@ public class InterfaceView {
 				panelTimeSeriesView.setVisible(true);
 			}
 		});
-		
-		
+
 	}
 }
