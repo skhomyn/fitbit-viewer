@@ -2,9 +2,11 @@ package sharkzilla;
 
 // Import necessary libraries:
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.CardLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -13,10 +15,12 @@ import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.awt.Insets;
+
 import javax.swing.border.LineBorder;
 import javax.swing.ImageIcon;
 
@@ -31,6 +35,7 @@ public class InterfaceView {
 	private JButton btnLifeTimeGoals;
 	private JButton btnAccolades;
 	private JButton btnTimeSeries;
+	private JButton btnHeartRateZones;
 
 	private JPanel panelDashboardView;
 	private JPanel panelBestDaysView;
@@ -38,6 +43,7 @@ public class InterfaceView {
 	private JPanel panelLifetimeTotalsView;
 	private JPanel panelTimeSeriesView;
 	private JPanel panelDailyGoalsView;
+	private JPanel panelHeartrateZonesView;
 
 	// Launch Application:
 	public static void main(String[] args) {
@@ -94,6 +100,10 @@ public class InterfaceView {
 		panelDailyGoalsView = new JPanel();
 		CardLayout.add(panelDailyGoalsView, "name_1456456744677539000");
 		panelDailyGoalsView.setLayout(null);
+		
+		panelHeartrateZonesView = new JPanel();
+		CardLayout.add(panelHeartrateZonesView, "name_1456529539691360000");
+		panelHeartrateZonesView.setLayout(null);
 
 		menuBar();
 
@@ -110,6 +120,8 @@ public class InterfaceView {
 		timeseriesView();
 
 		dailygoalsView();
+		
+		heartratezonesView();
 	}
 
 	private void menuBar() {
@@ -143,6 +155,10 @@ public class InterfaceView {
 		btnTimeSeries = new JButton("Time Series");
 		btnTimeSeries.setMaximumSize(new Dimension(150, 50));
 		MenuBar.add(btnTimeSeries);
+		
+		btnHeartRateZones = new JButton("Heart Rate Zones");
+		btnHeartRateZones.setMaximumSize(new Dimension(150, 50));
+		MenuBar.add(btnHeartRateZones);
 	}
 
 	private void dashboardView() {
@@ -350,6 +366,44 @@ public class InterfaceView {
 
 	}
 
+	private void heartratezonesView() {
+		JLabel lblHeartRateZones = new JLabel("Heart Rate Zones");
+		lblHeartRateZones.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartRateZones.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
+		lblHeartRateZones.setBounds(0, 0, 466, 27);
+		panelHeartrateZonesView.add(lblHeartRateZones);
+		
+		JLabel lblHeartRate = new JLabel("Resting Heart Rate: <hr>");
+		lblHeartRate.setBounds(30, 60, 189, 16);
+		panelHeartrateZonesView.add(lblHeartRate);
+		
+		JLabel lblNewLabel = new JLabel("Minutes: <time>");
+		lblNewLabel.setBounds(30, 88, 133, 16);
+		panelHeartrateZonesView.add(lblNewLabel);
+		
+		JLabel lblZoneDescriptions = new JLabel("Zone Descriptions:");
+		lblZoneDescriptions.setHorizontalAlignment(SwingConstants.CENTER);
+		lblZoneDescriptions.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblZoneDescriptions.setBounds(0, 161, 460, 27);
+		panelHeartrateZonesView.add(lblZoneDescriptions);
+		
+		JLabel lblZone = new JLabel("Zone 1: <description>");
+		lblZone.setBounds(30, 200, 148, 16);
+		panelHeartrateZonesView.add(lblZone);
+		
+		JLabel lblZone_1 = new JLabel("Zone 2: <description>");
+		lblZone_1.setBounds(30, 228, 148, 16);
+		panelHeartrateZonesView.add(lblZone_1);
+		
+		JLabel lblZone_2 = new JLabel("Zone 3: <description>");
+		lblZone_2.setBounds(30, 256, 148, 16);
+		panelHeartrateZonesView.add(lblZone_2);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(451, 0, 15, 378);
+		panelHeartrateZonesView.add(scrollBar);
+	}
+	
 	private void actionEvents() {
 		// Switch window to Best Days screen:
 		btnBestDays.addActionListener(new ActionListener() {
@@ -360,6 +414,7 @@ public class InterfaceView {
 				panelDailyGoalsView.setVisible(false);
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(false);
+				panelHeartrateZonesView.setVisible(false);
 			}
 		});
 
@@ -372,6 +427,7 @@ public class InterfaceView {
 				panelDailyGoalsView.setVisible(false);
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(false);
+				panelHeartrateZonesView.setVisible(false);
 			}
 		});
 
@@ -384,6 +440,7 @@ public class InterfaceView {
 				panelDailyGoalsView.setVisible(false);
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(false);
+				panelHeartrateZonesView.setVisible(false);
 			}
 		});
 
@@ -395,6 +452,7 @@ public class InterfaceView {
 				panelDailyGoalsView.setVisible(true);
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(false);
+				panelHeartrateZonesView.setVisible(false);
 			}
 		});
 
@@ -407,6 +465,7 @@ public class InterfaceView {
 				panelDailyGoalsView.setVisible(false);
 				panelAccoladesView.setVisible(true);
 				panelTimeSeriesView.setVisible(false);
+				panelHeartrateZonesView.setVisible(false);
 			}
 		});
 
@@ -419,6 +478,20 @@ public class InterfaceView {
 				panelDailyGoalsView.setVisible(false);
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(true);
+				panelHeartrateZonesView.setVisible(false);
+			}
+		});
+		
+		// Switch window to Heart Rate Zones screen:
+		btnHeartRateZones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelDashboardView.setVisible(false);
+				panelBestDaysView.setVisible(false);
+				panelLifetimeTotalsView.setVisible(false);
+				panelDailyGoalsView.setVisible(false);
+				panelAccoladesView.setVisible(false);
+				panelTimeSeriesView.setVisible(false);
+				panelHeartrateZonesView.setVisible(true);
 			}
 		});
 
