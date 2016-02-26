@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import java.awt.Insets;
 import javax.swing.border.LineBorder;
+import javax.swing.ImageIcon;
 
 public class InterfaceView {
 
@@ -66,7 +67,7 @@ public class InterfaceView {
 		frame.getContentPane().setLayout(null);
 
 		JPanel CardLayout = new JPanel();
-		CardLayout.setBounds(0, 0, 472, 378);
+		CardLayout.setBounds(0, 0, 466, 378);
 		frame.getContentPane().add(CardLayout);
 		CardLayout.setLayout(new CardLayout(0, 0));
 
@@ -112,7 +113,6 @@ public class InterfaceView {
 	}
 
 	private void menuBar() {
-
 		JToolBar MenuBar = new JToolBar();
 		MenuBar.setBounds(469, 0, 131, 378);
 		MenuBar.setFloatable(false);
@@ -121,68 +121,26 @@ public class InterfaceView {
 		frame.getContentPane().add(MenuBar);
 
 		btnDailyDashboard = new JButton("Daily Dashboard");
-		btnDailyDashboard.setBorder(new LineBorder(null, 3, true));
-		btnDailyDashboard.setOpaque(true);
-		btnDailyDashboard.setBackground(Color.WHITE);
-		btnDailyDashboard.setForeground(Color.BLACK);
-		btnDailyDashboard.setAlignmentX(0.5f);
-		btnDailyDashboard.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnDailyDashboard.setMargin(new Insets(0, 0, 0, 0));
 		btnDailyDashboard.setMaximumSize(new Dimension(150, 50));
 		MenuBar.add(btnDailyDashboard);
 
 		btnBestDays = new JButton("Best Days");
-		btnBestDays.setBorder(new LineBorder(null, 3, true));
-		btnBestDays.setOpaque(true);
-		btnBestDays.setBackground(Color.WHITE);
-		btnBestDays.setForeground(Color.BLACK);
-		btnBestDays.setAlignmentX(0.5f);
-		btnBestDays.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnBestDays.setMargin(new Insets(0, 0, 0, 0));
 		btnBestDays.setMaximumSize(new Dimension(150, 50));
 		MenuBar.add(btnBestDays);
 
 		btnDailyGoals = new JButton("Daily Goals");
-		btnDailyGoals.setBorder(new LineBorder(null, 3, true));
-		btnDailyGoals.setOpaque(true);
-		btnDailyGoals.setBackground(Color.WHITE);
-		btnDailyGoals.setForeground(Color.BLACK);
-		btnDailyGoals.setAlignmentX(0.5f);
-		btnDailyGoals.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnDailyGoals.setMargin(new Insets(0, 0, 0, 0));
 		btnDailyGoals.setMaximumSize(new Dimension(150, 50));
 		MenuBar.add(btnDailyGoals);
 
 		btnLifeTimeGoals = new JButton("Lifetime Totals");
-		btnLifeTimeGoals.setBorder(new LineBorder(null, 3, true));
-		btnLifeTimeGoals.setOpaque(true);
-		btnLifeTimeGoals.setBackground(Color.WHITE);
-		btnLifeTimeGoals.setForeground(Color.BLACK);
-		btnLifeTimeGoals.setAlignmentX(0.5f);
-		btnLifeTimeGoals.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnLifeTimeGoals.setMargin(new Insets(0, 0, 0, 0));
 		btnLifeTimeGoals.setMaximumSize(new Dimension(150, 50));
 		MenuBar.add(btnLifeTimeGoals);
 
 		btnAccolades = new JButton("Accolades");
-		btnAccolades.setBorder(new LineBorder(null, 3, true));
-		btnAccolades.setOpaque(true);
-		btnAccolades.setBackground(Color.WHITE);
-		btnAccolades.setForeground(Color.BLACK);
-		btnAccolades.setAlignmentX(0.5f);
-		btnAccolades.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnAccolades.setMargin(new Insets(0, 0, 0, 0));
 		btnAccolades.setMaximumSize(new Dimension(150, 50));
 		MenuBar.add(btnAccolades);
 
 		btnTimeSeries = new JButton("Time Series");
-		btnTimeSeries.setBorder(new LineBorder(null, 3, true));
-		btnTimeSeries.setOpaque(true);
-		btnTimeSeries.setBackground(Color.WHITE);
-		btnTimeSeries.setForeground(Color.BLACK);
-		btnTimeSeries.setAlignmentX(0.5f);
-		btnTimeSeries.setHorizontalTextPosition(SwingConstants.CENTER);
-		btnTimeSeries.setMargin(new Insets(0, 0, 0, 0));
 		btnTimeSeries.setMaximumSize(new Dimension(150, 50));
 		MenuBar.add(btnTimeSeries);
 	}
@@ -228,7 +186,7 @@ public class InterfaceView {
 
 		JLabel lblNewLabel_1 = new JLabel("Last Updated: Date");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_1.setBounds(341, 356, 125, 16);
+		lblNewLabel_1.setBounds(335, 356, 125, 16);
 		panelDashboardView.add(lblNewLabel_1);
 
 		JButton btnNewButton_2 = new JButton("Heart Zone");
@@ -264,7 +222,7 @@ public class InterfaceView {
 		panelAccoladesView.add(lblAccolades);
 
 		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(457, 6, 15, 372);
+		scrollBar.setBounds(445, 6, 15, 372);
 		panelAccoladesView.add(scrollBar);
 
 		JCheckBox chckbxTask = new JCheckBox("Task #1: <description>");
