@@ -4,3 +4,6 @@ target/
 Desktop.ini
 .recommenders/
 .metadata/
+.classpath
+.project
+.settings/
