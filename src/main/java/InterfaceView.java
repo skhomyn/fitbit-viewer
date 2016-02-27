@@ -23,6 +23,7 @@ import java.awt.Insets;
 
 import javax.swing.border.LineBorder;
 import javax.swing.ImageIcon;
+import java.awt.Rectangle;
 
 public class InterfaceView {
 
@@ -67,6 +68,8 @@ public class InterfaceView {
 	// Launch the program:
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
+		frame.setMaximumSize(new Dimension(600, 400));
 		frame.setBounds(0, 0, 600, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -204,10 +207,6 @@ public class InterfaceView {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewLabel_1.setBounds(335, 356, 125, 16);
 		panelDashboardView.add(lblNewLabel_1);
-
-		JButton btnNewButton_2 = new JButton("Heart Zone");
-		btnNewButton_2.setBounds(0, 351, 117, 29);
-		panelDashboardView.add(btnNewButton_2);
 	}
 
 	private void bestdaysView() {
@@ -238,7 +237,7 @@ public class InterfaceView {
 		panelAccoladesView.add(lblAccolades);
 
 		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(445, 6, 15, 372);
+		scrollBar.setBounds(450, 3, 15, 372);
 		panelAccoladesView.add(scrollBar);
 
 		JCheckBox chckbxTask = new JCheckBox("Task #1: <description>");
