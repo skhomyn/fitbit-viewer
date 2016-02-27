@@ -234,30 +234,60 @@ public class InterfaceView {
 		scrollBar.setBounds(455, 0, 15, 378);
 		panelAccoladesView.add(scrollBar);
 
-		JCheckBox chckbxTask = new JCheckBox("Task #1: <description>");
+		JCheckBox chckbxTask = new JCheckBox("Task #1:");
 		chckbxTask.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		chckbxTask.setBounds(10, 60, 294, 23);
+		chckbxTask.setBounds(10, 60, 235, 23);
 		panelAccoladesView.add(chckbxTask);
 
-		JCheckBox chckbxTask_1 = new JCheckBox("Task #2: <description>");
+		JCheckBox chckbxTask_1 = new JCheckBox("Task #2:");
 		chckbxTask_1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		chckbxTask_1.setBounds(10, 95, 294, 23);
 		panelAccoladesView.add(chckbxTask_1);
 
-		JCheckBox chckbxTask_2 = new JCheckBox("Task #3: <description>");
+		JCheckBox chckbxTask_2 = new JCheckBox("Task #3:");
 		chckbxTask_2.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		chckbxTask_2.setBounds(10, 130, 294, 23);
 		panelAccoladesView.add(chckbxTask_2);
 
-		JCheckBox chckbxTask_3 = new JCheckBox("Task #4: <description>");
+		JCheckBox chckbxTask_3 = new JCheckBox("Task #4:");
 		chckbxTask_3.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		chckbxTask_3.setBounds(10, 165, 294, 23);
 		panelAccoladesView.add(chckbxTask_3);
 
-		JCheckBox chckbxTask_4 = new JCheckBox("Task #5: <description>");
+		JCheckBox chckbxTask_4 = new JCheckBox("Task #5:");
 		chckbxTask_4.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		chckbxTask_4.setBounds(10, 200, 294, 23);
 		panelAccoladesView.add(chckbxTask_4);
+		
+		JLabel lblDscp1 = new JLabel("<description>");
+		lblDscp1.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDscp1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblDscp1.setBounds(257, 60, 150, 23);
+		panelAccoladesView.add(lblDscp1);
+		
+		JLabel lblDscp2 = new JLabel("<description>");
+		lblDscp2.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDscp2.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblDscp2.setBounds(257, 95, 150, 23);
+		panelAccoladesView.add(lblDscp2);
+		
+		JLabel lblDscp3 = new JLabel("<description>");
+		lblDscp3.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDscp3.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblDscp3.setBounds(257, 130, 150, 23);
+		panelAccoladesView.add(lblDscp3);
+		
+		JLabel lblDscp4 = new JLabel("<description>");
+		lblDscp4.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDscp4.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblDscp4.setBounds(257, 165, 150, 23);
+		panelAccoladesView.add(lblDscp4);
+		
+		JLabel lblDscp5 = new JLabel("<description>");
+		lblDscp5.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDscp5.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblDscp5.setBounds(257, 200, 150, 23);
+		panelAccoladesView.add(lblDscp5);
 	}
 
 	private void lifetimetotalsView() {
