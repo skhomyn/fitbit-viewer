@@ -19,7 +19,7 @@ public class App {
       logger.warn("Run with argument test to test");
     }
     //Check if argument is test
-    else if (args.length == 1 && args[1].equals("test"))
+    else if (args.length == 1 && args[0].equals("test"))
     {
       logger.trace("Running test mode");
       Main run = new Main();
