@@ -1,7 +1,7 @@
 package ca.uwo.csd.cs2212.team13;
 
 //this class is for the 4 different zones
-public class HRZone {
+public class HeartRateRecord {
 
 	//heart rate zone
 	private HRZmodel cardioZone = new HRZmodel(HRZmodel.getHRMinutes(), "Cardio", HRZmodel.getHRRate());
