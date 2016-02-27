@@ -1,3 +1,5 @@
+package HeartRateZones.src;
+
 // Import necessary libraries:
 import java.awt.Color;
 import java.awt.Container;
