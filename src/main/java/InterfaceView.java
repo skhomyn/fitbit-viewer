@@ -76,7 +76,7 @@ public class InterfaceView {
 		frame.getContentPane().setLayout(null);
 
 		JPanel CardLayout = new JPanel();
-		CardLayout.setBounds(0, 0, 466, 378);
+		CardLayout.setBounds(0, 0, 470, 378);
 		frame.getContentPane().add(CardLayout);
 		CardLayout.setLayout(new CardLayout(0, 0));
 
@@ -129,7 +129,7 @@ public class InterfaceView {
 
 	private void menuBar() {
 		JToolBar MenuBar = new JToolBar();
-		MenuBar.setBounds(469, 0, 131, 378);
+		MenuBar.setBounds(470, 0, 130, 378);
 		MenuBar.setFloatable(false);
 		MenuBar.setBackground(Color.DARK_GRAY);
 		MenuBar.setOrientation(SwingConstants.VERTICAL);
@@ -237,7 +237,7 @@ public class InterfaceView {
 		panelAccoladesView.add(lblAccolades);
 
 		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(450, 3, 15, 372);
+		scrollBar.setBounds(455, 0, 15, 378);
 		panelAccoladesView.add(scrollBar);
 
 		JCheckBox chckbxTask = new JCheckBox("Task #1: <description>");
@@ -399,7 +399,7 @@ public class InterfaceView {
 		panelHeartrateZonesView.add(lblZone_2);
 		
 		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(451, 0, 15, 378);
+		scrollBar.setBounds(455, 0, 15, 378);
 		panelHeartrateZonesView.add(scrollBar);
 	}
 	
