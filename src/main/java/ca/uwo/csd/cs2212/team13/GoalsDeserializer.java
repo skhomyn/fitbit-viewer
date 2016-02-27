@@ -21,16 +21,16 @@ import com.google.gson.JsonParseException;
 public class GoalsDeserializer implements JsonDeserializer<Goals> {
 
   @Override
-  public Author deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
+  public Goals deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
       throws JsonParseException {
     final JsonObject jsonObject = json.getAsJsonObject();
 
     final Goals goal = new Goals();
-    Goals.setActiveMinutes(jsonObject.get("activeMinutes").getAsInt());
-    Goals.setCaloriesOut(jsonObject.get("caloriesOut").getAsInt());
-    Goals.setDistance(jsonObject.get("distance").getAsDouble());
-    Goals.setFloors(jsonObject.get("floors").getAsInt());
-    Goals.setSteps(jsonObject.get("steps").getAsInt());
+    goal.setActiveMinutes(jsonObject.get("activeMinutes").getAsInt());
+    goal.setCaloriesOut(jsonObject.get("caloriesOut").getAsInt());
+    goal.setDistance(jsonObject.get("distance").getAsDouble());
+    goal.setFloors(jsonObject.get("floors").getAsInt());
+    goal.setSteps(jsonObject.get("steps").getAsInt());
     return goal;
   }
 

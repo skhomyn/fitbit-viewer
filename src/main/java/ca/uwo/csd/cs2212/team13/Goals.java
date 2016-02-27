@@ -11,11 +11,11 @@ package ca.uwo.csd.cs2212.team13;
  */
 public class Goals {
     
-    public int activeMinutes;
-    public int caloriesOut;
-    public double distance;
-    public int floors;
-    public int steps;
+    private int activeMinutes;
+    private double caloriesOut;
+    private double distance;
+    private int floors;
+    private int steps;
 
     /**
      * @return the activeMinutes
@@ -27,7 +27,7 @@ public class Goals {
     /**
      * @return the caloriesOut
      */
-    public int getCaloriesOut() {
+    public double getCaloriesOut() {
         return caloriesOut;
     }
 
@@ -62,7 +62,7 @@ public class Goals {
     /**
      * @param caloriesOut the caloriesOut to set
      */
-    public void setCaloriesOut(int caloriesOut) {
+    public void setCaloriesOut(double caloriesOut) {
         this.caloriesOut = caloriesOut;
     }
 
@@ -87,5 +87,19 @@ public class Goals {
         this.steps = steps;
     }
     
+    @Override
+	  public String toString() {
+		  final StringBuilder formatted = new StringBuilder();
+		    formatted.append(steps);
+		    formatted.append("\n");
+		    formatted.append(floors);
+		    formatted.append("\n");
+		    formatted.append(caloriesOut);
+		    formatted.append("\n");
+		    formatted.append(activeMinutes);
+		    formatted.append("\n");
+		    formatted.append(distance);
+		    return formatted.toString();
+		  }
     
 }

@@ -28,8 +28,6 @@ public void run() throws IOException {
         System.out.println(dRecord);
 
       }
-     
-    
     
     // Read the JSON data
  try (Reader data = new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("activities.json"), "UTF-8")) {
