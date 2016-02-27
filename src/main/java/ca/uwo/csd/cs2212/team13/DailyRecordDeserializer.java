@@ -21,8 +21,10 @@ public class DailyRecordDeserializer implements JsonDeserializer<DailyRecord> {
 		final JsonObject jsonObject = json.getAsJsonObject();
 		final JsonObject jsonSummary = jsonObject.getAsJsonObject("summary");
 	
-                final Goals goals = context.deserialize(jsonObject.get("goals"), Goals.class);   
-                
+       final Goals goals = context.deserialize(jsonObject.get("goals"), Goals.class);   
+       
+       System.out.println(goals.toString());
+       
 		final DailyRecord dailyRecord = new DailyRecord();
 		dailyRecord.setFloors(jsonSummary.get("floors").getAsInt());
 		dailyRecord.setSteps(jsonSummary.get("steps").getAsInt());
