@@ -1,6 +1,6 @@
 package ca.uwo.csd.cs2212.team13;
 
-public class HRZmodel {
+public class HeartZoneRecord {
 	
 	//attributes
 	private static int minutes;
@@ -13,12 +13,8 @@ public class HRZmodel {
 	private static int rate;
 	
 	//constructor which populates fields with data from API call
-	HRZmodel(int mins, String z, int r) {
+	HeartZoneRecord(int mins, String z, int r) {
 		super();
-		// we don't use FakeAPI anymore!
-		//minutes = FakeAPI.getHRMins();
-		//zones = FakeAPI.getHRZone();
-		//rate = FakeAPI.getRestRate();
 		this.minutes = mins;
 		this.zones = z;
 		this.rate = r;
