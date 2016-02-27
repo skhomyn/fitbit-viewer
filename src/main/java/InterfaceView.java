@@ -210,17 +210,32 @@ public class InterfaceView {
 		lblBestDays.setBounds(0, 0, 472, 30);
 		panelBestDaysView.add(lblBestDays);
 
-		JLabel lblDistance = new JLabel("Distance: <distance>");
+		JLabel lblDistance = new JLabel("Distance:");
 		lblDistance.setBounds(72, 70, 189, 16);
 		panelBestDaysView.add(lblDistance);
 
-		JLabel lblFloors = new JLabel("Floors: <floors>");
+		JLabel lblFloors = new JLabel("Floors:");
 		lblFloors.setBounds(72, 98, 189, 16);
 		panelBestDaysView.add(lblFloors);
 
-		JLabel lblSteps = new JLabel("Steps: <steps>");
+		JLabel lblSteps = new JLabel("Steps:");
 		lblSteps.setBounds(72, 126, 189, 16);
 		panelBestDaysView.add(lblSteps);
+		
+		JLabel lblDistVal = new JLabel("<distance>");
+		lblDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDistVal.setBounds(259, 70, 95, 16);
+		panelBestDaysView.add(lblDistVal);
+		
+		JLabel lblFloorVal = new JLabel("<floors>");
+		lblFloorVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblFloorVal.setBounds(259, 98, 95, 16);
+		panelBestDaysView.add(lblFloorVal);
+		
+		JLabel lblStepsVal = new JLabel("<steps>");
+		lblStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblStepsVal.setBounds(259, 126, 95, 16);
+		panelBestDaysView.add(lblStepsVal);
 	}
 
 	private void accoladesView() {
