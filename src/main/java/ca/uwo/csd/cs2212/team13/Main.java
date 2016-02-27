@@ -14,10 +14,22 @@ public void run() throws IOException {
     // Configure GSON
     final GsonBuilder gsonBuilder = new GsonBuilder();
     gsonBuilder.registerTypeAdapter(ActivitiesRecord.class, new ActivitiesRecordDeserializer());
+    gsonBuilder.registerTypeAdapter(DailyRecord.class, new DailyRecordDeserializer());
     gsonBuilder.setPrettyPrinting();
     final Gson gson = gsonBuilder.create();
 
+    
+    try (Reader data = new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("date.json"), "UTF-8")) {
 
+        // Parse JSON to Java
+        final DailyRecord dRecord = gson.fromJson(data, DailyRecord.class);
+        
+        System.out.println(dRecord);
+
+      }
+     
+    
+    
     // Read the JSON data
  try (Reader data = new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("activities.json"), "UTF-8")) {
 
@@ -32,6 +44,7 @@ public void run() throws IOException {
 		ltView.setVisible(true);
 
     }
+
 
 
   }
