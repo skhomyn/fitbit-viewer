@@ -136,31 +136,31 @@ public class InterfaceView {
 		frame.getContentPane().add(MenuBar);
 
 		btnDailyDashboard = new JButton("Daily Dashboard");
-		btnDailyDashboard.setMaximumSize(new Dimension(150, 50));
+		btnDailyDashboard.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnDailyDashboard);
 
 		btnBestDays = new JButton("Best Days");
-		btnBestDays.setMaximumSize(new Dimension(150, 50));
+		btnBestDays.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnBestDays);
 
 		btnDailyGoals = new JButton("Daily Goals");
-		btnDailyGoals.setMaximumSize(new Dimension(150, 50));
+		btnDailyGoals.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnDailyGoals);
 
 		btnLifeTimeGoals = new JButton("Lifetime Totals");
-		btnLifeTimeGoals.setMaximumSize(new Dimension(150, 50));
+		btnLifeTimeGoals.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnLifeTimeGoals);
 
 		btnAccolades = new JButton("Accolades");
-		btnAccolades.setMaximumSize(new Dimension(150, 50));
+		btnAccolades.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnAccolades);
 
 		btnTimeSeries = new JButton("Time Series");
-		btnTimeSeries.setMaximumSize(new Dimension(150, 50));
+		btnTimeSeries.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnTimeSeries);
 		
 		btnHeartRateZones = new JButton("Heart Rate Zones");
-		btnHeartRateZones.setMaximumSize(new Dimension(150, 50));
+		btnHeartRateZones.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnHeartRateZones);
 	}
 
