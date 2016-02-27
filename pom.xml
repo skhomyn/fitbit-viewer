@@ -1,9 +1,13 @@
  <project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId> ca.uwo.csd.cs2212.team13 </groupId>
+  <groupId>ca.uwo.csd.cs2212.team13</groupId>
   <artifactId> team13-fitbitApp</artifactId>
   <packaging> jar </packaging>
   <version>1.0-SNAPSHOT</version>
+<properties>
+<maven.compiler.source>1.7</maven.compiler.source>
+<maven.compiler.target>1.7</maven.compiler.target>
+</properties>
 
  <repositories>
    <repository>
@@ -15,6 +19,11 @@
  
 
 <dependencies>
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.2.4</version>
+</dependency>
      <dependency>
         <groupId>org.json</groupId>
         <artifactId>json</artifactId>
@@ -47,6 +56,11 @@
 
  <dependencyManagement>
  <dependencies> 
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.2.4</version>
+</dependency>
   <dependency>
     <groupId>org.json</groupId>
     <artifactId>json</artifactId>
@@ -70,7 +84,7 @@
   <plugin>
    <groupId> org.apache.maven.plugins </groupId>
    <artifactId> maven-jar-plugin </artifactId>
-   <version>2.4 </version>
+   <version>2.6 </version>
    <configuration>
     <archive>
      <manifest>
@@ -82,8 +96,8 @@
 <plugin>
   <groupId>org.apache.maven.plugins</groupId>
   <artifactId>maven-assembly-plugin</artifactId>
-  <version>2.6</version>
-  <configuration>
+   <version>2.6 </version>
+   <configuration>
     <descriptorRefs>
       <descriptorRef>jar-with-dependencies</descriptorRef>
     </descriptorRefs>
@@ -103,5 +117,6 @@
   </executions>
 </plugin>
  </plugins>
+
 </build>
 </project>

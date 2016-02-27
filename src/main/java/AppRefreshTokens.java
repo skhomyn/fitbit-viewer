@@ -1,3 +1,4 @@
+
 package ca.uwo.csd.cs2212.FitbitTest;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
