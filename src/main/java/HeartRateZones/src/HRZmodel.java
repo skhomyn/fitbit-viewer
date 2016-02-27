@@ -3,9 +3,14 @@ package HeartRateZones.src;
 public class HRZmodel {
 	
 	//attributes
-	private int minutes;
-	private String zones;
-	private int rate;
+	private static int minutes;
+	
+	//the different heart rate zones are:
+	//out-of-range, cardio, fat-burn, peak
+	private static String zones;
+	
+	//each zone has a max/min rate associated with it
+	private static int rate;
 	
 	//constructor which populates fields with data from API call
 	HRZmodel(int mins, String z, int r) {
@@ -20,7 +25,7 @@ public class HRZmodel {
 	}
 	
 	//accessors for heart rate values
-	public float getHRMinutes() {
+	public static int getHRMinutes() {
 		return minutes;
 	}
 	
@@ -29,7 +34,7 @@ public class HRZmodel {
 	}
 	
 	//accessors for zones
-	public String getHRZones() {
+	public static String getHRZones() {
 		return zones;
 	}
 	
@@ -38,7 +43,7 @@ public class HRZmodel {
 	}
 	
 	//accessors for rate
-	public int getHRRate() {
+	public static int getHRRate() {
 		return rate;
 	}
 	
