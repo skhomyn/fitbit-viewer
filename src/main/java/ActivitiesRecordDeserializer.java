@@ -1,3 +1,5 @@
+package ca.uwo.csd.cs2212.team13;
+
 import java.lang.reflect.Type;
 
 import com.google.gson.JsonArray;
