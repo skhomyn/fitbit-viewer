@@ -4,6 +4,10 @@ public class DailyRecord {
 	
 	private int floors, steps, lightlyActiveMinutes, fairlyActiveMinutes, sedentaryMinutes, veryActiveMinutes;
 	
+	DailyRecord()
+	{
+		
+	}
 	public int getFloors() {
 		return floors;
 	}
