@@ -21,6 +21,8 @@ public class DailyRecordDeserializer implements JsonDeserializer<DailyRecord> {
 		final JsonObject jsonObject = json.getAsJsonObject();
 		final JsonObject jsonSummary = jsonObject.getAsJsonObject("summary");
 	
+                final Goals goals = context.deserialize(jsonObject.get("goals"), Goals.class);   
+                
 		final DailyRecord dailyRecord = new DailyRecord();
 		dailyRecord.setFloors(jsonSummary.get("floors").getAsInt());
 		dailyRecord.setSteps(jsonSummary.get("steps").getAsInt());
@@ -28,6 +30,7 @@ public class DailyRecordDeserializer implements JsonDeserializer<DailyRecord> {
 		dailyRecord.setFairlyActiveMinutes(jsonSummary.get("fairlyActiveMinutes").getAsInt());
 		dailyRecord.setSedentaryMinutes(jsonSummary.get("sedentaryMinutes").getAsInt());
 		dailyRecord.setVeryActiveMinutes(jsonSummary.get("veryActiveMinutes").getAsInt());
+                dailyRecord.setGoals(goals);
 
 		return dailyRecord;
 	}
