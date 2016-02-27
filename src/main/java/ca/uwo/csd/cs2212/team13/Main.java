@@ -15,6 +15,7 @@ public void run() throws IOException {
     final GsonBuilder gsonBuilder = new GsonBuilder();
     gsonBuilder.registerTypeAdapter(ActivitiesRecord.class, new ActivitiesRecordDeserializer());
     gsonBuilder.registerTypeAdapter(DailyRecord.class, new DailyRecordDeserializer());
+    gsonBuilder.registerTypeAdapter(Goals.class, new GoalsDeserializer());
     gsonBuilder.setPrettyPrinting();
     final Gson gson = gsonBuilder.create();
 
