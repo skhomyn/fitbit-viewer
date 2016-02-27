@@ -2,7 +2,6 @@ package sharkzilla;
 
 // Import necessary libraries:
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.CardLayout;
@@ -19,11 +18,6 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
-import java.awt.Insets;
-
-import javax.swing.border.LineBorder;
-import javax.swing.ImageIcon;
-import java.awt.Rectangle;
 
 public class InterfaceView {
 
@@ -267,23 +261,38 @@ public class InterfaceView {
 	}
 
 	private void lifetimetotalsView() {
-		JLabel lblNewLabel = new JLabel("Lifetime Totals");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblNewLabel.setBounds(0, 0, 472, 32);
-		panelLifetimeTotalsView.add(lblNewLabel);
+		JLabel lblTitle = new JLabel("Lifetime Totals");
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
+		lblTitle.setBounds(0, 0, 472, 32);
+		panelLifetimeTotalsView.add(lblTitle);
 
-		JLabel lblDistance = new JLabel("Distance: <distance>");
+		JLabel lblDistance = new JLabel("Distance:");
 		lblDistance.setBounds(72, 70, 189, 16);
 		panelLifetimeTotalsView.add(lblDistance);
 
-		JLabel lblFloors = new JLabel("Floors: <floors>");
+		JLabel lblFloors = new JLabel("Floors:");
 		lblFloors.setBounds(72, 98, 189, 16);
 		panelLifetimeTotalsView.add(lblFloors);
 
-		JLabel lblSteps = new JLabel("Steps: <steps>");
+		JLabel lblSteps = new JLabel("Steps:");
 		lblSteps.setBounds(72, 126, 189, 16);
 		panelLifetimeTotalsView.add(lblSteps);
+		
+		JLabel lblDistVal = new JLabel("<distance>");
+		lblDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDistVal.setBounds(260, 70, 95, 16);
+		panelLifetimeTotalsView.add(lblDistVal);
+		
+		JLabel lblFloorVal = new JLabel("<floors>");
+		lblFloorVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblFloorVal.setBounds(260, 98, 95, 16);
+		panelLifetimeTotalsView.add(lblFloorVal);
+		
+		JLabel lblStepVal = new JLabel("<steps>");
+		lblStepVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblStepVal.setBounds(260, 126, 95, 16);
+		panelLifetimeTotalsView.add(lblStepVal);
 	}
 
 	private void timeseriesView() {
@@ -325,7 +334,7 @@ public class InterfaceView {
 		lblGraph.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 		lblGraph.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGraph.setBackground(new Color(64, 64, 64));
-		lblGraph.setBounds(0, 148, 472, 41);
+		lblGraph.setBounds(0, 142, 472, 41);
 		panelTimeSeriesView.add(lblGraph);		
 	}
 
