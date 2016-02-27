@@ -2,7 +2,6 @@ package sharkzilla;
 
 // Import necessary libraries:
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.CardLayout;
@@ -19,11 +18,6 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
-import java.awt.Insets;
-
-import javax.swing.border.LineBorder;
-import javax.swing.ImageIcon;
-import java.awt.Rectangle;
 
 public class InterfaceView {
 
@@ -136,31 +130,31 @@ public class InterfaceView {
 		frame.getContentPane().add(MenuBar);
 
 		btnDailyDashboard = new JButton("Daily Dashboard");
-		btnDailyDashboard.setMaximumSize(new Dimension(150, 50));
+		btnDailyDashboard.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnDailyDashboard);
 
 		btnBestDays = new JButton("Best Days");
-		btnBestDays.setMaximumSize(new Dimension(150, 50));
+		btnBestDays.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnBestDays);
 
 		btnDailyGoals = new JButton("Daily Goals");
-		btnDailyGoals.setMaximumSize(new Dimension(150, 50));
+		btnDailyGoals.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnDailyGoals);
 
 		btnLifeTimeGoals = new JButton("Lifetime Totals");
-		btnLifeTimeGoals.setMaximumSize(new Dimension(150, 50));
+		btnLifeTimeGoals.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnLifeTimeGoals);
 
 		btnAccolades = new JButton("Accolades");
-		btnAccolades.setMaximumSize(new Dimension(150, 50));
+		btnAccolades.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnAccolades);
 
 		btnTimeSeries = new JButton("Time Series");
-		btnTimeSeries.setMaximumSize(new Dimension(150, 50));
+		btnTimeSeries.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnTimeSeries);
 		
 		btnHeartRateZones = new JButton("Heart Rate Zones");
-		btnHeartRateZones.setMaximumSize(new Dimension(150, 50));
+		btnHeartRateZones.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnHeartRateZones);
 	}
 
@@ -240,50 +234,95 @@ public class InterfaceView {
 		scrollBar.setBounds(455, 0, 15, 378);
 		panelAccoladesView.add(scrollBar);
 
-		JCheckBox chckbxTask = new JCheckBox("Task #1: <description>");
+		JCheckBox chckbxTask = new JCheckBox("Task #1:");
 		chckbxTask.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		chckbxTask.setBounds(10, 60, 294, 23);
+		chckbxTask.setBounds(10, 60, 235, 23);
 		panelAccoladesView.add(chckbxTask);
 
-		JCheckBox chckbxTask_1 = new JCheckBox("Task #2: <description>");
+		JCheckBox chckbxTask_1 = new JCheckBox("Task #2:");
 		chckbxTask_1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		chckbxTask_1.setBounds(10, 95, 294, 23);
 		panelAccoladesView.add(chckbxTask_1);
 
-		JCheckBox chckbxTask_2 = new JCheckBox("Task #3: <description>");
+		JCheckBox chckbxTask_2 = new JCheckBox("Task #3:");
 		chckbxTask_2.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		chckbxTask_2.setBounds(10, 130, 294, 23);
 		panelAccoladesView.add(chckbxTask_2);
 
-		JCheckBox chckbxTask_3 = new JCheckBox("Task #4: <description>");
+		JCheckBox chckbxTask_3 = new JCheckBox("Task #4:");
 		chckbxTask_3.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		chckbxTask_3.setBounds(10, 165, 294, 23);
 		panelAccoladesView.add(chckbxTask_3);
 
-		JCheckBox chckbxTask_4 = new JCheckBox("Task #5: <description>");
+		JCheckBox chckbxTask_4 = new JCheckBox("Task #5:");
 		chckbxTask_4.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		chckbxTask_4.setBounds(10, 200, 294, 23);
 		panelAccoladesView.add(chckbxTask_4);
+		
+		JLabel lblDscp1 = new JLabel("<description>");
+		lblDscp1.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDscp1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblDscp1.setBounds(257, 60, 150, 23);
+		panelAccoladesView.add(lblDscp1);
+		
+		JLabel lblDscp2 = new JLabel("<description>");
+		lblDscp2.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDscp2.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblDscp2.setBounds(257, 95, 150, 23);
+		panelAccoladesView.add(lblDscp2);
+		
+		JLabel lblDscp3 = new JLabel("<description>");
+		lblDscp3.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDscp3.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblDscp3.setBounds(257, 130, 150, 23);
+		panelAccoladesView.add(lblDscp3);
+		
+		JLabel lblDscp4 = new JLabel("<description>");
+		lblDscp4.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDscp4.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblDscp4.setBounds(257, 165, 150, 23);
+		panelAccoladesView.add(lblDscp4);
+		
+		JLabel lblDscp5 = new JLabel("<description>");
+		lblDscp5.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDscp5.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
+		lblDscp5.setBounds(257, 200, 150, 23);
+		panelAccoladesView.add(lblDscp5);
 	}
 
 	private void lifetimetotalsView() {
-		JLabel lblNewLabel = new JLabel("Lifetime Totals");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblNewLabel.setBounds(0, 0, 472, 32);
-		panelLifetimeTotalsView.add(lblNewLabel);
+		JLabel lblTitle = new JLabel("Lifetime Totals");
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
+		lblTitle.setBounds(0, 0, 472, 32);
+		panelLifetimeTotalsView.add(lblTitle);
 
-		JLabel lblDistance = new JLabel("Distance: <distance>");
+		JLabel lblDistance = new JLabel("Distance:");
 		lblDistance.setBounds(72, 70, 189, 16);
 		panelLifetimeTotalsView.add(lblDistance);
 
-		JLabel lblFloors = new JLabel("Floors: <floors>");
+		JLabel lblFloors = new JLabel("Floors:");
 		lblFloors.setBounds(72, 98, 189, 16);
 		panelLifetimeTotalsView.add(lblFloors);
 
-		JLabel lblSteps = new JLabel("Steps: <steps>");
+		JLabel lblSteps = new JLabel("Steps:");
 		lblSteps.setBounds(72, 126, 189, 16);
 		panelLifetimeTotalsView.add(lblSteps);
+		
+		JLabel lblDistVal = new JLabel("<distance>");
+		lblDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDistVal.setBounds(260, 70, 95, 16);
+		panelLifetimeTotalsView.add(lblDistVal);
+		
+		JLabel lblFloorVal = new JLabel("<floors>");
+		lblFloorVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblFloorVal.setBounds(260, 98, 95, 16);
+		panelLifetimeTotalsView.add(lblFloorVal);
+		
+		JLabel lblStepVal = new JLabel("<steps>");
+		lblStepVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblStepVal.setBounds(260, 126, 95, 16);
+		panelLifetimeTotalsView.add(lblStepVal);
 	}
 
 	private void timeseriesView() {
@@ -325,7 +364,7 @@ public class InterfaceView {
 		lblGraph.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 		lblGraph.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGraph.setBackground(new Color(64, 64, 64));
-		lblGraph.setBounds(0, 148, 472, 41);
+		lblGraph.setBounds(0, 142, 472, 41);
 		panelTimeSeriesView.add(lblGraph);		
 	}
 
