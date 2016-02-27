@@ -1,4 +1,3 @@
-package sharkzilla;
 
 public class LifetimeRecord extends RecordModel {
 	
