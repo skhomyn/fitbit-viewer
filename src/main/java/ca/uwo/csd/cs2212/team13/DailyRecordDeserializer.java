@@ -24,12 +24,12 @@ public class DailyRecordDeserializer implements JsonDeserializer<DailyRecord> {
 		
 		
 		final DailyRecord dailyRecord = new DailyRecord();
-		DailyRecord.setFloors(jsonSummary.get("floors").getAsInt());
-		DailyRecord.setSteps(jsonSummary.get("steps").getAsInt());
-		DailyRecord.setLightlyActiveMinutes(jsonSummary.get("lightlyActiveMinutes").getAsInt());
-		DailyRecord.setFairlyActiveMinutes(jsonSummary.get("fairlyActiveMinutes").getAsInt());
-		DailyRecord.setSedentaryMinutes(jsonSummary.get("sedentaryActiveMinutes").getAsInt());
-		DailyRecord.setVeryActiveMinutes(jsonSummary.get("veryActiveMinutes").getAsInt());
+		dailyRecord.setFloors(jsonSummary.get("floors").getAsInt());
+		dailyRecord.setSteps(jsonSummary.get("steps").getAsInt());
+		dailyRecord.setLightlyActiveMinutes(jsonSummary.get("lightlyActiveMinutes").getAsInt());
+		dailyRecord.setFairlyActiveMinutes(jsonSummary.get("fairlyActiveMinutes").getAsInt());
+		dailyRecord.setSedentaryMinutes(jsonSummary.get("sedentaryActiveMinutes").getAsInt());
+		dailyRecord.setVeryActiveMinutes(jsonSummary.get("veryActiveMinutes").getAsInt());
 		
 		return dailyRecord;
 	}

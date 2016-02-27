@@ -28,27 +28,27 @@ public class DailyRecord {
 		return veryActiveMinutes;
 	}
 	
-	public setFloors(int floors) {
+	public void setFloors(int floors) {
 		this.floors = floors;
 	}
 	
-	public setSteps(int steps){
+	public void setSteps(int steps){
 		this.steps = steps;
 	}
 	
-	public setLightlyActiveMinutes(int LightlyActiveMinutes){
+	public void setLightlyActiveMinutes(int LightlyActiveMinutes){
 		this.lightlyActiveMinutes = lightlyActiveMinutes;
 	}
 	
-	public setFairlyActiveMinutes(int FairlyActiveMinutes){
+	public void setFairlyActiveMinutes(int FairlyActiveMinutes){
 		this.fairlyActiveMinutes = fairlyActiveMinutes;
 	}
 	
-	public setSedentaryMinutes(int SedentaryMinutes){
+	public void setSedentaryMinutes(int SedentaryMinutes){
 		this.sedentaryMinutes = sedentaryMinutes;
 	}
 	
-	public setVeryActiveMinutes(int VeryActiveMinutes ){
+	public void setVeryActiveMinutes(int VeryActiveMinutes ){
 		this.veryActiveMinutes = veryActiveMinutes;
 	}
 	
