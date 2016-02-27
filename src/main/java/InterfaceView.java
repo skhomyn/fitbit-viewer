@@ -23,6 +23,7 @@ import java.awt.Insets;
 
 import javax.swing.border.LineBorder;
 import javax.swing.ImageIcon;
+import java.awt.Rectangle;
 
 public class InterfaceView {
 
@@ -67,13 +68,15 @@ public class InterfaceView {
 	// Launch the program:
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
+		frame.setMaximumSize(new Dimension(600, 400));
 		frame.setBounds(0, 0, 600, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		frame.getContentPane().setLayout(null);
 
 		JPanel CardLayout = new JPanel();
-		CardLayout.setBounds(0, 0, 466, 378);
+		CardLayout.setBounds(0, 0, 470, 378);
 		frame.getContentPane().add(CardLayout);
 		CardLayout.setLayout(new CardLayout(0, 0));
 
@@ -126,7 +129,7 @@ public class InterfaceView {
 
 	private void menuBar() {
 		JToolBar MenuBar = new JToolBar();
-		MenuBar.setBounds(469, 0, 131, 378);
+		MenuBar.setBounds(470, 0, 130, 378);
 		MenuBar.setFloatable(false);
 		MenuBar.setBackground(Color.DARK_GRAY);
 		MenuBar.setOrientation(SwingConstants.VERTICAL);
@@ -204,10 +207,6 @@ public class InterfaceView {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewLabel_1.setBounds(335, 356, 125, 16);
 		panelDashboardView.add(lblNewLabel_1);
-
-		JButton btnNewButton_2 = new JButton("Heart Zone");
-		btnNewButton_2.setBounds(0, 351, 117, 29);
-		panelDashboardView.add(btnNewButton_2);
 	}
 
 	private void bestdaysView() {
@@ -238,7 +237,7 @@ public class InterfaceView {
 		panelAccoladesView.add(lblAccolades);
 
 		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(445, 6, 15, 372);
+		scrollBar.setBounds(455, 0, 15, 378);
 		panelAccoladesView.add(scrollBar);
 
 		JCheckBox chckbxTask = new JCheckBox("Task #1: <description>");
@@ -400,7 +399,7 @@ public class InterfaceView {
 		panelHeartrateZonesView.add(lblZone_2);
 		
 		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(451, 0, 15, 378);
+		scrollBar.setBounds(455, 0, 15, 378);
 		panelHeartrateZonesView.add(scrollBar);
 	}
 	
