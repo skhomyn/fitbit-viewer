@@ -108,8 +108,8 @@ public class LifetimeView extends JFrame {
 	}
 	
 	//method used by controller to update view with distance data
-	public void setDistance(float distance) {
-		distanceVal.setText(Float.toString(distance));
+	public void setDistance(Double distance) {
+		distanceVal.setText(Double.toString(distance));
 	}
 	
 	//method used by controller to update view with floors data
