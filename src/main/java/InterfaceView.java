@@ -1,4 +1,3 @@
-package sharkzilla;
 
 // Import necessary libraries:
 import java.awt.Color;
