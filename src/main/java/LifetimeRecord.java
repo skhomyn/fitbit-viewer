@@ -12,7 +12,7 @@ public class LifetimeRecord extends RecordModel {
 	
 	//constructor which populates fields with data from API call
 	//currently we are using fake sample data instead of an API call
-	LifetimeRecord() {
+	LifetimeRecord(activityScore, caloriesOut, distance, floors, steps) {
 		super();
 		this.activityScore = aScore;
 		this.caloriesOut = cOut;

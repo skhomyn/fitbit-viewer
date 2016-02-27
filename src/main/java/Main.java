@@ -35,8 +35,17 @@ public class Main {
       // Parse JSON to Java
       final ActivitiesRecord actRecord = gson.fromJson(data, ActivitiesRecord.class);
       
-      System.out.println(actRecord.getBest().getDis_date());
+     // System.out.println(actRecord.getBest().getDis_date());
      // System.out.println(actRecord.getLifetime());
+
+
+		LifetimeView ltView = new LifetimeView();
+
+		LifetimeRecord ltModel = actRecord.getLifetime();
+		LifetimeController ltController = new LifetimeController(ltModel, ltView);
+		
+		ltView.setVisible(true);
+
     }
   }
 }
