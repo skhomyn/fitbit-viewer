@@ -7,3 +7,6 @@ Desktop.ini
 .classpath
 .project
 .settings/
+.idea/workspace.xml
+.idea/
+*.iml
