@@ -1,2 +1,6 @@
 *.class
 target/
+.DS_Store
+Desktop.ini
+.recommenders/
+.metadata/
