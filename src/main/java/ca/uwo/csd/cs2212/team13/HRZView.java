@@ -32,7 +32,7 @@ public class HRZView extends JFrame {
 
 	//text field declarations
 	//based on current InterfaceView
-		JLabel lblRestRate = new JLabel("Resting Heart Rate:");
+		JLabel lblRestRate = new JLabel("Heart Rate:");
 		JLabel lblMins = new JLabel("Minutes:");
 		JLabel lblCardio = new JLabel("Zone 1:");
 		JLabel lblPeak = new JLabel("Zone 2:");
@@ -78,26 +78,26 @@ public class HRZView extends JFrame {
 			heartPane.add(restVal);
 			
 			//displays minutes
-			lblMins.setBounds(72, 70, 100, 16);
-			minsVal.setBounds(250, 70, 100, 16);
+			lblMins.setBounds(72, 98, 100, 16);
+			minsVal.setBounds(250, 98, 100, 16);
 			heartPane.add(lblMins);
 			heartPane.add(minsVal);
 			
-			//displays Zone 1 (cardio
-			lblCardio.setBounds(72, 70, 100, 16);
-			cardioVal.setBounds(250, 70, 100, 16);
+			//displays Zone 1 (cardio)
+			lblCardio.setBounds(72, 126, 100, 16);
+			cardioVal.setBounds(250, 126, 100, 16);
 			heartPane.add(lblCardio);
 			heartPane.add(cardioVal);
 			
 			//displays Zone 2 (peak)
-			lblPeak.setBounds(72, 70, 100, 16);
-			peakVal.setBounds(250, 70, 100, 16);
+			lblPeak.setBounds(72, 152, 100, 16);
+			peakVal.setBounds(250, 152, 100, 16);
 			heartPane.add(lblPeak);
 			heartPane.add(peakVal);
 			
 			//displays Zone 3 (fat burn)
-			lblFatBurn.setBounds(72, 70, 100, 16);
-			fatBurnVal.setBounds(250, 70, 100, 16);
+			lblFatBurn.setBounds(72, 178, 100, 16);
+			fatBurnVal.setBounds(250, 178, 100, 16);
 			heartPane.add(lblFatBurn);
 			heartPane.add(fatBurnVal);
 			
