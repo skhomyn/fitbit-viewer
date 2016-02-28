@@ -4,6 +4,23 @@ package ca.uwo.csd.cs2212.team13;
 public class HeartRateRecord {
 
 	private String date;
+
+	public HeartZoneRecord[] getHeart_zones() {
+		return heart_zones;
+	}
+
+	public void setHeart_zones(HeartZoneRecord[] heart_zones) {
+		this.heart_zones = heart_zones;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 	private HeartZoneRecord[] heart_zones;
 	
 	HeartRateRecord()
@@ -49,4 +66,6 @@ public class HeartRateRecord {
 	public void setPeakZone(HeartZoneRecord zone) {
 		this.heart_zones[3] = zone;
 	}
+
+
 }
