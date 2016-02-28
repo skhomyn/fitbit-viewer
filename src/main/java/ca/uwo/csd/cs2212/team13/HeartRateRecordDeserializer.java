@@ -18,20 +18,33 @@ public class HeartRateRecordDeserializer implements JsonDeserializer<HeartRateRe
             throws JsonParseException {
 
         final JsonObject jsonObject = json.getAsJsonObject();
+        final JsonArray jsonHeartData = jsonObject.get("activities-heart").getAsJsonArray();
+        
+        final JsonElement jsonHeart = jsonHeartData.get(0);
+        
+        final JsonObject jsonHeartOb = jsonHeart.getAsJsonObject();
+        final String dateTime = jsonHeartOb.get("dateTime").getAsString();
+        
+        final JsonObject jsonValue = jsonHeartOb.getAsJsonObject("value");
+  
+        final JsonArray jsonHeartZones = jsonValue.get("heartRateZones").getAsJsonArray();
+        
+        final HeartZoneRecord[] zonesArray = new HeartZoneRecord[jsonHeartZones.size()];
+ 
+        for (int i = 0; i < zonesArray.length; i++) {
+            final JsonElement jsonZoneElement = jsonHeartZones.get(i);
+            final JsonObject jsonHeartZoneObject = jsonZoneElement.getAsJsonObject();
+            
+            int minutes = jsonHeartZoneObject.get("minutes").getAsInt();
+            int max = jsonHeartZoneObject.get("max").getAsInt();
+            int min = jsonHeartZoneObject.get("min").getAsInt();
+            String name = jsonHeartZoneObject.get("name").getAsString();
+ 
+            zonesArray[i] = new HeartZoneRecord(minutes, max, min, name);
+        }
 
-        final JsonObject jsonHeart = jsonObject.getAsJsonObject("activities-heart");
-        final JsonElement jsonDateTime = jsonHeart.get("dateTime");
-        final JsonObject jsonValue = jsonHeart.getAsJsonObject("value");
-
-//        final JsonArray jsonHeartZone = jsonObject.get("heartRateZones").getAsJsonArray();
-//        final HeartZoneRecord[] zonesArray = new HeartZoneRecord[jsonHeartZone.size()];
-//        for (int i = 0; i < zonesArray.length; i++) {
-//            final JsonObject jsonZoneObject = jsonHeartZone.getAsJsonObject(i);
-//        }
-
-        final HeartRateRecord heartRecord = new HeartRateRecord();
-        heartRecord.setDate(jsonDateTime.getAsString());
-
+        final HeartRateRecord heartRecord = new HeartRateRecord(dateTime, zonesArray);
+       
         return heartRecord;
     }
 }
