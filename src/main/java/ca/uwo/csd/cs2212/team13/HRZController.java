@@ -17,9 +17,9 @@ public class HRZController {
 	private InterfaceView view;
 	
 	//constructor
-	public HRZController(HeartRateRecord mod, HeartZoneRecord zoneMod, InterfaceView v) {
+	public HRZController(HeartRateRecord mod, InterfaceView v) {
 		this.model = mod;
-		this.zoneModel = zoneMod;
+	//	this.zoneModel = zoneMod;
 		this.view = v;
 		
 		//call method in view to add an event listener to the lifetime totals button 
