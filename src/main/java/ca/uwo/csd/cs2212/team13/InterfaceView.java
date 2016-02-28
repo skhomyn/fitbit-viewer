@@ -27,7 +27,7 @@ public class InterfaceView {
 	private JButton btnBestDays;
 	private JButton btnDailyDashboard;
 	private JButton btnDailyGoals;
-	private JButton btnLifeTimeGoals;
+	private JButton btnLifetimeTotals;
 	private JButton btnAccolades;
 	private JButton btnTimeSeries;
 	private JButton btnHeartRateZones;
@@ -39,7 +39,12 @@ public class InterfaceView {
 	private JPanel panelTimeSeriesView;
 	private JPanel panelDailyGoalsView;
 	private JPanel panelHeartrateZonesView;
+	
+	private JLabel lblLifetimeTotalsDistVal;
+	private JLabel lblLifetimeTotalsFloorsVal;
+	private JLabel lblLifetimeTotalsStepsVal;
 
+	/*
 	// Launch Application:
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -53,6 +58,7 @@ public class InterfaceView {
 			}
 		});
 	}
+	*/
 
 	// Constructor:
 	public InterfaceView() {
@@ -141,9 +147,9 @@ public class InterfaceView {
 		btnDailyGoals.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnDailyGoals);
 
-		btnLifeTimeGoals = new JButton("Lifetime Totals");
-		btnLifeTimeGoals.setMaximumSize(new Dimension(150, 54));
-		MenuBar.add(btnLifeTimeGoals);
+		btnLifetimeTotals = new JButton("Lifetime Totals");
+		btnLifetimeTotals.setMaximumSize(new Dimension(150, 54));
+		MenuBar.add(btnLifetimeTotals);
 
 		btnAccolades = new JButton("Accolades");
 		btnAccolades.setMaximumSize(new Dimension(150, 54));
@@ -324,20 +330,20 @@ public class InterfaceView {
 		lblSteps.setBounds(72, 126, 189, 16);
 		panelLifetimeTotalsView.add(lblSteps);
 		
-		JLabel lblDistVal = new JLabel("<distance>");
-		lblDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDistVal.setBounds(260, 70, 95, 16);
-		panelLifetimeTotalsView.add(lblDistVal);
+		lblLifetimeTotalsDistVal = new JLabel();
+		lblLifetimeTotalsDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblLifetimeTotalsDistVal.setBounds(260, 70, 95, 16);
+		panelLifetimeTotalsView.add(lblLifetimeTotalsDistVal);
 		
-		JLabel lblFloorVal = new JLabel("<floors>");
-		lblFloorVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblFloorVal.setBounds(260, 98, 95, 16);
-		panelLifetimeTotalsView.add(lblFloorVal);
+		lblLifetimeTotalsFloorsVal = new JLabel();
+		lblLifetimeTotalsFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblLifetimeTotalsFloorsVal.setBounds(260, 98, 95, 16);
+		panelLifetimeTotalsView.add(lblLifetimeTotalsFloorsVal);
 		
-		JLabel lblStepVal = new JLabel("<steps>");
-		lblStepVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblStepVal.setBounds(260, 126, 95, 16);
-		panelLifetimeTotalsView.add(lblStepVal);
+		lblLifetimeTotalsStepsVal = new JLabel();
+		lblLifetimeTotalsStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblLifetimeTotalsStepsVal.setBounds(260, 126, 95, 16);
+		panelLifetimeTotalsView.add(lblLifetimeTotalsStepsVal);
 	}
 
 	private void timeseriesView() {
@@ -485,7 +491,7 @@ public class InterfaceView {
 		});
 
 		// Switch window to Lifetime Totals screen:
-		btnLifeTimeGoals.addActionListener(new ActionListener() {
+		btnLifetimeTotals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
 				panelBestDaysView.setVisible(false);
@@ -548,5 +554,25 @@ public class InterfaceView {
 			}
 		});
 
+	}
+	
+	//method used by action listener to update the view fields from the controller (using model data);
+	//  this method gets attached to the lifetime totals button and
+	// gets executed when the click actually happens
+		public void setLifetimeTotalsFields(double distance, int floors, int steps) {
+			lblLifetimeTotalsDistVal.setText(Double.toString(distance));
+			lblLifetimeTotalsFloorsVal.setText(Integer.toString(floors));
+			lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
+		}
+	
+	// the btnLifetimeTotals.addActionListner() call is encapsulated by a method so that it can be accessed by the controller;
+	// the controller passes in the clicklistener, which contains the method that updates the view;
+	// this method gets executed when the controller is initialized
+	public void addClickListenerLifetimeTotals(ActionListener actionsOnClick){
+		btnLifetimeTotals.addActionListener(actionsOnClick);
+	}
+	
+	public void setVisible(InterfaceView view) {
+		view.frame.setVisible(true);
 	}
 }
