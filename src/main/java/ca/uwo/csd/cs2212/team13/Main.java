@@ -27,6 +27,8 @@ public void run() throws IOException {
       // Parse JSON to Java
       final HeartRateRecord hrRecord = gson.fromJson(data, HeartRateRecord.class);
       System.out.println(hrRecord);
+    	HeartRateRecord hrzModel = hrRecord;
+
 
     }
  
@@ -35,14 +37,15 @@ public void run() throws IOException {
  try (Reader data = new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("activities.json"), "UTF-8")) {
 
       // Parse JSON to Java
-      final ActivitiesRecord actRecord = gson.fromJson(data, ActivitiesRecord.class);
+     // final ActivitiesRecord actRecord = gson.fromJson(data, ActivitiesRecord.class);
       
-		LifetimeView ltView = new LifetimeView();
+      InterfaceView view = new InterfaceView();
 
-		LifetimeRecord ltModel = actRecord.getLifetime();
-		LifetimeController ltController = new LifetimeController(ltModel, ltView);
+		//LifetimeRecord ltModel = actRecord.getLifetime();
+		//LifetimeController ltController = new LifetimeController(ltModel, view);
+      
 		
-		ltView.setVisible(true);
+		view.setVisible(view);
 
     }
 
