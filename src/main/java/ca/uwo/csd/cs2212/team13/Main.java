@@ -25,6 +25,7 @@ public void run() throws IOException {
       final ActivitiesRecord actRecord = gson.fromJson(data, ActivitiesRecord.class);
       
 		InterfaceView view = new InterfaceView();
+		view.setVisible(view);
 
 		LifetimeRecord ltModel = actRecord.getLifetime();
 		LifetimeController ltController = new LifetimeController(ltModel, view);
