@@ -15,9 +15,22 @@ public void run() throws IOException {
     final GsonBuilder gsonBuilder = new GsonBuilder();
     gsonBuilder.registerTypeAdapter(ActivitiesRecord.class, new ActivitiesRecordDeserializer());
     gsonBuilder.setPrettyPrinting();
+    
+    gsonBuilder.registerTypeAdapter(HeartRateRecord.class, new HeartRateRecordDeserializer());
     final Gson gson = gsonBuilder.create();
 
 
+
+    // Read the JSON data
+ try (Reader data = new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("heartrate.json"), "UTF-8")) {
+
+      // Parse JSON to Java
+      final HeartRateRecord hrRecord = gson.fromJson(data, HeartRateRecord.class);
+      System.out.println(hrRecord);
+
+    }
+ 
+    
     // Read the JSON data
  try (Reader data = new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("activities.json"), "UTF-8")) {
 
