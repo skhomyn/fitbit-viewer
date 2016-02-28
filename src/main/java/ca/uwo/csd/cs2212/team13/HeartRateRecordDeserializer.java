@@ -11,35 +11,27 @@ import com.google.gson.JsonParseException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class HeartRateDeserializer implements JsonDeserializer<HeartRateRecord> {
+public class HeartRateRecordDeserializer implements JsonDeserializer<HeartRateRecord> {
 
-	@Override
-	public HeartRateRecord deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
-			throws JsonParseException {
+    @Override
+    public HeartRateRecord deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
+            throws JsonParseException {
 
-		/*
-		final JsonObject jsonObject = json.getAsJsonObject();
-		
-		final String best_dis_date = jsonObject.getAsJsonObject("best").getAsJsonObject("total").getAsJsonObject("distance").get("date").getAsString();
-		final double best_dis_value = jsonObject.getAsJsonObject("best").getAsJsonObject("total").getAsJsonObject("distance").get("value").getAsDouble();
-		final String best_floors_date = jsonObject.getAsJsonObject("best").getAsJsonObject("total").getAsJsonObject("floors").get("date").getAsString();
-		final double best_floors_value = jsonObject.getAsJsonObject("best").getAsJsonObject("total").getAsJsonObject("floors").get("value").getAsDouble();
-		final String best_steps_date = jsonObject.getAsJsonObject("best").getAsJsonObject("total").getAsJsonObject("steps").get("date").getAsString();
-		final double best_steps_value = jsonObject.getAsJsonObject("best").getAsJsonObject("total").getAsJsonObject("steps").get("value").getAsDouble();
+        final JsonObject jsonObject = json.getAsJsonObject();
 
-		final int lt_aScore = jsonObject.getAsJsonObject("lifetime").getAsJsonObject("total").get("activeScore").getAsInt();
-		final int lt_cOut = jsonObject.getAsJsonObject("lifetime").getAsJsonObject("total").get("caloriesOut").getAsInt();
-		final double lt_distance = jsonObject.getAsJsonObject("lifetime").getAsJsonObject("total").get("distance").getAsDouble();
-		final int lt_floors = jsonObject.getAsJsonObject("lifetime").getAsJsonObject("total").get("floors").getAsInt();
-		final int lt_steps = jsonObject.getAsJsonObject("lifetime").getAsJsonObject("total").get("steps").getAsInt();
+        final JsonObject jsonHeart = jsonObject.getAsJsonObject("activities-heart");
+        final JsonElement jsonDateTime = jsonHeart.get("dateTime");
+        final JsonObject jsonValue = jsonHeart.getAsJsonObject("value");
 
-		final LifetimeRecord lf = new LifetimeRecord(lt_aScore, lt_cOut, lt_distance, lt_floors, lt_steps);
-		final BestRecord br = new BestRecord(best_dis_date, best_dis_value, best_floors_date, best_floors_value, best_steps_date, best_steps_value);
+//        final JsonArray jsonHeartZone = jsonObject.get("heartRateZones").getAsJsonArray();
+//        final HeartZoneRecord[] zonesArray = new HeartZoneRecord[jsonHeartZone.size()];
+//        for (int i = 0; i < zonesArray.length; i++) {
+//            final JsonObject jsonZoneObject = jsonHeartZone.getAsJsonObject(i);
+//        }
 
-		final ActivitiesRecord actRecord = new ActivitiesRecord(br, lf);
-		System.out.println(actRecord.toString());
-		*/
-		
-		return actRecord;
-	}
+        final HeartRateRecord heartRecord = new HeartRateRecord();
+        heartRecord.setDate(jsonDateTime.getAsString());
+
+        return heartRecord;
+    }
 }
