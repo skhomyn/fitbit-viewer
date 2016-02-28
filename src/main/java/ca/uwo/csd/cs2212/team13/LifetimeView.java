@@ -50,6 +50,7 @@ public class LifetimeView extends JFrame {
 	JButton btnLifeTimeTotals = new JButton("Lifetime Totals");
 	JButton btnAccolades = new JButton("Accolades");
 	JButton btnTimeSeries = new JButton("Time Series");
+	JButton btnHeartRateZone = new JButton("Heart Rate Zone");
 
 	//constructor
 	public LifetimeView() {		
@@ -106,6 +107,7 @@ public class LifetimeView extends JFrame {
 		toolBar.add(btnLifeTimeTotals);
 		toolBar.add(btnAccolades);
 		toolBar.add(btnTimeSeries);
+		toolBar.add(btnHeartRateZone);
 
 	}
 	
