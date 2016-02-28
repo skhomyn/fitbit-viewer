@@ -51,9 +51,8 @@ public class InterfaceView {
 	private JLabel lblZoneTwoVal;
 	private JLabel lblZoneThreeVal;
 
-	
-	// Launch Application:
 	/*
+	// Launch Application:
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -443,14 +442,13 @@ public class InterfaceView {
 		JLabel lblHeartRate = new JLabel("Resting Heart Rate: ");
 		lblHeartRate.setBounds(30, 60, 189, 16);
 		panelHeartrateZonesView.add(lblHeartRate);
-		lblRestRateVal = new JLabel("Resting Heart Rate: ");
-		lblRestRateVal.setBounds(30, 60, 189, 16);
+		lblRestRateVal = new JLabel();
+		lblRestRateVal.setBounds(165, 60, 189, 16);
 		panelHeartrateZonesView.add(lblRestRateVal);
 		
 		JLabel lblNewLabel = new JLabel("Minutes: ");
 		lblNewLabel.setBounds(30, 88, 133, 16);
 		panelHeartrateZonesView.add(lblNewLabel);
-
 		lblHeartRateMinVal.setBounds(165, 88, 133, 16);;
 		panelHeartrateZonesView.add(lblHeartRateMinVal);
 		
@@ -460,16 +458,25 @@ public class InterfaceView {
 		lblZoneDescriptions.setBounds(0, 161, 460, 27);
 		panelHeartrateZonesView.add(lblZoneDescriptions);
 		
-		lblZoneOneVal = new JLabel("Zone 1: ");
-		lblZoneOneVal.setBounds(30, 200, 148, 16);
+		JLabel lblZone = new JLabel("Zone 1: ");
+		lblZone.setBounds(30, 200, 148, 16);
+		panelHeartrateZonesView.add(lblZone);
+		lblZoneOneVal = new JLabel();
+		lblZoneOneVal.setBounds(165, 200, 148, 16);
 		panelHeartrateZonesView.add(lblZoneOneVal);
 		
-		lblZoneTwoVal = new JLabel("Zone 2: ");
-		lblZoneTwoVal.setBounds(30, 228, 148, 16);
+		JLabel lblZone_1 = new JLabel("Zone 2: ");
+		lblZone_1.setBounds(30, 228, 148, 16);
+		panelHeartrateZonesView.add(lblZone_1);
+		lblZoneTwoVal = new JLabel();
+		lblZoneTwoVal.setBounds(165, 228, 148, 16);
 		panelHeartrateZonesView.add(lblZoneTwoVal);
 		
-		lblZoneThreeVal = new JLabel("Zone 3: ");
-		lblZoneThreeVal.setBounds(30, 256, 148, 16);
+		JLabel lblZone_2 = new JLabel("Zone 3: ");
+		lblZone_2.setBounds(30, 256, 148, 16);
+		panelHeartrateZonesView.add(lblZone_2);
+		lblZoneThreeVal = new JLabel();
+		lblZoneThreeVal.setBounds(165, 256, 148, 16);
 		panelHeartrateZonesView.add(lblZoneThreeVal);
 		
 		JScrollBar scrollBar = new JScrollBar();
@@ -589,19 +596,4 @@ public class InterfaceView {
 	public void setVisible(InterfaceView view) {
 		view.frame.setVisible(true);
 	}
-	
-	public void setHeartRateFields(int minutes, HeartZoneRecord[] restRate) {
-		lblHeartRateMinVal.setText(Integer.toString(minutes));
-		//lblRestRateVal.setText(restRate.toString());
-		/*
-		lblZoneOneVal.setText(zone1);
-		lblZoneTwoVal.setText(zone2);
-		lblZoneThreeVal.setText(zone3);
-		*/
-	}
-	
-	public void addClickListenerHeartRateZone(ActionListener actionsOnClick){
-		btnHeartRateZones.addActionListener(actionsOnClick);
-	}
-
 }
