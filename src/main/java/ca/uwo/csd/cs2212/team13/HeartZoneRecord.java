@@ -7,48 +7,79 @@ public class HeartZoneRecord {
 	
 	//the different heart rate zones are:
 	//out-of-range, cardio, fat-burn, peak
-	private static String zones;
+	private static String name;
 	
 	//each zone has a max/min rate associated with it
-	private static int rate;
+	private static int max;
+	private static int min;
 	
 	//constructor which populates fields with data from API call
-	HeartZoneRecord(int mins, String z, int r) {
+	HeartZoneRecord(int max, int min, int minut, String na) {
 		super();
-		this.minutes = mins;
-		this.zones = z;
-		this.rate = r;
+		this.minutes = minut;
+		this.name = na;
+		this.max = max;
+		this.min = min;
 	}
 	
-	//accessors for heart rate values
-	public static int getHRMinutes() {
+	 /**
+	 * @return the minutes
+	 */
+	public static int getMinutes() {
 		return minutes;
 	}
-	
-	public void setHRMinutes(int hrm) {
-		this.minutes = hrm;
+
+	/**
+	 * @param minutes the minutes to set
+	 */
+	public static void setMinutes(int minutes) {
+		HeartZoneRecord.minutes = minutes;
 	}
-	
-	//accessors for zones
-	public static String getHRZones() {
-		return zones;
+
+	/**
+	 * @return the name
+	 */
+	public static String getName() {
+		return name;
 	}
-	
-	public void setHRZones(String hrz) {
-		this.zones = hrz;
+
+	/**
+	 * @param name the name to set
+	 */
+	public static void setName(String name) {
+		HeartZoneRecord.name = name;
 	}
-	
-	//accessors for rate
-	public static int getHRRate() {
-		return rate;
+
+	/**
+	 * @return the max
+	 */
+	public static int getMax() {
+		return max;
 	}
-	
-	public void setHRRate(int hrr) {
-		this.rate = hrr;
+
+	/**
+	 * @param max the max to set
+	 */
+	public static void setMax(int max) {
+		HeartZoneRecord.max = max;
 	}
-	
-	//toString method 
+
+	/**
+	 * @return the min
+	 */
+	public static int getMin() {
+		return min;
+	}
+
+	/**
+	 * @param min the min to set
+	 */
+	public static void setMin(int min) {
+		HeartZoneRecord.min = min;
+	}
+
+	@Override
 	  public String toString() {
-		    return String.format("[%d] [%d] [%s] ", minutes, rate, zones);
+		    return String.format("[%d] [%d] [%d] [%d] ", minutes, max, min, name);
 		  }
 }

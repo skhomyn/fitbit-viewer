@@ -3,51 +3,50 @@ package ca.uwo.csd.cs2212.team13;
 //this class is for the 4 different zones
 public class HeartRateRecord {
 
-	//heart rate zone
-	private HRZmodel cardioZone = new HRZmodel(HRZmodel.getHRMinutes(), "Cardio", HRZmodel.getHRRate());
-	private HRZmodel fatBurnZone = new HRZmodel(HRZmodel.getHRMinutes(), "Fat Burn", HRZmodel.getHRRate());
-	private HRZmodel OutOfRangeZone = new HRZmodel(HRZmodel.getHRMinutes(), "Out of Range", HRZmodel.getHRRate());
-	private HRZmodel peakZone = new HRZmodel(HRZmodel.getHRMinutes(), "Peak", HRZmodel.getHRRate());
-
-	//constructor which populates fields with data from API call
-	HRZone() {
+	private String date;
+	private HeartZoneRecord[] heart_zones;
+	
+	HeartRateRecord()
+	{
+		date = null;
+		heart_zones = null;
+	}
+	//constructor which populates fields with data
+	HeartRateRecord(String da, HeartZoneRecord[] heart_zones) {
 		super();
+		this.heart_zones = heart_zones;
+		this.date = da;
 	}
 
-	public HRZmodel getCardioZone() {
-		return cardioZone;
+	public HeartZoneRecord getOutRangeZone() {
+		return heart_zones[0];
 	}
 
-	public void setCardioZone(HRZmodel cardioZone) {
-		this.cardioZone = cardioZone;
+	public void setOutRangeZone(HeartZoneRecord zone) {
+		this.heart_zones[0] = zone;
+	}
+	
+	public HeartZoneRecord getFatBurnZone() {
+		return heart_zones[1];
 	}
 
-	public HRZmodel getFatBurnZone() {
-		return fatBurnZone;
+	public void setFatBurnZone(HeartZoneRecord zone) {
+		this.heart_zones[1] = zone;
+	}
+	
+	public HeartZoneRecord getCardioZone() {
+		return heart_zones[2];
 	}
 
-	public void setFatBurnZone(HRZmodel fatBurnZone) {
-		this.fatBurnZone = fatBurnZone;
+	public void setCardioZone(HeartZoneRecord zone) {
+		this.heart_zones[2] = zone;
 	}
 
-	public HRZmodel getOutOfRangeZone() {
-		return OutOfRangeZone;
+	public HeartZoneRecord getPeakZone() {
+		return heart_zones[3];
 	}
 
-	public void setOutOfRangeZone(HRZmodel outOfRangeZone) {
-		OutOfRangeZone = outOfRangeZone;
+	public void setPeakZone(HeartZoneRecord zone) {
+		this.heart_zones[3] = zone;
 	}
-
-	public HRZmodel getPeakZone() {
-		return peakZone;
-	}
-
-	public void setPeakZone(HRZmodel peakZone) {
-		this.peakZone = peakZone;
-	}
-
-	//toString method 
-	  public String toString() {
-		    return String.format("[%s] [%s] [%s] [%s]", cardioZone, fatBurnZone, OutOfRangeZone, peakZone);
-		  }
 }
