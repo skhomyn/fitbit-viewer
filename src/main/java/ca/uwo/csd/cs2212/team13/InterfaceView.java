@@ -44,6 +44,7 @@ public class InterfaceView {
 	private JLabel lblLifetimeTotalsFloorsVal;
 	private JLabel lblLifetimeTotalsStepsVal;
 
+	/*
 	// Launch Application:
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -57,6 +58,7 @@ public class InterfaceView {
 			}
 		});
 	}
+	*/
 
 	// Constructor:
 	public InterfaceView() {
@@ -568,5 +570,9 @@ public class InterfaceView {
 	// this method gets executed when the controller is initialized
 	public void addClickListenerLifetimeTotals(ActionListener actionsOnClick){
 		btnLifetimeTotals.addActionListener(actionsOnClick);
+	}
+	
+	public void setVisible(InterfaceView view) {
+		view.frame.setVisible(true);
 	}
 }
