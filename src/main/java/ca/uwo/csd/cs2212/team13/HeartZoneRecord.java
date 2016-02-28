@@ -15,7 +15,6 @@ public class HeartZoneRecord {
 	
 	//constructor which populates fields with data from API call
 	HeartZoneRecord(int max, int min, int minut, String na) {
-		super();
 		this.minutes = minut;
 		this.name = na;
 		this.max = max;

@@ -51,9 +51,15 @@ public class InterfaceView {
 	private JLabel lblBestDaysFloorsDate;
 	private JLabel lblBestDaysStepsDate;
 
+	private JLabel lblHeartRateMinVal;
+	private JLabel lblRestRateVal;
+	private JLabel lblZoneOneVal;
+	private JLabel lblZoneTwoVal;
+	private JLabel lblZoneThreeVal;
 
-	/*
+	
 	// Launch Application:
+	/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -455,11 +461,11 @@ public class InterfaceView {
 		lblHeartRateZones.setBounds(0, 0, 466, 27);
 		panelHeartrateZonesView.add(lblHeartRateZones);
 		
-		JLabel lblHeartRate = new JLabel("Resting Heart Rate: <hr>");
+		JLabel lblHeartRate = new JLabel("Resting Heart Rate: ");
 		lblHeartRate.setBounds(30, 60, 189, 16);
 		panelHeartrateZonesView.add(lblHeartRate);
 		
-		JLabel lblNewLabel = new JLabel("Minutes: <time>");
+		JLabel lblNewLabel = new JLabel("Minutes: ");
 		lblNewLabel.setBounds(30, 88, 133, 16);
 		panelHeartrateZonesView.add(lblNewLabel);
 		
@@ -469,15 +475,15 @@ public class InterfaceView {
 		lblZoneDescriptions.setBounds(0, 161, 460, 27);
 		panelHeartrateZonesView.add(lblZoneDescriptions);
 		
-		JLabel lblZone = new JLabel("Zone 1: <description>");
+		JLabel lblZone = new JLabel("Zone 1: ");
 		lblZone.setBounds(30, 200, 148, 16);
 		panelHeartrateZonesView.add(lblZone);
 		
-		JLabel lblZone_1 = new JLabel("Zone 2: <description>");
+		JLabel lblZone_1 = new JLabel("Zone 2: ");
 		lblZone_1.setBounds(30, 228, 148, 16);
 		panelHeartrateZonesView.add(lblZone_1);
 		
-		JLabel lblZone_2 = new JLabel("Zone 3: <description>");
+		JLabel lblZone_2 = new JLabel("Zone 3: ");
 		lblZone_2.setBounds(30, 256, 148, 16);
 		panelHeartrateZonesView.add(lblZone_2);
 		
@@ -582,21 +588,31 @@ public class InterfaceView {
 	//method used by action listener to update the view fields from the controller (using model data);
 	//  this method gets attached to the lifetime totals button and
 	// gets executed when the click actually happens
-		public void setLifetimeTotalsFields(double distance, int floors, int steps) {
-			lblLifetimeTotalsDistVal.setText(Double.toString(distance));
-			lblLifetimeTotalsFloorsVal.setText(Integer.toString(floors));
-			lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
-		}
+	public void setLifetimeTotalsFields(double distance, int floors, int steps) {
+		lblLifetimeTotalsDistVal.setText(Double.toString(distance));
+		lblLifetimeTotalsFloorsVal.setText(Integer.toString(floors));
+		lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
+	}
 		
-		public void setBestDaysFields(double distance, int floors, int steps, String dist_date, String floors_date, String steps_date) {
-			lblBestDaysDistVal.setText(Double.toString(distance));
-			lblBestDaysFloorsVal.setText(Integer.toString(floors));
-			lblBestDaysStepsVal.setText(Integer.toString(steps));
-			lblBestDaysDistDate.setText(dist_date);
-			lblBestDaysFloorsDate.setText(floors_date);
-			lblBestDaysStepsDate.setText(steps_date);
-		}
-	
+	public void setBestDaysFields(double distance, int floors, int steps, String dist_date, String floors_date, String steps_date) {
+		lblBestDaysDistVal.setText(Double.toString(distance));
+		lblBestDaysFloorsVal.setText(Integer.toString(floors));
+		lblBestDaysStepsVal.setText(Integer.toString(steps));
+		lblBestDaysDistDate.setText(dist_date);
+		lblBestDaysFloorsDate.setText(floors_date);
+		lblBestDaysStepsDate.setText(steps_date);
+	}
+
+		public void setHeartRateFields(int minutes, HeartZoneRecord[] restRate) {
+		lblHeartRateMinVal.setText(Integer.toString(minutes));
+		lblRestRateVal.setText(restRate.toString());
+		/*
+		lblZoneOneVal.setText(zone1);
+		lblZoneTwoVal.setText(zone2);
+		lblZoneThreeVal.setText(zone3);
+		*/
+	}
+
 	// the btnLifetimeTotals.addActionListner() call is encapsulated by a method so that it can be accessed by the controller;
 	// the controller passes in the clicklistener, which contains the method that updates the view;
 	// this method gets executed when the controller is initialized
@@ -605,10 +621,14 @@ public class InterfaceView {
 	}
 	
 	public void addClickListenerBestDays(ActionListener actionsOnClick){
-		btnLifetimeTotals.addActionListener(actionsOnClick);
+		btnBestDays.addActionListener(actionsOnClick);
 	}
 	
 	public void setVisible(InterfaceView view) {
 		view.frame.setVisible(true);
+	}
+	
+	public void addClickListenerHeartRateZone(ActionListener actionsOnClick){
+		btnHeartRateZones.addActionListener(actionsOnClick);
 	}
 }
