@@ -27,7 +27,7 @@ public class InterfaceView {
 	private JButton btnBestDays;
 	private JButton btnDailyDashboard;
 	private JButton btnDailyGoals;
-	private JButton btnLifeTimeGoals;
+	private JButton btnLifetimeTotals;
 	private JButton btnAccolades;
 	private JButton btnTimeSeries;
 	private JButton btnHeartRateZones;
@@ -39,8 +39,21 @@ public class InterfaceView {
 	private JPanel panelTimeSeriesView;
 	private JPanel panelDailyGoalsView;
 	private JPanel panelHeartrateZonesView;
+	
+	private JLabel lblLifetimeTotalsDistVal;
+	private JLabel lblLifetimeTotalsFloorsVal;
+	private JLabel lblLifetimeTotalsStepsVal;
+	
+	//labels for HRZ
+	private JLabel lblHeartRateMinVal;
+	private JLabel lblRestRateVal;
+	private JLabel lblZoneOneVal;
+	private JLabel lblZoneTwoVal;
+	private JLabel lblZoneThreeVal;
 
+	
 	// Launch Application:
+	/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -53,6 +66,7 @@ public class InterfaceView {
 			}
 		});
 	}
+	*/
 
 	// Constructor:
 	public InterfaceView() {
@@ -141,9 +155,9 @@ public class InterfaceView {
 		btnDailyGoals.setMaximumSize(new Dimension(150, 54));
 		MenuBar.add(btnDailyGoals);
 
-		btnLifeTimeGoals = new JButton("Lifetime Totals");
-		btnLifeTimeGoals.setMaximumSize(new Dimension(150, 54));
-		MenuBar.add(btnLifeTimeGoals);
+		btnLifetimeTotals = new JButton("Lifetime Totals");
+		btnLifetimeTotals.setMaximumSize(new Dimension(150, 54));
+		MenuBar.add(btnLifetimeTotals);
 
 		btnAccolades = new JButton("Accolades");
 		btnAccolades.setMaximumSize(new Dimension(150, 54));
@@ -324,20 +338,20 @@ public class InterfaceView {
 		lblSteps.setBounds(72, 126, 189, 16);
 		panelLifetimeTotalsView.add(lblSteps);
 		
-		JLabel lblDistVal = new JLabel("<distance>");
-		lblDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDistVal.setBounds(260, 70, 95, 16);
-		panelLifetimeTotalsView.add(lblDistVal);
+		lblLifetimeTotalsDistVal = new JLabel();
+		lblLifetimeTotalsDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblLifetimeTotalsDistVal.setBounds(260, 70, 95, 16);
+		panelLifetimeTotalsView.add(lblLifetimeTotalsDistVal);
 		
-		JLabel lblFloorVal = new JLabel("<floors>");
-		lblFloorVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblFloorVal.setBounds(260, 98, 95, 16);
-		panelLifetimeTotalsView.add(lblFloorVal);
+		lblLifetimeTotalsFloorsVal = new JLabel();
+		lblLifetimeTotalsFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblLifetimeTotalsFloorsVal.setBounds(260, 98, 95, 16);
+		panelLifetimeTotalsView.add(lblLifetimeTotalsFloorsVal);
 		
-		JLabel lblStepVal = new JLabel("<steps>");
-		lblStepVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblStepVal.setBounds(260, 126, 95, 16);
-		panelLifetimeTotalsView.add(lblStepVal);
+		lblLifetimeTotalsStepsVal = new JLabel();
+		lblLifetimeTotalsStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblLifetimeTotalsStepsVal.setBounds(260, 126, 95, 16);
+		panelLifetimeTotalsView.add(lblLifetimeTotalsStepsVal);
 	}
 
 	private void timeseriesView() {
@@ -426,11 +440,11 @@ public class InterfaceView {
 		lblHeartRateZones.setBounds(0, 0, 466, 27);
 		panelHeartrateZonesView.add(lblHeartRateZones);
 		
-		JLabel lblHeartRate = new JLabel("Resting Heart Rate: <hr>");
+		JLabel lblHeartRate = new JLabel("Resting Heart Rate: ");
 		lblHeartRate.setBounds(30, 60, 189, 16);
 		panelHeartrateZonesView.add(lblHeartRate);
 		
-		JLabel lblNewLabel = new JLabel("Minutes: <time>");
+		JLabel lblNewLabel = new JLabel("Minutes: ");
 		lblNewLabel.setBounds(30, 88, 133, 16);
 		panelHeartrateZonesView.add(lblNewLabel);
 		
@@ -440,15 +454,15 @@ public class InterfaceView {
 		lblZoneDescriptions.setBounds(0, 161, 460, 27);
 		panelHeartrateZonesView.add(lblZoneDescriptions);
 		
-		JLabel lblZone = new JLabel("Zone 1: <description>");
+		JLabel lblZone = new JLabel("Zone 1: ");
 		lblZone.setBounds(30, 200, 148, 16);
 		panelHeartrateZonesView.add(lblZone);
 		
-		JLabel lblZone_1 = new JLabel("Zone 2: <description>");
+		JLabel lblZone_1 = new JLabel("Zone 2: ");
 		lblZone_1.setBounds(30, 228, 148, 16);
 		panelHeartrateZonesView.add(lblZone_1);
 		
-		JLabel lblZone_2 = new JLabel("Zone 3: <description>");
+		JLabel lblZone_2 = new JLabel("Zone 3: ");
 		lblZone_2.setBounds(30, 256, 148, 16);
 		panelHeartrateZonesView.add(lblZone_2);
 		
@@ -485,7 +499,7 @@ public class InterfaceView {
 		});
 
 		// Switch window to Lifetime Totals screen:
-		btnLifeTimeGoals.addActionListener(new ActionListener() {
+		btnLifetimeTotals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
 				panelBestDaysView.setVisible(false);
@@ -548,5 +562,39 @@ public class InterfaceView {
 			}
 		});
 
+	}
+	
+	//method used by action listener to update the view fields from the controller (using model data);
+	//  this method gets attached to the lifetime totals button and
+	// gets executed when the click actually happens
+		public void setLifetimeTotalsFields(double distance, int floors, int steps) {
+			lblLifetimeTotalsDistVal.setText(Double.toString(distance));
+			lblLifetimeTotalsFloorsVal.setText(Integer.toString(floors));
+			lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
+		}
+	
+	// the btnLifetimeTotals.addActionListner() call is encapsulated by a method so that it can be accessed by the controller;
+	// the controller passes in the clicklistener, which contains the method that updates the view;
+	// this method gets executed when the controller is initialized
+	public void addClickListenerLifetimeTotals(ActionListener actionsOnClick){
+		btnLifetimeTotals.addActionListener(actionsOnClick);
+	}
+	
+	public void setVisible(InterfaceView view) {
+		view.frame.setVisible(true);
+	}
+	
+	public void setHeartRateFields(int minutes, HeartZoneRecord[] restRate) {
+		lblHeartRateMinVal.setText(Integer.toString(minutes));
+		lblRestRateVal.setText(restRate.toString());
+		/*
+		lblZoneOneVal.setText(zone1);
+		lblZoneTwoVal.setText(zone2);
+		lblZoneThreeVal.setText(zone3);
+		*/
+	}
+	
+	public void addClickListenerHeartRateZone(ActionListener actionsOnClick){
+		btnHeartRateZones.addActionListener(actionsOnClick);
 	}
 }

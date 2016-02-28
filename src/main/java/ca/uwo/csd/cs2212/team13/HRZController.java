@@ -23,17 +23,16 @@ public class HRZController {
 		this.view = v;
 		
 		//call method in view to add an event listener to the lifetime totals button 
-		//clickListener not recognized??
-				//view.addClickListenerHeartRateZones(new clickListener());
+		view.addClickListenerLifetimeTotals(new clickListener());
 	}
 	
 	class clickListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//need to add this to InterfaceView
-			//view.setHeartRateZoneFields(model.getHeart_zones(), model.getDate());
+			view.setHeartRateFields(zoneModel.getMinutes(), model.getHeart_zones());
 		}
 		
-		//TODO: error handling
 	}
+
+	//TODO: error handling
 }
