@@ -43,6 +43,13 @@ public class InterfaceView {
 	private JLabel lblLifetimeTotalsDistVal;
 	private JLabel lblLifetimeTotalsFloorsVal;
 	private JLabel lblLifetimeTotalsStepsVal;
+	
+	private JLabel lblDailyTotalsDistVal;
+	private JLabel lblDailyTotalsCaloriesVal;
+	private JLabel lblDailyTotalsStepsVal;
+	private JLabel lblDailyTotalsFloorsVal;
+	private JLabel lblDailyTotalsSedenteryMinVal;
+	private JLabel lblDailyTotalsActiveMinVal;
 
 	/*
 	// Launch Application:
@@ -195,11 +202,7 @@ public class InterfaceView {
 		lblFloors.setBounds(132, 176, 73, 25);
 		panelDashboardView.add(lblFloors);
 
-		JLabel lblSedentaryMinutes = new JLabel("Sedentary\nMinutes");
-		lblSedentaryMinutes.setBounds(241, 136, 125, 30);
-		panelDashboardView.add(lblSedentaryMinutes);
-
-		JLabel lblDailyProgress = new JLabel("Daily Progress");
+		JLabel lblDailyProgress = new JLabel("Daily Goals");
 		lblDailyProgress.setBounds(241, 171, 125, 30);
 		panelDashboardView.add(lblDailyProgress);
 
@@ -207,6 +210,36 @@ public class InterfaceView {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewLabel_1.setBounds(335, 356, 125, 16);
 		panelDashboardView.add(lblNewLabel_1);
+		
+		lblDailyTotalsDistVal = new JLabel();
+		lblDailyTotalsDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailyTotalsDistVal.setBounds(260, 70, 95, 16);
+		panelDashboardView.add(lblDailyTotalsDistVal);
+		
+		lblDailyTotalsCaloriesVal = new JLabel();
+		lblDailyTotalsCaloriesVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailyTotalsCaloriesVal.setBounds(260, 70, 95, 16);
+		panelDashboardView.add(lblDailyTotalsCaloriesVal);
+		
+		lblDailyTotalsStepsVal = new JLabel();
+		lblDailyTotalsStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailyTotalsStepsVal.setBounds(260, 70, 95, 16);
+		panelDashboardView.add(lblDailyTotalsStepsVal);
+		
+		lblDailyTotalsFloorsVal = new JLabel();
+		lblDailyTotalsFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailyTotalsFloorsVal.setBounds(260, 70, 95, 16);
+		panelDashboardView.add(lblDailyTotalsFloorsVal);
+		
+		lblDailyTotalsActiveMinVal = new JLabel();
+		lblDailyTotalsActiveMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailyTotalsActiveMinVal.setBounds(260, 70, 95, 16);
+		panelDashboardView.add(lblDailyTotalsActiveMinVal);
+		
+		lblDailyTotalsSedenteryMinVal = new JLabel();
+		lblDailyTotalsSedenteryMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailyTotalsSedenteryMinVal.setBounds(260, 70, 95, 16);
+		panelDashboardView.add(lblDailyTotalsSedenteryMinVal);
 	}
 
 	private void bestdaysView() {
@@ -563,6 +596,15 @@ public class InterfaceView {
 			lblLifetimeTotalsDistVal.setText(Double.toString(distance));
 			lblLifetimeTotalsFloorsVal.setText(Integer.toString(floors));
 			lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
+		}
+		
+		public void setDailyDashboardTotalsFields(double distance, int calories, int floors, int steps, int activeMin, int sedenteryMin){
+			lblDailyTotalsFloorsVal.setText(Integer.toString(floors));
+			lblDailyTotalsDistVal.setText(Double.toString(distance));
+			lblDailyTotalsCaloriesVal.setText(Integer.toString(calories));
+			lblDailyTotalsStepsVal.setText(Integer.toString(steps));
+			lblDailyTotalsActiveMinVal.setText(Integer.toString(activeMin));
+			lblDailyTotalsSedenteryMinVal.setText(Integer.toString(sedenteryMin));
 		}
 	
 	// the btnLifetimeTotals.addActionListner() call is encapsulated by a method so that it can be accessed by the controller;
