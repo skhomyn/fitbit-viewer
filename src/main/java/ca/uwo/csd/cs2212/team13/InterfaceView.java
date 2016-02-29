@@ -470,7 +470,7 @@ public class InterfaceView {
 		JLabel lblNewLabel = new JLabel("Minutes: ");
 		lblNewLabel.setBounds(30, 88, 133, 16);
 		panelHeartrateZonesView.add(lblNewLabel);
-		lblHeartRateMinVal.setBounds(165, 88, 133, 16);;
+		lblHeartRateMinVal.setBounds(165, 88, 133, 16);
 		panelHeartrateZonesView.add(lblHeartRateMinVal);
 		
 		JLabel lblZoneDescriptions = new JLabel("Zone Descriptions:");
@@ -616,9 +616,12 @@ public class InterfaceView {
 		lblBestDaysStepsDate.setText(steps_date);
 	}
 
-		public void setHeartRateFields(int minutes, HeartZoneRecord[] restRate) {
+	public void setHeartRateFields(int minutes, HeartZoneRecord[] restRate) {
 		lblHeartRateMinVal.setText(Integer.toString(minutes));
-		//lblRestRateVal.setText(restRate.toString());
+		lblRestRateVal.setText(restRate.toString());
+		lblRestRateVal.setText(restRate.toString());
+		
+		//not sure yet if we can get zone descriptions
 		/*
 		lblZoneOneVal.setText(zone1);
 		lblZoneTwoVal.setText(zone2);
@@ -636,13 +639,13 @@ public class InterfaceView {
 	public void addClickListenerBestDays(ActionListener actionsOnClick){
 		btnBestDays.addActionListener(actionsOnClick);
 	}
+
+	public void addClickListenerHeartRateZone(ActionListener actionsOnClick){
+		btnHeartRateZones.addActionListener(actionsOnClick);
+	}
 	
 	public void setVisible(InterfaceView view) {
 		view.frame.setVisible(true);
-	}
-	
-	public void addClickListenerHeartRateZone(ActionListener actionsOnClick){
-		btnHeartRateZones.addActionListener(actionsOnClick);
 	}
 
 }
