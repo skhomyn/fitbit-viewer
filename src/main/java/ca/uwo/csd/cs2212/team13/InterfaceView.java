@@ -449,7 +449,7 @@ public class InterfaceView {
 		JLabel lblNewLabel = new JLabel("Minutes: ");
 		lblNewLabel.setBounds(30, 88, 133, 16);
 		panelHeartrateZonesView.add(lblNewLabel);
-		lblHeartRateMinVal.setBounds(165, 88, 133, 16);;
+		lblHeartRateMinVal.setBounds(165, 88, 133, 16);
 		panelHeartrateZonesView.add(lblHeartRateMinVal);
 		
 		JLabel lblZoneDescriptions = new JLabel("Zone Descriptions:");
@@ -595,5 +595,22 @@ public class InterfaceView {
 	
 	public void setVisible(InterfaceView view) {
 		view.frame.setVisible(true);
+	}
+	
+	public void setHeartRateFields(int minutes, HeartZoneRecord[] restRate) {
+		lblHeartRateMinVal.setText(Integer.toString(minutes));
+		lblRestRateVal.setText(restRate.toString());
+		lblRestRateVal.setText(restRate.toString());
+		
+		//not sure yet if we can get zone descriptions
+		/*
+		lblZoneOneVal.setText(zone1);
+		lblZoneTwoVal.setText(zone2);
+		lblZoneThreeVal.setText(zone3);
+		*/
+	}
+	
+	public void addClickListenerHeartRateZone(ActionListener actionsOnClick){
+		btnHeartRateZones.addActionListener(actionsOnClick);
 	}
 }
