@@ -4,3 +4,9 @@ target/
 Desktop.ini
 .recommenders/
 .metadata/
+.classpath
+.project
+.settings/
+.idea/workspace.xml
+.idea/
+*.iml

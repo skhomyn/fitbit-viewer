@@ -1,8 +1,14 @@
  <project>
-  <modelVersion> 4.0.0 </modelVersion>
-  <groupId> ca.uwo.csd.cs2212.team13 </groupId>
-  <artifactId> team13_fitbitApp </artifactId>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ca.uwo.csd.cs2212.team13</groupId>
+  <artifactId> team13-fitbitApp</artifactId>
   <packaging> jar </packaging>
+  <version>1.0-SNAPSHOT</version>
+<properties>
+<maven.compiler.source>1.7</maven.compiler.source>
+<maven.compiler.target>1.7</maven.compiler.target>
+</properties>
+
  <repositories>
    <repository>
     <id>cs2212</id>
@@ -10,12 +16,55 @@
     <url>http://www.csd.uwo.ca/~mlocke2/</url>
    </repository>                                   
  </repositories>
+ 
+
+<dependencies>
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.2.4</version>
+</dependency>
+     <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20160212</version>
+    </dependency>
+  <dependency>
+        <groupId>ca.uwo.csd.cs2212</groupId>
+        <artifactId>scribejava-apis</artifactId>
+        <version>2.2.2-CS2212</version>
+    </dependency>
+    <dependency>
+        <groupId>ca.uwo.csd.cs2212</groupId>
+        <artifactId>scribejava-core</artifactId>
+        <version>2.2.2-CS2212</version>
+    </dependency>
+
+<dependency>
+  <groupId>org.apache.logging.log4j</groupId>
+  <artifactId> log4j-api </artifactId>
+  <version> 2.0-beta9 </version>
+ </dependency>
+
+ <dependency>
+  <groupId> org.apache.logging.log4j </groupId>
+  <artifactId> log4j-core </artifactId>
+  <version> 2.0-beta9 </version>
+ </dependency>
+</dependencies>
+
+
  <dependencyManagement>
  <dependencies> 
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.2.4</version>
+</dependency>
   <dependency>
     <groupId>org.json</groupId>
     <artifactId>json</artifactId>
-    <version>20090211</version>
+    <version>20160212</version>
   </dependency>
   <dependency>
     <groupId>ca.uwo.csd.cs2212</groupId>
@@ -29,12 +78,13 @@
   </dependency>
  </dependencies>
  </dependencyManagement>
+
 <build> 
 <plugins>
   <plugin>
    <groupId> org.apache.maven.plugins </groupId>
    <artifactId> maven-jar-plugin </artifactId>
-   <version>2.4 </version>
+   <version>2.6 </version>
    <configuration>
     <archive>
      <manifest>
@@ -46,8 +96,8 @@
 <plugin>
   <groupId>org.apache.maven.plugins</groupId>
   <artifactId>maven-assembly-plugin</artifactId>
-  <version>2.6</version>
-  <configuration>
+   <version>2.6 </version>
+   <configuration>
     <descriptorRefs>
       <descriptorRef>jar-with-dependencies</descriptorRef>
     </descriptorRefs>
@@ -67,5 +117,6 @@
   </executions>
 </plugin>
  </plugins>
+
 </build>
 </project>
