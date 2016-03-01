@@ -43,16 +43,12 @@ public class InterfaceView {
 	private JLabel lblLifetimeTotalsDistVal;
 	private JLabel lblLifetimeTotalsFloorsVal;
 	private JLabel lblLifetimeTotalsStepsVal;
-<<<<<<< HEAD
 	
-	//labels for HRZ
-	private JLabel lblHeartRateMinVal;
-	private JLabel lblRestRateVal;
-	private JLabel lblZoneOneVal;
-	private JLabel lblZoneTwoVal;
-	private JLabel lblZoneThreeVal;
-=======
->>>>>>> 92cc61a1dcc635659fb8a9adf1d5a56067af982f
+	/*
+	 * buttons for HRZ page
+	 */
+	private JLabel lblHeartMins;
+	private JLabel lblHeartRest;
 
 	/*
 	// Launch Application:
@@ -445,15 +441,18 @@ public class InterfaceView {
 		JLabel lblHeartRate = new JLabel("Resting Heart Rate: ");
 		lblHeartRate.setBounds(30, 60, 189, 16);
 		panelHeartrateZonesView.add(lblHeartRate);
-		lblRestRateVal = new JLabel();
-		lblRestRateVal.setBounds(165, 60, 189, 16);
-		panelHeartrateZonesView.add(lblRestRateVal);
+		lblHeartRest = new JLabel();
+		lblHeartRest.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartMins.setBounds(218, 60, 95, 16);
+		panelHeartrateZonesView.add(lblHeartRest);
 		
 		JLabel lblNewLabel = new JLabel("Minutes: ");
 		lblNewLabel.setBounds(30, 88, 133, 16);
 		panelHeartrateZonesView.add(lblNewLabel);
-		lblHeartRateMinVal.setBounds(165, 88, 133, 16);
-		panelHeartrateZonesView.add(lblHeartRateMinVal);
+		lblHeartMins = new JLabel();
+		lblHeartMins.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartMins.setBounds(218, 88, 95, 16);
+		panelHeartrateZonesView.add(lblHeartMins);
 		
 		JLabel lblZoneDescriptions = new JLabel("Zone Descriptions:");
 		lblZoneDescriptions.setHorizontalAlignment(SwingConstants.CENTER);
@@ -461,26 +460,20 @@ public class InterfaceView {
 		lblZoneDescriptions.setBounds(0, 161, 460, 27);
 		panelHeartrateZonesView.add(lblZoneDescriptions);
 		
-		JLabel lblZone = new JLabel("Zone 1: ");
+		/**
+		 * lists what the heart rate 3 zones are
+		 */
+		JLabel lblZone = new JLabel("Zone 1: Cardio");
 		lblZone.setBounds(30, 200, 148, 16);
 		panelHeartrateZonesView.add(lblZone);
-		lblZoneOneVal = new JLabel();
-		lblZoneOneVal.setBounds(165, 200, 148, 16);
-		panelHeartrateZonesView.add(lblZoneOneVal);
 		
-		JLabel lblZone_1 = new JLabel("Zone 2: ");
+		JLabel lblZone_1 = new JLabel("Zone 2: Fat Burn");
 		lblZone_1.setBounds(30, 228, 148, 16);
 		panelHeartrateZonesView.add(lblZone_1);
-		lblZoneTwoVal = new JLabel();
-		lblZoneTwoVal.setBounds(165, 228, 148, 16);
-		panelHeartrateZonesView.add(lblZoneTwoVal);
 		
-		JLabel lblZone_2 = new JLabel("Zone 3: ");
+		JLabel lblZone_2 = new JLabel("Zone 3: Peak");
 		lblZone_2.setBounds(30, 256, 148, 16);
 		panelHeartrateZonesView.add(lblZone_2);
-		lblZoneThreeVal = new JLabel();
-		lblZoneThreeVal.setBounds(165, 256, 148, 16);
-		panelHeartrateZonesView.add(lblZoneThreeVal);
 		
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(455, 0, 15, 378);
@@ -588,6 +581,17 @@ public class InterfaceView {
 			lblLifetimeTotalsFloorsVal.setText(Integer.toString(floors));
 			lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
 		}
+		
+		/**
+		 * Method to set JLabel values for minutes & resting heart rate
+		 * For now, zones will be left out (hardcoded in currently)
+		 * @param minutes
+		 * @param rate
+		 */
+		public void setHeartRateZonesFields(int minutes, int rate) {
+			lblHeartMins.setText(Integer.toString(minutes));
+			lblHeartRest.setText(Integer.toString(rate));
+		}
 	
 	// the btnLifetimeTotals.addActionListner() call is encapsulated by a method so that it can be accessed by the controller;
 	// the controller passes in the clicklistener, which contains the method that updates the view;
@@ -596,27 +600,11 @@ public class InterfaceView {
 		btnLifetimeTotals.addActionListener(actionsOnClick);
 	}
 	
+	public void addClickListenerHeartRateZones(ActionListener actionsOnClick) {
+		btnHeartRateZones.addActionListener(actionsOnClick);
+	}
+	
 	public void setVisible(InterfaceView view) {
 		view.frame.setVisible(true);
 	}
-<<<<<<< HEAD
-	
-	public void setHeartRateFields(int minutes, HeartZoneRecord[] restRate) {
-		lblHeartRateMinVal.setText(Integer.toString(minutes));
-		lblRestRateVal.setText(restRate.toString());
-		lblRestRateVal.setText(restRate.toString());
-		
-		//not sure yet if we can get zone descriptions
-		/*
-		lblZoneOneVal.setText(zone1);
-		lblZoneTwoVal.setText(zone2);
-		lblZoneThreeVal.setText(zone3);
-		*/
-	}
-	
-	public void addClickListenerHeartRateZone(ActionListener actionsOnClick){
-		btnHeartRateZones.addActionListener(actionsOnClick);
-	}
-=======
->>>>>>> 92cc61a1dcc635659fb8a9adf1d5a56067af982f
 }
