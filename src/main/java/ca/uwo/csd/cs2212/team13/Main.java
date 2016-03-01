@@ -24,12 +24,12 @@ public void run() throws IOException {
       // Parse JSON to Java
       final ActivitiesRecord actRecord = gson.fromJson(data, ActivitiesRecord.class);
       
-		LifetimeView ltView = new LifetimeView();
+		InterfaceView view = new InterfaceView();
+		view.setVisible(view);
 
 		LifetimeRecord ltModel = actRecord.getLifetime();
-		LifetimeController ltController = new LifetimeController(ltModel, ltView);
+		LifetimeController ltController = new LifetimeController(ltModel, view);
 		
-		ltView.setVisible(true);
 
     }
 

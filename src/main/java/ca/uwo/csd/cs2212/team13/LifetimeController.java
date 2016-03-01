@@ -7,30 +7,24 @@ public class LifetimeController {
 	
 	//properties
 	private LifetimeRecord model;
-	private LifetimeView view;
+	private InterfaceView view;
 
-	//constructor
-	public LifetimeController(LifetimeRecord model, LifetimeView view) {
+	//constructor; the controller is initialized with a call from Main.java
+	public LifetimeController(LifetimeRecord model, InterfaceView view) {
 		this.model = model;
 		this.view = view;
 		
-		//call method in view to add an event listener to the
-		// refresh (or lifetime totals) button in the side menu
-		view.addRefreshListener(new RefreshListener());
+		//call method in view to add an event listener to the lifetime totals button 
+		view.addClickListenerLifetimeTotals(new clickListener());
 	}
 	
-	//action methods
-	public void updateView() {
-		view.setDistance(model.getDistance());
-		view.setFloors(model.getFloors());
-		view.setSteps(model.getSteps());
-	}
-	
-	//refresh listener implementation (lifetime totals button in side menu)
-	class RefreshListener implements ActionListener{
+	//this is the class definition for the action listener object that we pass to the above method;
+	//it says that whenever an action is observed (click), set the view fields with the model info;
+	// this class is instantiated in the call above, when the controller is initialized
+	class clickListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			updateView();	
+			view.setLifetimeTotalsFields(model.getDistance(), model.getFloors(), model.getSteps());
 		}
 		
 	}
