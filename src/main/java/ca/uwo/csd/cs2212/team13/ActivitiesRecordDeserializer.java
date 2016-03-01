@@ -33,7 +33,7 @@ public class ActivitiesRecordDeserializer implements JsonDeserializer<Activities
 		final int lt_steps = jsonObject.getAsJsonObject("lifetime").getAsJsonObject("total").get("steps").getAsInt();
 
 		final LifetimeRecord lf = new LifetimeRecord(lt_aScore, lt_cOut, lt_distance, lt_floors, lt_steps);
-		final BestRecord br = new BestRecord(best_dis_date, best_dis_value, best_floors_date, best_floors_value, best_steps_date, best_steps_value);
+		final BestDaysRecord br = new BestDaysRecord(best_dis_date, best_dis_value, best_floors_date, best_floors_value, best_steps_date, best_steps_value);
 
 		final ActivitiesRecord actRecord = new ActivitiesRecord(br, lf);
 		System.out.println(actRecord.toString());

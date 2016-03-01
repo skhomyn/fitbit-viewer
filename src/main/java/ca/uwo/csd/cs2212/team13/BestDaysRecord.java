@@ -1,6 +1,6 @@
 package ca.uwo.csd.cs2212.team13;
 
-public class BestRecord {
+public class BestDaysRecord {
 
 	private String dis_date;
 	private double dis_value;
@@ -9,7 +9,7 @@ public class BestRecord {
 	private String steps_date;
 	private double steps_value;
 	
-	public BestRecord(String dis_date, double dis_value, String floors_date, double floors_value, String steps_date, double steps_value) {
+	public BestDaysRecord(String dis_date, double dis_value, String floors_date, double floors_value, String steps_date, double steps_value) {
 		super();
 		this.dis_date = dis_date;
 		this.dis_value = dis_value;

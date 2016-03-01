@@ -30,6 +30,9 @@ public void run() throws IOException {
 		LifetimeRecord ltModel = actRecord.getLifetime();
 		LifetimeController ltController = new LifetimeController(ltModel, view);
 		
+		BestDaysRecord bdModel = actRecord.getBest();
+		BestDaysController bdController = new BestDaysController(bdModel, view);
+		
 
     }
 

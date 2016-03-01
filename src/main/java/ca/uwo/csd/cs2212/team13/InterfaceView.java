@@ -43,6 +43,14 @@ public class InterfaceView {
 	private JLabel lblLifetimeTotalsDistVal;
 	private JLabel lblLifetimeTotalsFloorsVal;
 	private JLabel lblLifetimeTotalsStepsVal;
+	
+	private JLabel lblBestDaysDistVal;
+	private JLabel lblBestDaysFloorsVal;
+	private JLabel lblBestDaysStepsVal;
+	private JLabel lblBestDaysDistDate;
+	private JLabel lblBestDaysFloorsDate;
+	private JLabel lblBestDaysStepsDate;
+
 
 	/*
 	// Launch Application:
@@ -112,13 +120,13 @@ public class InterfaceView {
 
 		dashboardView();
 
-		bestdaysView();
+		bestDaysView();
 
 		actionEvents();
 
 		accoladesView();
 
-		lifetimetotalsView();
+		lifetimeTotalsView();
 
 		timeseriesView();
 
@@ -209,7 +217,7 @@ public class InterfaceView {
 		panelDashboardView.add(lblNewLabel_1);
 	}
 
-	private void bestdaysView() {
+	private void bestDaysView() {
 		JLabel lblBestDays = new JLabel("Best Days");
 		lblBestDays.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBestDays.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
@@ -228,20 +236,35 @@ public class InterfaceView {
 		lblSteps.setBounds(72, 126, 189, 16);
 		panelBestDaysView.add(lblSteps);
 		
-		JLabel lblDistVal = new JLabel("<distance>");
-		lblDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDistVal.setBounds(259, 70, 95, 16);
-		panelBestDaysView.add(lblDistVal);
+		lblBestDaysDistVal = new JLabel();
+		lblBestDaysDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblBestDaysDistVal.setBounds(259, 70, 95, 16);
+		panelBestDaysView.add(lblBestDaysDistVal);
 		
-		JLabel lblFloorVal = new JLabel("<floors>");
-		lblFloorVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblFloorVal.setBounds(259, 98, 95, 16);
-		panelBestDaysView.add(lblFloorVal);
+		lblBestDaysDistDate = new JLabel();
+		lblBestDaysDistDate.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblBestDaysDistDate.setBounds(360, 70, 95, 16);
+		panelBestDaysView.add(lblBestDaysDistDate);
 		
-		JLabel lblStepsVal = new JLabel("<steps>");
-		lblStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblStepsVal.setBounds(259, 126, 95, 16);
-		panelBestDaysView.add(lblStepsVal);
+		lblBestDaysFloorsVal = new JLabel();
+		lblBestDaysFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblBestDaysFloorsVal.setBounds(259, 98, 95, 16);
+		panelBestDaysView.add(lblBestDaysFloorsVal);
+		
+		lblBestDaysFloorsDate = new JLabel();
+		lblBestDaysFloorsDate.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblBestDaysFloorsDate.setBounds(360, 98, 95, 16);
+		panelBestDaysView.add(lblBestDaysFloorsDate);
+		
+		lblBestDaysStepsVal = new JLabel();
+		lblBestDaysStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblBestDaysStepsVal.setBounds(259, 126, 95, 16);
+		panelBestDaysView.add(lblBestDaysStepsVal);
+		
+		lblBestDaysStepsDate = new JLabel();
+		lblBestDaysStepsDate.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblBestDaysStepsDate.setBounds(360, 126, 95, 16);
+		panelBestDaysView.add(lblBestDaysStepsDate);
 	}
 
 	private void accoladesView() {
@@ -311,7 +334,7 @@ public class InterfaceView {
 		panelAccoladesView.add(lblDscp5);
 	}
 
-	private void lifetimetotalsView() {
+	private void lifetimeTotalsView() {
 		JLabel lblTitle = new JLabel("Lifetime Totals");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
@@ -564,11 +587,24 @@ public class InterfaceView {
 			lblLifetimeTotalsFloorsVal.setText(Integer.toString(floors));
 			lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
 		}
+		
+		public void setBestDaysFields(double distance, double floors, double steps, String dist_date, String floors_date, String steps_date) {
+			lblBestDaysDistVal.setText(Double.toString(distance));
+			lblBestDaysFloorsVal.setText(Double.toString(floors));
+			lblBestDaysStepsVal.setText(Double.toString(steps));
+			lblBestDaysDistDate.setText(dist_date);
+			lblBestDaysFloorsDate.setText(floors_date);
+			lblBestDaysStepsDate.setText(steps_date);
+		}
 	
 	// the btnLifetimeTotals.addActionListner() call is encapsulated by a method so that it can be accessed by the controller;
 	// the controller passes in the clicklistener, which contains the method that updates the view;
 	// this method gets executed when the controller is initialized
 	public void addClickListenerLifetimeTotals(ActionListener actionsOnClick){
+		btnLifetimeTotals.addActionListener(actionsOnClick);
+	}
+	
+	public void addClickListenerBestDays(ActionListener actionsOnClick){
 		btnLifetimeTotals.addActionListener(actionsOnClick);
 	}
 	

@@ -2,14 +2,14 @@ package ca.uwo.csd.cs2212.team13;
 
 public class ActivitiesRecord {
 	
-	private BestRecord best;
+	private BestDaysRecord best;
 	private LifetimeRecord lifetime;
 	
 	/**
 	 * @param best
 	 * @param lifetime
 	 */
-	public ActivitiesRecord(BestRecord best, LifetimeRecord lifetime) {
+	public ActivitiesRecord(BestDaysRecord best, LifetimeRecord lifetime) {
 		super();
 		this.best = best;
 		this.lifetime = lifetime;
@@ -17,13 +17,13 @@ public class ActivitiesRecord {
 	/**
 	 * @return the best
 	 */
-	public BestRecord getBest() {
+	public BestDaysRecord getBest() {
 		return best;
 	}
 	/**
 	 * @param best the best to set
 	 */
-	public void setBest(BestRecord best) {
+	public void setBest(BestDaysRecord best) {
 		this.best = best;
 	}
 	/**
