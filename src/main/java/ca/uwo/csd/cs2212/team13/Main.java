@@ -26,11 +26,13 @@ public void run() throws IOException {
       
 		InterfaceView view = new InterfaceView();
 		view.setVisible(view);
+		
+		BestDaysRecord bdModel = actRecord.getBest();
+		BestDaysController bdController = new BestDaysController(bdModel, view);
 
 		LifetimeRecord ltModel = actRecord.getLifetime();
 		LifetimeController ltController = new LifetimeController(ltModel, view);
 		
-
     }
 
 

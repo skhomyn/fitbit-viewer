@@ -6,35 +6,29 @@ import java.awt.event.ActionListener;
 public class BestDaysController {
 	
 	//properties
-	private BestDaysModel model;
-	BestDaysView view;
-	
-	//constructor
-	public BestDaysController(BestDaysModel model, BestDaysView view) {
+	BestDaysRecord model;
+	private InterfaceView view;
+
+	//constructor; the controller is initialized with a call from Main.java
+	public BestDaysController(BestDaysRecord model, InterfaceView view) {
 		this.model = model;
 		this.view = view;
 		
-		//call method in view to add an event listener to the
-		// refresh (or Best Days) button in the side menu
-		view.addRefreshListener(new RefreshListener());
+		//call method in view to add an event listener to the lifetime totals button 
+		view.addClickListenerBestDays(new clickListener());
 	}
 	
-	//action methods
-	public void updateView() {
-		view.setDistance(model.getDistance());
-		view.setFloors(model.getFloors());
-		view.setSteps(model.getSteps());
-	} 
-	
-	
-	//refresh listener implementation (Best Days button in side menu)
-	class RefreshListener implements ActionListener{
+	//this is the class definition for the action listener object that we pass to the above method;
+	//it says that whenever an action is observed (click), set the view fields with the model info;
+	// this class is instantiated in the call above, when the controller is initialized
+	class clickListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			updateView();	
+			view.setBestDaysFields(model.getDis_value(), model.getFloors_value(), model.getSteps_value(), model.getDis_date(), model.getFloors_date(), model.getSteps_date());
+			
 		}
-		
 	}
 	
 	//error handling to be added
  }	
+	
