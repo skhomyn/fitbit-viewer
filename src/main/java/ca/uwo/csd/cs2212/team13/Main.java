@@ -39,6 +39,7 @@ public void run() throws IOException {
       // Parse JSON to Java
      // final ActivitiesRecord actRecord = gson.fromJson(data, ActivitiesRecord.class);
       
+<<<<<<< HEAD
       InterfaceView view = new InterfaceView();
 
 		//LifetimeRecord ltModel = actRecord.getLifetime();
@@ -46,6 +47,14 @@ public void run() throws IOException {
       
 		
 		view.setVisible(view);
+=======
+		InterfaceView view = new InterfaceView();
+		view.setVisible(view);
+
+		LifetimeRecord ltModel = actRecord.getLifetime();
+		LifetimeController ltController = new LifetimeController(ltModel, view);
+		
+>>>>>>> 92cc61a1dcc635659fb8a9adf1d5a56067af982f
 
     }
 

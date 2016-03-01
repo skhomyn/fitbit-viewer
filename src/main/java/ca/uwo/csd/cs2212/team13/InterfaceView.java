@@ -43,6 +43,7 @@ public class InterfaceView {
 	private JLabel lblLifetimeTotalsDistVal;
 	private JLabel lblLifetimeTotalsFloorsVal;
 	private JLabel lblLifetimeTotalsStepsVal;
+<<<<<<< HEAD
 	
 	//labels for HRZ
 	private JLabel lblHeartRateMinVal;
@@ -50,6 +51,8 @@ public class InterfaceView {
 	private JLabel lblZoneOneVal;
 	private JLabel lblZoneTwoVal;
 	private JLabel lblZoneThreeVal;
+=======
+>>>>>>> 92cc61a1dcc635659fb8a9adf1d5a56067af982f
 
 	/*
 	// Launch Application:
@@ -596,6 +599,7 @@ public class InterfaceView {
 	public void setVisible(InterfaceView view) {
 		view.frame.setVisible(true);
 	}
+<<<<<<< HEAD
 	
 	public void setHeartRateFields(int minutes, HeartZoneRecord[] restRate) {
 		lblHeartRateMinVal.setText(Integer.toString(minutes));
@@ -613,4 +617,6 @@ public class InterfaceView {
 	public void addClickListenerHeartRateZone(ActionListener actionsOnClick){
 		btnHeartRateZones.addActionListener(actionsOnClick);
 	}
+=======
+>>>>>>> 92cc61a1dcc635659fb8a9adf1d5a56067af982f
 }
