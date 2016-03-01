@@ -1,54 +1,42 @@
-# Welcome to CS 2212 - Winter 2016
+# How to Run Team 13's prototype
 
-To get started, you will need to run these commands in your terminal.
+First, we need to generate an ssh key. In Git Bash or Terminal, type: 
 
-## Configure Git for the first time
-
-```
-git config --global user.name "Your Name"
-git config --global user.email "youremail@uwo.ca"
-```
-
-
-## Generate an SSH key and add it to your account
-
-On Linux, UNIX, Cygwin, or Git Bash, generate a key:
-
-```
-ssh-keygen -t rsa -b 4096
-```
-
-This will generate a private key (`~/.ssh/id_rsa`) as well as a public key (`~/.ssh/id_rsa.pub`).
-**Do not share your private key with others.**
-
-Display your public key:
-
-```
+ssh-keygen -t rsa -b 4096 
+cd ~/.ssh
+chmod 600 id_rsa
 cat ~/.ssh/id_rsa.pub
-```
 
-Copy the entire contents of the key, and associate it with your Bitbucket account:
+Then you need to go to BitBucket. Add the public key.
 
-* Click the avatar icon in the top right corner
-* Select *Manage account* from the drop down list.
-* Select *SSH keys* from the sidebar.
-* Click *Add key*.
-* Paste the contents of your public key in the *Key* field.  Be sure to paste the entire file.
-* Click *Add key*.
+Next, you need to make a directory, type:
+				
+mkdir cs2212
 
-## Working with your repository
+Next, change directory into the directory you just created, type:
 
-Clone your repository onto your local system:
+cd cs2212
 
-```
+To clone team 13’s repository, type:
+
 git clone ssh://git@repo.gaul.csd.uwo.ca:7999/cs2212_w2016/team13.git
-```
 
-*Remember*: do *not* develop on the `master` or `dev` branches.  Instead, in
-JIRA, create a feature branch off of `dev` to do your work.  Do your
-development on your feature branch.  Then, when you are finished with your
-feature, push your changes, and open a pull request to merge your changes back
-into the `dev` branch.
+Now you have successfully cloned the repository. You have access to team 13’s files. 
+Now, to make it run as a .jar file, fortunately a pom file has been made, type:
 
-To submit your assignment, open a pull request to merge your changes on `dev`
-back into the `master` branch.
+cd team13
+mvn compile
+mvn package
+
+The above codes placed Team 13’s code into a .jar file. Type:
+
+cd target
+	
+To run the prototype in test mode type:
+
+java -jar team13-fitbitApp-1.0-SNAPSHOT-jar-with-dependencies.jar test
+
+To run the prototype in normal mode: 
+
+java -jar team13-fitbitApp-1.0-SNAPSHOT-jar-with-dependencies.jar
+
