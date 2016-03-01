@@ -588,10 +588,10 @@ public class InterfaceView {
 			lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
 		}
 		
-		public void setBestDaysFields(double distance, double floors, double steps, String dist_date, String floors_date, String steps_date) {
+		public void setBestDaysFields(double distance, int floors, int steps, String dist_date, String floors_date, String steps_date) {
 			lblBestDaysDistVal.setText(Double.toString(distance));
-			lblBestDaysFloorsVal.setText(Double.toString(floors));
-			lblBestDaysStepsVal.setText(Double.toString(steps));
+			lblBestDaysFloorsVal.setText(Integer.toString(floors));
+			lblBestDaysStepsVal.setText(Integer.toString(steps));
 			lblBestDaysDistDate.setText(dist_date);
 			lblBestDaysFloorsDate.setText(floors_date);
 			lblBestDaysStepsDate.setText(steps_date);

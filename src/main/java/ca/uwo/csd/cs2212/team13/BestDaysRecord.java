@@ -5,11 +5,11 @@ public class BestDaysRecord {
 	private String dis_date;
 	private double dis_value;
 	private String floors_date;
-	private double floors_value;
+	private int floors_value;
 	private String steps_date;
-	private double steps_value;
+	private int steps_value;
 	
-	public BestDaysRecord(String dis_date, double dis_value, String floors_date, double floors_value, String steps_date, double steps_value) {
+	public BestDaysRecord(String dis_date, double dis_value, String floors_date, int floors_value, String steps_date, int steps_value) {
 		super();
 		this.dis_date = dis_date;
 		this.dis_value = dis_value;
@@ -57,13 +57,13 @@ public class BestDaysRecord {
 	/**
 	 * @return the floors_value
 	 */
-	public double getFloors_value() {
+	public int getFloors_value() {
 		return floors_value;
 	}
 	/**
 	 * @param floors_value the floors_value to set
 	 */
-	public void setFloors_value(double floors_value) {
+	public void setFloors_value(int floors_value) {
 		this.floors_value = floors_value;
 	}
 	/**
@@ -81,19 +81,19 @@ public class BestDaysRecord {
 	/**
 	 * @return the steps_value
 	 */
-	public double getSteps_value() {
+	public int getSteps_value() {
 		return steps_value;
 	}
 	/**
 	 * @param steps_value the steps_value to set
 	 */
-	public void setSteps_value(double steps_value) {
+	public void setSteps_value(int steps_value) {
 		this.steps_value = steps_value;
 	}
 	
-	  @Override
-	  public String toString() {
-	    return String.format("[%s] [%f] [%s] [%f] [%s] [%f] ", dis_date, dis_value, floors_date, floors_value, steps_date, steps_value);
-	  }
+	 // @Override
+	  //public String toString() {
+	   // return String.format("[%s] [%f] [%s] [%f] [%s] [%f] ", dis_date, dis_value, floors_date, floors_value, steps_date, steps_value);
+	  //}
 	
 }

@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class BestDaysController {
 	
 	//properties
-	private BestDaysRecord model;
+	BestDaysRecord model;
 	private InterfaceView view;
 
 	//constructor; the controller is initialized with a call from Main.java
@@ -25,6 +25,7 @@ public class BestDaysController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			view.setBestDaysFields(model.getDis_value(), model.getFloors_value(), model.getSteps_value(), model.getDis_date(), model.getFloors_date(), model.getSteps_date());
+			
 		}
 	}
 	

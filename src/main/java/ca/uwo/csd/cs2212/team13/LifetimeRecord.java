@@ -93,9 +93,9 @@ public class LifetimeRecord extends RecordModel {
 		this.steps = steps;
 	}
 	
-	  @Override
-	  public String toString() {
-	    return String.format("[%d] [%d] [%f] [%d] [%d] ", activityScore, caloriesOut, distance, floors, steps);
-	  }
+	 // @Override
+	 // public String toString() {
+	  //  return String.format("[%d] [%d] [%f] [%d] [%d] ", activityScore, caloriesOut, distance, floors, steps);
+	  //}
 
 }
