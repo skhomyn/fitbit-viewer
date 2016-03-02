@@ -42,12 +42,9 @@ package ca.uwo.csd.cs2212.team13;
  * JSON object from API call
  * </ul>
  * <p>
- * Link to a class named 'BestDaysRecord': {@link BestDaysRecord}. Link to a
- * class named 'LifetimeRecord': {@link LifetimeRecord}.
- * <p>
+ * Link to a class named 'BestDaysRecord': {@link BestDaysRecord}. 
+ * Link to a class named 'LifetimeRecord': {@link LifetimeRecord}.
  * 
- * @version 1.0
- * @since 1.0
  */
 public class ActivitiesRecord {
 
@@ -116,7 +113,7 @@ public class ActivitiesRecord {
 	 * <p>
 	 * This method sets the {@code LifetimeRecord} value for the field lifetime.
 	 * 
-	 * @param best
+	 * @param lifetime
 	 *            the new value of the field lifetime for the lifetime record
 	 */
 	public void setLifetime(LifetimeRecord lifetime) {
