@@ -19,16 +19,29 @@ public void run() throws IOException {
     gsonBuilder.registerTypeAdapter(HeartRateRecord.class, new HeartRateRecordDeserializer());
     final Gson gson = gsonBuilder.create();
 
+
+    InterfaceView view = new InterfaceView();
+    view.setVisible(view);
+    
     // Read the JSON data
  try (Reader data = new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("heartrate.json"), "UTF-8")) {
 
       // Parse JSON to Java
       final HeartRateRecord hrRecord = gson.fromJson(data, HeartRateRecord.class);
-      System.out.println(hrRecord);
-    	HeartRateRecord hrzModel = hrRecord;
-
+      HRZController hrController = new HRZController(hrRecord, view);
+      
+      //System.out.println(hrRecord);
+      //HeartRateRecord hrzModel = hrRecord;
 
     }
+
+ /*
+    
+    // Read the JSON data
+ try (Reader data = new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("activities.json"), "UTF-8")) {
+
+      // Parse JSON to Java
+     // final ActivitiesRecord actRecord = gson.fromJson(data, ActivitiesRecord.class);
       
 		InterfaceView view = new InterfaceView();
 		view.setVisible(view);
@@ -40,6 +53,8 @@ public void run() throws IOException {
 		LifetimeController ltController = new LifetimeController(ltModel, view);
     }
 
-
+  }
+}
+*/
   }
 }

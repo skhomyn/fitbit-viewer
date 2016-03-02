@@ -31,6 +31,8 @@ public class HeartRateRecordDeserializer implements JsonDeserializer<HeartRateRe
         
         final HeartZoneRecord[] zonesArray = new HeartZoneRecord[jsonHeartZones.size()];
  
+        int minuteTotal = 0;
+        
         for (int i = 0; i < zonesArray.length; i++) {
             final JsonElement jsonZoneElement = jsonHeartZones.get(i);
             final JsonObject jsonHeartZoneObject = jsonZoneElement.getAsJsonObject();
@@ -40,10 +42,14 @@ public class HeartRateRecordDeserializer implements JsonDeserializer<HeartRateRe
             int min = jsonHeartZoneObject.get("min").getAsInt();
             String name = jsonHeartZoneObject.get("name").getAsString();
  
-            zonesArray[i] = new HeartZoneRecord(minutes, max, min, name);
+            zonesArray[i] = new HeartZoneRecord(max, min, minutes, name);
+            minuteTotal += minutes;
         }
 
-        final HeartRateRecord heartRecord = new HeartRateRecord(dateTime, zonesArray);
+        final int restingHR = jsonValue.get("restingHeartRate").getAsInt();
+
+        
+        final HeartRateRecord heartRecord = new HeartRateRecord(dateTime, zonesArray, restingHR, minuteTotal);
        
         return heartRecord;
     }

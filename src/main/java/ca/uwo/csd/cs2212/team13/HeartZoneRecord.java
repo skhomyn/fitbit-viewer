@@ -3,15 +3,15 @@ package ca.uwo.csd.cs2212.team13;
 public class HeartZoneRecord {
 	
 	//attributes
-	private static int minutes;
+	private int minutes;
 	
 	//the different heart rate zones are:
 	//out-of-range, cardio, fat-burn, peak
-	private static String name;
+	private String name;
 	
 	//each zone has a max/min rate associated with it
-	private static int max;
-	private static int min;
+	private int max;
+	private int min;
 	
 	//constructor which populates fields with data from API call
 	HeartZoneRecord(int max, int min, int minut, String na) {
@@ -24,57 +24,57 @@ public class HeartZoneRecord {
 	 /**
 	 * @return the minutes
 	 */
-	public static int getMinutes() {
+	public int getMinutes() {
 		return minutes;
 	}
 
 	/**
 	 * @param minutes the minutes to set
 	 */
-	public static void setMinutes(int minutes) {
-		HeartZoneRecord.minutes = minutes;
+	public void setMinutes(int minutes) {
+		this.minutes = minutes;
 	}
 
 	/**
 	 * @return the name
 	 */
-	public static String getName() {
+	public String getName() {
 		return name;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
-	public static void setName(String name) {
-		HeartZoneRecord.name = name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
 	 * @return the max
 	 */
-	public static int getMax() {
+	public int getMax() {
 		return max;
 	}
 
 	/**
 	 * @param max the max to set
 	 */
-	public static void setMax(int max) {
-		HeartZoneRecord.max = max;
+	public void setMax(int max) {
+		this.max = max;
 	}
 
 	/**
 	 * @return the min
 	 */
-	public static int getMin() {
+	public int getMin() {
 		return min;
 	}
 
 	/**
 	 * @param min the min to set
 	 */
-	public static void setMin(int min) {
-		HeartZoneRecord.min = min;
+	public void setMin(int min) {
+		this.min = min;
 	}
 
 	@Override
