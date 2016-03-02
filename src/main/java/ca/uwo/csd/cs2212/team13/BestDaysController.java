@@ -51,7 +51,7 @@ public class BestDaysController {
 		 * Sets the Best Days page display fields in <code>InterfaceView</code> with values from the
 		 * appropriate model <code>BestDaysRecord</code> fields upon the click of a button.
 		 * 	
-		 * @param click action on button
+		 * @param e click action on button
 		 * 
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
