@@ -7,10 +7,6 @@ Desktop.ini
 .classpath
 .project
 .settings/
-<<<<<<< 24206921cd61d7fa39b36a2c332ef1466ec3e5cb
 .idea/workspace.xml
 .idea/
 *.iml
-=======
-.idea/
->>>>>>> added .idea to .gitignore
