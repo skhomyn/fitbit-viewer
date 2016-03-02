@@ -2,10 +2,27 @@ package ca.uwo.csd.cs2212.team13;
 
 public class DailyRecord {
 	
-	private int floors, steps, lightlyActiveMinutes, fairlyActiveMinutes, sedentaryMinutes, veryActiveMinutes;
+	private int floors, steps, lightlyActiveMinutes, fairlyActiveMinutes, sedentaryMinutes, veryActiveMinutes, calories;
+	private double distance;
 	private Goals goals;
+	private String date;
 	
-        public Goals getGoals(){
+	
+	
+        /**
+	 * @return the date
+	 */
+	public String getDate() {
+		return date;
+	}
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
+		public Goals getGoals(){
             return goals;
         } 
 	public int getFloors() {
@@ -32,9 +49,17 @@ public class DailyRecord {
 		return veryActiveMinutes;
 	}
         
-        public void setGoals(Goals goals){
+	public int getCalories(){
+		return calories;
+	}
+
+	public double getDistance(){
+		return distance;
+	}
+
+    public void setGoals(Goals goals){
             this.goals = goals;
-        }
+    }
 	
 	public void setFloors(int floors) {
 		this.floors = floors;
@@ -45,19 +70,27 @@ public class DailyRecord {
 	}
 	
 	public void setLightlyActiveMinutes(int LightlyActiveMinutes){
-		this.lightlyActiveMinutes = lightlyActiveMinutes;
+		this.lightlyActiveMinutes = LightlyActiveMinutes;
 	}
 	
 	public void setFairlyActiveMinutes(int FairlyActiveMinutes){
-		this.fairlyActiveMinutes = fairlyActiveMinutes;
+		this.fairlyActiveMinutes = FairlyActiveMinutes;
 	}
 	
 	public void setSedentaryMinutes(int SedentaryMinutes){
-		this.sedentaryMinutes = sedentaryMinutes;
+		this.sedentaryMinutes = SedentaryMinutes;
 	}
 	
 	public void setVeryActiveMinutes(int VeryActiveMinutes ){
-		this.veryActiveMinutes = veryActiveMinutes;
+		this.veryActiveMinutes = VeryActiveMinutes;
+	}
+
+	public void setCalories(int calories){
+		this.calories = calories;
+	}
+
+	public void setDistance(double distance){
+		this.distance = distance;
 	}
 	
 	
