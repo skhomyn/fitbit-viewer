@@ -45,7 +45,7 @@ import com.google.gson.GsonBuilder;
 /**
  * <code>ActivitiesRecordDeserializer</code> is an interface representing a
  * custom deserializer to parse a JSON file (i.e. with best days and lifetime
- * totals) into Java object <code>ActivitiesRecord</code>
+ * totals) into Java object {@link ActivitiesRecord}
  * <p>
  * Custom deserializer is necessary because this JSON file, with activities,
  * contains both best days and lifetime data, so full control of JSON parsing is
