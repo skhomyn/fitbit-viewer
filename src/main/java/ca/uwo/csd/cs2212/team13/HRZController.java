@@ -16,8 +16,7 @@ public class HRZController {
 		private HeartRateRecord model;
 		private InterfaceView view;
 		
-		//constructor; the controller is initialized with a call from Main.java
-		public HRZController(HeartRateRecord mod, InterfaceView vw) {
+		public HRZController(HeartRateRecord zMod, HeartZoneRecord mod, InterfaceView vw) {
 			this.model = mod;
 			//this.zoneModel = mod.getCardioZone();
 			this.view = vw;
