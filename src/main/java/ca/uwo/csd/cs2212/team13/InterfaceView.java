@@ -627,7 +627,7 @@ public class InterfaceView {
 		lblZoneThreeVal.setText(zone3);
 		*/
 	}
-
+	
 	// the btnLifetimeTotals.addActionListner() call is encapsulated by a method so that it can be accessed by the controller;
 	// the controller passes in the clicklistener, which contains the method that updates the view;
 	// this method gets executed when the controller is initialized
@@ -639,7 +639,7 @@ public class InterfaceView {
 		btnBestDays.addActionListener(actionsOnClick);
 	}
 
-	public void addClickListenerHeartRateZone(ActionListener actionsOnClick){
+	public void addClickListenerHeartRateZones(ActionListener actionsOnClick) {
 		btnHeartRateZones.addActionListener(actionsOnClick);
 	}
 	
