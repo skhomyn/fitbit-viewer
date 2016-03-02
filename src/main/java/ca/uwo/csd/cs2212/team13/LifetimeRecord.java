@@ -4,7 +4,7 @@ package ca.uwo.csd.cs2212.team13;
  * @author Andy
  *
  */
-public class LifetimeRecord extends RecordModel {
+public class LifetimeRecord {
 
 	private int activityScore;
 	private int caloriesOut;
