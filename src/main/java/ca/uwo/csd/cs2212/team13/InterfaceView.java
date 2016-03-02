@@ -19,9 +19,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 
+/**
+ * Class method
+ * The InterfaceView class creates the GUI of the Fitbit program
+ * It also implements page navigation between the different screens
+ */
 public class InterfaceView {
 
-	// Attributes:
+	/** Variables/Attributes */
 	private JFrame frame;
 
 	private JButton btnBestDays;
@@ -77,7 +82,7 @@ public class InterfaceView {
 
 
 	/*
-	// Launch Application:
+	// Launch InterfaceView standalone for test purposes:
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -92,12 +97,22 @@ public class InterfaceView {
 	}
 	*/
 
-	// Constructor:
+	/**
+	 * Constructor: uses initialize() method
+	 */
 	public InterfaceView() {
 		initialize();
 	}
 
-	// Launch the program:
+	/**
+	 * Ininialize method implements the GUI of the fibit program.
+	 * The frame is the foundation, making up the whole window that holds the ContentPane.
+	 * The ContentPane holds the CardLayout and the MenuBar toolbar.
+	 * The Cardlayout contains multiple different panels which make up different screens of the program.
+	 * The Cardlayout allows page navigation between these panels, by setting the visibility of every screen.
+	 * The MenuBar is a tooldbar menu holding the buttons used for page navigation.
+	 * This method sets up the prame and panels, then calls other methods for each screen and the menu.
+	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
@@ -159,6 +174,10 @@ public class InterfaceView {
 		heartratezonesView();
 	}
 
+	/**
+	 * This method implements the buttons used for page navigation.
+	 * The buttons are held in a toolbar.
+	 */
 	private void menuBar() {
 		JToolBar MenuBar = new JToolBar();
 		MenuBar.setBounds(470, 0, 130, 378);
@@ -196,6 +215,9 @@ public class InterfaceView {
 		MenuBar.add(btnHeartRateZones);
 	}
 
+	/**
+	 * This method implements the Dashboard screen.
+	 */
 	private void dashboardView() {
 		JLabel lblDailyDashboard = new JLabel("Daily Dashboard");
 		lblDailyDashboard.setHorizontalAlignment(SwingConstants.CENTER);
@@ -267,6 +289,9 @@ public class InterfaceView {
 		panelDashboardView.add(lblDailySedenteryMinVal);
 	}
 
+	/**
+	 * This method implements the Best Days screen.
+	 */
 	private void bestDaysView() {
 		JLabel lblBestDays = new JLabel("Best Days");
 		lblBestDays.setHorizontalAlignment(SwingConstants.CENTER);
@@ -317,6 +342,9 @@ public class InterfaceView {
 		panelBestDaysView.add(lblBestDaysStepsDate);
 	}
 
+	/**
+	 * This method implements the Accolades screen.
+	 */
 	private void accoladesView() {
 		JLabel lblAccolades = new JLabel("Accolades");
 		lblAccolades.setHorizontalAlignment(SwingConstants.CENTER);
@@ -384,6 +412,9 @@ public class InterfaceView {
 		panelAccoladesView.add(lblDscp5);
 	}
 
+	/**
+	 * This method implements the Lifetime Totals screen.
+	 */
 	private void lifetimeTotalsView() {
 		JLabel lblTitle = new JLabel("Lifetime Totals");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
@@ -419,6 +450,9 @@ public class InterfaceView {
 		panelLifetimeTotalsView.add(lblLifetimeTotalsStepsVal);
 	}
 
+	/**
+	 * This method implements the Time Series screen.
+	 */
 	private void timeseriesView() {
 		JLabel lblNewLabel = new JLabel("Time Series");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -498,6 +532,9 @@ public class InterfaceView {
 
 	}
 
+	/**
+	 * This method implements the Heart Rate Zones screen. 
+	 */
 	private void heartratezonesView() {
 		JLabel lblHeartRateZones = new JLabel("Heart Rate Zones");
 		lblHeartRateZones.setHorizontalAlignment(SwingConstants.CENTER);
@@ -570,6 +607,9 @@ public class InterfaceView {
 		panelHeartrateZonesView.add(scrollBar);
 	}
 	
+	/**
+	 * This method controls page navigation, depending on button actions.
+	 */
 	private void actionEvents() {
 		// Switch window to Best Days screen:
 		btnBestDays.addActionListener(new ActionListener() {
@@ -663,7 +703,6 @@ public class InterfaceView {
 
 	}
 	
-
 	/**
 	 * Method to set JLabel values for minutes & resting heart rate
 	 * For now, zones will be left out (hardcoded in currently)
