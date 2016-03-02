@@ -14,12 +14,40 @@ import com.google.gson.JsonParseException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+/**
+ * <code>HeartRateDeserializer</code> is an interface representing a
+ * custom deserializer to parse a JSON file (i.e. with best days and lifetime
+ * totals) into Java object {@link ActivitiesRecord}
+ * <p>
+ * Custom deserializer is necessary because this JSON file, with activities,
+ * contains both best days and lifetime data, so full control of JSON parsing is
+ * required.
+ * <p>
+ * This interface requires the type <code>ActivitiesRecord</code>, which is the
+ * type of object to be parsed. The return type of deserialize is thus this very
+ * type.
+ * <p>
+ * <h4>Implementation notes</h4>
+ * In order to be able to parse JSON to Java, need to create instance of this
+ * JsonDeserializer interface and register it with GsonBuilder.
+ * <p>
+ * Whenever Gson is requested to deserialize a JSON file to the
+ * <code>HeartRateRecord</code> class, Gson will use this deserializer. The
+ * method deserialize(), once given the necessary parameters, will then create
+ * an object of type <code>HeartRateRecord</code> from the given JsonElement.
+ * <p>
+ * Gson will then receive an object from this deserializer.
+ */
 public class HeartRateRecordDeserializer implements JsonDeserializer<HeartRateRecord> {
 
     @Override
-    /**
-     * Constructor
-     */
+    /*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * com.google.gson.JsonDeserializer#deserialize(com.google.gson.JsonElement,
+	 * java.lang.reflect.Type, com.google.gson.JsonDeserializationContext)
+	 */
     public HeartRateRecord deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
             throws JsonParseException {
 
