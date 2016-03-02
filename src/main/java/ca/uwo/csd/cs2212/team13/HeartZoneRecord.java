@@ -1,19 +1,32 @@
 package ca.uwo.csd.cs2212.team13;
 
+/**
+ * Model for Heart Rate Zones
+ * @author Jennifer
+ */
+
 public class HeartZoneRecord {
 	
-	//attributes
-	private int minutes;
-	
-	//the different heart rate zones are:
-	//out-of-range, cardio, fat-burn, peak
+	/**
+	 * the name of the zone
+	 */
 	private String name;
-	
-	//each zone has a max/min rate associated with it
+	/**each zone has a maximum and 
+	 * minimum rate associated with it
+	 */
 	private int max;
 	private int min;
+	private int minutes;
 	
-	//constructor which populates fields with data from API call
+	/**
+	 * Constructor 
+	 * populates fields with data
+	 * from API call
+	 * @param max
+	 * @param min
+	 * @param minut
+	 * @param na
+	 */
 	HeartZoneRecord(int max, int min, int minut, String na) {
 		this.minutes = minut;
 		this.name = na;
@@ -78,6 +91,11 @@ public class HeartZoneRecord {
 	}
 
 	@Override
+	/**
+	 * toString method 
+	 * returns value for
+	 * each property
+	 */
 	  public String toString() {
 		    return String.format("[%d] [%d] [%d] [%d] ", minutes, max, min, name);
 		  }
