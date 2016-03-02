@@ -1,54 +1,41 @@
-# Welcome to CS 2212 - Winter 2016
+# How to Run Team 13's Prototype
 
-To get started, you will need to run these commands in your terminal.
+First, we need to generate an ssh key. In Git Bash or Terminal, type: 
 
-## Configure Git for the first time
+"ssh-keygen -t rsa -b 4096" 
+"cd ~/.ssh"
+"chmod 600 id_rsa"
+"cat ~/.ssh/id_rsa.pub"
 
-```
-git config --global user.name "Your Name"
-git config --global user.email "youremail@uwo.ca"
-```
+Then you need to go to BitBucket. Add the public key.
+Next, you need to make a directory, type:
+				
+"mkdir cs2212"
 
+Next, change directory into the directory you just created, type:
 
-## Generate an SSH key and add it to your account
+"cd cs2212"
 
-On Linux, UNIX, Cygwin, or Git Bash, generate a key:
+To clone team 13’s repository, type:
 
-```
-ssh-keygen -t rsa -b 4096
-```
+"git clone ssh://git@repo.gaul.csd.uwo.ca:7999/cs2212_w2016/team13.git"
 
-This will generate a private key (`~/.ssh/id_rsa`) as well as a public key (`~/.ssh/id_rsa.pub`).
-**Do not share your private key with others.**
+Now you have successfully cloned the repository. You have access to team 13’s files. 
+Now, to make it run as a .jar file, fortunately a pom file has been made, type:
 
-Display your public key:
+"cd team13"
+"mvn compile"
+"mvn package"
 
-```
-cat ~/.ssh/id_rsa.pub
-```
+The above codes placed Team 13’s code into a .jar file. Type:
 
-Copy the entire contents of the key, and associate it with your Bitbucket account:
+"cd target"
+	
+To run the prototype in test mode type:
 
-* Click the avatar icon in the top right corner
-* Select *Manage account* from the drop down list.
-* Select *SSH keys* from the sidebar.
-* Click *Add key*.
-* Paste the contents of your public key in the *Key* field.  Be sure to paste the entire file.
-* Click *Add key*.
+"java -jar team13-fitbitApp-1.0-SNAPSHOT-jar-with-dependencies.jar test"
 
-## Working with your repository
+To run the prototype in normal mode: 
 
-Clone your repository onto your local system:
+"java -jar team13-fitbitApp-1.0-SNAPSHOT-jar-with-dependencies.jar"
 
-```
-git clone ssh://git@repo.gaul.csd.uwo.ca:7999/cs2212_w2016/team13.git
-```
-
-*Remember*: do *not* develop on the `master` or `dev` branches.  Instead, in
-JIRA, create a feature branch off of `dev` to do your work.  Do your
-development on your feature branch.  Then, when you are finished with your
-feature, push your changes, and open a pull request to merge your changes back
-into the `dev` branch.
-
-To submit your assignment, open a pull request to merge your changes on `dev`
-back into the `master` branch.

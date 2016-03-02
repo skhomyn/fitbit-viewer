@@ -23,16 +23,25 @@ public class DailyRecordDeserializer implements JsonDeserializer<DailyRecord> {
 	
        final Goals goals = context.deserialize(jsonObject.get("goals"), Goals.class);   
        
-       System.out.println(goals.toString());
        
 		final DailyRecord dailyRecord = new DailyRecord();
+		dailyRecord.setDate("March 2, 2016");//Hardcoded for now as test. Would usually get date as you API call for specific dates...
 		dailyRecord.setFloors(jsonSummary.get("floors").getAsInt());
 		dailyRecord.setSteps(jsonSummary.get("steps").getAsInt());
 		dailyRecord.setLightlyActiveMinutes(jsonSummary.get("lightlyActiveMinutes").getAsInt());
 		dailyRecord.setFairlyActiveMinutes(jsonSummary.get("fairlyActiveMinutes").getAsInt());
 		dailyRecord.setSedentaryMinutes(jsonSummary.get("sedentaryMinutes").getAsInt());
 		dailyRecord.setVeryActiveMinutes(jsonSummary.get("veryActiveMinutes").getAsInt());
-                dailyRecord.setGoals(goals);
+        dailyRecord.setGoals(goals);
+        dailyRecord.setCalories(jsonSummary.get("caloriesOut").getAsInt());
+        
+        final JsonArray jsonDistance = jsonSummary.get("distances").getAsJsonArray();
+        final JsonElement distanceTotal = jsonDistance.get(0);
+        final JsonObject distanceObj = distanceTotal.getAsJsonObject();
+        
+        dailyRecord.setDistance(distanceObj.get("distance").getAsDouble());
+
+        System.out.println(dailyRecord.getDate());
 
 		return dailyRecord;
 	}
