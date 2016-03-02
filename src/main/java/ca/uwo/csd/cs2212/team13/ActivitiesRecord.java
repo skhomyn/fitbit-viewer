@@ -43,8 +43,8 @@ package ca.uwo.csd.cs2212.team13;
  * </ul>
  * <p>
  * Link to a class named 'BestDaysRecord': {@link BestDaysRecord}. 
+ * <p>
  * Link to a class named 'LifetimeRecord': {@link LifetimeRecord}.
- * 
  */
 public class ActivitiesRecord {
 
