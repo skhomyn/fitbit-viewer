@@ -20,18 +20,22 @@ public void run() throws IOException {
     final Gson gson = gsonBuilder.create();
 
 
-
+    InterfaceView view = new InterfaceView();
+    view.setVisible(view);
+    
     // Read the JSON data
  try (Reader data = new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("heartrate.json"), "UTF-8")) {
 
       // Parse JSON to Java
       final HeartRateRecord hrRecord = gson.fromJson(data, HeartRateRecord.class);
-      System.out.println(hrRecord);
-    	HeartRateRecord hrzModel = hrRecord;
-
+      HRZController hrController = new HRZController(hrRecord, view);
+      
+      //System.out.println(hrRecord);
+      //HeartRateRecord hrzModel = hrRecord;
 
     }
- 
+
+ /*
     
     // Read the JSON data
  try (Reader data = new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("activities.json"), "UTF-8")) {
@@ -39,25 +43,18 @@ public void run() throws IOException {
       // Parse JSON to Java
      // final ActivitiesRecord actRecord = gson.fromJson(data, ActivitiesRecord.class);
       
-<<<<<<< HEAD
-      InterfaceView view = new InterfaceView();
-
-		//LifetimeRecord ltModel = actRecord.getLifetime();
-		//LifetimeController ltController = new LifetimeController(ltModel, view);
-      
-		
-		view.setVisible(view);
-=======
 		InterfaceView view = new InterfaceView();
 		view.setVisible(view);
+		
+		BestDaysRecord bdModel = actRecord.getBest();
+		BestDaysController bdController = new BestDaysController(bdModel, view);
 
 		LifetimeRecord ltModel = actRecord.getLifetime();
 		LifetimeController ltController = new LifetimeController(ltModel, view);
-		
->>>>>>> 92cc61a1dcc635659fb8a9adf1d5a56067af982f
-
     }
 
-
+  }
+}
+*/
   }
 }

@@ -44,11 +44,26 @@ public class InterfaceView {
 	private JLabel lblLifetimeTotalsFloorsVal;
 	private JLabel lblLifetimeTotalsStepsVal;
 	
-	/*
-	 * buttons for HRZ page
-	 */
+	private JLabel lblBestDaysDistVal;
+	private JLabel lblBestDaysFloorsVal;
+	private JLabel lblBestDaysStepsVal;
+	private JLabel lblBestDaysDistDate;
+	private JLabel lblBestDaysFloorsDate;
+	private JLabel lblBestDaysStepsDate;
+
+	private JLabel lblHeartRateMinVal;
+	private JLabel lblRestRateVal;
+	private JLabel lblZoneOneVal;
+	private JLabel lblZoneTwoVal;
+	private JLabel lblZoneThreeVal;
+
 	private JLabel lblHeartMins;
 	private JLabel lblHeartRest;
+	
+	private JLabel lblHeartCardioMaxMin;
+	private JLabel lblHeartFatBurnMaxMin;
+	private JLabel lblHeartPeakMaxMin;
+
 
 	/*
 	// Launch Application:
@@ -118,13 +133,13 @@ public class InterfaceView {
 
 		dashboardView();
 
-		bestdaysView();
+		bestDaysView();
 
 		actionEvents();
 
 		accoladesView();
 
-		lifetimetotalsView();
+		lifetimeTotalsView();
 
 		timeseriesView();
 
@@ -215,7 +230,7 @@ public class InterfaceView {
 		panelDashboardView.add(lblNewLabel_1);
 	}
 
-	private void bestdaysView() {
+	private void bestDaysView() {
 		JLabel lblBestDays = new JLabel("Best Days");
 		lblBestDays.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBestDays.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
@@ -234,20 +249,35 @@ public class InterfaceView {
 		lblSteps.setBounds(72, 126, 189, 16);
 		panelBestDaysView.add(lblSteps);
 		
-		JLabel lblDistVal = new JLabel("<distance>");
-		lblDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDistVal.setBounds(259, 70, 95, 16);
-		panelBestDaysView.add(lblDistVal);
+		lblBestDaysDistVal = new JLabel();
+		lblBestDaysDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblBestDaysDistVal.setBounds(259, 70, 95, 16);
+		panelBestDaysView.add(lblBestDaysDistVal);
 		
-		JLabel lblFloorVal = new JLabel("<floors>");
-		lblFloorVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblFloorVal.setBounds(259, 98, 95, 16);
-		panelBestDaysView.add(lblFloorVal);
+		lblBestDaysDistDate = new JLabel();
+		lblBestDaysDistDate.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblBestDaysDistDate.setBounds(360, 70, 95, 16);
+		panelBestDaysView.add(lblBestDaysDistDate);
 		
-		JLabel lblStepsVal = new JLabel("<steps>");
-		lblStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblStepsVal.setBounds(259, 126, 95, 16);
-		panelBestDaysView.add(lblStepsVal);
+		lblBestDaysFloorsVal = new JLabel();
+		lblBestDaysFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblBestDaysFloorsVal.setBounds(259, 98, 95, 16);
+		panelBestDaysView.add(lblBestDaysFloorsVal);
+		
+		lblBestDaysFloorsDate = new JLabel();
+		lblBestDaysFloorsDate.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblBestDaysFloorsDate.setBounds(360, 98, 95, 16);
+		panelBestDaysView.add(lblBestDaysFloorsDate);
+		
+		lblBestDaysStepsVal = new JLabel();
+		lblBestDaysStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblBestDaysStepsVal.setBounds(259, 126, 95, 16);
+		panelBestDaysView.add(lblBestDaysStepsVal);
+		
+		lblBestDaysStepsDate = new JLabel();
+		lblBestDaysStepsDate.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblBestDaysStepsDate.setBounds(360, 126, 95, 16);
+		panelBestDaysView.add(lblBestDaysStepsDate);
 	}
 
 	private void accoladesView() {
@@ -317,7 +347,7 @@ public class InterfaceView {
 		panelAccoladesView.add(lblDscp5);
 	}
 
-	private void lifetimetotalsView() {
+	private void lifetimeTotalsView() {
 		JLabel lblTitle = new JLabel("Lifetime Totals");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
@@ -441,14 +471,16 @@ public class InterfaceView {
 		JLabel lblHeartRate = new JLabel("Resting Heart Rate: ");
 		lblHeartRate.setBounds(30, 60, 189, 16);
 		panelHeartrateZonesView.add(lblHeartRate);
+		
 		lblHeartRest = new JLabel();
 		lblHeartRest.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartMins.setBounds(218, 60, 95, 16);
+		lblHeartRest.setBounds(218, 60, 95, 16);
 		panelHeartrateZonesView.add(lblHeartRest);
 		
 		JLabel lblNewLabel = new JLabel("Minutes: ");
 		lblNewLabel.setBounds(30, 88, 133, 16);
 		panelHeartrateZonesView.add(lblNewLabel);
+		
 		lblHeartMins = new JLabel();
 		lblHeartMins.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblHeartMins.setBounds(218, 88, 95, 16);
@@ -463,17 +495,38 @@ public class InterfaceView {
 		/**
 		 * lists what the heart rate 3 zones are
 		 */
-		JLabel lblZone = new JLabel("Zone 1: Cardio");
-		lblZone.setBounds(30, 200, 148, 16);
+		
+		//private JLabel lblHeartCardioMin;
+		//private JLabel lblHeartFatBurnMin;
+		//private JLabel lblHeartPeakMin;
+		
+		
+		JLabel lblZone = new JLabel("Zone 1: Cardio Max/Min");
+		lblZone.setBounds(30, 200, 168, 16);
 		panelHeartrateZonesView.add(lblZone);
 		
-		JLabel lblZone_1 = new JLabel("Zone 2: Fat Burn");
-		lblZone_1.setBounds(30, 228, 148, 16);
+		lblHeartCardioMaxMin = new JLabel();
+		lblHeartCardioMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartCardioMaxMin.setBounds(100, 200, 148, 16);
+		panelHeartrateZonesView.add(lblHeartCardioMaxMin);
+		
+		JLabel lblZone_1 = new JLabel("Zone 2: Fat Burn Max/Min");
+		lblZone_1.setBounds(30, 228, 168, 16);
 		panelHeartrateZonesView.add(lblZone_1);
 		
-		JLabel lblZone_2 = new JLabel("Zone 3: Peak");
-		lblZone_2.setBounds(30, 256, 148, 16);
+		lblHeartFatBurnMaxMin = new JLabel();
+		lblHeartFatBurnMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartFatBurnMaxMin.setBounds(100, 228, 148, 16);
+		panelHeartrateZonesView.add(lblHeartFatBurnMaxMin);
+		
+		JLabel lblZone_2 = new JLabel("Zone 3: Peak Max/Min");
+		lblZone_2.setBounds(30, 256, 168, 16);
 		panelHeartrateZonesView.add(lblZone_2);
+		
+		lblHeartPeakMaxMin = new JLabel();
+		lblHeartPeakMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartPeakMaxMin.setBounds(100, 256, 148, 16);
+		panelHeartrateZonesView.add(lblHeartPeakMaxMin);
 		
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(455, 0, 15, 378);
@@ -576,22 +629,35 @@ public class InterfaceView {
 	//method used by action listener to update the view fields from the controller (using model data);
 	//  this method gets attached to the lifetime totals button and
 	// gets executed when the click actually happens
-		public void setLifetimeTotalsFields(double distance, int floors, int steps) {
-			lblLifetimeTotalsDistVal.setText(Double.toString(distance));
-			lblLifetimeTotalsFloorsVal.setText(Integer.toString(floors));
-			lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
-		}
+	public void setLifetimeTotalsFields(double distance, int floors, int steps) {
+		lblLifetimeTotalsDistVal.setText(Double.toString(distance));
+		lblLifetimeTotalsFloorsVal.setText(Integer.toString(floors));
+		lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
+	}
 		
-		/**
-		 * Method to set JLabel values for minutes & resting heart rate
-		 * For now, zones will be left out (hardcoded in currently)
-		 * @param minutes
-		 * @param rate
-		 */
-		public void setHeartRateZonesFields(int minutes, int rate) {
-			lblHeartMins.setText(Integer.toString(minutes));
-			lblHeartRest.setText(Integer.toString(rate));
-		}
+	public void setBestDaysFields(double distance, int floors, int steps, String dist_date, String floors_date, String steps_date) {
+		lblBestDaysDistVal.setText(Double.toString(distance));
+		lblBestDaysFloorsVal.setText(Integer.toString(floors));
+		lblBestDaysStepsVal.setText(Integer.toString(steps));
+		lblBestDaysDistDate.setText(dist_date);
+		lblBestDaysFloorsDate.setText(floors_date);
+		lblBestDaysStepsDate.setText(steps_date);
+	}
+
+	/**
+	 * Method to set JLabel values for minutes & resting heart rate
+	 * For now, zones will be left out (hardcoded in currently)
+	 * @param minutes
+	 * @param rate
+	 */
+	public void setHeartRateZonesFields(int minutes, int rate, int cardio_max, int fatburn_max, int peak_max, int cardio_min, int fatburn_min, int peak_min) {
+		lblHeartMins.setText(Integer.toString(minutes));
+		lblHeartRest.setText(Integer.toString(rate));
+		
+		lblHeartCardioMaxMin.setText(Integer.toString(cardio_max) + "/" + Integer.toString(cardio_min));
+		lblHeartFatBurnMaxMin.setText(Integer.toString(fatburn_max) + "/" + Integer.toString(fatburn_min));
+		lblHeartPeakMaxMin.setText(Integer.toString(peak_max) + "/" + Integer.toString(peak_min));
+	}
 	
 	// the btnLifetimeTotals.addActionListner() call is encapsulated by a method so that it can be accessed by the controller;
 	// the controller passes in the clicklistener, which contains the method that updates the view;
@@ -600,6 +666,10 @@ public class InterfaceView {
 		btnLifetimeTotals.addActionListener(actionsOnClick);
 	}
 	
+	public void addClickListenerBestDays(ActionListener actionsOnClick){
+		btnBestDays.addActionListener(actionsOnClick);
+	}
+
 	public void addClickListenerHeartRateZones(ActionListener actionsOnClick) {
 		btnHeartRateZones.addActionListener(actionsOnClick);
 	}

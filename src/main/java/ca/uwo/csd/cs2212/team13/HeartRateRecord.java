@@ -4,7 +4,9 @@ package ca.uwo.csd.cs2212.team13;
 public class HeartRateRecord {
 
 	private String date;
-
+	private int restingHR;
+	private int minuteTotal;
+	
 	public HeartZoneRecord[] getHeart_zones() {
 		return heart_zones;
 	}
@@ -27,12 +29,44 @@ public class HeartRateRecord {
 	{
 		date = null;
 		heart_zones = null;
+		restingHR = 0;
+		minuteTotal = 0;
 	}
+	/**
+	 * @return the restingHR
+	 */
+	public int getRestingHR() {
+		return restingHR;
+	}
+
+	/**
+	 * @param restingHR the restingHR to set
+	 */
+	public void setRestingHR(int restingHR) {
+		this.restingHR = restingHR;
+	}
+
 	//constructor which populates fields with data
-	HeartRateRecord(String da, HeartZoneRecord[] heart_zones) {
+	HeartRateRecord(String da, HeartZoneRecord[] heart_zones, int rhr, int total) {
 		super();
 		this.heart_zones = heart_zones;
 		this.date = da;
+		this.restingHR = rhr;
+		this.minuteTotal = total;
+	}
+
+	/**
+	 * @return the minuteTotal
+	 */
+	public int getMinuteTotal() {
+		return minuteTotal;
+	}
+
+	/**
+	 * @param minuteTotal the minuteTotal to set
+	 */
+	public void setMinuteTotal(int minuteTotal) {
+		this.minuteTotal = minuteTotal;
 	}
 
 	public HeartZoneRecord getOutRangeZone() {
