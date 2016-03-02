@@ -32,7 +32,10 @@ public class DailyRecordDeserializer implements JsonDeserializer<DailyRecord> {
 		dailyRecord.setFairlyActiveMinutes(jsonSummary.get("fairlyActiveMinutes").getAsInt());
 		dailyRecord.setSedentaryMinutes(jsonSummary.get("sedentaryMinutes").getAsInt());
 		dailyRecord.setVeryActiveMinutes(jsonSummary.get("veryActiveMinutes").getAsInt());
-                dailyRecord.setGoals(goals);
+        dailyRecord.setGoals(goals);
+        dailyRecord.setCalories(jsonSummary.get("caloriesOut").getAsInt());
+        //dailyRecord.setDistance(jsonSummary.getAsJsonArray("distances").get(0).get("distance").getAsDouble());
+
 
 		return dailyRecord;
 	}

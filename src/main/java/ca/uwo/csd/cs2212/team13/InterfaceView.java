@@ -44,12 +44,16 @@ public class InterfaceView {
 	private JLabel lblLifetimeTotalsFloorsVal;
 	private JLabel lblLifetimeTotalsStepsVal;
 	
-	private JLabel lblDailyTotalsDistVal;
-	private JLabel lblDailyTotalsCaloriesVal;
-	private JLabel lblDailyTotalsStepsVal;
-	private JLabel lblDailyTotalsFloorsVal;
-	private JLabel lblDailyTotalsSedenteryMinVal;
-	private JLabel lblDailyTotalsActiveMinVal;
+	private JLabel lblDailyDistVal;
+	private JLabel lblDailyCaloriesVal;
+	private JLabel lblDailyStepsVal;
+	private JLabel lblDailyFloorsVal;
+	private JLabel lblDailySedenteryMinVal;
+	private JLabel lblDailyLightlyActMinVal;
+	private JLabel lblDailyFairlyActMinVal;
+	private JLabel lblDailyVeryActMinVal;
+	private	JLabel lblDailyGoalsVal;
+
 	private JLabel lblBestDaysDistVal;
 	private JLabel lblBestDaysFloorsVal;
 	private JLabel lblBestDaysStepsVal;
@@ -186,67 +190,67 @@ public class InterfaceView {
 		panelDashboardView.add(lblDailyDashboard);
 
 		JLabel lblCalories = new JLabel("Calories");
-		lblCalories.setBounds(132, 65, 73, 25);
+		lblCalories.setBounds(132, 65, 73, 16);
 		panelDashboardView.add(lblCalories);
 
 		JLabel lblSteps = new JLabel("Steps");
-		lblSteps.setBounds(132, 102, 73, 25);
+		lblSteps.setBounds(132, 102, 73, 16);
 		panelDashboardView.add(lblSteps);
 
 		JLabel lblDistance = new JLabel("Distance");
-		lblDistance.setBounds(132, 139, 73, 25);
+		lblDistance.setBounds(132, 139, 73, 16);
 		panelDashboardView.add(lblDistance);
 
-		JLabel lblActiveMinutes = new JLabel("Active Minutes");
-		lblActiveMinutes.setBounds(241, 63, 106, 25);
+		JLabel lblActiveMinutes = new JLabel("Very Active Minutes");
+		lblActiveMinutes.setBounds(241, 63, 120, 16);
 		panelDashboardView.add(lblActiveMinutes);
 
 		JLabel lblSe = new JLabel("Sedentary Minutes");
-		lblSe.setBounds(241, 102, 125, 25);
+		lblSe.setBounds(241, 102, 125, 16);
 		panelDashboardView.add(lblSe);
 
 		JLabel lblFloors = new JLabel("Floors");
-		lblFloors.setBounds(132, 176, 73, 25);
+		lblFloors.setBounds(132, 176, 73, 16);
 		panelDashboardView.add(lblFloors);
 
 		JLabel lblDailyProgress = new JLabel("Daily Goals");
-		lblDailyProgress.setBounds(241, 171, 125, 30);
+		lblDailyProgress.setBounds(241, 171, 125, 16);
 		panelDashboardView.add(lblDailyProgress);
 
-		JLabel lblNewLabel_1 = new JLabel("Last Updated: Date");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel_1.setBounds(335, 356, 125, 16);
-		panelDashboardView.add(lblNewLabel_1);
+		JLabel lblLastUpdated = new JLabel("Last Updated: Date");
+		lblLastUpdated.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblLastUpdated.setBounds(335, 356, 125, 16);
+		panelDashboardView.add(lblLastUpdated);
 		
-		lblDailyTotalsDistVal = new JLabel();
-		lblDailyTotalsDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDailyTotalsDistVal.setBounds(260, 70, 95, 16);
-		panelDashboardView.add(lblDailyTotalsDistVal);
+		lblDailyDistVal = new JLabel();
+		lblDailyDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailyDistVal.setBounds(160, 159, 70, 25);
+		panelDashboardView.add(lblDailyDistVal);
 		
-		lblDailyTotalsCaloriesVal = new JLabel();
-		lblDailyTotalsCaloriesVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDailyTotalsCaloriesVal.setBounds(260, 70, 95, 16);
-		panelDashboardView.add(lblDailyTotalsCaloriesVal);
+		lblDailyCaloriesVal = new JLabel();
+		lblDailyCaloriesVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailyCaloriesVal.setBounds(160, 85, 70, 16);
+		panelDashboardView.add(lblDailyCaloriesVal);
 		
-		lblDailyTotalsStepsVal = new JLabel();
-		lblDailyTotalsStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDailyTotalsStepsVal.setBounds(260, 70, 95, 16);
-		panelDashboardView.add(lblDailyTotalsStepsVal);
+		lblDailyStepsVal = new JLabel();
+		lblDailyStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailyStepsVal.setBounds(160, 122, 70, 16);
+		panelDashboardView.add(lblDailyStepsVal);
 		
-		lblDailyTotalsFloorsVal = new JLabel();
-		lblDailyTotalsFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDailyTotalsFloorsVal.setBounds(260, 70, 95, 16);
-		panelDashboardView.add(lblDailyTotalsFloorsVal);
+		lblDailyFloorsVal = new JLabel();
+		lblDailyFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailyFloorsVal.setBounds(160, 196, 70, 16);
+		panelDashboardView.add(lblDailyFloorsVal);
 		
-		lblDailyTotalsActiveMinVal = new JLabel();
-		lblDailyTotalsActiveMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDailyTotalsActiveMinVal.setBounds(260, 70, 95, 16);
-		panelDashboardView.add(lblDailyTotalsActiveMinVal);
+		lblDailyVeryActMinVal = new JLabel();
+		lblDailyVeryActMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailyVeryActMinVal.setBounds(270, 83, 70, 16);
+		panelDashboardView.add(lblDailyVeryActMinVal);
 		
-		lblDailyTotalsSedenteryMinVal = new JLabel();
-		lblDailyTotalsSedenteryMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDailyTotalsSedenteryMinVal.setBounds(260, 70, 95, 16);
-		panelDashboardView.add(lblDailyTotalsSedenteryMinVal);
+		lblDailySedenteryMinVal = new JLabel();
+		lblDailySedenteryMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailySedenteryMinVal.setBounds(270, 122, 70, 16);
+		panelDashboardView.add(lblDailySedenteryMinVal);
 	}
 
 	private void bestDaysView() {
@@ -620,13 +624,13 @@ public class InterfaceView {
 			lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
 		}
 		
-		public void setDailyDashboardTotalsFields(double distance, int calories, int floors, int steps, int activeMin, int sedenteryMin){
-			lblDailyTotalsFloorsVal.setText(Integer.toString(floors));
-			lblDailyTotalsDistVal.setText(Double.toString(distance));
-			lblDailyTotalsCaloriesVal.setText(Integer.toString(calories));
-			lblDailyTotalsStepsVal.setText(Integer.toString(steps));
-			lblDailyTotalsActiveMinVal.setText(Integer.toString(activeMin));
-			lblDailyTotalsSedenteryMinVal.setText(Integer.toString(sedenteryMin));
+		public void setDailyDashFields(double distance, int calories, int floors, int steps, int veryActMin, int sedenteryMin){
+			lblDailyDistVal.setText(Double.toString(distance));
+			lblDailyCaloriesVal.setText(Integer.toString(calories));
+			lblDailyFloorsVal.setText(Integer.toString(floors));
+			lblDailyStepsVal.setText(Integer.toString(steps));
+			lblDailyVeryActMinVal.setText(Integer.toString(veryActMin));
+			lblDailySedenteryMinVal.setText(Integer.toString(sedenteryMin));
 		}
 
 		public void setBestDaysFields(double distance, int floors, int steps, String dist_date, String floors_date, String steps_date) {
@@ -647,6 +651,10 @@ public class InterfaceView {
 	
 	public void addClickListenerBestDays(ActionListener actionsOnClick){
 		btnBestDays.addActionListener(actionsOnClick);
+	}
+
+	public void addClickListenerDashboard(ActionListener actionsOnClick){
+		btnDailyDashboard.addActionListener(actionsOnClick);
 	}
 	
 	public void setVisible(InterfaceView view) {

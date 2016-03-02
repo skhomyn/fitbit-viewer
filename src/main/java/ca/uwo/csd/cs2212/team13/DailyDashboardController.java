@@ -5,19 +5,19 @@ import java.awt.event.ActionListener;
 
 public class DailyDashboardController {
 	
-	private DailyDashboardModel model;
+	private DailyRecord model;
 	private InterfaceView view;
 	
-	public DailyDashboardController(DailyDashboardModel model, InterfaceView view){
+	public DailyDashboardController(DailyRecord model, InterfaceView view){
 		this.model = model;
 		this.view = view;
-		view.addClickListenerLifetimeTotals(new clickListener());
+		view.addClickListenerDashboard(new clickListener());
 	}
 	
 	class clickListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			view.setDailyDashboardTotalsFields(model.getCalories(), model.getActiveMin(), model.getSedenteryMin(), model.getDistance(), model.getFloors(), model.getSteps());
+			view.setDailyDashFields(model.getDistance(), model.getCalories(), model.getFloors(), model.getSteps(), model.getVeryActiveMinutes(), model.getSedentaryMinutes());
 		}
 		
 	}

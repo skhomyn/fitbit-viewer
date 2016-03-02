@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class BestDaysController {
 	
 	//properties
-	BestDaysRecord model;
+	private BestDaysRecord model;
 	private InterfaceView view;
 
 	//constructor; the controller is initialized with a call from Main.java

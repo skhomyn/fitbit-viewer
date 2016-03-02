@@ -13,13 +13,14 @@ public void run() throws IOException {
 
     // Configure GSON
     final GsonBuilder gsonBuilder = new GsonBuilder();
-    gsonBuilder.registerTypeAdapter(ActivitiesRecord.class, new ActivitiesRecordDeserializer());
+    //gsonBuilder.registerTypeAdapter(ActivitiesRecord.class, new ActivitiesRecordDeserializer());
+    gsonBuilder.registerTypeAdapter(DailyRecord.class, new DailyRecordDeserializer());
     gsonBuilder.setPrettyPrinting();
     final Gson gson = gsonBuilder.create();
 
 
     // Read the JSON data
- try (Reader data = new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("activities.json"), "UTF-8")) {
+ try (Reader data = new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("date.json"), "UTF-8")) {
 
       // Parse JSON to Java
       final ActivitiesRecord actRecord = gson.fromJson(data, ActivitiesRecord.class);
@@ -27,11 +28,15 @@ public void run() throws IOException {
 		InterfaceView view = new InterfaceView();
 		view.setVisible(view);
 		
-		BestDaysRecord bdModel = actRecord.getBest();
-		BestDaysController bdController = new BestDaysController(bdModel, view);
+		DailyRecord ddModel = new DailyRecord();
+		DailyDashboardController ddController = new DailyDashboardController(ddModel, view);
+		
+		//BestDaysRecord bdModel = actRecord.getBest();
+		//BestDaysController bdController = new BestDaysController(bdModel, view);
 
-		LifetimeRecord ltModel = actRecord.getLifetime();
-		LifetimeController ltController = new LifetimeController(ltModel, view);
+		//LifetimeRecord ltModel = actRecord.getLifetime();
+		//LifetimeController ltController = new LifetimeController(ltModel, view);
+		
 		
     }
 

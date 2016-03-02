@@ -2,7 +2,8 @@ package ca.uwo.csd.cs2212.team13;
 
 public class DailyRecord {
 	
-	private int floors, steps, lightlyActiveMinutes, fairlyActiveMinutes, sedentaryMinutes, veryActiveMinutes;
+	private int floors, steps, lightlyActiveMinutes, fairlyActiveMinutes, sedentaryMinutes, veryActiveMinutes, calories;
+	private double distance;
 	private Goals goals;
 	
         public Goals getGoals(){
@@ -32,9 +33,17 @@ public class DailyRecord {
 		return veryActiveMinutes;
 	}
         
-        public void setGoals(Goals goals){
+	public int getCalories(){
+		return calories;
+	}
+
+	public double getDistance(){
+		return distance;
+	}
+
+    public void setGoals(Goals goals){
             this.goals = goals;
-        }
+    }
 	
 	public void setFloors(int floors) {
 		this.floors = floors;
@@ -58,6 +67,14 @@ public class DailyRecord {
 	
 	public void setVeryActiveMinutes(int VeryActiveMinutes ){
 		this.veryActiveMinutes = veryActiveMinutes;
+	}
+
+	public void setCalories(int calories){
+		this.calories = calories;
+	}
+
+	public void setDistance(double distance){
+		this.distance = distance;
 	}
 	
 	
