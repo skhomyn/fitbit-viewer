@@ -718,6 +718,10 @@ public class InterfaceView {
 	public void addClickListenerHeartRateZones(ActionListener actionsOnClick) {
 		btnHeartRateZones.addActionListener(actionsOnClick);
 	}
+
+	public void addClickListenerDashboard(ActionListener actionsOnClick){
+		btnDailyDashboard.addActionListener(actionsOnClick);
+	}
 	
 	public void setVisible(InterfaceView view) {
 		view.frame.setVisible(true);
