@@ -203,7 +203,7 @@ public class InterfaceView {
 		panelDashboardView.add(lblDistance);
 
 		JLabel lblActiveMinutes = new JLabel("Very Active Minutes");
-		lblActiveMinutes.setBounds(241, 63, 120, 16);
+		lblActiveMinutes.setBounds(241, 63, 150, 16);
 		panelDashboardView.add(lblActiveMinutes);
 
 		JLabel lblSe = new JLabel("Sedentary Minutes");
