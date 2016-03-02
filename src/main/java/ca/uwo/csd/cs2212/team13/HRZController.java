@@ -32,7 +32,7 @@ public class HRZController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//
-				view.setHeartRateZonesFields(model.getMinuteTotal(), model.getRestingHR(), model.getCardioZone().getMin(), model.getFatBurnZone().getMin(), model.getPeakZone().getMin() );
+				view.setHeartRateZonesFields(model.getMinuteTotal(), model.getRestingHR(), model.getCardioZone().getMax(), model.getFatBurnZone().getMax(), model.getPeakZone().getMax(), model.getCardioZone().getMin(), model.getFatBurnZone().getMin(), model.getPeakZone().getMin() );
 			}
 			
 			//error handling will go here

@@ -50,9 +50,9 @@ public class InterfaceView {
 	private JLabel lblHeartMins;
 	private JLabel lblHeartRest;
 	
-	private JLabel lblHeartCardioMin;
-	private JLabel lblHeartFatBurnMin;
-	private JLabel lblHeartPeakMin;
+	private JLabel lblHeartCardioMaxMin;
+	private JLabel lblHeartFatBurnMaxMin;
+	private JLabel lblHeartPeakMaxMin;
 
 
 	/*
@@ -476,32 +476,32 @@ public class InterfaceView {
 		//private JLabel lblHeartPeakMin;
 		
 		
-		JLabel lblZone = new JLabel("Zone 1: Cardio Minutes");
+		JLabel lblZone = new JLabel("Zone 1: Cardio Max/Min");
 		lblZone.setBounds(30, 200, 168, 16);
 		panelHeartrateZonesView.add(lblZone);
 		
-		lblHeartCardioMin = new JLabel();
-		lblHeartCardioMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartCardioMin.setBounds(80, 200, 148, 16);
-		panelHeartrateZonesView.add(lblHeartCardioMin);
+		lblHeartCardioMaxMin = new JLabel();
+		lblHeartCardioMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartCardioMaxMin.setBounds(100, 200, 148, 16);
+		panelHeartrateZonesView.add(lblHeartCardioMaxMin);
 		
-		JLabel lblZone_1 = new JLabel("Zone 2: Fat Burn Minutes");
+		JLabel lblZone_1 = new JLabel("Zone 2: Fat Burn Max/Min");
 		lblZone_1.setBounds(30, 228, 168, 16);
 		panelHeartrateZonesView.add(lblZone_1);
 		
-		lblHeartFatBurnMin = new JLabel();
-		lblHeartFatBurnMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartFatBurnMin.setBounds(80, 228, 148, 16);
-		panelHeartrateZonesView.add(lblHeartFatBurnMin);
+		lblHeartFatBurnMaxMin = new JLabel();
+		lblHeartFatBurnMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartFatBurnMaxMin.setBounds(100, 228, 148, 16);
+		panelHeartrateZonesView.add(lblHeartFatBurnMaxMin);
 		
-		JLabel lblZone_2 = new JLabel("Zone 3: Peak Minutes");
+		JLabel lblZone_2 = new JLabel("Zone 3: Peak Max/Min");
 		lblZone_2.setBounds(30, 256, 168, 16);
 		panelHeartrateZonesView.add(lblZone_2);
 		
-		lblHeartPeakMin = new JLabel();
-		lblHeartPeakMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartPeakMin.setBounds(80, 256, 148, 16);
-		panelHeartrateZonesView.add(lblHeartPeakMin);
+		lblHeartPeakMaxMin = new JLabel();
+		lblHeartPeakMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartPeakMaxMin.setBounds(100, 256, 148, 16);
+		panelHeartrateZonesView.add(lblHeartPeakMaxMin);
 		
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(455, 0, 15, 378);
@@ -616,13 +616,13 @@ public class InterfaceView {
 		 * @param minutes
 		 * @param rate
 		 */
-		public void setHeartRateZonesFields(int minutes, int rate, int cardio_min, int fatburn_min, int peak_min) {
+		public void setHeartRateZonesFields(int minutes, int rate, int cardio_max, int fatburn_max, int peak_max, int cardio_min, int fatburn_min, int peak_min) {
 			lblHeartMins.setText(Integer.toString(minutes));
 			lblHeartRest.setText(Integer.toString(rate));
 			
-			lblHeartCardioMin.setText(Integer.toString(cardio_min));
-			lblHeartFatBurnMin.setText(Integer.toString(fatburn_min));
-			lblHeartPeakMin.setText(Integer.toString(peak_min));
+			lblHeartCardioMaxMin.setText(Integer.toString(cardio_max) + "/" + Integer.toString(cardio_min));
+			lblHeartFatBurnMaxMin.setText(Integer.toString(fatburn_max) + "/" + Integer.toString(fatburn_min));
+			lblHeartPeakMaxMin.setText(Integer.toString(peak_max) + "/" + Integer.toString(peak_min));
 		}
 	
 	// the btnLifetimeTotals.addActionListner() call is encapsulated by a method so that it can be accessed by the controller;

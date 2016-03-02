@@ -42,7 +42,7 @@ public class HeartRateRecordDeserializer implements JsonDeserializer<HeartRateRe
             int min = jsonHeartZoneObject.get("min").getAsInt();
             String name = jsonHeartZoneObject.get("name").getAsString();
  
-            zonesArray[i] = new HeartZoneRecord(minutes, max, min, name);
+            zonesArray[i] = new HeartZoneRecord(max, min, minutes, name);
             minuteTotal += minutes;
         }
 
