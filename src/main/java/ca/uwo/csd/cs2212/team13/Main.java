@@ -20,18 +20,22 @@ public void run() throws IOException {
     final Gson gson = gsonBuilder.create();
 
 
-
+    InterfaceView view = new InterfaceView();
+    view.setVisible(view);
+    
     // Read the JSON data
  try (Reader data = new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("heartrate.json"), "UTF-8")) {
 
       // Parse JSON to Java
       final HeartRateRecord hrRecord = gson.fromJson(data, HeartRateRecord.class);
-      System.out.println(hrRecord);
-    	HeartRateRecord hrzModel = hrRecord;
-
+      HRZController hrController = new HRZController(hrRecord, view);
+      
+      //System.out.println(hrRecord);
+      //HeartRateRecord hrzModel = hrRecord;
 
     }
  
+ /*
     
     // Read the JSON data
  try (Reader data = new InputStreamReader(Main.class.getClassLoader().getResourceAsStream("activities.json"), "UTF-8")) {
@@ -58,6 +62,6 @@ public void run() throws IOException {
 
     }
 
-
+*/
   }
 }
