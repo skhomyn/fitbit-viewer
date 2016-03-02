@@ -3,13 +3,24 @@ package ca.uwo.csd.cs2212.team13;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * Java Object which passes information from the the <code>LifetimeRecord</code> object to the 
+ * <code>InterfaceView</code> object.
+ * <p>
+ * <code>LifetimeController</code> contains references to the model object {@link LifetimeRecord}, 
+ * which contains the data for the Lifetime Totals page, and the view object {@link InterfaceView}, 
+ * which implements the user interface for all pages.
+ * <p>
+ * The purpose of this class is to pass the data contained in the model <code>LifetimeRecord</code>
+ * to the view <code>InterfaceView</code>, so that it can be displayed to the user.
+ */
 public class LifetimeController {
 	
-	//properties
 	private LifetimeRecord model;
 	private InterfaceView view;
-
-	//constructor; the controller is initialized with a call from Main.java
+	
+	
 	public LifetimeController(LifetimeRecord model, InterfaceView view) {
 		this.model = model;
 		this.view = view;
@@ -18,17 +29,32 @@ public class LifetimeController {
 		view.addClickListenerLifetimeTotals(new clickListener());
 	}
 	
-	//this is the class definition for the action listener object that we pass to the above method;
-	//it says that whenever an action is observed (click), set the view fields with the model info;
-	// this class is instantiated in the call above, when the controller is initialized
+	/**
+	 * Local class accessible only by the <code>LifetimeController</code> object.
+	 * It's purpose is to define which actions should be performed when the Lifetime Totals button
+	 * in <code>InterfaceView</code> is clicked by the user
+	 *
+	 * @see java.awt.event.ActionListener
+	 */
 	class clickListener implements ActionListener{
+		
+		/** 
+		 * Sets the Lifetime Totals display fields in <code>InterfaceView</code> with values from the
+		 * appropriate model <code>LifetimeRecord</code> fields upon the click of a button.
+		 * 
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 * 
+		 * @param click action on button
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			view.setLifetimeTotalsFields(model.getDistance(), model.getFloors(), model.getSteps());
 		}
 		
+		/**
+		 * TODO: error handling
+		 */
 	}
 	
-	//error handling to be added
  }	
 	
