@@ -36,7 +36,7 @@ public class BestDaysController {
 	 */
 	class clickListener implements ActionListener{
 		/** 
-		 * Sets the Lifetime Totals display fields in <code>InterfaceView</code> with values from the
+		 * Sets the Best Days page display fields in <code>InterfaceView</code> with values from the
 		 * appropriate model <code>BestDaysRecord</code> fields upon the click of a button.
 		 * 
 		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
