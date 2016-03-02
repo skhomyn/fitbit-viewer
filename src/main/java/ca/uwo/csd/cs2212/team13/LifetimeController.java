@@ -20,7 +20,19 @@ public class LifetimeController {
 	private LifetimeRecord model;
 	private InterfaceView view;
 	
-	
+	/**
+	 * Constructor, initializes the model and view fields with pointers to <code>LifetimeRecord</code>
+	 * object and <code>InterfaceView</code> object respectively, and calls method 
+	 * {@link InterfaceView#addClickListenerLifetimeTotals(ActionListener)} to add a click listener to the
+	 * Lifetime Totals button.
+	 * 
+	 * @param model
+	 * 			the <code>LifetimeRecord</code> model containing the Best Days data to be displayed
+	 * @param view
+	 * 			the <code>InterfaceView</code> view containing the user interface implementation
+	 * 
+	 * @see InterfaceView#addClickListenerLifetimeTotals(ActionListener)
+	 */
 	public LifetimeController(LifetimeRecord model, InterfaceView view) {
 		this.model = model;
 		this.view = view;
@@ -42,18 +54,16 @@ public class LifetimeController {
 		 * Sets the Lifetime Totals display fields in <code>InterfaceView</code> with values from the
 		 * appropriate model <code>LifetimeRecord</code> fields upon the click of a button.
 		 * 
-		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-		 * 
 		 * @param click action on button
+		 * 
+		 *  @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			view.setLifetimeTotalsFields(model.getDistance(), model.getFloors(), model.getSteps());
 		}
 		
-		/**
-		 * TODO: error handling
-		 */
+		//  TODO: error handling for lifetime totals controller
 	}
 	
  }	

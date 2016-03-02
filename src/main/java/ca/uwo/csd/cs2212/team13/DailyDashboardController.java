@@ -19,6 +19,19 @@ public class DailyDashboardController {
 	private DailyRecord model;
 	private InterfaceView view;
 	
+	/**
+	 * Constructor, initializes the model and view fields with pointers to <code>DailyRecord</code>
+	 * object and <code>InterfaceView</code> object respectively, and calls method 
+	 * {@link InterfaceView#addClickListenerDashboard(ActionListener)} to add a click listener to the 
+	 * Daily Dashboard button.
+	 * 
+	 * @param model
+	 * 			the <code>DailyRecord</code> model containing the Best Days data to be displayed
+	 * @param view
+	 * 			the <code>InterfaceView</code> view containing the user interface implementation
+	 * 
+	 * @see InterfaceView#addClickListenerDashboard(ActionListener)
+	 */
 	public DailyDashboardController(DailyRecord model, InterfaceView view){
 		this.model = model;
 		this.view = view;
@@ -48,9 +61,9 @@ public class DailyDashboardController {
 		 * Sets the Daily Dashboard page display fields in <code>InterfaceView</code> with values from the
 		 * appropriate model <code>DailyRecord</code> fields upon the click of a button.
 		 * 
-		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-		 * 
 		 * @param click action on button
+		 * 
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
