@@ -14,6 +14,11 @@ public class DailyDashboardController {
 		view.addClickListenerDashboard(new clickListener());
 	}
 	
+	public void DailyDashboardInitialize()
+	{
+		view.setDailyDashFields(model.getDistance(), model.getCalories(), model.getFloors(), model.getSteps(), model.getVeryActiveMinutes(), model.getSedentaryMinutes());
+	}
+	
 	class clickListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {

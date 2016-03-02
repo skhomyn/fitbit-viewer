@@ -23,7 +23,6 @@ public class DailyRecordDeserializer implements JsonDeserializer<DailyRecord> {
 	
        final Goals goals = context.deserialize(jsonObject.get("goals"), Goals.class);   
        
-       System.out.println(goals.toString());
        
 		final DailyRecord dailyRecord = new DailyRecord();
 		dailyRecord.setFloors(jsonSummary.get("floors").getAsInt());
@@ -34,6 +33,16 @@ public class DailyRecordDeserializer implements JsonDeserializer<DailyRecord> {
 		dailyRecord.setVeryActiveMinutes(jsonSummary.get("veryActiveMinutes").getAsInt());
         dailyRecord.setGoals(goals);
         dailyRecord.setCalories(jsonSummary.get("caloriesOut").getAsInt());
+        
+        final JsonArray jsonDistance = jsonSummary.get("distances").getAsJsonArray();
+        final JsonElement distanceTotal = jsonDistance.get(0);
+        final JsonObject distanceObj = distanceTotal.getAsJsonObject();
+        
+        dailyRecord.setDistance(distanceObj.get("distance").getAsDouble());
+      //  final Json
+        
+        //System.out.println(dailyRecord.getVeryActiveMinutes());
+
         //dailyRecord.setDistance(jsonSummary.getAsJsonArray("distances").get(0).get("distance").getAsDouble());
 
 

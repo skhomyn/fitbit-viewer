@@ -54,19 +54,19 @@ public class DailyRecord {
 	}
 	
 	public void setLightlyActiveMinutes(int LightlyActiveMinutes){
-		this.lightlyActiveMinutes = lightlyActiveMinutes;
+		this.lightlyActiveMinutes = LightlyActiveMinutes;
 	}
 	
 	public void setFairlyActiveMinutes(int FairlyActiveMinutes){
-		this.fairlyActiveMinutes = fairlyActiveMinutes;
+		this.fairlyActiveMinutes = FairlyActiveMinutes;
 	}
 	
 	public void setSedentaryMinutes(int SedentaryMinutes){
-		this.sedentaryMinutes = sedentaryMinutes;
+		this.sedentaryMinutes = SedentaryMinutes;
 	}
 	
 	public void setVeryActiveMinutes(int VeryActiveMinutes ){
-		this.veryActiveMinutes = veryActiveMinutes;
+		this.veryActiveMinutes = VeryActiveMinutes;
 	}
 
 	public void setCalories(int calories){
