@@ -5,8 +5,24 @@ public class DailyRecord {
 	private int floors, steps, lightlyActiveMinutes, fairlyActiveMinutes, sedentaryMinutes, veryActiveMinutes, calories;
 	private double distance;
 	private Goals goals;
+	private String date;
 	
-        public Goals getGoals(){
+	
+	
+        /**
+	 * @return the date
+	 */
+	public String getDate() {
+		return date;
+	}
+	/**
+	 * @param date the date to set
+	 */
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
+		public Goals getGoals(){
             return goals;
         } 
 	public int getFloors() {

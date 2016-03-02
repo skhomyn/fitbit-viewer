@@ -44,6 +44,7 @@ public class InterfaceView {
 	private JLabel lblLifetimeTotalsFloorsVal;
 	private JLabel lblLifetimeTotalsStepsVal;
 	
+	private JLabel lblLastUpdated;
 	private JLabel lblDailyDistVal;
 	private JLabel lblDailyCaloriesVal;
 	private JLabel lblDailyStepsVal;
@@ -217,7 +218,7 @@ public class InterfaceView {
 		lblDailyProgress.setBounds(241, 171, 125, 16);
 		panelDashboardView.add(lblDailyProgress);
 
-		JLabel lblLastUpdated = new JLabel("Last Updated: Date");
+		lblLastUpdated = new JLabel(); //"Last Updated: Date"
 		lblLastUpdated.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblLastUpdated.setBounds(335, 356, 125, 16);
 		panelDashboardView.add(lblLastUpdated);
@@ -624,7 +625,8 @@ public class InterfaceView {
 			lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
 		}
 		
-		public void setDailyDashFields(double distance, int calories, int floors, int steps, int veryActMin, int sedenteryMin){
+		public void setDailyDashFields(String date, double distance, int calories, int floors, int steps, int veryActMin, int sedenteryMin){
+			lblLastUpdated.setText(date);
 			lblDailyDistVal.setText(Double.toString(distance));
 			lblDailyCaloriesVal.setText(Integer.toString(calories));
 			lblDailyFloorsVal.setText(Integer.toString(floors));

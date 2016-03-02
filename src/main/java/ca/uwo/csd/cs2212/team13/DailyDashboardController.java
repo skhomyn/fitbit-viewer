@@ -16,13 +16,13 @@ public class DailyDashboardController {
 	
 	public void DailyDashboardInitialize()
 	{
-		view.setDailyDashFields(model.getDistance(), model.getCalories(), model.getFloors(), model.getSteps(), model.getVeryActiveMinutes(), model.getSedentaryMinutes());
+		view.setDailyDashFields(model.getDate(), model.getDistance(), model.getCalories(), model.getFloors(), model.getSteps(), model.getVeryActiveMinutes(), model.getSedentaryMinutes());
 	}
 	
 	class clickListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			view.setDailyDashFields(model.getDistance(), model.getCalories(), model.getFloors(), model.getSteps(), model.getVeryActiveMinutes(), model.getSedentaryMinutes());
+			//view.setDailyDashFields(model.getDate(), model.getDistance(), model.getCalories(), model.getFloors(), model.getSteps(), model.getVeryActiveMinutes(), model.getSedentaryMinutes());
 		}
 		
 	}
