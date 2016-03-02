@@ -62,6 +62,19 @@ public class InterfaceView {
 	private JLabel lblBestDaysFloorsDate;
 	private JLabel lblBestDaysStepsDate;
 
+	private JLabel lblHeartRateMinVal;
+	private JLabel lblRestRateVal;
+	private JLabel lblZoneOneVal;
+	private JLabel lblZoneTwoVal;
+	private JLabel lblZoneThreeVal;
+
+	private JLabel lblHeartMins;
+	private JLabel lblHeartRest;
+	
+	private JLabel lblHeartCardioMaxMin;
+	private JLabel lblHeartFatBurnMaxMin;
+	private JLabel lblHeartPeakMaxMin;
+
 
 	/*
 	// Launch Application:
@@ -492,13 +505,23 @@ public class InterfaceView {
 		lblHeartRateZones.setBounds(0, 0, 466, 27);
 		panelHeartrateZonesView.add(lblHeartRateZones);
 		
-		JLabel lblHeartRate = new JLabel("Resting Heart Rate: <hr>");
+		JLabel lblHeartRate = new JLabel("Resting Heart Rate: ");
 		lblHeartRate.setBounds(30, 60, 189, 16);
 		panelHeartrateZonesView.add(lblHeartRate);
 		
-		JLabel lblNewLabel = new JLabel("Minutes: <time>");
+		lblHeartRest = new JLabel();
+		lblHeartRest.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartRest.setBounds(218, 60, 95, 16);
+		panelHeartrateZonesView.add(lblHeartRest);
+		
+		JLabel lblNewLabel = new JLabel("Minutes: ");
 		lblNewLabel.setBounds(30, 88, 133, 16);
 		panelHeartrateZonesView.add(lblNewLabel);
+		
+		lblHeartMins = new JLabel();
+		lblHeartMins.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartMins.setBounds(218, 88, 95, 16);
+		panelHeartrateZonesView.add(lblHeartMins);
 		
 		JLabel lblZoneDescriptions = new JLabel("Zone Descriptions:");
 		lblZoneDescriptions.setHorizontalAlignment(SwingConstants.CENTER);
@@ -506,17 +529,41 @@ public class InterfaceView {
 		lblZoneDescriptions.setBounds(0, 161, 460, 27);
 		panelHeartrateZonesView.add(lblZoneDescriptions);
 		
-		JLabel lblZone = new JLabel("Zone 1: <description>");
-		lblZone.setBounds(30, 200, 148, 16);
+		/**
+		 * lists what the heart rate 3 zones are
+		 */
+		
+		//private JLabel lblHeartCardioMin;
+		//private JLabel lblHeartFatBurnMin;
+		//private JLabel lblHeartPeakMin;
+		
+		
+		JLabel lblZone = new JLabel("Zone 1: Cardio Max/Min");
+		lblZone.setBounds(30, 200, 168, 16);
 		panelHeartrateZonesView.add(lblZone);
 		
-		JLabel lblZone_1 = new JLabel("Zone 2: <description>");
-		lblZone_1.setBounds(30, 228, 148, 16);
+		lblHeartCardioMaxMin = new JLabel();
+		lblHeartCardioMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartCardioMaxMin.setBounds(100, 200, 148, 16);
+		panelHeartrateZonesView.add(lblHeartCardioMaxMin);
+		
+		JLabel lblZone_1 = new JLabel("Zone 2: Fat Burn Max/Min");
+		lblZone_1.setBounds(30, 228, 168, 16);
 		panelHeartrateZonesView.add(lblZone_1);
 		
-		JLabel lblZone_2 = new JLabel("Zone 3: <description>");
-		lblZone_2.setBounds(30, 256, 148, 16);
+		lblHeartFatBurnMaxMin = new JLabel();
+		lblHeartFatBurnMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartFatBurnMaxMin.setBounds(100, 228, 148, 16);
+		panelHeartrateZonesView.add(lblHeartFatBurnMaxMin);
+		
+		JLabel lblZone_2 = new JLabel("Zone 3: Peak Max/Min");
+		lblZone_2.setBounds(30, 256, 168, 16);
 		panelHeartrateZonesView.add(lblZone_2);
+		
+		lblHeartPeakMaxMin = new JLabel();
+		lblHeartPeakMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartPeakMaxMin.setBounds(100, 256, 148, 16);
+		panelHeartrateZonesView.add(lblHeartPeakMaxMin);
 		
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(455, 0, 15, 378);
@@ -616,33 +663,46 @@ public class InterfaceView {
 
 	}
 	
-	//method used by action listener to update the view fields from the controller (using model data);
-	//  this method gets attached to the lifetime totals button and
-	// gets executed when the click actually happens
-		public void setLifetimeTotalsFields(double distance, int floors, int steps) {
-			lblLifetimeTotalsDistVal.setText(Double.toString(distance));
-			lblLifetimeTotalsFloorsVal.setText(Integer.toString(floors));
-			lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
-		}
-		
-		public void setDailyDashFields(String date, double distance, int calories, int floors, int steps, int veryActMin, int sedenteryMin){
-			lblLastUpdated.setText(date);
-			lblDailyDistVal.setText(Double.toString(distance));
-			lblDailyCaloriesVal.setText(Integer.toString(calories));
-			lblDailyFloorsVal.setText(Integer.toString(floors));
-			lblDailyStepsVal.setText(Integer.toString(steps));
-			lblDailyVeryActMinVal.setText(Integer.toString(veryActMin));
-			lblDailySedenteryMinVal.setText(Integer.toString(sedenteryMin));
-		}
 
-		public void setBestDaysFields(double distance, int floors, int steps, String dist_date, String floors_date, String steps_date) {
-			lblBestDaysDistVal.setText(Double.toString(distance));
-			lblBestDaysFloorsVal.setText(Integer.toString(floors));
-			lblBestDaysStepsVal.setText(Integer.toString(steps));
-			lblBestDaysDistDate.setText(dist_date);
-			lblBestDaysFloorsDate.setText(floors_date);
-			lblBestDaysStepsDate.setText(steps_date);
-		}
+	/**
+	 * Method to set JLabel values for minutes & resting heart rate
+	 * For now, zones will be left out (hardcoded in currently)
+	 * @param minutes
+	 * @param rate
+	 */
+	public void setHeartRateZonesFields(int minutes, int rate, int cardio_max, int fatburn_max, int peak_max, int cardio_min, int fatburn_min, int peak_min) {
+		lblHeartMins.setText(Integer.toString(minutes));
+		lblHeartRest.setText(Integer.toString(rate));
+		
+		lblHeartCardioMaxMin.setText(Integer.toString(cardio_max) + "/" + Integer.toString(cardio_min));
+		lblHeartFatBurnMaxMin.setText(Integer.toString(fatburn_max) + "/" + Integer.toString(fatburn_min));
+		lblHeartPeakMaxMin.setText(Integer.toString(peak_max) + "/" + Integer.toString(peak_min));
+	}
+	
+	public void setLifetimeTotalsFields(double distance, int floors, int steps) {
+		lblLifetimeTotalsDistVal.setText(Double.toString(distance));
+		lblLifetimeTotalsFloorsVal.setText(Integer.toString(floors));
+		lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
+	}
+		
+	public void setDailyDashFields(String date, double distance, int calories, int floors, int steps, int veryActMin, int sedenteryMin){
+		lblLastUpdated.setText(date);
+		lblDailyDistVal.setText(Double.toString(distance));
+		lblDailyCaloriesVal.setText(Integer.toString(calories));
+		lblDailyFloorsVal.setText(Integer.toString(floors));
+		lblDailyStepsVal.setText(Integer.toString(steps));
+		lblDailyVeryActMinVal.setText(Integer.toString(veryActMin));
+		lblDailySedenteryMinVal.setText(Integer.toString(sedenteryMin));
+	}
+
+	public void setBestDaysFields(double distance, int floors, int steps, String dist_date, String floors_date, String steps_date) {
+		lblBestDaysDistVal.setText(Double.toString(distance));
+		lblBestDaysFloorsVal.setText(Integer.toString(floors));
+		lblBestDaysStepsVal.setText(Integer.toString(steps));
+		lblBestDaysDistDate.setText(dist_date);
+		lblBestDaysFloorsDate.setText(floors_date);
+		lblBestDaysStepsDate.setText(steps_date);
+	}
 	
 	// the btnLifetimeTotals.addActionListner() call is encapsulated by a method so that it can be accessed by the controller;
 	// the controller passes in the clicklistener, which contains the method that updates the view;
@@ -653,6 +713,10 @@ public class InterfaceView {
 	
 	public void addClickListenerBestDays(ActionListener actionsOnClick){
 		btnBestDays.addActionListener(actionsOnClick);
+	}
+
+	public void addClickListenerHeartRateZones(ActionListener actionsOnClick) {
+		btnHeartRateZones.addActionListener(actionsOnClick);
 	}
 
 	public void addClickListenerDashboard(ActionListener actionsOnClick){
