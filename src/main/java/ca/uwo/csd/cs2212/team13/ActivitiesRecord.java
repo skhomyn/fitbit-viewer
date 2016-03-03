@@ -34,7 +34,6 @@ package ca.uwo.csd.cs2212.team13;
 /**
  * <code>ActivitiesRecord</code> is a simple Java object that contains the
  * models for both {@link BestDaysRecord} and {@link LifetimeRecord}
- * <p>
  * <ul>
  * <li>Is necessary because JSON call, for activities, contains both best days
  * and lifetime info i.e. JSON file has multiple objects!

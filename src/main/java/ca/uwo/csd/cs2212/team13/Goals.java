@@ -90,7 +90,7 @@ public class Goals {
 	 * <p>
 	 * This method sets the {@code int} value for the field {@code activeMinutes}.
 	 * 
-	 * @param active minutes
+	 * @param activeMinutes
 	 *            the new value of the field {@code activeMinutes} for the goal
 	 */
     public void setActiveMinutes(int activeMinutes) {
@@ -102,7 +102,7 @@ public class Goals {
    	 * <p>
    	 * This method sets the {@code double} value for the field {@code caloriesOut}.
    	 * 
-   	 * @param calories out
+   	 * @param caloriesOut
    	 *            the new value of the field {@code caloriesOut} for the goal
    	 */
     public void setCaloriesOut(double caloriesOut) {

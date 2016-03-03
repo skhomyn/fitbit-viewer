@@ -27,7 +27,8 @@ import com.google.gson.GsonBuilder;
  * type of object to be parsed. The return type of deserialize is thus this very
  * type.
  * <p>
- * <h4>Implementation notes</h4>
+ * Implementation notes
+ * <p>
  * In order to be able to parse JSON to Java, need to create instance of this
  * JsonDeserializer interface and register it with GsonBuilder.
  * <p>

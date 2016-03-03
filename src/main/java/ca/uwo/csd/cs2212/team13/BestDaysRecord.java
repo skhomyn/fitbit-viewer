@@ -82,7 +82,7 @@ public class BestDaysRecord {
 	/**
 	 * Sets the {@code String} value for the field {@code dis_date}.
 	 * 
-	 * @param distance
+	 * @param dis_date
 	 *            the new date on which the farthest distance was traveled
 	 */
 	public void setDis_date(String dis_date) {

@@ -35,11 +35,12 @@ package ca.uwo.csd.cs2212.team13;
  * <code>DailyRecord</code> is a simple Java object that represents the daily
  * dashboard and the rules that govern access to and updates of this data, but
  * also contain the model for {@link goals}.
- * <p>
+ * <ul>
  * <li>Is necessary because JSON call, for a date, contains both that daily info
  * plus the daily goals
  * <li>Basically, this Java object holds the combined daily record listed in
- * JSON object from API call </ul>
+ * JSON object from API call 
+ * </ul>
  */
 public class DailyRecord {
 

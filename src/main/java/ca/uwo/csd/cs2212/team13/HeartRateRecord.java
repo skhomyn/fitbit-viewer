@@ -35,11 +35,12 @@ package ca.uwo.csd.cs2212.team13;
  * <code>HeartRateRecord</code> is a simple Java object that represents the
  * heart rate stuff and the rules that govern access to and updates of this
  * data, but also contain the model for {@link HeartZoneRecord}.
- * <p>
+ * <ul>
  * <li>Is necessary because JSON call, for a date, contains both that heart
  * stuff and the heart zone info
  * <li>Basically, this Java object holds the combined heart info listed in JSON
- * object from API call </ul>
+ * object from API call 
+ * </ul>
  */
 public class HeartRateRecord {
 
