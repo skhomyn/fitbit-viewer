@@ -63,8 +63,7 @@ public class LifetimeController {
 	 */
 	class clickListener implements ActionListener {
 
-		/*
-		 * (non-Java doc) as override
+		/**
 		 * 
 		 * Sets the Lifetime Totals display fields in <code>InterfaceView</code>
 		 * with values from the appropriate model <code>LifetimeRecord</code>
@@ -73,8 +72,7 @@ public class LifetimeController {
 		 * @param e click action on button
 		 * 
 		 * @see
-		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent
-		 * )
+		 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {

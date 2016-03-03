@@ -704,10 +704,12 @@ public class InterfaceView {
 	}
 	
 	/**
-	 * Method to set JLabel values for minutes & resting heart rate
+	 * Sets JLabel values for Heart Rate Zones page with data from {@code HeartRateRecord}.
+	 * Called when "Heart Rate Zones" menu button is clicked, as defined in {@code HRZController}.
 	 * For now, zones will be left out (hardcoded in currently)
-	 * @param minutes
-	 * @param rate
+	 * 
+	 * @param minutes total minutes in all heart rate zones
+	 * @param rate resting heart rate
 	 */
 	public void setHeartRateZonesFields(int minutes, int rate, int cardio_max, int fatburn_max, int peak_max, int cardio_min, int fatburn_min, int peak_min) {
 		lblHeartMins.setText(Integer.toString(minutes));
@@ -718,12 +720,33 @@ public class InterfaceView {
 		lblHeartPeakMaxMin.setText(Integer.toString(peak_max) + "/" + Integer.toString(peak_min));
 	}
 	
+	/**
+	 * Sets JLabel values for Lifetime Totals page with data from {@code LifetimeRecord}.
+	 * Called when "Lifetime Totals" menu button is clicked, as defined in {@code LifetimeController}.
+	 * 
+	 * @param distance lifetime total for distance traveled
+	 * @param floors lifetime total for floors climbed
+	 * @param steps lifetime total for steps taken
+	 */
 	public void setLifetimeTotalsFields(double distance, int floors, int steps) {
 		lblLifetimeTotalsDistVal.setText(Double.toString(distance));
 		lblLifetimeTotalsFloorsVal.setText(Integer.toString(floors));
 		lblLifetimeTotalsStepsVal.setText(Integer.toString(steps));
 	}
 		
+	/**
+	 * Sets JLabel values for Daily Dashboard page with data from {@code DailyRecord}
+	 * Called when application is first loaded and when "Daily Dashboard" menu button is clicked, 
+	 * as defined in {@code DailyDashboardController}.
+	 * 
+	 * @param date date information was updated
+	 * @param distance distance traveled on date last updated
+	 * @param calories total calories burned on date last updated
+	 * @param floors total floors climbed on date last updated
+	 * @param steps total steps taken on date last updated
+	 * @param veryActMin total "very active minutes" on date last updated
+	 * @param sedenteryMin toal "sedentary minutes" on date last updated
+	 */
 	public void setDailyDashFields(String date, double distance, int calories, int floors, int steps, int veryActMin, int sedenteryMin){
 		lblLastUpdated.setText(date);
 		lblDailyDistVal.setText(Double.toString(distance));
@@ -734,6 +757,17 @@ public class InterfaceView {
 		lblDailySedenteryMinVal.setText(Integer.toString(sedenteryMin));
 	}
 
+	/**
+	 * Sets JLabel values for Best Days page with data from {@code BestDaysRecord}
+	 * Called when "Best Days" menu button is clicked, as defined in {@code BestDaysController}.
+	 * 
+	 * @param distance distance traveled on best day for distance
+	 * @param floors floors climbed on best day for floors
+	 * @param steps steps taken on best day for steps
+	 * @param dist_date date of farthest distance traveled
+	 * @param floors_date date of most floors climbed
+	 * @param steps_date date of most steps taken
+	 */
 	public void setBestDaysFields(double distance, int floors, int steps, String dist_date, String floors_date, String steps_date) {
 		lblBestDaysDistVal.setText(Double.toString(distance));
 		lblBestDaysFloorsVal.setText(Integer.toString(floors));
@@ -746,18 +780,47 @@ public class InterfaceView {
 	// the btnLifetimeTotals.addActionListner() call is encapsulated by a method so that it can be accessed by the controller;
 	// the controller passes in the clicklistener, which contains the method that updates the view;
 	// this method gets executed when the controller is initialized
+	
+	/**
+	 * Attaches an {@code ActionListner} object to the Lifetime Totals menu button, which executes 
+	 * {@code InterfaceView#setLifetimeTotalsFields(double, int, int)} upon button click event.
+	 * 
+	 * @param actionsOnClick ActionListener object defined in {@link LifetimeController}
+	 * 
+	 */
 	public void addClickListenerLifetimeTotals(ActionListener actionsOnClick){
 		btnLifetimeTotals.addActionListener(actionsOnClick);
 	}
 	
+	/**
+	 * Attaches an {@code ActionListner} object to the Best Days menu button, which executes 
+	 * {@code InterfaceView#setBestDaysFields(double, int, int, String, String, String)} upon button click event.
+	 * 
+	 * @param actionsOnClick ActionListener object defined in {@link BestDaysController}
+	 * 
+	 */
 	public void addClickListenerBestDays(ActionListener actionsOnClick){
 		btnBestDays.addActionListener(actionsOnClick);
 	}
 
+	/**
+	 * Attaches an {@code ActionListner} object to the Heart Rate Zones menu button, which executes 
+	 * {@code InterfaceView#setHeartRateZonesFields(int, int, int, int, int, int, int, int)} upon button click event.
+	 * 
+	 * @param actionsOnClick ActionListener object defined in {@link HRZController}
+	 * 
+	 */
 	public void addClickListenerHeartRateZones(ActionListener actionsOnClick) {
 		btnHeartRateZones.addActionListener(actionsOnClick);
 	}
 
+	/**
+	 * Attaches an {@code ActionListner} object to the Daily Dashboard menu button, which executes 
+	 * {@code InterfaceView#setDailyDashFields(String, double, int, int, int, int, int)} upon button click event.
+	 * 
+	 * @param actionsOnClick ActionListener object defined in {@link DailyDashboardController}
+	 * 
+	 */
 	public void addClickListenerDashboard(ActionListener actionsOnClick){
 		btnDailyDashboard.addActionListener(actionsOnClick);
 	}
