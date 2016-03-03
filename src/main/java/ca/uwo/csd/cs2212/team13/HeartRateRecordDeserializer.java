@@ -15,15 +15,15 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 /**
- * <code>HeartRateDeserializer</code> is an interface representing a
- * custom deserializer to parse a JSON file (i.e. with best days and lifetime
- * totals) into Java object {@link ActivitiesRecord}
+ * <code>HeartRateDeserializer</code> is an interface representing a custom
+ * deserializer to parse a JSON file (i.e. with heart rate and heart zone info)
+ * into Java object {@link HeartRateRecord}
  * <p>
- * Custom deserializer is necessary because this JSON file, with activities,
- * contains both best days and lifetime data, so full control of JSON parsing is
- * required.
+ * Custom deserializer is necessary because this JSON file, with heart stuff,
+ * contains both heart rate and heart zone data, so full control of JSON parsing
+ * is required.
  * <p>
- * This interface requires the type <code>ActivitiesRecord</code>, which is the
+ * This interface requires the type <code>HeartRateRecord</code>, which is the
  * type of object to be parsed. The return type of deserialize is thus this very
  * type.
  * <p>
@@ -38,61 +38,69 @@ import com.google.gson.GsonBuilder;
  * <p>
  * Gson will then receive an object from this deserializer.
  */
-public class HeartRateRecordDeserializer implements JsonDeserializer<HeartRateRecord> {
+public class HeartRateRecordDeserializer implements
+		JsonDeserializer<HeartRateRecord> {
 
-    @Override
-    /*
+	/*
 	 * (non-Javadoc)
-	 *
+	 * 
 	 * @see
 	 * com.google.gson.JsonDeserializer#deserialize(com.google.gson.JsonElement,
 	 * java.lang.reflect.Type, com.google.gson.JsonDeserializationContext)
 	 */
-    public HeartRateRecord deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
-            throws JsonParseException {
+	@Override
+	public HeartRateRecord deserialize(final JsonElement json,
+			final Type typeOfT, final JsonDeserializationContext context)
+			throws JsonParseException {
 
-        //get the whole json file as an object
-        final JsonObject jsonObject = json.getAsJsonObject();
-        //get "activities-heart" in the json file as an array
-        final JsonArray jsonHeartData = jsonObject.get("activities-heart").getAsJsonArray();
-        
-        //get the information in first position in the array
-        final JsonElement jsonHeart = jsonHeartData.get(0);
-        
-        //turn the first position in the array into an object
-        final JsonObject jsonHeartOb = jsonHeart.getAsJsonObject();
-        //get the data and time from the object
-        final String dateTime = jsonHeartOb.get("dateTime").getAsString();
-        
-        //turns value into an object
-        final JsonObject jsonValue = jsonHeartOb.getAsJsonObject("value");
-  
-        //get heart rate zones as an array and get the size of the array
-        final JsonArray jsonHeartZones = jsonValue.get("heartRateZones").getAsJsonArray();
-        final HeartZoneRecord[] zonesArray = new HeartZoneRecord[jsonHeartZones.size()];
- 
-        int minuteTotal = 0;
-        
-        //loop through array getting minutes, max, min, and name from each position
-        for (int i = 0; i < zonesArray.length; i++) {
-            final JsonElement jsonZoneElement = jsonHeartZones.get(i);
-            final JsonObject jsonHeartZoneObject = jsonZoneElement.getAsJsonObject();
-            
-            int minutes = jsonHeartZoneObject.get("minutes").getAsInt();
-            int max = jsonHeartZoneObject.get("max").getAsInt();
-            int min = jsonHeartZoneObject.get("min").getAsInt();
-            String name = jsonHeartZoneObject.get("name").getAsString();
- 
-            zonesArray[i] = new HeartZoneRecord(max, min, minutes, name);
-            minuteTotal += minutes;
-        }
+		// get the whole json file as an object
+		final JsonObject jsonObject = json.getAsJsonObject();
+		// get "activities-heart" in the json file as an array
+		final JsonArray jsonHeartData = jsonObject.get("activities-heart")
+				.getAsJsonArray();
 
-        //get resting Heartrate as an int then create a heartrecord object with all the information
-        final int restingHR = jsonValue.get("restingHeartRate").getAsInt();
+		// get the information in first position in the array
+		final JsonElement jsonHeart = jsonHeartData.get(0);
 
-        
-        final HeartRateRecord heartRecord = new HeartRateRecord(dateTime, zonesArray, restingHR, minuteTotal);
-       
-        return heartRecord;
-    }
+		// turn the first position in the array into an object
+		final JsonObject jsonHeartOb = jsonHeart.getAsJsonObject();
+		// get the data and time from the object
+		final String dateTime = jsonHeartOb.get("dateTime").getAsString();
+
+		// turns value into an object
+		final JsonObject jsonValue = jsonHeartOb.getAsJsonObject("value");
+
+		// get heart rate zones as an array and get the size of the array
+		final JsonArray jsonHeartZones = jsonValue.get("heartRateZones")
+				.getAsJsonArray();
+		final HeartZoneRecord[] zonesArray = new HeartZoneRecord[jsonHeartZones
+				.size()];
+
+		int minuteTotal = 0;
+
+		// loop through array getting minutes, max, min, and name from each
+		// position
+		for (int i = 0; i < zonesArray.length; i++) {
+			final JsonElement jsonZoneElement = jsonHeartZones.get(i);
+			final JsonObject jsonHeartZoneObject = jsonZoneElement
+					.getAsJsonObject();
+
+			int minutes = jsonHeartZoneObject.get("minutes").getAsInt();
+			int max = jsonHeartZoneObject.get("max").getAsInt();
+			int min = jsonHeartZoneObject.get("min").getAsInt();
+			String name = jsonHeartZoneObject.get("name").getAsString();
+
+			zonesArray[i] = new HeartZoneRecord(max, min, minutes, name);
+			minuteTotal += minutes;
+		}
+
+		// get resting Heartrate as an int then create a heartrecord object with
+		// all the information
+		final int restingHR = jsonValue.get("restingHeartRate").getAsInt();
+
+		final HeartRateRecord heartRecord = new HeartRateRecord(dateTime,
+				zonesArray, restingHR, minuteTotal);
+
+		return heartRecord;
+	}
 }
