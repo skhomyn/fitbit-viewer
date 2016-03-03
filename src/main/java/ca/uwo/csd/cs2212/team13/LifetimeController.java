@@ -18,7 +18,14 @@ import java.awt.event.ActionListener;
  */
 public class LifetimeController {
 
+	/**
+	 * Life time record for model
+	 */
 	private LifetimeRecord model;
+	
+	/**
+	 * Interface view for view
+	 */
 	private InterfaceView view;
 
 	/**
