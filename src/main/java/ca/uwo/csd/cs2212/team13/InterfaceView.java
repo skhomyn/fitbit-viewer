@@ -29,79 +29,79 @@ public class InterfaceView {
 	private JFrame frame;
 
 	/**
-	 * 
+	 * JButton for best days
 	 */
 	private JButton btnBestDays;
 	/**
-	 * 
+	 * JButton for daily dashboard
 	 */
 	private JButton btnDailyDashboard;
 	/**
-	 * 
+	 * JButton for daily goals
 	 */
 	private JButton btnDailyGoals;
 	/**
-	 * 
+	 * JButton for lifetime totals
 	 */
 	private JButton btnLifetimeTotals;
 	/**
-	 * 
+	 * JButton for accolades
 	 */
 	private JButton btnAccolades;
 	/**
-	 * 
+	 * JButton for time series
 	 */
 	private JButton btnTimeSeries;
 	/**
-	 * 
+	 * JButton for heart rate zones
 	 */
 	private JButton btnHeartRateZones;
 
 	/**
-	 * 
+	 * JPanel for dashboard view
 	 */
 	private JPanel panelDashboardView;
 	/**
-	 * 
+	 * JPanel for dashboard view
 	 */
 	private JPanel panelBestDaysView;
 	/**
-	 * 
+	 * JPanel for accolades view
 	 */
 	private JPanel panelAccoladesView;
 	/**
-	 * 
+	 * JPanel for lifetime totals view
 	 */
 	private JPanel panelLifetimeTotalsView;
 	/**
-	 * 
+	 * JPanel for time series view
 	 */
 	private JPanel panelTimeSeriesView;
 	/**
-	 * 
+	 * JPanel for daily goals view
 	 */
 	private JPanel panelDailyGoalsView;
 	/**
-	 * 
+	 * JPanel for heart rate zones view
 	 */
 	private JPanel panelHeartrateZonesView;
 
 	/**
-	 * 
+	 * label for lifetime totals distance value
 	 */
 	private JLabel lblLifetimeTotalsDistVal;
 	/**
-	 * 
+	 * label for lifetime totals floors value
 	 */
 	private JLabel lblLifetimeTotalsFloorsVal;
 	/**
-	 * 
+	 * label for lifetime totals floors value
 	 */
 	private JLabel lblLifetimeTotalsStepsVal;
 
 	
 	/**
-	 * 
+	 * Jlabel for last updated
 	 */
 	private JLabel lblLastUpdated;
 	/**
