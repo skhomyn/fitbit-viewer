@@ -113,7 +113,8 @@ public class ActivitiesRecord {
 	 * <code>lifetime</code>.
 	 * 
 	 * @param lifetime
-	 *            the new value of the field <code>lifetime</code> for the lifetime record
+	 *            the new value of the field <code>lifetime</code> for the
+	 *            lifetime record
 	 */
 	public void setLifetime(LifetimeRecord lifetime) {
 		this.lifetime = lifetime;
