@@ -69,7 +69,7 @@ public class ActivitiesRecord {
 	}
 
 	/**
-	 * Gets the best field.
+	 * Gets the <code>best</code> field.
 	 * <p>
 	 * This method returns the {@code BestDaysRecord} value for the best days
 	 * record.
@@ -81,9 +81,9 @@ public class ActivitiesRecord {
 	}
 
 	/**
-	 * Sets the best field.
+	 * Sets the <code>best</code> field.
 	 * <p>
-	 * This method sets the {@code BestDaysRecord} value for the field best.
+	 * This method sets the {@code BestDaysRecord} value for the field <code>best</code>.
 	 * 
 	 * @param best
 	 *            the new value of the field best for the best days record
@@ -93,7 +93,7 @@ public class ActivitiesRecord {
 	}
 
 	/**
-	 * Gets the lifetime field.
+	 * Gets the <code>lifetime</code> field.
 	 * <p>
 	 * This method returns the {@code LifetimeRecord} value for the lifetime
 	 * record.
@@ -105,9 +105,9 @@ public class ActivitiesRecord {
 	}
 
 	/**
-	 * Sets the lifetime field.
+	 * Sets the <code>lifetime</code> field.
 	 * <p>
-	 * This method sets the {@code LifetimeRecord} value for the field lifetime.
+	 * This method sets the {@code LifetimeRecord} value for the field <code>lifetime</code>.
 	 * 
 	 * @param lifetime
 	 *            the new value of the field lifetime for the lifetime record
