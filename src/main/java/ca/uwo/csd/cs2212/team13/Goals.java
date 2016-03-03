@@ -33,9 +33,9 @@ public class Goals {
     
     
 	/**
-	 * Gets the <code>active minutes goal</code> field.
+	 * Gets the <code>activeMinutes</code> field.
 	 * <p>
-	 * This method returns the {@code int} value for the distance.
+	 * This method returns the {@code int} value for the goal
 	 * 
 	 * @return the active minutes goal
 	 */
@@ -44,9 +44,9 @@ public class Goals {
     }
 
     /**
-	 * Gets the <code>calories goal</code> field.
+	 * Gets the <code>caloriesout</code> field.
 	 * <p>
-	 * This method returns the {@code double} value for the distance.
+	 * This method returns the {@code double} value for the goal
 	 * 
 	 * @return the calories goal
 	 */
@@ -55,9 +55,9 @@ public class Goals {
     }
 
     /**
-   	 * Gets the <code>distance goal</code> field.
+   	 * Gets the <code>distance</code> field.
    	 * <p>
-   	 * This method returns the {@code double} value for the distance.
+   	 * This method returns the {@code double} value for the goal
    	 * 
    	 * @return the distance goal
    	 */
@@ -66,9 +66,9 @@ public class Goals {
     }
 
     /**
-   	 * Gets the <code>floors goal</code> field.
+   	 * Gets the <code>floors</code> field.
    	 * <p>
-   	 * This method returns the {@code int} value for the distance.
+   	 * This method returns the {@code int} value for the goal
    	 * 
    	 * @return the floors goal
    	 */
@@ -79,7 +79,7 @@ public class Goals {
     /**
    	 * Gets the <code>steps goal</code> field.
    	 * <p>
-   	 * This method returns the {@code int} value for the distance.
+   	 * This method returns the {@code int} value for the goal
    	 * 
    	 * @return the steps goal
    	 */
@@ -88,24 +88,24 @@ public class Goals {
     }
 
     /**
-	 * Sets the {@code active minutes} field.
+	 * Sets the {@code activeMinutes} field.
 	 * <p>
-	 * This method sets the {@code int} value for the field {@code distance}.
+	 * This method sets the {@code int} value for the field {@code activeMinutes}.
 	 * 
 	 * @param active minutes
-	 *            the new value of the field {@code active minutes} for the goal
+	 *            the new value of the field {@code activeMinutes} for the goal
 	 */
     public void setActiveMinutes(int activeMinutes) {
         this.activeMinutes = activeMinutes;
     }
 
     /**
-   	 * Sets the {@code calories out} field.
+   	 * Sets the {@code caloriesOut} field.
    	 * <p>
-   	 * This method sets the {@code double} value for the field {@code distance}.
+   	 * This method sets the {@code double} value for the field {@code caloriesOut}.
    	 * 
    	 * @param calories out
-   	 *            the new value of the field {@code calories} for the goal
+   	 *            the new value of the field {@code caloriesOut} for the goal
    	 */
     public void setCaloriesOut(double caloriesOut) {
         this.caloriesOut = caloriesOut;
@@ -126,7 +126,7 @@ public class Goals {
     /**
    	 * Sets the {@code floors} field.
    	 * <p>
-   	 * This method sets the {@code int} value for the field {@code distance}.
+   	 * This method sets the {@code int} value for the field {@code floors}.
    	 * 
    	 * @param floors
    	 *            the new value of the field {@code floors} for the goal
@@ -138,7 +138,7 @@ public class Goals {
     /**
    	 * Sets the {@code steps} field.
    	 * <p>
-   	 * This method sets the {@code int} value for the field {@code distance}.
+   	 * This method sets the {@code int} value for the field {@code steps}.
    	 * 
    	 * @param steps
    	 *            the new value of the field {@code steps} for the goal
