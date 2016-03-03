@@ -99,113 +99,113 @@ public class InterfaceView {
 	 */
 	private JLabel lblLifetimeTotalsStepsVal;
 
-	
 	/**
 	 * Jlabel for last updated
 	 */
 	private JLabel lblLastUpdated;
 	/**
-	 * 
+	 * label for daily distance values
 	 */
 	private JLabel lblDailyDistVal;
 	/**
-	 * 
+	 * label for daily calories out
 	 */
 	private JLabel lblDailyCaloriesVal;
 	/**
-	 * 
+	 * label for daily dashboard steps
 	 */
 	private JLabel lblDailyStepsVal;
 	/**
-	 * 
+	 * label for daily dashboard floors
 	 */
 	private JLabel lblDailyFloorsVal;
 	/**
-	 * 
+	 * Label for daily dashboard sedentary minutes
 	 */
 	private JLabel lblDailySedenteryMinVal;
 	/**
-	 * 
+	 * Label for daily dashboard lightly active minutes
 	 */
 	private JLabel lblDailyLightlyActMinVal;
 	/**
-	 * 
+	 * Label for daily dashboard fairly active minutes
 	 */
 	private JLabel lblDailyFairlyActMinVal;
 	/**
-	 * 
+	 * Label for daily dashboard very active minutes
 	 */
 	private JLabel lblDailyVeryActMinVal;
 	/**
-	 * 
+	 * label for daily goals value
 	 */
 	private JLabel lblDailyGoalsVal;
 
 	/**
-	 * 
+	 * label for best days distance
 	 */
 	private JLabel lblBestDaysDistVal;
 	/**
-	 * 
+	 * label for best day: floors
 	 */
 	private JLabel lblBestDaysFloorsVal;
 	/**
-	 * 
+	 * label for best day: steps
 	 */
 	private JLabel lblBestDaysStepsVal;
 	/**
-	 * 
+	 * label for best days: distance date
 	 */
 	private JLabel lblBestDaysDistDate;
 	/**
-	 * 
+	 * label for best days: floors date
 	 */
 	private JLabel lblBestDaysFloorsDate;
 	/**
-	 * 
+	 * label for best days: steps date
 	 */
 	private JLabel lblBestDaysStepsDate;
 
 	/**
-	 * 
+	 * label for min value[?] not used
 	 */
 	private JLabel lblHeartRateMinVal;
 	/**
-	 * 
+	 * Label for resting rate[?] not used
 	 */
 	private JLabel lblRestRateVal;
 	/**
-	 * 
+	 * Label for zone aka cardio
 	 */
 	private JLabel lblZoneOneVal;
 	/**
-	 * 
+	 * Label for zone two aka fat burn
 	 */
 	private JLabel lblZoneTwoVal;
 	/**
-	 * 
+	 * Label for zone three aka peak
 	 */
 	private JLabel lblZoneThreeVal;
 
 	/**
-	 * 
+	 * Label for heart total minutes
 	 */
 	private JLabel lblHeartMins;
 	/**
-	 * 
+	 * Label for heart resting rate
 	 */
 	private JLabel lblHeartRest;
 
 	/**
-	 * 
+	 * Label for max min cardio zone
 	 */
 	private JLabel lblHeartCardioMaxMin;
 	/**
-	 * 
+	 * Label for max min fat burn zone
 	 */
 	private JLabel lblHeartFatBurnMaxMin;
+
 	/**
-	 * 
+	 * Label for max min peak zone
 	 */
 	private JLabel lblHeartPeakMaxMin;
 
@@ -225,15 +225,14 @@ public class InterfaceView {
 	}
 
 	/**
-	 * This method implements the GUI of the fibit program. The frame is
-	 * the foundation, making up the whole window that holds the ContentPane.
-	 * The ContentPane holds the CardLayout and the MenuBar toolbar. The
-	 * Cardlayout contains multiple different panels which make up different
-	 * screens of the program. The Cardlayout allows page navigation between
-	 * these panels, by setting the visibility of every screen. The MenuBar is a
-	 * tooldbar menu holding the buttons used for page navigation. This method
-	 * sets up the prame and panels, then calls other methods for each screen
-	 * and the menu.
+	 * This method implements the GUI of the fibit program. The frame is the
+	 * foundation, making up the whole window that holds the ContentPane. The
+	 * ContentPane holds the CardLayout and the MenuBar toolbar. The Cardlayout
+	 * contains multiple different panels which make up different screens of the
+	 * program. The Cardlayout allows page navigation between these panels, by
+	 * setting the visibility of every screen. The MenuBar is a tooldbar menu
+	 * holding the buttons used for page navigation. This method sets up the
+	 * prame and panels, then calls other methods for each screen and the menu.
 	 */
 	private void initialize() {
 		frame = new JFrame();
