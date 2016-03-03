@@ -56,6 +56,7 @@ public class HRZController {
 	 * heart rate, and the zones)
 	 */
 	private HeartRateRecord model;
+
 	/**
 	 * View as that is the view for entire page.
 	 */
