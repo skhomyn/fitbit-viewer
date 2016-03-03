@@ -21,7 +21,7 @@ To clone team 13’s repository, type:
 "git clone ssh://git@repo.gaul.csd.uwo.ca:7999/cs2212_w2016/team13.git"
 
 Now you have successfully cloned the repository. You have access to team 13’s files. 
-Now, to make it run as a .jar file, fortunately a pom file has been made, type:
+Now, to make it run as a .jar file, fortunately a pom.xml file has been made, type:
 
 "cd team13"
 "mvn compile"
