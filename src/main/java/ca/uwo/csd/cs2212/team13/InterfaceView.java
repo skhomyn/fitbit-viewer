@@ -346,16 +346,16 @@ public class InterfaceView {
 		lblDailyDashboard.setBounds(0, 0, 472, 30);
 		panelDashboardView.add(lblDailyDashboard);
 
-		JLabel lblCalories = new JLabel("Calories");
-		lblCalories.setBounds(132, 65, 73, 16);
+		JLabel lblCalories = new JLabel("Calories Burned");
+		lblCalories.setBounds(122, 65, 103, 16);
 		panelDashboardView.add(lblCalories);
 
 		JLabel lblSteps = new JLabel("Steps");
 		lblSteps.setBounds(132, 102, 73, 16);
 		panelDashboardView.add(lblSteps);
 
-		JLabel lblDistance = new JLabel("Distance");
-		lblDistance.setBounds(132, 139, 73, 16);
+		JLabel lblDistance = new JLabel("Total Distance");
+		lblDistance.setBounds(122, 139, 103, 16);
 		panelDashboardView.add(lblDistance);
 
 		JLabel lblActiveMinutes = new JLabel("Very Active Minutes");
@@ -366,13 +366,14 @@ public class InterfaceView {
 		lblSe.setBounds(241, 102, 125, 16);
 		panelDashboardView.add(lblSe);
 
-		JLabel lblFloors = new JLabel("Floors");
-		lblFloors.setBounds(132, 176, 73, 16);
+		JLabel lblFloors = new JLabel("Floors Climbed");
+		lblFloors.setBounds(112, 176, 103, 16);
 		panelDashboardView.add(lblFloors);
 
-		JLabel lblDailyProgress = new JLabel("Daily Goals");
-		lblDailyProgress.setBounds(241, 171, 125, 16);
-		panelDashboardView.add(lblDailyProgress);
+		//Commented out until implementation
+		//JLabel lblDailyProgress = new JLabel("Daily Goals");
+		//lblDailyProgress.setBounds(241, 171, 125, 16);
+		//panelDashboardView.add(lblDailyProgress);
 
 		lblLastUpdated = new JLabel(); // "Last Updated: Date"
 		lblLastUpdated.setHorizontalAlignment(SwingConstants.TRAILING);
