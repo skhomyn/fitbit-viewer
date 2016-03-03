@@ -22,7 +22,7 @@ public class LifetimeController {
 	 * Life time record for model
 	 */
 	private LifetimeRecord model;
-	
+
 	/**
 	 * Interface view for view
 	 */

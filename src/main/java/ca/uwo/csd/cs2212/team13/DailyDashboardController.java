@@ -22,7 +22,7 @@ public class DailyDashboardController {
 	 * Daily record for model
 	 */
 	private DailyRecord model;
-	
+
 	/**
 	 * Interface view for view
 	 */
