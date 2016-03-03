@@ -41,6 +41,10 @@ public class HeartZoneRecord {
 	}
 
 	/**
+	 * Gets the <code>minutes</code> field.
+	 * <p>
+	 * This method returns the {@code int} value for the distance.
+	 * 
 	 * @return the minutes
 	 */
 	public int getMinutes() {
@@ -48,13 +52,22 @@ public class HeartZoneRecord {
 	}
 
 	/**
-	 * @param minutes the minutes to set
+	 * Sets the {@code minutes} field.
+	 * <p>
+	 * This method sets the {@code int} value for the field {@code minutes}.
+	 * 
+	 * @param minutes
+	 *            the new value of the field {@code minutes} for the heart zone
 	 */
 	public void setMinutes(int minutes) {
 		this.minutes = minutes;
 	}
 
 	/**
+	 * Gets the <code>name</code> field.
+	 * <p>
+	 * This method returns the {@code String} value for the name.
+	 * 
 	 * @return the name
 	 */
 	public String getName() {
@@ -62,13 +75,22 @@ public class HeartZoneRecord {
 	}
 
 	/**
-	 * @param name the name to set
+	 * Sets the {@code name} field.
+	 * <p>
+	 * This method sets the {@code int} value for the field {@code minutes}.
+	 * 
+	 * @param name
+	 *            the new value of the field {@code name} for the heart zone
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
+	 * Gets the <code>max</code> field.
+	 * <p>
+	 * This method returns the {@code int} value for the name.
+	 * 
 	 * @return the max
 	 */
 	public int getMax() {
@@ -76,13 +98,22 @@ public class HeartZoneRecord {
 	}
 
 	/**
-	 * @param max the max to set
+	 * Sets the {@code max} field.
+	 * <p>
+	 * This method sets the {@code int} value for the field {@code minutes}.
+	 * 
+	 * @param max
+	 *            the new value of the field {@code max} for the heart zone
 	 */
 	public void setMax(int max) {
 		this.max = max;
 	}
 
 	/**
+	 * Gets the <code>min</code> field.
+	 * <p>
+	 * This method returns the {@code int} value for the name.
+	 * 
 	 * @return the min
 	 */
 	public int getMin() {
@@ -90,7 +121,12 @@ public class HeartZoneRecord {
 	}
 
 	/**
-	 * @param min the min to set
+	 * Sets the {@code min} field.
+	 * <p>
+	 * This method sets the {@code int} value for the field {@code minutes}.
+	 * 
+	 * @param min
+	 *            the new value of the field {@code min} for the heart zone
 	 */
 	public void setMin(int min) {
 		this.min = min;
