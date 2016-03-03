@@ -29,8 +29,6 @@ public class Goals {
    	 * The steps goal
    	 */
     private int steps;
-
-    
     
 	/**
 	 * Gets the <code>activeMinutes</code> field.
