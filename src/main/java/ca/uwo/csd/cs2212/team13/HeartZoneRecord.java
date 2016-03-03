@@ -132,13 +132,4 @@ public class HeartZoneRecord {
 		this.min = min;
 	}
 
-	@Override
-	/**
-	 * toString method 
-	 * returns value for
-	 * each property
-	 */
-	public String toString() {
-		return String.format("[%d] [%d] [%d] [%d] ", minutes, max, min, name);
-	}
 }
