@@ -20,9 +20,9 @@ import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 
 /**
- * Class method
- * The InterfaceView class creates the GUI of the Fitbit program
- * It also implements page navigation between the different screens
+ * Class method:
+ * The InterfaceView class creates the GUI of the Fitbit program.
+ * It also implements page navigation between the different screens.
  */
 public class InterfaceView {
 
@@ -496,6 +496,9 @@ public class InterfaceView {
 		panelTimeSeriesView.add(lblGraph);		
 	}
 
+	/**
+	 * This method implements the Daily Goals screen.
+	 */
 	private void dailygoalsView() {
 		JLabel lblDailyGoals = new JLabel("Daily Goals");
 		lblDailyGoals.setForeground(Color.BLACK);
@@ -611,7 +614,9 @@ public class InterfaceView {
 	 * This method controls page navigation, depending on button actions.
 	 */
 	private void actionEvents() {
-		// Switch window to Best Days screen:
+		/**
+		 * Switch window to Best Days screen:
+		 */
 		btnBestDays.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -624,7 +629,9 @@ public class InterfaceView {
 			}
 		});
 
-		// Switch window to Daily Dashboard screen:
+		/**
+		 * Switch window to Daily Dashboard screen:
+		 */
 		btnDailyDashboard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(true);
@@ -637,7 +644,9 @@ public class InterfaceView {
 			}
 		});
 
-		// Switch window to Lifetime Totals screen:
+		/**
+		 *  Switch window to Lifetime Totals screen:
+		 */
 		btnLifetimeTotals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -650,6 +659,9 @@ public class InterfaceView {
 			}
 		});
 
+		/**
+		 * Switch window to Daily Goals screen:
+		 */
 		btnDailyGoals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -662,7 +674,9 @@ public class InterfaceView {
 			}
 		});
 
-		// Switch window to Accolades screen:
+		/**
+		 *  Switch window to Accolades screen:
+		 */
 		btnAccolades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -675,7 +689,9 @@ public class InterfaceView {
 			}
 		});
 
-		// Switch window to Timeseries screen:
+		/**
+		 *  Switch window to Timeseries screen:
+		 */
 		btnTimeSeries.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -688,7 +704,9 @@ public class InterfaceView {
 			}
 		});
 		
-		// Switch window to Heart Rate Zones screen:
+		/**
+		 *  Switch window to Heart Rate Zones screen:
+		 */
 		btnHeartRateZones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
