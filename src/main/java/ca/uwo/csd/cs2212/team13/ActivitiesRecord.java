@@ -83,10 +83,12 @@ public class ActivitiesRecord {
 	/**
 	 * Sets the <code>best</code> field.
 	 * <p>
-	 * This method sets the {@code BestDaysRecord} value for the field <code>best</code>.
+	 * This method sets the {@code BestDaysRecord} value for the field
+	 * <code>best</code>.
 	 * 
 	 * @param best
-	 *            the new value of the field best for the best days record
+	 *            the new value of the field <code>best</code> for the best days
+	 *            record
 	 */
 	public void setBest(BestDaysRecord best) {
 		this.best = best;
@@ -107,10 +109,11 @@ public class ActivitiesRecord {
 	/**
 	 * Sets the <code>lifetime</code> field.
 	 * <p>
-	 * This method sets the {@code LifetimeRecord} value for the field <code>lifetime</code>.
+	 * This method sets the {@code LifetimeRecord} value for the field
+	 * <code>lifetime</code>.
 	 * 
 	 * @param lifetime
-	 *            the new value of the field lifetime for the lifetime record
+	 *            the new value of the field <code>lifetime</code> for the lifetime record
 	 */
 	public void setLifetime(LifetimeRecord lifetime) {
 		this.lifetime = lifetime;
