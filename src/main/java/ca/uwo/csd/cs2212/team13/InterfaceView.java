@@ -20,9 +20,9 @@ import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 
 /**
- * Class method
- * The InterfaceView class creates the GUI of the Fitbit program
- * It also implements page navigation between the different screens
+ * Class method:
+ * The InterfaceView class creates the GUI of the Fitbit program.
+ * It also implements page navigation between the different screens.
  */
 public class InterfaceView {
 
