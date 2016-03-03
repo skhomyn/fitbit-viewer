@@ -115,7 +115,12 @@ public class HRZController {
 					.getRestingHR(), model.getCardioZone().getMax(), model
 					.getFatBurnZone().getMax(), model.getPeakZone().getMax(),
 					model.getCardioZone().getMin(), model.getFatBurnZone()
-							.getMin(), model.getPeakZone().getMin());
+							.getMin(), model.getPeakZone().getMin(), model
+							.getCardioZone().getMinutes(), model
+							.getFatBurnZone().getMinutes(), model.getPeakZone()
+							.getMinutes(), model.getOutRangeZone().getMax(),
+					model.getOutRangeZone().getMin(), model.getOutRangeZone()
+							.getMinutes());
 		}
 
 		// TODO: error handling
