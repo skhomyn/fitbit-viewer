@@ -47,7 +47,7 @@ import com.google.gson.GsonBuilder;
  * deserializer to parse a JSON file (i.e. with daily dashboard stuff and daily
  * goals) into Java object {@link DailyRecord}
  * <p>
- * Custom deserializer is necessary because this JSON file, with daiy stuff,
+ * Custom deserializer is necessary because this JSON file, with daily stuff,
  * contains both daily dashboard and goals data, so full control of JSON parsing
  * is required.
  * <p>
