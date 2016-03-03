@@ -25,7 +25,7 @@ import java.awt.Dimension;
  */
 public class InterfaceView {
 
-	/** Variables/Attributes */
+	/** JFrame for frame obv */
 	private JFrame frame;
 
 	/**
