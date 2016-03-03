@@ -181,7 +181,8 @@ public class DailyRecord {
 	 * This method sets the {@code String} value for the field <code>date</code>.
 	 * 
 	 * @param date
-	 *            the new value of the field <code>date</code> for the daily record.
+	 *            the new value of the field <code>date</code> for the daily
+	 *            record.
 	 */
 	public void setDate(String date) {
 		this.date = date;
@@ -226,10 +227,12 @@ public class DailyRecord {
 	/**
 	 * Sets the {@code lightlyActiveMinutes} field.
 	 * <p>
-	 * This method sets the {@code int} value for the field {@code lightlyActiveMinutes}.
+	 * This method sets the {@code int} value for the field
+	 * {@code lightlyActiveMinutes}.
 	 * 
 	 * @param LightlyActiveMinutes
-	 *            the new value of the field {@code lightlyActiveMinutes} for the daily record
+	 *            the new value of the field {@code lightlyActiveMinutes} for
+	 *            the daily record
 	 */
 	public void setLightlyActiveMinutes(int LightlyActiveMinutes) {
 		this.lightlyActiveMinutes = LightlyActiveMinutes;
@@ -238,10 +241,12 @@ public class DailyRecord {
 	/**
 	 * Sets the {@code fairlyActiveMinutes} field.
 	 * <p>
-	 * This method sets the {@code int} value for the field {@code fairlyActiveMinutes}.
+	 * This method sets the {@code int} value for the field
+	 * {@code fairlyActiveMinutes}.
 	 * 
 	 * @param FairlyActiveMinutes
-	 *            the new value of the field {@code lightlyActiveMinutes} for the daily record
+	 *            the new value of the field {@code lightlyActiveMinutes} for
+	 *            the daily record
 	 */
 	public void setFairlyActiveMinutes(int FairlyActiveMinutes) {
 		this.fairlyActiveMinutes = FairlyActiveMinutes;
@@ -250,10 +255,12 @@ public class DailyRecord {
 	/**
 	 * Sets the {@code sedentaryMinutes} field.
 	 * <p>
-	 * This method sets the {@code int} value for the field {@code sedentaryMinutes}.
+	 * This method sets the {@code int} value for the field
+	 * {@code sedentaryMinutes}.
 	 * 
 	 * @param SedentaryMinutes
-	 *            the new value of the field {@code sedentaryMinutes} for the daily record
+	 *            the new value of the field {@code sedentaryMinutes} for the
+	 *            daily record
 	 */
 	public void setSedentaryMinutes(int SedentaryMinutes) {
 		this.sedentaryMinutes = SedentaryMinutes;
@@ -262,10 +269,12 @@ public class DailyRecord {
 	/**
 	 * Sets the {@code veryActiveMinutes} field.
 	 * <p>
-	 * This method sets the {@code int} value for the field {@code veryActiveMinutes}.
+	 * This method sets the {@code int} value for the field
+	 * {@code veryActiveMinutes}.
 	 * 
 	 * @param VeryActiveMinutes
-	 *            the new value of the field {@code veryActiveMinutes} for the daily record
+	 *            the new value of the field {@code veryActiveMinutes} for the
+	 *            daily record
 	 */
 	public void setVeryActiveMinutes(int VeryActiveMinutes) {
 		this.veryActiveMinutes = VeryActiveMinutes;
@@ -277,7 +286,8 @@ public class DailyRecord {
 	 * This method sets the {@code int} value for the field {@code calories}.
 	 * 
 	 * @param calories
-	 *            the new value of the field {@code calories} for the daily record
+	 *            the new value of the field {@code calories} for the daily
+	 *            record
 	 */
 	public void setCalories(int calories) {
 		this.calories = calories;
@@ -289,7 +299,8 @@ public class DailyRecord {
 	 * This method sets the {@code double} value for the field {@code distance}.
 	 * 
 	 * @param distance
-	 *            the new value of the field {@code distance} for the daily record
+	 *            the new value of the field {@code distance} for the daily
+	 *            record
 	 */
 	public void setDistance(double distance) {
 		this.distance = distance;
