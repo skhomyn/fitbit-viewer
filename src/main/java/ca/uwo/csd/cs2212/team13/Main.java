@@ -91,9 +91,14 @@ public class Main {
 	    
 		gsonBuilder.registerTypeAdapter(DailyRecord.class,
 				new DailyRecordDeserializer());
+		
+
+		gsonBuilder.registerTypeAdapter(DailyRecord.class,
+				new DailyRecordSerializer());
+		
 		gsonBuilder.registerTypeAdapter(HeartRateRecord.class,
 				new HeartRateRecordDeserializer());
-		//gsonBuilder.setPrettyPrinting();
+		gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
 
 		// Create InterfaceView and set as visible
@@ -123,6 +128,10 @@ public class Main {
 			DailyDashboardController ddController = new DailyDashboardController(
 					ddModel, view);
 			ddController.DailyDashboardInitialize();
+			
+		    // Format to JSON
+		    final String json = gson.toJson(ddModel);
+		    System.out.println(json);
 		}
 
 		// Read the JSON data for best days and lifetime totals
