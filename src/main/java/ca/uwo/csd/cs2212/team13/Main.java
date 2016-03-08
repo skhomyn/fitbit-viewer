@@ -86,10 +86,21 @@ public class Main {
 		final GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapter(ActivitiesRecord.class,
 				new ActivitiesRecordDeserializer());
+		
+	    gsonBuilder.registerTypeAdapter(ActivitiesRecord.class, new ActivitiesRecordSerializer());
+	    
 		gsonBuilder.registerTypeAdapter(DailyRecord.class,
 				new DailyRecordDeserializer());
+		
+		gsonBuilder.registerTypeAdapter(DailyRecord.class,
+				new DailyRecordSerializer());
+		
+		gsonBuilder.registerTypeAdapter(HeartRateRecord.class,
+				new HeartRateRecordSerializer());
+		
 		gsonBuilder.registerTypeAdapter(HeartRateRecord.class,
 				new HeartRateRecordDeserializer());
+		
 		gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
 
@@ -107,6 +118,10 @@ public class Main {
 
 			// Create controllers
 			HRZController hrController = new HRZController(hrRecord, view);
+			
+		    // Format to JSON
+		    final String json = gson.toJson(hrRecord);
+		    System.out.println(json);
 		}
 
 		// Read the JSON data for daily dashboard
@@ -120,6 +135,10 @@ public class Main {
 			DailyDashboardController ddController = new DailyDashboardController(
 					ddModel, view);
 			ddController.DailyDashboardInitialize();
+			
+		    // Format to JSON
+		  //  final String json = gson.toJson(ddModel);
+		  //  System.out.println(json);
 		}
 
 		// Read the JSON data for best days and lifetime totals
@@ -138,6 +157,10 @@ public class Main {
 			LifetimeRecord ltModel = actRecord.getLifetime();
 			LifetimeController ltController = new LifetimeController(ltModel,
 					view);
+			
+		    // Format to JSON
+		    //final String json = gson.toJson(actRecord);
+		    //System.out.println(json);
 		}
 	}
 }
