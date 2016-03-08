@@ -92,12 +92,15 @@ public class Main {
 		gsonBuilder.registerTypeAdapter(DailyRecord.class,
 				new DailyRecordDeserializer());
 		
-
 		gsonBuilder.registerTypeAdapter(DailyRecord.class,
 				new DailyRecordSerializer());
 		
 		gsonBuilder.registerTypeAdapter(HeartRateRecord.class,
+				new HeartRateRecordSerializer());
+		
+		gsonBuilder.registerTypeAdapter(HeartRateRecord.class,
 				new HeartRateRecordDeserializer());
+		
 		gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
 
@@ -115,6 +118,10 @@ public class Main {
 
 			// Create controllers
 			HRZController hrController = new HRZController(hrRecord, view);
+			
+		    // Format to JSON
+		    final String json = gson.toJson(hrRecord);
+		    System.out.println(json);
 		}
 
 		// Read the JSON data for daily dashboard
@@ -130,8 +137,8 @@ public class Main {
 			ddController.DailyDashboardInitialize();
 			
 		    // Format to JSON
-		    final String json = gson.toJson(ddModel);
-		    System.out.println(json);
+		  //  final String json = gson.toJson(ddModel);
+		  //  System.out.println(json);
 		}
 
 		// Read the JSON data for best days and lifetime totals
