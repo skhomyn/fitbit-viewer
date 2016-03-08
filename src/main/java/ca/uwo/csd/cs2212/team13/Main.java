@@ -86,11 +86,14 @@ public class Main {
 		final GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapter(ActivitiesRecord.class,
 				new ActivitiesRecordDeserializer());
+		
+	    gsonBuilder.registerTypeAdapter(ActivitiesRecord.class, new ActivitiesRecordSerializer());
+	    
 		gsonBuilder.registerTypeAdapter(DailyRecord.class,
 				new DailyRecordDeserializer());
 		gsonBuilder.registerTypeAdapter(HeartRateRecord.class,
 				new HeartRateRecordDeserializer());
-		gsonBuilder.setPrettyPrinting();
+		//gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
 
 		// Create InterfaceView and set as visible
@@ -138,6 +141,10 @@ public class Main {
 			LifetimeRecord ltModel = actRecord.getLifetime();
 			LifetimeController ltController = new LifetimeController(ltModel,
 					view);
+			
+		    // Format to JSON
+		    //final String json = gson.toJson(actRecord);
+		    //System.out.println(json);
 		}
 	}
 }

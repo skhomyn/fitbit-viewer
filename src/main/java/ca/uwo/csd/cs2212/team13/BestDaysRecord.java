@@ -36,6 +36,15 @@ public class BestDaysRecord {
 	 */
 	private int steps_value;
 
+	public BestDaysRecord() {
+		this.dis_date = null;
+		this.dis_value = -1;
+		this.floors_date = null;
+		this.floors_value = -1;
+		this.steps_date = null;
+		this.steps_value = -1;
+	}
+	
 	/**
 	 * Constructor initializes the data fields for this object from the JSON
 	 * file. Constructor is called from {@link ActivitiesRecordDeserializer}

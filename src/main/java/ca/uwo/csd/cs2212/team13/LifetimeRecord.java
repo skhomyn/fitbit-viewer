@@ -62,6 +62,14 @@ public class LifetimeRecord {
 	 */
 	private int steps;
 
+	LifetimeRecord() {
+		this.activityScore = -1;
+		this.caloriesOut = -1;
+		this.distance = -1;
+		this.floors = -1;
+		this.steps = -1;
+	}
+	
 	/**
 	 * Constructor, previously validated
 	 * 
