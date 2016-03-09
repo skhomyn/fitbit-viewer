@@ -53,13 +53,16 @@ public class AppRefreshTokens
             // File with service credentials.
              
             FileReader fileReader =
-                    new FileReader("/Users/BethLocke/Dropbox/CS2212B_2016/Workspace/FitbitTest/src/main/resources/BethCredentials.txt");       
+                   // new FileReader("/Users/BethLocke/Dropbox/CS2212B_2016/Workspace/FitbitTest/src/main/resources/BethCredentials.txt");  
+            		 new FileReader("src/main/resources/team13_credentials.txt");  
             bufferedReader = new BufferedReader(fileReader);
             clientID= bufferedReader.readLine();
             apiKey= bufferedReader.readLine();
             apiSecret = bufferedReader.readLine();
             bufferedReader.close();
-            fileReader = new FileReader("/Users/BethLocke/Dropbox/CS2212B_2016/Workspace/FitbitTest/src/main/resources/BethTokens.txt");
+            
+            //fileReader = new FileReader("/Users/BethLocke/Dropbox/CS2212B_2016/Workspace/FitbitTest/src/main/resources/BethTokens.txt");
+            fileReader = new FileReader("src/main/resources/team13_tokens.txt");
             bufferedReader = new BufferedReader(fileReader);
                      
             accessTokenItself = bufferedReader.readLine();
@@ -90,6 +93,7 @@ public class AppRefreshTokens
                         "Error closing file\n"+e.getMessage()); 
             }
         }
+        
         //  Create the Fitbit service - you will ask this to ask for access/refresh pairs
         //     and to add authorization information to the requests to the API
         FitbitOAuth20ServiceImpl service = (FitbitOAuth20ServiceImpl) new ServiceBuilder()
@@ -131,7 +135,6 @@ public class AppRefreshTokens
         System.out.println(request.toString());
         System.out.println(request.getHeaders());
         System.out.println(request.getBodyContents());
-         
          
         //  This actually sends the request:
         Response response = request.send();
@@ -190,7 +193,8 @@ public class AppRefreshTokens
         try {
             FileWriter fileWriter; 
             fileWriter =
-                    new FileWriter("/Users/BethLocke/Dropbox/CS2212B_2016/Workspace/FitbitTest/src/main/resources/BethTokens.txt");
+                    //new FileWriter("/Users/BethLocke/Dropbox/CS2212B_2016/Workspace/FitbitTest/src/main/resources/BethTokens.txt");
+            		new FileWriter("src/main/resources/team13_tokens.txt");
             bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(accessToken.getToken());
             bufferedWriter.newLine();
@@ -222,5 +226,7 @@ public class AppRefreshTokens
                         "Error closing file\n"+e.getMessage()); 
             }
         }//end try
+        
+        
     }//end main
 }//end class
