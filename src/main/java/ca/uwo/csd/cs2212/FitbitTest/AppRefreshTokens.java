@@ -65,7 +65,7 @@ public class AppRefreshTokens {
 			// fileReader = new
 			// FileReader("/Users/BethLocke/Dropbox/CS2212B_2016/Workspace/FitbitTest/src/main/resources/BethTokens.txt");
 			fileReader = new FileReader(
-					"src/main/resources/Team13TokensTest.txt");
+					"src/main/resources/Team13Tokens.txt");
 			bufferedReader = new BufferedReader(fileReader);
 
 			accessTokenItself = bufferedReader.readLine();
