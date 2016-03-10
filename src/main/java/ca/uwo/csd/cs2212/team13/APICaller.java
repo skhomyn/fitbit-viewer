@@ -113,7 +113,7 @@ public class APICaller {
 		} //end constructor
 		
 		
-		public void request(String requestUrlSuffix){
+		public void request(String requestUrlSuffix, String filename){
 			// The access token contains everything you will need to authenticate your requests
 			// It can expire - at which point you will use the refresh token to refresh it
 			// See: https://dev.fitbit.com/docs/oauth2/#refreshing-tokens
@@ -233,6 +233,28 @@ public class APICaller {
 				}
 			}// end try
 
+			bufferedWriter = null;
+
+			try {
+				FileWriter fileWriter;
+				fileWriter =
+				new FileWriter(filename);
+				bufferedWriter = new BufferedWriter(fileWriter);
+				bufferedWriter.write(response.getBody());
+				bufferedWriter.close();
+			} catch (FileNotFoundException ex) {
+				System.out.println("Unable to open file\n" + ex.getMessage());
+			} catch (IOException ex) {
+				System.out.println("Error reading/write file\n" + ex.getMessage());
+			} finally {
+				try {
+					if (bufferedWriter != null)
+						bufferedWriter.close();
+				} catch (Exception e) {
+					System.out.println("Error closing file\n" + e.getMessage());
+				}
+			}// end try
+			
 		}// end request method
 
 }

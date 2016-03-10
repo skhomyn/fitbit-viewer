@@ -74,7 +74,7 @@ public class App {
 		logger.info("My username is team13");
 
 		APICaller test = new APICaller("activity%20heartrate", "src/main/resources/Team13Tokens.txt", "src/main/resources/Team13Credentials.txt");
-		test.request("activities/heart/date/today/1d.json");
+		test.request("activities/heart/date/today/1d.json", "src/main/resources/cur_heart_data.json");
 		
 		Main run = new Main();
 
