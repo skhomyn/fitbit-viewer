@@ -73,6 +73,9 @@ public class App {
 		logger.warn("Hello Maven/log4j World");
 		logger.info("My username is team13");
 
+		APICaller test = new APICaller("activity%20heartrate", "src/main/resources/Team13Tokens.txt", "src/main/resources/Team13Credentials.txt");
+		test.request("activities/heart/date/today/1d.json");
+		
 		Main run = new Main();
 
 		// If no arguments, then actual run. But we don't have that working yet
