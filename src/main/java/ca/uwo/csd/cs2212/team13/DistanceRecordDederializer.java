@@ -18,8 +18,7 @@ public class DistanceRecordDederializer implements JsonDeserializer<DistanceReco
 
         final JsonObject jsonObject = json.getAsJsonObject();
 
-        final JsonArray jsondistanceData = jsonObject.get("activities-distance")
-                .getAsJsonArray();
+        final JsonArray jsondistanceData = jsonObject.get("activities-distance").getAsJsonArray();
 
         final JsonElement jsonDistance = jsondistanceData.get(0);
 
@@ -28,6 +27,17 @@ public class DistanceRecordDederializer implements JsonDeserializer<DistanceReco
         final String dateTimeMain = jsonDistanceOb.get("dateTime").getAsString();
         final String valueMain = jsonDistanceOb.get("value").getAsString();
 
+        final JsonArray jsondistanceDataIntraday = jsonObject.get("activities-distance-intraday").getAsJsonArray();
+
+        final DistanceRecord[] distanceArray = new DistanceRecord[jsondistanceDataIntraday.size()];
+
+        for (int i = 0; i < distanceArray.length; i++) {
+            final JsonElement jsonZoneElement = jsondistanceDataIntraday.get(i);
+            final JsonObject jsonDistanceObject = jsonZoneElement.getAsJsonObject();
+
+            distanceArray[i] = new DistanceRecord();
+
+        }
 
         return null;
     }
