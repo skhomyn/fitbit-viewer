@@ -86,13 +86,13 @@ public class HeartRateRecordDeserializer implements
 			final JsonObject jsonHeartZoneObject = jsonZoneElement
 					.getAsJsonObject();
 
-			int minutes = jsonHeartZoneObject.get("minutes").getAsInt();
-			int max = jsonHeartZoneObject.get("max").getAsInt();
-			int min = jsonHeartZoneObject.get("min").getAsInt();
-			String name = jsonHeartZoneObject.get("name").getAsString();
+			//int minutes = jsonHeartZoneObject.get("minutes").getAsInt();
+			//int max = jsonHeartZoneObject.get("max").getAsInt();
+			//int min = jsonHeartZoneObject.get("min").getAsInt();
+			//String name = jsonHeartZoneObject.get("name").getAsString();
 
-			zonesArray[i] = new HeartZoneRecord(max, min, minutes, name);
-			minuteTotal += minutes;
+			zonesArray[i] = new HeartZoneRecord(); //(max, min, minutes, name);
+			minuteTotal += zonesArray[i].getMinutes();
 		}
 
 		// get resting Heartrate as an int then create a heartrecord object with

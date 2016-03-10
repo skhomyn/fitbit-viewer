@@ -21,6 +21,13 @@ public class HeartZoneRecord {
 	private int min;
 	private int minutes;
 
+	HeartZoneRecord() {
+		this.minutes = 0;
+		this.name = null;
+		this.max = 0;
+		this.min = 0;
+	}
+	
 	/**
 	 * Constructor, previously validated
 	 * 

@@ -47,6 +47,91 @@ import com.google.gson.GsonBuilder;
  */
 public class Main {
 
+	
+	public void run() throws IOException {
+
+		// Configure GSON
+		final GsonBuilder gsonBuilder = new GsonBuilder();
+		gsonBuilder.registerTypeAdapter(ActivitiesRecord.class,
+				new ActivitiesRecordDeserializer());
+		
+	    gsonBuilder.registerTypeAdapter(ActivitiesRecord.class, new ActivitiesRecordSerializer());
+	    
+		gsonBuilder.registerTypeAdapter(DailyRecord.class,
+				new DailyRecordDeserializer());
+		
+		gsonBuilder.registerTypeAdapter(DailyRecord.class,
+				new DailyRecordSerializer());
+		
+		gsonBuilder.registerTypeAdapter(HeartRateRecord.class,
+				new HeartRateRecordSerializer());
+		
+		gsonBuilder.registerTypeAdapter(HeartRateRecord.class,
+				new HeartRateRecordDeserializer());
+		
+		gsonBuilder.setPrettyPrinting();
+		final Gson gson = gsonBuilder.create();
+
+		// Create InterfaceView and set as visible
+		InterfaceView view = new InterfaceView();
+		view.setVisible(view);
+
+		// Read JSON data for heart rate
+		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
+				.getResourceAsStream("heartrate.json"), "UTF-8")) {
+
+			// Parse JSON to Java
+			final HeartRateRecord hrRecord = gson.fromJson(data,
+					HeartRateRecord.class);
+
+			// Create controllers
+			HRZController hrController = new HRZController(hrRecord, view);
+			
+		    // Format to JSON
+		    final String json = gson.toJson(hrRecord);
+		    System.out.println(json);
+		}
+
+		// Read the JSON data for daily dashboard
+		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
+				.getResourceAsStream("cur_activities_data.json"), "UTF-8")) {
+
+			// Parse JSON to Java
+			final DailyRecord ddModel = gson.fromJson(data, DailyRecord.class);
+
+			// Create Controller and initialize dailydashboard
+			DailyDashboardController ddController = new DailyDashboardController(
+					ddModel, view);
+			ddController.DailyDashboardInitialize();
+			
+		    // Format to JSON
+		  //  final String json = gson.toJson(ddModel);
+		  //  System.out.println(json);
+		}
+
+		// Read the JSON data for best days and lifetime totals
+		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
+				.getResourceAsStream("cur_totals.json"), "UTF-8")) {
+
+			// Parse JSON to Java
+			final ActivitiesRecord actRecord = gson.fromJson(data,
+					ActivitiesRecord.class);
+
+			// Create Models and Controllers
+			BestDaysRecord bdModel = actRecord.getBest();
+			BestDaysController bdController = new BestDaysController(bdModel,
+					view);
+
+			LifetimeRecord ltModel = actRecord.getLifetime();
+			LifetimeController ltController = new LifetimeController(ltModel,
+					view);
+			
+		    // Format to JSON
+		    //final String json = gson.toJson(actRecord);
+		    //System.out.println(json);
+		}
+	}
+	
 	/**
 	 * Reads in test JSON files and then runs instance of {@link InterfaceView}
 	 * <p>
