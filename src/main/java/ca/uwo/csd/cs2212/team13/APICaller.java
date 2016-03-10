@@ -44,6 +44,7 @@ public class APICaller {
 		
 		FitbitOAuth20ServiceImpl service;
 		String tokenFile;
+		String credentialsFile;
 		
 		/**
 		 * constructor
@@ -52,10 +53,12 @@ public class APICaller {
 		 * @param callBackPort
 		 * @param scope
 		 * @param tokenFile
+		 * @param credentialsFile
 		 */
-		public APICaller(String scope, String tokenFile){
+		public APICaller(String scope, String tokenFile, String credentialsFile){
 						
 			this.tokenFile = tokenFile;
+			this.credentialsFile = credentialsFile;
 			
 			// read credentials from a file
 			BufferedReader bufferedReader = null;
@@ -66,7 +69,7 @@ public class APICaller {
 				// File with service credentials.
 
 				FileReader fileReader =
-				new FileReader(tokenFile);
+				new FileReader(credentialsFile);
 				bufferedReader = new BufferedReader(fileReader);
 				clientID = bufferedReader.readLine();
 				apiKey = bufferedReader.readLine();
