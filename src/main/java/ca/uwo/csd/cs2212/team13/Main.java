@@ -69,6 +69,9 @@ public class Main {
 		gsonBuilder.registerTypeAdapter(HeartRateRecord.class,
 				new HeartRateRecordDeserializer());
 		
+		gsonBuilder.registerTypeAdapter(GoalsRecord.class, 
+				new GoalsDeserializer());
+		
 		gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
 
@@ -92,16 +95,21 @@ public class Main {
 		    System.out.println(json);
 		}
 
-		// Read the JSON data for daily dashboard
+		// Read the JSON data for daily dashboard and daily goals
 		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
 				.getResourceAsStream("cur_activities_data.json"), "UTF-8")) {
 
 			// Parse JSON to Java
 			final DailyRecord ddModel = gson.fromJson(data, DailyRecord.class);
 
-			// Create Controller and initialize dailydashboard
+			// Create Controller for daily goals
 			DailyDashboardController ddController = new DailyDashboardController(
 					ddModel, view);
+			
+			//Create Controller for daily goals
+			GoalsController dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
+			
+			//initialize dashboard
 			ddController.DailyDashboardInitialize();
 			
 		    // Format to JSON
@@ -186,6 +194,9 @@ public class Main {
 		gsonBuilder.registerTypeAdapter(HeartRateRecord.class,
 				new HeartRateRecordDeserializer());
 		
+		gsonBuilder.registerTypeAdapter(GoalsRecord.class, 
+				new GoalsDeserializer());
+		
 		gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
 
@@ -216,9 +227,14 @@ public class Main {
 			// Parse JSON to Java
 			final DailyRecord ddModel = gson.fromJson(data, DailyRecord.class);
 
-			// Create Controller and initialize dailydashboard
+			// Create Controller for daily goals
 			DailyDashboardController ddController = new DailyDashboardController(
 					ddModel, view);
+			
+			//Create Controller for daily goals
+			GoalsController dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
+			
+			//initialize dashboard
 			ddController.DailyDashboardInitialize();
 			
 		    // Format to JSON

@@ -7,7 +7,7 @@ package ca.uwo.csd.cs2212.team13;
  * <code>Goals</code> is a simple Java object that represents the
  * goals and the rules that govern access to and updates of this data.
  */
-public class Goals {
+public class GoalsRecord {
     
 	/**
 	 * The active minutes goal

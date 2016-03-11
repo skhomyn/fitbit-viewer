@@ -219,6 +219,42 @@ public class InterfaceView {
 	 * Label for max min minutes out of range zone
 	 */
 	private JLabel lblHeartOORMaxMin;
+	
+	/**
+	 * Label for active minutes daily goal
+	 */
+	private JLabel lblActiveMinGoal;
+	
+	/**
+	 * Label for calories daily goal
+	 */
+	private JLabel lblCaloriesGoal;
+	
+	/**
+	 * Label for distance daily goal
+	 */
+	private JLabel lblDistanceGoal;
+	
+	/**
+	 * Label for steps daily goal
+	 */
+	private JLabel lblStepsGoal;
+	
+	/**
+	 * Label for floors daily goal
+	 */
+	private JLabel lblFloorsGoal;
+	
+	/**
+	 * Labels for comparisons between goals values and actual values
+	 */
+	private JLabel lblStepsCompare;
+	private JLabel lblFloorsCompare;
+	private JLabel lblDistanceCompare;
+	private JLabel lblCaloriesCompare;
+	private JLabel lblActiveMinCompare;
+	
+	
 
 	/**
 	 * Constructor: uses initialize() method
@@ -641,6 +677,10 @@ public class InterfaceView {
 		lblDailyGoals.setBounds(0, 0, 720, 28);
 		panelDailyGoalsView.add(lblDailyGoals);
 
+		JLabel lblActiveMin = new JLabel("Active Minutes:");
+		lblActiveMin.setBounds(16, 160, 120, 16);
+		panelDailyGoalsView.add(lblActiveMin);
+		
 		JLabel lblSteps = new JLabel("Steps:");
 		lblSteps.setBounds(16, 52, 61, 16);
 		panelDailyGoalsView.add(lblSteps);
@@ -656,16 +696,47 @@ public class InterfaceView {
 		JLabel lblFloors = new JLabel("Floors:");
 		lblFloors.setBounds(16, 136, 61, 16);
 		panelDailyGoalsView.add(lblFloors);
+		
+		lblActiveMinGoal = new JLabel();
+		lblActiveMinGoal.setBounds(150, 160, 61, 16);
 
-		JButton btnAddNewGoal = new JButton("Add \nNew Goal");
-		btnAddNewGoal.setBounds(145, 163, 144, 22);
-		panelDailyGoalsView.add(btnAddNewGoal);
+		panelDailyGoalsView.add(lblActiveMinGoal);
+		
+		lblStepsGoal = new JLabel();
+		lblStepsGoal.setBounds(150, 52, 61, 16);
+		panelDailyGoalsView.add(lblStepsGoal);
 
-		JLabel lblMyGoals = new JLabel("My Goals:");
-		lblMyGoals.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblMyGoals.setBounds(16, 206, 85, 28);
-		panelDailyGoalsView.add(lblMyGoals);
+		lblDistanceGoal = new JLabel();
+		lblDistanceGoal.setBounds(150, 80, 61, 16);
+		panelDailyGoalsView.add(lblDistanceGoal);
 
+		lblCaloriesGoal = new JLabel();
+		lblCaloriesGoal.setBounds(150, 108, 61, 16);
+		panelDailyGoalsView.add(lblCaloriesGoal);
+
+		lblFloorsGoal = new JLabel();
+		lblFloorsGoal.setBounds(150, 136, 61, 16);
+		panelDailyGoalsView.add(lblFloorsGoal);
+		
+		lblStepsCompare = new JLabel();
+		lblStepsCompare.setBounds(336, 52, 61, 16);
+		panelDailyGoalsView.add(lblStepsCompare);
+		
+		lblDistanceCompare = new JLabel();
+		lblDistanceCompare.setBounds(336, 80, 61, 16);
+		panelDailyGoalsView.add(lblDistanceCompare);
+		
+		lblCaloriesCompare = new JLabel();
+		lblCaloriesCompare.setBounds(336, 108, 61, 16);
+		panelDailyGoalsView.add(lblCaloriesCompare);
+		
+		lblFloorsCompare = new JLabel();
+		lblFloorsCompare.setBounds(336, 136, 61, 16);
+		panelDailyGoalsView.add(lblFloorsCompare);
+		
+		lblActiveMinCompare = new JLabel();
+		lblActiveMinCompare.setBounds(336, 160, 61, 16);
+		panelDailyGoalsView.add(lblActiveMinCompare);
 	}
 
 	/**
@@ -930,7 +1001,7 @@ public class InterfaceView {
 
 	/**
 	 * Sets JLabel values for Daily Dashboard page with data from
-	 * {@code DailyRecord} Called when application is first loaded and when
+	 * {@code DailyRecord}. Called when application is first loaded and when
 	 * "Daily Dashboard" menu button is clicked, as defined in
 	 * {@code DailyDashboardController}.
 	 * 
@@ -962,7 +1033,7 @@ public class InterfaceView {
 
 	/**
 	 * Sets JLabel values for Best Days page with data from
-	 * {@code BestDaysRecord} Called when "Best Days" menu button is clicked, as
+	 * {@code BestDaysRecord}. Called when "Best Days" menu button is clicked, as
 	 * defined in {@code BestDaysController}.
 	 * 
 	 * @param distance
@@ -986,6 +1057,42 @@ public class InterfaceView {
 		lblBestDaysDistDate.setText(dist_date);
 		lblBestDaysFloorsDate.setText(floors_date);
 		lblBestDaysStepsDate.setText(steps_date);
+	}
+	
+	/**
+	 * Sets JLabel values for Daily Goasl page with data from 
+	 * {@code GoalsRecord}. Called when "Daily Goals" menu button is clicked,
+	 * as defined in {@code GoalsController}.
+	 * @param activeMinutes
+	 * 			daily goal for active minutes
+	 * @param caloriesOut
+	 * 			daily goal for calories burned
+	 * @param distance
+	 * 			daily goal for distance traveled
+	 * @param floors
+	 * 			daily goal for floors climbed
+	 * @param steps
+	 * 			daily goal for steps taken
+	 * @param activeMinStatus
+	 * @param caloriesStatus
+	 * @param distanceStatus
+	 * @param stepsStatus
+	 * @param floorsStatus
+	 */
+	public void setDailyGoalsFields(int activeMinutes, double caloriesOut, 
+			double distance, int floors, int steps, String activeMinStatus, String caloriesStatus,
+			String distanceStatus, String stepsStatus, String floorsStatus) {
+		lblActiveMinGoal.setText(Integer.toString(activeMinutes));
+		lblCaloriesGoal.setText(Double.toString(caloriesOut));
+		lblDistanceGoal.setText(Double.toString(distance));
+		lblStepsGoal.setText(Integer.toString(steps));
+		lblFloorsGoal.setText(Integer.toString(floors));
+		
+		lblActiveMinCompare.setText(activeMinStatus);
+		lblCaloriesCompare.setText(caloriesStatus);
+		lblDistanceCompare.setText(distanceStatus);
+		lblStepsCompare.setText(stepsStatus);
+		lblFloorsCompare.setText(floorsStatus);
 	}
 
 	/**
@@ -1051,6 +1158,18 @@ public class InterfaceView {
 	 */
 	public void addClickListenerDashboard(ActionListener actionsOnClick) {
 		btnDailyDashboard.addActionListener(actionsOnClick);
+	}
+	
+	/**
+	 * Attaches an {@code ActionListener} object to Daily Goals menu
+	 * button, which executes
+	 * {@code InterfaceVie}
+	 * 
+	 * @param actionsOnClick 
+	 * 			ActionListener object defined in {@link GoalsController}
+	 */
+	public void addClickListenerGoals(ActionListener actionsOnClick) {
+		btnDailyGoals.addActionListener(actionsOnClick);
 	}
 
 	/**
