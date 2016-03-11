@@ -284,7 +284,7 @@ public class InterfaceView {
 		frame.getContentPane().setLayout(null);
 
 		JPanel CardLayout = new JPanel();
-		CardLayout.setBounds(0, 0, 720, 578);
+		CardLayout.setBounds(0, 0, 720, 574);
 		frame.getContentPane().add(CardLayout);
 		CardLayout.setLayout(new CardLayout(0, 0));
 
@@ -342,7 +342,7 @@ public class InterfaceView {
 	private void menuBar() {
 		JToolBar MenuBar = new JToolBar();
 		MenuBar.setBorder(null);
-		MenuBar.setBounds(720, 0, 180, 578);
+		MenuBar.setBounds(720, 0, 180, 574);
 		MenuBar.setFloatable(false);
 		MenuBar.setBackground(null);
 		MenuBar.setOrientation(SwingConstants.VERTICAL);
