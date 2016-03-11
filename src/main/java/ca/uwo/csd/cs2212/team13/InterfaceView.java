@@ -18,6 +18,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
+import javax.swing.border.EmptyBorder;
+import java.awt.Insets;
 
 /**
  * {@code InterfaceView} creates the GUI of the Fitbit program.
@@ -217,7 +219,6 @@ public class InterfaceView {
 	 * Label for max min minutes out of range zone
 	 */
 	private JLabel lblHeartOORMaxMin;
-	private JButton btnNewButton;
 
 	/**
 	 * Constructor: uses initialize() method
@@ -238,7 +239,7 @@ public class InterfaceView {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setMinimumSize(new Dimension(900, 600));
+		frame.setMinimumSize(new Dimension(900, 596));
 		frame.setResizable(false);
 		frame.setMaximumSize(new Dimension(900, 600));
 		frame.setBounds(0, 0, 600, 400);
@@ -304,39 +305,46 @@ public class InterfaceView {
 	 */
 	private void menuBar() {
 		JToolBar MenuBar = new JToolBar();
+		MenuBar.setBorder(null);
 		MenuBar.setBounds(720, 0, 180, 578);
 		MenuBar.setFloatable(false);
-		MenuBar.setBackground(Color.DARK_GRAY);
+		MenuBar.setBackground(null);
 		MenuBar.setOrientation(SwingConstants.VERTICAL);
 		frame.getContentPane().add(MenuBar);
 
 		btnDailyDashboard = new JButton("Daily Dasboard");
-		btnDailyDashboard.setIcon(new ImageIcon(InterfaceView.class.getResource("/com/sun/javafx/scene/control/skin/caspian/images/vk-medium-pressed.png")));
-		btnDailyDashboard.setMaximumSize(new Dimension(180, 85));
+		btnDailyDashboard.setMargin(new Insets(0, 0, 0, 0));
+		btnDailyDashboard.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnDailyDashboard);
 
 		btnBestDays = new JButton("Best Days");
-		btnBestDays.setMaximumSize(new Dimension(180, 85));
+		btnBestDays.setMargin(new Insets(0, 0, 0, 0));
+		btnBestDays.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnBestDays);
 
 		btnDailyGoals = new JButton("Daily Goals");
-		btnDailyGoals.setMaximumSize(new Dimension(180, 85));
+		btnDailyGoals.setMargin(new Insets(0, 0, 0, 0));
+		btnDailyGoals.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnDailyGoals);
 
 		btnLifetimeTotals = new JButton("Lifetime Totals");
-		btnLifetimeTotals.setMaximumSize(new Dimension(180, 85));
+		btnLifetimeTotals.setMargin(new Insets(0, 0, 0, 0));
+		btnLifetimeTotals.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnLifetimeTotals);
 
 		btnAccolades = new JButton("Accolades");
-		btnAccolades.setMaximumSize(new Dimension(180, 85));
+		btnAccolades.setMargin(new Insets(0, 0, 0, 0));
+		btnAccolades.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnAccolades);
 
 		btnTimeSeries = new JButton("Time Series");
-		btnTimeSeries.setMaximumSize(new Dimension(180, 85));
+		btnTimeSeries.setMargin(new Insets(0, 0, 0, 0));
+		btnTimeSeries.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnTimeSeries);
 
 		btnHeartRateZones = new JButton("Heart Rate Zones");
-		btnHeartRateZones.setMaximumSize(new Dimension(180, 85));
+		btnHeartRateZones.setMargin(new Insets(0, 0, 0, 0));
+		btnHeartRateZones.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnHeartRateZones);
 	}
 
@@ -413,11 +421,6 @@ public class InterfaceView {
 		lblDailySedenteryMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblDailySedenteryMinVal.setBounds(270, 122, 70, 16);
 		panelDashboardView.add(lblDailySedenteryMinVal);
-		
-		btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon("src/main/resources/image.png"));
-		btnNewButton.setBounds(122, 270, 338, 136);
-		panelDashboardView.add(btnNewButton);
 	}
 
 	/**
