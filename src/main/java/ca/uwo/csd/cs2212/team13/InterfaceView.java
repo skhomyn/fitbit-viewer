@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
+import javax.swing.JScrollPane;
 
 /**
  * {@code InterfaceView} creates the GUI of the Fitbit program.
@@ -241,6 +242,12 @@ public class InterfaceView {
 	 * Label for floors daily goal
 	 */
 	private JLabel lblFloorsGoal;
+	
+	private JLabel lblStepsCompare;
+	private JLabel lblFloorsCompare;
+	private JLabel lblDistanceCompare;
+	private JLabel lblCaloriesCompare;
+	private JLabel lblActiveMinCompare;
 	
 	
 
@@ -700,6 +707,26 @@ public class InterfaceView {
 		lblFloorsGoal = new JLabel();
 		lblFloorsGoal.setBounds(150, 136, 61, 16);
 		panelDailyGoalsView.add(lblFloorsGoal);
+		
+		lblStepsCompare = new JLabel();
+		lblStepsCompare.setBounds(336, 52, 61, 16);
+		panelDailyGoalsView.add(lblStepsCompare);
+		
+		lblDistanceCompare = new JLabel();
+		lblDistanceCompare.setBounds(336, 80, 61, 16);
+		panelDailyGoalsView.add(lblDistanceCompare);
+		
+		lblCaloriesCompare = new JLabel();
+		lblCaloriesCompare.setBounds(336, 108, 61, 16);
+		panelDailyGoalsView.add(lblCaloriesCompare);
+		
+		lblFloorsCompare = new JLabel();
+		lblFloorsCompare.setBounds(336, 136, 61, 16);
+		panelDailyGoalsView.add(lblFloorsCompare);
+		
+		lblActiveMinCompare = new JLabel();
+		lblActiveMinCompare.setBounds(336, 160, 61, 16);
+		panelDailyGoalsView.add(lblActiveMinCompare);
 	}
 
 	/**
@@ -1040,14 +1067,26 @@ public class InterfaceView {
 	 * 			daily goal for floors climbed
 	 * @param steps
 	 * 			daily goal for steps taken
+	 * @param activeMinStatus
+	 * @param caloriesStatus
+	 * @param distanceStatus
+	 * @param stepsStatus
+	 * @param floorsStatus
 	 */
 	public void setDailyGoalsFields(int activeMinutes, double caloriesOut, 
-			double distance, int floors, int steps) {
+			double distance, int floors, int steps, String activeMinStatus, String caloriesStatus,
+			String distanceStatus, String stepsStatus, String floorsStatus) {
 		lblActiveMinGoal.setText(Integer.toString(activeMinutes));
 		lblCaloriesGoal.setText(Double.toString(caloriesOut));
 		lblDistanceGoal.setText(Double.toString(distance));
 		lblStepsGoal.setText(Integer.toString(steps));
 		lblFloorsGoal.setText(Integer.toString(floors));
+		
+		lblActiveMinCompare.setText(activeMinStatus);
+		lblCaloriesCompare.setText(caloriesStatus);
+		lblDistanceCompare.setText(distanceStatus);
+		lblStepsCompare.setText(stepsStatus);
+		lblFloorsCompare.setText(floorsStatus);
 	}
 
 	/**

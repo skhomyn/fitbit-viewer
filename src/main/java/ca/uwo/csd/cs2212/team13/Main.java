@@ -107,7 +107,7 @@ public class Main {
 					ddModel, view);
 			
 			//Create Controller for daily goals
-			GoalsController dgController = new GoalsController(ddModel.getGoals(), view);
+			GoalsController dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
 			
 			//initialize dashboard
 			ddController.DailyDashboardInitialize();
@@ -232,7 +232,7 @@ public class Main {
 					ddModel, view);
 			
 			//Create Controller for daily goals
-			GoalsController dgController = new GoalsController(ddModel.getGoals(), view);
+			GoalsController dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
 			
 			//initialize dashboard
 			ddController.DailyDashboardInitialize();

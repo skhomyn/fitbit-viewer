@@ -5,11 +5,13 @@ import java.awt.event.ActionListener;
 
 public class GoalsController {
 	
-	private GoalsRecord model;
+	private DailyRecord dailyModel;
+	private GoalsRecord goalsModel;
 	private InterfaceView view;
 	
-	GoalsController(GoalsRecord model, InterfaceView view){
-		this.model = model;
+	GoalsController(DailyRecord dailyModel, GoalsRecord goalsModel, InterfaceView view){
+		this.dailyModel = dailyModel;
+		this.goalsModel = goalsModel;
 		this.view = view;
 		
 		view.addClickListenerGoals(new clickListener());
@@ -20,10 +22,30 @@ public class GoalsController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			view.setDailyGoalsFields(model.getActiveMinutes(), model.getCaloriesOut(), 
-					model.getDistance(), model.getFloors(), model.getSteps());	
+			view.setDailyGoalsFields(goalsModel.getActiveMinutes(), goalsModel.getCaloriesOut(), 
+					goalsModel.getDistance(), goalsModel.getFloors(), goalsModel.getSteps(),
+					compareDouble(goalsModel.getActiveMinutes(), dailyModel.getVeryActiveMinutes()),
+					compareDoubleInt(goalsModel.getCaloriesOut(), dailyModel.getCalories()),
+					compareDouble(goalsModel.getDistance(), dailyModel.getDistance()),
+					compareInt(goalsModel.getFloors(), dailyModel.getFloors()),
+					compareInt(goalsModel.getSteps(), dailyModel.getSteps())
+					);
+			
 		}
-		
 	}
 	
+	private String compareInt(int goal, int actual){
+		if (actual>goal || actual==goal) return "YAY :D";
+		else return ":(";
+	}
+	
+	private String compareDoubleInt(double goal, int actual){
+		if (actual>goal || actual==goal) return "YAY :D";
+		else return ":(";
+	}
+	
+	private String compareDouble(double goal, double actual){
+		if (actual>goal || actual==goal) return "YAY :D";
+		else return ":(";
+	}
 }
