@@ -17,6 +17,9 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
+import javax.swing.ImageIcon;
+import javax.swing.border.EmptyBorder;
+import java.awt.Insets;
 
 /**
  * {@code InterfaceView} creates the GUI of the Fitbit program.
@@ -236,15 +239,16 @@ public class InterfaceView {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setMinimumSize(new Dimension(900, 596));
 		frame.setResizable(false);
-		frame.setMaximumSize(new Dimension(600, 400));
+		frame.setMaximumSize(new Dimension(900, 600));
 		frame.setBounds(0, 0, 600, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		frame.getContentPane().setLayout(null);
 
 		JPanel CardLayout = new JPanel();
-		CardLayout.setBounds(0, 0, 470, 378);
+		CardLayout.setBounds(0, 0, 720, 578);
 		frame.getContentPane().add(CardLayout);
 		CardLayout.setLayout(new CardLayout(0, 0));
 
@@ -301,38 +305,46 @@ public class InterfaceView {
 	 */
 	private void menuBar() {
 		JToolBar MenuBar = new JToolBar();
-		MenuBar.setBounds(470, 0, 130, 378);
+		MenuBar.setBorder(null);
+		MenuBar.setBounds(720, 0, 180, 578);
 		MenuBar.setFloatable(false);
-		MenuBar.setBackground(Color.DARK_GRAY);
+		MenuBar.setBackground(null);
 		MenuBar.setOrientation(SwingConstants.VERTICAL);
 		frame.getContentPane().add(MenuBar);
 
-		btnDailyDashboard = new JButton("Daily Dashboard");
-		btnDailyDashboard.setMaximumSize(new Dimension(150, 54));
+		btnDailyDashboard = new JButton("Daily Dasboard");
+		btnDailyDashboard.setMargin(new Insets(0, 0, 0, 0));
+		btnDailyDashboard.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnDailyDashboard);
 
 		btnBestDays = new JButton("Best Days");
-		btnBestDays.setMaximumSize(new Dimension(150, 54));
+		btnBestDays.setMargin(new Insets(0, 0, 0, 0));
+		btnBestDays.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnBestDays);
 
 		btnDailyGoals = new JButton("Daily Goals");
-		btnDailyGoals.setMaximumSize(new Dimension(150, 54));
+		btnDailyGoals.setMargin(new Insets(0, 0, 0, 0));
+		btnDailyGoals.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnDailyGoals);
 
 		btnLifetimeTotals = new JButton("Lifetime Totals");
-		btnLifetimeTotals.setMaximumSize(new Dimension(150, 54));
+		btnLifetimeTotals.setMargin(new Insets(0, 0, 0, 0));
+		btnLifetimeTotals.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnLifetimeTotals);
 
 		btnAccolades = new JButton("Accolades");
-		btnAccolades.setMaximumSize(new Dimension(150, 54));
+		btnAccolades.setMargin(new Insets(0, 0, 0, 0));
+		btnAccolades.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnAccolades);
 
 		btnTimeSeries = new JButton("Time Series");
-		btnTimeSeries.setMaximumSize(new Dimension(150, 54));
+		btnTimeSeries.setMargin(new Insets(0, 0, 0, 0));
+		btnTimeSeries.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnTimeSeries);
 
 		btnHeartRateZones = new JButton("Heart Rate Zones");
-		btnHeartRateZones.setMaximumSize(new Dimension(150, 54));
+		btnHeartRateZones.setMargin(new Insets(0, 0, 0, 0));
+		btnHeartRateZones.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnHeartRateZones);
 	}
 
@@ -343,7 +355,7 @@ public class InterfaceView {
 		JLabel lblDailyDashboard = new JLabel("Daily Dashboard");
 		lblDailyDashboard.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDailyDashboard.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblDailyDashboard.setBounds(0, 0, 472, 30);
+		lblDailyDashboard.setBounds(0, 0, 720, 30);
 		panelDashboardView.add(lblDailyDashboard);
 
 		JLabel lblCalories = new JLabel("Calories Burned");
@@ -418,7 +430,7 @@ public class InterfaceView {
 		JLabel lblBestDays = new JLabel("Best Days");
 		lblBestDays.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBestDays.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblBestDays.setBounds(0, 0, 472, 30);
+		lblBestDays.setBounds(0, 0, 720, 30);
 		panelBestDaysView.add(lblBestDays);
 
 		JLabel lblDistance = new JLabel("Distance:");
@@ -471,12 +483,8 @@ public class InterfaceView {
 		JLabel lblAccolades = new JLabel("Accolades");
 		lblAccolades.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAccolades.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblAccolades.setBounds(0, 0, 472, 32);
+		lblAccolades.setBounds(0, 0, 720, 32);
 		panelAccoladesView.add(lblAccolades);
-
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(455, 0, 15, 378);
-		panelAccoladesView.add(scrollBar);
 
 		JCheckBox chckbxTask = new JCheckBox("Task #1:");
 		chckbxTask.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
@@ -541,7 +549,7 @@ public class InterfaceView {
 		JLabel lblTitle = new JLabel("Lifetime Totals");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblTitle.setBounds(0, 0, 472, 32);
+		lblTitle.setBounds(0, 0, 720, 32);
 		panelLifetimeTotalsView.add(lblTitle);
 
 		JLabel lblDistance = new JLabel("Distance:");
@@ -582,7 +590,7 @@ public class InterfaceView {
 		JLabel lblNewLabel = new JLabel("Time Series");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblNewLabel.setBounds(0, 0, 472, 32);
+		lblNewLabel.setBounds(0, 0, 720, 32);
 		panelTimeSeriesView.add(lblNewLabel);
 
 		JToolBar graphTitle = new JToolBar();
@@ -630,7 +638,7 @@ public class InterfaceView {
 		lblDailyGoals.setBackground(Color.GRAY);
 		lblDailyGoals.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDailyGoals.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblDailyGoals.setBounds(0, 0, 472, 28);
+		lblDailyGoals.setBounds(0, 0, 720, 28);
 		panelDailyGoalsView.add(lblDailyGoals);
 
 		JLabel lblSteps = new JLabel("Steps:");
@@ -667,7 +675,7 @@ public class InterfaceView {
 		JLabel lblHeartRateZones = new JLabel("Heart Rate Zones");
 		lblHeartRateZones.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHeartRateZones.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblHeartRateZones.setBounds(0, 0, 466, 27);
+		lblHeartRateZones.setBounds(0, 0, 720, 27);
 		panelHeartrateZonesView.add(lblHeartRateZones);
 
 		JLabel lblHeartRate = new JLabel("Resting Heart Rate: ");
@@ -732,10 +740,6 @@ public class InterfaceView {
 		lblHeartOORMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblHeartOORMaxMin.setBounds(230, 286, 148, 16);
 		panelHeartrateZonesView.add(lblHeartOORMaxMin);
-
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(455, 0, 15, 378);
-		panelHeartrateZonesView.add(scrollBar);
 	}
 
 	/**
