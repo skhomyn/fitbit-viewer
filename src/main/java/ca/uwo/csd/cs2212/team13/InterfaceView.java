@@ -20,6 +20,18 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
 import java.awt.Insets;
+import javax.swing.JLayeredPane;
+import javax.swing.BoxLayout;
+import javax.swing.JInternalFrame;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JRadioButton;
+import javax.swing.border.BevelBorder;
 
 /**
  * {@code InterfaceView} creates the GUI of the Fitbit program.
@@ -66,7 +78,7 @@ public class InterfaceView {
 	/**
 	 * JPanel for dashboard view
 	 */
-	private JPanel panelDashboardView;
+	private JLayeredPane panelDashboardView;
 	/**
 	 * JPanel for dashboard view
 	 */
@@ -109,10 +121,6 @@ public class InterfaceView {
 	 * Jlabel for last updated
 	 */
 	private JLabel lblLastUpdated;
-	/**
-	 * label for daily distance values
-	 */
-	private JLabel lblDailyDistVal;
 	/**
 	 * label for daily calories out
 	 */
@@ -223,6 +231,17 @@ public class InterfaceView {
 	/**
 	 * Constructor: uses initialize() method
 	 */
+	
+	
+	private JPanel[] panelArray;
+	
+	private JRadioButton radioTotalDist;
+	private JRadioButton radioCalories;
+	private JRadioButton radioSedMin;
+	private JRadioButton radioActiveMin;
+	private JRadioButton radioFloors;
+	private JRadioButton radioSteps;
+	
 	public InterfaceView() {
 		initialize();
 	}
@@ -252,9 +271,8 @@ public class InterfaceView {
 		frame.getContentPane().add(CardLayout);
 		CardLayout.setLayout(new CardLayout(0, 0));
 
-		panelDashboardView = new JPanel();
+		panelDashboardView = new JLayeredPane();
 		CardLayout.add(panelDashboardView, "name_1456446913223833000");
-		panelDashboardView.setLayout(null);
 
 		panelBestDaysView = new JPanel();
 		CardLayout.add(panelBestDaysView, "name_1456446950405885000");
@@ -352,75 +370,271 @@ public class InterfaceView {
 	 * This method implements the Dashboard screen.
 	 */
 	private void dashboardView() {
+		panelDashboardView.setLayout(null);
 		JLabel lblDailyDashboard = new JLabel("Daily Dashboard");
+		lblDailyDashboard.setBounds(0, 0, 720, 30);
 		lblDailyDashboard.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDailyDashboard.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblDailyDashboard.setBounds(0, 0, 720, 30);
 		panelDashboardView.add(lblDailyDashboard);
-
-		JLabel lblCalories = new JLabel("Calories Burned");
-		lblCalories.setBounds(122, 65, 103, 16);
-		panelDashboardView.add(lblCalories);
-
-		JLabel lblSteps = new JLabel("Steps");
-		lblSteps.setBounds(132, 102, 73, 16);
-		panelDashboardView.add(lblSteps);
-
-		JLabel lblDistance = new JLabel("Total Distance");
-		lblDistance.setBounds(122, 139, 103, 16);
-		panelDashboardView.add(lblDistance);
-
-		JLabel lblActiveMinutes = new JLabel("Very Active Minutes");
-		lblActiveMinutes.setBounds(241, 63, 150, 16);
-		panelDashboardView.add(lblActiveMinutes);
-
-		JLabel lblSe = new JLabel("Sedentary Minutes");
-		lblSe.setBounds(241, 102, 125, 16);
-		panelDashboardView.add(lblSe);
-
-		JLabel lblFloors = new JLabel("Floors Climbed");
-		lblFloors.setBounds(112, 176, 103, 16);
-		panelDashboardView.add(lblFloors);
 
 		// Commented out until implementation
 		// JLabel lblDailyProgress = new JLabel("Daily Goals");
 		// lblDailyProgress.setBounds(241, 171, 125, 16);
 		// panelDashboardView.add(lblDailyProgress);
 
-		lblLastUpdated = new JLabel(); // "Last Updated: Date"
+		lblLastUpdated = new JLabel();
+		lblLastUpdated.setBounds(583, 540, 125, 16);
 		lblLastUpdated.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblLastUpdated.setBounds(335, 356, 125, 16);
 		panelDashboardView.add(lblLastUpdated);
 
-		lblDailyDistVal = new JLabel();
-		lblDailyDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDailyDistVal.setBounds(160, 159, 70, 25);
-		panelDashboardView.add(lblDailyDistVal);
-
-		lblDailyCaloriesVal = new JLabel();
-		lblDailyCaloriesVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDailyCaloriesVal.setBounds(160, 85, 70, 16);
-		panelDashboardView.add(lblDailyCaloriesVal);
-
-		lblDailyStepsVal = new JLabel();
-		lblDailyStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDailyStepsVal.setBounds(160, 122, 70, 16);
-		panelDashboardView.add(lblDailyStepsVal);
-
 		lblDailyFloorsVal = new JLabel();
-		lblDailyFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblDailyFloorsVal.setBounds(160, 196, 70, 16);
+		lblDailyFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelDashboardView.add(lblDailyFloorsVal);
 
-		lblDailyVeryActMinVal = new JLabel();
-		lblDailyVeryActMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblDailyVeryActMinVal.setBounds(270, 83, 70, 16);
-		panelDashboardView.add(lblDailyVeryActMinVal);
-
 		lblDailySedenteryMinVal = new JLabel();
-		lblDailySedenteryMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblDailySedenteryMinVal.setBounds(270, 122, 70, 16);
+		lblDailySedenteryMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelDashboardView.add(lblDailySedenteryMinVal);
+		
+		JLabel label_5 = new JLabel("Floors Climbed");
+		label_5.setBounds(66, 413, 85, 16);
+		panelDashboardView.add(label_5);
+		
+		JLabel label_2 = new JLabel("Sedentary Minutes");
+		label_2.setBounds(45, 452, 106, 16);
+		panelDashboardView.add(label_2);
+		
+		JLabel label_4 = new JLabel("Total Distance");
+		label_4.setBounds(187, 426, 81, 16);
+		panelDashboardView.add(label_4);
+		
+		radioCalories = new JRadioButton("Calories Burned");
+		radioCalories.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		radioCalories.setBounds(0, 531, 127, 25);
+		panelDashboardView.add(radioCalories);
+		
+		radioTotalDist = new JRadioButton("Total Distance");
+		radioTotalDist.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (this.radioCounter()==3){;}
+			}
+		});
+		radioTotalDist.setBounds(0, 501, 127, 25);
+		panelDashboardView.add(radioTotalDist);
+		
+		radioActiveMin = new JRadioButton("Very Active Minutes");
+		radioActiveMin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		radioActiveMin.setBounds(141, 531, 127, 25);
+		panelDashboardView.add(radioActiveMin);
+		
+		radioFloors = new JRadioButton("Floors Climbed");
+		radioFloors.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		radioFloors.setBounds(285, 531, 127, 25);
+		panelDashboardView.add(radioFloors);
+		
+		JRadioButton radioSteps = new JRadioButton("Steps");
+		radioSteps.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		radioSteps.setBounds(285, 501, 127, 25);
+		panelDashboardView.add(radioSteps);
+		
+		JPanel ActiveMinPanel = new JPanel();
+		ActiveMinPanel.setBounds(324, 413, 112, 58);
+		panelDashboardView.add(ActiveMinPanel);
+		
+				lblDailyVeryActMinVal = new JLabel();
+				ActiveMinPanel.add(lblDailyVeryActMinVal);
+				lblDailyVeryActMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
+				
+				JLabel label_1 = new JLabel("Very Active Minutes");
+				ActiveMinPanel.add(label_1);
+		
+		JPanel StepsPanel = new JPanel();
+		StepsPanel.setBounds(445, 452, 112, 58);
+		panelDashboardView.add(StepsPanel);
+		
+				lblDailyStepsVal = new JLabel();
+				StepsPanel.add(lblDailyStepsVal);
+				lblDailyStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+				
+				JLabel label_3 = new JLabel("Steps");
+				StepsPanel.add(label_3);
+		
+		JPanel CaloriesPanel = new JPanel();
+		CaloriesPanel.setBounds(573, 452, 112, 58);
+		panelDashboardView.add(CaloriesPanel);
+		
+				lblDailyCaloriesVal = new JLabel();
+				CaloriesPanel.add(lblDailyCaloriesVal);
+				lblDailyCaloriesVal.setHorizontalAlignment(SwingConstants.TRAILING);
+				
+				JLabel label = new JLabel("Calories Burned");
+				CaloriesPanel.add(label);
+		
+		JPanel SwitchingPanel = new JPanel();
+		SwitchingPanel.setBounds(38, 43, 629, 357);
+		panelDashboardView.add(SwitchingPanel);
+		SwitchingPanel.setLayout(new CardLayout(0, 0));
+		
+		JPanel OnePanel = new JPanel();
+		SwitchingPanel.add(OnePanel, "name_784837328464246");
+		OnePanel.setLayout(null);
+		
+		JPanel CaloriesOnePanel = new JPanel();
+		
+		JPanel panel_19 = new JPanel();
+		panel_19.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_19.setBounds(243, 142, 119, 102);
+		OnePanel.add(panel_19);
+		
+		JPanel TwoPanel = new JPanel();
+		SwitchingPanel.add(TwoPanel, "name_784837275135018");
+		TwoPanel.setLayout(null);
+		
+		JPanel panel_14 = new JPanel();
+		panel_14.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_14.setBounds(145, 126, 119, 102);
+		TwoPanel.add(panel_14);
+		
+		JPanel panel_13 = new JPanel();
+		panel_13.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_13.setBounds(343, 126, 134, 108);
+		TwoPanel.add(panel_13);
+		
+		JPanel ThreePanel = new JPanel();
+		SwitchingPanel.add(ThreePanel, "name_784837286074452");
+		ThreePanel.setLayout(null);
+		
+		JPanel panel_7 = new JPanel();
+		panel_7.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_7.setBounds(64, 140, 119, 102);
+		ThreePanel.add(panel_7);
+		
+		JPanel panel_8 = new JPanel();
+		panel_8.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_8.setBounds(256, 140, 119, 102);
+		ThreePanel.add(panel_8);
+		
+		JPanel panel_9 = new JPanel();
+		panel_9.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_9.setBounds(448, 140, 119, 102);
+		ThreePanel.add(panel_9);
+		
+		JPanel FourPanel = new JPanel();
+		SwitchingPanel.add(FourPanel, "name_784837296062649");
+		FourPanel.setLayout(null);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_1.setBounds(242, 218, 119, 102);
+		FourPanel.add(panel_1);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_2.setBounds(242, 58, 119, 102);
+		FourPanel.add(panel_2);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_3.setBounds(430, 145, 119, 102);
+		FourPanel.add(panel_3);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_4.setBounds(69, 145, 119, 102);
+		FourPanel.add(panel_4);
+		
+		JPanel FivePanel = new JPanel();
+		SwitchingPanel.add(FivePanel, "name_784837306362861");
+		FivePanel.setLayout(null);
+		
+		JPanel Generic1_1 = new JPanel();
+		Generic1_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		Generic1_1.setBounds(86, 66, 119, 102);
+		FivePanel.add(Generic1_1);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_6.setBounds(266, 70, 119, 102);
+		FivePanel.add(panel_6);
+		
+		JPanel panel_10 = new JPanel();
+		panel_10.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_10.setBounds(459, 72, 119, 102);
+		FivePanel.add(panel_10);
+		
+		JPanel panel_11 = new JPanel();
+		panel_11.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_11.setBounds(176, 199, 119, 102);
+		FivePanel.add(panel_11);
+		
+		JPanel panel_12 = new JPanel();
+		panel_12.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		panel_12.setBounds(381, 205, 119, 102);
+		FivePanel.add(panel_12);
+		
+		
+		JPanel SixPanel = new JPanel();
+		SwitchingPanel.add(SixPanel, "name_784837317868029");
+		SixPanel.setLayout(null);
+		
+		JPanel Generic1 = new JPanel();
+		Generic1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		Generic1.setBounds(64, 58, 119, 102);
+		SixPanel.add(Generic1);
+		
+		JPanel Generic2 = new JPanel();
+		Generic2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		Generic2.setBounds(242, 58, 119, 102);
+		SixPanel.add(Generic2);
+		
+		JPanel Generic3 = new JPanel();
+		Generic3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		Generic3.setBounds(451, 58, 119, 102);
+		SixPanel.add(Generic3);
+		
+		JPanel Generic4 = new JPanel();
+		Generic4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		Generic4.setBounds(64, 218, 119, 102);
+		SixPanel.add(Generic4);
+		
+		JPanel Generic5 = new JPanel();
+		Generic5.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		Generic5.setBounds(242, 218, 119, 102);
+		SixPanel.add(Generic5);
+		
+		JPanel Generic6 = new JPanel();
+		Generic6.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		Generic6.setBounds(451, 218, 119, 102);
+		SixPanel.add(Generic6);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 26, 61, 26);
+		panelDashboardView.add(menuBar);
+		
+		JMenu mnNewMenu = new JMenu("Settings");
+		menuBar.add(mnNewMenu);
+		
+		radioSedMin = new JRadioButton("Sedentary Minutes");
+		mnNewMenu.add(radioSedMin);
+		radioSedMin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		
 	}
 
 	/**
@@ -1061,5 +1275,45 @@ public class InterfaceView {
 	 */
 	public void setVisible(InterfaceView view) {
 		view.frame.setVisible(true);
+	}
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
+	}
+	
+	public int radioCounter(){
+		int counter = 0;
+		if (radioCalories.isSelected()){
+			counter += 1;
+		}
+		if (radioTotalDist.isSelected()){
+			counter += 1;
+		}
+		if (radioSedMin.isSelected()){
+			counter += 1;
+		}
+		if (radioActiveMin.isSelected()){
+			counter += 1;
+		}
+		if (radioFloors.isSelected()){
+			counter += 1;
+		}
+		if (radioSteps.isSelected()){
+			counter += 1;
+		}
+		return counter;
 	}
 }
