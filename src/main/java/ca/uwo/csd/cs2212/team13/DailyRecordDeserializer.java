@@ -83,8 +83,8 @@ public class DailyRecordDeserializer implements JsonDeserializer<DailyRecord> {
 		final JsonObject jsonObject = json.getAsJsonObject();
 		final JsonObject jsonSummary = jsonObject.getAsJsonObject("summary");
 
-		final Goals goals = context.deserialize(jsonObject.get("goals"),
-				Goals.class);
+		final GoalsRecord goals = context.deserialize(jsonObject.get("goals"),
+				GoalsRecord.class);
 
 		final DailyRecord dailyRecord = new DailyRecord();
 		dailyRecord.setDate("March 2, 2016");// Hardcoded for now as test. Would
