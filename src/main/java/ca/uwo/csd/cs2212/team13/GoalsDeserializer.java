@@ -63,7 +63,7 @@ import com.google.gson.JsonParseException;
  * <p>
  * Gson will then receive an object from this deserializer.
  */
-public class GoalsDeserializer implements JsonDeserializer<Goals> {
+public class GoalsDeserializer implements JsonDeserializer<GoalsRecord> {
 
 	/*
 	 * (non-Javadoc)
@@ -73,11 +73,11 @@ public class GoalsDeserializer implements JsonDeserializer<Goals> {
 	 * java.lang.reflect.Type, com.google.gson.JsonDeserializationContext)
 	 */
 	@Override
-	public Goals deserialize(final JsonElement json, final Type typeOfT,
+	public GoalsRecord deserialize(final JsonElement json, final Type typeOfT,
 			final JsonDeserializationContext context) throws JsonParseException {
 		final JsonObject jsonObject = json.getAsJsonObject();
 
-		final Goals goal = new Goals();
+		final GoalsRecord goal = new GoalsRecord();
 		goal.setActiveMinutes(jsonObject.get("activeMinutes").getAsInt());
 		goal.setCaloriesOut(jsonObject.get("caloriesOut").getAsInt());
 		goal.setDistance(jsonObject.get("distance").getAsDouble());

@@ -17,6 +17,9 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
+import javax.swing.ImageIcon;
+import javax.swing.border.EmptyBorder;
+import java.awt.Insets;
 
 /**
  * {@code InterfaceView} creates the GUI of the Fitbit program.
@@ -216,6 +219,42 @@ public class InterfaceView {
 	 * Label for max min minutes out of range zone
 	 */
 	private JLabel lblHeartOORMaxMin;
+	
+	/**
+	 * Label for active minutes daily goal
+	 */
+	private JLabel lblActiveMinGoal;
+	
+	/**
+	 * Label for calories daily goal
+	 */
+	private JLabel lblCaloriesGoal;
+	
+	/**
+	 * Label for distance daily goal
+	 */
+	private JLabel lblDistanceGoal;
+	
+	/**
+	 * Label for steps daily goal
+	 */
+	private JLabel lblStepsGoal;
+	
+	/**
+	 * Label for floors daily goal
+	 */
+	private JLabel lblFloorsGoal;
+	
+	/**
+	 * Labels for comparisons between goals values and actual values
+	 */
+	private JLabel lblStepsCompare;
+	private JLabel lblFloorsCompare;
+	private JLabel lblDistanceCompare;
+	private JLabel lblCaloriesCompare;
+	private JLabel lblActiveMinCompare;
+	
+	
 
 	/**
 	 * Constructor: uses initialize() method
@@ -236,15 +275,16 @@ public class InterfaceView {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setMinimumSize(new Dimension(900, 596));
 		frame.setResizable(false);
-		frame.setMaximumSize(new Dimension(600, 400));
+		frame.setMaximumSize(new Dimension(900, 600));
 		frame.setBounds(0, 0, 600, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		frame.getContentPane().setLayout(null);
 
 		JPanel CardLayout = new JPanel();
-		CardLayout.setBounds(0, 0, 470, 378);
+		CardLayout.setBounds(0, 0, 720, 578);
 		frame.getContentPane().add(CardLayout);
 		CardLayout.setLayout(new CardLayout(0, 0));
 
@@ -301,38 +341,46 @@ public class InterfaceView {
 	 */
 	private void menuBar() {
 		JToolBar MenuBar = new JToolBar();
-		MenuBar.setBounds(470, 0, 130, 378);
+		MenuBar.setBorder(null);
+		MenuBar.setBounds(720, 0, 180, 578);
 		MenuBar.setFloatable(false);
-		MenuBar.setBackground(Color.DARK_GRAY);
+		MenuBar.setBackground(null);
 		MenuBar.setOrientation(SwingConstants.VERTICAL);
 		frame.getContentPane().add(MenuBar);
 
-		btnDailyDashboard = new JButton("Daily Dashboard");
-		btnDailyDashboard.setMaximumSize(new Dimension(150, 54));
+		btnDailyDashboard = new JButton("Daily Dasboard");
+		btnDailyDashboard.setMargin(new Insets(0, 0, 0, 0));
+		btnDailyDashboard.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnDailyDashboard);
 
 		btnBestDays = new JButton("Best Days");
-		btnBestDays.setMaximumSize(new Dimension(150, 54));
+		btnBestDays.setMargin(new Insets(0, 0, 0, 0));
+		btnBestDays.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnBestDays);
 
 		btnDailyGoals = new JButton("Daily Goals");
-		btnDailyGoals.setMaximumSize(new Dimension(150, 54));
+		btnDailyGoals.setMargin(new Insets(0, 0, 0, 0));
+		btnDailyGoals.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnDailyGoals);
 
 		btnLifetimeTotals = new JButton("Lifetime Totals");
-		btnLifetimeTotals.setMaximumSize(new Dimension(150, 54));
+		btnLifetimeTotals.setMargin(new Insets(0, 0, 0, 0));
+		btnLifetimeTotals.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnLifetimeTotals);
 
 		btnAccolades = new JButton("Accolades");
-		btnAccolades.setMaximumSize(new Dimension(150, 54));
+		btnAccolades.setMargin(new Insets(0, 0, 0, 0));
+		btnAccolades.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnAccolades);
 
 		btnTimeSeries = new JButton("Time Series");
-		btnTimeSeries.setMaximumSize(new Dimension(150, 54));
+		btnTimeSeries.setMargin(new Insets(0, 0, 0, 0));
+		btnTimeSeries.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnTimeSeries);
 
 		btnHeartRateZones = new JButton("Heart Rate Zones");
-		btnHeartRateZones.setMaximumSize(new Dimension(150, 54));
+		btnHeartRateZones.setMargin(new Insets(0, 0, 0, 0));
+		btnHeartRateZones.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnHeartRateZones);
 	}
 
@@ -343,7 +391,7 @@ public class InterfaceView {
 		JLabel lblDailyDashboard = new JLabel("Daily Dashboard");
 		lblDailyDashboard.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDailyDashboard.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblDailyDashboard.setBounds(0, 0, 472, 30);
+		lblDailyDashboard.setBounds(0, 0, 720, 30);
 		panelDashboardView.add(lblDailyDashboard);
 
 		JLabel lblCalories = new JLabel("Calories Burned");
@@ -418,7 +466,7 @@ public class InterfaceView {
 		JLabel lblBestDays = new JLabel("Best Days");
 		lblBestDays.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBestDays.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblBestDays.setBounds(0, 0, 472, 30);
+		lblBestDays.setBounds(0, 0, 720, 30);
 		panelBestDaysView.add(lblBestDays);
 
 		JLabel lblDistance = new JLabel("Distance:");
@@ -471,12 +519,8 @@ public class InterfaceView {
 		JLabel lblAccolades = new JLabel("Accolades");
 		lblAccolades.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAccolades.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblAccolades.setBounds(0, 0, 472, 32);
+		lblAccolades.setBounds(0, 0, 720, 32);
 		panelAccoladesView.add(lblAccolades);
-
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(455, 0, 15, 378);
-		panelAccoladesView.add(scrollBar);
 
 		JCheckBox chckbxTask = new JCheckBox("Task #1:");
 		chckbxTask.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
@@ -541,7 +585,7 @@ public class InterfaceView {
 		JLabel lblTitle = new JLabel("Lifetime Totals");
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitle.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblTitle.setBounds(0, 0, 472, 32);
+		lblTitle.setBounds(0, 0, 720, 32);
 		panelLifetimeTotalsView.add(lblTitle);
 
 		JLabel lblDistance = new JLabel("Distance:");
@@ -582,7 +626,7 @@ public class InterfaceView {
 		JLabel lblNewLabel = new JLabel("Time Series");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblNewLabel.setBounds(0, 0, 472, 32);
+		lblNewLabel.setBounds(0, 0, 720, 32);
 		panelTimeSeriesView.add(lblNewLabel);
 
 		JToolBar graphTitle = new JToolBar();
@@ -630,9 +674,13 @@ public class InterfaceView {
 		lblDailyGoals.setBackground(Color.GRAY);
 		lblDailyGoals.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDailyGoals.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblDailyGoals.setBounds(0, 0, 472, 28);
+		lblDailyGoals.setBounds(0, 0, 720, 28);
 		panelDailyGoalsView.add(lblDailyGoals);
 
+		JLabel lblActiveMin = new JLabel("Active Minutes:");
+		lblActiveMin.setBounds(16, 160, 120, 16);
+		panelDailyGoalsView.add(lblActiveMin);
+		
 		JLabel lblSteps = new JLabel("Steps:");
 		lblSteps.setBounds(16, 52, 61, 16);
 		panelDailyGoalsView.add(lblSteps);
@@ -648,16 +696,47 @@ public class InterfaceView {
 		JLabel lblFloors = new JLabel("Floors:");
 		lblFloors.setBounds(16, 136, 61, 16);
 		panelDailyGoalsView.add(lblFloors);
+		
+		lblActiveMinGoal = new JLabel();
+		lblActiveMinGoal.setBounds(150, 160, 61, 16);
 
-		JButton btnAddNewGoal = new JButton("Add \nNew Goal");
-		btnAddNewGoal.setBounds(145, 163, 144, 22);
-		panelDailyGoalsView.add(btnAddNewGoal);
+		panelDailyGoalsView.add(lblActiveMinGoal);
+		
+		lblStepsGoal = new JLabel();
+		lblStepsGoal.setBounds(150, 52, 61, 16);
+		panelDailyGoalsView.add(lblStepsGoal);
 
-		JLabel lblMyGoals = new JLabel("My Goals:");
-		lblMyGoals.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblMyGoals.setBounds(16, 206, 85, 28);
-		panelDailyGoalsView.add(lblMyGoals);
+		lblDistanceGoal = new JLabel();
+		lblDistanceGoal.setBounds(150, 80, 61, 16);
+		panelDailyGoalsView.add(lblDistanceGoal);
 
+		lblCaloriesGoal = new JLabel();
+		lblCaloriesGoal.setBounds(150, 108, 61, 16);
+		panelDailyGoalsView.add(lblCaloriesGoal);
+
+		lblFloorsGoal = new JLabel();
+		lblFloorsGoal.setBounds(150, 136, 61, 16);
+		panelDailyGoalsView.add(lblFloorsGoal);
+		
+		lblStepsCompare = new JLabel();
+		lblStepsCompare.setBounds(336, 52, 61, 16);
+		panelDailyGoalsView.add(lblStepsCompare);
+		
+		lblDistanceCompare = new JLabel();
+		lblDistanceCompare.setBounds(336, 80, 61, 16);
+		panelDailyGoalsView.add(lblDistanceCompare);
+		
+		lblCaloriesCompare = new JLabel();
+		lblCaloriesCompare.setBounds(336, 108, 61, 16);
+		panelDailyGoalsView.add(lblCaloriesCompare);
+		
+		lblFloorsCompare = new JLabel();
+		lblFloorsCompare.setBounds(336, 136, 61, 16);
+		panelDailyGoalsView.add(lblFloorsCompare);
+		
+		lblActiveMinCompare = new JLabel();
+		lblActiveMinCompare.setBounds(336, 160, 61, 16);
+		panelDailyGoalsView.add(lblActiveMinCompare);
 	}
 
 	/**
@@ -667,7 +746,7 @@ public class InterfaceView {
 		JLabel lblHeartRateZones = new JLabel("Heart Rate Zones");
 		lblHeartRateZones.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHeartRateZones.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblHeartRateZones.setBounds(0, 0, 466, 27);
+		lblHeartRateZones.setBounds(0, 0, 720, 27);
 		panelHeartrateZonesView.add(lblHeartRateZones);
 
 		JLabel lblHeartRate = new JLabel("Resting Heart Rate: ");
@@ -732,10 +811,6 @@ public class InterfaceView {
 		lblHeartOORMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblHeartOORMaxMin.setBounds(230, 286, 148, 16);
 		panelHeartrateZonesView.add(lblHeartOORMaxMin);
-
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(455, 0, 15, 378);
-		panelHeartrateZonesView.add(scrollBar);
 	}
 
 	/**
@@ -926,7 +1001,7 @@ public class InterfaceView {
 
 	/**
 	 * Sets JLabel values for Daily Dashboard page with data from
-	 * {@code DailyRecord} Called when application is first loaded and when
+	 * {@code DailyRecord}. Called when application is first loaded and when
 	 * "Daily Dashboard" menu button is clicked, as defined in
 	 * {@code DailyDashboardController}.
 	 * 
@@ -958,7 +1033,7 @@ public class InterfaceView {
 
 	/**
 	 * Sets JLabel values for Best Days page with data from
-	 * {@code BestDaysRecord} Called when "Best Days" menu button is clicked, as
+	 * {@code BestDaysRecord}. Called when "Best Days" menu button is clicked, as
 	 * defined in {@code BestDaysController}.
 	 * 
 	 * @param distance
@@ -982,6 +1057,42 @@ public class InterfaceView {
 		lblBestDaysDistDate.setText(dist_date);
 		lblBestDaysFloorsDate.setText(floors_date);
 		lblBestDaysStepsDate.setText(steps_date);
+	}
+	
+	/**
+	 * Sets JLabel values for Daily Goasl page with data from 
+	 * {@code GoalsRecord}. Called when "Daily Goals" menu button is clicked,
+	 * as defined in {@code GoalsController}.
+	 * @param activeMinutes
+	 * 			daily goal for active minutes
+	 * @param caloriesOut
+	 * 			daily goal for calories burned
+	 * @param distance
+	 * 			daily goal for distance traveled
+	 * @param floors
+	 * 			daily goal for floors climbed
+	 * @param steps
+	 * 			daily goal for steps taken
+	 * @param activeMinStatus
+	 * @param caloriesStatus
+	 * @param distanceStatus
+	 * @param stepsStatus
+	 * @param floorsStatus
+	 */
+	public void setDailyGoalsFields(int activeMinutes, double caloriesOut, 
+			double distance, int floors, int steps, String activeMinStatus, String caloriesStatus,
+			String distanceStatus, String stepsStatus, String floorsStatus) {
+		lblActiveMinGoal.setText(Integer.toString(activeMinutes));
+		lblCaloriesGoal.setText(Double.toString(caloriesOut));
+		lblDistanceGoal.setText(Double.toString(distance));
+		lblStepsGoal.setText(Integer.toString(steps));
+		lblFloorsGoal.setText(Integer.toString(floors));
+		
+		lblActiveMinCompare.setText(activeMinStatus);
+		lblCaloriesCompare.setText(caloriesStatus);
+		lblDistanceCompare.setText(distanceStatus);
+		lblStepsCompare.setText(stepsStatus);
+		lblFloorsCompare.setText(floorsStatus);
 	}
 
 	/**
@@ -1047,6 +1158,18 @@ public class InterfaceView {
 	 */
 	public void addClickListenerDashboard(ActionListener actionsOnClick) {
 		btnDailyDashboard.addActionListener(actionsOnClick);
+	}
+	
+	/**
+	 * Attaches an {@code ActionListener} object to Daily Goals menu
+	 * button, which executes
+	 * {@code InterfaceVie}
+	 * 
+	 * @param actionsOnClick 
+	 * 			ActionListener object defined in {@link GoalsController}
+	 */
+	public void addClickListenerGoals(ActionListener actionsOnClick) {
+		btnDailyGoals.addActionListener(actionsOnClick);
 	}
 
 	/**
