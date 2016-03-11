@@ -621,7 +621,7 @@ public class InterfaceView {
 		SixPanel.add(Generic6);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 26, 61, 26);
+		menuBar.setBounds(0, 13, 70, 26);
 		panelDashboardView.add(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("Settings");
