@@ -112,6 +112,129 @@ public class APICaller {
 			
 		} //end constructor
 		
+		public String requestJson(String requestUrlSuffix, String filename){
+			// The access token contains everything you will need to authenticate your requests
+			// It can expire - at which point you will use the refresh token to refresh it
+			// See: https://dev.fitbit.com/docs/oauth2/#refreshing-tokens
+			// I have authenticated and given you the contents of the response to use
+			OAuth2AccessToken accessToken = new OAuth2AccessToken(
+					accessTokenItself, tokenType, refreshToken, expiresIn,
+					rawResponse);
+			// Now let's go and ask for a protected resource!
+			System.out.println("Now we're going to access a protected resource...");
+			System.out.println();
+			// Example request:
+			// This is always the prefix (for my account)
+			String requestUrlPrefix = "https://api.fitbit.com/1/user/3WGW2P/";
+
+			// The URL from this point is how you ask for different information
+			String requestUrl = requestUrlPrefix + requestUrlSuffix;
+			
+			// This actually generates an HTTP request from the URL -it has a header, body ect.
+			OAuthRequest request = new OAuthRequest(Verb.GET, requestUrl, service);
+
+			// This adds the information required by Fitbit to add the authorization
+			// information to the HTTP request
+			// You must do this before the request will work
+			// See: https://dev.fitbit.com/docs/oauth2/#making-requests
+			service.signRequest(accessToken, request);
+			
+			// If you are curious
+			//System.out.println(request.toString());
+			//System.out.println(request.getHeaders());
+			//System.out.println(request.getBodyContents());
+
+			// This actually sends the request:
+			Response response = request.send();
+
+			// The HTTP response from fitbit will be in HTTP format, meaning that it
+			// has a numeric code indicating
+			// whether is was successful (200) or not (400's or 500's), each code
+			// has a different meaning
+			System.out.println();
+			System.out.println("HTTP response code: " + response.getCode());
+			int statusCode = response.getCode();
+
+			switch (statusCode) {
+			case 200:
+				System.out.println("Success!");
+				System.out.println("HTTP response body:\n" + response.getBody());
+				break;
+			case 400:
+				System.out.println("Bad Request - may have to talk to Beth");
+				System.out.println("HTTP response body:\n" + response.getBody());
+				break;
+			case 401:
+				System.out.println("Likely Expired Token");
+				System.out.println("HTTP response body:\n" + response.getBody());
+				System.out.println("Try to refresh");
+
+				// This uses the refresh token to get a completely new accessToken
+				// object
+				// See: https://dev.fitbit.com/docs/oauth2/#refreshing-tokens
+				// This accessToken is now the current one, and the old ones will
+				// not work
+				// again. You should save the contents of accessToken.
+				accessToken = service.refreshOAuth2AccessToken(accessToken);
+
+				// Now we can try to access the service again
+				// Make sure you create a new OAuthRequest object each time!
+				request = new OAuthRequest(Verb.GET, requestUrl, service);
+				service.signRequest(accessToken, request);
+				response = request.send();
+
+				// Hopefully got a response this time:
+				System.out.println("HTTP response code: " + response.getCode());
+				System.out.println("HTTP response body:\n" + response.getBody());
+				break;
+			case 429:
+				System.out.println("Rate limit exceeded");
+				System.out.println("HTTP response body:\n" + response.getBody());
+				break;
+			default:
+				System.out.println("HTTP response code: " + response.getCode());
+				System.out.println("HTTP response body:\n" + response.getBody());
+			}
+
+			BufferedWriter bufferedWriter = null;
+			// Save the current accessToken information for next time
+
+			// IF YOU DO NOT SAVE THE CURRENTLY ACTIVE TOKEN INFO YOU WILL NOT BE
+			// ABLE TO REFRESH
+			// - contact Beth if this happens and she can reissue you a fresh set
+
+			try {
+				FileWriter fileWriter;
+				fileWriter =
+				new FileWriter(tokenFile);
+				bufferedWriter = new BufferedWriter(fileWriter);
+				bufferedWriter.write(accessToken.getToken());
+				bufferedWriter.newLine();
+				bufferedWriter.write(accessToken.getTokenType());
+				bufferedWriter.newLine();
+				bufferedWriter.write(accessToken.getRefreshToken());
+				bufferedWriter.newLine();
+				bufferedWriter.write(accessToken.getExpiresIn().toString());
+				bufferedWriter.newLine();
+				bufferedWriter.write(accessToken.getRawResponse());
+				bufferedWriter.newLine();
+				bufferedWriter.close();
+			} catch (FileNotFoundException ex) {
+				System.out.println("Unable to open file\n" + ex.getMessage());
+			} catch (IOException ex) {
+				System.out.println("Error reading/write file\n" + ex.getMessage());
+			} finally {
+				try {
+					if (bufferedWriter != null)
+						bufferedWriter.close();
+				} catch (Exception e) {
+					System.out.println("Error closing file\n" + e.getMessage());
+				}
+			}// end try
+
+			return response.getBody();
+			
+		}// end request method
 		
 		public void request(String requestUrlSuffix, String filename){
 			// The access token contains everything you will need to authenticate your requests
