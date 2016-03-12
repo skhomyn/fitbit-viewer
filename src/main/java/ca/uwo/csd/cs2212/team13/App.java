@@ -82,10 +82,10 @@ public class App {
 			//logger.warn("Run with argument test to test");
 			logger.trace("Running main program");
 			
-			APICaller test = new APICaller("activity%20heartrate", "src/main/resources/Team13Tokens.txt", "src/main/resources/Team13Credentials.txt");
-			test.request("activities/heart/date/today/1d.json", "src/main/resources/cur_heart_data.json");
-			test.request("activities/date/today.json", "src/main/resources/cur_activities_data.json");
-			test.request("activities.json", "src/main/resources/cur_totals.json");
+			//APICaller test = new APICaller("activity%20heartrate", "src/main/resources/Team13Tokens.txt", "src/main/resources/Team13Credentials.txt");
+			//test.request("activities/heart/date/today/1d.json", "src/main/resources/cur_heart_data.json");
+			//test.request("activities/date/today.json", "src/main/resources/cur_activities_data.json");
+			//test.request("activities.json", "src/main/resources/cur_totals.json");
 			
 			run.run();
 		}
