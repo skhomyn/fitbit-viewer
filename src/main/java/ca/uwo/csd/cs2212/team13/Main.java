@@ -133,10 +133,8 @@ public class Main {
 		// .getResourceAsStream("cur_totals.json"), "UTF-8")) {
 
 		WriterReader wr = new WriterReader();
-		//String aRecord_String = test.requestJson("activities.json",
-		//		"src/main/resources/cur_totals.json");
-
-		String aRecord_String = null;
+		String aRecord_String = test.requestJson("activities.json",
+				"src/main/resources/cur_totals.json");
 		
 		ActivitiesRecord actRecord = null;
 		if (aRecord_String == null) {
@@ -150,7 +148,6 @@ public class Main {
 			}
 
 		} else {
-			System.out.println("Test\n");
 			// Parse JSON to Java
 			actRecord = gson.fromJson(aRecord_String, ActivitiesRecord.class);
 		}
