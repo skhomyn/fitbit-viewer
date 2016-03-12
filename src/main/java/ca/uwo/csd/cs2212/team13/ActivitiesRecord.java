@@ -31,6 +31,8 @@
  */
 package ca.uwo.csd.cs2212.team13;
 
+import java.io.Serializable;
+
 /**
  * <code>ActivitiesRecord</code> is a simple Java object that contains the
  * models for both {@link BestDaysRecord} and {@link LifetimeRecord}
@@ -41,7 +43,7 @@ package ca.uwo.csd.cs2212.team13;
  * JSON object from API call
  * </ul>
  */
-public class ActivitiesRecord {
+public class ActivitiesRecord implements Serializable{
 
 	/**
 	 * The Record for the Best Days
@@ -53,6 +55,12 @@ public class ActivitiesRecord {
 	 */
 	private LifetimeRecord lifetime;
 
+	public ActivitiesRecord() {
+		super();
+		this.best = null;
+		this.lifetime = null;
+	}
+	
 	/**
 	 * Constructor, previously validated
 	 * 
