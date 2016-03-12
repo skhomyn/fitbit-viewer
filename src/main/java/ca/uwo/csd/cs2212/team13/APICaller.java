@@ -109,7 +109,7 @@ public class APICaller {
 			
 		} //end constructor
 		
-		public String requestJson(String requestUrlSuffix, String filename){
+		public String requestJson(String requestUrlSuffix){
 			// The access token contains everything you will need to authenticate your requests
 			// It can expire - at which point you will use the refresh token to refresh it
 			// See: https://dev.fitbit.com/docs/oauth2/#refreshing-tokens
