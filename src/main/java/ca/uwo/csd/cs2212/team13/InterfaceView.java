@@ -353,7 +353,7 @@ public class InterfaceView {
 		MenuBar.setOrientation(SwingConstants.VERTICAL);
 		frame.getContentPane().add(MenuBar);
 
-		btnDailyDashboard = new JButton("Daily Dasboard");
+		btnDailyDashboard = new JButton("Daily Dashboard");
 		btnDailyDashboard.setMargin(new Insets(0, 0, 0, 0));
 		btnDailyDashboard.setMaximumSize(new Dimension(180, 82));
 		MenuBar.add(btnDailyDashboard);
@@ -885,6 +885,9 @@ public class InterfaceView {
 						
 						radioCalories.setSelected(true);
 						radioActiveMin.setSelected(true);
+						
+						JButton btnRefresh = new JButton("Refresh");
+						mnNewMenu.add(btnRefresh);
 						repanel(radioCounter());
 						
 						//panelDashboardView.add(dailyTotalDistPanel);
