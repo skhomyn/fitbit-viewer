@@ -959,12 +959,12 @@ public class InterfaceView {
 	 * @param oor_minutes
 	 *            out of range minutes value for zone
 	 */
-	public void setHeartRateZonesFields(int minutes, int rate, int cardio_max,
+	public void setHeartRateZonesFields(int minutes, double rate, int cardio_max,
 			int fatburn_max, int peak_max, int cardio_min, int fatburn_min,
 			int peak_min, int cardio_minutes, int fatburn_minutes,
 			int peak_minutes, int oor_max, int oor_min, int oor_minutes) {
 		lblHeartMins.setText(Integer.toString(minutes));
-		lblHeartRest.setText(Integer.toString(rate));
+		lblHeartRest.setText(Double.toString(rate));
 
 		lblHeartCardioMaxMin.setText(Integer.toString(cardio_max) + "/"
 				+ Integer.toString(cardio_min) + "/"
