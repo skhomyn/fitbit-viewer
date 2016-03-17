@@ -57,7 +57,7 @@ public class DailyRecord {
 	/**
 	 * The Record for the Goals
 	 */
-	private Goals goals;
+	private GoalsRecord goals;
 
 	/**
 	 * The Date for this DailyRecord
@@ -82,7 +82,7 @@ public class DailyRecord {
 	 * 
 	 * @return the goals record
 	 */
-	public Goals getGoals() {
+	public GoalsRecord getGoals() {
 		return goals;
 	}
 
@@ -197,7 +197,7 @@ public class DailyRecord {
 	 * @param goals
 	 *            the new value of the field {@code goals} for the daily record
 	 */
-	public void setGoals(Goals goals) {
+	public void setGoals(GoalsRecord goals) {
 		this.goals = goals;
 	}
 
