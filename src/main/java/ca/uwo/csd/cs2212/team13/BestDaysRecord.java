@@ -1,10 +1,12 @@
 package ca.uwo.csd.cs2212.team13;
 
+import java.io.Serializable;
+
 /**
  * <code>BestDaysRecord</code> is a simple Java object that represents the
  * lifetime totals and the rules that govern access to and updates of this data
  */
-public class BestDaysRecord {
+public class BestDaysRecord implements Serializable{
 
 	/**
 	 * The date of the best recorded day for distance traveled

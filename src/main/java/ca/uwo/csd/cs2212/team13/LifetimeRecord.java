@@ -31,11 +31,13 @@
  */
 package ca.uwo.csd.cs2212.team13;
 
+import java.io.Serializable;
+
 /**
  * <code>LifetimeRecord</code> is a simple Java object that represents the
  * lifetime totals and the rules that govern access to and updates of this data.
  */
-public class LifetimeRecord {
+public class LifetimeRecord implements Serializable{
 
 	/**
 	 * The activity score lifetime total
