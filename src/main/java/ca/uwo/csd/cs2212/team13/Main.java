@@ -202,6 +202,9 @@ public class Main {
 		
 		gsonBuilder.registerTypeAdapter(GoalsRecord.class, 
 				new GoalsDeserializer());
+
+		gsonBuilder.registerTypeAdapter(CaloriesTSRecord.class, 
+				new CaloriesRecordDeserializer());
 		
 		gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
@@ -210,6 +213,18 @@ public class Main {
 		InterfaceView view = new InterfaceView();
 		view.setVisible(view);
 
+		// Read JSON data for heart rate
+		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
+				.getResourceAsStream("calories.json"), "UTF-8")) {
+
+			// Parse JSON to Java
+			final CaloriesTSRecord crRecord = gson.fromJson(data,
+					CaloriesTSRecord.class);
+
+		    System.out.println(crRecord);
+		}
+		
+		
 		// Read JSON data for heart rate
 		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
 				.getResourceAsStream("heartrate.json"), "UTF-8")) {

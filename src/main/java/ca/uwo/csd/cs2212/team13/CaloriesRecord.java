@@ -63,6 +63,7 @@ public class CaloriesRecord {
     @Override
     public String toString() {
         final StringBuilder formatted = new StringBuilder();
+        formatted.append(mets + "\n");
         formatted.append(time + "\n");
         formatted.append(value + "\n");
         return formatted.toString();

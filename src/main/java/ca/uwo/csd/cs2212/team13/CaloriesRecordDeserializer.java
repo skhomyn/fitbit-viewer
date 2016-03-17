@@ -42,7 +42,7 @@ public class CaloriesRecordDeserializer implements JsonDeserializer<CaloriesTSRe
 
             int mets = jsonCaloriesObject.get("mets").getAsInt();
             String time = jsonCaloriesObject.get("time").getAsString();
-            double value = jsonCaloriesObject.get("value").getAsInt();
+            double value = jsonCaloriesObject.get("value").getAsDouble();
 
             caloriesArray[i] = new CaloriesRecord(time, value, mets);
         }
