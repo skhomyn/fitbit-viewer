@@ -1,13 +1,15 @@
 /* Copyright (c) 2016, Team Sharkzilla (13) */
 package ca.uwo.csd.cs2212.team13;
 
+import java.io.Serializable;
+
 /**
  * Class to represent model of 
  * Accolades page
  * @author Jennifer
  */
 
-public class AccoladeRecord {
+public class AccoladeRecord implements Serializable {
 	
 	//true/false value for if you have acquired accolade or not
 	private boolean achieved; 
@@ -27,11 +29,22 @@ public class AccoladeRecord {
 		//what even goes here
 	}
 	
+	/** 
+	 * Constructor
+	 */
+	public AccoladeRecord(boolean achieved, String date, int value, String image, String type) {
+		this.achieved = achieved;
+		this.date = date;
+		this.value = value;
+		this.image = image;
+		this.type = type;
+	}
+	
 	/**
 	 * Getter for achievement
 	 * @return true if achieved accolade, false otherwise
 	 */
-	private boolean getAchieved() {
+	public boolean getAchieved() {
 		return achieved;
 	}
 	
@@ -39,7 +52,7 @@ public class AccoladeRecord {
 	 * Set achievement
 	 * @param a
 	 */
-	private void setAchieved(boolean a) {
+	public void setAchieved(boolean a) {
 		this.achieved = a;
 	}
 	
@@ -47,7 +60,7 @@ public class AccoladeRecord {
 	 * Get the current date
 	 * @return date
 	 */
-	private String getDate() {
+	public String getDate() {
 		return date;
 	}
 	
@@ -55,7 +68,7 @@ public class AccoladeRecord {
 	 * Set the date
 	 * @param d
 	 */
-	private void setDate(String d) {
+	public void setDate(String d) {
 		this.date = d;
 	}
 	
@@ -63,7 +76,7 @@ public class AccoladeRecord {
 	 * Getter for value of image
 	 * @return image's value
 	 */
-	private int getValue() {
+	public int getValue() {
 		return value;
 	}
 	
@@ -71,14 +84,14 @@ public class AccoladeRecord {
 	 * Set image's value
 	 * @param v
 	 */
-	private void setValue(int v) {
+	public void setValue(int v) {
 		this.value = v;
 	}
 	
 	/**
 	 * @return String of image's location
 	 */
-	private String getImage() {
+	public String getImage() {
 		return image;
 	}
 	
@@ -86,14 +99,14 @@ public class AccoladeRecord {
 	 * set image via string
 	 * @param i
 	 */
-	private void setImage(String i) {
+	public void setImage(String i) {
 		this.image = i;
 	}
 	
 	/**
 	 * @return type of image
 	 */
-	private String getType() {
+	public String getType() {
 		return type;
 	}
 	
@@ -101,7 +114,7 @@ public class AccoladeRecord {
 	 * set the type of the image
 	 * @param t
 	 */
-	private void setType(String t) {
+	public void setType(String t) {
 		this.type = t;
 	}
 }

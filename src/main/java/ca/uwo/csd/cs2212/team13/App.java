@@ -32,6 +32,7 @@
 package ca.uwo.csd.cs2212.team13;
 
 import java.io.IOException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -73,6 +74,31 @@ public class App {
 		logger.warn("Hello Maven/log4j World");
 		logger.info("My username is team13");
 
+		AccoladeRecord[] ar = new AccoladeRecord[2];
+		WriterReader wr = new WriterReader();
+		
+		//public AccoladeRecord(boolean achieved, String date, int value, String image, String type) {
+
+		ar[0] = new AccoladeRecord(false, null, 10000, "stepsAcc.jpg", "lifetime/steps");
+		ar[1] = new AccoladeRecord(false, null, 0, "noGoalsAcc.jpg", "dailygoals/check");
+		
+		//Ryan, just make new accolades ar[2] all the way to ar[20] accordingly
+		
+		try {
+			wr.writeRecord(ar, "accoladerecords");
+
+		} catch (Exception e) {
+			System.out.println("Could not write to file");
+		}
+		ar = null;
+		try {
+			ar = (AccoladeRecord[]) wr.loadRecord("src/main/resources/accoladerecords");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//System.out.println(ar[1].getImage());
+		
 		Main run = new Main();
 
 		// If no arguments, then actual run. But we don't have that working yet
