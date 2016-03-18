@@ -1,6 +1,3 @@
-/**
- * 
- */
 package ca.uwo.csd.cs2212.team13;
 
 import java.io.BufferedReader;
@@ -112,7 +109,7 @@ public class APICaller {
 			
 		} //end constructor
 		
-		public String requestJson(String requestUrlSuffix, String filename){
+		public String requestJson(String requestUrlSuffix){
 			// The access token contains everything you will need to authenticate your requests
 			// It can expire - at which point you will use the refresh token to refresh it
 			// See: https://dev.fitbit.com/docs/oauth2/#refreshing-tokens
@@ -163,7 +160,8 @@ public class APICaller {
 			case 400:
 				System.out.println("Bad Request - may have to talk to Beth");
 				System.out.println("HTTP response body:\n" + response.getBody());
-				break;
+				return null;
+				//break;
 			case 401:
 				System.out.println("Likely Expired Token");
 				System.out.println("HTTP response body:\n" + response.getBody());
@@ -190,7 +188,8 @@ public class APICaller {
 			case 429:
 				System.out.println("Rate limit exceeded");
 				System.out.println("HTTP response body:\n" + response.getBody());
-				break;
+				return null;
+				//break;
 			default:
 				System.out.println("HTTP response code: " + response.getCode());
 				System.out.println("HTTP response body:\n" + response.getBody());

@@ -47,44 +47,49 @@ import com.google.gson.GsonBuilder;
  */
 public class Main {
 
-	
 	public void run() throws IOException {
 
 		// Configure GSON
 		final GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapter(ActivitiesRecord.class,
 				new ActivitiesRecordDeserializer());
-		
-	    gsonBuilder.registerTypeAdapter(ActivitiesRecord.class, new ActivitiesRecordSerializer());
-	    
+
+		gsonBuilder.registerTypeAdapter(ActivitiesRecord.class,
+				new ActivitiesRecordSerializer());
+
 		gsonBuilder.registerTypeAdapter(DailyRecord.class,
 				new DailyRecordDeserializer());
-		
+
 		gsonBuilder.registerTypeAdapter(DailyRecord.class,
 				new DailyRecordSerializer());
-		
+
 		gsonBuilder.registerTypeAdapter(HeartRateRecord.class,
 				new HeartRateRecordSerializer());
-		
+
 		gsonBuilder.registerTypeAdapter(HeartRateRecord.class,
 				new HeartRateRecordDeserializer());
-		
-		gsonBuilder.registerTypeAdapter(GoalsRecord.class, 
+
+		gsonBuilder.registerTypeAdapter(GoalsRecord.class,
 				new GoalsDeserializer());
-		
-		gsonBuilder.setPrettyPrinting();
+
+		// gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
 
 		// Create InterfaceView and set as visible
 		InterfaceView view = new InterfaceView();
 		view.setVisible(view);
 
-		
-		APICaller test = new APICaller("activity%20heartrate", "src/main/resources/Team13Tokens.txt", "src/main/resources/Team13Credentials.txt");
-		//test.request("activities/heart/date/today/1d.json", "src/main/resources/cur_heart_data.json");
-		//test.request("activities/date/today.json", "src/main/resources/cur_activities_data.json");
-		//test.request("activities.json", "src/main/resources/cur_totals.json");
-		
+		WriterReader wr = new WriterReader();
+		APICaller test = new APICaller("activity%20heartrate",
+				"src/main/resources/Team13Tokens.txt",
+				"src/main/resources/Team13Credentials.txt");
+		// test.request("activities/heart/date/today/1d.json",
+		// "src/main/resources/cur_heart_data.json");
+		// test.request("activities/date/today.json",
+		// "src/main/resources/cur_activities_data.json");
+		// test.request("activities.json",
+		// "src/main/resources/cur_totals.json");
+
 		// Read JSON data for heart rate
 		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
 				.getResourceAsStream("heartrate.json"), "UTF-8")) {
@@ -95,57 +100,79 @@ public class Main {
 
 			// Create controllers
 			HRZController hrController = new HRZController(hrRecord, view);
-			
-		    // Format to JSON
-		    final String json = gson.toJson(hrRecord);
-		    System.out.println(json);
+
+			// Format to JSON
+			// final String json = gson.toJson(hrRecord);
+			// System.out.println(json);
 		}
 
 		// Read the JSON data for daily dashboard and daily goals
-		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
-				.getResourceAsStream("cur_activities_data.json"), "UTF-8")) {
+		String dRecord_String = test.requestJson("activities/date/today.json");
+		DailyRecord ddModel = null;
 
+		// If Null
+		if (dRecord_String == null) {
+			try {
+				System.out.println("Reading in DailyRecord from File\n");
+				ddModel = (DailyRecord) wr
+						.loadRecord("src/main/resources/dailyrecord");
+			} catch (Exception e) {
+				System.out.println("Could not read DailyRecord from File");
+			}
+		} else {
 			// Parse JSON to Java
-			final DailyRecord ddModel = gson.fromJson(data, DailyRecord.class);
-
-			// Create Controller for daily goals
-			DailyDashboardController ddController = new DailyDashboardController(
-					ddModel, view);
-			
-			//Create Controller for daily goals
-			GoalsController dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
-			
-			//initialize dashboard
-			ddController.DailyDashboardInitialize();
-			
-		    // Format to JSON
-		  //  final String json = gson.toJson(ddModel);
-		  //  System.out.println(json);
+			ddModel = gson.fromJson(dRecord_String, DailyRecord.class);
 		}
 
+		// Create Controller for daily goals
+		DailyDashboardController ddController = new DailyDashboardController(
+				ddModel, view);
+
+		// Create Controller for daily goals
+		GoalsController dgController = new GoalsController(ddModel,
+				ddModel.getGoals(), view);
+
+		// initialize dashboard
+		ddController.DailyDashboardInitialize();
+
+		try {
+			wr.writeRecord(ddModel, "dailyrecord");
+		} catch (Exception e) {
+			System.out.println("Could not write to file");
+		}
+		
 		// Read the JSON data for best days and lifetime totals
-		//try (Reader data = new InputStreamReader(Main.class.getClassLoader()
-		//		.getResourceAsStream("cur_totals.json"), "UTF-8")) {
+		String aRecord_String = test.requestJson("activities.json");
+		ActivitiesRecord actRecord = null;
 
+		// If Null
+		if (aRecord_String == null) {
+			try {
+				System.out.println("Reading in ActivitiesRecord from File\n");
+				actRecord = (ActivitiesRecord) wr
+						.loadRecord("src/main/resources/activityrecord");
+			} catch (Exception e) {
+				System.out.println("Could not read ActivitiesRecord from File");
+			}
+		} else {
 			// Parse JSON to Java
-			final ActivitiesRecord actRecord = gson.fromJson(test.requestJson("activities.json", "src/main/resources/cur_totals.json"),
-					ActivitiesRecord.class);
+			actRecord = gson.fromJson(aRecord_String, ActivitiesRecord.class);
+		}
 
-			// Create Models and Controllers
-			BestDaysRecord bdModel = actRecord.getBest();
-			BestDaysController bdController = new BestDaysController(bdModel,
-					view);
+		// Create Models and Controllers
+		BestDaysRecord bdModel = actRecord.getBest();
+		BestDaysController bdController = new BestDaysController(bdModel, view);
 
-			LifetimeRecord ltModel = actRecord.getLifetime();
-			LifetimeController ltController = new LifetimeController(ltModel,
-					view);
+		LifetimeRecord ltModel = actRecord.getLifetime();
+		LifetimeController ltController = new LifetimeController(ltModel, view);
 
-		    // Format to JSON
-		    //final String json = gson.toJson(actRecord);
-		    //System.out.println(json);
-		//}
+		try {
+			wr.writeRecord(actRecord, "activityrecord");
+		} catch (Exception e) {
+			System.out.println("Could not write to file");
+		}
 	}
-	
+
 	/**
 	 * Reads in test JSON files and then runs instance of {@link InterfaceView}
 	 * <p>
@@ -185,24 +212,25 @@ public class Main {
 		final GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapter(ActivitiesRecord.class,
 				new ActivitiesRecordDeserializer());
-		
-	    gsonBuilder.registerTypeAdapter(ActivitiesRecord.class, new ActivitiesRecordSerializer());
-	    
+
+		gsonBuilder.registerTypeAdapter(ActivitiesRecord.class,
+				new ActivitiesRecordSerializer());
+
 		gsonBuilder.registerTypeAdapter(DailyRecord.class,
 				new DailyRecordDeserializer());
-		
+
 		gsonBuilder.registerTypeAdapter(DailyRecord.class,
 				new DailyRecordSerializer());
-		
+
 		gsonBuilder.registerTypeAdapter(HeartRateRecord.class,
 				new HeartRateRecordSerializer());
-		
+
 		gsonBuilder.registerTypeAdapter(HeartRateRecord.class,
 				new HeartRateRecordDeserializer());
-		
-		gsonBuilder.registerTypeAdapter(GoalsRecord.class, 
+
+		gsonBuilder.registerTypeAdapter(GoalsRecord.class,
 				new GoalsDeserializer());
-		
+
 		gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
 
@@ -220,10 +248,10 @@ public class Main {
 
 			// Create controllers
 			HRZController hrController = new HRZController(hrRecord, view);
-			
-		    // Format to JSON
-		    final String json = gson.toJson(hrRecord);
-		    System.out.println(json);
+
+			// Format to JSON
+			final String json = gson.toJson(hrRecord);
+			System.out.println(json);
 		}
 
 		// Read the JSON data for daily dashboard
@@ -236,16 +264,17 @@ public class Main {
 			// Create Controller for daily goals
 			DailyDashboardController ddController = new DailyDashboardController(
 					ddModel, view);
-			
-			//Create Controller for daily goals
-			GoalsController dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
-			
-			//initialize dashboard
+
+			// Create Controller for daily goals
+			GoalsController dgController = new GoalsController(ddModel,
+					ddModel.getGoals(), view);
+
+			// initialize dashboard
 			ddController.DailyDashboardInitialize();
-			
-		    // Format to JSON
-		  //  final String json = gson.toJson(ddModel);
-		  //  System.out.println(json);
+
+			// Format to JSON
+			// final String json = gson.toJson(ddModel);
+			// System.out.println(json);
 		}
 
 		// Read the JSON data for best days and lifetime totals
@@ -264,10 +293,10 @@ public class Main {
 			LifetimeRecord ltModel = actRecord.getLifetime();
 			LifetimeController ltController = new LifetimeController(ltModel,
 					view);
-			
-		    // Format to JSON
-		    //final String json = gson.toJson(actRecord);
-		    //System.out.println(json);
+
+			// Format to JSON
+			// final String json = gson.toJson(actRecord);
+			// System.out.println(json);
 		}
 	}
 }
