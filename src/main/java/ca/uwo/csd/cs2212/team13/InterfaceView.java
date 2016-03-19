@@ -273,7 +273,8 @@ public class InterfaceView {
 	private JPanel dailyStepsPanel;
 	
 	private JPanel[] panelArray;
-	private JPanel distpanel;
+	
+	private JDatePickerImpl datePicker;
 	
 	public InterfaceView() {
 		initialize();
@@ -406,12 +407,17 @@ public class InterfaceView {
 	 */
 	private void dashboardView() {
 		
+		
 		panelDashboardView.setLayout(null);
-		ImageIcon pic = new ImageIcon("fitbitLogoBackground.jpg");
+		
+		////////NON-FUNCTIONING NIGHTMARE CODE: I can't add Hannah's pictures (Stepan can you fix this please?)////////
+		ImageIcon pic = new ImageIcon("C:\\Users\\Johnny\\groupProject2212\\team13\\src\\main\\resourcesfitbitLogoBackground.jpg");
 		JLabel background = new JLabel(pic);
-		background.setBounds(0,0,720,556);
+		background.setBounds(0,0,720,556);	//jus trying random shit.
 		background.setVisible(true);
 		panelDashboardView.add(background);
+		panelDashboardView.setOpaque(false);
+		///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		JLabel lblDailyDashboard = new JLabel("Daily Dashboard");
 		lblDailyDashboard.setBounds(0, 0, 720, 30);
@@ -903,18 +909,52 @@ public class InterfaceView {
 						label_4.setBounds(19, 5, 81, 16);
 						dailyTotalDistPanel.add(label_4);
 		
-						Date ew = new Date();
-		
-						UtilDateModel utilModel = new UtilDateModel();
-						//utilModel.setDate(year, month, day);
+						Date currentDate = new Date();
+						UtilDateModel utilModel = new UtilDateModel(currentDate);
 						JDatePanelImpl datePanel = new JDatePanelImpl(utilModel);
-						JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
-						datePicker.setBounds(278,43,150,26);
-						
+						datePicker = new JDatePickerImpl(datePanel);
+						datePicker.setBounds(278,43,163,26);
+						datePicker.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								CalendarToAPI();
+							}
+						});
 						panelDashboardView.add(datePicker);
 						
 						SwitchingPanel.setVisible(true);
 						
+						
+						
+						
+						
+						JButton btnRefresh = new JButton("Refresh");
+						mnNewMenu.add(btnRefresh);
+						
+						JButton btnPrevDate = new JButton("Next");
+						btnPrevDate.setBounds(217, 44, 49, 25);
+						panelDashboardView.add(btnPrevDate);
+						btnPrevDate.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								datePicker.getModel().setDay(datePicker.getModel().getDay()-1);
+								CalendarToAPI();
+							}
+						});
+						
+						JButton btnNextDate = new JButton("Prev");
+						btnNextDate.setBounds(453, 44, 49, 25);
+						btnNextDate.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								datePicker.getModel().setDay(datePicker.getModel().getDay()+1);
+								CalendarToAPI();
+							}
+						});
+						
+							
+						panelDashboardView.add(btnNextDate);
+						
+						/////////////LOOK AT THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//////////////////
+						
+						/////THIS NEEDS TO BE REPLACED WITH THE ARRAY WHICH IS PASSED IN/////////
 						panelArray = new JPanel[6];
 						panelArray[0]=dailyActiveMinPanel;
 						panelArray[1]=dailyCaloriesPanel;
@@ -922,13 +962,16 @@ public class InterfaceView {
 						panelArray[3]=dailyFloorsPanel;
 						panelArray[4]=dailyStepsPanel;
 						panelArray[5]=dailyTotalDistPanel;
-						
+						////////////////////////////////////////////////////////////////
+						/////ALSO MAKE SURE TO SET THE APPROPRIATE RADIOBUTTONS//////////
 						radioCalories.setSelected(true);
 						radioActiveMin.setSelected(true);
-						
-						JButton btnRefresh = new JButton("Refresh");
-						mnNewMenu.add(btnRefresh);
+						/////////////////////////////////////////////////////////////////
+						/////KEEP THIS THO.//////////////////////////////////////////////
 						repanel(radioCounter());
+						////////////////////////////////////////////////////////////////////
+						
+						///Uncomment to see and change added panels in window builder.////////////////
 						
 						//panelDashboardView.add(dailyTotalDistPanel);
 						//panelDashboardView.add(dailyActiveMinPanel);		
@@ -1866,5 +1909,10 @@ public class InterfaceView {
 			
 			break;
 		}
+	}
+	
+	public String CalendarToAPI(){
+		System.out.println(datePicker.getJFormattedTextField().getText());
+		return datePicker.getJFormattedTextField().getText();
 	}
 }
