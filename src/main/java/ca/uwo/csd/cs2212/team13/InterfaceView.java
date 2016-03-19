@@ -33,6 +33,16 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JRadioButton;
 import javax.swing.border.BevelBorder;
 
+import net.sourceforge.jdatepicker.impl.*;
+import java.util.Date;
+import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+
+
+
+
+
 /**
  * {@code InterfaceView} creates the GUI of the Fitbit program.
  * It also implements page navigation between the different screens.
@@ -58,7 +68,7 @@ public class InterfaceView {
 
 	private JButton btnHeartRateZones;
 
-	private JLayeredPane panelDashboardView;
+	private JPanel panelDashboardView;
 
 	private JPanel panelBestDaysView;
 
@@ -294,8 +304,10 @@ public class InterfaceView {
 		frame.getContentPane().add(CardLayout);
 		CardLayout.setLayout(new CardLayout(0, 0));
 
-		panelDashboardView = new JLayeredPane();
+		panelDashboardView = new JPanel();
+		panelDashboardView.setBackground(null);
 		CardLayout.add(panelDashboardView, "name_1456446913223833000");
+		panelDashboardView.setLayout(null);
 
 		panelBestDaysView = new JPanel();
 		CardLayout.add(panelBestDaysView, "name_1456446950405885000");
@@ -393,7 +405,14 @@ public class InterfaceView {
 	 * This method implements the Dashboard screen.
 	 */
 	private void dashboardView() {
+		
 		panelDashboardView.setLayout(null);
+		ImageIcon pic = new ImageIcon("fitbitLogoBackground.jpg");
+		JLabel background = new JLabel(pic);
+		background.setBounds(0,0,720,556);
+		background.setVisible(true);
+		panelDashboardView.add(background);
+		
 		JLabel lblDailyDashboard = new JLabel("Daily Dashboard");
 		lblDailyDashboard.setBounds(0, 0, 720, 30);
 		lblDailyDashboard.setHorizontalAlignment(SwingConstants.CENTER);
@@ -412,19 +431,31 @@ public class InterfaceView {
 		
 		
 		dailyActiveMinPanel = new JPanel();
-		dailyActiveMinPanel.setBounds(381, 448, 112, 79);
-		
-				lblDailyVeryActMinVal = new JLabel();
-				lblDailyVeryActMinVal.setBounds(12, 24, 69, 13);
-				dailyActiveMinPanel.add(lblDailyVeryActMinVal);
-				lblDailyVeryActMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
-				
-				JLabel label_1 = new JLabel("Very Active Minutes");
-				label_1.setBounds(0, 0, 112, 16);
-				dailyActiveMinPanel.add(label_1);
+		dailyActiveMinPanel.setBounds(374, 477, 120, 100);
+						GridBagLayout gbl_dailyActiveMinPanel = new GridBagLayout();
+						gbl_dailyActiveMinPanel.columnWidths = new int[]{1, 112, 0};
+						gbl_dailyActiveMinPanel.rowHeights = new int[]{16, 0};
+						gbl_dailyActiveMinPanel.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+						gbl_dailyActiveMinPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+						dailyActiveMinPanel.setLayout(gbl_dailyActiveMinPanel);
+						
+								lblDailyVeryActMinVal = new JLabel();
+								GridBagConstraints gbc_lblDailyVeryActMinVal = new GridBagConstraints();
+								gbc_lblDailyVeryActMinVal.anchor = GridBagConstraints.SOUTH;
+								gbc_lblDailyVeryActMinVal.insets = new Insets(0, 0, 0, 5);
+								gbc_lblDailyVeryActMinVal.gridx = 0;
+								gbc_lblDailyVeryActMinVal.gridy = 0;
+								dailyActiveMinPanel.add(lblDailyVeryActMinVal, gbc_lblDailyVeryActMinVal);
+								lblDailyVeryActMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
+						
+						JLabel label_1 = new JLabel("Very Active Minutes");
+						GridBagConstraints gbc_label_1 = new GridBagConstraints();
+						gbc_label_1.gridx = 1;
+						gbc_label_1.gridy = 0;
+						dailyActiveMinPanel.add(label_1, gbc_label_1);
 		
 		dailyStepsPanel = new JPanel();
-		dailyStepsPanel.setBounds(496, 453, 112, 74);
+		dailyStepsPanel.setBounds(496, 453, 120, 100);
 	
 		
 				lblDailyStepsVal = new JLabel();
@@ -435,7 +466,7 @@ public class InterfaceView {
 				dailyStepsPanel.add(label_3);
 		
 		dailyCaloriesPanel = new JPanel();
-		dailyCaloriesPanel.setBounds(608, 452, 112, 75);
+		dailyCaloriesPanel.setBounds(608, 452, 120, 100);
 		
 		
 				lblDailyCaloriesVal = new JLabel();
@@ -446,7 +477,7 @@ public class InterfaceView {
 				dailyCaloriesPanel.add(label);
 		
 		JPanel SwitchingPanel = new JPanel();
-		SwitchingPanel.setBounds(38, 43, 629, 357);
+		SwitchingPanel.setBounds(37, 120, 629, 357);
 		panelDashboardView.add(SwitchingPanel);
 		SwitchingPanel.setLayout(new CardLayout(0, 0));
 		
@@ -456,7 +487,7 @@ public class InterfaceView {
 		
 		onePanel_1 = new JPanel();
 		onePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		onePanel_1.setBounds(243, 142, 119, 102);
+		onePanel_1.setBounds(243, 142, 120, 100);
 		OnePanel.add(onePanel_1);
 		
 		TwoPanel = new JPanel();
@@ -465,12 +496,12 @@ public class InterfaceView {
 		
 		twoPanel_1 = new JPanel();
 		twoPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		twoPanel_1.setBounds(145, 126, 119, 102);
+		twoPanel_1.setBounds(120, 126, 120, 100);
 		TwoPanel.add(twoPanel_1);
 		
 		twoPanel_2 = new JPanel();
 		twoPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		twoPanel_2.setBounds(343, 126, 134, 108);
+		twoPanel_2.setBounds(343, 126, 120, 100);
 		TwoPanel.add(twoPanel_2);
 		
 		ThreePanel = new JPanel();
@@ -478,18 +509,21 @@ public class InterfaceView {
 		ThreePanel.setLayout(null);
 		
 		threePanel_1 = new JPanel();
+		threePanel_1.setAlignmentX(Component.LEFT_ALIGNMENT);
 		threePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		threePanel_1.setBounds(64, 140, 119, 102);
+		threePanel_1.setBounds(64, 140, 120, 100);
 		ThreePanel.add(threePanel_1);
 		
 		threePanel_2 = new JPanel();
+		threePanel_2.setAlignmentX(Component.LEFT_ALIGNMENT);
 		threePanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		threePanel_2.setBounds(256, 140, 119, 102);
+		threePanel_2.setBounds(256, 140, 120, 100);
 		ThreePanel.add(threePanel_2);
 		
 		threePanel_3 = new JPanel();
+		threePanel_3.setAlignmentX(Component.LEFT_ALIGNMENT);
 		threePanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		threePanel_3.setBounds(448, 140, 119, 102);
+		threePanel_3.setBounds(448, 140, 120, 100);
 		ThreePanel.add(threePanel_3);
 		
 		FourPanel = new JPanel();
@@ -498,22 +532,22 @@ public class InterfaceView {
 		
 		fourPanel_1 = new JPanel();
 		fourPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fourPanel_1.setBounds(69, 145, 119, 102);
+		fourPanel_1.setBounds(69, 145, 120, 100);
 		FourPanel.add(fourPanel_1);
 		
 		fourPanel_2 = new JPanel();
 		fourPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fourPanel_2.setBounds(242, 58, 119, 102);
+		fourPanel_2.setBounds(242, 58, 120, 100);
 		FourPanel.add(fourPanel_2);
 		
 		fourPanel_3 = new JPanel();
 		fourPanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fourPanel_3.setBounds(430, 145, 119, 102);
+		fourPanel_3.setBounds(430, 145, 120, 100);
 		FourPanel.add(fourPanel_3);
 		
 		fourPanel_4 = new JPanel();
 		fourPanel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fourPanel_4.setBounds(242, 218, 119, 102);
+		fourPanel_4.setBounds(242, 218, 120, 100);
 		FourPanel.add(fourPanel_4);
 		
 		FivePanel = new JPanel();
@@ -522,27 +556,27 @@ public class InterfaceView {
 		
 		fivePanel_1 = new JPanel();
 		fivePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fivePanel_1.setBounds(86, 66, 119, 102);
+		fivePanel_1.setBounds(86, 66, 120, 100);
 		FivePanel.add(fivePanel_1);
 		
 		fivePanel_2 = new JPanel();
 		fivePanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fivePanel_2.setBounds(266, 70, 119, 102);
+		fivePanel_2.setBounds(266, 70, 120, 100);
 		FivePanel.add(fivePanel_2);
 		
 		fivePanel_3 = new JPanel();
 		fivePanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fivePanel_3.setBounds(459, 72, 119, 102);
+		fivePanel_3.setBounds(459, 72, 120, 100);
 		FivePanel.add(fivePanel_3);
 		
 		fivePanel_4 = new JPanel();
 		fivePanel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fivePanel_4.setBounds(176, 199, 119, 102);
+		fivePanel_4.setBounds(176, 199, 120, 100);
 		FivePanel.add(fivePanel_4);
 		
 		fivePanel_5 = new JPanel();
 		fivePanel_5.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fivePanel_5.setBounds(381, 205, 119, 102);
+		fivePanel_5.setBounds(381, 205, 120, 100);
 		FivePanel.add(fivePanel_5);
 		
 		
@@ -552,32 +586,32 @@ public class InterfaceView {
 		
 		sixPanel_1 = new JPanel();
 		sixPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		sixPanel_1.setBounds(64, 58, 119, 102);
+		sixPanel_1.setBounds(64, 58, 120, 100);
 		SixPanel.add(sixPanel_1);
 		
 		sixPanel_2 = new JPanel();
 		sixPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		sixPanel_2.setBounds(242, 58, 119, 102);
+		sixPanel_2.setBounds(242, 58, 120, 100);
 		SixPanel.add(sixPanel_2);
 		
 		sixPanel_3 = new JPanel();
 		sixPanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		sixPanel_3.setBounds(451, 58, 119, 102);
+		sixPanel_3.setBounds(451, 58, 120, 100);
 		SixPanel.add(sixPanel_3);
 		
 		sixPanel_4 = new JPanel();
 		sixPanel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		sixPanel_4.setBounds(64, 218, 119, 102);
+		sixPanel_4.setBounds(64, 218, 120, 100);
 		SixPanel.add(sixPanel_4);
 		
 		sixPanel_5 = new JPanel();
 		sixPanel_5.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		sixPanel_5.setBounds(242, 218, 119, 102);
+		sixPanel_5.setBounds(242, 218, 120, 100);
 		SixPanel.add(sixPanel_5);
 		
 		sixPanel_6 = new JPanel();
 		sixPanel_6.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		sixPanel_6.setBounds(451, 218, 119, 102);
+		sixPanel_6.setBounds(451, 218, 120, 100);
 		SixPanel.add(sixPanel_6);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -833,7 +867,7 @@ public class InterfaceView {
 	});
 		
 		dailySedMinPanel = new JPanel();
-		dailySedMinPanel.setBounds(264, 448, 112, 79);
+		dailySedMinPanel.setBounds(264, 448, 120, 100);
 		
 				lblDailySedenteryMinVal = new JLabel();
 				lblDailySedenteryMinVal.setBounds(3, 34, 97, 16);
@@ -845,7 +879,7 @@ public class InterfaceView {
 				dailySedMinPanel.add(label_2);
 				
 				dailyFloorsPanel = new JPanel();
-				dailyFloorsPanel.setBounds(0, 448, 112, 79);
+				dailyFloorsPanel.setBounds(0, 448, 120, 100);
 				
 				JLabel label_5 = new JLabel("Floors Climbed");
 				label_5.setBounds(15, 5, 85, 16);
@@ -857,7 +891,7 @@ public class InterfaceView {
 						lblDailyFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
 						
 						dailyTotalDistPanel = new JPanel();
-						dailyTotalDistPanel.setBounds(124, 448, 112, 79);
+						dailyTotalDistPanel.setBounds(126, 477, 120, 100);
 	
 						
 						lblDailyDistVal = new JLabel();
@@ -869,9 +903,15 @@ public class InterfaceView {
 						label_4.setBounds(19, 5, 81, 16);
 						dailyTotalDistPanel.add(label_4);
 		
-
+						Date ew = new Date();
 		
+						UtilDateModel utilModel = new UtilDateModel();
+						//utilModel.setDate(year, month, day);
+						JDatePanelImpl datePanel = new JDatePanelImpl(utilModel);
+						JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
+						datePicker.setBounds(278,43,150,26);
 						
+						panelDashboardView.add(datePicker);
 						
 						SwitchingPanel.setVisible(true);
 						
