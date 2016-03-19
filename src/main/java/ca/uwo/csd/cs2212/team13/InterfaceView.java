@@ -396,11 +396,6 @@ public class InterfaceView {
 	 */
 	private void dashboardView() {
 		panelDashboardView.setLayout(null);
-		JLabel lblDailyDashboard = new JLabel("Daily Dashboard");
-		lblDailyDashboard.setBounds(0, 0, 720, 30);
-		lblDailyDashboard.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDailyDashboard.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		panelDashboardView.add(lblDailyDashboard);
 
 		// Commented out until implementation
 		// JLabel lblDailyProgress = new JLabel("Daily Goals");
@@ -887,9 +882,15 @@ public class InterfaceView {
 						
 						radioCalories.setSelected(true);
 						radioActiveMin.setSelected(true);
+						JLabel lblDailyDashboard = new JLabel("Daily Dashboard");
+						lblDailyDashboard.setBounds(-6, 4, 720, 30);
+						panelDashboardView.add(lblDailyDashboard);
+						lblDailyDashboard.setHorizontalAlignment(SwingConstants.CENTER);
+						lblDailyDashboard.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 						
 						btnRefresh = new JButton("Refresh");
-						mnNewMenu.add(btnRefresh);
+						btnRefresh.setBounds(617, 10, 91, 29);
+						panelDashboardView.add(btnRefresh);
 						repanel(radioCounter());
 						
 						//panelDashboardView.add(dailyTotalDistPanel);
