@@ -38,6 +38,9 @@ import java.io.Reader;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * <code>Main</code> is the class that handles up all the initial input going
  * into the interface and then runs the program.
@@ -46,6 +49,9 @@ import com.google.gson.GsonBuilder;
  * {@link InterfaceView} is working properly upon receiving input.
  */
 public class Main {
+	
+	private DailyRecord ddModel;
+	private ActivitiesRecord actRecord;
 
 	public void run() throws IOException {
 
@@ -79,8 +85,8 @@ public class Main {
 		InterfaceView view = new InterfaceView();
 		view.setVisible(view);
 
-		WriterReader wr = new WriterReader();
-		APICaller test = new APICaller("activity%20heartrate",
+		final WriterReader wr = new WriterReader();
+		final APICaller apiCaller = new APICaller("activity%20heartrate",
 				"src/main/resources/Team13Tokens.txt",
 				"src/main/resources/Team13Credentials.txt");
 		// test.request("activities/heart/date/today/1d.json",
@@ -90,7 +96,7 @@ public class Main {
 		// test.request("activities.json",
 		// "src/main/resources/cur_totals.json");
 
-		// Read JSON data for heart rate
+		// Read JSON data for heart rate 
 		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
 				.getResourceAsStream("heartrate.json"), "UTF-8")) {
 
@@ -107,9 +113,40 @@ public class Main {
 		}
 
 		// Read the JSON data for daily dashboard and daily goals
-		String dRecord_String = test.requestJson("activities/date/today.json");
-		DailyRecord ddModel = null;
 
+		refreshInfo(gson, apiCaller, wr);
+
+		// Create Controller for daily goals
+		DailyDashboardController ddController = new DailyDashboardController(ddModel, view);
+
+		// Create Controller for daily goals
+		GoalsController dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
+
+		// initialize dashboard
+		ddController.DailyDashboardInitialize();
+	
+		// Create Models and Controllers
+		BestDaysRecord bdModel = actRecord.getBest();
+		BestDaysController bdController = new BestDaysController(bdModel, view);
+
+		LifetimeRecord ltModel = actRecord.getLifetime();
+		LifetimeController ltController = new LifetimeController(ltModel, view);
+				
+		//add action listener to refresh button
+		view.addListenerForRefresh(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refreshInfo(gson, apiCaller, wr);
+			}	
+		});
+
+	}
+	
+	
+	public void refreshInfo(Gson gson, APICaller apiCaller, WriterReader wr){
+		
+		//make request for dashboard info
+		String dRecord_String = apiCaller.requestJson("activities/date/today.json");
 		// If Null
 		if (dRecord_String == null) {
 			try {
@@ -123,18 +160,6 @@ public class Main {
 			// Parse JSON to Java
 			ddModel = gson.fromJson(dRecord_String, DailyRecord.class);
 		}
-
-		// Create Controller for daily goals
-		DailyDashboardController ddController = new DailyDashboardController(
-				ddModel, view);
-
-		// Create Controller for daily goals
-		GoalsController dgController = new GoalsController(ddModel,
-				ddModel.getGoals(), view);
-
-		// initialize dashboard
-		ddController.DailyDashboardInitialize();
-
 		try {
 			wr.writeRecord(ddModel, "dailyrecord");
 		} catch (Exception e) {
@@ -142,8 +167,7 @@ public class Main {
 		}
 		
 		// Read the JSON data for best days and lifetime totals
-		String aRecord_String = test.requestJson("activities.json");
-		ActivitiesRecord actRecord = null;
+		String aRecord_String = apiCaller.requestJson("activities.json");
 
 		// If Null
 		if (aRecord_String == null) {
@@ -158,14 +182,6 @@ public class Main {
 			// Parse JSON to Java
 			actRecord = gson.fromJson(aRecord_String, ActivitiesRecord.class);
 		}
-
-		// Create Models and Controllers
-		BestDaysRecord bdModel = actRecord.getBest();
-		BestDaysController bdController = new BestDaysController(bdModel, view);
-
-		LifetimeRecord ltModel = actRecord.getLifetime();
-		LifetimeController ltController = new LifetimeController(ltModel, view);
-
 		try {
 			wr.writeRecord(actRecord, "activityrecord");
 		} catch (Exception e) {
