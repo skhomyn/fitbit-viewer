@@ -57,6 +57,8 @@ public class InterfaceView {
 	private JButton btnTimeSeries;
 
 	private JButton btnHeartRateZones;
+	
+	private JButton btnRefresh;
 
 	private JLayeredPane panelDashboardView;
 
@@ -886,7 +888,7 @@ public class InterfaceView {
 						radioCalories.setSelected(true);
 						radioActiveMin.setSelected(true);
 						
-						JButton btnRefresh = new JButton("Refresh");
+						btnRefresh = new JButton("Refresh");
 						mnNewMenu.add(btnRefresh);
 						repanel(radioCounter());
 						
@@ -1609,6 +1611,10 @@ public class InterfaceView {
 	 */
 	public void addClickListenerGoals(ActionListener actionsOnClick) {
 		btnDailyGoals.addActionListener(actionsOnClick);
+	}
+	
+	public void addListenerForRefresh(ActionListener refresh){
+		btnRefresh.addActionListener(refresh);
 	}
 
 	/**
