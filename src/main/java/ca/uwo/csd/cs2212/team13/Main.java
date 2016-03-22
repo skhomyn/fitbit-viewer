@@ -105,8 +105,8 @@ public class Main {
 			// final String json = gson.toJson(hrRecord);
 			// System.out.println(json);
 
-			//final String json = gson.toJson(hrRecord);
-			//System.out.println(json);
+			// final String json = gson.toJson(hrRecord);
+			// System.out.println(json);
 		}
 
 		// Read the JSON data for daily dashboard and daily goals
@@ -143,7 +143,7 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println("Could not write to file");
 		}
-		
+
 		// Read the JSON data for best days and lifetime totals
 
 		String aRecord_String = test.requestJson("activities.json");
@@ -162,7 +162,7 @@ public class Main {
 			// Parse JSON to Java
 			actRecord = gson.fromJson(aRecord_String, ActivitiesRecord.class);
 		}
-		
+
 		// Create Models and Controllers
 		BestDaysRecord bdModel = actRecord.getBest();
 		BestDaysController bdController = new BestDaysController(bdModel, view);
@@ -244,6 +244,12 @@ public class Main {
 		gsonBuilder.registerTypeAdapter(CaloriesTSRecord.class,
 				new CaloriesRecordDeserializer());
 
+		gsonBuilder.registerTypeAdapter(DistanceTSRecord.class,
+				new DistanceRecordDeserializer());
+
+		gsonBuilder.registerTypeAdapter(StepsTSRecord.class,
+				new StepsRecordDeserializer());
+
 		gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
 
@@ -253,18 +259,7 @@ public class Main {
 
 		// Read JSON data for heart rate
 		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
-				.getResourceAsStream("calories.json"), "UTF-8")) {
-
-			// Parse JSON to Java
-			final CaloriesTSRecord crRecord = gson.fromJson(data,
-					CaloriesTSRecord.class);
-
-			// System.out.println(crRecord);
-		}
-
-		// Read JSON data for heart rate
-		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
-				.getResourceAsStream("heartrate.json"), "UTF-8")) {
+				.getResourceAsStream("cur_heart_data.json"), "UTF-8")) {
 
 			// Parse JSON to Java
 			final HeartRateRecord hrRecord = gson.fromJson(data,
@@ -273,13 +268,13 @@ public class Main {
 			// Create controllers
 			HRZController hrController = new HRZController(hrRecord, view);
 
-
 			// Format to JSON
-			//final String json = gson.toJson(hrRecord);
-			//System.out.println(json);
-			//System.out.println(hrRecord);
+			// final String json = gson.toJson(hrRecord);
+			// System.out.println(json);
+			// System.out.println(hrRecord);
 
 		}
+
 		// Read the JSON data for daily dashboard
 		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
 				.getResourceAsStream("date.json"), "UTF-8")) {
@@ -324,5 +319,45 @@ public class Main {
 			// final String json = gson.toJson(actRecord);
 			// System.out.println(json);
 		}
+
+		
+		// Read the JSON data for best days and lifetime totals
+		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
+				.getResourceAsStream("distance.json"), "UTF-8")) {
+			try (Reader data2 = new InputStreamReader(Main.class
+					.getClassLoader().getResourceAsStream("steps.json"),
+					"UTF-8")) {
+				try (Reader data3 = new InputStreamReader(Main.class
+						.getClassLoader().getResourceAsStream("calories.json"),
+						"UTF-8")) {
+					// Read JSON data for heart rate
+					try (Reader data4 = new InputStreamReader(Main.class
+							.getClassLoader().getResourceAsStream(
+									"cur_heart_data.json"), "UTF-8")) {
+
+						// Parse JSON to Java
+						final HeartRateRecord hrRecord = gson.fromJson(data4,
+								HeartRateRecord.class);
+
+						// Parse JSON to Java
+						final DistanceTSRecord dtsRecord = gson.fromJson(data,
+								DistanceTSRecord.class);
+
+						// Parse JSON to Java
+						final StepsTSRecord stsRecord = gson.fromJson(data2,
+								StepsTSRecord.class);
+
+						// Parse JSON to Java
+						final CaloriesTSRecord caRecord = gson.fromJson(data3,
+								CaloriesTSRecord.class);
+
+						// Create Controller for time series
+						TimeSeriesController tsController = new TimeSeriesController(
+								dtsRecord, stsRecord, caRecord, hrRecord, view);
+					}
+				}
+			}
+		}
+		
 	}
 }

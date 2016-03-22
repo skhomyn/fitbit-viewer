@@ -43,6 +43,7 @@ import org.jfree.ui.RefineryUtilities;
 
 
 
+
 import java.awt.Insets;
 
 import javax.swing.JLayeredPane;
@@ -1127,15 +1128,6 @@ public class InterfaceView {
 		panelTimeSeriesView.add(panelGraph);
 
 		//super( Fitness Shark );   
-		
-		// Generate Graph:
-		final XYDataset dataset = createDataset( );         
-		final JFreeChart chart = createChart( dataset );         
-		final ChartPanel chartPanel = new ChartPanel( chart );         
-		chartPanel.setPreferredSize( new java.awt.Dimension( 560 , 370 ) );         
-		chartPanel.setMouseZoomable( true , false );         
-		panelGraph.add( chartPanel );
-        
 	}
 
 	/**
@@ -1567,6 +1559,17 @@ public class InterfaceView {
 		lblStepsCompare.setText(stepsStatus);
 		lblFloorsCompare.setText(floorsStatus);
 	}
+	
+	public void setTimeSeriesGraph(DistanceTSRecord dRecords, StepsTSRecord sRecords, CaloriesTSRecord caRecord, HeartRateRecord rRecord)
+	{
+		// Generate Graph:
+		final XYDataset dataset = createDataset(dRecords, sRecords, caRecord, rRecord);         
+		final JFreeChart chart = createChart( dataset );         
+		final ChartPanel chartPanel = new ChartPanel( chart );         
+		chartPanel.setPreferredSize( new java.awt.Dimension( 560 , 370 ) );         
+		chartPanel.setMouseZoomable( true , false );         
+		panelGraph.add( chartPanel );
+	}
 
 	/**
 	 * Attaches an {@code ActionListner} object to the Lifetime Totals menu
@@ -1884,34 +1887,82 @@ public class InterfaceView {
 		}
 	} // End of method.
 
-	private XYDataset createDataset( ) 
+	private XYDataset createDataset(DistanceTSRecord dRecord, StepsTSRecord sRecord, CaloriesTSRecord caRecord, HeartRateRecord rRecord) 
 	{
 		final TimeSeriesCollection dataset = new TimeSeriesCollection();
         dataset.setDomainIsPointsInTime(true);
         
         //Minute(int minute, int hour, int day, int month, int year) 
         
-        final TimeSeries s1 = new TimeSeries("Series 1");
-        s1.add(new Minute(0, 0, 7, 12, 2003), 1.2);
-        s1.add(new Minute(30, 12, 7, 12, 2003), 3.0);
-        s1.add(new Minute(15, 14, 7, 12, 2003), 8.0);
+        final TimeSeries s1 = new TimeSeries("Distance");
+        final TimeSeries s2 = new TimeSeries("Steps");
+        final TimeSeries s3 = new TimeSeries("Calories");
+        final TimeSeries s4 = new TimeSeries("Heart Rate");
+
+    	String str[] = dRecord.getDateTime().split("-");
+    	int year = Integer.parseInt(str[0]);
+    	int month = Integer.parseInt(str[1]);
+    	int day = Integer.parseInt(str[2]);
+    	
+    	DistanceRecord[] distance_arr = dRecord.getdRecords();
+    	StepsRecord[] steps_arr = sRecord.getsRecords();
+    	CaloriesRecord[] calories_arr = caRecord.getdRecords();
+    	HeartRateInstanceRecord[] rate_arr = rRecord.getdRecords();
+
+        for(int i = 0; i < distance_arr.length ; i++)
+        {
+        	String str2[] = distance_arr[i].getTime().split(":");
+        	int hour = Integer.parseInt(str2[0]);
+        	int minute = Integer.parseInt(str2[1]);
+        	//System.out.println(hour + " " + minute);
+        	double value = distance_arr[i].getValue();
+        	s1.add(new Minute(minute, hour, day, month, year), value);
+        	
+        	value = steps_arr[i].getValue();
+        	s2.add(new Minute(minute, hour, day, month, year), value);
+        	
+
+        	//value = calories_arr[i].getValue();
+        	//s3.add(new Minute(minute, hour, day, month, year), value);
+
+        }
         
-        final TimeSeries s2 = new TimeSeries("Series 2", Minute.class);
-        s2.add(new Minute(0, 3, 7, 12, 2003), 0.0);
-        s2.add(new Minute(30, 9, 7, 12, 2003), 0.0);
-        s2.add(new Minute(15, 10, 7, 12, 2003), 0.0);
+        for(int i = 0; i < rate_arr.length ; i++)
+        {
+        	String str2[] = rate_arr[i].getTime().split(":");
+        	int hour = Integer.parseInt(str2[0]);
+        	int minute = Integer.parseInt(str2[1]);
+        	
+        	System.out.println(hour + " " + minute);
+        	
+        	double value = rate_arr[i].getValue();
+        	s4.add(new Minute(minute, hour, day, month, year), value);
+        }
+        
+        for(int i = 0; i < calories_arr.length ; i++)
+        {
+        	String str2[] = calories_arr[i].getTime().split(":");
+        	int hour = Integer.parseInt(str2[0]);
+        	int minute = Integer.parseInt(str2[1]);
+        	
+        	double value = calories_arr[i].getValue();
+        	s3.add(new Minute(minute, hour, day, month, year), value);
+
+        }
         
         dataset.addSeries(s1);
         dataset.addSeries(s2);
-        
+        dataset.addSeries(s3);
+        dataset.addSeries(s4);
+
         return dataset;
 	}
 
 	private JFreeChart createChart( final XYDataset dataset ) 
 	{
 		final JFreeChart chart = ChartFactory.createTimeSeriesChart(             
-				"Time Series", 
-				"Seconds",              
+				"", 
+				"Time",              
 				"Value",              
 				dataset,             
 				true,              

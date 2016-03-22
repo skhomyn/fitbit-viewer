@@ -20,9 +20,13 @@ import java.awt.event.ActionListener;
 public class TimeSeriesController {
 
 	/**
-	 * Life time record for model
+	 * Records for model
 	 */
 	private DistanceTSRecord distance_model;
+	private StepsTSRecord steps_model;
+	private CaloriesTSRecord calories_model;
+	private HeartRateRecord rate_model;
+
 
 	/**
 	 * Interface view for view
@@ -45,8 +49,12 @@ public class TimeSeriesController {
 	 * 
 	 * @see InterfaceView#addClickListenerLifetimeTotals(ActionListener)
 	 */
-	public TimeSeriesController(DistanceTSRecord distance_model, InterfaceView view) {
+	public TimeSeriesController(DistanceTSRecord distance_model, StepsTSRecord steps_model, CaloriesTSRecord calories_model, HeartRateRecord rate_model, InterfaceView view) {
 		this.distance_model = distance_model;
+		this.steps_model = steps_model;
+		this.calories_model = calories_model;
+		this.rate_model = rate_model;
+
 		this.view = view;
 
 		// call method in view to add an event listener to the lifetime totals
@@ -77,7 +85,7 @@ public class TimeSeriesController {
 		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//view.setLifetimeTotalsFields(distance_model.getdRecords());
+			view.setTimeSeriesGraph(distance_model, steps_model, calories_model, rate_model);
 		}
 
 		// TODO: error handling for lifetime totals controller
