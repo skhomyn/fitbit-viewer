@@ -1050,14 +1050,12 @@ public class InterfaceView {
 		
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setBounds(410, 540, 90, 16);
-		panelDashboardView.add(lblLastUpdated);
+		panelBestDaysView.add(lblLastUpdated);
 		
 		lblLastUpdatedBd = new JLabel();
 		lblLastUpdatedBd.setBounds(486, 540, 222, 16);
 		lblLastUpdatedBd.setHorizontalAlignment(SwingConstants.TRAILING);
-		panelDashboardView.add(lblLastUpdatedBd);
-		
-		
+		panelBestDaysView.add(lblLastUpdatedBd);
 	}
 
 	/**
@@ -1127,7 +1125,12 @@ public class InterfaceView {
 		
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setBounds(410, 540, 90, 16);
-		panelDashboardView.add(lblLastUpdated);
+		panelAccoladesView.add(lblLastUpdated);
+		
+		lblLastUpdatedAccolades = new JLabel();
+		lblLastUpdatedAccolades.setBounds(486, 540, 222, 16);
+		lblLastUpdatedAccolades.setHorizontalAlignment(SwingConstants.TRAILING);
+		panelAccoladesView.add(lblLastUpdatedAccolades);
 		
 	}
 
@@ -1173,7 +1176,12 @@ public class InterfaceView {
 		
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setBounds(410, 540, 90, 16);
-		panelDashboardView.add(lblLastUpdated);
+		panelLifetimeTotalsView.add(lblLastUpdated);
+		
+		lblLastUpdatedLt = new JLabel();
+		lblLastUpdatedLt.setBounds(486, 540, 222, 16);
+		lblLastUpdatedLt.setHorizontalAlignment(SwingConstants.TRAILING);
+		panelLifetimeTotalsView.add(lblLastUpdatedLt);
 		
 	}
 
@@ -1224,7 +1232,12 @@ public class InterfaceView {
 		
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setBounds(410, 540, 90, 16);
-		panelDashboardView.add(lblLastUpdated);
+		panelTimeSeriesView.add(lblLastUpdated);
+		
+		lblLastUpdatedTS = new JLabel();
+		lblLastUpdatedTS.setBounds(486, 540, 222, 16);
+		lblLastUpdatedTS.setHorizontalAlignment(SwingConstants.TRAILING);
+		panelTimeSeriesView.add(lblLastUpdatedTS);
 		
 	}
 
@@ -1300,6 +1313,15 @@ public class InterfaceView {
 		lblActiveMinCompare = new JLabel();
 		lblActiveMinCompare.setBounds(336, 160, 61, 16);
 		panelDailyGoalsView.add(lblActiveMinCompare);
+		
+		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setBounds(410, 540, 90, 16);
+		panelDailyGoalsView.add(lblLastUpdated);
+		
+		lblLastUpdatedGoals = new JLabel();
+		lblLastUpdatedGoals.setBounds(486, 540, 222, 16);
+		lblLastUpdatedGoals.setHorizontalAlignment(SwingConstants.TRAILING);
+		panelDailyGoalsView.add(lblLastUpdatedGoals);
 	}
 
 	/**
@@ -1377,8 +1399,12 @@ public class InterfaceView {
 		
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setBounds(410, 540, 90, 16);
-		panelDashboardView.add(lblLastUpdated);
+		panelHeartrateZonesView.add(lblLastUpdated);
 		
+		lblLastUpdatedHRZ = new JLabel();
+		lblLastUpdatedHRZ.setBounds(486, 540, 222, 16);
+		lblLastUpdatedHRZ.setHorizontalAlignment(SwingConstants.TRAILING);
+		panelHeartrateZonesView.add(lblLastUpdatedHRZ);
 	}
 
 	/**
@@ -1494,16 +1520,41 @@ public class InterfaceView {
 	
 	// Setters
 	
-	public void setLblLastUpdated(){
-		Date now = new Date();
-		String date = now.toString();
+	public void setLastUpdatedDash(String date){
 		lblLastUpdatedDash.setText(date);
+	}
+	
+	public void setLastUpdatedBd(String date){
 		lblLastUpdatedBd.setText(date);
-		///lblLastUpdatedLt.setText(now.toString());
-		//lblLastUpdatedTS.setText(now.toString());
-		//lblLastUpdatedHRZ.setText(now.toString());
-		//lblLastUpdatedGoals.setText(now.toString());
-		//lblLastUpdatedAccolades.setText(now.toString());
+	}
+	
+	public void setLastUpdatedLt(String date){
+		lblLastUpdatedLt.setText(date);
+	}
+	
+	public void setLastUpdatedTS(String date){
+		lblLastUpdatedTS.setText(date);
+	}
+	
+	public void setLastUpdatedHRZ(String date){
+		lblLastUpdatedHRZ.setText(date);
+	}
+	
+	public void setLastUpdatedGoals(String date){
+		lblLastUpdatedGoals.setText(date);
+	}
+	
+	public void setLastUpdatedAccolades(String date){
+		lblLastUpdatedAccolades.setText(date);
+	}
+	public void setLastUpdatedTestMode(String test){
+		lblLastUpdatedDash.setText(test);
+		lblLastUpdatedBd.setText(test);
+		lblLastUpdatedLt.setText(test);
+		lblLastUpdatedTS.setText(test);
+		lblLastUpdatedHRZ.setText(test);
+		lblLastUpdatedGoals.setText(test);
+		lblLastUpdatedAccolades.setText(test);
 	}
 
 	/**

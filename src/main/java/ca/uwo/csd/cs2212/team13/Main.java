@@ -40,6 +40,7 @@ import com.google.gson.GsonBuilder;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 /**
  * <code>Main</code> is the class that handles up all the initial input going
@@ -52,6 +53,7 @@ public class Main {
 	
 	private DailyRecord ddModel;
 	private ActivitiesRecord actRecord;
+	private InterfaceView view;
 
 	public void run() throws IOException {
 
@@ -82,14 +84,13 @@ public class Main {
 		final Gson gson = gsonBuilder.create();
 
 		// Create InterfaceView and set as visible
-		InterfaceView view = new InterfaceView();
+		view = new InterfaceView();
 		view.setVisible(view);
 
 		final WriterReader wr = new WriterReader();
 		final APICaller apiCaller = new APICaller("activity%20heartrate",
 				"src/main/resources/Team13Tokens.txt",
 				"src/main/resources/Team13Credentials.txt");
-		view.setLblLastUpdated();
 
 		// test.request("activities/heart/date/today/1d.json",
 		// "src/main/resources/cur_heart_data.json");
@@ -161,6 +162,11 @@ public class Main {
 		} else {
 			// Parse JSON to Java
 			ddModel = gson.fromJson(dRecord_String, DailyRecord.class);
+			//Last Updated label
+			Date now = new Date();
+			String apiCallDate = now.toString();
+			view.setLastUpdatedDash(apiCallDate);
+			view.setLastUpdatedGoals(apiCallDate);
 		}
 		try {
 			wr.writeRecord(ddModel, "dailyrecord");
@@ -183,6 +189,11 @@ public class Main {
 		} else {
 			// Parse JSON to Java
 			actRecord = gson.fromJson(aRecord_String, ActivitiesRecord.class);
+			//Last Updated label
+			Date now = new Date();
+			String apiCallDate = now.toString();
+			view.setLastUpdatedBd(apiCallDate);
+			view.setLastUpdatedLt(apiCallDate);
 		}
 		try {
 			wr.writeRecord(actRecord, "activityrecord");
@@ -316,5 +327,9 @@ public class Main {
 			// final String json = gson.toJson(actRecord);
 			// System.out.println(json);
 		}
+		
+		//Last updated label
+		String test = "Not Applicable in Test Mode.    ";
+		view.setLastUpdatedTestMode(test);
 	}
 }
