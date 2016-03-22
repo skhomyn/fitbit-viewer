@@ -39,6 +39,7 @@ import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
+import java.util.Date;
 
 
 
@@ -92,8 +93,6 @@ public class InterfaceView {
 	private JLabel lblDailyDistVal;
 	
 	private JLabel lblLifetimeTotalsStepsVal;
-
-	private JLabel lblLastUpdated;
 
 	private JLabel lblDailyCaloriesVal;
 
@@ -225,6 +224,14 @@ public class InterfaceView {
 	private JLabel lblCaloriesCompare;
 	private JLabel lblActiveMinCompare;
 	
+	private JLabel lblLastUpdatedDash;
+	private JLabel lblLastUpdatedBd;
+	private JLabel lblLastUpdatedLt;
+	private JLabel lblLastUpdatedTS;
+	private JLabel lblLastUpdatedHRZ;
+	private JLabel lblLastUpdatedGoals;
+	private JLabel lblLastUpdatedAccolades;
+
 	
 
 	/**
@@ -431,10 +438,10 @@ public class InterfaceView {
 		// lblDailyProgress.setBounds(241, 171, 125, 16);
 		// panelDashboardView.add(lblDailyProgress);
 
-		lblLastUpdated = new JLabel();
-		lblLastUpdated.setBounds(583, 540, 125, 16);
-		lblLastUpdated.setHorizontalAlignment(SwingConstants.TRAILING);
-		panelDashboardView.add(lblLastUpdated);
+		lblLastUpdatedDash = new JLabel();
+		lblLastUpdatedDash.setBounds(486, 540, 222, 16);
+		lblLastUpdatedDash.setHorizontalAlignment(SwingConstants.TRAILING);
+		panelDashboardView.add(lblLastUpdatedDash);
 		
 		
 		dailyActiveMinPanel = new JPanel();
@@ -482,6 +489,10 @@ public class InterfaceView {
 				
 				JLabel label = new JLabel("Calories Burned");
 				dailyCaloriesPanel.add(label);
+		
+		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setBounds(410, 540, 90, 16);
+		panelDashboardView.add(lblLastUpdated);
 		
 		JPanel SwitchingPanel = new JPanel();
 		SwitchingPanel.setBounds(37, 120, 629, 357);
@@ -922,6 +933,8 @@ public class InterfaceView {
 								CalendarToAPI();
 							}
 						});
+						
+						// Calendar
 						panelDashboardView.add(datePicker);
 						
 						SwitchingPanel.setVisible(true);
@@ -1034,6 +1047,15 @@ public class InterfaceView {
 		lblBestDaysStepsDate.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblBestDaysStepsDate.setBounds(360, 126, 95, 16);
 		panelBestDaysView.add(lblBestDaysStepsDate);
+		
+		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setBounds(410, 540, 90, 16);
+		panelBestDaysView.add(lblLastUpdated);
+		
+		lblLastUpdatedBd = new JLabel();
+		lblLastUpdatedBd.setBounds(486, 540, 222, 16);
+		lblLastUpdatedBd.setHorizontalAlignment(SwingConstants.TRAILING);
+		panelBestDaysView.add(lblLastUpdatedBd);
 	}
 
 	/**
@@ -1100,6 +1122,16 @@ public class InterfaceView {
 		lblDscp5.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		lblDscp5.setBounds(257, 200, 150, 23);
 		panelAccoladesView.add(lblDscp5);
+		
+		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setBounds(410, 540, 90, 16);
+		panelAccoladesView.add(lblLastUpdated);
+		
+		lblLastUpdatedAccolades = new JLabel();
+		lblLastUpdatedAccolades.setBounds(486, 540, 222, 16);
+		lblLastUpdatedAccolades.setHorizontalAlignment(SwingConstants.TRAILING);
+		panelAccoladesView.add(lblLastUpdatedAccolades);
+		
 	}
 
 	/**
@@ -1141,6 +1173,16 @@ public class InterfaceView {
 				.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblLifetimeTotalsStepsVal.setBounds(260, 126, 95, 16);
 		panelLifetimeTotalsView.add(lblLifetimeTotalsStepsVal);
+		
+		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setBounds(410, 540, 90, 16);
+		panelLifetimeTotalsView.add(lblLastUpdated);
+		
+		lblLastUpdatedLt = new JLabel();
+		lblLastUpdatedLt.setBounds(486, 540, 222, 16);
+		lblLastUpdatedLt.setHorizontalAlignment(SwingConstants.TRAILING);
+		panelLifetimeTotalsView.add(lblLastUpdatedLt);
+		
 	}
 
 	/**
@@ -1187,6 +1229,16 @@ public class InterfaceView {
 		lblGraph.setBackground(new Color(64, 64, 64));
 		lblGraph.setBounds(0, 142, 472, 41);
 		panelTimeSeriesView.add(lblGraph);
+		
+		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setBounds(410, 540, 90, 16);
+		panelTimeSeriesView.add(lblLastUpdated);
+		
+		lblLastUpdatedTS = new JLabel();
+		lblLastUpdatedTS.setBounds(486, 540, 222, 16);
+		lblLastUpdatedTS.setHorizontalAlignment(SwingConstants.TRAILING);
+		panelTimeSeriesView.add(lblLastUpdatedTS);
+		
 	}
 
 	/**
@@ -1261,6 +1313,15 @@ public class InterfaceView {
 		lblActiveMinCompare = new JLabel();
 		lblActiveMinCompare.setBounds(336, 160, 61, 16);
 		panelDailyGoalsView.add(lblActiveMinCompare);
+		
+		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setBounds(410, 540, 90, 16);
+		panelDailyGoalsView.add(lblLastUpdated);
+		
+		lblLastUpdatedGoals = new JLabel();
+		lblLastUpdatedGoals.setBounds(486, 540, 222, 16);
+		lblLastUpdatedGoals.setHorizontalAlignment(SwingConstants.TRAILING);
+		panelDailyGoalsView.add(lblLastUpdatedGoals);
 	}
 
 	/**
@@ -1335,6 +1396,15 @@ public class InterfaceView {
 		lblHeartOORMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblHeartOORMaxMin.setBounds(230, 286, 148, 16);
 		panelHeartrateZonesView.add(lblHeartOORMaxMin);
+		
+		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setBounds(410, 540, 90, 16);
+		panelHeartrateZonesView.add(lblLastUpdated);
+		
+		lblLastUpdatedHRZ = new JLabel();
+		lblLastUpdatedHRZ.setBounds(486, 540, 222, 16);
+		lblLastUpdatedHRZ.setHorizontalAlignment(SwingConstants.TRAILING);
+		panelHeartrateZonesView.add(lblLastUpdatedHRZ);
 	}
 
 	/**
@@ -1447,6 +1517,45 @@ public class InterfaceView {
 		});
 
 	}
+	
+	// Setters
+	
+	public void setLastUpdatedDash(String date){
+		lblLastUpdatedDash.setText(date);
+	}
+	
+	public void setLastUpdatedBd(String date){
+		lblLastUpdatedBd.setText(date);
+	}
+	
+	public void setLastUpdatedLt(String date){
+		lblLastUpdatedLt.setText(date);
+	}
+	
+	public void setLastUpdatedTS(String date){
+		lblLastUpdatedTS.setText(date);
+	}
+	
+	public void setLastUpdatedHRZ(String date){
+		lblLastUpdatedHRZ.setText(date);
+	}
+	
+	public void setLastUpdatedGoals(String date){
+		lblLastUpdatedGoals.setText(date);
+	}
+	
+	public void setLastUpdatedAccolades(String date){
+		lblLastUpdatedAccolades.setText(date);
+	}
+	public void setLastUpdatedTestMode(String test){
+		lblLastUpdatedDash.setText(test);
+		lblLastUpdatedBd.setText(test);
+		lblLastUpdatedLt.setText(test);
+		lblLastUpdatedTS.setText(test);
+		lblLastUpdatedHRZ.setText(test);
+		lblLastUpdatedGoals.setText(test);
+		lblLastUpdatedAccolades.setText(test);
+	}
 
 	/**
 	 * Sets JLabel values for Heart Rate Zones page with data from
@@ -1546,7 +1655,7 @@ public class InterfaceView {
 	 */
 	public void setDailyDashFields(String date, double distance, int calories,
 			int floors, int steps, int veryActMin, int sedenteryMin) {
-		lblLastUpdated.setText(date);
+		//lblLastUpdated.setText(date); -- this should actually be the calendar date
 		lblDailyDistVal.setText(Double.toString(distance));
 		lblDailyCaloriesVal.setText(Integer.toString(calories));
 		lblDailyFloorsVal.setText(Integer.toString(floors));
@@ -1618,6 +1727,8 @@ public class InterfaceView {
 		lblStepsCompare.setText(stepsStatus);
 		lblFloorsCompare.setText(floorsStatus);
 	}
+	
+	// ActionListeners
 
 	/**
 	 * Attaches an {@code ActionListner} object to the Lifetime Totals menu
@@ -1709,6 +1820,8 @@ public class InterfaceView {
 	public void setVisible(InterfaceView view) {
 		view.frame.setVisible(true);
 	}
+	
+	// Preferences 
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
