@@ -1,5 +1,6 @@
 package ca.uwo.csd.cs2212.team13;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -17,26 +18,43 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
+
 import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.DateAxis;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.StandardXYItemRenderer;
+import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.data.general.SeriesException;
+import org.jfree.data.time.Minute;
 import org.jfree.data.time.Second;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
+import org.jfree.ui.ApplicationFrame;
+import org.jfree.ui.RefineryUtilities;
+//import org.jfree.ui.Spacer;
+
+
+
+
 
 import java.awt.Insets;
+
 import javax.swing.JLayeredPane;
 import javax.swing.BoxLayout;
 import javax.swing.JInternalFrame;
 import javax.swing.JPopupMenu;
+
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JRadioButtonMenuItem;
@@ -1117,6 +1135,7 @@ public class InterfaceView {
 		chartPanel.setPreferredSize( new java.awt.Dimension( 560 , 370 ) );         
 		chartPanel.setMouseZoomable( true , false );         
 		panelGraph.add( chartPanel );
+        
 	}
 
 	/**
@@ -1627,6 +1646,28 @@ public class InterfaceView {
 	}
 
 	/**
+	 * Attaches an {@code ActionListner} object to the Lifetime Totals menu
+	 * button, which executes
+	 * {@code InterfaceView#setLifetimeTotalsFields(double, int, int)} upon
+	 * button click event.
+	 * 
+	 * @param actionsOnClick
+	 *            ActionListener object defined in {@link LifetimeController}
+	 * 
+	 */
+	public void addClickListenerTimeSeries(ActionListener actionsOnClick) {
+
+		// the btnLifetimeTotals.addActionListner() call is encapsulated by a
+		// method
+		// so that it can be accessed by the controller;
+		// the controller passes in the clicklistener, which contains the method
+		// that updates the view;
+		// this method gets executed when the controller is initialized
+
+		btnTimeSeries.addActionListener(actionsOnClick);
+	}
+	
+	/**
 	 * Makes the frame visible!
 	 * 
 	 * @param view
@@ -1845,37 +1886,65 @@ public class InterfaceView {
 
 	private XYDataset createDataset( ) 
 	{
-		final TimeSeries series = new TimeSeries( "Random Data" );         
-		Second current = new Second( );         
-		double value = 100.0;    
-
-		for (int i = 0; i < 4000; i++)    
-		{
-			try 
-			{
-				value = value + Math.random( ) - 0.5;                 
-				series.add(current, new Double( value ) );                 
-				current = ( Second ) current.next( ); 
-			}
-			catch ( SeriesException e ) 
-			{
-				System.err.println("Error adding to series");
-			}
-		}
-
-		return new TimeSeriesCollection(series);
+		final TimeSeriesCollection dataset = new TimeSeriesCollection();
+        dataset.setDomainIsPointsInTime(true);
+        
+        //Minute(int minute, int hour, int day, int month, int year) 
+        
+        final TimeSeries s1 = new TimeSeries("Series 1");
+        s1.add(new Minute(0, 0, 7, 12, 2003), 1.2);
+        s1.add(new Minute(30, 12, 7, 12, 2003), 3.0);
+        s1.add(new Minute(15, 14, 7, 12, 2003), 8.0);
+        
+        final TimeSeries s2 = new TimeSeries("Series 2", Minute.class);
+        s2.add(new Minute(0, 3, 7, 12, 2003), 0.0);
+        s2.add(new Minute(30, 9, 7, 12, 2003), 0.0);
+        s2.add(new Minute(15, 10, 7, 12, 2003), 0.0);
+        
+        dataset.addSeries(s1);
+        dataset.addSeries(s2);
+        
+        return dataset;
 	}
 
 	private JFreeChart createChart( final XYDataset dataset ) 
 	{
-		return ChartFactory.createTimeSeriesChart(             
-				"Computing Test", 
+		final JFreeChart chart = ChartFactory.createTimeSeriesChart(             
+				"Time Series", 
 				"Seconds",              
 				"Value",              
 				dataset,             
-				false,              
-				false,              
+				true,              
+				true,              
 				false);
-	}
+		 chart.setBackgroundPaint(Color.white);
+	        
+//       final StandardLegend sl = (StandardLegend) chart.getLegend();
+ //      sl.setDisplaySeriesShapes(true);
+
+       final XYPlot plot = chart.getXYPlot();
+       //plot.setOutlinePaint(null);
+       plot.setBackgroundPaint(Color.lightGray);
+       plot.setDomainGridlinePaint(Color.white);
+       plot.setRangeGridlinePaint(Color.white);
+   //    plot.setAxisOffset(new Spacer(Spacer.ABSOLUTE, 5.0, 5.0, 5.0, 5.0));
+       plot.setDomainCrosshairVisible(true);
+       plot.setRangeCrosshairVisible(false);
+       
+       final XYItemRenderer renderer = plot.getRenderer();
+       if (renderer instanceof StandardXYItemRenderer) {
+           final StandardXYItemRenderer rr = (StandardXYItemRenderer) renderer;
+           rr.setBaseShapesVisible(true); //PlotShapes(true);
+           rr.setShapesFilled(true);
+           renderer.setSeriesStroke(0, new BasicStroke(2.0f));
+           renderer.setSeriesStroke(1, new BasicStroke(2.0f));
+          }
+       
+       final DateAxis axis = (DateAxis) plot.getDomainAxis();
+       axis.setDateFormatOverride(new SimpleDateFormat("hh:mma"));
+       
+       return chart;
+
+   }
 
 }
