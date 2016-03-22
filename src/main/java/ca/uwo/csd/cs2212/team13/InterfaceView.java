@@ -67,6 +67,8 @@ public class InterfaceView {
 	private JButton btnTimeSeries;
 
 	private JButton btnHeartRateZones;
+	
+	private JButton btnRefresh;
 
 	private JPanel panelDashboardView;
 
@@ -409,9 +411,8 @@ public class InterfaceView {
 		
 		
 		panelDashboardView.setLayout(null);
-		
 		////////NON-FUNCTIONING NIGHTMARE CODE: I can't add Hannah's pictures (Stepan can you fix this please?)////////
-		ImageIcon pic = new ImageIcon("C:\\Users\\Johnny\\groupProject2212\\team13\\src\\main\\resourcesfitbitLogoBackground.jpg");
+		ImageIcon pic = new ImageIcon("/src/main/resourcesfitbitLogoBackground.jpg"); //I only changed this line -- robin
 		JLabel background = new JLabel(pic);
 		background.setBounds(0,0,720,556);	//jus trying random shit.
 		background.setVisible(true);
@@ -642,6 +643,8 @@ public class InterfaceView {
 		
 		radioFloors = new JRadioButton("Floors Climbed");
 		mnNewMenu.add(radioFloors);
+		
+		//giant chunk of code to implement radio button selection stuff
 		radioFloors.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(radioCounter()==0){
@@ -924,12 +927,6 @@ public class InterfaceView {
 						SwitchingPanel.setVisible(true);
 						
 						
-						
-						
-						
-						JButton btnRefresh = new JButton("Refresh");
-						mnNewMenu.add(btnRefresh);
-						
 						JButton btnPrevDate = new JButton("Next");
 						btnPrevDate.setBounds(217, 44, 49, 25);
 						panelDashboardView.add(btnPrevDate);
@@ -966,8 +963,13 @@ public class InterfaceView {
 						/////ALSO MAKE SURE TO SET THE APPROPRIATE RADIOBUTTONS//////////
 						radioCalories.setSelected(true);
 						radioActiveMin.setSelected(true);
+
 						/////////////////////////////////////////////////////////////////
 						/////KEEP THIS THO.//////////////////////////////////////////////
+
+						btnRefresh = new JButton("Refresh");
+						btnRefresh.setBounds(617, 10, 91, 29);
+						panelDashboardView.add(btnRefresh);
 						repanel(radioCounter());
 						////////////////////////////////////////////////////////////////////
 						
@@ -1692,6 +1694,10 @@ public class InterfaceView {
 	 */
 	public void addClickListenerGoals(ActionListener actionsOnClick) {
 		btnDailyGoals.addActionListener(actionsOnClick);
+	}
+	
+	public void addListenerForRefresh(ActionListener refresh){
+		btnRefresh.addActionListener(refresh);
 	}
 
 	/**
