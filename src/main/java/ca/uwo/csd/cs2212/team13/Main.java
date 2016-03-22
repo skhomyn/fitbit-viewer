@@ -89,6 +89,8 @@ public class Main {
 		final APICaller apiCaller = new APICaller("activity%20heartrate",
 				"src/main/resources/Team13Tokens.txt",
 				"src/main/resources/Team13Credentials.txt");
+		view.setLblLastUpdated();
+
 		// test.request("activities/heart/date/today/1d.json",
 		// "src/main/resources/cur_heart_data.json");
 		// test.request("activities/date/today.json",
@@ -287,7 +289,7 @@ public class Main {
 
 			// initialize dashboard
 			ddController.DailyDashboardInitialize();
-
+			
 			// Format to JSON
 			// final String json = gson.toJson(ddModel);
 			// System.out.println(json);
