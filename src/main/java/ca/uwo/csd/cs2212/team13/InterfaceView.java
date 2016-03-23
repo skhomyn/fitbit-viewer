@@ -1,5 +1,6 @@
 package ca.uwo.csd.cs2212.team13;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -9,6 +10,8 @@ import java.awt.GridBagLayout;
 import java.awt.Image;
 
 import javax.swing.Icon;
+import javax.swing.AbstractAction;
+
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -28,6 +31,28 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.DateAxis;
+import org.jfree.chart.axis.DateTickUnit;
+import org.jfree.chart.event.PlotChangeEvent;
+import org.jfree.chart.event.PlotChangeListener;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.StandardXYItemRenderer;
+import org.jfree.chart.renderer.xy.XYItemRenderer;
+import org.jfree.data.general.SeriesException;
+import org.jfree.data.time.Minute;
+import org.jfree.data.time.Second;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.ui.ApplicationFrame;
+import org.jfree.ui.RectangleInsets;
+import org.jfree.ui.RefineryUtilities;
+//import org.jfree.ui.Spacer;
+
+
 import java.awt.Insets;
 
 import javax.swing.JLayeredPane;
@@ -38,6 +63,8 @@ import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import java.text.SimpleDateFormat;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -88,6 +115,7 @@ public class InterfaceView {
 	private JLabel lblLifetimeTotalsDistVal;
 
 	private JLabel lblLifetimeTotalsFloorsVal;
+
 
 	private JLabel lblDailyDistVal;
 
@@ -225,6 +253,7 @@ public class InterfaceView {
 	private JLabel lblCaloriesCompare;
 	private JLabel lblActiveMinCompare;
 
+
 	/**
 	 * Constructor: uses initialize() method
 	 */
@@ -274,6 +303,10 @@ public class InterfaceView {
 	private JPanel[] panelArray;
 	private JPanel distpanel;
 
+	private JPanel panelGraph;
+
+	private ChartPanel chartPanel;
+	
 	public InterfaceView() {
 		initialize();
 	}
@@ -619,6 +652,7 @@ public class InterfaceView {
 		radioActiveMin = new JRadioButton("Very Active Minutes");
 		mnNewMenu.add(radioActiveMin);
 
+
 		radioTotalDist = new JRadioButton("Total Distance");
 		mnNewMenu.add(radioTotalDist);
 
@@ -650,6 +684,7 @@ public class InterfaceView {
 
 				else {
 					while (panelArray[radioCounter()] != dailyFloorsPanel) {
+
 						int position = 0;
 						for (int x = 0; x < radioCounter(); x++) {
 							if (panelArray[x] == dailyFloorsPanel) {
@@ -683,11 +718,11 @@ public class InterfaceView {
 						}
 						JPanel switcheyPanel = panelArray[radioCounter() - 1];
 						panelArray[radioCounter() - 1] = dailyStepsPanel;
+
 						panelArray[position] = switcheyPanel;
 					}
 					repanel(radioCounter());
 				}
-
 				else {
 					while (panelArray[radioCounter()] != dailyStepsPanel) {
 						int position = 0;
@@ -698,6 +733,7 @@ public class InterfaceView {
 						}
 						JPanel switcheyPanel = panelArray[position + 1];
 						panelArray[position + 1] = dailyStepsPanel;
+
 						panelArray[position] = switcheyPanel;
 					}
 					repanel(radioCounter());
@@ -721,11 +757,11 @@ public class InterfaceView {
 						}
 						JPanel switcheyPanel = panelArray[radioCounter() - 1];
 						panelArray[radioCounter() - 1] = dailyCaloriesPanel;
+
 						panelArray[position] = switcheyPanel;
 					}
 					repanel(radioCounter());
 				}
-
 				else {
 					while (panelArray[radioCounter()] != dailyCaloriesPanel) {
 						int position = 0;
@@ -736,6 +772,7 @@ public class InterfaceView {
 						}
 						JPanel switcheyPanel = panelArray[position + 1];
 						panelArray[position + 1] = dailyCaloriesPanel;
+
 						panelArray[position] = switcheyPanel;
 					}
 					repanel(radioCounter());
@@ -744,6 +781,7 @@ public class InterfaceView {
 		});
 		radioTotalDist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				if (radioCounter() == 0) {
 					radioTotalDist.setSelected(true);
 				}
@@ -758,10 +796,12 @@ public class InterfaceView {
 						}
 						JPanel switcheyPanel = panelArray[radioCounter() - 1];
 						panelArray[radioCounter() - 1] = dailyTotalDistPanel;
+
 						panelArray[position] = switcheyPanel;
 					}
 					repanel(radioCounter());
 				}
+
 
 				else {
 					while (panelArray[radioCounter()] != dailyTotalDistPanel) {
@@ -800,7 +840,6 @@ public class InterfaceView {
 					}
 					repanel(radioCounter());
 				}
-
 				else {
 					while (panelArray[radioCounter()] != dailySedMinPanel) {
 						int position = 0;
@@ -811,6 +850,7 @@ public class InterfaceView {
 						}
 						JPanel switcheyPanel = panelArray[position + 1];
 						panelArray[position + 1] = dailySedMinPanel;
+
 						panelArray[position] = switcheyPanel;
 					}
 					repanel(radioCounter());
@@ -838,7 +878,6 @@ public class InterfaceView {
 					}
 					repanel(radioCounter());
 				}
-
 				else {
 					while (panelArray[radioCounter()] != dailyActiveMinPanel) {
 						int position = 0;
@@ -849,6 +888,7 @@ public class InterfaceView {
 						}
 						JPanel switcheyPanel = panelArray[position + 1];
 						panelArray[position + 1] = dailyActiveMinPanel;
+
 						panelArray[position] = switcheyPanel;
 					}
 					repanel(radioCounter());
@@ -1086,19 +1126,19 @@ public class InterfaceView {
 
 		lblLifetimeTotalsDistVal = new JLabel();
 		lblLifetimeTotalsDistVal
-				.setHorizontalAlignment(SwingConstants.TRAILING);
+		.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblLifetimeTotalsDistVal.setBounds(260, 70, 95, 16);
 		panelLifetimeTotalsView.add(lblLifetimeTotalsDistVal);
 
 		lblLifetimeTotalsFloorsVal = new JLabel();
 		lblLifetimeTotalsFloorsVal
-				.setHorizontalAlignment(SwingConstants.TRAILING);
+		.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblLifetimeTotalsFloorsVal.setBounds(260, 98, 95, 16);
 		panelLifetimeTotalsView.add(lblLifetimeTotalsFloorsVal);
 
 		lblLifetimeTotalsStepsVal = new JLabel();
 		lblLifetimeTotalsStepsVal
-				.setHorizontalAlignment(SwingConstants.TRAILING);
+		.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblLifetimeTotalsStepsVal.setBounds(260, 126, 95, 16);
 		panelLifetimeTotalsView.add(lblLifetimeTotalsStepsVal);
 	}
@@ -1132,7 +1172,7 @@ public class InterfaceView {
 
 		JToolBar zoom = new JToolBar();
 		zoom.setFloatable(false);
-		zoom.setBounds(173, 352, 130, 20);
+		zoom.setBounds(293, 506, 130, 20);
 		panelTimeSeriesView.add(zoom);
 
 		JButton btnZoomIn = new JButton("Zoom In");
@@ -1140,13 +1180,19 @@ public class InterfaceView {
 
 		JButton btnZoomOut = new JButton("Zoom Out");
 		zoom.add(btnZoomOut);
+		btnZoomOut.addActionListener(new ActionListener() {
 
-		JLabel lblGraph = new JLabel("Graph");
-		lblGraph.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblGraph.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGraph.setBackground(new Color(64, 64, 64));
-		lblGraph.setBounds(0, 142, 472, 41);
-		panelTimeSeriesView.add(lblGraph);
+	          @Override
+	            public void actionPerformed(ActionEvent e) {
+	                chartPanel.restoreAutoBounds();
+	            }
+        });
+		
+		panelGraph = new JPanel();
+		panelGraph.setBounds(47, 93, 643, 401);
+		panelTimeSeriesView.add(panelGraph);
+
+		//super( Fitness Shark );   
 	}
 
 	/**
@@ -1443,12 +1489,12 @@ public class InterfaceView {
 	 * @param oor_minutes
 	 *            out of range minutes value for zone
 	 */
-	public void setHeartRateZonesFields(int minutes, int rate, int cardio_max,
+	public void setHeartRateZonesFields(int minutes, double rate, int cardio_max,
 			int fatburn_max, int peak_max, int cardio_min, int fatburn_min,
 			int peak_min, int cardio_minutes, int fatburn_minutes,
 			int peak_minutes, int oor_max, int oor_min, int oor_minutes) {
 		lblHeartMins.setText(Integer.toString(minutes));
-		lblHeartRest.setText(Integer.toString(rate));
+		lblHeartRest.setText(Double.toString(rate));
 
 		lblHeartCardioMaxMin.setText(Integer.toString(cardio_max) + "/"
 				+ Integer.toString(cardio_min) + "/"
@@ -1580,6 +1626,29 @@ public class InterfaceView {
 		lblStepsCompare.setText(stepsStatus);
 		lblFloorsCompare.setText(floorsStatus);
 	}
+	
+	public void setTimeSeriesGraph(DistanceTSRecord dRecords, StepsTSRecord sRecords, CaloriesTSRecord caRecord, HeartRateRecord rRecord)
+	{
+		// Generate Graph:
+		final XYDataset dataset = createDataset(dRecords, sRecords, caRecord, rRecord);         
+		final JFreeChart chart = createChart( dataset );      
+		chart.getPlot().addChangeListener(new PlotChangeListener(){
+			  @Override
+			  public void plotChanged(PlotChangeEvent event)
+			  {
+			    System.out.println("I am called after a zoom event (and some other events too).");
+			  }});
+		
+		chartPanel = new ChartPanel( chart ); 
+		chartPanel.setPreferredSize( new java.awt.Dimension( 560 , 370 ) );         
+		//chartPanel.setMouseZoomable( true , false );   
+		chartPanel.setDomainZoomable(true);
+		
+		
+
+		//chartPanel.setZoomInFactor(10);
+		panelGraph.add( chartPanel );
+	}
 
 	public void setAccoladeFields(AccoladeRecord[] ar) {
 
@@ -1701,6 +1770,28 @@ public class InterfaceView {
 	}
 
 	/**
+	 * Attaches an {@code ActionListner} object to the Lifetime Totals menu
+	 * button, which executes
+	 * {@code InterfaceView#setLifetimeTotalsFields(double, int, int)} upon
+	 * button click event.
+	 * 
+	 * @param actionsOnClick
+	 *            ActionListener object defined in {@link LifetimeController}
+	 * 
+	 */
+	public void addClickListenerTimeSeries(ActionListener actionsOnClick) {
+
+		// the btnLifetimeTotals.addActionListner() call is encapsulated by a
+		// method
+		// so that it can be accessed by the controller;
+		// the controller passes in the clicklistener, which contains the method
+		// that updates the view;
+		// this method gets executed when the controller is initialized
+
+		btnTimeSeries.addActionListener(actionsOnClick);
+	}
+	
+	/**
 	 * Makes the frame visible!
 	 * 
 	 * @param view
@@ -1731,6 +1822,7 @@ public class InterfaceView {
 	}
 
 	public int radioCounter() {
+
 		int counter = 0;
 		if (radioCalories.isSelected()) {
 			counter += 1;
@@ -1752,7 +1844,7 @@ public class InterfaceView {
 		}
 		return counter;
 	}
-
+ 
 	public void repanel(int count) {
 		switch (count) {
 		case 1:
@@ -1763,6 +1855,7 @@ public class InterfaceView {
 				twoPanel_2.removeAll();
 			} catch (Exception e) {
 			}
+
 			ThreePanel.setVisible(false);
 			FourPanel.setVisible(false);
 			FivePanel.setVisible(false);
@@ -1786,6 +1879,7 @@ public class InterfaceView {
 				threePanel_3.removeAll();
 			} catch (Exception e) {
 			}
+
 			FourPanel.setVisible(false);
 			FivePanel.setVisible(false);
 			SixPanel.setVisible(false);
@@ -1804,6 +1898,7 @@ public class InterfaceView {
 				twoPanel_2.removeAll();
 			} catch (Exception e) {
 			}
+
 			FourPanel.setVisible(false);
 			try {
 				fourPanel_1.removeAll();
@@ -1834,14 +1929,17 @@ public class InterfaceView {
 			}
 			FivePanel.setVisible(false);
 			try {
+
 				fivePanel_1.removeAll();
 				fivePanel_2.removeAll();
 				fivePanel_3.removeAll();
 				fivePanel_4.removeAll();
 				fivePanel_5.removeAll();
+
 			} catch (Exception e) {
 			}
 			SixPanel.setVisible(false);
+
 
 			fourPanel_1.add(panelArray[0]);
 			fourPanel_2.add(panelArray[1]);
@@ -1857,11 +1955,14 @@ public class InterfaceView {
 			TwoPanel.setVisible(false);
 			ThreePanel.setVisible(false);
 			FourPanel.setVisible(false);
+
 			try {
+
 				fourPanel_1.removeAll();
 				fourPanel_2.removeAll();
 				fourPanel_3.removeAll();
 				fourPanel_4.removeAll();
+
 			} catch (Exception e) {
 			}
 			SixPanel.setVisible(false);
@@ -1872,6 +1973,7 @@ public class InterfaceView {
 				sixPanel_4.removeAll();
 				sixPanel_5.removeAll();
 				sixPanel_6.removeAll();
+
 			} catch (Exception e) {
 			}
 
@@ -1908,5 +2010,118 @@ public class InterfaceView {
 
 			break;
 		}
+	} // End of method.
+
+	private XYDataset createDataset(DistanceTSRecord dRecord, StepsTSRecord sRecord, CaloriesTSRecord caRecord, HeartRateRecord rRecord) 
+	{
+		final TimeSeriesCollection dataset = new TimeSeriesCollection();
+        dataset.setDomainIsPointsInTime(true);
+        
+        //Minute(int minute, int hour, int day, int month, int year) 
+        
+        final TimeSeries s1 = new TimeSeries("Distance");
+        final TimeSeries s2 = new TimeSeries("Steps");
+        final TimeSeries s3 = new TimeSeries("Calories");
+        final TimeSeries s4 = new TimeSeries("Heart Rate");
+
+    	String str[] = dRecord.getDateTime().split("-");
+    	int year = Integer.parseInt(str[0]);
+    	int month = Integer.parseInt(str[1]);
+    	int day = Integer.parseInt(str[2]);
+    	
+    	DistanceRecord[] distance_arr = dRecord.getdRecords();
+    	StepsRecord[] steps_arr = sRecord.getsRecords();
+    	CaloriesRecord[] calories_arr = caRecord.getdRecords();
+    	HeartRateInstanceRecord[] rate_arr = rRecord.getdRecords();
+
+        for(int i = 0; i < distance_arr.length ; i++)
+        {
+        	String str2[] = distance_arr[i].getTime().split(":");
+        	int hour = Integer.parseInt(str2[0]);
+        	int minute = Integer.parseInt(str2[1]);
+        	//System.out.println(hour + " " + minute);
+        	double value = distance_arr[i].getValue();
+        	s1.add(new Minute(minute, hour, day, month, year), value);
+        	
+        	value = steps_arr[i].getValue();
+        	s2.add(new Minute(minute, hour, day, month, year), value);
+        	
+
+        	//value = calories_arr[i].getValue();
+        	//s3.add(new Minute(minute, hour, day, month, year), value);
+
+        }
+        
+        for(int i = 0; i < rate_arr.length ; i++)
+        {
+        	String str2[] = rate_arr[i].getTime().split(":");
+        	int hour = Integer.parseInt(str2[0]);
+        	int minute = Integer.parseInt(str2[1]);
+        	
+        	double value = rate_arr[i].getValue();
+        	s4.add(new Minute(minute, hour, day, month, year), value);
+        }
+        
+        for(int i = 0; i < calories_arr.length ; i++)
+        {
+        	String str2[] = calories_arr[i].getTime().split(":");
+        	int hour = Integer.parseInt(str2[0]);
+        	int minute = Integer.parseInt(str2[1]);
+        	
+        	double value = calories_arr[i].getValue();
+        	s3.add(new Minute(minute, hour, day, month, year), value);
+
+        }
+        
+        dataset.addSeries(s1);
+        dataset.addSeries(s2);
+        dataset.addSeries(s3);
+        dataset.addSeries(s4);
+
+        return dataset;
 	}
+
+	private JFreeChart createChart( final XYDataset dataset ) 
+	{
+		final JFreeChart chart = ChartFactory.createTimeSeriesChart(             
+				"", 
+				"Time",              
+				"Value",              
+				dataset,             
+				true,              
+				true,              
+				false);
+		 chart.setBackgroundPaint(Color.white);
+
+       final XYPlot plot = chart.getXYPlot();
+       //plot.setOutlinePaint(null);
+       plot.setBackgroundPaint(Color.lightGray);
+       plot.setDomainGridlinePaint(Color.white);
+       plot.setRangeGridlinePaint(Color.white);
+       //plot.setAxisOffset(new Spacer(Spacer.ABSOLUTE, 5.0, 5.0, 5.0, 5.0));
+       plot.setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));
+       plot.setDomainCrosshairVisible(true);
+       plot.setRangeCrosshairVisible(false);
+       
+       final XYItemRenderer renderer = plot.getRenderer();
+       if (renderer instanceof StandardXYItemRenderer) {
+           final StandardXYItemRenderer rr = (StandardXYItemRenderer) renderer;
+           rr.setBaseShapesVisible(true); //PlotShapes(true);
+           rr.setShapesFilled(true);
+           renderer.setSeriesStroke(0, new BasicStroke(2.0f));
+           renderer.setSeriesStroke(1, new BasicStroke(2.0f));
+
+          }
+       
+       final DateAxis axis = (DateAxis) plot.getDomainAxis();
+       DateTickUnit stu = new DateTickUnit(DateTickUnit.HOUR,1); 
+       //axis.setAutoTickUnitSelection(false);
+       //axis.setVerticalTickLabels(true);
+       //axis.setTickUnit(stu); 
+       //axis.setDateFormatOverride(new SimpleDateFormat("hh:mma"));
+       
+       return chart;
+
+   }
+
 }
