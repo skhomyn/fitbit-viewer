@@ -54,169 +54,70 @@ public class InterfaceView {
 	
 	private JFrame frame;
 
-
+	/**
+	 * JButtons for menu
+	 */
 	private JButton btnBestDays;
-
 	private JButton btnDailyDashboard;
-
 	private JButton btnDailyGoals;
-
 	private JButton btnLifetimeTotals;
-
 	private JButton btnAccolades;
-
 	private JButton btnTimeSeries;
-
 	private JButton btnHeartRateZones;
-	
 	private JButton btnRefresh;
 
+	/**
+	 * JPanels for all pages
+	 */
 	private JPanel panelDashboardView;
-
 	private JPanel panelBestDaysView;
-
 	private JPanel panelAccoladesView;
-
 	private JPanel panelLifetimeTotalsView;
-
 	private JPanel panelTimeSeriesView;
-
 	private JPanel panelDailyGoalsView;
-
 	private JPanel panelHeartrateZonesView;
-
+	
+	/**
+	 * JLabels for all values to be displayed on all pages
+	 */
 	private JLabel lblLifetimeTotalsDistVal;
-
 	private JLabel lblLifetimeTotalsFloorsVal;
-
-	
 	private JLabel lblDailyDistVal;
-	
 	private JLabel lblLifetimeTotalsStepsVal;
-
 	private JLabel lblDailyCaloriesVal;
-
 	private JLabel lblDailyStepsVal;
-
 	private JLabel lblDailyFloorsVal;
-
 	private JLabel lblDailySedenteryMinVal;
-	
 	private JLabel lblDailyLightlyActMinVal;
-	/**
-	 * Label for daily dashboard fairly active minutes
-	 */
 	private JLabel lblDailyFairlyActMinVal;
-	/**
-	 * Label for daily dashboard very active minutes
-	 */
 	private JLabel lblDailyVeryActMinVal;
-	/**
-	 * label for daily goals value
-	 */
 	private JLabel lblDailyGoalsVal;
-
-	/**
-	 * label for best days distance
-	 */
 	private JLabel lblBestDaysDistVal;
-	/**
-	 * label for best day: floors
-	 */
 	private JLabel lblBestDaysFloorsVal;
-	/**
-	 * label for best day: steps
-	 */
 	private JLabel lblBestDaysStepsVal;
-	/**
-	 * label for best days: distance date
-	 */
 	private JLabel lblBestDaysDistDate;
-	/**
-	 * label for best days: floors date
-	 */
 	private JLabel lblBestDaysFloorsDate;
-	/**
-	 * label for best days: steps date
-	 */
 	private JLabel lblBestDaysStepsDate;
-
-	/**
-	 * label for min value[?] not used
-	 */
 	private JLabel lblHeartRateMinVal;
-	/**
-	 * Label for resting rate[?] not used
-	 */
 	private JLabel lblRestRateVal;
-	/**
-	 * Label for zone aka cardio
-	 */
 	private JLabel lblZoneOneVal;
-	/**
-	 * Label for zone two aka fat burn
-	 */
 	private JLabel lblZoneTwoVal;
-	/**
-	 * Label for zone three aka peak
-	 */
 	private JLabel lblZoneThreeVal;
-
-	/**
-	 * Label for heart total minutes
-	 */
 	private JLabel lblHeartMins;
-	/**
-	 * Label for heart resting rate
-	 */
 	private JLabel lblHeartRest;
-
-	/**
-	 * Label for max min minutes cardio zone
-	 */
 	private JLabel lblHeartCardioMaxMin;
-	/**
-	 * Label for max min minutes fat burn zone
-	 */
 	private JLabel lblHeartFatBurnMaxMin;
-
-	/**
-	 * Label for max min minutes peak zone
-	 */
 	private JLabel lblHeartPeakMaxMin;
-
-	/**
-	 * Label for max min minutes out of range zone
-	 */
 	private JLabel lblHeartOORMaxMin;
 	
-	/**
-	 * Label for active minutes daily goal
-	 */
 	private JLabel lblActiveMinGoal;
-	
-	/**
-	 * Label for calories daily goal
-	 */
 	private JLabel lblCaloriesGoal;
-	
-	/**
-	 * Label for distance daily goal
-	 */
 	private JLabel lblDistanceGoal;
-	
-	/**
-	 * Label for steps daily goal
-	 */
 	private JLabel lblStepsGoal;
-	
-	/**
-	 * Label for floors daily goal
-	 */
 	private JLabel lblFloorsGoal;
 	
 	/**
-	 * Labels for comparisons between goals values and actual values
+	 * Labels for comparison results between goals values and actual values
 	 */
 	private JLabel lblStepsCompare;
 	private JLabel lblFloorsCompare;
@@ -224,6 +125,9 @@ public class InterfaceView {
 	private JLabel lblCaloriesCompare;
 	private JLabel lblActiveMinCompare;
 	
+	/**
+	 * Labels for the time that each page was last updated
+	 */
 	private JLabel lblLastUpdatedDash;
 	private JLabel lblLastUpdatedBd;
 	private JLabel lblLastUpdatedLt;
@@ -232,13 +136,10 @@ public class InterfaceView {
 	private JLabel lblLastUpdatedGoals;
 	private JLabel lblLastUpdatedAccolades;
 
-	
 
 	/**
-	 * Constructor: uses initialize() method
+	 * JPanels for the custom dashboard
 	 */
-	
-	
 	private JPanel OnePanel;
 		private JPanel onePanel_1;
 	private JPanel TwoPanel;
@@ -267,6 +168,9 @@ public class InterfaceView {
 		private JPanel sixPanel_5;
 		private JPanel sixPanel_6;
 	
+	/**
+	 * Radio button menu for custom dashboard
+	 */
 	private JRadioButton radioTotalDist;
 	private JRadioButton radioCalories;
 	private JRadioButton radioSedMin;
@@ -274,6 +178,9 @@ public class InterfaceView {
 	private JRadioButton radioFloors;
 	private JRadioButton radioSteps;
 	
+	/**
+	 * JPanels for custom dashboard
+	 */
 	private JPanel dailyCaloriesPanel;
 	private JPanel dailyTotalDistPanel;
 	private JPanel dailyActiveMinPanel;
@@ -283,8 +190,14 @@ public class InterfaceView {
 	
 	private JPanel[] panelArray;
 	
+	/**
+	 * JDatePickerImpl object for calendar
+	 */
 	private JDatePickerImpl datePicker;
 	
+	/**
+	 * Constructor: uses initialize() method
+	 */
 	public InterfaceView() {
 		initialize();
 	}
@@ -418,87 +331,128 @@ public class InterfaceView {
 		
 		
 		panelDashboardView.setLayout(null);
-		////////NON-FUNCTIONING NIGHTMARE CODE: I can't add Hannah's pictures (Stepan can you fix this please?)////////
-		ImageIcon pic = new ImageIcon("/src/main/resourcesfitbitLogoBackground.jpg"); //I only changed this line -- robin
-		JLabel background = new JLabel(pic);
-		background.setBounds(0,0,720,556);	//jus trying random shit.
-		background.setVisible(true);
-		panelDashboardView.add(background);
-		panelDashboardView.setOpaque(false);
-		///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		// To put an image on the screen: 
+		//ImageIcon whatever = new ImageIcon("path/to/image.png");
+		//lblwhatever.setIcon(whatever);
 		
 		JLabel lblDailyDashboard = new JLabel("Daily Dashboard");
 		lblDailyDashboard.setBounds(0, 0, 720, 30);
 		lblDailyDashboard.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDailyDashboard.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
 		panelDashboardView.add(lblDailyDashboard);
-
-		// Commented out until implementation
-		// JLabel lblDailyProgress = new JLabel("Daily Goals");
-		// lblDailyProgress.setBounds(241, 171, 125, 16);
-		// panelDashboardView.add(lblDailyProgress);
-
+		
+		/**
+		 * Soemthing something grid bag layout
+		 */
+		dailyActiveMinPanel = new JPanel();
+		dailyActiveMinPanel.setBounds(374, 477, 120, 100);
+		GridBagLayout gbl_dailyActiveMinPanel = new GridBagLayout();
+		gbl_dailyActiveMinPanel.columnWidths = new int[]{1, 112, 0};
+		gbl_dailyActiveMinPanel.rowHeights = new int[]{16, 0};
+		gbl_dailyActiveMinPanel.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
+		gbl_dailyActiveMinPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		dailyActiveMinPanel.setLayout(gbl_dailyActiveMinPanel);
+						
+		lblDailyVeryActMinVal = new JLabel();
+		GridBagConstraints gbc_lblDailyVeryActMinVal = new GridBagConstraints();
+		gbc_lblDailyVeryActMinVal.anchor = GridBagConstraints.SOUTH;
+		gbc_lblDailyVeryActMinVal.insets = new Insets(0, 0, 0, 5);
+		gbc_lblDailyVeryActMinVal.gridx = 0;
+		gbc_lblDailyVeryActMinVal.gridy = 0;
+		dailyActiveMinPanel.add(lblDailyVeryActMinVal, gbc_lblDailyVeryActMinVal);
+		lblDailyVeryActMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		
+		JLabel label_1 = new JLabel("Very Active Minutes");
+		GridBagConstraints gbc_label_1 = new GridBagConstraints();
+		gbc_label_1.gridx = 1;
+		gbc_label_1.gridy = 0;
+		dailyActiveMinPanel.add(label_1, gbc_label_1);
+		
+		/**
+		 * All the individual panels and labels for dashboard fields
+		 */
+		dailyStepsPanel = new JPanel();
+		dailyStepsPanel.setBounds(496, 453, 120, 100);
+	
+		lblDailyStepsVal = new JLabel();
+		dailyStepsPanel.add(lblDailyStepsVal);
+		lblDailyStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+				
+		JLabel label_3 = new JLabel("Steps");
+		dailyStepsPanel.add(label_3);
+		
+		dailyCaloriesPanel = new JPanel();
+		dailyCaloriesPanel.setBounds(608, 452, 120, 100);
+		
+		lblDailyCaloriesVal = new JLabel();
+		dailyCaloriesPanel.add(lblDailyCaloriesVal);
+		lblDailyCaloriesVal.setHorizontalAlignment(SwingConstants.TRAILING);
+				
+		JLabel label = new JLabel("Calories Burned");
+		dailyCaloriesPanel.add(label);
+		
+		dailySedMinPanel = new JPanel();
+		dailySedMinPanel.setBounds(264, 448, 120, 100);
+		
+		lblDailySedenteryMinVal = new JLabel();
+		lblDailySedenteryMinVal.setBounds(3, 34, 97, 16);
+		dailySedMinPanel.add(lblDailySedenteryMinVal);
+		lblDailySedenteryMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
+				
+		JLabel lblSedMin = new JLabel("Sedentary Minutes");
+		lblSedMin.setBounds(3, 0, 106, 16);
+		dailySedMinPanel.add(lblSedMin);
+				
+		dailyFloorsPanel = new JPanel();
+		dailyFloorsPanel.setBounds(0, 448, 120, 100);
+				
+		JLabel lblFloorsClimbed = new JLabel("Floors Climbed");
+		lblFloorsClimbed.setBounds(15, 5, 85, 16);
+		dailyFloorsPanel.add(lblFloorsClimbed);
+				
+		lblDailyFloorsVal = new JLabel();
+		lblDailyFloorsVal.setBounds(10, 34, 70, 16);
+		dailyFloorsPanel.add(lblDailyFloorsVal);
+		lblDailyFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+						
+		dailyTotalDistPanel = new JPanel();
+		dailyTotalDistPanel.setBounds(126, 477, 120, 100);
+	
+						
+		lblDailyDistVal = new JLabel();
+		lblDailyDistVal.setBounds(19, 34, 70, 16);
+		dailyTotalDistPanel.add(lblDailyDistVal);
+		lblDailyDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
+						
+		JLabel lblTotalDist = new JLabel("Total Distance");
+		lblTotalDist.setBounds(19, 5, 81, 16);
+		dailyTotalDistPanel.add(lblTotalDist);
+		
+		/**
+		 * "Last Updated" Field
+		 */
+		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setBounds(410, 540, 90, 16);
+		panelDashboardView.add(lblLastUpdated);
+		
 		lblLastUpdatedDash = new JLabel();
 		lblLastUpdatedDash.setBounds(486, 540, 222, 16);
 		lblLastUpdatedDash.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelDashboardView.add(lblLastUpdatedDash);
 		
-		
-		dailyActiveMinPanel = new JPanel();
-		dailyActiveMinPanel.setBounds(374, 477, 120, 100);
-						GridBagLayout gbl_dailyActiveMinPanel = new GridBagLayout();
-						gbl_dailyActiveMinPanel.columnWidths = new int[]{1, 112, 0};
-						gbl_dailyActiveMinPanel.rowHeights = new int[]{16, 0};
-						gbl_dailyActiveMinPanel.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
-						gbl_dailyActiveMinPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-						dailyActiveMinPanel.setLayout(gbl_dailyActiveMinPanel);
-						
-								lblDailyVeryActMinVal = new JLabel();
-								GridBagConstraints gbc_lblDailyVeryActMinVal = new GridBagConstraints();
-								gbc_lblDailyVeryActMinVal.anchor = GridBagConstraints.SOUTH;
-								gbc_lblDailyVeryActMinVal.insets = new Insets(0, 0, 0, 5);
-								gbc_lblDailyVeryActMinVal.gridx = 0;
-								gbc_lblDailyVeryActMinVal.gridy = 0;
-								dailyActiveMinPanel.add(lblDailyVeryActMinVal, gbc_lblDailyVeryActMinVal);
-								lblDailyVeryActMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
-						
-						JLabel label_1 = new JLabel("Very Active Minutes");
-						GridBagConstraints gbc_label_1 = new GridBagConstraints();
-						gbc_label_1.gridx = 1;
-						gbc_label_1.gridy = 0;
-						dailyActiveMinPanel.add(label_1, gbc_label_1);
-		
-		dailyStepsPanel = new JPanel();
-		dailyStepsPanel.setBounds(496, 453, 120, 100);
-	
-		
-				lblDailyStepsVal = new JLabel();
-				dailyStepsPanel.add(lblDailyStepsVal);
-				lblDailyStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
-				
-				JLabel label_3 = new JLabel("Steps");
-				dailyStepsPanel.add(label_3);
-		
-		dailyCaloriesPanel = new JPanel();
-		dailyCaloriesPanel.setBounds(608, 452, 120, 100);
-		
-		
-				lblDailyCaloriesVal = new JLabel();
-				dailyCaloriesPanel.add(lblDailyCaloriesVal);
-				lblDailyCaloriesVal.setHorizontalAlignment(SwingConstants.TRAILING);
-				
-				JLabel label = new JLabel("Calories Burned");
-				dailyCaloriesPanel.add(label);
-		
-		JLabel lblLastUpdated = new JLabel("Last Updated:");
-		lblLastUpdated.setBounds(410, 540, 90, 16);
-		panelDashboardView.add(lblLastUpdated);
-		
+		/**
+		 * Switching panel is a card layout which sits underneath all of the custom layout
+		 * option panels (ie. 1-panel layout, 2-panel layout etc.) and switches which one is 
+		 * displayed based on user selection of radio buttons.
+		 */
 		JPanel SwitchingPanel = new JPanel();
 		SwitchingPanel.setBounds(37, 120, 629, 357);
 		panelDashboardView.add(SwitchingPanel);
 		SwitchingPanel.setLayout(new CardLayout(0, 0));
 		
+		/**
+		 * Layout panel for custom dashboard: 1-panel display
+		 */
 		OnePanel = new JPanel();
 		SwitchingPanel.add(OnePanel, "name_784837328464246");
 		OnePanel.setLayout(null);
@@ -508,6 +462,9 @@ public class InterfaceView {
 		onePanel_1.setBounds(243, 142, 120, 100);
 		OnePanel.add(onePanel_1);
 		
+		/**
+		 * Layout panel for custom dashboard: 2-panel display
+		 */
 		TwoPanel = new JPanel();
 		SwitchingPanel.add(TwoPanel, "name_784837275135018");
 		TwoPanel.setLayout(null);
@@ -522,6 +479,9 @@ public class InterfaceView {
 		twoPanel_2.setBounds(343, 126, 120, 100);
 		TwoPanel.add(twoPanel_2);
 		
+		/**
+		 * Layout panel for custom dashboard: 3-panel display
+		 */
 		ThreePanel = new JPanel();
 		SwitchingPanel.add(ThreePanel, "name_784837286074452");
 		ThreePanel.setLayout(null);
@@ -544,6 +504,9 @@ public class InterfaceView {
 		threePanel_3.setBounds(448, 140, 120, 100);
 		ThreePanel.add(threePanel_3);
 		
+		/**
+		 * Layout panel for custom dashboard: 4-panel display
+		 */
 		FourPanel = new JPanel();
 		SwitchingPanel.add(FourPanel, "name_784837296062649");
 		FourPanel.setLayout(null);
@@ -568,6 +531,9 @@ public class InterfaceView {
 		fourPanel_4.setBounds(242, 218, 120, 100);
 		FourPanel.add(fourPanel_4);
 		
+		/**
+		 * Layout panel for custom dashboard: 5-panel display
+		 */
 		FivePanel = new JPanel();
 		SwitchingPanel.add(FivePanel, "name_784837306362861");
 		FivePanel.setLayout(null);
@@ -597,7 +563,9 @@ public class InterfaceView {
 		fivePanel_5.setBounds(381, 205, 120, 100);
 		FivePanel.add(fivePanel_5);
 		
-		
+		/**
+		 * Layout panel for custom dashboard: 6-panel display
+		 */
 		SixPanel = new JPanel();
 		SwitchingPanel.add(SixPanel, "name_784837317868029");
 		SixPanel.setLayout(null);
@@ -632,6 +600,9 @@ public class InterfaceView {
 		sixPanel_6.setBounds(451, 218, 120, 100);
 		SixPanel.add(sixPanel_6);
 		
+		/**
+		 * Layout customization, or "settings", menu
+		 */
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 13, 70, 26);
 		panelDashboardView.add(menuBar);
@@ -655,7 +626,10 @@ public class InterfaceView {
 		radioFloors = new JRadioButton("Floors Climbed");
 		mnNewMenu.add(radioFloors);
 		
-		//giant chunk of code to implement radio button selection stuff
+		/**
+		 * Change which custom layout panel is being displayed based on the 
+		 * count of the number of radio buttons selected in the "settings" menu.
+		 */
 		radioFloors.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(radioCounter()==0){
@@ -886,82 +860,52 @@ public class InterfaceView {
 		}
 	});
 		
-		dailySedMinPanel = new JPanel();
-		dailySedMinPanel.setBounds(264, 448, 120, 100);
-		
-				lblDailySedenteryMinVal = new JLabel();
-				lblDailySedenteryMinVal.setBounds(3, 34, 97, 16);
-				dailySedMinPanel.add(lblDailySedenteryMinVal);
-				lblDailySedenteryMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
-				
-				JLabel label_2 = new JLabel("Sedentary Minutes");
-				label_2.setBounds(3, 0, 106, 16);
-				dailySedMinPanel.add(label_2);
-				
-				dailyFloorsPanel = new JPanel();
-				dailyFloorsPanel.setBounds(0, 448, 120, 100);
-				
-				JLabel label_5 = new JLabel("Floors Climbed");
-				label_5.setBounds(15, 5, 85, 16);
-				dailyFloorsPanel.add(label_5);
-				
-						lblDailyFloorsVal = new JLabel();
-						lblDailyFloorsVal.setBounds(10, 34, 70, 16);
-						dailyFloorsPanel.add(lblDailyFloorsVal);
-						lblDailyFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
-						
-						dailyTotalDistPanel = new JPanel();
-						dailyTotalDistPanel.setBounds(126, 477, 120, 100);
-	
-						
-						lblDailyDistVal = new JLabel();
-						lblDailyDistVal.setBounds(19, 34, 70, 16);
-						dailyTotalDistPanel.add(lblDailyDistVal);
-						lblDailyDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
-						
-						JLabel label_4 = new JLabel("Total Distance");
-						label_4.setBounds(19, 5, 81, 16);
-						dailyTotalDistPanel.add(label_4);
-		
-						Date currentDate = new Date();
-						UtilDateModel utilModel = new UtilDateModel(currentDate);
-						JDatePanelImpl datePanel = new JDatePanelImpl(utilModel);
-						datePicker = new JDatePickerImpl(datePanel);
-						datePicker.setBounds(278,43,163,26);
-						datePicker.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
+
+		/**
+		 * Calendar implementation
+		 */
+		Date currentDate = new Date();
+		UtilDateModel utilModel = new UtilDateModel(currentDate);
+		JDatePanelImpl datePanel = new JDatePanelImpl(utilModel);
+		datePicker = new JDatePickerImpl(datePanel);
+		datePicker.setBounds(278,43,163,26);
+		datePicker.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 								CalendarToAPI();
 							}
 						});
 						
-						// Calendar
-						panelDashboardView.add(datePicker);
+		panelDashboardView.add(datePicker);
 						
-						SwitchingPanel.setVisible(true);
+		SwitchingPanel.setVisible(true); //what is this
 						
+		/**
+		 * "Next Date" button to move the date forward by one day	
+		 */
+		JButton btnNextDate = new JButton("Next");
+		btnNextDate.setBounds(217, 44, 49, 25);
+		panelDashboardView.add(btnNextDate);
+		btnNextDate.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+				datePicker.getModel().setDay(datePicker.getModel().getDay()-1);
+				CalendarToAPI();
+			}
+		});
 						
-						JButton btnPrevDate = new JButton("Next");
-						btnPrevDate.setBounds(217, 44, 49, 25);
-						panelDashboardView.add(btnPrevDate);
-						btnPrevDate.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								datePicker.getModel().setDay(datePicker.getModel().getDay()-1);
-								CalendarToAPI();
-							}
-						});
+		/**
+		 * "Previous Date" button to move the date back by one day	
+		 */
+		JButton btnPrevDate = new JButton("Prev");
+		btnPrevDate.setBounds(453, 44, 49, 25);
+		panelDashboardView.add(btnPrevDate);
+		btnPrevDate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				datePicker.getModel().setDay(datePicker.getModel().getDay()+1);
+				CalendarToAPI();
+				}
+			});
 						
-						JButton btnNextDate = new JButton("Prev");
-						btnNextDate.setBounds(453, 44, 49, 25);
-						btnNextDate.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								datePicker.getModel().setDay(datePicker.getModel().getDay()+1);
-								CalendarToAPI();
-							}
-						});
-						
-							
-						panelDashboardView.add(btnNextDate);
-						
+													
 						/////////////LOOK AT THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//////////////////
 						
 						/////THIS NEEDS TO BE REPLACED WITH THE ARRAY WHICH IS PASSED IN/////////
@@ -976,6 +920,7 @@ public class InterfaceView {
 						/////ALSO MAKE SURE TO SET THE APPROPRIATE RADIOBUTTONS//////////
 						radioCalories.setSelected(true);
 						radioActiveMin.setSelected(true);
+						
 
 						/////////////////////////////////////////////////////////////////
 						/////KEEP THIS THO.//////////////////////////////////////////////
@@ -1821,7 +1766,12 @@ public class InterfaceView {
 		view.frame.setVisible(true);
 	}
 	
-	// Preferences 
+	/**
+	 * Preferences / custom layout menu for dashboard.
+	 * 
+	 * @param component
+	 * @param popup
+	 */
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -1840,6 +1790,10 @@ public class InterfaceView {
 		});
 	}
 	
+	/**
+	 * Method to count of how many radio buttons are selected at a given time
+	 * @return number of radio buttons selected in custom layout menu for dashboard.
+	 */
 	public int radioCounter(){
 		int counter = 0;
 		if (radioCalories.isSelected()){
@@ -1863,6 +1817,10 @@ public class InterfaceView {
 		return counter;
 	}
 	
+	/**
+	 * Method switches to a new layout for the custom dashboard.
+	 * @param count the number of radio buttons selected in the custom layout menu for the dashboard.
+	 */
 	public void repanel(int count){
 		switch(count){
 		case 1:
@@ -2030,6 +1988,10 @@ public class InterfaceView {
 		}
 	}
 	
+	/**
+	 * Returns the date selected on the calendar icon as a String.
+	 * @return a String representing the date selected on the calendar.
+	 */
 	public String CalendarToAPI(){
 		System.out.println(datePicker.getJFormattedTextField().getText());
 		return datePicker.getJFormattedTextField().getText();
