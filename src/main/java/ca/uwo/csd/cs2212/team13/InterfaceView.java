@@ -718,6 +718,8 @@ public class InterfaceView {
 		
 		radioCalories.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("WOW");
+				
 			if(radioCounter()==0){
 				radioCalories.setSelected(true);
 			}
@@ -852,6 +854,7 @@ public class InterfaceView {
 			}
 			
 			else{
+				System.out.println("WAHWAHWAH\n");
 				while(panelArray[radioCounter()]!=dailyActiveMinPanel){
 					int position = 0;
 					for(int x=0; x<radioCounter(); x++){
@@ -859,6 +862,7 @@ public class InterfaceView {
 							position = x;
 						}
 					}
+					System.out.println(position +"\n");
 					SPanel switcheyPanel = panelArray[position+1];
 					panelArray[position+1] = (SPanel) dailyActiveMinPanel;
 					panelArray[position] = switcheyPanel;
@@ -915,6 +919,8 @@ public class InterfaceView {
 						/////////////LOOK AT THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//////////////////
 						
 						/////THIS NEEDS TO BE REPLACED WITH THE ARRAY WHICH IS PASSED IN/////////
+		
+						/**
 						panelArray = new SPanel[6];
 						panelArray[0]=dailyActiveMinPanel;
 						panelArray[1]=dailyCaloriesPanel;
@@ -922,10 +928,14 @@ public class InterfaceView {
 						panelArray[3]=dailyFloorsPanel;
 						panelArray[4]=dailyStepsPanel;
 						panelArray[5]=dailyTotalDistPanel;
+						*/
 						////////////////////////////////////////////////////////////////
 						/////ALSO MAKE SURE TO SET THE APPROPRIATE RADIOBUTTONS//////////
 						
+						
+						
 						SettingsRecord sr = null;
+
 						WriterReader wr = new WriterReader();
 						try {
 							System.out.println("Reading in SettingsRecord from File\n");
@@ -935,14 +945,20 @@ public class InterfaceView {
 						} catch (Exception e) {
 							System.out.println("Could not read SettingsRecord from File");
 
+							panelArray = new SPanel[6];
+							panelArray[0]=dailyActiveMinPanel;
+							panelArray[1]=dailyCaloriesPanel;
+							panelArray[2]=dailySedMinPanel;
+							panelArray[3]=dailyFloorsPanel;
+							panelArray[4]=dailyStepsPanel;
+							panelArray[5]=dailyTotalDistPanel;
+							
 							radioCalories.setSelected(true);
 							radioActiveMin.setSelected(true);
 						}
-						
-						
-						
-						radioCalories.setSelected(true);
-						radioActiveMin.setSelected(true);
+							
+						//radioCalories.setSelected(true);
+						//radioActiveMin.setSelected(true);
 
 						/////////////////////////////////////////////////////////////////
 						/////KEEP THIS THO.//////////////////////////////////////////////
@@ -965,6 +981,7 @@ public class InterfaceView {
 
 	private void load_settings(SettingsRecord sr)
 	{
+		
 		if(sr.isRadioTotalDist())
 			radioTotalDist.setSelected(true);
 
@@ -984,11 +1001,17 @@ public class InterfaceView {
 			radioSteps.setSelected(true);
 
 		panelArray = sr.getPanelArray();
-		repanel(sr.getCount());
+		dailyCaloriesPanel = sr.getDailyCaloriesPanel();
+		dailyTotalDistPanel = sr.getDailyTotalDistPanel();
+		dailyActiveMinPanel = sr.getDailyActiveMinPanel();
+		dailySedMinPanel = sr.getDailySedMinPanel();
+		dailyFloorsPanel = sr.getDailyFloorsPanel();
+		dailyStepsPanel = sr.getDailyStepsPanel();
 	}
 	
 	private void save_settings()
 	{
+		
 		WriterReader wr = new WriterReader();
 		boolean dist = (radioTotalDist.isSelected());
 		boolean calories = (radioCalories.isSelected());
@@ -997,12 +1020,13 @@ public class InterfaceView {
 		boolean floors = (radioFloors.isSelected());
 		boolean steps = (radioSteps.isSelected());
 		
-		SettingsRecord sr = new SettingsRecord(dist, calories, sedMin, activeMin, floors, steps, panelArray, radioCounter());
+		SettingsRecord sr = new SettingsRecord(dist, calories, sedMin, activeMin, floors, steps, panelArray, radioCounter(), dailyCaloriesPanel, dailyTotalDistPanel, dailyActiveMinPanel, dailySedMinPanel, dailyFloorsPanel, dailyStepsPanel);
 		try {
 			wr.writeRecord(sr, "settingsrecord");
 		} catch (Exception e) {
 			System.out.println("Could not write to file");
 		}
+		
 	}
 
 	

@@ -279,8 +279,8 @@ public class Main {
 			HRZController hrController = new HRZController(hrRecord, view);
 
 			// Format to JSON
-			final String json = gson.toJson(hrRecord);
-			System.out.println(json);
+		//	final String json = gson.toJson(hrRecord);
+		//	System.out.println(json);
 		}
 
 		// Read the JSON data for daily dashboard

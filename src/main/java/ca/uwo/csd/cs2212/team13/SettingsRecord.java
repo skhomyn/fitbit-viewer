@@ -17,7 +17,13 @@ public class SettingsRecord implements Serializable {
 	private SPanel[] panelArray;
 	private int count;
 
-	
+	private SPanel dailyCaloriesPanel;
+	private SPanel dailyTotalDistPanel;
+	private SPanel dailyActiveMinPanel;
+	private SPanel dailySedMinPanel;
+	private SPanel dailyFloorsPanel;
+	private SPanel dailyStepsPanel;
+
 	/**
 	 * @param radioTotalDist
 	 * @param radioCalories
@@ -25,10 +31,21 @@ public class SettingsRecord implements Serializable {
 	 * @param radioActiveMin
 	 * @param radioFloors
 	 * @param radioSteps
+	 * @param panelArray
+	 * @param count
+	 * @param dailyCaloriesPanel
+	 * @param dailyTotalDistPanel
+	 * @param dailyActiveMinPanel
+	 * @param dailySedMinPanel
+	 * @param dailyFloorsPanel
+	 * @param dailyStepsPanel
 	 */
 	public SettingsRecord(boolean radioTotalDist, boolean radioCalories,
 			boolean radioSedMin, boolean radioActiveMin, boolean radioFloors,
-			boolean radioSteps, SPanel panelArray[], int count) {
+			boolean radioSteps, SPanel[] panelArray, int count,
+			SPanel dailyCaloriesPanel, SPanel dailyTotalDistPanel,
+			SPanel dailyActiveMinPanel, SPanel dailySedMinPanel,
+			SPanel dailyFloorsPanel, SPanel dailyStepsPanel) {
 		super();
 		this.radioTotalDist = radioTotalDist;
 		this.radioCalories = radioCalories;
@@ -38,6 +55,96 @@ public class SettingsRecord implements Serializable {
 		this.radioSteps = radioSteps;
 		this.panelArray = panelArray;
 		this.count = count;
+		this.dailyCaloriesPanel = dailyCaloriesPanel;
+		this.dailyTotalDistPanel = dailyTotalDistPanel;
+		this.dailyActiveMinPanel = dailyActiveMinPanel;
+		this.dailySedMinPanel = dailySedMinPanel;
+		this.dailyFloorsPanel = dailyFloorsPanel;
+		this.dailyStepsPanel = dailyStepsPanel;
+	}
+
+	/**
+	 * @return the dailyCaloriesPanel
+	 */
+	public SPanel getDailyCaloriesPanel() {
+		return dailyCaloriesPanel;
+	}
+
+	/**
+	 * @param dailyCaloriesPanel the dailyCaloriesPanel to set
+	 */
+	public void setDailyCaloriesPanel(SPanel dailyCaloriesPanel) {
+		this.dailyCaloriesPanel = dailyCaloriesPanel;
+	}
+
+	/**
+	 * @return the dailyTotalDistPanel
+	 */
+	public SPanel getDailyTotalDistPanel() {
+		return dailyTotalDistPanel;
+	}
+
+	/**
+	 * @param dailyTotalDistPanel the dailyTotalDistPanel to set
+	 */
+	public void setDailyTotalDistPanel(SPanel dailyTotalDistPanel) {
+		this.dailyTotalDistPanel = dailyTotalDistPanel;
+	}
+
+	/**
+	 * @return the dailyActiveMinPanel
+	 */
+	public SPanel getDailyActiveMinPanel() {
+		return dailyActiveMinPanel;
+	}
+
+	/**
+	 * @param dailyActiveMinPanel the dailyActiveMinPanel to set
+	 */
+	public void setDailyActiveMinPanel(SPanel dailyActiveMinPanel) {
+		this.dailyActiveMinPanel = dailyActiveMinPanel;
+	}
+
+	/**
+	 * @return the dailySedMinPanel
+	 */
+	public SPanel getDailySedMinPanel() {
+		return dailySedMinPanel;
+	}
+
+	/**
+	 * @param dailySedMinPanel the dailySedMinPanel to set
+	 */
+	public void setDailySedMinPanel(SPanel dailySedMinPanel) {
+		this.dailySedMinPanel = dailySedMinPanel;
+	}
+
+	/**
+	 * @return the dailyFloorsPanel
+	 */
+	public SPanel getDailyFloorsPanel() {
+		return dailyFloorsPanel;
+	}
+
+	/**
+	 * @param dailyFloorsPanel the dailyFloorsPanel to set
+	 */
+	public void setDailyFloorsPanel(SPanel dailyFloorsPanel) {
+		this.dailyFloorsPanel = dailyFloorsPanel;
+	}
+
+	/**
+	 * @return the dailyStepsPanel
+	 */
+	public SPanel getDailyStepsPanel() {
+		return dailyStepsPanel;
+	}
+
+	/**
+	 * @param dailyStepsPanel the dailyStepsPanel to set
+	 */
+	public void setDailyStepsPanel(SPanel dailyStepsPanel) {
+		this.dailyStepsPanel = dailyStepsPanel;
 	}
 
 	/**
