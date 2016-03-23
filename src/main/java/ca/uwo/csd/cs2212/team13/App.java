@@ -85,8 +85,8 @@ public class App {
 		ar[2] = new AccoladeRecord(false, null, 2000, "BurnedsomeCalsAcc", "calorie/check", "Burn 1000 Calories\n");
 		ar[3] = new AccoladeRecord(false, null, 2000, "BurnedMaxCalsAcc", "calorie/burned", "Burn 2000 Calories\n");
 		ar[4] = new AccoladeRecord(false, null, 25, "CardioHeartAcc", "heartrate/cardio", "Spend 20 minutes in Cardio Heart Rate Zone\n");
-		ar[5] = new AccoladeRecord(false, null, 5, "maxDistanceAcc", "distance/check", "Achieved a Lifetime Distance of 5");
-		ar[6] = new AccoladeRecord(false, null, 10000, "tenThouStepsAcc","lifetime/steps", "Walked 10000 Steps");
+		ar[5] = new AccoladeRecord(false, null, 5, "maxDistanceAcc", "ca.uwo.csd.cs2212.team13.LifetimeRecord/getDistance", "Walked 5 km in Total");
+		ar[6] = new AccoladeRecord(false, null, 10000, "tenThouStepsAcc","ca.uwo.csd.cs2212.team13.LifetimeRecord/getSteps", "Walked 10000 Steps in Total");
 		ar[7] = new AccoladeRecord(false, null, 25, "FatburnHeartAcc", "heartrate/fat", "Spend 20 minutes in Fat Burn Heart Zone");
 		ar[8] = new AccoladeRecord(false, null, 100, "maxFloorsAcc", "lifetime/floor", "Climbed 100 floors");
 		ar[9] = new AccoladeRecord(false, null, 60, "StayedInBoundsAcc", "heartrate/outofrange", "No Out of Range Minutes for One Day");

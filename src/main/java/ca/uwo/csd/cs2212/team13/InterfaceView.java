@@ -991,11 +991,13 @@ public class InterfaceView {
 			for (int j = 0; j < 2; j++) {
 				labels[i][j] = new JLabel();
 
-				if (j == 1)
+				if (j == 1) {
+					gbc.insets = new Insets(70, 40, 40, 40);
 					panelAccoladesDisplay.add(labels[i][j], gbc);
-				else
+				} else
 					panelAccoladesDisplay.add(labels[i][j]);
 			}
+			// gbc.gridx++;
 		}
 
 		panelAccoladesScroll = new JScrollPane(panelAccoladesDisplay);
@@ -1582,15 +1584,31 @@ public class InterfaceView {
 	public void setAccoladeFields(AccoladeRecord[] ar) {
 
 		for (int i = 0; i < 20; i++) {
-			ImageIcon imageIcon = new ImageIcon("src/main/resources/"
-					+ ar[i].getImage() + ".jpg"); // load the image to a imageIcon
-			Image image = imageIcon.getImage(); // transform it
-			Image newimg = image.getScaledInstance(120, 120,
-					java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-			imageIcon = new ImageIcon(newimg); // transform it back
 
-			labels[i][0].setIcon(imageIcon);
-			
+			if (ar[i].getAchieved() == true) {
+				ImageIcon imageIcon = new ImageIcon("src/main/resources/"
+						+ ar[i].getImage() + ".jpg"); // load the image to a
+														// imageIcon
+				Image image = imageIcon.getImage(); // transform it
+				Image newimg = image.getScaledInstance(120, 120,
+						java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+				imageIcon = new ImageIcon(newimg); // transform it back
+
+				labels[i][0].setIcon(imageIcon);
+			}
+			else
+			{
+				ImageIcon imageIcon = new ImageIcon("src/main/resources/"
+						+ ar[i].getImage() + "Grey.jpg"); // load the image to a
+														// imageIcon
+				Image image = imageIcon.getImage(); // transform it
+				Image newimg = image.getScaledInstance(120, 120,
+						java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+				imageIcon = new ImageIcon(newimg); // transform it back
+
+				labels[i][0].setIcon(imageIcon);
+			}
+
 			labels[i][1].setText(ar[i].getDesc());
 		}
 	}

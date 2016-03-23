@@ -140,7 +140,7 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println("Could not write to file");
 		}
-		
+
 		// Read the JSON data for best days and lifetime totals
 		String aRecord_String = test.requestJson("activities.json");
 		ActivitiesRecord actRecord = null;
@@ -297,22 +297,24 @@ public class Main {
 			// Format to JSON
 			// final String json = gson.toJson(actRecord);
 			// System.out.println(json);
-		}
-		
-		WriterReader wr = new WriterReader();
 
-		AccoladeRecord[] ar = new AccoladeRecord[20];
-		ar = null;
-		
-		try {
-			ar = (AccoladeRecord[]) wr.loadRecord("src/main/resources/accoladerecords");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			WriterReader wr = new WriterReader();
+
+			AccoladeRecord[] ar = new AccoladeRecord[20];
+			ar = null;
+
+			try {
+				ar = (AccoladeRecord[]) wr
+						.loadRecord("src/main/resources/accoladerecords");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			AccoladeController acController = new AccoladeController(ar,
+					actRecord, view);
+
 		}
-		
-		AccoladeController acController = new AccoladeController(ar,
-				view);
-		
+
 	}
 }
