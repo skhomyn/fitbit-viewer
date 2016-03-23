@@ -40,33 +40,35 @@ public class AccoladeController {
 		for (int i = 0; i < ar.length; i++) {
 			String[] typeSplit = ar[i].getType().split("/");
 
-				Class thisClass;
+			Class thisClass;
+			try {
+				thisClass = Class.forName(typeSplit[0]);
+
+				Method m;
 				try {
-					thisClass = Class.forName(typeSplit[0]);
+					m = thisClass.getDeclaredMethod(typeSplit[1]);
 
-					Method m;
-					try {
-						m = thisClass.getDeclaredMethod(typeSplit[1]);
-						
-						if (typeSplit[0].equals("ca.uwo.csd.cs2212.team13.LifetimeRecord"))
-							checkValues(m, lr, i);
-							
-						else if (typeSplit[0].equals("ca.uwo.csd.cs2212.team13.BestDaysRecord"))
-							checkValues(m, lr, i);
+					if (typeSplit[0]
+							.equals("ca.uwo.csd.cs2212.team13.LifetimeRecord"))
+						checkValues(m, lr, i);
 
-					} catch (NoSuchMethodException | SecurityException
-							| IllegalArgumentException | IllegalAccessException
-							| InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					else if (typeSplit[0]
+							.equals("ca.uwo.csd.cs2212.team13.BestDaysRecord"))
+						checkValues(m, br, i);
 
-				} catch (ClassNotFoundException e1) {
+				} catch (NoSuchMethodException | SecurityException
+						| IllegalArgumentException | IllegalAccessException
+						| InvocationTargetException e) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					e.printStackTrace();
 				}
+
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-		
+		}
+
 	}
 
 	private void checkValues(Method m, Object standard, int i)
@@ -77,11 +79,9 @@ public class AccoladeController {
 				.getValue()) {
 			ar[i].setAchieved(true);
 		}
-		
-		System.out.println(Double
-				.parseDouble(m.invoke(standard).toString())
-				+ " "
-				+ ar[i].getValue() + "\n");
+
+		System.out.println(Double.parseDouble(m.invoke(standard).toString())
+				+ " " + ar[i].getValue() + "\n");
 
 	}
 
