@@ -78,28 +78,25 @@ public class App {
 		WriterReader wr = new WriterReader();
 
 		ar[0] = new AccoladeRecord(false, null, 1000, "ThousandStepsAcc", "ca.uwo.csd.cs2212.team13.BestDaysRecord/getSteps_value", "Walked 1000 Steps for Best Day");
-		ar[1] = new AccoladeRecord(false, null, 0, "metNoGoalsAcc", "dailygoals/check", "Did Not Complete Any Daily Goals");
-		ar[2] = new AccoladeRecord(false, null, 2000, "BurnedsomeCalsAcc", "calorie/check", "Burn 1000 Calories\n");
-		ar[3] = new AccoladeRecord(false, null, 2000, "BurnedMaxCalsAcc", "calorie/burned", "Burn 2000 Calories\n");
-		ar[4] = new AccoladeRecord(false, null, 25, "CardioHeartAcc", "heartrate/cardio", "Spend 20 minutes in Cardio Heart Rate Zone\n");
-		
+		ar[1] = new AccoladeRecord(false, null, 0, "metNoGoalsAcc", "ca.uwo.csd.cs2212.team13.DailyRecord/getGoals_goals", "Did Not Complete Any Daily Goals");
+		ar[2] = new AccoladeRecord(false, null, 2000, "BurnedsomeCalsAcc", "ca.uwo.csd.cs2212.team13.GoalsRecord/getCaloriesOut_caloriesOut", "Burn 1000 Calories\n");
+		ar[3] = new AccoladeRecord(false, null, 2000, "BurnedMaxCalsAcc", "ca.uwo.csd.cs2212.team13.GoalsRecord/getCaloriesOut_caloriesOut", "Burn 2000 Calories\n");
+		ar[4] = new AccoladeRecord(false, null, 25, "CardioHeartAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getName.getMinutes", "Spend 20 minutes in Cardio Heart Rate Zone\n");
 		ar[5] = new AccoladeRecord(false, null, 5, "maxDistanceAcc", "ca.uwo.csd.cs2212.team13.BestDaysRecord/getDis_value", "Walked 5 km for Best Day");
 		ar[6] = new AccoladeRecord(false, null, 10000, "tenThouStepsAcc","ca.uwo.csd.cs2212.team13.LifetimeRecord/getSteps", "Walked 10000 Steps in Total");
-		
-		
-		ar[7] = new AccoladeRecord(false, null, 25, "FatburnHeartAcc", "heartrate/fat", "Spend 20 minutes in Fat Burn Heart Zone");
-		ar[8] = new AccoladeRecord(false, null, 100, "maxFloorsAcc", "lifetime/floor", "Climbed 100 floors");
-		ar[9] = new AccoladeRecord(false, null, 60, "StayedInBoundsAcc", "heartrate/outofrange", "No Out of Range Minutes for One Day");
-		ar[10] = new AccoladeRecord(false, null, 2500, "tooManyCalsAcc", "calorie/check", "Something Something\n");
-		ar[11] = new AccoladeRecord(false, null, 10, "metAllGoalsAcc","lifetime/allgoals", "Completed All Daily Goals");
-		ar[12] = new AccoladeRecord(false, null, 0, "outofRangeHeartAcc", "heartrate/outofrange", "Spend 20 minutes in Out of Range");
-		ar[13] = new AccoladeRecord(false, null, 50, "peakHeartAcc", "heartrate/peak", "Spend 20 minutes in Peak Heart Zone");
-		ar[14] = new AccoladeRecord(false, null, 0, "sedentaryMinsAcc", "lifetime/potato", "Reached 60 Sedentary Minutes for One Day");
-		ar[15] = new AccoladeRecord(false, null, 0, "zeroSteps","dailyrecord/steps", "No Steps for One Day\n");
-		ar[16] = new AccoladeRecord(false, null, 25, "christmasAcc", "event/christmas", "Log On During Christmas\n");
-		ar[17] = new AccoladeRecord(false, null, 20, "hanukkahAcc", "event/hanukkah", "Log On During Hanukkanh\n");
-		ar[18] = new AccoladeRecord(false, null, 20, "completedAcc", "event/all", "Achieve All Other Accolades\n");
-		ar[19] = new AccoladeRecord(false, null, 10, "completedHalfAcc", "event/half", "Achieve Half of the Accolades\n");
+		ar[7] = new AccoladeRecord(false, null, 25, "FatburnHeartAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getName.getMinutes", "Spend 20 minutes in Fat Burn Heart Zone");
+		ar[8] = new AccoladeRecord(false, null, 100, "maxFloorsAcc", "ca.uwo.csd.cs2212.team13.GoalsRecord/getFloors_floors", "Climbed 100 floors");
+		ar[9] = new AccoladeRecord(false, null, 60, "StayedInBoundsAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getMinutes_minutes", "No Out of Range Minutes for One Day");
+		ar[10] = new AccoladeRecord(false, null, 2500, "tooManyCalsAcc", "ca.uwo.csd.cs2212.team13.DailyRecord/getCalories_calories", "Took in over 2000 calories\n");
+		ar[11] = new AccoladeRecord(false, null, 10, "metAllGoalsAcc","ca.uwo.csd.cs2212.team13.DailyRecord/getGoals_goals", "Completed All Daily Goals");
+		ar[12] = new AccoladeRecord(false, null, 0, "outofRangeHeartAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getName.getMinutes", "Spend 20 minutes in Out of Range");
+		ar[13] = new AccoladeRecord(false, null, 50, "peakHeartAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getName.getMinutes", "Spend 20 minutes in Peak Heart Zone");
+		ar[14] = new AccoladeRecord(false, null, 0, "sedentaryMinsAcc", "ca.uwo.csd.cs2212.team13.DailyRecord/getSedentaryMinutes_sedentaryMinutes", "Reached 60 Sedentary Minutes for One Day");
+		ar[15] = new AccoladeRecord(false, null, 0, "zeroSteps","ca.uwo.csd.cs2212.team13.LifetimeRecord/getSteps", "No Steps for One Day\n");
+		ar[16] = new AccoladeRecord(false, null, 25, "christmasAcc", "ca.uwo.csd.cs2212.team13.AccoladeRecord/getDate_date", "Log On During Christmas\n");
+		ar[17] = new AccoladeRecord(false, null, 20, "hanukkahAcc", "ca.uwo.csd.cs2212.team13.AccoladeRecord/getDate_date", "Log On During Hanukkanh\n");
+		ar[18] = new AccoladeRecord(false, null, 20, "completedAcc", "ca.uwo.csd.cs2212.team13.AccoladeRecord/getAchieved", "Achieve All Other Accolades\n");
+		ar[19] = new AccoladeRecord(false, null, 10, "completedHalfAcc", "ca.uwo.csd.cs2212.team13.AccoladeRecord/getAchieved", "Achieve Half of the Accolades\n");
 		
 		try {
 			wr.writeRecord(ar, "accoladerecords");
