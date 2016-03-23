@@ -450,6 +450,9 @@ public class InterfaceView {
 		panelDashboardView.add(SwitchingPanel);
 		SwitchingPanel.setLayout(new CardLayout(0, 0));
 		
+		SwitchingPanel.setVisible(true); //what is this
+
+		
 		/**
 		 * Layout panel for custom dashboard: 1-panel display
 		 */
@@ -876,16 +879,14 @@ public class InterfaceView {
 						});
 						
 		panelDashboardView.add(datePicker);
-						
-		SwitchingPanel.setVisible(true); //what is this
-						
+												
 		/**
 		 * "Next Date" button to move the date forward by one day	
 		 */
-		JButton btnNextDate = new JButton("Next");
-		btnNextDate.setBounds(217, 44, 49, 25);
-		panelDashboardView.add(btnNextDate);
-		btnNextDate.addActionListener(new ActionListener() {
+		JButton btnPrevDate = new JButton("Prev");
+		btnPrevDate.setBounds(217, 44, 49, 25);
+		panelDashboardView.add(btnPrevDate);
+		btnPrevDate.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 				datePicker.getModel().setDay(datePicker.getModel().getDay()-1);
 				CalendarToAPI();
@@ -895,10 +896,10 @@ public class InterfaceView {
 		/**
 		 * "Previous Date" button to move the date back by one day	
 		 */
-		JButton btnPrevDate = new JButton("Prev");
-		btnPrevDate.setBounds(453, 44, 49, 25);
-		panelDashboardView.add(btnPrevDate);
-		btnPrevDate.addActionListener(new ActionListener() {
+		JButton btnNextDate = new JButton("Next");
+		btnNextDate.setBounds(453, 44, 49, 25);
+		panelDashboardView.add(btnNextDate);
+		btnNextDate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				datePicker.getModel().setDay(datePicker.getModel().getDay()+1);
 				CalendarToAPI();
