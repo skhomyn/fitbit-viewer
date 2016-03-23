@@ -76,31 +76,30 @@ public class App {
 
 		AccoladeRecord[] ar = new AccoladeRecord[20];
 		WriterReader wr = new WriterReader();
-		
-		//public AccoladeRecord(boolean achieved, String date, int value, String image, String type) {
 
-		ar[0] = new AccoladeRecord(false, null, 10000, "stepsAcc.jpg", "lifetime/steps");
-		ar[1] = new AccoladeRecord(false, null, 0, "noGoalsAcc.jpg", "dailygoals/check");
-		ar[2] = new AccoladeRecord(false, null, 2000, "calorieAcc.jpg", "calorie/check");
-		ar[3] = new AccoladeRecord(false, null, 2000, "calsBurnedAcc.jpg", "calorie/burned");
-		ar[4] = new AccoladeRecord(false, null, 25, "CardioAcc.jpg", "heartrate/cardio");
-		ar[5] = new AccoladeRecord(false, null, 5, "distanceAcc.jpg", "distance/check");
-		ar[6] = new AccoladeRecord(false, null, 8, "eightHrsSleepAcc.jpg", "lifetime/sleep8");
-		ar[7] = new AccoladeRecord(false, null, 25, "FatBurnAcc.jpgDownload", "heartrate/fat");
-		ar[8] = new AccoladeRecord(false, null, 100, "floorsAcc.jpg", "lifetime/floor");
-		ar[9] = new AccoladeRecord(false, null, 60, "noActivityAcc.jpg", "lazy/noactivity");
-		ar[10] = new AccoladeRecord(false, null, 0, "noGoalsAcc.jpg", "lifetime/nogoals");
-		ar[11] = new AccoladeRecord(false, null, 0, "nosleepAcc.jpg", "lifetime/nosleep");
-		ar[12] = new AccoladeRecord(false, null, 50, "OutofRangeAcc.jpg", "heartrate/outofrange");
-		ar[13] = new AccoladeRecord(false, null, 50, "PeakAcc.jpg", "heartrate/peak");
+		/**
+		 * Filling array of AccoladeRecord with each accolade image and criteria
+		 */
+		ar[0] = new AccoladeRecord(false, null, 10000, "thousandStepsAcc.jpg", "lifetime/steps");
+		ar[1] = new AccoladeRecord(false, null, 0, "metNoGoalsAcc.jpg", "dailygoals/check");
+		ar[2] = new AccoladeRecord(false, null, 2000, "burnedsomeCals.jpg", "calorie/check");
+		ar[3] = new AccoladeRecord(false, null, 2000, "burnedMaxCalsAcc.jpg", "calorie/burned");
+		ar[4] = new AccoladeRecord(false, null, 25, "cardioHeartAcc.jpg", "heartrate/cardio");
+		ar[5] = new AccoladeRecord(false, null, 5, "maxDistanceAcc.jpg", "distance/check");
+		ar[6] = new AccoladeRecord(false, null, 8, "tenThouStepsAcc.jpg","lifetime/steps");
+		ar[7] = new AccoladeRecord(false, null, 25, "FatburnHeartAcc.jpg", "heartrate/fat");
+		ar[8] = new AccoladeRecord(false, null, 100, "maxFloorsAcc.jpg", "lifetime/floor");
+		ar[9] = new AccoladeRecord(false, null, 60, "StayedInBoundsAcc.jpg", "heartrate/outofrange");
+		ar[10] = new AccoladeRecord(false, null, 0, "tooManyCalsAcc.jpg", "calorie/check");
+		ar[11] = new AccoladeRecord(false, null, 0, "metAllGoalsAcc.jpg","lifetime/allgoals");
+		ar[12] = new AccoladeRecord(false, null, 50, "outofRangeHeartAcc.jpg", "heartrate/outofrange");
+		ar[13] = new AccoladeRecord(false, null, 50, "peakHeartAcc.jpg", "heartrate/peak");
 		ar[14] = new AccoladeRecord(false, null, 0, "sedentaryMinsAcc.jpg", "lifetime/potato");
-		ar[15] = new AccoladeRecord(false, null, 0, "tooMuchSleepAcc.jpg", "lifetime/sleepalot");
-		ar[16] = new AccoladeRecord(false, null, 0, "xmasAcc.jpg", "event/christmas");
-
-
-
-		
-		//Ryan, just make new accolades ar[2] all the way to ar[20] accordingly
+		ar[15] = new AccoladeRecord(false, null, 0, "zeroSteps.jpg","lifetime/steps");
+		ar[16] = new AccoladeRecord(false, null, 0, "christmasAcc.jpg", "event/christmas");
+		ar[17] = new AccoladeRecord(false, null, 0, "hanukkahAcc.jpg", "event/hanukkah");
+		ar[18] = new AccoladeRecord(false, null, 0, "completedAcc.jpg", "event/all");
+		ar[19] = new AccoladeRecord(false, null, 0, "completedHalfAcc.jpg", "event/half");
 		
 		try {
 			wr.writeRecord(ar, "accoladerecords");
@@ -125,11 +124,6 @@ public class App {
 			//logger.warn("We need to build a program. And we have to do it quickly");
 			//logger.warn("Run with argument test to test");
 			logger.trace("Running main program");
-			
-			//APICaller test = new APICaller("activity%20heartrate", "src/main/resources/Team13Tokens.txt", "src/main/resources/Team13Credentials.txt");
-			//test.request("activities/heart/date/today/1d.json", "src/main/resources/cur_heart_data.json");
-			//test.request("activities/date/today.json", "src/main/resources/cur_activities_data.json");
-			//test.request("activities.json", "src/main/resources/cur_totals.json");
 			
 			run.run();
 		}
