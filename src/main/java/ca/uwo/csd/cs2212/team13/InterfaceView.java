@@ -290,40 +290,63 @@ public class InterfaceView {
 		MenuBar.setOrientation(SwingConstants.VERTICAL);
 		frame.getContentPane().add(MenuBar);
 
-		btnDailyDashboard = new JButton("Daily Dashboard");
+		btnDailyDashboard = new JButton("");
+		btnDailyDashboard.setSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DDselect.png"));
+		btnDailyDashboard.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DailyDashboard.png"));
 		btnDailyDashboard.setMargin(new Insets(0, 0, 0, 0));
 		btnDailyDashboard.setMaximumSize(new Dimension(180, 82));
+		btnDailyDashboard.setBorder(null);
 		MenuBar.add(btnDailyDashboard);
+		btnDailyDashboard.setSelected(true);
 
-		btnBestDays = new JButton("Best Days");
+		btnBestDays = new JButton("");
+		btnBestDays.setSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/BestDaysSelect.png"));
+		btnBestDays.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/BestDays.png"));
 		btnBestDays.setMargin(new Insets(0, 0, 0, 0));
 		btnBestDays.setMaximumSize(new Dimension(180, 82));
+		btnBestDays.setBorder(null);
 		MenuBar.add(btnBestDays);
 
-		btnDailyGoals = new JButton("Daily Goals");
+		btnDailyGoals = new JButton("");
+		btnDailyGoals.setSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DailyGoalsSelected.png"));
+		btnDailyGoals.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DailyGoals.png"));
 		btnDailyGoals.setMargin(new Insets(0, 0, 0, 0));
 		btnDailyGoals.setMaximumSize(new Dimension(180, 82));
+		btnDailyGoals.setBorder(null);
 		MenuBar.add(btnDailyGoals);
 
-		btnLifetimeTotals = new JButton("Lifetime Totals");
+		btnLifetimeTotals = new JButton("");
+		btnLifetimeTotals.setSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/lifetimeTotalsSelect.png"));
+		btnLifetimeTotals.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/lifetime totals.png"));
 		btnLifetimeTotals.setMargin(new Insets(0, 0, 0, 0));
 		btnLifetimeTotals.setMaximumSize(new Dimension(180, 82));
+		btnLifetimeTotals.setBorder(null);
 		MenuBar.add(btnLifetimeTotals);
 
-		btnAccolades = new JButton("Accolades");
+		btnAccolades = new JButton("");
+		btnAccolades.setSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/accoladeSelect.png"));
+		btnAccolades.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/accolades.png"));
 		btnAccolades.setMargin(new Insets(0, 0, 0, 0));
 		btnAccolades.setMaximumSize(new Dimension(180, 82));
+		btnAccolades.setBorder(null);
 		MenuBar.add(btnAccolades);
 
-		btnTimeSeries = new JButton("Time Series");
+		btnTimeSeries = new JButton("");
+		btnTimeSeries.setSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/timeseriesSelected.png"));
 		btnTimeSeries.setMargin(new Insets(0, 0, 0, 0));
+		btnTimeSeries.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/timeseriesbutton.png"));
 		btnTimeSeries.setMaximumSize(new Dimension(180, 82));
+		btnTimeSeries.setBorder(null);
 		MenuBar.add(btnTimeSeries);
 
-		btnHeartRateZones = new JButton("Heart Rate Zones");
+		btnHeartRateZones = new JButton("");
+		btnHeartRateZones.setSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/HRZ-select.png"));
+		btnHeartRateZones.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/HRZ.png"));
 		btnHeartRateZones.setMargin(new Insets(0, 0, 0, 0));
 		btnHeartRateZones.setMaximumSize(new Dimension(180, 82));
+		btnHeartRateZones.setBorder(null);
 		MenuBar.add(btnHeartRateZones);
+		
 	}
 
 	/**
@@ -1368,6 +1391,7 @@ public class InterfaceView {
 		 */
 		btnBestDays.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Set Visibility of panels:
 				panelDashboardView.setVisible(false);
 				panelBestDaysView.setVisible(true);
 				panelLifetimeTotalsView.setVisible(false);
@@ -1375,7 +1399,16 @@ public class InterfaceView {
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(false);
 				panelHeartrateZonesView.setVisible(false);
+				// Set selection of buttons:
+				btnDailyDashboard.setSelected(false);
+				btnBestDays.setSelected(true);
+				btnDailyGoals.setSelected(false);
+				btnLifetimeTotals.setSelected(false);
+				btnAccolades.setSelected(false);
+				btnTimeSeries.setSelected(false);
+				btnHeartRateZones.setSelected(false);
 			}
+
 		});
 
 		/**
@@ -1383,6 +1416,7 @@ public class InterfaceView {
 		 */
 		btnDailyDashboard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Set Visibility of panels:
 				panelDashboardView.setVisible(true);
 				panelBestDaysView.setVisible(false);
 				panelLifetimeTotalsView.setVisible(false);
@@ -1390,6 +1424,14 @@ public class InterfaceView {
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(false);
 				panelHeartrateZonesView.setVisible(false);
+				// Set selection of buttons:
+				btnDailyDashboard.setSelected(true);
+				btnBestDays.setSelected(false);
+				btnDailyGoals.setSelected(false);
+				btnLifetimeTotals.setSelected(false);
+				btnAccolades.setSelected(false);
+				btnTimeSeries.setSelected(false);
+				btnHeartRateZones.setSelected(false);
 			}
 		});
 
@@ -1398,6 +1440,7 @@ public class InterfaceView {
 		 */
 		btnLifetimeTotals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Set Visibility of panels:
 				panelDashboardView.setVisible(false);
 				panelBestDaysView.setVisible(false);
 				panelLifetimeTotalsView.setVisible(true);
@@ -1405,6 +1448,14 @@ public class InterfaceView {
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(false);
 				panelHeartrateZonesView.setVisible(false);
+				// Set selection of buttons:
+				btnDailyDashboard.setSelected(false);
+				btnBestDays.setSelected(false);
+				btnDailyGoals.setSelected(false);
+				btnLifetimeTotals.setSelected(true);
+				btnAccolades.setSelected(false);
+				btnTimeSeries.setSelected(false);
+				btnHeartRateZones.setSelected(false);
 			}
 		});
 
@@ -1413,6 +1464,7 @@ public class InterfaceView {
 		 */
 		btnDailyGoals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Set Visibility of panels:
 				panelDashboardView.setVisible(false);
 				panelBestDaysView.setVisible(false);
 				panelLifetimeTotalsView.setVisible(false);
@@ -1420,6 +1472,14 @@ public class InterfaceView {
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(false);
 				panelHeartrateZonesView.setVisible(false);
+				// Set selection of buttons:
+				btnDailyDashboard.setSelected(false);
+				btnBestDays.setSelected(false);
+				btnDailyGoals.setSelected(true);
+				btnLifetimeTotals.setSelected(false);
+				btnAccolades.setSelected(false);
+				btnTimeSeries.setSelected(false);
+				btnHeartRateZones.setSelected(false);
 			}
 		});
 
@@ -1428,6 +1488,7 @@ public class InterfaceView {
 		 */
 		btnAccolades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Set Visibility of panels:
 				panelDashboardView.setVisible(false);
 				panelBestDaysView.setVisible(false);
 				panelLifetimeTotalsView.setVisible(false);
@@ -1435,6 +1496,14 @@ public class InterfaceView {
 				panelAccoladesView.setVisible(true);
 				panelTimeSeriesView.setVisible(false);
 				panelHeartrateZonesView.setVisible(false);
+				// Set selection of buttons:
+				btnDailyDashboard.setSelected(false);
+				btnBestDays.setSelected(false);
+				btnDailyGoals.setSelected(false);
+				btnLifetimeTotals.setSelected(false);
+				btnAccolades.setSelected(true);
+				btnTimeSeries.setSelected(false);
+				btnHeartRateZones.setSelected(false);
 			}
 		});
 
@@ -1443,6 +1512,7 @@ public class InterfaceView {
 		 */
 		btnTimeSeries.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Set Visibility of panels:
 				panelDashboardView.setVisible(false);
 				panelBestDaysView.setVisible(false);
 				panelLifetimeTotalsView.setVisible(false);
@@ -1450,6 +1520,14 @@ public class InterfaceView {
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(true);
 				panelHeartrateZonesView.setVisible(false);
+				// Set selection of buttons:
+				btnDailyDashboard.setSelected(false);
+				btnBestDays.setSelected(false);
+				btnDailyGoals.setSelected(false);
+				btnLifetimeTotals.setSelected(false);
+				btnAccolades.setSelected(false);
+				btnTimeSeries.setSelected(true);
+				btnHeartRateZones.setSelected(false);
 			}
 		});
 		
@@ -1458,6 +1536,7 @@ public class InterfaceView {
 		 */
 		btnHeartRateZones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Set Visibility of panels:
 				panelDashboardView.setVisible(false);
 				panelBestDaysView.setVisible(false);
 				panelLifetimeTotalsView.setVisible(false);
@@ -1465,6 +1544,14 @@ public class InterfaceView {
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(false);
 				panelHeartrateZonesView.setVisible(true);
+				// Set selection of buttons:
+				btnDailyDashboard.setSelected(false);
+				btnBestDays.setSelected(false);
+				btnDailyGoals.setSelected(false);
+				btnLifetimeTotals.setSelected(false);
+				btnAccolades.setSelected(false);
+				btnTimeSeries.setSelected(false);
+				btnHeartRateZones.setSelected(true);
 			}
 		});
 
