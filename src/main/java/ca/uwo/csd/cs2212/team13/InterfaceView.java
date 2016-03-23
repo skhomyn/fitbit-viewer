@@ -981,7 +981,6 @@ public class InterfaceView {
 			radioSteps.setSelected(true);
 
 		panelArray = sr.getPanelArray();
-		repanel(radioCounter());
 	}
 	
 	private void save_settings()
