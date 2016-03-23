@@ -23,12 +23,17 @@ import java.awt.Insets;
 import java.awt.Rectangle;
 
 import javax.swing.JLayeredPane;
+import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.JInternalFrame;
 import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JRadioButtonMenuItem;
@@ -42,6 +47,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
 import java.util.Date;
+import javax.swing.Icon;
 
 
 
@@ -53,7 +59,7 @@ import java.util.Date;
 
 public class InterfaceView {
 
-	
+
 	private JFrame frame;
 
 	/**
@@ -78,7 +84,7 @@ public class InterfaceView {
 	private JPanel panelTimeSeriesView;
 	private JPanel panelDailyGoalsView;
 	private JPanel panelHeartrateZonesView;
-	
+
 	/**
 	 * JLabels for all values to be displayed on all pages
 	 */
@@ -111,13 +117,13 @@ public class InterfaceView {
 	private JLabel lblHeartFatBurnMaxMin;
 	private JLabel lblHeartPeakMaxMin;
 	private JLabel lblHeartOORMaxMin;
-	
+
 	private JLabel lblActiveMinGoal;
 	private JLabel lblCaloriesGoal;
 	private JLabel lblDistanceGoal;
 	private JLabel lblStepsGoal;
 	private JLabel lblFloorsGoal;
-	
+
 	/**
 	 * Labels for comparison results between goals values and actual values
 	 */
@@ -126,7 +132,7 @@ public class InterfaceView {
 	private JLabel lblDistanceCompare;
 	private JLabel lblCaloriesCompare;
 	private JLabel lblActiveMinCompare;
-	
+
 	/**
 	 * Labels for the time that each page was last updated
 	 */
@@ -143,33 +149,33 @@ public class InterfaceView {
 	 * JPanels for the custom dashboard
 	 */
 	private JPanel OnePanel;
-		private JPanel onePanel_1;
+	private JPanel onePanel_1;
 	private JPanel TwoPanel;
-		private JPanel twoPanel_1;
-		private JPanel twoPanel_2;
+	private JPanel twoPanel_1;
+	private JPanel twoPanel_2;
 	private JPanel ThreePanel;
-		private JPanel threePanel_1;
-		private JPanel threePanel_2;
-		private JPanel threePanel_3;
+	private JPanel threePanel_1;
+	private JPanel threePanel_2;
+	private JPanel threePanel_3;
 	private JPanel FourPanel;
-		private JPanel fourPanel_1;
-		private JPanel fourPanel_2;
-		private JPanel fourPanel_3;
-		private JPanel fourPanel_4;
+	private JPanel fourPanel_1;
+	private JPanel fourPanel_2;
+	private JPanel fourPanel_3;
+	private JPanel fourPanel_4;
 	private JPanel FivePanel;
-		private JPanel fivePanel_1;
-		private JPanel fivePanel_2;
-		private JPanel fivePanel_3;
-		private JPanel fivePanel_4;
-		private JPanel fivePanel_5;
+	private JPanel fivePanel_1;
+	private JPanel fivePanel_2;
+	private JPanel fivePanel_3;
+	private JPanel fivePanel_4;
+	private JPanel fivePanel_5;
 	private JPanel SixPanel;
-		private JPanel sixPanel_1;
-		private JPanel sixPanel_2;
-		private JPanel sixPanel_3;
-		private JPanel sixPanel_4;
-		private JPanel sixPanel_5;
-		private JPanel sixPanel_6;
-	
+	private JPanel sixPanel_1;
+	private JPanel sixPanel_2;
+	private JPanel sixPanel_3;
+	private JPanel sixPanel_4;
+	private JPanel sixPanel_5;
+	private JPanel sixPanel_6;
+
 	/**
 	 * Radio button menu for custom dashboard
 	 */
@@ -179,7 +185,7 @@ public class InterfaceView {
 	private JRadioButton radioActiveMin;
 	private JRadioButton radioFloors;
 	private JRadioButton radioSteps;
-	
+
 	/**
 	 * JPanels for custom dashboard
 	 */
@@ -189,14 +195,15 @@ public class InterfaceView {
 	private JPanel dailySedMinPanel;
 	private JPanel dailyFloorsPanel;
 	private JPanel dailyStepsPanel;
-	
+
 	private JPanel[] panelArray;
-	
+
 	/**
 	 * JDatePickerImpl object for calendar
 	 */
 	private JDatePickerImpl datePicker;
-	
+	private JLabel lblPic_1;
+
 	/**
 	 * Constructor: uses initialize() method
 	 */
@@ -346,26 +353,17 @@ public class InterfaceView {
 		btnHeartRateZones.setMaximumSize(new Dimension(180, 82));
 		btnHeartRateZones.setBorder(null);
 		MenuBar.add(btnHeartRateZones);
-		
+
 	}
 
 	/**
 	 * This method implements the Dashboard screen.
 	 */
 	private void dashboardView() {
-		
-		
+
+
 		panelDashboardView.setLayout(null);
-		// To put an image on the screen: 
-		//ImageIcon whatever = new ImageIcon("path/to/image.png");
-		//lblwhatever.setIcon(whatever);
-		
-		JLabel lblDailyDashboard = new JLabel("Daily Dashboard");
-		lblDailyDashboard.setBounds(0, 0, 720, 30);
-		lblDailyDashboard.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDailyDashboard.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		panelDashboardView.add(lblDailyDashboard);
-		
+
 		/**
 		 * Soemthing something grid bag layout
 		 */
@@ -377,7 +375,7 @@ public class InterfaceView {
 		gbl_dailyActiveMinPanel.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		gbl_dailyActiveMinPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		dailyActiveMinPanel.setLayout(gbl_dailyActiveMinPanel);
-						
+
 		lblDailyVeryActMinVal = new JLabel();
 		GridBagConstraints gbc_lblDailyVeryActMinVal = new GridBagConstraints();
 		gbc_lblDailyVeryActMinVal.anchor = GridBagConstraints.SOUTH;
@@ -386,218 +384,247 @@ public class InterfaceView {
 		gbc_lblDailyVeryActMinVal.gridy = 0;
 		dailyActiveMinPanel.add(lblDailyVeryActMinVal, gbc_lblDailyVeryActMinVal);
 		lblDailyVeryActMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		
+
 		JLabel label_1 = new JLabel("Very Active Minutes");
 		GridBagConstraints gbc_label_1 = new GridBagConstraints();
 		gbc_label_1.gridx = 1;
 		gbc_label_1.gridy = 0;
 		dailyActiveMinPanel.add(label_1, gbc_label_1);
-		
+
 		/**
 		 * All the individual panels and labels for dashboard fields
 		 */
 		dailyStepsPanel = new JPanel();
 		dailyStepsPanel.setBounds(496, 453, 120, 100);
-	
+
 		lblDailyStepsVal = new JLabel();
 		dailyStepsPanel.add(lblDailyStepsVal);
 		lblDailyStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
-				
+
 		JLabel label_3 = new JLabel("Steps");
 		dailyStepsPanel.add(label_3);
-		
+
 		dailyCaloriesPanel = new JPanel();
 		dailyCaloriesPanel.setBounds(608, 452, 120, 100);
-		
+
 		lblDailyCaloriesVal = new JLabel();
 		dailyCaloriesPanel.add(lblDailyCaloriesVal);
 		lblDailyCaloriesVal.setHorizontalAlignment(SwingConstants.TRAILING);
-				
+
 		JLabel label = new JLabel("Calories Burned");
 		dailyCaloriesPanel.add(label);
-		
+
 		dailySedMinPanel = new JPanel();
 		dailySedMinPanel.setBounds(264, 448, 120, 100);
-		
+
 		lblDailySedenteryMinVal = new JLabel();
 		lblDailySedenteryMinVal.setBounds(3, 34, 97, 16);
 		dailySedMinPanel.add(lblDailySedenteryMinVal);
 		lblDailySedenteryMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
-				
+
 		JLabel lblSedMin = new JLabel("Sedentary Minutes");
 		lblSedMin.setBounds(3, 0, 106, 16);
 		dailySedMinPanel.add(lblSedMin);
-				
+
 		dailyFloorsPanel = new JPanel();
 		dailyFloorsPanel.setBounds(0, 448, 120, 100);
-				
+
 		JLabel lblFloorsClimbed = new JLabel("Floors Climbed");
 		lblFloorsClimbed.setBounds(15, 5, 85, 16);
 		dailyFloorsPanel.add(lblFloorsClimbed);
-				
+
 		lblDailyFloorsVal = new JLabel();
 		lblDailyFloorsVal.setBounds(10, 34, 70, 16);
 		dailyFloorsPanel.add(lblDailyFloorsVal);
 		lblDailyFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
-						
+
 		dailyTotalDistPanel = new JPanel();
 		dailyTotalDistPanel.setBounds(126, 477, 120, 100);
-	
-						
+
+
 		lblDailyDistVal = new JLabel();
 		lblDailyDistVal.setBounds(19, 34, 70, 16);
 		dailyTotalDistPanel.add(lblDailyDistVal);
 		lblDailyDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
-						
+
 		JLabel lblTotalDist = new JLabel("Total Distance");
 		lblTotalDist.setBounds(19, 5, 81, 16);
 		dailyTotalDistPanel.add(lblTotalDist);
-		
+
 		/**
 		 * "Last Updated" Field
 		 */
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setForeground(Color.WHITE);
 		lblLastUpdated.setBounds(410, 540, 90, 16);
 		panelDashboardView.add(lblLastUpdated);
-		
+
 		lblLastUpdatedDash = new JLabel();
+		lblLastUpdatedDash.setForeground(Color.WHITE);
 		lblLastUpdatedDash.setBounds(486, 540, 222, 16);
 		lblLastUpdatedDash.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelDashboardView.add(lblLastUpdatedDash);
-		
+
 		/**
 		 * Switching panel is a card layout which sits underneath all of the custom layout
 		 * option panels (ie. 1-panel layout, 2-panel layout etc.) and switches which one is 
 		 * displayed based on user selection of radio buttons.
 		 */
 		JPanel SwitchingPanel = new JPanel();
-		SwitchingPanel.setBounds(40, 140, 640, 360);
+		SwitchingPanel.setBounds(40, 160, 640, 360);
 		panelDashboardView.add(SwitchingPanel);
 		SwitchingPanel.setLayout(new CardLayout(0, 0));
-		
+
 		SwitchingPanel.setVisible(true); //what is this - it makes the panel visible, duh
 
-		
 		/**
 		 * Layout panel for custom dashboard: 1-panel display
 		 */
 		OnePanel = new JPanel();
 		SwitchingPanel.add(OnePanel, "name_784837328464246");
 		OnePanel.setLayout(null);
-		
+
 		onePanel_1 = new JPanel();
 		onePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		onePanel_1.setBounds(240, 108, 160, 144);
 		OnePanel.add(onePanel_1);
-		
+		// Add image:
+		JLabel lblPic_1 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
+		OnePanel.add(lblPic_1);
+		lblPic_1.setBounds(0, 0, 640, 360);
+		lblPic_1.setOpaque(false);
+
 		/**
 		 * Layout panel for custom dashboard: 2-panel display
 		 */
 		TwoPanel = new JPanel();
 		SwitchingPanel.add(TwoPanel, "name_784837275135018");
 		TwoPanel.setLayout(null);
-		
+
 		twoPanel_1 = new JPanel();
 		twoPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		twoPanel_1.setBounds(107, 108, 160, 144);
 		TwoPanel.add(twoPanel_1);
-		
+
 		twoPanel_2 = new JPanel();
 		twoPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		twoPanel_2.setBounds(374, 108, 160, 144);
 		TwoPanel.add(twoPanel_2);
-		
+		// Add image:
+		JLabel lblPic_2 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
+		TwoPanel.add(lblPic_2);
+		lblPic_2.setBounds(0, 0, 640, 360);
+		lblPic_2.setOpaque(false);
+
 		/**
 		 * Layout panel for custom dashboard: 3-panel display
 		 */
 		ThreePanel = new JPanel();
 		SwitchingPanel.add(ThreePanel, "name_784837286074452");
 		ThreePanel.setLayout(null);
-		
+
 		threePanel_1 = new JPanel();
 		threePanel_1.setAlignmentX(Component.LEFT_ALIGNMENT);
 		threePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		threePanel_1.setBounds(40, 108, 160, 144);
 		ThreePanel.add(threePanel_1);
-		
+
 		threePanel_2 = new JPanel();
 		threePanel_2.setAlignmentX(Component.LEFT_ALIGNMENT);
 		threePanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		threePanel_2.setBounds(240, 108, 160, 144);
 		ThreePanel.add(threePanel_2);
-		
+
 		threePanel_3 = new JPanel();
 		threePanel_3.setAlignmentX(Component.LEFT_ALIGNMENT);
 		threePanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		threePanel_3.setBounds(440, 108, 160, 144);
 		ThreePanel.add(threePanel_3);
-		
+
+		// Add image:
+		JLabel lblPic_3 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
+		ThreePanel.add(lblPic_3);
+		lblPic_3.setBounds(0, 0, 640, 360);
+		lblPic_3.setOpaque(false);
+
 		/**
 		 * Layout panel for custom dashboard: 4-panel display
 		 */
 		FourPanel = new JPanel();
 		SwitchingPanel.add(FourPanel, "name_784837296062649");
 		FourPanel.setLayout(null);
-		
+
 		fourPanel_1 = new JPanel();
 		fourPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		fourPanel_1.setBounds(107, 24, 160, 144);
 		FourPanel.add(fourPanel_1);
-		
+
 		fourPanel_2 = new JPanel();
 		fourPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		fourPanel_2.setBounds(374, 24, 160, 144);
 		FourPanel.add(fourPanel_2);
-		
+
 		fourPanel_3 = new JPanel();
 		fourPanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		fourPanel_3.setBounds(107, 192, 160, 144);
 		FourPanel.add(fourPanel_3);
-		
+
 		fourPanel_4 = new JPanel();
 		fourPanel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		fourPanel_4.setBounds(374, 192, 160, 144);
 		FourPanel.add(fourPanel_4);
-		
+
+		// Add image:
+		JLabel lblPic_4 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
+		FourPanel.add(lblPic_4);
+		lblPic_4.setBounds(0, 0, 640, 360);
+		lblPic_4.setOpaque(false);
+
 		/**
 		 * Layout panel for custom dashboard: 5-panel display
 		 */
 		FivePanel = new JPanel();
 		SwitchingPanel.add(FivePanel, "name_784837306362861");
 		FivePanel.setLayout(null);
-		
+
 		fivePanel_1 = new JPanel();
 		fivePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		fivePanel_1.setBounds(40, 24, 160, 144);
 		FivePanel.add(fivePanel_1);
-		
+
 		fivePanel_2 = new JPanel();
 		fivePanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		fivePanel_2.setBounds(240, 24, 160, 144);
 		FivePanel.add(fivePanel_2);
-		
+
 		fivePanel_3 = new JPanel();
 		fivePanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		fivePanel_3.setBounds(440, 24, 160, 144);
 		FivePanel.add(fivePanel_3);
-		
+
 		fivePanel_4 = new JPanel();
 		fivePanel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		fivePanel_4.setBounds(107, 192, 160, 144);
 		FivePanel.add(fivePanel_4);
-		
+
 		fivePanel_5 = new JPanel();
 		fivePanel_5.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		fivePanel_5.setBounds(374, 192, 160, 144);
 		FivePanel.add(fivePanel_5);
 		
+		// Add image:
+		JLabel lblPic_5 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
+		FivePanel.add(lblPic_5);
+		lblPic_5.setBounds(0, 0, 640, 360);
+		lblPic_5.setOpaque(false);
+
 		/**
 		 * Layout panel for custom dashboard: 6-panel display
 		 */
 		SixPanel = new JPanel();
 		SwitchingPanel.add(SixPanel, "name_784837317868029");
 		SixPanel.setLayout(null);
-		
+
 		sixPanel_1 = new JPanel();
 		sixPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		sixPanel_1.setBounds(40, 24, 160, 144);
@@ -631,33 +658,42 @@ public class InterfaceView {
 		sixPanel_6.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		sixPanel_6.setBounds(440, 192, 160, 144);
 		SixPanel.add(sixPanel_6);
-		
+		// Add image:
+		JLabel lblPic_6 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
+		SixPanel.add(lblPic_6);
+		lblPic_6.setBounds(0, 0, 640, 360);
+		lblPic_6.setOpaque(false);
+
+		/**
+		 * Background Image Implementation
+		 */
+
 		/**
 		 * Layout customization, or "settings", menu
 		 */
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 13, 70, 26);
+		menuBar.setBounds(40, 46, 70, 26);
 		panelDashboardView.add(menuBar);
-		
+
 		JMenu mnNewMenu = new JMenu("Settings");
 		menuBar.add(mnNewMenu);
-		
+
 		radioSedMin = new JRadioButton("Sedentary Minutes");
 		mnNewMenu.add(radioSedMin);
-		
+
 		radioActiveMin = new JRadioButton("Very Active Minutes");
 		mnNewMenu.add(radioActiveMin);
-	
-		
+
+
 		radioTotalDist = new JRadioButton("Total Distance");
 		mnNewMenu.add(radioTotalDist);
-		
+
 		radioCalories = new JRadioButton("Calories Burned");
 		mnNewMenu.add(radioCalories);
-		
+
 		radioFloors = new JRadioButton("Floors Climbed");
 		mnNewMenu.add(radioFloors);
-		
+
 		/**
 		 * Change which custom layout panel is being displayed based on the 
 		 * count of the number of radio buttons selected in the "settings" menu.
@@ -667,7 +703,7 @@ public class InterfaceView {
 				if(radioCounter()==0){
 					radioFloors.setSelected(true);
 				}
-				
+
 				else if (radioFloors.isSelected()){	
 					if(panelArray[radioCounter()-1]!=dailyFloorsPanel){
 						int position = 0;
@@ -682,7 +718,7 @@ public class InterfaceView {
 					}
 					repanel(radioCounter());
 				}
-				
+
 				else{
 					while(panelArray[radioCounter()]!=dailyFloorsPanel){
 						int position = 0;
@@ -699,199 +735,199 @@ public class InterfaceView {
 				}
 			}
 		});
-		
+
 		radioSteps = new JRadioButton("Steps");
 		mnNewMenu.add(radioSteps);
 		radioSteps.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			if(radioCounter()==0){
-				radioSteps.setSelected(true);
-			}
-			
-			else if (radioSteps.isSelected()){	
-				if(panelArray[radioCounter()-1]!=dailyStepsPanel){
-					int position = 0;
-					for(int x=radioCounter(); x<6; x++){
-						if (panelArray[x]==dailyStepsPanel){
-							position = x;
-						}
-					}
-					JPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = dailyStepsPanel;
-					panelArray[position] = switcheyPanel;
+				if(radioCounter()==0){
+					radioSteps.setSelected(true);
 				}
-				repanel(radioCounter());
-			}
-			
-			else{
-				while(panelArray[radioCounter()]!=dailyStepsPanel){
-					int position = 0;
-					for(int x=0; x<radioCounter(); x++){
-						if (panelArray[x]==dailyStepsPanel){
-							position = x;
+
+				else if (radioSteps.isSelected()){	
+					if(panelArray[radioCounter()-1]!=dailyStepsPanel){
+						int position = 0;
+						for(int x=radioCounter(); x<6; x++){
+							if (panelArray[x]==dailyStepsPanel){
+								position = x;
+							}
 						}
+						JPanel switcheyPanel = panelArray[radioCounter()-1];
+						panelArray[radioCounter()-1] = dailyStepsPanel;
+						panelArray[position] = switcheyPanel;
 					}
-					JPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = dailyStepsPanel;
-					panelArray[position] = switcheyPanel;
+					repanel(radioCounter());
 				}
-				repanel(radioCounter());
+
+				else{
+					while(panelArray[radioCounter()]!=dailyStepsPanel){
+						int position = 0;
+						for(int x=0; x<radioCounter(); x++){
+							if (panelArray[x]==dailyStepsPanel){
+								position = x;
+							}
+						}
+						JPanel switcheyPanel = panelArray[position+1];
+						panelArray[position+1] = dailyStepsPanel;
+						panelArray[position] = switcheyPanel;
+					}
+					repanel(radioCounter());
+				}
 			}
-		}
-	});
-		
+		});
+
 		radioCalories.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			if(radioCounter()==0){
-				radioCalories.setSelected(true);
-			}
-			
-			else if (radioCalories.isSelected()){	
-				if(panelArray[radioCounter()-1]!=dailyCaloriesPanel){
-					int position = 0;
-					for(int x=radioCounter(); x<6; x++){
-						if (panelArray[x]==dailyCaloriesPanel){
-							position = x;
-						}
-					}
-					JPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = dailyCaloriesPanel;
-					panelArray[position] = switcheyPanel;
+				if(radioCounter()==0){
+					radioCalories.setSelected(true);
 				}
-				repanel(radioCounter());
-			}
-			
-			else{
-				while(panelArray[radioCounter()]!=dailyCaloriesPanel){
-					int position = 0;
-					for(int x=0; x<radioCounter(); x++){
-						if (panelArray[x]==dailyCaloriesPanel){
-							position = x;
+
+				else if (radioCalories.isSelected()){	
+					if(panelArray[radioCounter()-1]!=dailyCaloriesPanel){
+						int position = 0;
+						for(int x=radioCounter(); x<6; x++){
+							if (panelArray[x]==dailyCaloriesPanel){
+								position = x;
+							}
 						}
+						JPanel switcheyPanel = panelArray[radioCounter()-1];
+						panelArray[radioCounter()-1] = dailyCaloriesPanel;
+						panelArray[position] = switcheyPanel;
 					}
-					JPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = dailyCaloriesPanel;
-					panelArray[position] = switcheyPanel;
+					repanel(radioCounter());
 				}
-				repanel(radioCounter());
+
+				else{
+					while(panelArray[radioCounter()]!=dailyCaloriesPanel){
+						int position = 0;
+						for(int x=0; x<radioCounter(); x++){
+							if (panelArray[x]==dailyCaloriesPanel){
+								position = x;
+							}
+						}
+						JPanel switcheyPanel = panelArray[position+1];
+						panelArray[position+1] = dailyCaloriesPanel;
+						panelArray[position] = switcheyPanel;
+					}
+					repanel(radioCounter());
+				}
 			}
-		}
-	});
+		});
 		radioTotalDist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			if(radioCounter()==0){
-				radioTotalDist.setSelected(true);
-			}
-			
-			else if (radioTotalDist.isSelected()){	
-				if(panelArray[radioCounter()-1]!=dailyTotalDistPanel){
-					int position = 0;
-					for(int x=radioCounter(); x<6; x++){
-						if (panelArray[x]==dailyTotalDistPanel){
-							position = x;
-						}
-					}
-					JPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = dailyTotalDistPanel;
-					panelArray[position] = switcheyPanel;
+				if(radioCounter()==0){
+					radioTotalDist.setSelected(true);
 				}
-				repanel(radioCounter());
-			}
-			
-			else{
-				while(panelArray[radioCounter()]!=dailyTotalDistPanel){
-					int position = 0;
-					for(int x=0; x<radioCounter(); x++){
-						if (panelArray[x]==dailyTotalDistPanel){
-							position = x;
+
+				else if (radioTotalDist.isSelected()){	
+					if(panelArray[radioCounter()-1]!=dailyTotalDistPanel){
+						int position = 0;
+						for(int x=radioCounter(); x<6; x++){
+							if (panelArray[x]==dailyTotalDistPanel){
+								position = x;
+							}
 						}
+						JPanel switcheyPanel = panelArray[radioCounter()-1];
+						panelArray[radioCounter()-1] = dailyTotalDistPanel;
+						panelArray[position] = switcheyPanel;
 					}
-					JPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = dailyTotalDistPanel;
-					panelArray[position] = switcheyPanel;
+					repanel(radioCounter());
 				}
-				repanel(radioCounter());
+
+				else{
+					while(panelArray[radioCounter()]!=dailyTotalDistPanel){
+						int position = 0;
+						for(int x=0; x<radioCounter(); x++){
+							if (panelArray[x]==dailyTotalDistPanel){
+								position = x;
+							}
+						}
+						JPanel switcheyPanel = panelArray[position+1];
+						panelArray[position+1] = dailyTotalDistPanel;
+						panelArray[position] = switcheyPanel;
+					}
+					repanel(radioCounter());
+				}
 			}
-		}
-	});
-		
-		
+		});
+
+
 		radioSedMin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			if(radioCounter()==0){
-				radioSedMin.setSelected(true);
-			}
-			
-			else if (radioSedMin.isSelected()){	
-				if(panelArray[radioCounter()-1]!=dailySedMinPanel){
-					int position = 0;
-					for(int x=radioCounter(); x<6; x++){
-						if (panelArray[x]==dailySedMinPanel){
-							position = x;
-						}
-					}
-					JPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = dailySedMinPanel;
-					panelArray[position] = switcheyPanel;
+				if(radioCounter()==0){
+					radioSedMin.setSelected(true);
 				}
-				repanel(radioCounter());
-			}
-			
-			else{
-				while(panelArray[radioCounter()]!=dailySedMinPanel){
-					int position = 0;
-					for(int x=0; x<radioCounter(); x++){
-						if (panelArray[x]==dailySedMinPanel){
-							position = x;
+
+				else if (radioSedMin.isSelected()){	
+					if(panelArray[radioCounter()-1]!=dailySedMinPanel){
+						int position = 0;
+						for(int x=radioCounter(); x<6; x++){
+							if (panelArray[x]==dailySedMinPanel){
+								position = x;
+							}
 						}
+						JPanel switcheyPanel = panelArray[radioCounter()-1];
+						panelArray[radioCounter()-1] = dailySedMinPanel;
+						panelArray[position] = switcheyPanel;
 					}
-					JPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = dailySedMinPanel;
-					panelArray[position] = switcheyPanel;
+					repanel(radioCounter());
 				}
-				repanel(radioCounter());
+
+				else{
+					while(panelArray[radioCounter()]!=dailySedMinPanel){
+						int position = 0;
+						for(int x=0; x<radioCounter(); x++){
+							if (panelArray[x]==dailySedMinPanel){
+								position = x;
+							}
+						}
+						JPanel switcheyPanel = panelArray[position+1];
+						panelArray[position+1] = dailySedMinPanel;
+						panelArray[position] = switcheyPanel;
+					}
+					repanel(radioCounter());
+				}
 			}
-		}
-	});
-		
+		});
+
 		radioActiveMin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			if(radioCounter()==0){
-				radioActiveMin.setSelected(true);
-			}
-			
-			else if (radioActiveMin.isSelected()){	
-				if(panelArray[radioCounter()-1]!=dailyActiveMinPanel){
-					int position = 0;
-					for(int x=radioCounter(); x<6; x++){
-						if (panelArray[x]==dailyActiveMinPanel){
-							position = x;
-						}
-					}
-					JPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = dailyActiveMinPanel;
-					panelArray[position] = switcheyPanel;
+				if(radioCounter()==0){
+					radioActiveMin.setSelected(true);
 				}
-				repanel(radioCounter());
-			}
-			
-			else{
-				while(panelArray[radioCounter()]!=dailyActiveMinPanel){
-					int position = 0;
-					for(int x=0; x<radioCounter(); x++){
-						if (panelArray[x]==dailyActiveMinPanel){
-							position = x;
+
+				else if (radioActiveMin.isSelected()){	
+					if(panelArray[radioCounter()-1]!=dailyActiveMinPanel){
+						int position = 0;
+						for(int x=radioCounter(); x<6; x++){
+							if (panelArray[x]==dailyActiveMinPanel){
+								position = x;
+							}
 						}
+						JPanel switcheyPanel = panelArray[radioCounter()-1];
+						panelArray[radioCounter()-1] = dailyActiveMinPanel;
+						panelArray[position] = switcheyPanel;
 					}
-					JPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = dailyActiveMinPanel;
-					panelArray[position] = switcheyPanel;
+					repanel(radioCounter());
 				}
-				repanel(radioCounter());
+
+				else{
+					while(panelArray[radioCounter()]!=dailyActiveMinPanel){
+						int position = 0;
+						for(int x=0; x<radioCounter(); x++){
+							if (panelArray[x]==dailyActiveMinPanel){
+								position = x;
+							}
+						}
+						JPanel switcheyPanel = panelArray[position+1];
+						panelArray[position+1] = dailyActiveMinPanel;
+						panelArray[position] = switcheyPanel;
+					}
+					repanel(radioCounter());
+				}
 			}
-		}
-	});
-		
+		});
+
 
 		/**
 		 * Calendar implementation
@@ -900,75 +936,87 @@ public class InterfaceView {
 		UtilDateModel utilModel = new UtilDateModel(currentDate);
 		JDatePanelImpl datePanel = new JDatePanelImpl(utilModel);
 		datePicker = new JDatePickerImpl(datePanel);
-		datePicker.setBounds(278,43,163,26);
+		datePicker.setBounds(278,107,163,26);
 		datePicker.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-								CalendarToAPI();
-							}
-						});
-						
+				CalendarToAPI();
+			}
+		});
+
 		panelDashboardView.add(datePicker);
-												
+
 		/**
 		 * "Next Date" button to move the date forward by one day	
 		 */
 		JButton btnPrevDate = new JButton("Prev");
-		btnPrevDate.setBounds(217, 44, 49, 25);
+		btnPrevDate.setOpaque(true);
+		btnPrevDate.setBounds(217, 108, 49, 25);
 		panelDashboardView.add(btnPrevDate);
 		btnPrevDate.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				datePicker.getModel().setDay(datePicker.getModel().getDay()-1);
 				CalendarToAPI();
 			}
 		});
-						
+
 		/**
 		 * "Previous Date" button to move the date back by one day	
 		 */
 		JButton btnNextDate = new JButton("Next");
-		btnNextDate.setBounds(453, 44, 49, 25);
+		btnNextDate.setOpaque(true);
+		btnNextDate.setBounds(453, 108, 49, 25);
 		panelDashboardView.add(btnNextDate);
 		btnNextDate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				datePicker.getModel().setDay(datePicker.getModel().getDay()+1);
 				CalendarToAPI();
-				}
-			});
-						
-													
-						/////////////LOOK AT THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//////////////////
-						
-						/////THIS NEEDS TO BE REPLACED WITH THE ARRAY WHICH IS PASSED IN/////////
-						panelArray = new JPanel[6];
-						panelArray[0]=dailyActiveMinPanel;
-						panelArray[1]=dailyCaloriesPanel;
-						panelArray[2]=dailySedMinPanel;
-						panelArray[3]=dailyFloorsPanel;
-						panelArray[4]=dailyStepsPanel;
-						panelArray[5]=dailyTotalDistPanel;
-						////////////////////////////////////////////////////////////////
-						/////ALSO MAKE SURE TO SET THE APPROPRIATE RADIOBUTTONS//////////
-						radioCalories.setSelected(true);
-						radioActiveMin.setSelected(true);
-						
+			}
+		});
 
-						/////////////////////////////////////////////////////////////////
-						/////KEEP THIS THO.//////////////////////////////////////////////
 
-						btnRefresh = new JButton("Refresh");
-						btnRefresh.setBounds(617, 10, 91, 29);
-						panelDashboardView.add(btnRefresh);
-						repanel(radioCounter());
-						////////////////////////////////////////////////////////////////////
-						
-						///Uncomment to see and change added panels in window builder.////////////////
-						
-						//panelDashboardView.add(dailyTotalDistPanel);
-						//panelDashboardView.add(dailyActiveMinPanel);		
-						//panelDashboardView.add(dailySedMinPanel);			
-						//panelDashboardView.add(dailyCaloriesPanel);			
-						//panelDashboardView.add(dailyFloorsPanel);			
-						//panelDashboardView.add(dailyStepsPanel);						
+		/////////////LOOK AT THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//////////////////
+
+		/////THIS NEEDS TO BE REPLACED WITH THE ARRAY WHICH IS PASSED IN/////////
+		panelArray = new JPanel[6];
+		panelArray[0]=dailyActiveMinPanel;
+		panelArray[1]=dailyCaloriesPanel;
+		panelArray[2]=dailySedMinPanel;
+		panelArray[3]=dailyFloorsPanel;
+		panelArray[4]=dailyStepsPanel;
+		panelArray[5]=dailyTotalDistPanel;
+		////////////////////////////////////////////////////////////////
+		/////ALSO MAKE SURE TO SET THE APPROPRIATE RADIOBUTTONS//////////
+		radioCalories.setSelected(true);
+		radioActiveMin.setSelected(true);
+
+
+		/////////////////////////////////////////////////////////////////
+		/////KEEP THIS THO.//////////////////////////////////////////////
+
+		btnRefresh = new JButton("Refresh");
+		btnRefresh.setOpaque(true);
+		btnRefresh.setBounds(589, 46, 91, 29);
+		panelDashboardView.add(btnRefresh);
+
+		repanel(radioCounter());
+		////////////////////////////////////////////////////////////////////
+
+		///Uncomment to see and change added panels in window builder.////////////////
+
+		//panelDashboardView.add(dailyTotalDistPanel);
+		//panelDashboardView.add(dailyActiveMinPanel);		
+		//panelDashboardView.add(dailySedMinPanel);			
+		//panelDashboardView.add(dailyCaloriesPanel);			
+		//panelDashboardView.add(dailyFloorsPanel);			
+		//panelDashboardView.add(dailyStepsPanel);	
+
+		/**
+		 * Background Image Implementation
+		 */
+		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DDtest.png"));
+		lblPic.setBounds(0, 0, 720, 574);
+		panelDashboardView.add(lblPic);
+
 	}
 
 	/**
@@ -1022,11 +1070,11 @@ public class InterfaceView {
 		lblBestDaysStepsDate.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblBestDaysStepsDate.setBounds(360, 126, 95, 16);
 		panelBestDaysView.add(lblBestDaysStepsDate);
-		
+
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setBounds(410, 540, 90, 16);
 		panelBestDaysView.add(lblLastUpdated);
-		
+
 		lblLastUpdatedBd = new JLabel();
 		lblLastUpdatedBd.setBounds(486, 540, 222, 16);
 		lblLastUpdatedBd.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -1097,16 +1145,16 @@ public class InterfaceView {
 		lblDscp5.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		lblDscp5.setBounds(257, 200, 150, 23);
 		panelAccoladesView.add(lblDscp5);
-		
+
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setBounds(410, 540, 90, 16);
 		panelAccoladesView.add(lblLastUpdated);
-		
+
 		lblLastUpdatedAccolades = new JLabel();
 		lblLastUpdatedAccolades.setBounds(486, 540, 222, 16);
 		lblLastUpdatedAccolades.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelAccoladesView.add(lblLastUpdatedAccolades);
-		
+
 	}
 
 	/**
@@ -1133,31 +1181,31 @@ public class InterfaceView {
 
 		lblLifetimeTotalsDistVal = new JLabel();
 		lblLifetimeTotalsDistVal
-				.setHorizontalAlignment(SwingConstants.TRAILING);
+		.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblLifetimeTotalsDistVal.setBounds(260, 70, 95, 16);
 		panelLifetimeTotalsView.add(lblLifetimeTotalsDistVal);
 
 		lblLifetimeTotalsFloorsVal = new JLabel();
 		lblLifetimeTotalsFloorsVal
-				.setHorizontalAlignment(SwingConstants.TRAILING);
+		.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblLifetimeTotalsFloorsVal.setBounds(260, 98, 95, 16);
 		panelLifetimeTotalsView.add(lblLifetimeTotalsFloorsVal);
 
 		lblLifetimeTotalsStepsVal = new JLabel();
 		lblLifetimeTotalsStepsVal
-				.setHorizontalAlignment(SwingConstants.TRAILING);
+		.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblLifetimeTotalsStepsVal.setBounds(260, 126, 95, 16);
 		panelLifetimeTotalsView.add(lblLifetimeTotalsStepsVal);
-		
+
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setBounds(410, 540, 90, 16);
 		panelLifetimeTotalsView.add(lblLastUpdated);
-		
+
 		lblLastUpdatedLt = new JLabel();
 		lblLastUpdatedLt.setBounds(486, 540, 222, 16);
 		lblLastUpdatedLt.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelLifetimeTotalsView.add(lblLastUpdatedLt);
-		
+
 	}
 
 	/**
@@ -1204,16 +1252,16 @@ public class InterfaceView {
 		lblGraph.setBackground(new Color(64, 64, 64));
 		lblGraph.setBounds(0, 142, 472, 41);
 		panelTimeSeriesView.add(lblGraph);
-		
+
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setBounds(410, 540, 90, 16);
 		panelTimeSeriesView.add(lblLastUpdated);
-		
+
 		lblLastUpdatedTS = new JLabel();
 		lblLastUpdatedTS.setBounds(486, 540, 222, 16);
 		lblLastUpdatedTS.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelTimeSeriesView.add(lblLastUpdatedTS);
-		
+
 	}
 
 	/**
@@ -1231,7 +1279,7 @@ public class InterfaceView {
 		JLabel lblActiveMin = new JLabel("Active Minutes:");
 		lblActiveMin.setBounds(16, 160, 120, 16);
 		panelDailyGoalsView.add(lblActiveMin);
-		
+
 		JLabel lblSteps = new JLabel("Steps:");
 		lblSteps.setBounds(16, 52, 61, 16);
 		panelDailyGoalsView.add(lblSteps);
@@ -1247,12 +1295,12 @@ public class InterfaceView {
 		JLabel lblFloors = new JLabel("Floors:");
 		lblFloors.setBounds(16, 136, 61, 16);
 		panelDailyGoalsView.add(lblFloors);
-		
+
 		lblActiveMinGoal = new JLabel();
 		lblActiveMinGoal.setBounds(150, 160, 61, 16);
 
 		panelDailyGoalsView.add(lblActiveMinGoal);
-		
+
 		lblStepsGoal = new JLabel();
 		lblStepsGoal.setBounds(150, 52, 61, 16);
 		panelDailyGoalsView.add(lblStepsGoal);
@@ -1268,31 +1316,31 @@ public class InterfaceView {
 		lblFloorsGoal = new JLabel();
 		lblFloorsGoal.setBounds(150, 136, 61, 16);
 		panelDailyGoalsView.add(lblFloorsGoal);
-		
+
 		lblStepsCompare = new JLabel();
 		lblStepsCompare.setBounds(336, 52, 61, 16);
 		panelDailyGoalsView.add(lblStepsCompare);
-		
+
 		lblDistanceCompare = new JLabel();
 		lblDistanceCompare.setBounds(336, 80, 61, 16);
 		panelDailyGoalsView.add(lblDistanceCompare);
-		
+
 		lblCaloriesCompare = new JLabel();
 		lblCaloriesCompare.setBounds(336, 108, 61, 16);
 		panelDailyGoalsView.add(lblCaloriesCompare);
-		
+
 		lblFloorsCompare = new JLabel();
 		lblFloorsCompare.setBounds(336, 136, 61, 16);
 		panelDailyGoalsView.add(lblFloorsCompare);
-		
+
 		lblActiveMinCompare = new JLabel();
 		lblActiveMinCompare.setBounds(336, 160, 61, 16);
 		panelDailyGoalsView.add(lblActiveMinCompare);
-		
+
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setBounds(410, 540, 90, 16);
 		panelDailyGoalsView.add(lblLastUpdated);
-		
+
 		lblLastUpdatedGoals = new JLabel();
 		lblLastUpdatedGoals.setBounds(486, 540, 222, 16);
 		lblLastUpdatedGoals.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -1371,11 +1419,11 @@ public class InterfaceView {
 		lblHeartOORMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblHeartOORMaxMin.setBounds(230, 286, 148, 16);
 		panelHeartrateZonesView.add(lblHeartOORMaxMin);
-		
+
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setBounds(410, 540, 90, 16);
 		panelHeartrateZonesView.add(lblLastUpdated);
-		
+
 		lblLastUpdatedHRZ = new JLabel();
 		lblLastUpdatedHRZ.setBounds(486, 540, 222, 16);
 		lblLastUpdatedHRZ.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -1530,7 +1578,7 @@ public class InterfaceView {
 				btnHeartRateZones.setSelected(false);
 			}
 		});
-		
+
 		/**
 		 *  Switch window to Heart Rate Zones screen:
 		 */
@@ -1556,33 +1604,33 @@ public class InterfaceView {
 		});
 
 	}
-	
+
 	// Setters
-	
+
 	public void setLastUpdatedDash(String date){
 		lblLastUpdatedDash.setText(date);
 	}
-	
+
 	public void setLastUpdatedBd(String date){
 		lblLastUpdatedBd.setText(date);
 	}
-	
+
 	public void setLastUpdatedLt(String date){
 		lblLastUpdatedLt.setText(date);
 	}
-	
+
 	public void setLastUpdatedTS(String date){
 		lblLastUpdatedTS.setText(date);
 	}
-	
+
 	public void setLastUpdatedHRZ(String date){
 		lblLastUpdatedHRZ.setText(date);
 	}
-	
+
 	public void setLastUpdatedGoals(String date){
 		lblLastUpdatedGoals.setText(date);
 	}
-	
+
 	public void setLastUpdatedAccolades(String date){
 		lblLastUpdatedAccolades.setText(date);
 	}
@@ -1730,7 +1778,7 @@ public class InterfaceView {
 		lblBestDaysFloorsDate.setText(floors_date);
 		lblBestDaysStepsDate.setText(steps_date);
 	}
-	
+
 	/**
 	 * Sets JLabel values for Daily Goasl page with data from 
 	 * {@code GoalsRecord}. Called when "Daily Goals" menu button is clicked,
@@ -1759,14 +1807,14 @@ public class InterfaceView {
 		lblDistanceGoal.setText(Double.toString(distance));
 		lblStepsGoal.setText(Integer.toString(steps));
 		lblFloorsGoal.setText(Integer.toString(floors));
-		
+
 		lblActiveMinCompare.setText(activeMinStatus);
 		lblCaloriesCompare.setText(caloriesStatus);
 		lblDistanceCompare.setText(distanceStatus);
 		lblStepsCompare.setText(stepsStatus);
 		lblFloorsCompare.setText(floorsStatus);
 	}
-	
+
 	// ActionListeners
 
 	/**
@@ -1833,7 +1881,7 @@ public class InterfaceView {
 	public void addClickListenerDashboard(ActionListener actionsOnClick) {
 		btnDailyDashboard.addActionListener(actionsOnClick);
 	}
-	
+
 	/**
 	 * Attaches an {@code ActionListener} object to Daily Goals menu
 	 * button, which executes
@@ -1845,7 +1893,7 @@ public class InterfaceView {
 	public void addClickListenerGoals(ActionListener actionsOnClick) {
 		btnDailyGoals.addActionListener(actionsOnClick);
 	}
-	
+
 	public void addListenerForRefresh(ActionListener refresh){
 		btnRefresh.addActionListener(refresh);
 	}
@@ -1859,7 +1907,7 @@ public class InterfaceView {
 	public void setVisible(InterfaceView view) {
 		view.frame.setVisible(true);
 	}
-	
+
 	/**
 	 * Preferences / custom layout menu for dashboard.
 	 * 
@@ -1883,7 +1931,7 @@ public class InterfaceView {
 			}
 		});
 	}
-	
+
 	/**
 	 * Method to count of how many radio buttons are selected at a given time
 	 * @return number of radio buttons selected in custom layout menu for dashboard.
@@ -1910,7 +1958,7 @@ public class InterfaceView {
 		}
 		return counter;
 	}
-	
+
 	/**
 	 * Method switches to a new layout for the custom dashboard.
 	 * @param count the number of radio buttons selected in the custom layout menu for the dashboard.
@@ -1918,157 +1966,157 @@ public class InterfaceView {
 	public void repanel(int count){
 		switch(count){
 		case 1:
-			
+
 			TwoPanel.setVisible(false);
-				try{
+			try{
 				twoPanel_1.removeAll();
 				twoPanel_2.removeAll();
-				}
-				catch(Exception e){}
+			}
+			catch(Exception e){}
 			ThreePanel.setVisible(false);
 			FourPanel.setVisible(false);
 			FivePanel.setVisible(false);
 			SixPanel.setVisible(false);
-			
+
 			onePanel_1.add(panelArray[0]);
 			OnePanel.setVisible(true);
-			
-			
+
+
 			break;
-			
+
 		case 2:
 			OnePanel.setVisible(false);
-				try{
+			try{
 				onePanel_1.removeAll();
-				}
-				catch(Exception e){}
+			}
+			catch(Exception e){}
 			ThreePanel.setVisible(false);
-				try{
+			try{
 				threePanel_1.removeAll();
 				threePanel_2.removeAll();
 				threePanel_3.removeAll();
-				}
-				catch(Exception e){}
+			}
+			catch(Exception e){}
 			FourPanel.setVisible(false);
 			FivePanel.setVisible(false);
 			SixPanel.setVisible(false);
-			
+
 			twoPanel_1.add(panelArray[0]);
 			twoPanel_2.add(panelArray[1]);
 			TwoPanel.setVisible(true);
-			
+
 			break;
-			
+
 		case 3:
 			OnePanel.setVisible(false);
 			TwoPanel.setVisible(false);
-				try{
+			try{
 				twoPanel_1.removeAll();
 				twoPanel_2.removeAll();
-				}
-				catch(Exception e){}
+			}
+			catch(Exception e){}
 			FourPanel.setVisible(false);
 			try{
 				fourPanel_1.removeAll();
 				fourPanel_2.removeAll();
 				fourPanel_3.removeAll();
 				fourPanel_4.removeAll();
-				}
-				catch(Exception e){}
+			}
+			catch(Exception e){}
 			FivePanel.setVisible(false);
 			SixPanel.setVisible(false);
-			
-			
+
+
 			threePanel_1.add(panelArray[0]);
 			threePanel_2.add(panelArray[1]);
 			threePanel_3.add(panelArray[2]);
 			ThreePanel.setVisible(true);
-			
+
 			break;
-			
-			
+
+
 		case 4:
 			OnePanel.setVisible(false);
 			TwoPanel.setVisible(false);
 			ThreePanel.setVisible(false);
-				try{
+			try{
 				threePanel_1.removeAll();
 				threePanel_2.removeAll();
 				threePanel_3.removeAll();
-				}
-				catch(Exception e){}
+			}
+			catch(Exception e){}
 			FivePanel.setVisible(false);
-				try{
+			try{
 				fivePanel_1.removeAll();
 				fivePanel_2.removeAll();
 				fivePanel_3.removeAll();
 				fivePanel_4.removeAll();
 				fivePanel_5.removeAll();
-				}
-				catch(Exception e){}
+			}
+			catch(Exception e){}
 			SixPanel.setVisible(false);
-			
-			
-			
+
+
+
 			fourPanel_1.add(panelArray[0]);
 			fourPanel_2.add(panelArray[1]);
 			fourPanel_3.add(panelArray[2]);
 			fourPanel_4.add(panelArray[3]);
 
 			FourPanel.setVisible(true);
-			
+
 			break;
-		
-		
-		
+
+
+
 		case 5:
 			OnePanel.setVisible(false);
 			TwoPanel.setVisible(false);
 			ThreePanel.setVisible(false);
 			FourPanel.setVisible(false);
-				try{
+			try{
 				fourPanel_1.removeAll();
 				fourPanel_2.removeAll();
 				fourPanel_3.removeAll();
 				fourPanel_4.removeAll();
-				}
-				catch(Exception e){}
+			}
+			catch(Exception e){}
 			SixPanel.setVisible(false);
-				try{
+			try{
 				sixPanel_1.removeAll();
 				sixPanel_2.removeAll();
 				sixPanel_3.removeAll();
 				sixPanel_4.removeAll();
 				sixPanel_5.removeAll();
 				sixPanel_6.removeAll();
-				}
-				catch(Exception e){}
-			
-				fivePanel_1.add(panelArray[0]);
-				fivePanel_2.add(panelArray[1]);
-				fivePanel_3.add(panelArray[2]);
-				fivePanel_4.add(panelArray[3]);
-				fivePanel_5.add(panelArray[4]);
+			}
+			catch(Exception e){}
+
+			fivePanel_1.add(panelArray[0]);
+			fivePanel_2.add(panelArray[1]);
+			fivePanel_3.add(panelArray[2]);
+			fivePanel_4.add(panelArray[3]);
+			fivePanel_5.add(panelArray[4]);
 			FivePanel.setVisible(true);
 			break;
-		
-		
+
+
 		case 6:
 			OnePanel.setVisible(false);
 			TwoPanel.setVisible(false);
 			ThreePanel.setVisible(false);
 			FourPanel.setVisible(false);
 			FivePanel.setVisible(false);
-				try{
+			try{
 				fivePanel_1.removeAll();
 				fivePanel_2.removeAll();
 				fivePanel_3.removeAll();
 				fivePanel_4.removeAll();
 				fivePanel_5.removeAll();
-				}
-				catch(Exception e){}
-			
-			
+			}
+			catch(Exception e){}
+
+
 			sixPanel_1.add(panelArray[0]);
 			sixPanel_2.add(panelArray[1]);
 			sixPanel_3.add(panelArray[2]);
@@ -2076,12 +2124,12 @@ public class InterfaceView {
 			sixPanel_5.add(panelArray[4]);
 			sixPanel_6.add(panelArray[5]);
 			SixPanel.setVisible(true);
-			
-			
+
+
 			break;
 		}
 	}
-	
+
 	/**
 	 * Returns the date selected on the calendar icon as a String.
 	 * @return a String representing the date selected on the calendar.
