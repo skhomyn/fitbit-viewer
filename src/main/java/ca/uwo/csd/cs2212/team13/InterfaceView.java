@@ -186,14 +186,14 @@ public class InterfaceView {
 	/**
 	 * JPanels for custom dashboard
 	 */
-	private JPanel dailyCaloriesPanel;
-	private JPanel dailyTotalDistPanel;
-	private JPanel dailyActiveMinPanel;
-	private JPanel dailySedMinPanel;
-	private JPanel dailyFloorsPanel;
-	private JPanel dailyStepsPanel;
+	private SPanel dailyCaloriesPanel;
+	private SPanel dailyTotalDistPanel;
+	private SPanel dailyActiveMinPanel;
+	private SPanel dailySedMinPanel;
+	private SPanel dailyFloorsPanel;
+	private SPanel dailyStepsPanel;
 	
-	private JPanel[] panelArray;
+	private SPanel[] panelArray;
 	
 	/**
 	 * JDatePickerImpl object for calendar
@@ -349,7 +349,7 @@ public class InterfaceView {
 		/**
 		 * Soemthing something grid bag layout
 		 */
-		dailyActiveMinPanel = new JPanel();
+		dailyActiveMinPanel = new SPanel();
 		dailyActiveMinPanel.setBounds(374, 477, 120, 100);
 		GridBagLayout gbl_dailyActiveMinPanel = new GridBagLayout();
 		gbl_dailyActiveMinPanel.columnWidths = new int[]{1, 112, 0};
@@ -376,7 +376,7 @@ public class InterfaceView {
 		/**
 		 * All the individual panels and labels for dashboard fields
 		 */
-		dailyStepsPanel = new JPanel();
+		dailyStepsPanel = new SPanel();
 		dailyStepsPanel.setBounds(496, 453, 120, 100);
 	
 		lblDailyStepsVal = new JLabel();
@@ -386,7 +386,7 @@ public class InterfaceView {
 		JLabel label_3 = new JLabel("Steps");
 		dailyStepsPanel.add(label_3);
 		
-		dailyCaloriesPanel = new JPanel();
+		dailyCaloriesPanel = new SPanel();
 		dailyCaloriesPanel.setBounds(608, 452, 120, 100);
 		
 		lblDailyCaloriesVal = new JLabel();
@@ -396,7 +396,7 @@ public class InterfaceView {
 		JLabel label = new JLabel("Calories Burned");
 		dailyCaloriesPanel.add(label);
 		
-		dailySedMinPanel = new JPanel();
+		dailySedMinPanel = new SPanel();
 		dailySedMinPanel.setBounds(264, 448, 120, 100);
 		
 		lblDailySedenteryMinVal = new JLabel();
@@ -408,7 +408,7 @@ public class InterfaceView {
 		lblSedMin.setBounds(3, 0, 106, 16);
 		dailySedMinPanel.add(lblSedMin);
 				
-		dailyFloorsPanel = new JPanel();
+		dailyFloorsPanel = new SPanel();
 		dailyFloorsPanel.setBounds(0, 448, 120, 100);
 				
 		JLabel lblFloorsClimbed = new JLabel("Floors Climbed");
@@ -420,7 +420,7 @@ public class InterfaceView {
 		dailyFloorsPanel.add(lblDailyFloorsVal);
 		lblDailyFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
 						
-		dailyTotalDistPanel = new JPanel();
+		dailyTotalDistPanel = new SPanel();
 		dailyTotalDistPanel.setBounds(126, 477, 120, 100);
 	
 						
@@ -652,8 +652,8 @@ public class InterfaceView {
 								position = x;
 							}
 						}
-						JPanel switcheyPanel = panelArray[radioCounter()-1];
-						panelArray[radioCounter()-1] = dailyFloorsPanel;
+						SPanel switcheyPanel = panelArray[radioCounter()-1];
+						panelArray[radioCounter()-1] = (SPanel) dailyFloorsPanel;
 						panelArray[position] = switcheyPanel;
 					}
 					repanel(radioCounter());
@@ -667,8 +667,8 @@ public class InterfaceView {
 								position = x;
 							}
 						}
-						JPanel switcheyPanel = panelArray[position+1];
-						panelArray[position+1] = dailyFloorsPanel;
+						SPanel switcheyPanel = panelArray[position+1];
+						panelArray[position+1] = (SPanel) dailyFloorsPanel;
 						panelArray[position] = switcheyPanel;
 					}
 					repanel(radioCounter());
@@ -692,8 +692,8 @@ public class InterfaceView {
 							position = x;
 						}
 					}
-					JPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = dailyStepsPanel;
+					SPanel switcheyPanel = panelArray[radioCounter()-1];
+					panelArray[radioCounter()-1] = (SPanel) dailyStepsPanel;
 					panelArray[position] = switcheyPanel;
 				}
 				repanel(radioCounter());
@@ -707,8 +707,8 @@ public class InterfaceView {
 							position = x;
 						}
 					}
-					JPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = dailyStepsPanel;
+					SPanel switcheyPanel = panelArray[position+1];
+					panelArray[position+1] = (SPanel) dailyStepsPanel;
 					panelArray[position] = switcheyPanel;
 				}
 				repanel(radioCounter());
@@ -730,8 +730,8 @@ public class InterfaceView {
 							position = x;
 						}
 					}
-					JPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = dailyCaloriesPanel;
+					SPanel switcheyPanel = panelArray[radioCounter()-1];
+					panelArray[radioCounter()-1] = (SPanel) dailyCaloriesPanel;
 					panelArray[position] = switcheyPanel;
 				}
 				repanel(radioCounter());
@@ -745,8 +745,8 @@ public class InterfaceView {
 							position = x;
 						}
 					}
-					JPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = dailyCaloriesPanel;
+					SPanel switcheyPanel = panelArray[position+1];
+					panelArray[position+1] = (SPanel) dailyCaloriesPanel;
 					panelArray[position] = switcheyPanel;
 				}
 				repanel(radioCounter());
@@ -767,8 +767,8 @@ public class InterfaceView {
 							position = x;
 						}
 					}
-					JPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = dailyTotalDistPanel;
+					SPanel switcheyPanel = panelArray[radioCounter()-1];
+					panelArray[radioCounter()-1] = (SPanel) dailyTotalDistPanel;
 					panelArray[position] = switcheyPanel;
 				}
 				repanel(radioCounter());
@@ -782,8 +782,8 @@ public class InterfaceView {
 							position = x;
 						}
 					}
-					JPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = dailyTotalDistPanel;
+					SPanel switcheyPanel = panelArray[position+1];
+					panelArray[position+1] = (SPanel) dailyTotalDistPanel;
 					panelArray[position] = switcheyPanel;
 				}
 				repanel(radioCounter());
@@ -806,8 +806,8 @@ public class InterfaceView {
 							position = x;
 						}
 					}
-					JPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = dailySedMinPanel;
+					SPanel switcheyPanel = panelArray[radioCounter()-1];
+					panelArray[radioCounter()-1] = (SPanel) dailySedMinPanel;
 					panelArray[position] = switcheyPanel;
 				}
 				repanel(radioCounter());
@@ -821,8 +821,8 @@ public class InterfaceView {
 							position = x;
 						}
 					}
-					JPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = dailySedMinPanel;
+					SPanel switcheyPanel = panelArray[position+1];
+					panelArray[position+1] = (SPanel) dailySedMinPanel;
 					panelArray[position] = switcheyPanel;
 				}
 				repanel(radioCounter());
@@ -844,8 +844,8 @@ public class InterfaceView {
 							position = x;
 						}
 					}
-					JPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = dailyActiveMinPanel;
+					SPanel switcheyPanel = panelArray[radioCounter()-1];
+					panelArray[radioCounter()-1] = (SPanel) dailyActiveMinPanel;
 					panelArray[position] = switcheyPanel;
 				}
 				repanel(radioCounter());
@@ -859,8 +859,8 @@ public class InterfaceView {
 							position = x;
 						}
 					}
-					JPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = dailyActiveMinPanel;
+					SPanel switcheyPanel = panelArray[position+1];
+					panelArray[position+1] = (SPanel) dailyActiveMinPanel;
 					panelArray[position] = switcheyPanel;
 				}
 				repanel(radioCounter());
@@ -915,7 +915,7 @@ public class InterfaceView {
 						/////////////LOOK AT THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//////////////////
 						
 						/////THIS NEEDS TO BE REPLACED WITH THE ARRAY WHICH IS PASSED IN/////////
-						panelArray = new JPanel[6];
+						panelArray = new SPanel[6];
 						panelArray[0]=dailyActiveMinPanel;
 						panelArray[1]=dailyCaloriesPanel;
 						panelArray[2]=dailySedMinPanel;
@@ -940,6 +940,9 @@ public class InterfaceView {
 						}
 						
 						
+						
+						radioCalories.setSelected(true);
+						radioActiveMin.setSelected(true);
 
 						/////////////////////////////////////////////////////////////////
 						/////KEEP THIS THO.//////////////////////////////////////////////
@@ -981,6 +984,7 @@ public class InterfaceView {
 			radioSteps.setSelected(true);
 
 		panelArray = sr.getPanelArray();
+		repanel(sr.getCount());
 	}
 	
 	private void save_settings()
@@ -993,7 +997,7 @@ public class InterfaceView {
 		boolean floors = (radioFloors.isSelected());
 		boolean steps = (radioSteps.isSelected());
 		
-		SettingsRecord sr = new SettingsRecord(dist, calories, sedMin, activeMin, floors, steps, panelArray);
+		SettingsRecord sr = new SettingsRecord(dist, calories, sedMin, activeMin, floors, steps, panelArray, radioCounter());
 		try {
 			wr.writeRecord(sr, "settingsrecord");
 		} catch (Exception e) {
@@ -1884,7 +1888,6 @@ public class InterfaceView {
 	 */
 	public void repanel(int count){
 			
-		save_settings();
 		switch(count){
 		case 1:
 			
@@ -2049,6 +2052,9 @@ public class InterfaceView {
 			
 			break;
 		}
+		
+		save_settings();
+
 	}
 	
 	/**

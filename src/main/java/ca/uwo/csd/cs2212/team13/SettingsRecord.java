@@ -14,7 +14,8 @@ public class SettingsRecord implements Serializable {
 	private boolean radioActiveMin;
 	private boolean radioFloors;
 	private boolean radioSteps;
-	private JPanel[] panelArray;
+	private SPanel[] panelArray;
+	private int count;
 
 	
 	/**
@@ -27,7 +28,7 @@ public class SettingsRecord implements Serializable {
 	 */
 	public SettingsRecord(boolean radioTotalDist, boolean radioCalories,
 			boolean radioSedMin, boolean radioActiveMin, boolean radioFloors,
-			boolean radioSteps, JPanel panelArray[]) {
+			boolean radioSteps, SPanel panelArray[], int count) {
 		super();
 		this.radioTotalDist = radioTotalDist;
 		this.radioCalories = radioCalories;
@@ -36,19 +37,34 @@ public class SettingsRecord implements Serializable {
 		this.radioFloors = radioFloors;
 		this.radioSteps = radioSteps;
 		this.panelArray = panelArray;
+		this.count = count;
+	}
+
+	/**
+	 * @return the count
+	 */
+	public int getCount() {
+		return count;
+	}
+
+	/**
+	 * @param count the count to set
+	 */
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 	/**
 	 * @return the panelArray
 	 */
-	public JPanel[] getPanelArray() {
+	public SPanel[] getPanelArray() {
 		return panelArray;
 	}
 
 	/**
 	 * @param panelArray the panelArray to set
 	 */
-	public void setPanelArray(JPanel[] panelArray) {
+	public void setPanelArray(SPanel[] panelArray) {
 		this.panelArray = panelArray;
 	}
 
