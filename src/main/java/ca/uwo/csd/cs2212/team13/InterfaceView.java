@@ -17,16 +17,21 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
+
 import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.Insets;
+
 import javax.swing.JLayeredPane;
 import javax.swing.BoxLayout;
 import javax.swing.JInternalFrame;
 import javax.swing.JPopupMenu;
+
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JRadioButtonMenuItem;
@@ -34,11 +39,11 @@ import javax.swing.JRadioButton;
 import javax.swing.border.BevelBorder;
 
 import net.sourceforge.jdatepicker.impl.*;
+
 import java.util.Date;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-
 import java.util.Date;
 
 
@@ -919,8 +924,21 @@ public class InterfaceView {
 						panelArray[5]=dailyTotalDistPanel;
 						////////////////////////////////////////////////////////////////
 						/////ALSO MAKE SURE TO SET THE APPROPRIATE RADIOBUTTONS//////////
-						radioCalories.setSelected(true);
-						radioActiveMin.setSelected(true);
+						
+						SettingsRecord sr = null;
+						WriterReader wr = new WriterReader();
+						try {
+							System.out.println("Reading in SettingsRecord from File\n");
+							sr = (SettingsRecord) wr
+									.loadRecord("src/main/resources/settingsrecord");		
+							load_settings(sr);
+						} catch (Exception e) {
+							System.out.println("Could not read SettingsRecord from File");
+
+							radioCalories.setSelected(true);
+							radioActiveMin.setSelected(true);
+						}
+						
 						
 
 						/////////////////////////////////////////////////////////////////
@@ -942,6 +960,49 @@ public class InterfaceView {
 						//panelDashboardView.add(dailyStepsPanel);						
 	}
 
+	private void load_settings(SettingsRecord sr)
+	{
+		if(sr.isRadioTotalDist())
+			radioTotalDist.setSelected(true);
+
+		if(sr.isRadioCalories())
+			radioCalories.setSelected(true);
+
+		if(sr.isRadioSedMin())
+			radioSedMin.setSelected(true);
+
+		if(sr.isRadioActiveMin())
+			radioActiveMin.setSelected(true);
+
+		if(sr.isRadioFloors())
+			radioFloors.setSelected(true);
+
+		if(sr.isRadioSteps())
+			radioSteps.setSelected(true);
+
+		panelArray = sr.getPanelArray();
+		repanel(radioCounter());
+	}
+	
+	private void save_settings()
+	{
+		WriterReader wr = new WriterReader();
+		boolean dist = (radioTotalDist.isSelected());
+		boolean calories = (radioCalories.isSelected());
+		boolean sedMin = (radioSedMin.isSelected());
+		boolean activeMin = (radioActiveMin.isSelected());
+		boolean floors = (radioFloors.isSelected());
+		boolean steps = (radioSteps.isSelected());
+		
+		SettingsRecord sr = new SettingsRecord(dist, calories, sedMin, activeMin, floors, steps, panelArray);
+		try {
+			wr.writeRecord(sr, "settingsrecord");
+		} catch (Exception e) {
+			System.out.println("Could not write to file");
+		}
+	}
+
+	
 	/**
 	 * This method implements the Best Days screen.
 	 */
@@ -1823,6 +1884,8 @@ public class InterfaceView {
 	 * @param count the number of radio buttons selected in the custom layout menu for the dashboard.
 	 */
 	public void repanel(int count){
+			
+		save_settings();
 		switch(count){
 		case 1:
 			

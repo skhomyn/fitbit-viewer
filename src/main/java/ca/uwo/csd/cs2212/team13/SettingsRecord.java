@@ -1,8 +1,11 @@
 package ca.uwo.csd.cs2212.team13;
 
+import java.io.Serializable;
+
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-public class SettingsRecord {
+public class SettingsRecord implements Serializable {
 
 
 	private boolean radioTotalDist;
@@ -11,6 +14,8 @@ public class SettingsRecord {
 	private boolean radioActiveMin;
 	private boolean radioFloors;
 	private boolean radioSteps;
+	private JPanel[] panelArray;
+
 	
 	/**
 	 * @param radioTotalDist
@@ -22,7 +27,7 @@ public class SettingsRecord {
 	 */
 	public SettingsRecord(boolean radioTotalDist, boolean radioCalories,
 			boolean radioSedMin, boolean radioActiveMin, boolean radioFloors,
-			boolean radioSteps) {
+			boolean radioSteps, JPanel panelArray[]) {
 		super();
 		this.radioTotalDist = radioTotalDist;
 		this.radioCalories = radioCalories;
@@ -30,6 +35,21 @@ public class SettingsRecord {
 		this.radioActiveMin = radioActiveMin;
 		this.radioFloors = radioFloors;
 		this.radioSteps = radioSteps;
+		this.panelArray = panelArray;
+	}
+
+	/**
+	 * @return the panelArray
+	 */
+	public JPanel[] getPanelArray() {
+		return panelArray;
+	}
+
+	/**
+	 * @param panelArray the panelArray to set
+	 */
+	public void setPanelArray(JPanel[] panelArray) {
+		this.panelArray = panelArray;
 	}
 
 	/**
