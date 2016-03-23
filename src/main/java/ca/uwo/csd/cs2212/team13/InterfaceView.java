@@ -33,13 +33,19 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JRadioButton;
 import javax.swing.border.BevelBorder;
 
-import net.sourceforge.jdatepicker.impl.*;
+import org.jdatepicker.*;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
 import java.util.Date;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
 import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 
 
@@ -450,7 +456,7 @@ public class InterfaceView {
 		panelDashboardView.add(SwitchingPanel);
 		SwitchingPanel.setLayout(new CardLayout(0, 0));
 		
-		SwitchingPanel.setVisible(true); //what is this
+		SwitchingPanel.setVisible(true);
 
 		
 		/**
@@ -869,12 +875,12 @@ public class InterfaceView {
 		 */
 		Date currentDate = new Date();
 		UtilDateModel utilModel = new UtilDateModel(currentDate);
-		JDatePanelImpl datePanel = new JDatePanelImpl(utilModel);
-		datePicker = new JDatePickerImpl(datePanel);
+		JDatePanelImpl datePanel = new JDatePanelImpl(utilModel, null);
+		datePicker = new JDatePickerImpl(datePanel, null);
 		datePicker.setBounds(278,43,163,26);
 		datePicker.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-								CalendarToAPI();
+								//dateToString();
 							}
 						});
 						
@@ -889,7 +895,7 @@ public class InterfaceView {
 		btnPrevDate.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 				datePicker.getModel().setDay(datePicker.getModel().getDay()-1);
-				CalendarToAPI();
+				//dateToString();
 			}
 		});
 						
@@ -901,8 +907,8 @@ public class InterfaceView {
 		panelDashboardView.add(btnNextDate);
 		btnNextDate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				datePicker.getModel().setDay(datePicker.getModel().getDay()+1);
-				CalendarToAPI();
+					datePicker.getModel().setDay(datePicker.getModel().getDay()+1);
+					//dateToString();
 				}
 			});
 						
@@ -939,7 +945,10 @@ public class InterfaceView {
 						//panelDashboardView.add(dailySedMinPanel);			
 						//panelDashboardView.add(dailyCaloriesPanel);			
 						//panelDashboardView.add(dailyFloorsPanel);			
-						//panelDashboardView.add(dailyStepsPanel);						
+						//panelDashboardView.add(dailyStepsPanel);	
+						
+			//meow
+						dateToString();
 	}
 
 	/**
@@ -1357,9 +1366,7 @@ public class InterfaceView {
 	 * This method controls page navigation, depending on button actions.
 	 */
 	private void actionEvents() {
-		/**
-		 * Switch window to Best Days screen:
-		 */
+
 		btnBestDays.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -1372,9 +1379,6 @@ public class InterfaceView {
 			}
 		});
 
-		/**
-		 * Switch window to Daily Dashboard screen:
-		 */
 		btnDailyDashboard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(true);
@@ -1387,9 +1391,6 @@ public class InterfaceView {
 			}
 		});
 
-		/**
-		 *  Switch window to Lifetime Totals screen:
-		 */
 		btnLifetimeTotals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -1402,9 +1403,6 @@ public class InterfaceView {
 			}
 		});
 
-		/**
-		 * Switch window to Daily Goals screen:
-		 */
 		btnDailyGoals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -1417,9 +1415,6 @@ public class InterfaceView {
 			}
 		});
 
-		/**
-		 *  Switch window to Accolades screen:
-		 */
 		btnAccolades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -1432,9 +1427,6 @@ public class InterfaceView {
 			}
 		});
 
-		/**
-		 *  Switch window to Timeseries screen:
-		 */
 		btnTimeSeries.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -1447,9 +1439,6 @@ public class InterfaceView {
 			}
 		});
 		
-		/**
-		 *  Switch window to Heart Rate Zones screen:
-		 */
 		btnHeartRateZones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelDashboardView.setVisible(false);
@@ -1993,8 +1982,29 @@ public class InterfaceView {
 	 * Returns the date selected on the calendar icon as a String.
 	 * @return a String representing the date selected on the calendar.
 	 */
-	public String CalendarToAPI(){
+	public String dateToString(){
 		System.out.println(datePicker.getJFormattedTextField().getText());
-		return datePicker.getJFormattedTextField().getText();
+
+		//parse date string dd-MMM-yyyy into Calendar Object
+
+		SimpleDateFormat formatDate = new SimpleDateFormat();
+		formatDate.applyPattern("dd-MMM-yyyy");
+		try {
+			Date day = formatDate.parse(datePicker.getJFormattedTextField().getText());
+			System.out.println(day.toString());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//put Calendar Object into a string with correct format
+		
+		
+		
+		//given: 23-Mar-2016
+		//GET https://api.fitbitcom/1/user/[user-id]/activities/date/[date].json
+		//yyyy-MM-dd
+		//To do: limit
+		return null;
 	}
 }
