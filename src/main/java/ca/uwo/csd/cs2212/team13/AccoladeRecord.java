@@ -18,7 +18,25 @@ public class AccoladeRecord implements Serializable {
 	//value associated with each image
 	private int value;
 	private String image;
+
+	//desc
+	private String desc;
 	
+
+	/**
+	 * @return the desc
+	 */
+	public String getDesc() {
+		return desc;
+	}
+
+	/**
+	 * @param desc the desc to set
+	 */
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
 	//type of image
 	private String type;
 	
@@ -32,12 +50,13 @@ public class AccoladeRecord implements Serializable {
 	/** 
 	 * Constructor
 	 */
-	public AccoladeRecord(boolean achieved, String date, int value, String image, String type) {
+	public AccoladeRecord(boolean achieved, String date, int value, String image, String type,  String desc) {
 		this.achieved = achieved;
 		this.date = date;
 		this.value = value;
 		this.image = image;
 		this.type = type;
+		this.desc = desc;
 	}
 	
 	/**

@@ -80,26 +80,26 @@ public class App {
 		/**
 		 * Filling array of AccoladeRecord with each accolade image and criteria
 		 */
-		ar[0] = new AccoladeRecord(false, null, 10000, "thousandStepsAcc.jpg", "lifetime/steps");
-		ar[1] = new AccoladeRecord(false, null, 0, "metNoGoalsAcc.jpg", "dailygoals/check");
-		ar[2] = new AccoladeRecord(false, null, 2000, "burnedsomeCals.jpg", "calorie/check");
-		ar[3] = new AccoladeRecord(false, null, 2000, "burnedMaxCalsAcc.jpg", "calorie/burned");
-		ar[4] = new AccoladeRecord(false, null, 25, "cardioHeartAcc.jpg", "heartrate/cardio");
-		ar[5] = new AccoladeRecord(false, null, 5, "maxDistanceAcc.jpg", "distance/check");
-		ar[6] = new AccoladeRecord(false, null, 10000, "tenThouStepsAcc.jpg","lifetime/steps");
-		ar[7] = new AccoladeRecord(false, null, 25, "FatburnHeartAcc.jpg", "heartrate/fat");
-		ar[8] = new AccoladeRecord(false, null, 100, "maxFloorsAcc.jpg", "lifetime/floor");
-		ar[9] = new AccoladeRecord(false, null, 60, "StayedInBoundsAcc.jpg", "heartrate/outofrange");
-		ar[10] = new AccoladeRecord(false, null, 2500, "tooManyCalsAcc.jpg", "calorie/check");
-		ar[11] = new AccoladeRecord(false, null, 10, "metAllGoalsAcc.jpg","lifetime/allgoals");
-		ar[12] = new AccoladeRecord(false, null, 0, "outofRangeHeartAcc.jpg", "heartrate/outofrange");
-		ar[13] = new AccoladeRecord(false, null, 50, "peakHeartAcc.jpg", "heartrate/peak");
-		ar[14] = new AccoladeRecord(false, null, 0, "sedentaryMinsAcc.jpg", "lifetime/potato");
-		ar[15] = new AccoladeRecord(false, null, 0, "zeroSteps.jpg","lifetime/steps");
-		ar[16] = new AccoladeRecord(false, null, 25, "christmasAcc.jpg", "event/christmas");
-		ar[17] = new AccoladeRecord(false, null, 20, "hanukkahAcc.jpg", "event/hanukkah");
-		ar[18] = new AccoladeRecord(false, null, 20, "completedAcc.jpg", "event/all");
-		ar[19] = new AccoladeRecord(false, null, 10, "completedHalfAcc.jpg", "event/half");
+		ar[0] = new AccoladeRecord(false, null, 1000, "ThousandStepsAcc", "lifetime/steps", "Walked 1000 Steps");
+		ar[1] = new AccoladeRecord(false, null, 0, "metNoGoalsAcc", "dailygoals/check", "Did Not Complete Any Daily Goals");
+		ar[2] = new AccoladeRecord(false, null, 2000, "BurnedsomeCalsAcc", "calorie/check", "Burn 1000 Calories\n");
+		ar[3] = new AccoladeRecord(false, null, 2000, "BurnedMaxCalsAcc", "calorie/burned", "Burn 2000 Calories\n");
+		ar[4] = new AccoladeRecord(false, null, 25, "CardioHeartAcc", "heartrate/cardio", "Spend 20 minutes in Cardio Heart Rate Zone\n");
+		ar[5] = new AccoladeRecord(false, null, 5, "maxDistanceAcc", "distance/check", "Achieved a Lifetime Distance of 5");
+		ar[6] = new AccoladeRecord(false, null, 10000, "tenThouStepsAcc","lifetime/steps", "Walked 10000 Steps");
+		ar[7] = new AccoladeRecord(false, null, 25, "FatburnHeartAcc", "heartrate/fat", "Spend 20 minutes in Fat Burn Heart Zone");
+		ar[8] = new AccoladeRecord(false, null, 100, "maxFloorsAcc", "lifetime/floor", "Climbed 100 floors");
+		ar[9] = new AccoladeRecord(false, null, 60, "StayedInBoundsAcc", "heartrate/outofrange", "No Out of Range Minutes for One Day");
+		ar[10] = new AccoladeRecord(false, null, 2500, "tooManyCalsAcc", "calorie/check", "Something Something\n");
+		ar[11] = new AccoladeRecord(false, null, 10, "metAllGoalsAcc","lifetime/allgoals", "Completed All Daily Goals");
+		ar[12] = new AccoladeRecord(false, null, 0, "outofRangeHeartAcc", "heartrate/outofrange", "Spend 20 minutes in Out of Range");
+		ar[13] = new AccoladeRecord(false, null, 50, "peakHeartAcc", "heartrate/peak", "Spend 20 minutes in Peak Heart Zone");
+		ar[14] = new AccoladeRecord(false, null, 0, "sedentaryMinsAcc", "lifetime/potato", "Reached 60 Sedentary Minutes for One Day");
+		ar[15] = new AccoladeRecord(false, null, 0, "zeroSteps","dailyrecord/steps", "No Steps for One Day\n");
+		ar[16] = new AccoladeRecord(false, null, 25, "christmasAcc", "event/christmas", "Log On During Christmas\n");
+		ar[17] = new AccoladeRecord(false, null, 20, "hanukkahAcc", "event/hanukkah", "Log On During Hanukkanh\n");
+		ar[18] = new AccoladeRecord(false, null, 20, "completedAcc", "event/all", "Achieve All Other Accolades\n");
+		ar[19] = new AccoladeRecord(false, null, 10, "completedHalfAcc", "event/half", "Achieve Half of the Accolades\n");
 		
 		try {
 			wr.writeRecord(ar, "accoladerecords");

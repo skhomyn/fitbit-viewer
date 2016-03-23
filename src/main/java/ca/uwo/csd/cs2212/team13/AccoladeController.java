@@ -22,5 +22,6 @@ public class AccoladeController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			view.setAccoladeFields(ar);
+		}
 	}
 }

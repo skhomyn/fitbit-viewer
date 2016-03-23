@@ -298,5 +298,21 @@ public class Main {
 			// final String json = gson.toJson(actRecord);
 			// System.out.println(json);
 		}
+		
+		WriterReader wr = new WriterReader();
+
+		AccoladeRecord[] ar = new AccoladeRecord[20];
+		ar = null;
+		
+		try {
+			ar = (AccoladeRecord[]) wr.loadRecord("src/main/resources/accoladerecords");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		AccoladeController acController = new AccoladeController(ar,
+				view);
+		
 	}
 }
