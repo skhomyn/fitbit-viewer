@@ -20,6 +20,8 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
 import java.awt.Insets;
+import java.awt.Rectangle;
+
 import javax.swing.JLayeredPane;
 import javax.swing.BoxLayout;
 import javax.swing.JInternalFrame;
@@ -446,11 +448,11 @@ public class InterfaceView {
 		 * displayed based on user selection of radio buttons.
 		 */
 		JPanel SwitchingPanel = new JPanel();
-		SwitchingPanel.setBounds(37, 120, 629, 357);
+		SwitchingPanel.setBounds(40, 140, 640, 360);
 		panelDashboardView.add(SwitchingPanel);
 		SwitchingPanel.setLayout(new CardLayout(0, 0));
 		
-		SwitchingPanel.setVisible(true); //what is this
+		SwitchingPanel.setVisible(true); //what is this - it makes the panel visible, duh
 
 		
 		/**
@@ -462,7 +464,7 @@ public class InterfaceView {
 		
 		onePanel_1 = new JPanel();
 		onePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		onePanel_1.setBounds(243, 142, 120, 100);
+		onePanel_1.setBounds(240, 108, 160, 144);
 		OnePanel.add(onePanel_1);
 		
 		/**
@@ -474,12 +476,12 @@ public class InterfaceView {
 		
 		twoPanel_1 = new JPanel();
 		twoPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		twoPanel_1.setBounds(120, 126, 120, 100);
+		twoPanel_1.setBounds(107, 108, 160, 144);
 		TwoPanel.add(twoPanel_1);
 		
 		twoPanel_2 = new JPanel();
 		twoPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		twoPanel_2.setBounds(343, 126, 120, 100);
+		twoPanel_2.setBounds(374, 108, 160, 144);
 		TwoPanel.add(twoPanel_2);
 		
 		/**
@@ -492,19 +494,19 @@ public class InterfaceView {
 		threePanel_1 = new JPanel();
 		threePanel_1.setAlignmentX(Component.LEFT_ALIGNMENT);
 		threePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		threePanel_1.setBounds(64, 140, 120, 100);
+		threePanel_1.setBounds(40, 108, 160, 144);
 		ThreePanel.add(threePanel_1);
 		
 		threePanel_2 = new JPanel();
 		threePanel_2.setAlignmentX(Component.LEFT_ALIGNMENT);
 		threePanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		threePanel_2.setBounds(256, 140, 120, 100);
+		threePanel_2.setBounds(240, 108, 160, 144);
 		ThreePanel.add(threePanel_2);
 		
 		threePanel_3 = new JPanel();
 		threePanel_3.setAlignmentX(Component.LEFT_ALIGNMENT);
 		threePanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		threePanel_3.setBounds(448, 140, 120, 100);
+		threePanel_3.setBounds(440, 108, 160, 144);
 		ThreePanel.add(threePanel_3);
 		
 		/**
@@ -516,22 +518,22 @@ public class InterfaceView {
 		
 		fourPanel_1 = new JPanel();
 		fourPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fourPanel_1.setBounds(69, 145, 120, 100);
+		fourPanel_1.setBounds(107, 24, 160, 144);
 		FourPanel.add(fourPanel_1);
 		
 		fourPanel_2 = new JPanel();
 		fourPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fourPanel_2.setBounds(242, 58, 120, 100);
+		fourPanel_2.setBounds(374, 24, 160, 144);
 		FourPanel.add(fourPanel_2);
 		
 		fourPanel_3 = new JPanel();
 		fourPanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fourPanel_3.setBounds(430, 145, 120, 100);
+		fourPanel_3.setBounds(107, 192, 160, 144);
 		FourPanel.add(fourPanel_3);
 		
 		fourPanel_4 = new JPanel();
 		fourPanel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fourPanel_4.setBounds(242, 218, 120, 100);
+		fourPanel_4.setBounds(374, 192, 160, 144);
 		FourPanel.add(fourPanel_4);
 		
 		/**
@@ -543,27 +545,27 @@ public class InterfaceView {
 		
 		fivePanel_1 = new JPanel();
 		fivePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fivePanel_1.setBounds(86, 66, 120, 100);
+		fivePanel_1.setBounds(40, 24, 160, 144);
 		FivePanel.add(fivePanel_1);
 		
 		fivePanel_2 = new JPanel();
 		fivePanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fivePanel_2.setBounds(266, 70, 120, 100);
+		fivePanel_2.setBounds(240, 24, 160, 144);
 		FivePanel.add(fivePanel_2);
 		
 		fivePanel_3 = new JPanel();
 		fivePanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fivePanel_3.setBounds(459, 72, 120, 100);
+		fivePanel_3.setBounds(440, 24, 160, 144);
 		FivePanel.add(fivePanel_3);
 		
 		fivePanel_4 = new JPanel();
 		fivePanel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fivePanel_4.setBounds(176, 199, 120, 100);
+		fivePanel_4.setBounds(107, 192, 160, 144);
 		FivePanel.add(fivePanel_4);
 		
 		fivePanel_5 = new JPanel();
 		fivePanel_5.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		fivePanel_5.setBounds(381, 205, 120, 100);
+		fivePanel_5.setBounds(374, 192, 160, 144);
 		FivePanel.add(fivePanel_5);
 		
 		/**
@@ -575,32 +577,36 @@ public class InterfaceView {
 		
 		sixPanel_1 = new JPanel();
 		sixPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		sixPanel_1.setBounds(64, 58, 120, 100);
+		sixPanel_1.setBounds(40, 24, 160, 144);
 		SixPanel.add(sixPanel_1);
-		
+
 		sixPanel_2 = new JPanel();
-		sixPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		sixPanel_2.setBounds(242, 58, 120, 100);
+		sixPanel_2.setBounds(240, 24, 160, 144);
 		SixPanel.add(sixPanel_2);
-		
+		sixPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+
 		sixPanel_3 = new JPanel();
+		sixPanel_3.setBounds(new Rectangle(0, 0, 180, 160));
 		sixPanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		sixPanel_3.setBounds(451, 58, 120, 100);
+		sixPanel_3.setBounds(440, 24, 160, 144);
 		SixPanel.add(sixPanel_3);
-		
+
 		sixPanel_4 = new JPanel();
+		sixPanel_4.setBounds(new Rectangle(0, 0, 180, 160));
 		sixPanel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		sixPanel_4.setBounds(64, 218, 120, 100);
+		sixPanel_4.setBounds(40, 192, 160, 144);
 		SixPanel.add(sixPanel_4);
-		
+
 		sixPanel_5 = new JPanel();
+		sixPanel_5.setBounds(new Rectangle(0, 0, 180, 160));
 		sixPanel_5.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		sixPanel_5.setBounds(242, 218, 120, 100);
+		sixPanel_5.setBounds(240, 192, 160, 144);
 		SixPanel.add(sixPanel_5);
-		
+
 		sixPanel_6 = new JPanel();
+		sixPanel_6.setBounds(new Rectangle(0, 0, 180, 160));
 		sixPanel_6.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		sixPanel_6.setBounds(451, 218, 120, 100);
+		sixPanel_6.setBounds(440, 192, 160, 144);
 		SixPanel.add(sixPanel_6);
 		
 		/**
