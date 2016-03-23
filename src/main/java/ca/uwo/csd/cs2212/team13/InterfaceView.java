@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.CardLayout;
 
+import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -26,6 +27,9 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.DateAxis;
+import org.jfree.chart.axis.DateTickUnit;
+import org.jfree.chart.event.PlotChangeEvent;
+import org.jfree.chart.event.PlotChangeListener;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.StandardXYItemRenderer;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
@@ -36,8 +40,15 @@ import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.ui.ApplicationFrame;
+import org.jfree.ui.RectangleInsets;
 import org.jfree.ui.RefineryUtilities;
 //import org.jfree.ui.Spacer;
+
+
+
+
+
+
 
 
 
@@ -295,6 +306,8 @@ public class InterfaceView {
 	private JPanel distpanel;
 	private JPanel panelGraph;
 
+	private ChartPanel chartPanel;
+	
 	public InterfaceView() {
 		initialize();
 	}
@@ -1122,7 +1135,14 @@ public class InterfaceView {
 
 		JButton btnZoomOut = new JButton("Zoom Out");
 		zoom.add(btnZoomOut);
+		btnZoomOut.addActionListener(new ActionListener() {
 
+	          @Override
+	            public void actionPerformed(ActionEvent e) {
+	                chartPanel.restoreAutoBounds();
+	            }
+        });
+		
 		panelGraph = new JPanel();
 		panelGraph.setBounds(47, 93, 643, 401);
 		panelTimeSeriesView.add(panelGraph);
@@ -1564,10 +1584,22 @@ public class InterfaceView {
 	{
 		// Generate Graph:
 		final XYDataset dataset = createDataset(dRecords, sRecords, caRecord, rRecord);         
-		final JFreeChart chart = createChart( dataset );         
-		final ChartPanel chartPanel = new ChartPanel( chart );         
+		final JFreeChart chart = createChart( dataset );      
+		chart.getPlot().addChangeListener(new PlotChangeListener(){
+			  @Override
+			  public void plotChanged(PlotChangeEvent event)
+			  {
+			    System.out.println("I am called after a zoom event (and some other events too).");
+			  }});
+		
+		chartPanel = new ChartPanel( chart ); 
 		chartPanel.setPreferredSize( new java.awt.Dimension( 560 , 370 ) );         
-		chartPanel.setMouseZoomable( true , false );         
+		//chartPanel.setMouseZoomable( true , false );   
+		chartPanel.setDomainZoomable(true);
+		
+		
+
+		//chartPanel.setZoomInFactor(10);
 		panelGraph.add( chartPanel );
 	}
 
@@ -1933,8 +1965,6 @@ public class InterfaceView {
         	int hour = Integer.parseInt(str2[0]);
         	int minute = Integer.parseInt(str2[1]);
         	
-        	System.out.println(hour + " " + minute);
-        	
         	double value = rate_arr[i].getValue();
         	s4.add(new Minute(minute, hour, day, month, year), value);
         }
@@ -1969,16 +1999,14 @@ public class InterfaceView {
 				true,              
 				false);
 		 chart.setBackgroundPaint(Color.white);
-	        
-//       final StandardLegend sl = (StandardLegend) chart.getLegend();
- //      sl.setDisplaySeriesShapes(true);
 
        final XYPlot plot = chart.getXYPlot();
        //plot.setOutlinePaint(null);
        plot.setBackgroundPaint(Color.lightGray);
        plot.setDomainGridlinePaint(Color.white);
        plot.setRangeGridlinePaint(Color.white);
-   //    plot.setAxisOffset(new Spacer(Spacer.ABSOLUTE, 5.0, 5.0, 5.0, 5.0));
+       //plot.setAxisOffset(new Spacer(Spacer.ABSOLUTE, 5.0, 5.0, 5.0, 5.0));
+       plot.setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));
        plot.setDomainCrosshairVisible(true);
        plot.setRangeCrosshairVisible(false);
        
@@ -1989,10 +2017,15 @@ public class InterfaceView {
            rr.setShapesFilled(true);
            renderer.setSeriesStroke(0, new BasicStroke(2.0f));
            renderer.setSeriesStroke(1, new BasicStroke(2.0f));
+
           }
        
        final DateAxis axis = (DateAxis) plot.getDomainAxis();
-       axis.setDateFormatOverride(new SimpleDateFormat("hh:mma"));
+       DateTickUnit stu = new DateTickUnit(DateTickUnit.HOUR,1); 
+       //axis.setAutoTickUnitSelection(false);
+       //axis.setVerticalTickLabels(true);
+       //axis.setTickUnit(stu); 
+       //axis.setDateFormatOverride(new SimpleDateFormat("hh:mma"));
        
        return chart;
 
