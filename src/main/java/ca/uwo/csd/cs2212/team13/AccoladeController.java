@@ -35,11 +35,11 @@ public class AccoladeController {
 
 	private void checkAchieved() {
 		LifetimeRecord lr = acR.getLifetime();
+		BestDaysRecord br = acR.getBest();
 
 		for (int i = 0; i < ar.length; i++) {
 			String[] typeSplit = ar[i].getType().split("/");
 
-			if (typeSplit[0].equals("ca.uwo.csd.cs2212.team13.LifetimeRecord")) {
 				Class thisClass;
 				try {
 					thisClass = Class.forName(typeSplit[0]);
@@ -47,16 +47,12 @@ public class AccoladeController {
 					Method m;
 					try {
 						m = thisClass.getDeclaredMethod(typeSplit[1]);
-						// check = (double) m.invoke(lr);
-						if (Double.parseDouble(m.invoke(lr).toString()) >= ar[i]
-								.getValue()) {
-							ar[i].setAchieved(true);
-							System.out.println(Double.parseDouble(m.invoke(lr)
-									.toString())
-									+ " "
-									+ ar[i].getValue()
-									+ "\n");
-						}
+						
+						if (typeSplit[0].equals("ca.uwo.csd.cs2212.team13.LifetimeRecord"))
+							checkValues(m, lr, i);
+							
+						else if (typeSplit[0].equals("ca.uwo.csd.cs2212.team13.BestDaysRecord"))
+							checkValues(m, lr, i);
 
 					} catch (NoSuchMethodException | SecurityException
 							| IllegalArgumentException | IllegalAccessException
@@ -70,7 +66,23 @@ public class AccoladeController {
 					e1.printStackTrace();
 				}
 			}
+		
+	}
+
+	private void checkValues(Method m, Object standard, int i)
+			throws NumberFormatException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException {
+
+		if (Double.parseDouble(m.invoke(standard).toString()) >= ar[i]
+				.getValue()) {
+			ar[i].setAchieved(true);
 		}
+		
+		System.out.println(Double
+				.parseDouble(m.invoke(standard).toString())
+				+ " "
+				+ ar[i].getValue() + "\n");
+
 	}
 
 	private void save() {

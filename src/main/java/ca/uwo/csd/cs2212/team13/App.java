@@ -77,16 +77,16 @@ public class App {
 		AccoladeRecord[] ar = new AccoladeRecord[20];
 		WriterReader wr = new WriterReader();
 
-		/**
-		 * Filling array of AccoladeRecord with each accolade image and criteria
-		 */
-		ar[0] = new AccoladeRecord(false, null, 1000, "ThousandStepsAcc", "lifetime/steps", "Walked 1000 Steps");
+		ar[0] = new AccoladeRecord(false, null, 1000, "ThousandStepsAcc", "ca.uwo.csd.cs2212.team13.BestDaysRecord/getSteps_value", "Walked 1000 Steps for Best Day");
 		ar[1] = new AccoladeRecord(false, null, 0, "metNoGoalsAcc", "dailygoals/check", "Did Not Complete Any Daily Goals");
 		ar[2] = new AccoladeRecord(false, null, 2000, "BurnedsomeCalsAcc", "calorie/check", "Burn 1000 Calories\n");
 		ar[3] = new AccoladeRecord(false, null, 2000, "BurnedMaxCalsAcc", "calorie/burned", "Burn 2000 Calories\n");
 		ar[4] = new AccoladeRecord(false, null, 25, "CardioHeartAcc", "heartrate/cardio", "Spend 20 minutes in Cardio Heart Rate Zone\n");
-		ar[5] = new AccoladeRecord(false, null, 5, "maxDistanceAcc", "ca.uwo.csd.cs2212.team13.LifetimeRecord/getDistance", "Walked 5 km in Total");
+		
+		ar[5] = new AccoladeRecord(false, null, 5, "maxDistanceAcc", "ca.uwo.csd.cs2212.team13.BestDaysRecord/getDis_value", "Walked 5 km for Best Day");
 		ar[6] = new AccoladeRecord(false, null, 10000, "tenThouStepsAcc","ca.uwo.csd.cs2212.team13.LifetimeRecord/getSteps", "Walked 10000 Steps in Total");
+		
+		
 		ar[7] = new AccoladeRecord(false, null, 25, "FatburnHeartAcc", "heartrate/fat", "Spend 20 minutes in Fat Burn Heart Zone");
 		ar[8] = new AccoladeRecord(false, null, 100, "maxFloorsAcc", "lifetime/floor", "Climbed 100 floors");
 		ar[9] = new AccoladeRecord(false, null, 60, "StayedInBoundsAcc", "heartrate/outofrange", "No Out of Range Minutes for One Day");
@@ -107,14 +107,6 @@ public class App {
 		} catch (Exception e) {
 			System.out.println("Could not write to file");
 		}
-		ar = null;
-		try {
-			ar = (AccoladeRecord[]) wr.loadRecord("src/main/resources/accoladerecords");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//System.out.println(ar[1].getImage());
 		
 		Main run = new Main();
 
