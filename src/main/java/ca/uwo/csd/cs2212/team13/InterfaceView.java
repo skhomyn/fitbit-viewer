@@ -50,9 +50,6 @@ import java.util.Date;
 import javax.swing.Icon;
 import java.awt.Point;
 
-
-
-
 /**
  * {@code InterfaceView} creates the GUI of the Fitbit program.
  * It also implements page navigation between the different screens.
@@ -375,7 +372,6 @@ public class InterfaceView {
 	 */
 	private void dashboardView() {
 
-
 		panelDashboardView.setLayout(null);
 
 		/**
@@ -643,6 +639,7 @@ public class InterfaceView {
 		sixPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		sixPanel_1.setBounds(40, 24, 160, 144);
 		SixPanel.add(sixPanel_1);
+		sixPanel_1.setLayout(null);
 
 		sixPanel_2 = new JPanel();
 		sixPanel_2.setBounds(240, 24, 160, 144);
@@ -1067,7 +1064,7 @@ public class InterfaceView {
 		//panelDashboardView.add(dailyCaloriesPanel);			
 		//panelDashboardView.add(dailyFloorsPanel);			
 		//panelDashboardView.add(dailyStepsPanel);	
-
+		//---
 		/**
 		 * Background Image Implementation
 		 */
