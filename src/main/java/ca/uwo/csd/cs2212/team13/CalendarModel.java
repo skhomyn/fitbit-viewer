@@ -28,6 +28,7 @@ or implied, of Juan Heyns.
 package ca.uwo.csd.cs2212.team13;
 
 import java.beans.PropertyChangeListener;
+import java.util.Date;
 
 import javax.swing.event.ChangeListener;
 
@@ -179,4 +180,6 @@ public interface CalendarModel<T> {
      */
     public void removePropertyChangeListener(PropertyChangeListener listener);
 
+	public Date getValueDate();
+	
 }

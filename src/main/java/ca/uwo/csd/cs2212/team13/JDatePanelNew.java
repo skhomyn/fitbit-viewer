@@ -103,12 +103,12 @@ public class JDatePanelNew extends JPanel implements JDatePanelN {
 	public JDatePanelNew(CalendarModel<?> model, Properties i18nStrings) {
 				
 		Calendar todayPlusOne = Calendar.getInstance();
-		todayPlusOne.add(Calendar.DATE, 1);
-		System.out.println("TODAY PLUS ONE " + todayPlusOne.getTime());
+		todayPlusOne.add(Calendar.DATE, 0);
+		//System.out.println("TODAY PLUS ONE " + todayPlusOne.getTime());
 		
 		Calendar todayMinusThreeYear = Calendar.getInstance();
 		todayMinusThreeYear.add(Calendar.YEAR, -3);
-		System.out.println("TODAY MINUS THREE " + todayMinusThreeYear.getTime());
+		//System.out.println("TODAY MINUS THREE " + todayMinusThreeYear.getTime());
 
 		rc = new RangeConstraint(todayMinusThreeYear, todayPlusOne);
 		

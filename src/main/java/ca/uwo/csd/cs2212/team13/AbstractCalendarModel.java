@@ -31,6 +31,7 @@ or implied, of Juan Heyns.
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 
 import javax.swing.event.ChangeEvent;
@@ -112,6 +113,16 @@ public abstract class AbstractCalendarModel<T> implements CalendarModel<T> {
 			return null;
 		}
 		T value = fromCalendar(calendarValue);
+		
+		return value;
+	}
+	
+	public Date getValueDate() {
+		if (!selected) {
+			return null;
+		}
+		Date value = calendarValue.getTime();
+		
 		return value;
 	}
 	
