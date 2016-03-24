@@ -201,6 +201,13 @@ public class InterfaceView {
 	private JLabel lblDistanceCompare;
 	private JLabel lblCaloriesCompare;
 	private JLabel lblActiveMinCompare;
+	
+	/**
+	 * Labels for the date of the information being displayed on date-dependent pages
+	 */
+	private JLabel lblDisplayDateGoals;
+	private JLabel lblDisplayDateHRZ;
+	private JLabel lblDisplayDateTS;
 
 	/**
 	 * Labels for the time that each page was last updated
@@ -279,6 +286,7 @@ public class InterfaceView {
 	 */
 	private JDatePickerImpl datePicker;
 	private JLabel lblPic_1;
+	private JLabel lblNewLabel_1;
 
 	/**
 	 * Constructor: uses initialize() method
@@ -1458,6 +1466,10 @@ public class InterfaceView {
 		lblLastUpdatedTS.setBounds(486, 540, 222, 16);
 		lblLastUpdatedTS.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelTimeSeriesView.add(lblLastUpdatedTS);
+		
+		lblDisplayDateTS = new JLabel();
+		lblDisplayDateTS.setBounds(336, 60, 125, 16);
+		panelTimeSeriesView.add(lblDisplayDateTS);
 
 	}
 
@@ -1542,6 +1554,11 @@ public class InterfaceView {
 		lblLastUpdatedGoals.setBounds(486, 540, 222, 16);
 		lblLastUpdatedGoals.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelDailyGoalsView.add(lblLastUpdatedGoals);
+		
+		lblDisplayDateGoals = new JLabel();
+		lblDisplayDateGoals.setBounds(300, 30, 125, 16);
+		panelDailyGoalsView.add(lblDisplayDateGoals);
+		
 	}
 
 	/**
@@ -1625,6 +1642,10 @@ public class InterfaceView {
 		lblLastUpdatedHRZ.setBounds(486, 540, 222, 16);
 		lblLastUpdatedHRZ.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelHeartrateZonesView.add(lblLastUpdatedHRZ);
+		
+		lblDisplayDateHRZ = new JLabel();
+		lblDisplayDateHRZ.setBounds(336, 60, 125, 16);
+		panelHeartrateZonesView.add(lblDisplayDateHRZ);
 	}
 
 	/**
@@ -1795,7 +1816,28 @@ public class InterfaceView {
 	}
 
 	// Setters
+	/**
+	 * Setter method for the 'Display Date' labels on time-dependent pages, which
+	 * indicate which date the current information on the page is from.
+	 * @param date the date of the current data being displayed
+	 */
+	public void setDisplayDate(Date date){
+		
+	    String datePattern = "MMM dd, yyyy";
+	    SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
+	    
+	    String formattedDate = dateFormatter.format(date);
+		
+		lblDisplayDateGoals.setText(formattedDate);
+		lblDisplayDateHRZ.setText(formattedDate);
+		lblDisplayDateTS.setText(formattedDate);
+	}
 
+	/**
+	 * Setter methods for the 'Last Updated' label on each page, indicating when the
+	 * last API call was successfully made.
+	 * @param date time of the last successful API call
+	 */
 	public void setLastUpdatedDash(String date){
 		lblLastUpdatedDash.setText(date);
 	}
@@ -2075,6 +2117,15 @@ public class InterfaceView {
 		
 		datePicker.addActionListener(changeData);
 		
+		datePicker.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setDisplayDate(dateModel.getValue());
+			}
+			
+		});
+		
 	}
 	
 	/**
@@ -2095,6 +2146,7 @@ public class InterfaceView {
 			public void actionPerformed(ActionEvent e) {
 				dateModel.setDay(dateModel.getDay()-1);
 				datePicker.getModel().setDay(datePicker.getModel().getDay());
+				setDisplayDate(dateModel.getValue());
 
 							}
 		});
@@ -2124,6 +2176,8 @@ public class InterfaceView {
 
 					dateModel.setDay(dateModel.getDay()+1);
 					datePicker.getModel().setDay(datePicker.getModel().getDay());
+					setDisplayDate(dateModel.getValue());
+
 				}
 				else System.out.println("noooo! - message from addNextDayActions in InterfaceView");
 			}
@@ -2585,7 +2639,7 @@ public class InterfaceView {
 
 	    private String datePattern = "dd-MMM-yyyy";
 	    private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
-
+	  
 	    @Override
 	    public Object stringToValue(String text) throws ParseException {
 	        return dateFormatter.parseObject(text);
@@ -2645,5 +2699,4 @@ public class InterfaceView {
        return chart;
 
    }
-
 }
