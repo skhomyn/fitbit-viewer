@@ -48,6 +48,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.util.Date;
 import javax.swing.Icon;
+import java.awt.Point;
 
 
 
@@ -297,6 +298,8 @@ public class InterfaceView {
 		frame.getContentPane().add(MenuBar);
 
 		btnDailyDashboard = new JButton("");
+		btnDailyDashboard.setRolloverSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DDselect.png"));
+		btnDailyDashboard.setRolloverIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DDselect.png"));
 		btnDailyDashboard.setSelectedIcon(new ImageIcon("src/main/resources/DDselect.png"));
 		btnDailyDashboard.setIcon(new ImageIcon("src/main/resources/DailyDashboard.png"));
 		btnDailyDashboard.setMargin(new Insets(0, 0, 0, 0));
@@ -306,6 +309,8 @@ public class InterfaceView {
 		btnDailyDashboard.setSelected(true);
 
 		btnBestDays = new JButton("");
+		btnBestDays.setRolloverSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/BestDaysSelect.png"));
+		btnBestDays.setRolloverIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/BestDaysSelect.png"));
 		btnBestDays.setSelectedIcon(new ImageIcon("src/main/resources/BestDaysSelect.png"));
 		btnBestDays.setIcon(new ImageIcon("src/main/resources/BestDays.png"));
 		btnBestDays.setMargin(new Insets(0, 0, 0, 0));
@@ -314,6 +319,8 @@ public class InterfaceView {
 		MenuBar.add(btnBestDays);
 
 		btnDailyGoals = new JButton("");
+		btnDailyGoals.setRolloverSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DailyGoalsSelected.png"));
+		btnDailyGoals.setRolloverIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DailyGoalsSelected.png"));
 		btnDailyGoals.setSelectedIcon(new ImageIcon("src/main/resources/DailyGoalsSelected.png"));
 		btnDailyGoals.setIcon(new ImageIcon("src/main/resources/DailyGoals.png"));
 		btnDailyGoals.setMargin(new Insets(0, 0, 0, 0));
@@ -322,6 +329,8 @@ public class InterfaceView {
 		MenuBar.add(btnDailyGoals);
 
 		btnLifetimeTotals = new JButton("");
+		btnLifetimeTotals.setRolloverSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/lifetimeTotalsSelect.png"));
+		btnLifetimeTotals.setRolloverIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/lifetimeTotalsSelect.png"));
 		btnLifetimeTotals.setSelectedIcon(new ImageIcon("src/main/resources/lifetimeTotalsSelect.png"));
 		btnLifetimeTotals.setIcon(new ImageIcon("src/main/resources/lifetime totals.png"));
 		btnLifetimeTotals.setMargin(new Insets(0, 0, 0, 0));
@@ -330,6 +339,8 @@ public class InterfaceView {
 		MenuBar.add(btnLifetimeTotals);
 
 		btnAccolades = new JButton("");
+		btnAccolades.setRolloverSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/accoladeSelect.png"));
+		btnAccolades.setRolloverIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/accoladeSelect.png"));
 		btnAccolades.setSelectedIcon(new ImageIcon("src/main/resources/accoladeSelect.png"));
 		btnAccolades.setIcon(new ImageIcon("src/main/resources/accolades.png"));
 		btnAccolades.setMargin(new Insets(0, 0, 0, 0));
@@ -338,6 +349,8 @@ public class InterfaceView {
 		MenuBar.add(btnAccolades);
 
 		btnTimeSeries = new JButton("");
+		btnTimeSeries.setRolloverSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/timeseriesSelected.png"));
+		btnTimeSeries.setRolloverIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/timeseriesSelected.png"));
 		btnTimeSeries.setSelectedIcon(new ImageIcon("src/main/resources/timeseriesSelected.png"));
 		btnTimeSeries.setMargin(new Insets(0, 0, 0, 0));
 		btnTimeSeries.setIcon(new ImageIcon("src/main/resources/timeseriesbutton.png"));
@@ -346,6 +359,8 @@ public class InterfaceView {
 		MenuBar.add(btnTimeSeries);
 
 		btnHeartRateZones = new JButton("");
+		btnHeartRateZones.setRolloverSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/HRZ-select.png"));
+		btnHeartRateZones.setRolloverIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/HRZ-select.png"));
 		btnHeartRateZones.setSelectedIcon(new ImageIcon("src/main/resources/HRZ-select.png"));
 		btnHeartRateZones.setIcon(new ImageIcon("src/main/resources/HRZ.png"));
 		btnHeartRateZones.setMargin(new Insets(0, 0, 0, 0));
@@ -677,10 +692,18 @@ public class InterfaceView {
 		 * Layout customization, or "settings", menu
 		 */
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(40, 46, 70, 26);
+		menuBar.setBorder(null);
+		menuBar.setBorderPainted(false);
+		menuBar.setBackground(Color.BLACK);
+		menuBar.setBounds(40, 10, 50, 50);
 		panelDashboardView.add(menuBar);
 
-		JMenu mnNewMenu = new JMenu("Settings");
+		JMenu mnNewMenu = new JMenu("");
+		mnNewMenu.setBorder(null);
+		mnNewMenu.setBackground(Color.BLACK);
+		mnNewMenu.setIconTextGap(0);
+		//mnNewMenu.setHorizontalAlignment(SwingConstants.CENTER);
+		mnNewMenu.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/settings.png"));
 		menuBar.add(mnNewMenu);
 
 		radioSedMin = new JRadioButton("Sedentary Minutes");
@@ -945,7 +968,7 @@ public class InterfaceView {
 		UtilDateModel utilModel = new UtilDateModel(currentDate);
 		JDatePanelImpl datePanel = new JDatePanelImpl(utilModel);
 		datePicker = new JDatePickerImpl(datePanel);
-		datePicker.setBounds(278,107,163,26);
+		datePicker.setBounds(278,105,170,30);
 		datePicker.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CalendarToAPI();
@@ -959,7 +982,7 @@ public class InterfaceView {
 		 */
 		JButton btnPrevDate = new JButton("Prev");
 		btnPrevDate.setOpaque(true);
-		btnPrevDate.setBounds(217, 108, 49, 25);
+		btnPrevDate.setBounds(217, 105, 50, 30);
 		panelDashboardView.add(btnPrevDate);
 		btnPrevDate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -973,7 +996,7 @@ public class InterfaceView {
 		 */
 		JButton btnNextDate = new JButton("Next");
 		btnNextDate.setOpaque(true);
-		btnNextDate.setBounds(453, 108, 49, 25);
+		btnNextDate.setBounds(453, 105, 50, 30);
 		panelDashboardView.add(btnNextDate);
 		btnNextDate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1031,8 +1054,9 @@ public class InterfaceView {
 		/////////////////////////////////////////////////////////////////
 		/////KEEP THIS THO.//////////////////////////////////////////////
 
-		btnRefresh = new JButton("Refresh");
-		btnRefresh.setBounds(589, 46, 91, 29);
+		btnRefresh = new JButton("");
+		btnRefresh.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/refreshButton.png"));
+		btnRefresh.setBounds(630, 10, 50, 50);
 		panelDashboardView.add(btnRefresh);
 		repanel(radioCounter());
 		////////////////////////////////////////////////////////////////////
@@ -1175,75 +1199,60 @@ public class InterfaceView {
 	 * This method implements the Accolades screen.
 	 */
 	private void accoladesView() {
-		JLabel lblAccolades = new JLabel("Accolades");
-		lblAccolades.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAccolades.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblAccolades.setBounds(0, 0, 720, 32);
-		panelAccoladesView.add(lblAccolades);
-
-		JCheckBox chckbxTask = new JCheckBox("Task #1:");
-		chckbxTask.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		chckbxTask.setBounds(10, 60, 235, 23);
-		panelAccoladesView.add(chckbxTask);
-
-		JCheckBox chckbxTask_1 = new JCheckBox("Task #2:");
-		chckbxTask_1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		chckbxTask_1.setBounds(10, 95, 294, 23);
-		panelAccoladesView.add(chckbxTask_1);
-
-		JCheckBox chckbxTask_2 = new JCheckBox("Task #3:");
-		chckbxTask_2.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		chckbxTask_2.setBounds(10, 130, 294, 23);
-		panelAccoladesView.add(chckbxTask_2);
-
-		JCheckBox chckbxTask_3 = new JCheckBox("Task #4:");
-		chckbxTask_3.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		chckbxTask_3.setBounds(10, 165, 294, 23);
-		panelAccoladesView.add(chckbxTask_3);
-
-		JCheckBox chckbxTask_4 = new JCheckBox("Task #5:");
-		chckbxTask_4.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		chckbxTask_4.setBounds(10, 200, 294, 23);
-		panelAccoladesView.add(chckbxTask_4);
 
 		JLabel lblDscp1 = new JLabel("<description>");
+		lblDscp1.setForeground(Color.WHITE);
 		lblDscp1.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblDscp1.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblDscp1.setBounds(257, 60, 150, 23);
+		lblDscp1.setBounds(290, 103, 369, 23);
 		panelAccoladesView.add(lblDscp1);
 
 		JLabel lblDscp2 = new JLabel("<description>");
+		lblDscp2.setForeground(Color.WHITE);
 		lblDscp2.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblDscp2.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblDscp2.setBounds(257, 95, 150, 23);
+		lblDscp2.setBounds(290, 138, 369, 23);
 		panelAccoladesView.add(lblDscp2);
 
 		JLabel lblDscp3 = new JLabel("<description>");
+		lblDscp3.setForeground(Color.WHITE);
 		lblDscp3.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblDscp3.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblDscp3.setBounds(257, 130, 150, 23);
+		lblDscp3.setBounds(290, 173, 369, 23);
 		panelAccoladesView.add(lblDscp3);
 
 		JLabel lblDscp4 = new JLabel("<description>");
+		lblDscp4.setForeground(Color.WHITE);
 		lblDscp4.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblDscp4.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblDscp4.setBounds(257, 165, 150, 23);
+		lblDscp4.setBounds(290, 208, 369, 23);
 		panelAccoladesView.add(lblDscp4);
 
 		JLabel lblDscp5 = new JLabel("<description>");
+		lblDscp5.setForeground(Color.WHITE);
 		lblDscp5.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblDscp5.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblDscp5.setBounds(257, 200, 150, 23);
+		lblDscp5.setBounds(290, 243, 369, 23);
 		panelAccoladesView.add(lblDscp5);
 
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setForeground(Color.WHITE);
 		lblLastUpdated.setBounds(410, 540, 90, 16);
 		panelAccoladesView.add(lblLastUpdated);
 
 		lblLastUpdatedAccolades = new JLabel();
+		lblLastUpdatedAccolades.setForeground(Color.WHITE);
 		lblLastUpdatedAccolades.setBounds(486, 540, 222, 16);
 		lblLastUpdatedAccolades.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelAccoladesView.add(lblLastUpdatedAccolades);
+		
+		/**
+		 * Background Image Implementation
+		 */
+		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/ACCdash.png"));
+		lblPic.setBounds(0, 0, 720, 574);
+		panelAccoladesView.add(lblPic);
+	
 
 	}
 
@@ -1325,83 +1334,95 @@ public class InterfaceView {
 	 * This method implements the Daily Goals screen.
 	 */
 	private void dailygoalsView() {
-		JLabel lblDailyGoals = new JLabel("Daily Goals");
-		lblDailyGoals.setForeground(Color.BLACK);
-		lblDailyGoals.setBackground(Color.GRAY);
-		lblDailyGoals.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDailyGoals.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblDailyGoals.setBounds(0, 0, 720, 28);
-		panelDailyGoalsView.add(lblDailyGoals);
-
-		JLabel lblActiveMin = new JLabel("Active Minutes:");
-		lblActiveMin.setBounds(16, 160, 120, 16);
-		panelDailyGoalsView.add(lblActiveMin);
-
-		JLabel lblSteps = new JLabel("Steps:");
-		lblSteps.setBounds(16, 52, 61, 16);
-		panelDailyGoalsView.add(lblSteps);
-
-		JLabel lblDistance = new JLabel("Distance:");
-		lblDistance.setBounds(16, 80, 61, 16);
-		panelDailyGoalsView.add(lblDistance);
-
-		JLabel lblCalories = new JLabel("Calories:");
-		lblCalories.setBounds(16, 108, 61, 16);
-		panelDailyGoalsView.add(lblCalories);
-
-		JLabel lblFloors = new JLabel("Floors:");
-		lblFloors.setBounds(16, 136, 61, 16);
-		panelDailyGoalsView.add(lblFloors);
 
 		lblActiveMinGoal = new JLabel();
-		lblActiveMinGoal.setBounds(150, 160, 61, 16);
+		lblActiveMinGoal.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
+		lblActiveMinGoal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblActiveMinGoal.setForeground(Color.WHITE);
+		lblActiveMinGoal.setBounds(325, 454, 232, 46);
 
 		panelDailyGoalsView.add(lblActiveMinGoal);
 
 		lblStepsGoal = new JLabel();
-		lblStepsGoal.setBounds(150, 52, 61, 16);
+		lblStepsGoal.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
+		lblStepsGoal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStepsGoal.setForeground(Color.WHITE);
+		lblStepsGoal.setBounds(325, 317, 232, 46);
 		panelDailyGoalsView.add(lblStepsGoal);
 
 		lblDistanceGoal = new JLabel();
-		lblDistanceGoal.setBounds(150, 80, 61, 16);
+		lblDistanceGoal.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
+		lblDistanceGoal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDistanceGoal.setForeground(Color.WHITE);
+		lblDistanceGoal.setBounds(325, 180, 232, 46);
 		panelDailyGoalsView.add(lblDistanceGoal);
 
 		lblCaloriesGoal = new JLabel();
-		lblCaloriesGoal.setBounds(150, 108, 61, 16);
+		lblCaloriesGoal.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
+		lblCaloriesGoal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCaloriesGoal.setForeground(Color.WHITE);
+		lblCaloriesGoal.setBounds(325, 385, 232, 46);
 		panelDailyGoalsView.add(lblCaloriesGoal);
 
 		lblFloorsGoal = new JLabel();
-		lblFloorsGoal.setBounds(150, 136, 61, 16);
+		lblFloorsGoal.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
+		lblFloorsGoal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFloorsGoal.setForeground(Color.WHITE);
+		lblFloorsGoal.setBounds(325, 248, 232, 46);
 		panelDailyGoalsView.add(lblFloorsGoal);
 
 		lblStepsCompare = new JLabel();
-		lblStepsCompare.setBounds(336, 52, 61, 16);
+		lblStepsCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		lblStepsCompare.setHorizontalAlignment(SwingConstants.CENTER);
+		lblStepsCompare.setForeground(Color.WHITE);
+		lblStepsCompare.setBounds(563, 317, 96, 46);
 		panelDailyGoalsView.add(lblStepsCompare);
 
 		lblDistanceCompare = new JLabel();
-		lblDistanceCompare.setBounds(336, 80, 61, 16);
+		lblDistanceCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		lblDistanceCompare.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDistanceCompare.setForeground(Color.WHITE);
+		lblDistanceCompare.setBounds(563, 180, 96, 46);
 		panelDailyGoalsView.add(lblDistanceCompare);
 
 		lblCaloriesCompare = new JLabel();
-		lblCaloriesCompare.setBounds(336, 108, 61, 16);
+		lblCaloriesCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		lblCaloriesCompare.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCaloriesCompare.setForeground(Color.WHITE);
+		lblCaloriesCompare.setBounds(563, 385, 96, 46);
 		panelDailyGoalsView.add(lblCaloriesCompare);
 
 		lblFloorsCompare = new JLabel();
-		lblFloorsCompare.setBounds(336, 136, 61, 16);
+		lblFloorsCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		lblFloorsCompare.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFloorsCompare.setForeground(Color.WHITE);
+		lblFloorsCompare.setBounds(563, 248, 96, 46);
 		panelDailyGoalsView.add(lblFloorsCompare);
 
 		lblActiveMinCompare = new JLabel();
-		lblActiveMinCompare.setBounds(336, 160, 61, 16);
+		lblActiveMinCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		lblActiveMinCompare.setHorizontalAlignment(SwingConstants.CENTER);
+		lblActiveMinCompare.setForeground(Color.WHITE);
+		lblActiveMinCompare.setBounds(563, 454, 96, 46);
 		panelDailyGoalsView.add(lblActiveMinCompare);
 
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setForeground(Color.WHITE);
 		lblLastUpdated.setBounds(410, 540, 90, 16);
 		panelDailyGoalsView.add(lblLastUpdated);
 
 		lblLastUpdatedGoals = new JLabel();
+		lblLastUpdatedGoals.setForeground(Color.WHITE);
 		lblLastUpdatedGoals.setBounds(486, 540, 222, 16);
 		lblLastUpdatedGoals.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelDailyGoalsView.add(lblLastUpdatedGoals);
+		
+		/**
+		 * Background Image Implementation
+		 */
+		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DGdash.png"));
+		lblPic.setBounds(0, 0, 720, 574);
+		panelDailyGoalsView.add(lblPic);
 	}
 
 	/**
