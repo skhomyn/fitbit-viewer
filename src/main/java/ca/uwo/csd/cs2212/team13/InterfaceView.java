@@ -977,7 +977,7 @@ public class InterfaceView {
 		
 		JDatePanelImpl datePanel = new JDatePanelImpl(dateModel, properties);
 		datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
-		datePicker.setBounds(278,43,163,26);
+		datePicker.setBounds(278,107,163,26);
 
 		//RangeConstraint range =  new RangeConstraint();
 						
@@ -989,7 +989,7 @@ public class InterfaceView {
 		 * "Previous Date" button moves the date forward by one day on the calendar.
 		 */
 		btnPrevDate = new JButton("Prev");
-		btnPrevDate.setBounds(217, 44, 49, 25);
+		btnPrevDate.setBounds(217, 108, 49, 25);
 		btnPrevDate.setOpaque(true);
 		panelDashboardView.add(btnPrevDate);
 						
@@ -997,7 +997,7 @@ public class InterfaceView {
 		 * "Next Date" button moves the date forward by one day on the calendar.	
 		 */
 		btnNextDate = new JButton("Next");
-		btnNextDate.setBounds(453, 44, 49, 25);
+		btnNextDate.setBounds(453, 108, 49, 25);
 		btnPrevDate.setOpaque(true);
 		panelDashboardView.add(btnNextDate);
 						
