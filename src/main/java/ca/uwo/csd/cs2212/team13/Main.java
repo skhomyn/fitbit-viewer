@@ -38,6 +38,10 @@ import java.io.Reader;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+
 /**
  * <code>Main</code> is the class that handles up all the initial input going
  * into the interface and then runs the program.
@@ -46,6 +50,10 @@ import com.google.gson.GsonBuilder;
  * {@link InterfaceView} is working properly upon receiving input.
  */
 public class Main {
+	
+	private DailyRecord ddModel;
+	private ActivitiesRecord actRecord;
+	private InterfaceView view;
 
 	public void run() throws IOException {
 
@@ -76,13 +84,14 @@ public class Main {
 		final Gson gson = gsonBuilder.create();
 
 		// Create InterfaceView and set as visible
-		InterfaceView view = new InterfaceView();
+		view = new InterfaceView();
 		view.setVisible(view);
 
-		WriterReader wr = new WriterReader();
-		APICaller test = new APICaller("activity%20heartrate",
+		final WriterReader wr = new WriterReader();
+		final APICaller apiCaller = new APICaller("activity%20heartrate",
 				"src/main/resources/Team13Tokens.txt",
 				"src/main/resources/Team13Credentials.txt");
+
 		// test.request("activities/heart/date/today/1d.json",
 		// "src/main/resources/cur_heart_data.json");
 		// test.request("activities/date/today.json",
@@ -92,7 +101,7 @@ public class Main {
 
 		// Read JSON data for heart rate
 		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
-				.getResourceAsStream("heartrate.json"), "UTF-8")) {
+				.getResourceAsStream("cur_heart_data.json"), "UTF-8")) {
 
 			// Parse JSON to Java
 			final HeartRateRecord hrRecord = gson.fromJson(data,
@@ -104,15 +113,108 @@ public class Main {
 			// Format to JSON
 			// final String json = gson.toJson(hrRecord);
 			// System.out.println(json);
-
-			// final String json = gson.toJson(hrRecord);
-			// System.out.println(json);
+			// System.out.println(hrRecord);
+		//	final String json = gson.toJson(hrRecord);
+		//	System.out.println(json);
 		}
 
 		// Read the JSON data for daily dashboard and daily goals
-		String dRecord_String = test.requestJson("activities/date/today.json");
-		DailyRecord ddModel = null;
 
+		refreshInfo(gson, apiCaller, wr, "today");
+
+		// Create Controller for daily goals
+		DailyDashboardController ddController = new DailyDashboardController(ddModel, view);
+
+		// Create Controller for daily goals
+		GoalsController dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
+
+		// initialize dashboard
+		ddController.DailyDashboardInitialize();
+	
+		// Create Models and Controllers
+		BestDaysRecord bdModel = actRecord.getBest();
+		BestDaysController bdController = new BestDaysController(bdModel, view);
+
+		LifetimeRecord ltModel = actRecord.getLifetime();
+		LifetimeController ltController = new LifetimeController(ltModel, view);
+				
+		//add action listener to refresh button, trigger new API calls for current date
+		/**
+		 * {@code ActionListener} object is added to the refresh button. When the refresh
+		 * button is clicked, it triggers new API calls using the current date.
+		 */
+		view.addListenerForRefresh(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				refreshInfo(gson, apiCaller, wr, "today");
+			}	
+		});
+
+		/**
+		 * {@code ActionListener} object is added to calendar and triggers new API calls
+		 * for the date selected, when the user chooses a new date on the calendar interface.
+		 * Does not allow future dates to be selected.
+		 */
+		view.addCalendarDateChangeActions(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(view.getDateObject().compareTo(new Date()) <= 0) {
+					refreshInfo(gson, apiCaller, wr, view.getStringDate(null));
+					System.out.println("\n CALENDAR date change:" + view.getStringDate(null)); //TESTFLAG
+				}
+
+				else			
+					System.out.println("\n NOOOOOO - message from view.addCalendarDageChangeAction in Main "); //attempt to change date to future date
+			}
+		});
+		
+		/**
+		 * {@code ActionListener} object is added to the "previous" button and triggers new API calls
+		 * for a date one day in the past of the currently displayed date, when the button is clicked.
+		 */
+		view.addPreviousDayActions(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				System.out.println("\n PREV DAY date change:" + view.getStringDate("previous")); //TESTFLAG
+				
+				refreshInfo(gson, apiCaller, wr, view.getStringDate("previous"));
+			}
+		});
+		
+		/**
+		 * {@code ActionListener} object is added to "next" button and triggers new API calls
+		 * for a date one day in advance of the currently displayed date, when the button is clicked.
+		 * Does not allow future dates to be selected.
+		 */
+		view.addNextDayActions(new ActionListener() {		
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					if(view.getDateObject().compareTo(new Date()) < 0) {
+						refreshInfo(gson, apiCaller, wr, view.getStringDate("next"));
+						System.out.println("\n NEXT DAY dage change:" + view.getStringDate("next")); //TESTFLAG
+					}
+					
+					else
+						System.out.println("\n nOOOOO!! -- message from view.addNextDayActions in Main");
+		}
+	});
+
+	}
+	
+	//TESTFLAG
+	//given: 23-Mar-2016
+	//GET https://api.fitbitcom/1/user/[user-id]/activities/date/yyyy-MM-dd.json
+	//TESTFLAG
+	//note to self: limit access to >3 years ago
+	
+	public void refreshInfo(Gson gson, APICaller apiCaller, WriterReader wr, String dateStr){
+		
+		//make request for dashboard info
+		String dRecord_String = apiCaller.requestJson("activities/date/" + dateStr + ".json");
 		// If Null
 		if (dRecord_String == null) {
 			try {
@@ -125,19 +227,16 @@ public class Main {
 		} else {
 			// Parse JSON to Java
 			ddModel = gson.fromJson(dRecord_String, DailyRecord.class);
+			//Last Updated label
+			Date now = new Date();
+			String apiCallDate = now.toString();
+			
+			//TESTFLAG
+			view.setLastUpdatedDash(dateStr);
+			//view.setLastUpdatedDash(apiCallDate);
+			
+			view.setLastUpdatedGoals(apiCallDate);
 		}
-
-		// Create Controller for daily goals
-		DailyDashboardController ddController = new DailyDashboardController(
-				ddModel, view);
-
-		// Create Controller for daily goals
-		GoalsController dgController = new GoalsController(ddModel,
-				ddModel.getGoals(), view);
-
-		// initialize dashboard
-		ddController.DailyDashboardInitialize();
-
 		try {
 			wr.writeRecord(ddModel, "dailyrecord");
 		} catch (Exception e) {
@@ -145,9 +244,7 @@ public class Main {
 		}
 
 		// Read the JSON data for best days and lifetime totals
-
-		String aRecord_String = test.requestJson("activities.json");
-		ActivitiesRecord actRecord = null;
+		String aRecord_String = apiCaller.requestJson("activities.json");
 
 		// If Null
 		if (aRecord_String == null) {
@@ -161,15 +258,12 @@ public class Main {
 		} else {
 			// Parse JSON to Java
 			actRecord = gson.fromJson(aRecord_String, ActivitiesRecord.class);
+			//Last Updated label
+			Date now = new Date();
+			String apiCallDate = now.toString();
+			view.setLastUpdatedBd(apiCallDate);
+			view.setLastUpdatedLt(apiCallDate);
 		}
-
-		// Create Models and Controllers
-		BestDaysRecord bdModel = actRecord.getBest();
-		BestDaysController bdController = new BestDaysController(bdModel, view);
-
-		LifetimeRecord ltModel = actRecord.getLifetime();
-		LifetimeController ltController = new LifetimeController(ltModel, view);
-
 		try {
 			wr.writeRecord(actRecord, "activityrecord");
 		} catch (Exception e) {
@@ -272,7 +366,8 @@ public class Main {
 			// final String json = gson.toJson(hrRecord);
 			// System.out.println(json);
 			// System.out.println(hrRecord);
-
+		//	final String json = gson.toJson(hrRecord);
+		//	System.out.println(json);
 		}
 
 		// Read the JSON data for daily dashboard
@@ -292,7 +387,7 @@ public class Main {
 
 			// initialize dashboard
 			ddController.DailyDashboardInitialize();
-
+			
 			// Format to JSON
 			// final String json = gson.toJson(ddModel);
 			// System.out.println(json);
@@ -393,6 +488,8 @@ public class Main {
 				}
 			}
 		}
-
+		//Last updated label
+		String test = "Not Applicable in Test Mode.    ";
+		view.setLastUpdatedTestMode(test);
 	}
 }
