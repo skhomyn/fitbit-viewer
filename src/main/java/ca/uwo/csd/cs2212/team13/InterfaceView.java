@@ -2418,6 +2418,7 @@ public class InterfaceView {
 			SixPanel.setVisible(false);
 
 			onePanel_1.add(panelArray[0]);
+			
 			// Add images:
 			JLabel img_21 = new ILabel();
 			onePanel_1.setLayout(null);
@@ -2447,6 +2448,7 @@ public class InterfaceView {
 
 			twoPanel_1.add(panelArray[0]);
 			twoPanel_2.add(panelArray[1]);
+			
 			// Add images:
 			JLabel img_19 = new ILabel();
 			JLabel img_20 = new ILabel();
@@ -2456,6 +2458,7 @@ public class InterfaceView {
 			twoPanel_2.add(img_20);
 			// ---
 			TwoPanel.setVisible(true);
+			
 			break;
 
 		case 3:
@@ -2482,6 +2485,7 @@ public class InterfaceView {
 			threePanel_1.add(panelArray[0]);
 			threePanel_2.add(panelArray[1]);
 			threePanel_3.add(panelArray[2]);
+			
 			// Add images:
 			JLabel img_16 = new ILabel();
 			JLabel img_17 = new ILabel();
@@ -2524,6 +2528,7 @@ public class InterfaceView {
 			fourPanel_2.add(panelArray[1]);
 			fourPanel_3.add(panelArray[2]);
 			fourPanel_4.add(panelArray[3]);
+			
 			// Add images:
 			JLabel img_12 = new ILabel();
 			JLabel img_13 = new ILabel();
@@ -2571,6 +2576,7 @@ public class InterfaceView {
 			fivePanel_3.add(panelArray[2]);
 			fivePanel_4.add(panelArray[3]);
 			fivePanel_5.add(panelArray[4]);
+			
 			// Add images:
 			JLabel img_7 = new ILabel();
 			JLabel img_8 = new ILabel();
@@ -2588,6 +2594,7 @@ public class InterfaceView {
 			fivePanel_5.setLayout(null);
 			fivePanel_5.add(img_11);
 			// ---
+
 			FivePanel.setVisible(true);
 			break;
 
@@ -2633,6 +2640,7 @@ public class InterfaceView {
 			sixPanel_4.add(img_4);
 			sixPanel_5.setLayout(null);
 			sixPanel_5.add(img_5);
+			sixPanel_6.setLayout(null);
 			sixPanel_6.add(img_6);
 			// ---
 
