@@ -11,7 +11,6 @@ import java.awt.Image;
 
 import javax.swing.Icon;
 import javax.swing.AbstractAction;
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -55,9 +54,9 @@ import org.jfree.ui.RefineryUtilities;
 //import org.jfree.ui.Spacer;
 
 
+
 import java.awt.Insets;
 import java.awt.Rectangle;
-
 
 import javax.swing.JLayeredPane;
 import javax.imageio.ImageIO;
@@ -68,7 +67,6 @@ import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import java.text.SimpleDateFormat;
 
 import javax.swing.JMenuBar;
@@ -88,7 +86,6 @@ import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.util.Date;
-
 import java.text.DateFormat;
 import java.text.Format;
 import java.text.ParseException;
@@ -96,9 +93,11 @@ import java.text.SimpleDateFormat;
 
 //import org.jdatepicker.constraints;
 
+
 import org.jdatepicker.DateModel;
 
 import java.util.Calendar;
+
 import javax.swing.Icon;
 
 
@@ -153,18 +152,19 @@ public class InterfaceView {
 	 */
 	private JLabel lblLifetimeTotalsDistVal;
 	private JLabel lblLifetimeTotalsFloorsVal;
-
-	private JLabel lblDailyDistVal;
 	private JLabel lblLifetimeTotalsStepsVal;
-	private JLabel lblDailyCaloriesVal;
-	private JLabel lblDailyStepsVal;
-	private JLabel lblDailyFloorsVal;
-	private JLabel lblDailySedenteryMinVal;
+
+	private SLabel lblDailyDistVal;
+	private SLabel lblDailyCaloriesVal;
+	private SLabel lblDailyStepsVal;
+	private SLabel lblDailyFloorsVal;
+	private SLabel lblDailySedenteryMinVal;
+	private SLabel lblDailyVeryActMinVal;
 
 	private JLabel lblDailyLightlyActMinVal;
 	private JLabel lblDailyFairlyActMinVal;
-	private JLabel lblDailyVeryActMinVal;
 	private JLabel lblDailyGoalsVal;
+	
 	private JLabel lblBestDaysDistVal;
 	private JLabel lblBestDaysFloorsVal;
 	private JLabel lblBestDaysStepsVal;
@@ -454,7 +454,7 @@ public class InterfaceView {
 		gbl_dailyActiveMinPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 		dailyActiveMinPanel.setLayout(gbl_dailyActiveMinPanel);
 
-		lblDailyVeryActMinVal = new JLabel();
+		lblDailyVeryActMinVal = new SLabel();
 		GridBagConstraints gbc_lblDailyVeryActMinVal = new GridBagConstraints();
 		gbc_lblDailyVeryActMinVal.anchor = GridBagConstraints.SOUTH;
 		gbc_lblDailyVeryActMinVal.insets = new Insets(0, 0, 0, 5);
@@ -475,7 +475,7 @@ public class InterfaceView {
 		dailyStepsPanel = new SPanel();
 		dailyStepsPanel.setBounds(496, 453, 120, 100);
 
-		lblDailyStepsVal = new JLabel();
+		lblDailyStepsVal = new SLabel();
 		dailyStepsPanel.add(lblDailyStepsVal);
 		lblDailyStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
 
@@ -485,7 +485,7 @@ public class InterfaceView {
 		dailyCaloriesPanel = new SPanel();
 		dailyCaloriesPanel.setBounds(608, 452, 120, 100);
 
-		lblDailyCaloriesVal = new JLabel();
+		lblDailyCaloriesVal = new SLabel();
 		dailyCaloriesPanel.add(lblDailyCaloriesVal);
 		lblDailyCaloriesVal.setHorizontalAlignment(SwingConstants.TRAILING);
 
@@ -495,7 +495,7 @@ public class InterfaceView {
 		dailySedMinPanel = new SPanel();
 		dailySedMinPanel.setBounds(264, 448, 120, 100);
 
-		lblDailySedenteryMinVal = new JLabel();
+		lblDailySedenteryMinVal = new SLabel();
 		lblDailySedenteryMinVal.setBounds(3, 34, 97, 16);
 		dailySedMinPanel.add(lblDailySedenteryMinVal);
 		lblDailySedenteryMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -511,7 +511,7 @@ public class InterfaceView {
 		lblFloorsClimbed.setBounds(15, 5, 85, 16);
 		dailyFloorsPanel.add(lblFloorsClimbed);
 
-		lblDailyFloorsVal = new JLabel();
+		lblDailyFloorsVal = new SLabel();
 		lblDailyFloorsVal.setBounds(10, 34, 70, 16);
 		dailyFloorsPanel.add(lblDailyFloorsVal);
 		lblDailyFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -520,7 +520,7 @@ public class InterfaceView {
 		dailyTotalDistPanel.setBounds(126, 477, 120, 100);
 
 
-		lblDailyDistVal = new JLabel();
+		lblDailyDistVal = new SLabel();
 		lblDailyDistVal.setBounds(19, 34, 70, 16);
 		dailyTotalDistPanel.add(lblDailyDistVal);
 		lblDailyDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -1150,6 +1150,13 @@ public class InterfaceView {
 		dailySedMinPanel = sr.getDailySedMinPanel();
 		dailyFloorsPanel = sr.getDailyFloorsPanel();
 		dailyStepsPanel = sr.getDailyStepsPanel();
+		
+		lblDailyDistVal = sr.getLblDailyDistVal();
+		lblDailyCaloriesVal = sr.getLblDailyCaloriesVal();
+		lblDailyStepsVal = sr.getLblDailyStepsVal();
+		lblDailyFloorsVal = sr.getLblDailyFloorsVal();
+		lblDailySedenteryMinVal = sr.getLblDailySedenteryMinVal();
+		lblDailyVeryActMinVal = sr.getLblDailyVeryActMinVal();
 	}
 	
 	private void save_settings()
@@ -1163,7 +1170,7 @@ public class InterfaceView {
 		boolean floors = (radioFloors.isSelected());
 		boolean steps = (radioSteps.isSelected());
 		
-		SettingsRecord sr = new SettingsRecord(dist, calories, sedMin, activeMin, floors, steps, panelArray, radioCounter(), dailyCaloriesPanel, dailyTotalDistPanel, dailyActiveMinPanel, dailySedMinPanel, dailyFloorsPanel, dailyStepsPanel);
+		SettingsRecord sr = new SettingsRecord(dist, calories, sedMin, activeMin, floors, steps, panelArray, radioCounter(), dailyCaloriesPanel, dailyTotalDistPanel, dailyActiveMinPanel, dailySedMinPanel, dailyFloorsPanel, dailyStepsPanel,	lblDailyDistVal, lblDailyCaloriesVal, lblDailyStepsVal, lblDailyFloorsVal, lblDailySedenteryMinVal, lblDailyVeryActMinVal);
 		try {
 			wr.writeRecord(sr, "settingsrecord");
 		} catch (Exception e) {

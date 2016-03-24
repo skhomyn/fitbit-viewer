@@ -55,6 +55,7 @@ public class GoalsRecord implements Serializable {
 	 * @return the calories goal
 	 */
 	public double getCaloriesOut() {
+		caloriesOut = Math.floor(caloriesOut * 100) / 100;
 		return caloriesOut;
 	}
 
@@ -66,6 +67,7 @@ public class GoalsRecord implements Serializable {
 	 * @return the distance goal
 	 */
 	public double getDistance() {
+		distance = Math.floor(distance * 100) / 100;
 		return distance;
 	}
 

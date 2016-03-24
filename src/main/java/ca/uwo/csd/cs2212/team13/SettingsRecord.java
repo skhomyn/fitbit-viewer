@@ -23,6 +23,13 @@ public class SettingsRecord implements Serializable {
 	private SPanel dailySedMinPanel;
 	private SPanel dailyFloorsPanel;
 	private SPanel dailyStepsPanel;
+	
+	private SLabel lblDailyDistVal;
+	private SLabel lblDailyCaloriesVal;
+	private SLabel lblDailyStepsVal;
+	private SLabel lblDailyFloorsVal;
+	private SLabel lblDailySedenteryMinVal;
+	private SLabel lblDailyVeryActMinVal;
 
 	/**
 	 * @param radioTotalDist
@@ -39,13 +46,22 @@ public class SettingsRecord implements Serializable {
 	 * @param dailySedMinPanel
 	 * @param dailyFloorsPanel
 	 * @param dailyStepsPanel
+	 * @param lblDailyDistVal
+	 * @param lblDailyCaloriesVal
+	 * @param lblDailyStepsVal
+	 * @param lblDailyFloorsVal
+	 * @param lblDailySedenteryMinVal
+	 * @param lblDailyVeryActMinVal
 	 */
 	public SettingsRecord(boolean radioTotalDist, boolean radioCalories,
 			boolean radioSedMin, boolean radioActiveMin, boolean radioFloors,
 			boolean radioSteps, SPanel[] panelArray, int count,
 			SPanel dailyCaloriesPanel, SPanel dailyTotalDistPanel,
 			SPanel dailyActiveMinPanel, SPanel dailySedMinPanel,
-			SPanel dailyFloorsPanel, SPanel dailyStepsPanel) {
+			SPanel dailyFloorsPanel, SPanel dailyStepsPanel,
+			SLabel lblDailyDistVal, SLabel lblDailyCaloriesVal,
+			SLabel lblDailyStepsVal, SLabel lblDailyFloorsVal,
+			SLabel lblDailySedenteryMinVal, SLabel lblDailyVeryActMinVal) {
 		super();
 		this.radioTotalDist = radioTotalDist;
 		this.radioCalories = radioCalories;
@@ -61,6 +77,96 @@ public class SettingsRecord implements Serializable {
 		this.dailySedMinPanel = dailySedMinPanel;
 		this.dailyFloorsPanel = dailyFloorsPanel;
 		this.dailyStepsPanel = dailyStepsPanel;
+		this.lblDailyDistVal = lblDailyDistVal;
+		this.lblDailyCaloriesVal = lblDailyCaloriesVal;
+		this.lblDailyStepsVal = lblDailyStepsVal;
+		this.lblDailyFloorsVal = lblDailyFloorsVal;
+		this.lblDailySedenteryMinVal = lblDailySedenteryMinVal;
+		this.lblDailyVeryActMinVal = lblDailyVeryActMinVal;
+	}
+
+	/**
+	 * @return the lblDailyDistVal
+	 */
+	public SLabel getLblDailyDistVal() {
+		return lblDailyDistVal;
+	}
+
+	/**
+	 * @param lblDailyDistVal the lblDailyDistVal to set
+	 */
+	public void setLblDailyDistVal(SLabel lblDailyDistVal) {
+		this.lblDailyDistVal = lblDailyDistVal;
+	}
+
+	/**
+	 * @return the lblDailyCaloriesVal
+	 */
+	public SLabel getLblDailyCaloriesVal() {
+		return lblDailyCaloriesVal;
+	}
+
+	/**
+	 * @param lblDailyCaloriesVal the lblDailyCaloriesVal to set
+	 */
+	public void setLblDailyCaloriesVal(SLabel lblDailyCaloriesVal) {
+		this.lblDailyCaloriesVal = lblDailyCaloriesVal;
+	}
+
+	/**
+	 * @return the lblDailyStepsVal
+	 */
+	public SLabel getLblDailyStepsVal() {
+		return lblDailyStepsVal;
+	}
+
+	/**
+	 * @param lblDailyStepsVal the lblDailyStepsVal to set
+	 */
+	public void setLblDailyStepsVal(SLabel lblDailyStepsVal) {
+		this.lblDailyStepsVal = lblDailyStepsVal;
+	}
+
+	/**
+	 * @return the lblDailyFloorsVal
+	 */
+	public SLabel getLblDailyFloorsVal() {
+		return lblDailyFloorsVal;
+	}
+
+	/**
+	 * @param lblDailyFloorsVal the lblDailyFloorsVal to set
+	 */
+	public void setLblDailyFloorsVal(SLabel lblDailyFloorsVal) {
+		this.lblDailyFloorsVal = lblDailyFloorsVal;
+	}
+
+	/**
+	 * @return the lblDailySedenteryMinVal
+	 */
+	public SLabel getLblDailySedenteryMinVal() {
+		return lblDailySedenteryMinVal;
+	}
+
+	/**
+	 * @param lblDailySedenteryMinVal the lblDailySedenteryMinVal to set
+	 */
+	public void setLblDailySedenteryMinVal(SLabel lblDailySedenteryMinVal) {
+		this.lblDailySedenteryMinVal = lblDailySedenteryMinVal;
+	}
+
+	/**
+	 * @return the lblDailyVeryActMinVal
+	 */
+	public SLabel getLblDailyVeryActMinVal() {
+		return lblDailyVeryActMinVal;
+	}
+
+	/**
+	 * @param lblDailyVeryActMinVal the lblDailyVeryActMinVal to set
+	 */
+	public void setLblDailyVeryActMinVal(SLabel lblDailyVeryActMinVal) {
+		this.lblDailyVeryActMinVal = lblDailyVeryActMinVal;
 	}
 
 	/**
