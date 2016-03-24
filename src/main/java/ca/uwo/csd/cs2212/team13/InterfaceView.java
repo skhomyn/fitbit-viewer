@@ -299,8 +299,8 @@ public class InterfaceView {
 		frame.getContentPane().add(MenuBar);
 
 		btnDailyDashboard = new JButton("");
-		btnDailyDashboard.setSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DDselect.png"));
-		btnDailyDashboard.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DailyDashboard.png"));
+		btnDailyDashboard.setSelectedIcon(new ImageIcon("src/main/resources/DDselect.png"));
+		btnDailyDashboard.setIcon(new ImageIcon("src/main/resources/DailyDashboard.png"));
 		btnDailyDashboard.setMargin(new Insets(0, 0, 0, 0));
 		btnDailyDashboard.setMaximumSize(new Dimension(180, 82));
 		btnDailyDashboard.setBorder(null);
@@ -308,48 +308,48 @@ public class InterfaceView {
 		btnDailyDashboard.setSelected(true);
 
 		btnBestDays = new JButton("");
-		btnBestDays.setSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/BestDaysSelect.png"));
-		btnBestDays.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/BestDays.png"));
+		btnBestDays.setSelectedIcon(new ImageIcon("src/main/resources/BestDaysSelect.png"));
+		btnBestDays.setIcon(new ImageIcon("src/main/resources/BestDays.png"));
 		btnBestDays.setMargin(new Insets(0, 0, 0, 0));
 		btnBestDays.setMaximumSize(new Dimension(180, 82));
 		btnBestDays.setBorder(null);
 		MenuBar.add(btnBestDays);
 
 		btnDailyGoals = new JButton("");
-		btnDailyGoals.setSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DailyGoalsSelected.png"));
-		btnDailyGoals.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DailyGoals.png"));
+		btnDailyGoals.setSelectedIcon(new ImageIcon("src/main/resources/DailyGoalsSelected.png"));
+		btnDailyGoals.setIcon(new ImageIcon("src/main/resources/DailyGoals.png"));
 		btnDailyGoals.setMargin(new Insets(0, 0, 0, 0));
 		btnDailyGoals.setMaximumSize(new Dimension(180, 82));
 		btnDailyGoals.setBorder(null);
 		MenuBar.add(btnDailyGoals);
 
 		btnLifetimeTotals = new JButton("");
-		btnLifetimeTotals.setSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/lifetimeTotalsSelect.png"));
-		btnLifetimeTotals.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/lifetime totals.png"));
+		btnLifetimeTotals.setSelectedIcon(new ImageIcon("src/main/resources/lifetimeTotalsSelect.png"));
+		btnLifetimeTotals.setIcon(new ImageIcon("src/main/resources/lifetime totals.png"));
 		btnLifetimeTotals.setMargin(new Insets(0, 0, 0, 0));
 		btnLifetimeTotals.setMaximumSize(new Dimension(180, 82));
 		btnLifetimeTotals.setBorder(null);
 		MenuBar.add(btnLifetimeTotals);
 
 		btnAccolades = new JButton("");
-		btnAccolades.setSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/accoladeSelect.png"));
-		btnAccolades.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/accolades.png"));
+		btnAccolades.setSelectedIcon(new ImageIcon("src/main/resources/accoladeSelect.png"));
+		btnAccolades.setIcon(new ImageIcon("src/main/resources/accolades.png"));
 		btnAccolades.setMargin(new Insets(0, 0, 0, 0));
 		btnAccolades.setMaximumSize(new Dimension(180, 82));
 		btnAccolades.setBorder(null);
 		MenuBar.add(btnAccolades);
 
 		btnTimeSeries = new JButton("");
-		btnTimeSeries.setSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/timeseriesSelected.png"));
+		btnTimeSeries.setSelectedIcon(new ImageIcon("src/main/resources/timeseriesSelected.png"));
 		btnTimeSeries.setMargin(new Insets(0, 0, 0, 0));
-		btnTimeSeries.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/timeseriesbutton.png"));
+		btnTimeSeries.setIcon(new ImageIcon("src/main/resources/timeseriesbutton.png"));
 		btnTimeSeries.setMaximumSize(new Dimension(180, 82));
 		btnTimeSeries.setBorder(null);
 		MenuBar.add(btnTimeSeries);
 
 		btnHeartRateZones = new JButton("");
-		btnHeartRateZones.setSelectedIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/HRZ-select.png"));
-		btnHeartRateZones.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/HRZ.png"));
+		btnHeartRateZones.setSelectedIcon(new ImageIcon("src/main/resources/HRZ-select.png"));
+		btnHeartRateZones.setIcon(new ImageIcon("src/main/resources/HRZ.png"));
 		btnHeartRateZones.setMargin(new Insets(0, 0, 0, 0));
 		btnHeartRateZones.setMaximumSize(new Dimension(180, 82));
 		btnHeartRateZones.setBorder(null);
@@ -1028,7 +1028,7 @@ public class InterfaceView {
 						/////KEEP THIS THO.//////////////////////////////////////////////
 
 						btnRefresh = new JButton("Refresh");
-						btnRefresh.setBounds(617, 10, 91, 29);
+						btnRefresh.setBounds(589, 46, 91, 29);
 						panelDashboardView.add(btnRefresh);
 						repanel(radioCounter());
 						////////////////////////////////////////////////////////////////////
@@ -1045,7 +1045,7 @@ public class InterfaceView {
 						/**
 						 * Background Image Implementation
 						 */
-						JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DDtest.png"));
+						JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/DDtest.png"));
 						lblPic.setBounds(0, 0, 720, 574);
 						panelDashboardView.add(lblPic);
 	}
