@@ -1150,6 +1150,13 @@ public class InterfaceView {
 		dailySedMinPanel = sr.getDailySedMinPanel();
 		dailyFloorsPanel = sr.getDailyFloorsPanel();
 		dailyStepsPanel = sr.getDailyStepsPanel();
+		
+		lblDailyDistVal = sr.getLblDailyDistVal();
+		lblDailyCaloriesVal = sr.getLblDailyCaloriesVal();
+		lblDailyStepsVal = sr.getLblDailyStepsVal();
+		lblDailyFloorsVal = sr.getLblDailyFloorsVal();
+		lblDailySedenteryMinVal = sr.getLblDailySedenteryMinVal();
+		lblDailyVeryActMinVal = sr.getLblDailyVeryActMinVal();
 	}
 	
 	private void save_settings()
@@ -1163,7 +1170,7 @@ public class InterfaceView {
 		boolean floors = (radioFloors.isSelected());
 		boolean steps = (radioSteps.isSelected());
 		
-		SettingsRecord sr = new SettingsRecord(dist, calories, sedMin, activeMin, floors, steps, panelArray, radioCounter(), dailyCaloriesPanel, dailyTotalDistPanel, dailyActiveMinPanel, dailySedMinPanel, dailyFloorsPanel, dailyStepsPanel, 	lblDailyDistVal, lblDailyCaloriesVal, lblDailyStepsVal, lblDailyFloorsVal, lblDailySedenteryMinVal, lblDailyVeryActMinVal);
+		SettingsRecord sr = new SettingsRecord(dist, calories, sedMin, activeMin, floors, steps, panelArray, radioCounter(), dailyCaloriesPanel, dailyTotalDistPanel, dailyActiveMinPanel, dailySedMinPanel, dailyFloorsPanel, dailyStepsPanel,	lblDailyDistVal, lblDailyCaloriesVal, lblDailyStepsVal, lblDailyFloorsVal, lblDailySedenteryMinVal, lblDailyVeryActMinVal);
 		try {
 			wr.writeRecord(sr, "settingsrecord");
 		} catch (Exception e) {
