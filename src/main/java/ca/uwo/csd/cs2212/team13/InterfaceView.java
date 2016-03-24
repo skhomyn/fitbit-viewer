@@ -55,6 +55,10 @@ import org.jfree.ui.RefineryUtilities;
 
 
 
+
+
+
+
 import java.awt.Insets;
 import java.awt.Rectangle;
 
@@ -94,6 +98,10 @@ import java.text.SimpleDateFormat;
 //import org.jdatepicker.constraints;
 
 
+
+
+
+
 import org.jdatepicker.DateModel;
 
 import java.util.Calendar;
@@ -109,6 +117,8 @@ import javax.swing.Icon;
 public class InterfaceView {
 
 	private UtilDateModel dateModel;
+	private CalendarModel modelForDay;
+
 	
 	private JFrame frame;
 
@@ -280,11 +290,20 @@ public class InterfaceView {
 	
 	private ChartPanel chartPanel;
 	
+	/**
+	 * Constraints for calendar
+	 * rc is for interface
+	 * rc_2 is for API calls next/prev
+	 */
+	private RangeConstraint rc;
+	private RangeConstraint rc_2;
+
+
 
 	/**
 	 * JDatePickerImpl object for calendar
 	 */
-	private JDatePickerImpl datePicker;
+	private JDatePickerNew datePicker;
 	private JLabel lblPic_1;
 	private JLabel lblNewLabel_1;
 
@@ -306,6 +325,21 @@ public class InterfaceView {
 	 * prame and panels, then calls other methods for each screen and the menu.
 	 */
 	private void initialize() {
+		
+		Calendar todayPlus = Calendar.getInstance();
+		Calendar todayMinusThreeYear = Calendar.getInstance();
+		todayMinusThreeYear.add(Calendar.YEAR, -3);
+		rc = new RangeConstraint(todayMinusThreeYear, todayPlus);
+		
+		Calendar todayMinusOne = Calendar.getInstance();
+		Calendar todayMinusThreeYearPlusOne = Calendar.getInstance();
+		todayMinusOne.add(Calendar.DATE, -1);
+		todayMinusThreeYearPlusOne.add(Calendar.YEAR, -3);
+		todayMinusThreeYearPlusOne.add(Calendar.DATE, 1);
+		rc_2 = new RangeConstraint(todayMinusThreeYearPlusOne, todayMinusOne);
+
+
+		
 		frame = new JFrame();
 		frame.setMinimumSize(new Dimension(900, 596));
 		frame.setResizable(false);
@@ -1024,6 +1058,9 @@ public class InterfaceView {
 		Date currentDate = new Date();
 		dateModel = new UtilDateModel(currentDate);
 		
+		Calendar calForDay = Calendar.getInstance();
+		modelForDay = new DefaultCalendarModel(calForDay);
+				
 		//utilModel.setDate(2000, 02, 22);
 		//System.out.println(utilModel.getMonth());
 		
@@ -1032,8 +1069,8 @@ public class InterfaceView {
 		properties.put("text.month", "Month");
 		properties.put("text.year", "Year");
 		
-		JDatePanelImpl datePanel = new JDatePanelImpl(dateModel, properties);
-		datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+		JDatePanelNew datePanel = new JDatePanelNew(modelForDay, properties);
+		datePicker = new JDatePickerNew(datePanel, new DateLabelFormatter());
 		datePicker.setBounds(278,107,163,26);
 
 		//RangeConstraint range =  new RangeConstraint();
@@ -2121,7 +2158,8 @@ public class InterfaceView {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setDisplayDate(dateModel.getValue());
+				//setDisplayDate(dateModel.getValue());
+				setDisplayDate(modelForDay.getValueDate());
 			}
 			
 		});
@@ -2144,11 +2182,25 @@ public class InterfaceView {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				int oldDay = modelForDay.getDay();
+				modelForDay.setDay(modelForDay.getDay()-1);
+
+				if (!checkConstraints(modelForDay)) {
+					// rollback
+					modelForDay.setDay(oldDay);
+					System.out.println("noooo! - message from addPreviousDayActions in InterfaceView");
+				}
+				else
+					setDisplayDate(modelForDay.getValueDate());
+
+				/**
 				dateModel.setDay(dateModel.getDay()-1);
 				datePicker.getModel().setDay(datePicker.getModel().getDay());
 				setDisplayDate(dateModel.getValue());
-
-							}
+				 */
+				
+				}
 		});
 		
 		btnPrevDate.addActionListener(changeData);
@@ -2172,19 +2224,54 @@ public class InterfaceView {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(getDateObject().compareTo(new Date()) <= 1) {
 
-					dateModel.setDay(dateModel.getDay()+1);
+				//if(getDateObject().compareTo(new Date()) <= 1) {
+					
+					int oldDay = modelForDay.getDay();
+					modelForDay.setDay(modelForDay.getDay()+1);
+
+					if (!checkConstraints(modelForDay)) {
+						// rollback
+						modelForDay.setDay(oldDay);
+						System.out.println("noooo! - message from addNextDayActions in InterfaceView");
+					}
+					else
+						setDisplayDate(modelForDay.getValueDate());
+
+					/**
+					dateModel.setDay(dateModel.getDay()-1);
 					datePicker.getModel().setDay(datePicker.getModel().getDay());
 					setDisplayDate(dateModel.getValue());
+					 */
 
-				}
-				else System.out.println("noooo! - message from addNextDayActions in InterfaceView");
+				//}
+				//else System.out.println("noooo! - message from addNextDayActions in InterfaceView");
 			}
 			});
 		
 		btnNextDate.addActionListener(changeData);
 	}
+	
+	public boolean checkConstraints(CalendarModel model) {
+
+
+		if (!rc.isValidSelection(model)) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public boolean checkConstraintsMain(CalendarModel model) {
+
+
+		if (!rc_2.isValidSelection(model)) {
+			return false;
+		}
+		
+		return true;
+	}
+	
 	/**
 	 * Attaches an {@code ActionListner} object to the Lifetime Totals menu
 	 * button, which executes
@@ -2605,14 +2692,17 @@ public class InterfaceView {
 	 */
 	public String getStringDate(String incrementFlag){
 		
-		int year = dateModel.getYear();
-		int day = dateModel.getDay();
+		//int year = dateModel.getYear();
+		//int day = dateModel.getDay();
+		int year = modelForDay.getYear();
+		int day = modelForDay.getDay();
 		
 		if(incrementFlag == "previous") day-=1;
 		else if(incrementFlag == "next") day+=1;
 				
 		//convert int (0-11) to int(1-12) for MM
-		int month = dateModel.getMonth();
+		//int month = dateModel.getMonth();
+		int month = modelForDay.getMonth();
 		month+=1;
 		
 		//prefix 0 to single-digit months and days
@@ -2627,6 +2717,10 @@ public class InterfaceView {
 	
 	public Date getDateObject() {
 		return dateModel.getValue();
+	}
+	
+	public CalendarModel getCalendarObject() {
+		return modelForDay;
 	}
 	
 	/**
