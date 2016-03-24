@@ -83,6 +83,8 @@ public class GoalsDeserializer implements JsonDeserializer<GoalsRecord> {
 		goal.setDistance(jsonObject.get("distance").getAsDouble());
 		goal.setFloors(jsonObject.get("floors").getAsInt());
 		goal.setSteps(jsonObject.get("steps").getAsInt());
+		goal.setGoalMet(false);
+		goal.setGoalNotMet(false);
 		return goal;
 	}
 }
