@@ -659,12 +659,18 @@ public class InterfaceView {
 		sixPanel_6.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		sixPanel_6.setBounds(440, 192, 160, 144);
 		SixPanel.add(sixPanel_6);
-		// Add image:
+		sixPanel_6.setLayout(null);
+		
+		
+		// Add images:
 		JLabel lblPic_6 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
 		SixPanel.add(lblPic_6);
 		lblPic_6.setBounds(0, 0, 640, 360);
 		lblPic_6.setOpaque(false);
+		
 
+
+		
 		/**
 		 * Background Image Implementation
 		 */
@@ -1041,6 +1047,8 @@ public class InterfaceView {
 						//panelDashboardView.add(dailyCaloriesPanel);			
 						//panelDashboardView.add(dailyFloorsPanel);			
 						//panelDashboardView.add(dailyStepsPanel);	
+						
+						
 
 						/**
 						 * Background Image Implementation
@@ -2212,15 +2220,37 @@ public class InterfaceView {
 			break;
 		}
 		
+		addImages();
 		save_settings();
 
+	}
+	
+	private void addImages() {
+		JLabel img_1 = new ILabel();
+		JLabel img_2 = new ILabel();
+		JLabel img_3 = new ILabel();
+		JLabel img_4 = new ILabel();
+		JLabel img_5 = new ILabel();
+		JLabel img_6 = new ILabel();
+		
+		sixPanel_1.setLayout(null);
+		sixPanel_1.add(img_1);
+		sixPanel_2.setLayout(null);
+		sixPanel_2.add(img_2);
+		sixPanel_3.setLayout(null);
+		sixPanel_3.add(img_3);
+		sixPanel_4.setLayout(null);
+		sixPanel_4.add(img_4);
+		sixPanel_5.setLayout(null);
+		sixPanel_5.add(img_5);
+		sixPanel_6.add(img_6);
 	}
 
 	/**
 	 * Returns the date selected on the calendar icon as a String.
 	 * @return a String representing the date selected on the calendar.
 	 */
-	public String CalendarToAPI(){
+ 	public String CalendarToAPI(){
 		System.out.println(datePicker.getJFormattedTextField().getText());
 		return datePicker.getJFormattedTextField().getText();
 	}
