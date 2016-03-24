@@ -179,10 +179,16 @@ public class Main {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
-				System.out.println("\n PREV DAY date change:" + view.getStringDate("previous")); //TESTFLAG
+
+				//if(view.getDateObject().compareTo(new Date()) < 0) {
+				if (! view.checkConstraints())
+				{
+					refreshInfo(gson, apiCaller, wr, view.getStringDate("previous"));
+					System.out.println("\n PREV DAY date change:" + view.getStringDate("previous")); //TESTFLAG
+				}
+				else
+					System.out.println("\n nOOOOO!! -- message from view.addPreviousDayActions in Main");
 				
-				refreshInfo(gson, apiCaller, wr, view.getStringDate("previous"));
 			}
 		});
 		
@@ -197,11 +203,12 @@ public class Main {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					
-					if(view.getDateObject().compareTo(new Date()) < 0) {
+					//if(view.getDateObject().compareTo(new Date()) < 0) {
+					if (! view.checkConstraints())
+					{
 						refreshInfo(gson, apiCaller, wr, view.getStringDate("next"));
-						System.out.println("\n NEXT DAY dage change:" + view.getStringDate("next")); //TESTFLAG
+						System.out.println("\n NEXT DAY day change:" + view.getStringDate("next")); //TESTFLAG
 					}
-					
 					else
 						System.out.println("\n nOOOOO!! -- message from view.addNextDayActions in Main");
 		}

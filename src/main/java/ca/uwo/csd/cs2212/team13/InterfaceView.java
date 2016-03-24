@@ -2249,6 +2249,16 @@ public class InterfaceView {
 		return true;
 	}
 	
+	public boolean checkConstraints() {
+
+
+		if (!rc.isValidSelection(modelForDay)) {
+			return false;
+		}
+		
+		return true;
+	}
+	
 	/**
 	 * Attaches an {@code ActionListner} object to the Lifetime Totals menu
 	 * button, which executes
