@@ -195,7 +195,6 @@ public class InterfaceView {
 	private SPanel dailySedMinPanel;
 	private SPanel dailyFloorsPanel;
 	private SPanel dailyStepsPanel;
-
 	private SPanel[] panelArray;
 
 
@@ -203,7 +202,6 @@ public class InterfaceView {
 	 * JDatePickerImpl object for calendar
 	 */
 	private JDatePickerImpl datePicker;
-	private JLabel lblPic_1;
 
 	/**
 	 * Constructor: uses initialize() method
@@ -1048,12 +1046,10 @@ public class InterfaceView {
 		//panelDashboardView.add(dailyFloorsPanel);			
 		//panelDashboardView.add(dailyStepsPanel);	
 
-
-
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/DDtest.png"));
+		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/DDdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelDashboardView.add(lblPic);
 	}
@@ -1108,67 +1104,71 @@ public class InterfaceView {
 
 	}
 
-
 	/**
 	 * This method implements the Best Days screen.
 	 */
 	private void bestDaysView() {
-		JLabel lblBestDays = new JLabel("Best Days");
-		lblBestDays.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBestDays.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblBestDays.setBounds(0, 0, 720, 30);
-		panelBestDaysView.add(lblBestDays);
-
-		JLabel lblDistance = new JLabel("Distance:");
-		lblDistance.setBounds(72, 70, 189, 16);
-		panelBestDaysView.add(lblDistance);
-
-		JLabel lblFloors = new JLabel("Floors:");
-		lblFloors.setBounds(72, 98, 189, 16);
-		panelBestDaysView.add(lblFloors);
-
-		JLabel lblSteps = new JLabel("Steps:");
-		lblSteps.setBounds(72, 126, 189, 16);
-		panelBestDaysView.add(lblSteps);
 
 		lblBestDaysDistVal = new JLabel();
-		lblBestDaysDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblBestDaysDistVal.setBounds(259, 70, 95, 16);
+		lblBestDaysDistVal.setFont(new Font("Dialog", Font.PLAIN, 40));
+		lblBestDaysDistVal.setForeground(Color.WHITE);
+		lblBestDaysDistVal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBestDaysDistVal.setBounds(474, 375, 184, 112);
 		panelBestDaysView.add(lblBestDaysDistVal);
 
 		lblBestDaysDistDate = new JLabel();
-		lblBestDaysDistDate.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblBestDaysDistDate.setBounds(360, 70, 95, 16);
+		lblBestDaysDistDate.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		lblBestDaysDistDate.setForeground(Color.WHITE);
+		lblBestDaysDistDate.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBestDaysDistDate.setBounds(484, 321, 162, 42);
 		panelBestDaysView.add(lblBestDaysDistDate);
 
 		lblBestDaysFloorsVal = new JLabel();
-		lblBestDaysFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblBestDaysFloorsVal.setBounds(259, 98, 95, 16);
+		lblBestDaysFloorsVal.setFont(new Font("Dialog", Font.PLAIN, 40));
+		lblBestDaysFloorsVal.setForeground(Color.WHITE);
+		lblBestDaysFloorsVal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBestDaysFloorsVal.setBounds(268, 375, 184, 112);
 		panelBestDaysView.add(lblBestDaysFloorsVal);
 
 		lblBestDaysFloorsDate = new JLabel();
-		lblBestDaysFloorsDate.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblBestDaysFloorsDate.setBounds(360, 98, 95, 16);
+		lblBestDaysFloorsDate.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		lblBestDaysFloorsDate.setForeground(Color.WHITE);
+		lblBestDaysFloorsDate.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBestDaysFloorsDate.setBounds(280, 321, 162, 42);
 		panelBestDaysView.add(lblBestDaysFloorsDate);
 
 		lblBestDaysStepsVal = new JLabel();
-		lblBestDaysStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblBestDaysStepsVal.setBounds(259, 126, 95, 16);
+		lblBestDaysStepsVal.setFont(new Font("Dialog", Font.PLAIN, 40));
+		lblBestDaysStepsVal.setForeground(Color.WHITE);
+		lblBestDaysStepsVal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBestDaysStepsVal.setBounds(62, 375, 184, 112);
 		panelBestDaysView.add(lblBestDaysStepsVal);
 
 		lblBestDaysStepsDate = new JLabel();
-		lblBestDaysStepsDate.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblBestDaysStepsDate.setBounds(360, 126, 95, 16);
+		lblBestDaysStepsDate.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		lblBestDaysStepsDate.setForeground(Color.WHITE);
+		lblBestDaysStepsDate.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBestDaysStepsDate.setBounds(74, 321, 162, 42);
 		panelBestDaysView.add(lblBestDaysStepsDate);
 
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setForeground(Color.WHITE);
 		lblLastUpdated.setBounds(410, 540, 90, 16);
 		panelBestDaysView.add(lblLastUpdated);
 
 		lblLastUpdatedBd = new JLabel();
+		lblLastUpdatedBd.setForeground(Color.WHITE);
 		lblLastUpdatedBd.setBounds(486, 540, 222, 16);
 		lblLastUpdatedBd.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelBestDaysView.add(lblLastUpdatedBd);
+		
+		/**
+		 * Background Image Implementation
+		 */
+		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/BDdash.png"));
+		lblPic.setBounds(0, 0, 720, 574);
+		panelBestDaysView.add(lblPic);
+	
 	}
 
 	/**
@@ -1251,106 +1251,73 @@ public class InterfaceView {
 	 * This method implements the Lifetime Totals screen.
 	 */
 	private void lifetimeTotalsView() {
-		JLabel lblTitle = new JLabel("Lifetime Totals");
-		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblTitle.setBounds(0, 0, 720, 32);
-		panelLifetimeTotalsView.add(lblTitle);
-
-		JLabel lblDistance = new JLabel("Distance:");
-		lblDistance.setBounds(72, 70, 189, 16);
-		panelLifetimeTotalsView.add(lblDistance);
-
-		JLabel lblFloors = new JLabel("Floors:");
-		lblFloors.setBounds(72, 98, 189, 16);
-		panelLifetimeTotalsView.add(lblFloors);
-
-		JLabel lblSteps = new JLabel("Steps:");
-		lblSteps.setBounds(72, 126, 189, 16);
-		panelLifetimeTotalsView.add(lblSteps);
 
 		lblLifetimeTotalsDistVal = new JLabel();
+		lblLifetimeTotalsDistVal.setForeground(Color.WHITE);
+		lblLifetimeTotalsDistVal.setFont(new Font("Lucida Grande", Font.PLAIN, 48));
 		lblLifetimeTotalsDistVal
-		.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblLifetimeTotalsDistVal.setBounds(260, 70, 95, 16);
+		.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLifetimeTotalsDistVal.setBounds(486, 384, 158, 101);
 		panelLifetimeTotalsView.add(lblLifetimeTotalsDistVal);
 
 		lblLifetimeTotalsFloorsVal = new JLabel();
+		lblLifetimeTotalsFloorsVal.setForeground(Color.WHITE);
+		lblLifetimeTotalsFloorsVal.setFont(new Font("Lucida Grande", Font.PLAIN, 48));
 		lblLifetimeTotalsFloorsVal
-		.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblLifetimeTotalsFloorsVal.setBounds(260, 98, 95, 16);
+		.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLifetimeTotalsFloorsVal.setBounds(278, 384, 167, 101);
 		panelLifetimeTotalsView.add(lblLifetimeTotalsFloorsVal);
 
 		lblLifetimeTotalsStepsVal = new JLabel();
+		lblLifetimeTotalsStepsVal.setForeground(Color.WHITE);
+		lblLifetimeTotalsStepsVal.setFont(new Font("Lucida Grande", Font.PLAIN, 48));
 		lblLifetimeTotalsStepsVal
-		.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblLifetimeTotalsStepsVal.setBounds(260, 126, 95, 16);
+		.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLifetimeTotalsStepsVal.setBounds(71, 384, 167, 101);
 		panelLifetimeTotalsView.add(lblLifetimeTotalsStepsVal);
 
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setForeground(Color.WHITE);
 		lblLastUpdated.setBounds(410, 540, 90, 16);
 		panelLifetimeTotalsView.add(lblLastUpdated);
 
 		lblLastUpdatedLt = new JLabel();
+		lblLastUpdatedLt.setForeground(Color.WHITE);
 		lblLastUpdatedLt.setBounds(486, 540, 222, 16);
 		lblLastUpdatedLt.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelLifetimeTotalsView.add(lblLastUpdatedLt);
 
+		/**
+		 * Background Image Implementation
+		 */
+		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/LTdash.png"));
+		lblPic.setBounds(0, 0, 720, 574);
+		panelLifetimeTotalsView.add(lblPic);
+	
 	}
 
 	/**
 	 * This method implements the Time Series screen.
 	 */
 	private void timeseriesView() {
-		JLabel lblNewLabel = new JLabel("Time Series");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblNewLabel.setBounds(0, 0, 720, 32);
-		panelTimeSeriesView.add(lblNewLabel);
-
-		JToolBar graphTitle = new JToolBar();
-		graphTitle.setFloatable(false);
-		graphTitle.setBounds(128, 44, 235, 20);
-		panelTimeSeriesView.add(graphTitle);
-
-		JButton btnSteps = new JButton("Steps");
-		graphTitle.add(btnSteps);
-
-		JButton btnCalories = new JButton("Calories");
-		graphTitle.add(btnCalories);
-
-		JButton btnDistance = new JButton("Distance");
-		graphTitle.add(btnDistance);
-
-		JButton btnHeartDisance = new JButton("Heart Rate");
-		graphTitle.add(btnHeartDisance);
-
-		JToolBar zoom = new JToolBar();
-		zoom.setFloatable(false);
-		zoom.setBounds(173, 352, 130, 20);
-		panelTimeSeriesView.add(zoom);
-
-		JButton btnZoomIn = new JButton("Zoom In");
-		zoom.add(btnZoomIn);
-
-		JButton btnZoomOut = new JButton("Zoom Out");
-		zoom.add(btnZoomOut);
-
-		JLabel lblGraph = new JLabel("Graph");
-		lblGraph.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblGraph.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGraph.setBackground(new Color(64, 64, 64));
-		lblGraph.setBounds(0, 142, 472, 41);
-		panelTimeSeriesView.add(lblGraph);
 
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setForeground(Color.WHITE);
 		lblLastUpdated.setBounds(410, 540, 90, 16);
 		panelTimeSeriesView.add(lblLastUpdated);
 
 		lblLastUpdatedTS = new JLabel();
+		lblLastUpdatedTS.setForeground(Color.WHITE);
 		lblLastUpdatedTS.setBounds(486, 540, 222, 16);
 		lblLastUpdatedTS.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelTimeSeriesView.add(lblLastUpdatedTS);
+		
+		/**
+		 * Background Image Implementation
+		 */
+		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/TSdash.png"));
+		lblPic.setBounds(0, 0, 720, 574);
+		panelTimeSeriesView.add(lblPic);
 
 	}
 
@@ -1441,83 +1408,62 @@ public class InterfaceView {
 	 * This method implements the Heart Rate Zones screen.
 	 */
 	private void heartratezonesView() {
-		JLabel lblHeartRateZones = new JLabel("Heart Rate Zones");
-		lblHeartRateZones.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHeartRateZones.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblHeartRateZones.setBounds(0, 0, 720, 27);
-		panelHeartrateZonesView.add(lblHeartRateZones);
-
-		JLabel lblHeartRate = new JLabel("Resting Heart Rate: ");
-		lblHeartRate.setBounds(30, 60, 189, 16);
-		panelHeartrateZonesView.add(lblHeartRate);
 
 		lblHeartRest = new JLabel();
-		lblHeartRest.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartRest.setBounds(218, 60, 95, 16);
+		lblHeartRest.setFont(new Font("Lucida Grande", Font.PLAIN, 44));
+		lblHeartRest.setForeground(Color.WHITE);
+		lblHeartRest.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartRest.setBounds(62, 116, 286, 48);
 		panelHeartrateZonesView.add(lblHeartRest);
 
-		JLabel lblNewLabel = new JLabel("Minute Total: ");
-		lblNewLabel.setBounds(30, 88, 133, 16);
-		panelHeartrateZonesView.add(lblNewLabel);
-
 		lblHeartMins = new JLabel();
-		lblHeartMins.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartMins.setBounds(218, 88, 95, 16);
+		lblHeartMins.setFont(new Font("Lucida Grande", Font.PLAIN, 44));
+		lblHeartMins.setForeground(Color.WHITE);
+		lblHeartMins.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartMins.setBounds(372, 116, 286, 48);
 		panelHeartrateZonesView.add(lblHeartMins);
 
-		JLabel lblZoneDescriptions = new JLabel("Zone Descriptions:");
-		lblZoneDescriptions.setHorizontalAlignment(SwingConstants.CENTER);
-		lblZoneDescriptions.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblZoneDescriptions.setBounds(0, 161, 460, 27);
-		panelHeartrateZonesView.add(lblZoneDescriptions);
-
-		/*
-		 * lists what the heart rate 3 zones are
-		 */
-		JLabel lblZone = new JLabel("Zone 1: Cardio Max/Min/Minutes");
-		lblZone.setBounds(30, 200, 228, 16);
-		panelHeartrateZonesView.add(lblZone);
-
 		lblHeartCardioMaxMin = new JLabel();
+		lblHeartCardioMaxMin.setForeground(Color.WHITE);
 		lblHeartCardioMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartCardioMaxMin.setBounds(200, 200, 148, 16);
+		lblHeartCardioMaxMin.setBounds(104, 296, 148, 16);
 		panelHeartrateZonesView.add(lblHeartCardioMaxMin);
 
-		JLabel lblZone_1 = new JLabel("Zone 2: Fat Burn Max/Min/Minutes");
-		lblZone_1.setBounds(30, 228, 228, 16);
-		panelHeartrateZonesView.add(lblZone_1);
-
 		lblHeartFatBurnMaxMin = new JLabel();
+		lblHeartFatBurnMaxMin.setForeground(Color.WHITE);
 		lblHeartFatBurnMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblHeartFatBurnMaxMin.setBounds(200, 228, 148, 16);
 		panelHeartrateZonesView.add(lblHeartFatBurnMaxMin);
 
-		JLabel lblZone_2 = new JLabel("Zone 3: Peak Max/Min/Minutes");
-		lblZone_2.setBounds(30, 256, 228, 16);
-		panelHeartrateZonesView.add(lblZone_2);
-
 		lblHeartPeakMaxMin = new JLabel();
+		lblHeartPeakMaxMin.setForeground(Color.WHITE);
 		lblHeartPeakMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblHeartPeakMaxMin.setBounds(200, 256, 148, 16);
 		panelHeartrateZonesView.add(lblHeartPeakMaxMin);
 
-		JLabel lblZone_3 = new JLabel("Zone 0: Out of Range Max/Min/Minutes");
-		lblZone_3.setBounds(30, 286, 268, 16);
-		panelHeartrateZonesView.add(lblZone_3);
-
 		lblHeartOORMaxMin = new JLabel();
+		lblHeartOORMaxMin.setForeground(Color.WHITE);
 		lblHeartOORMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblHeartOORMaxMin.setBounds(230, 286, 148, 16);
 		panelHeartrateZonesView.add(lblHeartOORMaxMin);
 
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
+		lblLastUpdated.setForeground(Color.WHITE);
 		lblLastUpdated.setBounds(410, 540, 90, 16);
 		panelHeartrateZonesView.add(lblLastUpdated);
 
 		lblLastUpdatedHRZ = new JLabel();
+		lblLastUpdatedHRZ.setForeground(Color.WHITE);
 		lblLastUpdatedHRZ.setBounds(486, 540, 222, 16);
 		lblLastUpdatedHRZ.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelHeartrateZonesView.add(lblLastUpdatedHRZ);
+		
+		/**
+		 * Background Image Implementation
+		 */
+		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/HRZdash.png"));
+		lblPic.setBounds(0, 0, 720, 574);
+		panelHeartrateZonesView.add(lblPic);
 	}
 
 	/**
