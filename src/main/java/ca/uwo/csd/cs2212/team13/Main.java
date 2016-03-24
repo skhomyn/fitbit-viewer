@@ -80,7 +80,7 @@ public class Main {
 		gsonBuilder.registerTypeAdapter(GoalsRecord.class,
 				new GoalsDeserializer());
 
-		// gsonBuilder.setPrettyPrinting();
+		gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
 
 		// Create InterfaceView and set as visible
@@ -99,9 +99,9 @@ public class Main {
 		// test.request("activities.json",
 		// "src/main/resources/cur_totals.json");
 
-		// Read JSON data for heart rate 
+		// Read JSON data for heart rate
 		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
-				.getResourceAsStream("heartrate.json"), "UTF-8")) {
+				.getResourceAsStream("cur_heart_data.json"), "UTF-8")) {
 
 			// Parse JSON to Java
 			final HeartRateRecord hrRecord = gson.fromJson(data,
@@ -113,6 +113,9 @@ public class Main {
 			// Format to JSON
 			// final String json = gson.toJson(hrRecord);
 			// System.out.println(json);
+			// System.out.println(hrRecord);
+		//	final String json = gson.toJson(hrRecord);
+		//	System.out.println(json);
 		}
 
 		// Read the JSON data for daily dashboard and daily goals
@@ -239,7 +242,7 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println("Could not write to file");
 		}
-		
+
 		// Read the JSON data for best days and lifetime totals
 		String aRecord_String = apiCaller.requestJson("activities.json");
 
@@ -266,6 +269,12 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println("Could not write to file");
 		}
+
+		// Format to JSON
+		// final String json = gson.toJson(actRecord);
+		// System.out.println(json);
+		// }
+
 	}
 
 	/**
@@ -326,6 +335,15 @@ public class Main {
 		gsonBuilder.registerTypeAdapter(GoalsRecord.class,
 				new GoalsDeserializer());
 
+		gsonBuilder.registerTypeAdapter(CaloriesTSRecord.class,
+				new CaloriesRecordDeserializer());
+
+		gsonBuilder.registerTypeAdapter(DistanceTSRecord.class,
+				new DistanceRecordDeserializer());
+
+		gsonBuilder.registerTypeAdapter(StepsTSRecord.class,
+				new StepsRecordDeserializer());
+
 		gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
 
@@ -335,7 +353,7 @@ public class Main {
 
 		// Read JSON data for heart rate
 		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
-				.getResourceAsStream("heartrate.json"), "UTF-8")) {
+				.getResourceAsStream("cur_heart_data.json"), "UTF-8")) {
 
 			// Parse JSON to Java
 			final HeartRateRecord hrRecord = gson.fromJson(data,
@@ -345,6 +363,9 @@ public class Main {
 			HRZController hrController = new HRZController(hrRecord, view);
 
 			// Format to JSON
+			// final String json = gson.toJson(hrRecord);
+			// System.out.println(json);
+			// System.out.println(hrRecord);
 		//	final String json = gson.toJson(hrRecord);
 		//	System.out.println(json);
 		}
@@ -392,8 +413,81 @@ public class Main {
 			// Format to JSON
 			// final String json = gson.toJson(actRecord);
 			// System.out.println(json);
+
+			WriterReader wr = new WriterReader();
+
+			AccoladeRecord[] ar = new AccoladeRecord[20];
+			ar = null;
+
+			try {
+				ar = (AccoladeRecord[]) wr
+						.loadRecord("src/main/resources/accoladerecords");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			// Read the JSON data for daily dashboard
+			try (Reader data2 = new InputStreamReader(Main.class
+					.getClassLoader().getResourceAsStream("date.json"), "UTF-8")) {
+
+				// Parse JSON to Java
+				final DailyRecord ddModel = gson.fromJson(data2,
+						DailyRecord.class);
+
+				// Read JSON data for heart rate
+				try (Reader data3 = new InputStreamReader(Main.class.getClassLoader()
+						.getResourceAsStream("cur_heart_data.json"), "UTF-8")) {
+
+					// Parse JSON to Java
+					final HeartRateRecord hrRecord = gson.fromJson(data3,
+							HeartRateRecord.class);
+
+					
+				AccoladeController acController = new AccoladeController(ar,
+						actRecord, ddModel, hrRecord, view);
+				}
+			}
+
 		}
-		
+
+		// Read the JSON data for best days and lifetime totals
+		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
+				.getResourceAsStream("distance.json"), "UTF-8")) {
+			try (Reader data2 = new InputStreamReader(Main.class
+					.getClassLoader().getResourceAsStream("steps.json"),
+					"UTF-8")) {
+				try (Reader data3 = new InputStreamReader(Main.class
+						.getClassLoader().getResourceAsStream("calories.json"),
+						"UTF-8")) {
+					// Read JSON data for heart rate
+					try (Reader data4 = new InputStreamReader(Main.class
+							.getClassLoader().getResourceAsStream(
+									"cur_heart_data.json"), "UTF-8")) {
+
+						// Parse JSON to Java
+						final HeartRateRecord hrRecord = gson.fromJson(data4,
+								HeartRateRecord.class);
+
+						// Parse JSON to Java
+						final DistanceTSRecord dtsRecord = gson.fromJson(data,
+								DistanceTSRecord.class);
+
+						// Parse JSON to Java
+						final StepsTSRecord stsRecord = gson.fromJson(data2,
+								StepsTSRecord.class);
+
+						// Parse JSON to Java
+						final CaloriesTSRecord caRecord = gson.fromJson(data3,
+								CaloriesTSRecord.class);
+
+						// Create Controller for time series
+						TimeSeriesController tsController = new TimeSeriesController(
+								dtsRecord, stsRecord, caRecord, hrRecord, view);
+					}
+				}
+			}
+		}
 		//Last updated label
 		String test = "Not Applicable in Test Mode.    ";
 		view.setLastUpdatedTestMode(test);
