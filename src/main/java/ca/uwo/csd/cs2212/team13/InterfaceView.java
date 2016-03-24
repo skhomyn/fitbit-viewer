@@ -8,6 +8,8 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFormattedTextField.AbstractFormatter;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
@@ -39,13 +41,22 @@ import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import java.util.Date;
+import java.util.Properties;
 import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 
 import java.util.Date;
+import java.text.DateFormat;
+import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
+//import org.jdatepicker.constraints;
+
+import org.jdatepicker.DateModel;
+
+import java.util.Calendar;
 
 
 
@@ -57,6 +68,7 @@ import java.text.SimpleDateFormat;
 
 public class InterfaceView {
 
+	private UtilDateModel dateModel;
 	
 	private JFrame frame;
 
@@ -71,6 +83,12 @@ public class InterfaceView {
 	private JButton btnTimeSeries;
 	private JButton btnHeartRateZones;
 	private JButton btnRefresh;
+	
+	/**
+	 * JButtons for next/previous day on calendar
+	 */
+	private JButton btnPrevDate;
+	private JButton btnNextDate;
 
 	/**
 	 * JPanels for all pages
@@ -874,43 +892,39 @@ public class InterfaceView {
 		 * Calendar implementation
 		 */
 		Date currentDate = new Date();
-		UtilDateModel utilModel = new UtilDateModel(currentDate);
-		JDatePanelImpl datePanel = new JDatePanelImpl(utilModel, null);
-		datePicker = new JDatePickerImpl(datePanel, null);
+		dateModel = new UtilDateModel(currentDate);
+		
+		//utilModel.setDate(2000, 02, 22);
+		//System.out.println(utilModel.getMonth());
+		
+		Properties properties = new Properties();
+		properties.put("text.today", "Today");
+		properties.put("text.month", "Month");
+		properties.put("text.year", "Year");
+		
+		JDatePanelImpl datePanel = new JDatePanelImpl(dateModel, properties);
+		datePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
 		datePicker.setBounds(278,43,163,26);
-		datePicker.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-								//dateToString();
-							}
-						});
+
+		//RangeConstraint range =  new RangeConstraint();
 						
 		panelDashboardView.add(datePicker);
 												
+		//SHORTCUT
 		/**
-		 * "Next Date" button to move the date forward by one day	
+		 * "Previous Date" button moves the date forward by one day on the calendar.
 		 */
-		JButton btnPrevDate = new JButton("Prev");
+		btnPrevDate = new JButton("Prev");
 		btnPrevDate.setBounds(217, 44, 49, 25);
 		panelDashboardView.add(btnPrevDate);
-		btnPrevDate.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-				datePicker.getModel().setDay(datePicker.getModel().getDay()-1);
-				//dateToString();
-			}
-		});
 						
 		/**
-		 * "Previous Date" button to move the date back by one day	
+		 * "Next Date" button moves the date forward by one day on the calendar.	
 		 */
-		JButton btnNextDate = new JButton("Next");
+		btnNextDate = new JButton("Next");
 		btnNextDate.setBounds(453, 44, 49, 25);
 		panelDashboardView.add(btnNextDate);
-		btnNextDate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-					datePicker.getModel().setDay(datePicker.getModel().getDay()+1);
-					//dateToString();
-				}
-			});
+
 						
 													
 						/////////////LOOK AT THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//////////////////
@@ -947,8 +961,6 @@ public class InterfaceView {
 						//panelDashboardView.add(dailyFloorsPanel);			
 						//panelDashboardView.add(dailyStepsPanel);	
 						
-			//meow
-						dateToString();
 	}
 
 	/**
@@ -1666,23 +1678,79 @@ public class InterfaceView {
 	// ActionListeners
 
 	/**
+	 * Attaches an {@code ActionListner} object to the calendar that will trigger
+	 * API calls to change the date of the information displayed across all pages 
+	 * of the application, when the user selects a new date on the calendar.
+	 * 
+	 * @param actionsOnClick 
+	 * 			{@code ActionListener} makes API calls using the selected date and is defined in {@link Main}
+	 */
+	public void addCalendarDateChangeActions(ActionListener changeData) {
+		
+		datePicker.addActionListener(changeData);
+		
+	}
+	
+	/**
+	 * Attaches an {@code ActionListner} object to the "previous" button that will trigger
+	 * API calls to change the date of the information displayed across all pages 
+	 * of the application to the previous day. Also attaches an {@code ActionListener} to 
+	 * change the date displayed on the calendar.
+	 * 
+	 * @param actionsOnClick 
+	 * 			{@code ActionListener} makes API calls using the date previous to the one
+	 * 			currently displayed, and is defined in {@link Main}
+	 */
+	public void addPreviousDayActions(ActionListener changeData) {
+		
+		btnPrevDate.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dateModel.setDay(dateModel.getDay()-1);
+				datePicker.getModel().setDay(datePicker.getModel().getDay());
+
+							}
+		});
+		
+		btnPrevDate.addActionListener(changeData);
+		
+	}
+	
+	/**
+	 * Attaches an {@code ActionListner} object to the "next" button that will trigger
+	 * API calls to change the date of the information displayed across all pages 
+	 * of the application to the previous day.Also attaches an {@code ActionListener} to 
+	 * change the date displayed on the calendar.
+	 * 
+	 * @param actionsOnClick 
+	 * 			{@code ActionListener} makes API calls using the date one day in advance 
+	 * 			of the date currently displayed, and is defined in {@link Main}
+	 */
+	public void addNextDayActions(ActionListener changeData) {
+		
+		btnNextDate.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					dateModel.setDay(dateModel.getDay()+1);
+					datePicker.getModel().setDay(datePicker.getModel().getDay());
+				}
+			});
+		
+		btnNextDate.addActionListener(changeData);
+	}
+	/**
 	 * Attaches an {@code ActionListner} object to the Lifetime Totals menu
 	 * button, which executes
 	 * {@code InterfaceView#setLifetimeTotalsFields(double, int, int)} upon
 	 * button click event.
 	 * 
 	 * @param actionsOnClick
-	 *            ActionListener object defined in {@link LifetimeController}
+	 *            {@code ActionListner} object defined in {@link LifetimeController}
 	 * 
 	 */
 	public void addClickListenerLifetimeTotals(ActionListener actionsOnClick) {
-
-		// the btnLifetimeTotals.addActionListner() call is encapsulated by a
-		// method
-		// so that it can be accessed by the controller;
-		// the controller passes in the clicklistener, which contains the method
-		// that updates the view;
-		// this method gets executed when the controller is initialized
 
 		btnLifetimeTotals.addActionListener(actionsOnClick);
 	}
@@ -1979,32 +2047,60 @@ public class InterfaceView {
 	}
 	
 	/**
-	 * Returns the date selected on the calendar icon as a String.
+	 * Converts the {@code UtilDateModel} object, which represents the date selected
+	 * on the calendar, to a string, and returns the string.
+	 * @param incrementFlag flag to determine if the day field should be incremented or decremented
+	 * 		to reflect in the {@code UtilDateModel} object that date has been changed to the previous
+	 * 		or next day.
 	 * @return a String representing the date selected on the calendar.
 	 */
-	public String dateToString(){
-		System.out.println(datePicker.getJFormattedTextField().getText());
+	public String getStringDate(String incrementFlag){
+		
+		int year = dateModel.getYear();
+		int day = dateModel.getDay();
+		
+		if(incrementFlag == "previous") day-=1;
+		else if(incrementFlag == "next") day+=1;
+				
+		//convert int (0-11) to int(1-12) for MM
+		int month = dateModel.getMonth();
+		month+=1;
+		
+		//prefix 0 to single-digit months and days
+		if (month<=9 && day<=9) return year+"-0"+month+"-0"+day;
+		
+		else if (month<=9)return year+"-0"+month+"-"+day;
+		else if (day<=9) return year+"-"+month+"-0"+day;
+		
+		else return year+"-"+month+"-"+day;
+	}
+	//SHORTCUT
+	
+	/**
+	 * Objects of this inner class format the date to be displayed in the calendar text box.
+	 * A {@DateLabelFormatter} object is required as a parameter in the
+	 * {@code JDatePickerImpl} constructor called in the {@link #dashboardView} method.
+	 *
+	 */
+	class DateLabelFormatter extends AbstractFormatter {
 
-		//parse date string dd-MMM-yyyy into Calendar Object
+	    private String datePattern = "dd-MMM-yyyy";
+	    private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
 
-		SimpleDateFormat formatDate = new SimpleDateFormat();
-		formatDate.applyPattern("dd-MMM-yyyy");
-		try {
-			Date day = formatDate.parse(datePicker.getJFormattedTextField().getText());
-			System.out.println(day.toString());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		//put Calendar Object into a string with correct format
-		
-		
-		
-		//given: 23-Mar-2016
-		//GET https://api.fitbitcom/1/user/[user-id]/activities/date/[date].json
-		//yyyy-MM-dd
-		//To do: limit
-		return null;
+	    @Override
+	    public Object stringToValue(String text) throws ParseException {
+	        return dateFormatter.parseObject(text);
+	    }
+
+	    @Override
+	    public String valueToString(Object value) throws ParseException {
+	        if (value != null) {
+	            Calendar cal = (Calendar) value;
+	            return dateFormatter.format(cal.getTime());
+	        }
+
+	        return "";
+	    }
+
 	}
 }
