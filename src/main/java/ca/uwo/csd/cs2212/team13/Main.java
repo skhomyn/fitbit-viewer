@@ -490,7 +490,7 @@ public class Main {
 		}
 		
 		//set initial value of date labels on date-dependent pages to today
-		view.setDisplayDate(new Date().toString());
+		view.setDisplayDate(new Date());
 		
 		//TESTFLAG
 		//DELETE LATER

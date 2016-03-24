@@ -1821,10 +1821,16 @@ public class InterfaceView {
 	 * indicate which date the current information on the page is from.
 	 * @param date the date of the current data being displayed
 	 */
-	public void setDisplayDate(String date){
-		lblDisplayDateGoals.setText(date);
-		lblDisplayDateHRZ.setText(date);
-		lblDisplayDateTS.setText(date);
+	public void setDisplayDate(Date date){
+		
+	    String datePattern = "MMM dd, yyyy";
+	    SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
+	    
+	    String formattedDate = dateFormatter.format(date);
+		
+		lblDisplayDateGoals.setText(formattedDate);
+		lblDisplayDateHRZ.setText(formattedDate);
+		lblDisplayDateTS.setText(formattedDate);
 	}
 
 	/**
@@ -2115,8 +2121,7 @@ public class InterfaceView {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setDisplayDate(dateModel.getValue().toString());
-				System.out.println("\n \n "+dateModel.getValue().toString());
+				setDisplayDate(dateModel.getValue());
 			}
 			
 		});
@@ -2141,7 +2146,7 @@ public class InterfaceView {
 			public void actionPerformed(ActionEvent e) {
 				dateModel.setDay(dateModel.getDay()-1);
 				datePicker.getModel().setDay(datePicker.getModel().getDay());
-				setDisplayDate(dateModel.getValue().toString());
+				setDisplayDate(dateModel.getValue());
 
 							}
 		});
@@ -2171,7 +2176,7 @@ public class InterfaceView {
 
 					dateModel.setDay(dateModel.getDay()+1);
 					datePicker.getModel().setDay(datePicker.getModel().getDay());
-					setDisplayDate(dateModel.getValue().toString());
+					setDisplayDate(dateModel.getValue());
 
 				}
 				else System.out.println("noooo! - message from addNextDayActions in InterfaceView");
@@ -2634,7 +2639,7 @@ public class InterfaceView {
 
 	    private String datePattern = "dd-MMM-yyyy";
 	    private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
-
+	  
 	    @Override
 	    public Object stringToValue(String text) throws ParseException {
 	        return dateFormatter.parseObject(text);
