@@ -80,7 +80,7 @@ public class Main {
 		gsonBuilder.registerTypeAdapter(GoalsRecord.class,
 				new GoalsDeserializer());
 
-		// gsonBuilder.setPrettyPrinting();
+		gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
 
 		// Create InterfaceView and set as visible
@@ -99,9 +99,9 @@ public class Main {
 		// test.request("activities.json",
 		// "src/main/resources/cur_totals.json");
 
-		// Read JSON data for heart rate 
+		// Read JSON data for heart rate
 		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
-				.getResourceAsStream("heartrate.json"), "UTF-8")) {
+				.getResourceAsStream("cur_heart_data.json"), "UTF-8")) {
 
 			// Parse JSON to Java
 			final HeartRateRecord hrRecord = gson.fromJson(data,
@@ -113,11 +113,14 @@ public class Main {
 			// Format to JSON
 			// final String json = gson.toJson(hrRecord);
 			// System.out.println(json);
+			// System.out.println(hrRecord);
+		//	final String json = gson.toJson(hrRecord);
+		//	System.out.println(json);
 		}
 
 		// Read the JSON data for daily dashboard and daily goals
 
-		refreshInfo(gson, apiCaller, wr);
+		refreshInfo(gson, apiCaller, wr, "today");
 
 		// Create Controller for daily goals
 		DailyDashboardController ddController = new DailyDashboardController(ddModel, view);
@@ -135,21 +138,87 @@ public class Main {
 		LifetimeRecord ltModel = actRecord.getLifetime();
 		LifetimeController ltController = new LifetimeController(ltModel, view);
 				
-		//add action listener to refresh button
+		//add action listener to refresh button, trigger new API calls for current date
+		/**
+		 * {@code ActionListener} object is added to the refresh button. When the refresh
+		 * button is clicked, it triggers new API calls using the current date.
+		 */
 		view.addListenerForRefresh(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				refreshInfo(gson, apiCaller, wr);
+				refreshInfo(gson, apiCaller, wr, "today");
 			}	
 		});
 
+		/**
+		 * {@code ActionListener} object is added to calendar and triggers new API calls
+		 * for the date selected, when the user chooses a new date on the calendar interface.
+		 * Does not allow future dates to be selected.
+		 */
+		view.addCalendarDateChangeActions(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(view.getDateObject().compareTo(new Date()) <= 0) {
+					refreshInfo(gson, apiCaller, wr, view.getStringDate(null));
+					System.out.println("\n CALENDAR date change:" + view.getStringDate(null)); //TESTFLAG
+				}
+
+				else			
+					System.out.println("\n NOOOOOO - message from view.addCalendarDageChangeAction in Main "); //attempt to change date to future date
+			}
+		});
+		
+		/**
+		 * {@code ActionListener} object is added to the "previous" button and triggers new API calls
+		 * for a date one day in the past of the currently displayed date, when the button is clicked.
+		 * The {@link InterfaceView#addPreviousDayActions }method implementation also updates the date 
+		 * displayed on the calendar.
+		 */
+		view.addPreviousDayActions(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				System.out.println("\n PREV DAY date change:" + view.getStringDate("previous")); //TESTFLAG
+				
+				refreshInfo(gson, apiCaller, wr, view.getStringDate("previous"));
+			}
+		});
+		
+		/**
+		 * {@code ActionListener} object is added to "next" button and triggers new API calls
+		 * for a date one day in advance of the currently displayed date, when the button is clicked.
+		 * The {@link InterfaceView#addNextDayActions} method implementation also updates the date 
+		 * displayed on the calendar.
+		 * Does not allow future dates to be selected.
+		 */
+		view.addNextDayActions(new ActionListener() {		
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					if(view.getDateObject().compareTo(new Date()) < 0) {
+						refreshInfo(gson, apiCaller, wr, view.getStringDate("next"));
+						System.out.println("\n NEXT DAY dage change:" + view.getStringDate("next")); //TESTFLAG
+					}
+					
+					else
+						System.out.println("\n nOOOOO!! -- message from view.addNextDayActions in Main");
+		}
+	});
+
 	}
 	
+	//TESTFLAG
+	//given: 23-Mar-2016
+	//GET https://api.fitbitcom/1/user/[user-id]/activities/date/yyyy-MM-dd.json
+	//TESTFLAG
+	//note to self: limit access to >3 years ago
 	
-	public void refreshInfo(Gson gson, APICaller apiCaller, WriterReader wr){
+	public void refreshInfo(Gson gson, APICaller apiCaller, WriterReader wr, String dateStr){
 		
 		//make request for dashboard info
-		String dRecord_String = apiCaller.requestJson("activities/date/today.json");
+		String dRecord_String = apiCaller.requestJson("activities/date/" + dateStr + ".json");
 		// If Null
 		if (dRecord_String == null) {
 			try {
@@ -173,7 +242,7 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println("Could not write to file");
 		}
-		
+
 		// Read the JSON data for best days and lifetime totals
 		String aRecord_String = apiCaller.requestJson("activities.json");
 
@@ -200,6 +269,12 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println("Could not write to file");
 		}
+
+		// Format to JSON
+		// final String json = gson.toJson(actRecord);
+		// System.out.println(json);
+		// }
+
 	}
 
 	/**
@@ -260,16 +335,25 @@ public class Main {
 		gsonBuilder.registerTypeAdapter(GoalsRecord.class,
 				new GoalsDeserializer());
 
+		gsonBuilder.registerTypeAdapter(CaloriesTSRecord.class,
+				new CaloriesRecordDeserializer());
+
+		gsonBuilder.registerTypeAdapter(DistanceTSRecord.class,
+				new DistanceRecordDeserializer());
+
+		gsonBuilder.registerTypeAdapter(StepsTSRecord.class,
+				new StepsRecordDeserializer());
+
 		gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
 
 		// Create InterfaceView and set as visible
-		InterfaceView view = new InterfaceView();
+		final InterfaceView view = new InterfaceView();
 		view.setVisible(view);
 
 		// Read JSON data for heart rate
 		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
-				.getResourceAsStream("heartrate.json"), "UTF-8")) {
+				.getResourceAsStream("cur_heart_data.json"), "UTF-8")) {
 
 			// Parse JSON to Java
 			final HeartRateRecord hrRecord = gson.fromJson(data,
@@ -279,6 +363,9 @@ public class Main {
 			HRZController hrController = new HRZController(hrRecord, view);
 
 			// Format to JSON
+			// final String json = gson.toJson(hrRecord);
+			// System.out.println(json);
+			// System.out.println(hrRecord);
 		//	final String json = gson.toJson(hrRecord);
 		//	System.out.println(json);
 		}
@@ -326,10 +413,134 @@ public class Main {
 			// Format to JSON
 			// final String json = gson.toJson(actRecord);
 			// System.out.println(json);
+
+			WriterReader wr = new WriterReader();
+
+			AccoladeRecord[] ar = new AccoladeRecord[20];
+			ar = null;
+
+			try {
+				ar = (AccoladeRecord[]) wr
+						.loadRecord("src/main/resources/accoladerecords");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			// Read the JSON data for daily dashboard
+			try (Reader data2 = new InputStreamReader(Main.class
+					.getClassLoader().getResourceAsStream("date.json"), "UTF-8")) {
+
+				// Parse JSON to Java
+				final DailyRecord ddModel = gson.fromJson(data2,
+						DailyRecord.class);
+
+				// Read JSON data for heart rate
+				try (Reader data3 = new InputStreamReader(Main.class.getClassLoader()
+						.getResourceAsStream("cur_heart_data.json"), "UTF-8")) {
+
+					// Parse JSON to Java
+					final HeartRateRecord hrRecord = gson.fromJson(data3,
+							HeartRateRecord.class);
+
+					
+				AccoladeController acController = new AccoladeController(ar,
+						actRecord, ddModel, hrRecord, view);
+				}
+			}
+
+		}
+
+		// Read the JSON data for best days and lifetime totals
+		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
+				.getResourceAsStream("distance.json"), "UTF-8")) {
+			try (Reader data2 = new InputStreamReader(Main.class
+					.getClassLoader().getResourceAsStream("steps.json"),
+					"UTF-8")) {
+				try (Reader data3 = new InputStreamReader(Main.class
+						.getClassLoader().getResourceAsStream("calories.json"),
+						"UTF-8")) {
+					// Read JSON data for heart rate
+					try (Reader data4 = new InputStreamReader(Main.class
+							.getClassLoader().getResourceAsStream(
+									"cur_heart_data.json"), "UTF-8")) {
+
+						// Parse JSON to Java
+						final HeartRateRecord hrRecord = gson.fromJson(data4,
+								HeartRateRecord.class);
+
+						// Parse JSON to Java
+						final DistanceTSRecord dtsRecord = gson.fromJson(data,
+								DistanceTSRecord.class);
+
+						// Parse JSON to Java
+						final StepsTSRecord stsRecord = gson.fromJson(data2,
+								StepsTSRecord.class);
+
+						// Parse JSON to Java
+						final CaloriesTSRecord caRecord = gson.fromJson(data3,
+								CaloriesTSRecord.class);
+
+						// Create Controller for time series
+						TimeSeriesController tsController = new TimeSeriesController(
+								dtsRecord, stsRecord, caRecord, hrRecord, view);
+					}
+				}
+			}
 		}
 		
+		//set initial value of date labels on date-dependent pages to today
+		view.setDisplayDate(new Date());
+		
+		//TESTFLAG
+		//DELETE LATER
+		view.addCalendarDateChangeActions(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//do nothing				
+			}});
+			
+		
+		
+		/**
+		 * {@code ActionListener} object is added to the refresh button. When the refresh
+		 * button is clicked, it triggers new API calls using the current date.
+		 */
+		view.addListenerForRefresh(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String test = "Refresh unavailable in test mode.";
+				view.setLastUpdatedTestMode(test);
+			}	
+		});
+
+		/**
+		 * The {@link InterfaceView#addPreviousDayActions} method implementation updates the date 
+		 * displayed on the calendar.
+		 */
+		view.addPreviousDayActions(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//do nothing here in test mode			
+			}
+		});
+		
+		/**
+		 * The {@link InterfaceView#addNextDayActions} method implementation updates the date 
+		 * displayed on the calendar.
+		 * Does not allow future dates to be selected.
+		 */
+		view.addNextDayActions(new ActionListener() {		
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					//do nothing here in test mode
+		}
+	});
+		
 		//Last updated label
-		String test = "Not Applicable in Test Mode.    ";
+		String test = "Not applicable in test mode.    ";
 		view.setLastUpdatedTestMode(test);
 	}
 }
