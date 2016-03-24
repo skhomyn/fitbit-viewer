@@ -117,7 +117,7 @@ public class Main {
 
 		// Read the JSON data for daily dashboard and daily goals
 
-		refreshInfo(gson, apiCaller, wr);
+		refreshInfo(gson, apiCaller, wr, "today");
 
 		// Create Controller for daily goals
 		DailyDashboardController ddController = new DailyDashboardController(ddModel, view);
@@ -135,21 +135,83 @@ public class Main {
 		LifetimeRecord ltModel = actRecord.getLifetime();
 		LifetimeController ltController = new LifetimeController(ltModel, view);
 				
-		//add action listener to refresh button
+		//add action listener to refresh button, trigger new API calls for current date
+		/**
+		 * {@code ActionListener} object is added to the refresh button. When the refresh
+		 * button is clicked, it triggers new API calls using the current date.
+		 */
 		view.addListenerForRefresh(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				refreshInfo(gson, apiCaller, wr);
+				refreshInfo(gson, apiCaller, wr, "today");
 			}	
 		});
 
+		/**
+		 * {@code ActionListener} object is added to calendar and triggers new API calls
+		 * for the date selected, when the user chooses a new date on the calendar interface.
+		 * Does not allow future dates to be selected.
+		 */
+		view.addCalendarDateChangeActions(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(view.getDateObject().compareTo(new Date()) <= 0) {
+					refreshInfo(gson, apiCaller, wr, view.getStringDate(null));
+					System.out.println("\n CALENDAR date change:" + view.getStringDate(null)); //TESTFLAG
+				}
+
+				else			
+					System.out.println("\n NOOOOOO - message from view.addCalendarDageChangeAction in Main "); //attempt to change date to future date
+			}
+		});
+		
+		/**
+		 * {@code ActionListener} object is added to the "previous" button and triggers new API calls
+		 * for a date one day in the past of the currently displayed date, when the button is clicked.
+		 */
+		view.addPreviousDayActions(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				System.out.println("\n PREV DAY date change:" + view.getStringDate("previous")); //TESTFLAG
+				
+				refreshInfo(gson, apiCaller, wr, view.getStringDate("previous"));
+			}
+		});
+		
+		/**
+		 * {@code ActionListener} object is added to "next" button and triggers new API calls
+		 * for a date one day in advance of the currently displayed date, when the button is clicked.
+		 * Does not allow future dates to be selected.
+		 */
+		view.addNextDayActions(new ActionListener() {		
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					if(view.getDateObject().compareTo(new Date()) < 0) {
+						refreshInfo(gson, apiCaller, wr, view.getStringDate("next"));
+						System.out.println("\n NEXT DAY dage change:" + view.getStringDate("next")); //TESTFLAG
+					}
+					
+					else
+						System.out.println("\n nOOOOO!! -- message from view.addNextDayActions in Main");
+		}
+	});
+
 	}
 	
+	//TESTFLAG
+	//given: 23-Mar-2016
+	//GET https://api.fitbitcom/1/user/[user-id]/activities/date/yyyy-MM-dd.json
+	//TESTFLAG
+	//note to self: limit access to >3 years ago
 	
-	public void refreshInfo(Gson gson, APICaller apiCaller, WriterReader wr){
+	public void refreshInfo(Gson gson, APICaller apiCaller, WriterReader wr, String dateStr){
 		
 		//make request for dashboard info
-		String dRecord_String = apiCaller.requestJson("activities/date/today.json");
+		String dRecord_String = apiCaller.requestJson("activities/date/" + dateStr + ".json");
 		// If Null
 		if (dRecord_String == null) {
 			try {
@@ -165,7 +227,11 @@ public class Main {
 			//Last Updated label
 			Date now = new Date();
 			String apiCallDate = now.toString();
-			view.setLastUpdatedDash(apiCallDate);
+			
+			//TESTFLAG
+			view.setLastUpdatedDash(dateStr);
+			//view.setLastUpdatedDash(apiCallDate);
+			
 			view.setLastUpdatedGoals(apiCallDate);
 		}
 		try {
