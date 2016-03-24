@@ -299,13 +299,10 @@ public class InterfaceView {
 	private RangeConstraint rc;
 	private RangeConstraint rc_2;
 
-
 	/**
 	 * JDatePickerImpl object for calendar
 	 */
-
 	private JDatePickerNew datePicker;
-
 	private JLabel lblPic_1;
 	private JLabel lblNewLabel_1;
 
