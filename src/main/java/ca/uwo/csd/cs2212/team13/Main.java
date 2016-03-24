@@ -159,13 +159,16 @@ public class Main {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(view.getDateObject().compareTo(new Date()) <= 0) {
+				if (!view.checkConstraints(view.getCalendarObject())) {
+					System.out.println("\n NOOOOOO - message from view.addCalendarDageChangeAction in Main "); //attempt to change date to future date
+
+				}
+				else
+				{
 					refreshInfo(gson, apiCaller, wr, view.getStringDate(null));
 					System.out.println("\n CALENDAR date change:" + view.getStringDate(null)); //TESTFLAG
 				}
-
-				else			
-					System.out.println("\n NOOOOOO - message from view.addCalendarDageChangeAction in Main "); //attempt to change date to future date
+		
 			}
 		});
 		
@@ -179,10 +182,17 @@ public class Main {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
-				System.out.println("\n PREV DAY date change:" + view.getStringDate("previous")); //TESTFLAG
 				
-				refreshInfo(gson, apiCaller, wr, view.getStringDate("previous"));
+				if (!view.checkConstraintsMain(view.getCalendarObject())) {
+					// rollback
+					//view.getCalendarObject().setDay(oldDay);
+					System.out.println("noooo! - message from addPreviousDayActions in Main");
+				}
+				else
+				{
+					refreshInfo(gson, apiCaller, wr, view.getStringDate("previous"));
+					System.out.println("\n PREV DAY date change:" + view.getStringDate("previous"));
+				}
 			}
 		});
 		
@@ -196,15 +206,17 @@ public class Main {
 		view.addNextDayActions(new ActionListener() {		
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					
-					if(view.getDateObject().compareTo(new Date()) < 0) {
-						refreshInfo(gson, apiCaller, wr, view.getStringDate("next"));
-						System.out.println("\n NEXT DAY dage change:" + view.getStringDate("next")); //TESTFLAG
+
+					if (!view.checkConstraintsMain(view.getCalendarObject())) {
+						// rollback
+						System.out.println("noooo! - message from addNextDayActions in Main");
 					}
-					
 					else
-						System.out.println("\n nOOOOO!! -- message from view.addNextDayActions in Main");
-		}
+					{
+						refreshInfo(gson, apiCaller, wr, view.getStringDate("next"));
+						System.out.println("\n NEXT DAY day change:" + view.getStringDate("next")); //TESTFLAG
+					}
+				}
 	});
 
 	}
