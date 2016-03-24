@@ -1,5 +1,9 @@
 # How to Run Team 13's Prototype
 
+Team 13 has developed a user-friendly and innovative new application that receives Fitbit data. The user can use this application for tracking statistics, reviewing accolades and monitoring their goals.
+
+This application has been developed for Mac OS X.
+
 First, we need to generate an ssh key. In Git Bash or Terminal, type: 
 
 "ssh-keygen -t rsa -b 4096" 
