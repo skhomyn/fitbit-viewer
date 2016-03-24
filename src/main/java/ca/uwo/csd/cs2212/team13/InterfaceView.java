@@ -195,9 +195,9 @@ public class InterfaceView {
 	private SPanel dailySedMinPanel;
 	private SPanel dailyFloorsPanel;
 	private SPanel dailyStepsPanel;
-	
+
 	private SPanel[] panelArray;
-	
+
 
 	/**
 	 * JDatePickerImpl object for calendar
@@ -612,7 +612,7 @@ public class InterfaceView {
 		fivePanel_5.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		fivePanel_5.setBounds(374, 192, 160, 144);
 		FivePanel.add(fivePanel_5);
-		
+
 		// Add image:
 		JLabel lblPic_5 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
 		FivePanel.add(lblPic_5);
@@ -660,17 +660,17 @@ public class InterfaceView {
 		sixPanel_6.setBounds(440, 192, 160, 144);
 		SixPanel.add(sixPanel_6);
 		sixPanel_6.setLayout(null);
-		
-		
-		// Add images:
+
+
+		// Add image:
 		JLabel lblPic_6 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
 		SixPanel.add(lblPic_6);
 		lblPic_6.setBounds(0, 0, 640, 360);
 		lblPic_6.setOpaque(false);
-		
 
 
-		
+
+
 		/**
 		 * Background Image Implementation
 		 */
@@ -710,7 +710,7 @@ public class InterfaceView {
 				if(radioCounter()==0){
 					radioFloors.setSelected(true);
 				}
-				
+
 				else if (radioFloors.isSelected()){	
 					if(panelArray[radioCounter()-1]!=dailyFloorsPanel){
 						int position = 0;
@@ -725,7 +725,7 @@ public class InterfaceView {
 					}
 					repanel(radioCounter());
 				}
-				
+
 				else{
 					while(panelArray[radioCounter()]!=dailyFloorsPanel){
 						int position = 0;
@@ -742,202 +742,202 @@ public class InterfaceView {
 				}
 			}
 		});
-		
+
 		radioSteps = new JRadioButton("Steps");
 		mnNewMenu.add(radioSteps);
 		radioSteps.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			if(radioCounter()==0){
-				radioSteps.setSelected(true);
-			}
-			
-			else if (radioSteps.isSelected()){	
-				if(panelArray[radioCounter()-1]!=dailyStepsPanel){
-					int position = 0;
-					for(int x=radioCounter(); x<6; x++){
-						if (panelArray[x]==dailyStepsPanel){
-							position = x;
-						}
-					}
-					SPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = (SPanel) dailyStepsPanel;
-					panelArray[position] = switcheyPanel;
+				if(radioCounter()==0){
+					radioSteps.setSelected(true);
 				}
-				repanel(radioCounter());
-			}
-			
-			else{
-				while(panelArray[radioCounter()]!=dailyStepsPanel){
-					int position = 0;
-					for(int x=0; x<radioCounter(); x++){
-						if (panelArray[x]==dailyStepsPanel){
-							position = x;
+
+				else if (radioSteps.isSelected()){	
+					if(panelArray[radioCounter()-1]!=dailyStepsPanel){
+						int position = 0;
+						for(int x=radioCounter(); x<6; x++){
+							if (panelArray[x]==dailyStepsPanel){
+								position = x;
+							}
 						}
+						SPanel switcheyPanel = panelArray[radioCounter()-1];
+						panelArray[radioCounter()-1] = (SPanel) dailyStepsPanel;
+						panelArray[position] = switcheyPanel;
 					}
-					SPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = (SPanel) dailyStepsPanel;
-					panelArray[position] = switcheyPanel;
+					repanel(radioCounter());
 				}
-				repanel(radioCounter());
+
+				else{
+					while(panelArray[radioCounter()]!=dailyStepsPanel){
+						int position = 0;
+						for(int x=0; x<radioCounter(); x++){
+							if (panelArray[x]==dailyStepsPanel){
+								position = x;
+							}
+						}
+						SPanel switcheyPanel = panelArray[position+1];
+						panelArray[position+1] = (SPanel) dailyStepsPanel;
+						panelArray[position] = switcheyPanel;
+					}
+					repanel(radioCounter());
+				}
 			}
-		}
-	});
-		
+		});
+
 		radioCalories.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("WOW");
-				
-			if(radioCounter()==0){
-				radioCalories.setSelected(true);
-			}
-			
-			else if (radioCalories.isSelected()){	
-				if(panelArray[radioCounter()-1]!=dailyCaloriesPanel){
-					int position = 0;
-					for(int x=radioCounter(); x<6; x++){
-						if (panelArray[x]==dailyCaloriesPanel){
-							position = x;
-						}
-					}
-					SPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = (SPanel) dailyCaloriesPanel;
-					panelArray[position] = switcheyPanel;
+
+				if(radioCounter()==0){
+					radioCalories.setSelected(true);
 				}
-				repanel(radioCounter());
-			}
-			
-			else{
-				while(panelArray[radioCounter()]!=dailyCaloriesPanel){
-					int position = 0;
-					for(int x=0; x<radioCounter(); x++){
-						if (panelArray[x]==dailyCaloriesPanel){
-							position = x;
+
+				else if (radioCalories.isSelected()){	
+					if(panelArray[radioCounter()-1]!=dailyCaloriesPanel){
+						int position = 0;
+						for(int x=radioCounter(); x<6; x++){
+							if (panelArray[x]==dailyCaloriesPanel){
+								position = x;
+							}
 						}
+						SPanel switcheyPanel = panelArray[radioCounter()-1];
+						panelArray[radioCounter()-1] = (SPanel) dailyCaloriesPanel;
+						panelArray[position] = switcheyPanel;
 					}
-					SPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = (SPanel) dailyCaloriesPanel;
-					panelArray[position] = switcheyPanel;
+					repanel(radioCounter());
 				}
-				repanel(radioCounter());
+
+				else{
+					while(panelArray[radioCounter()]!=dailyCaloriesPanel){
+						int position = 0;
+						for(int x=0; x<radioCounter(); x++){
+							if (panelArray[x]==dailyCaloriesPanel){
+								position = x;
+							}
+						}
+						SPanel switcheyPanel = panelArray[position+1];
+						panelArray[position+1] = (SPanel) dailyCaloriesPanel;
+						panelArray[position] = switcheyPanel;
+					}
+					repanel(radioCounter());
+				}
 			}
-		}
-	});
+		});
 		radioTotalDist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			if(radioCounter()==0){
-				radioTotalDist.setSelected(true);
-			}
-			
-			else if (radioTotalDist.isSelected()){	
-				if(panelArray[radioCounter()-1]!=dailyTotalDistPanel){
-					int position = 0;
-					for(int x=radioCounter(); x<6; x++){
-						if (panelArray[x]==dailyTotalDistPanel){
-							position = x;
-						}
-					}
-					SPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = (SPanel) dailyTotalDistPanel;
-					panelArray[position] = switcheyPanel;
+				if(radioCounter()==0){
+					radioTotalDist.setSelected(true);
 				}
-				repanel(radioCounter());
-			}
-			
-			else{
-				while(panelArray[radioCounter()]!=dailyTotalDistPanel){
-					int position = 0;
-					for(int x=0; x<radioCounter(); x++){
-						if (panelArray[x]==dailyTotalDistPanel){
-							position = x;
+
+				else if (radioTotalDist.isSelected()){	
+					if(panelArray[radioCounter()-1]!=dailyTotalDistPanel){
+						int position = 0;
+						for(int x=radioCounter(); x<6; x++){
+							if (panelArray[x]==dailyTotalDistPanel){
+								position = x;
+							}
 						}
+						SPanel switcheyPanel = panelArray[radioCounter()-1];
+						panelArray[radioCounter()-1] = (SPanel) dailyTotalDistPanel;
+						panelArray[position] = switcheyPanel;
 					}
-					SPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = (SPanel) dailyTotalDistPanel;
-					panelArray[position] = switcheyPanel;
+					repanel(radioCounter());
 				}
-				repanel(radioCounter());
+
+				else{
+					while(panelArray[radioCounter()]!=dailyTotalDistPanel){
+						int position = 0;
+						for(int x=0; x<radioCounter(); x++){
+							if (panelArray[x]==dailyTotalDistPanel){
+								position = x;
+							}
+						}
+						SPanel switcheyPanel = panelArray[position+1];
+						panelArray[position+1] = (SPanel) dailyTotalDistPanel;
+						panelArray[position] = switcheyPanel;
+					}
+					repanel(radioCounter());
+				}
 			}
-		}
-	});
-		
-		
+		});
+
+
 		radioSedMin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			if(radioCounter()==0){
-				radioSedMin.setSelected(true);
-			}
-			
-			else if (radioSedMin.isSelected()){	
-				if(panelArray[radioCounter()-1]!=dailySedMinPanel){
-					int position = 0;
-					for(int x=radioCounter(); x<6; x++){
-						if (panelArray[x]==dailySedMinPanel){
-							position = x;
-						}
-					}
-					SPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = (SPanel) dailySedMinPanel;
-					panelArray[position] = switcheyPanel;
+				if(radioCounter()==0){
+					radioSedMin.setSelected(true);
 				}
-				repanel(radioCounter());
-			}
-			
-			else{
-				while(panelArray[radioCounter()]!=dailySedMinPanel){
-					int position = 0;
-					for(int x=0; x<radioCounter(); x++){
-						if (panelArray[x]==dailySedMinPanel){
-							position = x;
+
+				else if (radioSedMin.isSelected()){	
+					if(panelArray[radioCounter()-1]!=dailySedMinPanel){
+						int position = 0;
+						for(int x=radioCounter(); x<6; x++){
+							if (panelArray[x]==dailySedMinPanel){
+								position = x;
+							}
 						}
+						SPanel switcheyPanel = panelArray[radioCounter()-1];
+						panelArray[radioCounter()-1] = (SPanel) dailySedMinPanel;
+						panelArray[position] = switcheyPanel;
 					}
-					SPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = (SPanel) dailySedMinPanel;
-					panelArray[position] = switcheyPanel;
+					repanel(radioCounter());
 				}
-				repanel(radioCounter());
+
+				else{
+					while(panelArray[radioCounter()]!=dailySedMinPanel){
+						int position = 0;
+						for(int x=0; x<radioCounter(); x++){
+							if (panelArray[x]==dailySedMinPanel){
+								position = x;
+							}
+						}
+						SPanel switcheyPanel = panelArray[position+1];
+						panelArray[position+1] = (SPanel) dailySedMinPanel;
+						panelArray[position] = switcheyPanel;
+					}
+					repanel(radioCounter());
+				}
 			}
-		}
-	});
-		
+		});
+
 		radioActiveMin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			if(radioCounter()==0){
-				radioActiveMin.setSelected(true);
-			}
-			
-			else if (radioActiveMin.isSelected()){	
-				if(panelArray[radioCounter()-1]!=dailyActiveMinPanel){
-					int position = 0;
-					for(int x=radioCounter(); x<6; x++){
-						if (panelArray[x]==dailyActiveMinPanel){
-							position = x;
-						}
-					}
-					SPanel switcheyPanel = panelArray[radioCounter()-1];
-					panelArray[radioCounter()-1] = (SPanel) dailyActiveMinPanel;
-					panelArray[position] = switcheyPanel;
+				if(radioCounter()==0){
+					radioActiveMin.setSelected(true);
 				}
-				repanel(radioCounter());
-			}
-			
-			else{
-				System.out.println("WAHWAHWAH\n");
-				while(panelArray[radioCounter()]!=dailyActiveMinPanel){
-					int position = 0;
-					for(int x=0; x<radioCounter(); x++){
-						if (panelArray[x]==dailyActiveMinPanel){
-							position = x;
+
+				else if (radioActiveMin.isSelected()){	
+					if(panelArray[radioCounter()-1]!=dailyActiveMinPanel){
+						int position = 0;
+						for(int x=radioCounter(); x<6; x++){
+							if (panelArray[x]==dailyActiveMinPanel){
+								position = x;
+							}
 						}
+						SPanel switcheyPanel = panelArray[radioCounter()-1];
+						panelArray[radioCounter()-1] = (SPanel) dailyActiveMinPanel;
+						panelArray[position] = switcheyPanel;
 					}
-					System.out.println(position +"\n");
-					SPanel switcheyPanel = panelArray[position+1];
-					panelArray[position+1] = (SPanel) dailyActiveMinPanel;
-					panelArray[position] = switcheyPanel;
+					repanel(radioCounter());
 				}
-				repanel(radioCounter());
+
+				else{
+					System.out.println("WAHWAHWAH\n");
+					while(panelArray[radioCounter()]!=dailyActiveMinPanel){
+						int position = 0;
+						for(int x=0; x<radioCounter(); x++){
+							if (panelArray[x]==dailyActiveMinPanel){
+								position = x;
+							}
+						}
+						System.out.println(position +"\n");
+						SPanel switcheyPanel = panelArray[position+1];
+						panelArray[position+1] = (SPanel) dailyActiveMinPanel;
+						panelArray[position] = switcheyPanel;
+					}
+					repanel(radioCounter());
+				}
 			}
-		}
-	});
+		});
 
 
 		/**
@@ -982,15 +982,15 @@ public class InterfaceView {
 				datePicker.getModel().setDay(datePicker.getModel().getDay()+1);
 				CalendarToAPI();
 
-				}
-			});
-						
-													
-						/////////////LOOK AT THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//////////////////
-						
-						/////THIS NEEDS TO BE REPLACED WITH THE ARRAY WHICH IS PASSED IN/////////
-		
-						/**
+			}
+		});
+
+
+		/////////////LOOK AT THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//////////////////
+
+		/////THIS NEEDS TO BE REPLACED WITH THE ARRAY WHICH IS PASSED IN/////////
+
+		/**
 						panelArray = new SPanel[6];
 						panelArray[0]=dailyActiveMinPanel;
 						panelArray[1]=dailyCaloriesPanel;
@@ -998,69 +998,69 @@ public class InterfaceView {
 						panelArray[3]=dailyFloorsPanel;
 						panelArray[4]=dailyStepsPanel;
 						panelArray[5]=dailyTotalDistPanel;
-						*/
-						////////////////////////////////////////////////////////////////
-						/////ALSO MAKE SURE TO SET THE APPROPRIATE RADIOBUTTONS//////////
-						
-						
-						
-						SettingsRecord sr = null;
+		 */
+		////////////////////////////////////////////////////////////////
+		/////ALSO MAKE SURE TO SET THE APPROPRIATE RADIOBUTTONS//////////
 
-						WriterReader wr = new WriterReader();
-						try {
-							System.out.println("Reading in SettingsRecord from File\n");
-							sr = (SettingsRecord) wr
-									.loadRecord("src/main/resources/settingsrecord");		
-							load_settings(sr);
-						} catch (Exception e) {
-							System.out.println("Could not read SettingsRecord from File");
 
-							panelArray = new SPanel[6];
-							panelArray[0]=dailyActiveMinPanel;
-							panelArray[1]=dailyCaloriesPanel;
-							panelArray[2]=dailySedMinPanel;
-							panelArray[3]=dailyFloorsPanel;
-							panelArray[4]=dailyStepsPanel;
-							panelArray[5]=dailyTotalDistPanel;
-							
-							radioCalories.setSelected(true);
-							radioActiveMin.setSelected(true);
-						}
-							
-						//radioCalories.setSelected(true);
-						//radioActiveMin.setSelected(true);
 
-						/////////////////////////////////////////////////////////////////
-						/////KEEP THIS THO.//////////////////////////////////////////////
+		SettingsRecord sr = null;
 
-						btnRefresh = new JButton("Refresh");
-						btnRefresh.setBounds(589, 46, 91, 29);
-						panelDashboardView.add(btnRefresh);
-						repanel(radioCounter());
-						////////////////////////////////////////////////////////////////////
-						
-						///Uncomment to see and change added panels in window builder.////////////////
-						
-						//panelDashboardView.add(dailyTotalDistPanel);
-						//panelDashboardView.add(dailyActiveMinPanel);		
-						//panelDashboardView.add(dailySedMinPanel);			
-						//panelDashboardView.add(dailyCaloriesPanel);			
-						//panelDashboardView.add(dailyFloorsPanel);			
-						//panelDashboardView.add(dailyStepsPanel);	
-						
-						
+		WriterReader wr = new WriterReader();
+		try {
+			System.out.println("Reading in SettingsRecord from File\n");
+			sr = (SettingsRecord) wr
+					.loadRecord("src/main/resources/settingsrecord");		
+			load_settings(sr);
+		} catch (Exception e) {
+			System.out.println("Could not read SettingsRecord from File");
 
-						/**
-						 * Background Image Implementation
-						 */
-						JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/DDtest.png"));
-						lblPic.setBounds(0, 0, 720, 574);
-						panelDashboardView.add(lblPic);
+			panelArray = new SPanel[6];
+			panelArray[0]=dailyActiveMinPanel;
+			panelArray[1]=dailyCaloriesPanel;
+			panelArray[2]=dailySedMinPanel;
+			panelArray[3]=dailyFloorsPanel;
+			panelArray[4]=dailyStepsPanel;
+			panelArray[5]=dailyTotalDistPanel;
+
+			radioCalories.setSelected(true);
+			radioActiveMin.setSelected(true);
+		}
+
+		//radioCalories.setSelected(true);
+		//radioActiveMin.setSelected(true);
+
+		/////////////////////////////////////////////////////////////////
+		/////KEEP THIS THO.//////////////////////////////////////////////
+
+		btnRefresh = new JButton("Refresh");
+		btnRefresh.setBounds(589, 46, 91, 29);
+		panelDashboardView.add(btnRefresh);
+		repanel(radioCounter());
+		////////////////////////////////////////////////////////////////////
+
+		///Uncomment to see and change added panels in window builder.////////////////
+
+		//panelDashboardView.add(dailyTotalDistPanel);
+		//panelDashboardView.add(dailyActiveMinPanel);		
+		//panelDashboardView.add(dailySedMinPanel);			
+		//panelDashboardView.add(dailyCaloriesPanel);			
+		//panelDashboardView.add(dailyFloorsPanel);			
+		//panelDashboardView.add(dailyStepsPanel);	
+
+
+
+		/**
+		 * Background Image Implementation
+		 */
+		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/DDtest.png"));
+		lblPic.setBounds(0, 0, 720, 574);
+		panelDashboardView.add(lblPic);
 	}
 
 	private void load_settings(SettingsRecord sr)
 	{
-		
+
 		if(sr.isRadioTotalDist())
 			radioTotalDist.setSelected(true);
 
@@ -1087,10 +1087,10 @@ public class InterfaceView {
 		dailyFloorsPanel = sr.getDailyFloorsPanel();
 		dailyStepsPanel = sr.getDailyStepsPanel();
 	}
-	
+
 	private void save_settings()
 	{
-		
+
 		WriterReader wr = new WriterReader();
 		boolean dist = (radioTotalDist.isSelected());
 		boolean calories = (radioCalories.isSelected());
@@ -1098,17 +1098,17 @@ public class InterfaceView {
 		boolean activeMin = (radioActiveMin.isSelected());
 		boolean floors = (radioFloors.isSelected());
 		boolean steps = (radioSteps.isSelected());
-		
+
 		SettingsRecord sr = new SettingsRecord(dist, calories, sedMin, activeMin, floors, steps, panelArray, radioCounter(), dailyCaloriesPanel, dailyTotalDistPanel, dailyActiveMinPanel, dailySedMinPanel, dailyFloorsPanel, dailyStepsPanel);
 		try {
 			wr.writeRecord(sr, "settingsrecord");
 		} catch (Exception e) {
 			System.out.println("Could not write to file");
 		}
-		
+
 	}
 
-	
+
 	/**
 	 * This method implements the Best Days screen.
 	 */
@@ -2054,7 +2054,7 @@ public class InterfaceView {
 	 * @param count the number of radio buttons selected in the custom layout menu for the dashboard.
 	 */
 	public void repanel(int count){
-			
+
 		switch(count){
 		case 1:
 
@@ -2070,9 +2070,12 @@ public class InterfaceView {
 			SixPanel.setVisible(false);
 
 			onePanel_1.add(panelArray[0]);
+			// Add images:
+			JLabel img_21 = new ILabel();
+			onePanel_1.setLayout(null);
+			onePanel_1.add(img_21);
+			// ---
 			OnePanel.setVisible(true);
-
-
 			break;
 
 		case 2:
@@ -2094,8 +2097,15 @@ public class InterfaceView {
 
 			twoPanel_1.add(panelArray[0]);
 			twoPanel_2.add(panelArray[1]);
+			// Add images:
+			JLabel img_19 = new ILabel();
+			JLabel img_20 = new ILabel();
+			twoPanel_1.setLayout(null);
+			twoPanel_1.add(img_19);
+			twoPanel_2.setLayout(null);
+			twoPanel_2.add(img_20);
+			// ---
 			TwoPanel.setVisible(true);
-
 			break;
 
 		case 3:
@@ -2117,10 +2127,20 @@ public class InterfaceView {
 			FivePanel.setVisible(false);
 			SixPanel.setVisible(false);
 
-
 			threePanel_1.add(panelArray[0]);
 			threePanel_2.add(panelArray[1]);
 			threePanel_3.add(panelArray[2]);
+			// Add images:
+			JLabel img_16 = new ILabel();
+			JLabel img_17 = new ILabel();
+			JLabel img_18 = new ILabel();
+			threePanel_1.setLayout(null);
+			threePanel_1.add(img_16);
+			threePanel_2.setLayout(null);
+			threePanel_2.add(img_17);
+			threePanel_3.setLayout(null);
+			threePanel_3.add(img_18);
+			// ---
 			ThreePanel.setVisible(true);
 
 			break;
@@ -2146,14 +2166,24 @@ public class InterfaceView {
 			}
 			catch(Exception e){}
 			SixPanel.setVisible(false);
-
-
-
 			fourPanel_1.add(panelArray[0]);
 			fourPanel_2.add(panelArray[1]);
 			fourPanel_3.add(panelArray[2]);
 			fourPanel_4.add(panelArray[3]);
-
+			// Add images:
+			JLabel img_12 = new ILabel();
+			JLabel img_13 = new ILabel();
+			JLabel img_14 = new ILabel();
+			JLabel img_15 = new ILabel();
+			fourPanel_1.setLayout(null);
+			fourPanel_1.add(img_12);
+			fourPanel_2.setLayout(null);
+			fourPanel_2.add(img_13);
+			fourPanel_3.setLayout(null);
+			fourPanel_3.add(img_14);
+			fourPanel_4.setLayout(null);
+			fourPanel_4.add(img_15);
+			// ---
 			FourPanel.setVisible(true);
 
 			break;
@@ -2188,9 +2218,25 @@ public class InterfaceView {
 			fivePanel_3.add(panelArray[2]);
 			fivePanel_4.add(panelArray[3]);
 			fivePanel_5.add(panelArray[4]);
+			// Add images:
+			JLabel img_7 = new ILabel();
+			JLabel img_8 = new ILabel();
+			JLabel img_9 = new ILabel();
+			JLabel img_10 = new ILabel();
+			JLabel img_11 = new ILabel();
+			fivePanel_1.setLayout(null);
+			fivePanel_1.add(img_7);
+			fivePanel_2.setLayout(null);
+			fivePanel_2.add(img_8);
+			fivePanel_3.setLayout(null);
+			fivePanel_3.add(img_9);
+			fivePanel_4.setLayout(null);
+			fivePanel_4.add(img_10);
+			fivePanel_5.setLayout(null);
+			fivePanel_5.add(img_11);
+			// ---
 			FivePanel.setVisible(true);
 			break;
-
 
 		case 6:
 			OnePanel.setVisible(false);
@@ -2207,50 +2253,45 @@ public class InterfaceView {
 			}
 			catch(Exception e){}
 
-
 			sixPanel_1.add(panelArray[0]);
 			sixPanel_2.add(panelArray[1]);
 			sixPanel_3.add(panelArray[2]);
 			sixPanel_4.add(panelArray[3]);
 			sixPanel_5.add(panelArray[4]);
 			sixPanel_6.add(panelArray[5]);
+			// Add images:
+			JLabel img_1 = new ILabel();
+			JLabel img_2 = new ILabel();
+			JLabel img_3 = new ILabel();
+			JLabel img_4 = new ILabel();
+			JLabel img_5 = new ILabel();
+			JLabel img_6 = new ILabel();
+			sixPanel_1.setLayout(null);
+			sixPanel_1.add(img_1);
+			sixPanel_2.setLayout(null);
+			sixPanel_2.add(img_2);
+			sixPanel_3.setLayout(null);
+			sixPanel_3.add(img_3);
+			sixPanel_4.setLayout(null);
+			sixPanel_4.add(img_4);
+			sixPanel_5.setLayout(null);
+			sixPanel_5.add(img_5);
+			sixPanel_6.add(img_6);
+			// ---
+
 			SixPanel.setVisible(true);
-
-
 			break;
 		}
-		
-		addImages();
+
 		save_settings();
 
-	}
-	
-	private void addImages() {
-		JLabel img_1 = new ILabel();
-		JLabel img_2 = new ILabel();
-		JLabel img_3 = new ILabel();
-		JLabel img_4 = new ILabel();
-		JLabel img_5 = new ILabel();
-		JLabel img_6 = new ILabel();
-		
-		sixPanel_1.setLayout(null);
-		sixPanel_1.add(img_1);
-		sixPanel_2.setLayout(null);
-		sixPanel_2.add(img_2);
-		sixPanel_3.setLayout(null);
-		sixPanel_3.add(img_3);
-		sixPanel_4.setLayout(null);
-		sixPanel_4.add(img_4);
-		sixPanel_5.setLayout(null);
-		sixPanel_5.add(img_5);
-		sixPanel_6.add(img_6);
 	}
 
 	/**
 	 * Returns the date selected on the calendar icon as a String.
 	 * @return a String representing the date selected on the calendar.
 	 */
- 	public String CalendarToAPI(){
+	public String CalendarToAPI(){
 		System.out.println(datePicker.getJFormattedTextField().getText());
 		return datePicker.getJFormattedTextField().getText();
 	}
