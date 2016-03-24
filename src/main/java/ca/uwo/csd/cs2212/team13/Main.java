@@ -332,12 +332,20 @@ public class Main {
 				e.printStackTrace();
 			}
 
-			AccoladeController acController = new AccoladeController(ar,
-					actRecord, view);
+			// Read the JSON data for daily dashboard
+			try (Reader data2 = new InputStreamReader(Main.class
+					.getClassLoader().getResourceAsStream("date.json"), "UTF-8")) {
+
+				// Parse JSON to Java
+				final DailyRecord ddModel = gson.fromJson(data2,
+						DailyRecord.class);
+
+				AccoladeController acController = new AccoladeController(ar,
+						actRecord, ddModel, view);
+			}
 
 		}
 
-		
 		// Read the JSON data for best days and lifetime totals
 		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
 				.getResourceAsStream("distance.json"), "UTF-8")) {
@@ -375,6 +383,6 @@ public class Main {
 				}
 			}
 		}
-		
+
 	}
 }

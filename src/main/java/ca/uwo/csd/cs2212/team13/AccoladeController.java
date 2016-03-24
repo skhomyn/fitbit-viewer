@@ -11,13 +11,15 @@ public class AccoladeController {
 
 	private AccoladeRecord[] ar;
 	private ActivitiesRecord acR;
-
+	private DailyRecord dr;
+	
 	private InterfaceView view;
 
 	AccoladeController(AccoladeRecord[] ar, ActivitiesRecord acR,
-			InterfaceView view) {
+			DailyRecord dr, InterfaceView view) {
 		this.ar = ar;
 		this.acR = acR;
+		this.dr = dr;
 		this.view = view;
 
 		view.addClickListenerAccolades(new clickListener());
@@ -36,7 +38,8 @@ public class AccoladeController {
 	private void checkAchieved() {
 		LifetimeRecord lr = acR.getLifetime();
 		BestDaysRecord br = acR.getBest();
-
+		GoalsRecord gr = dr.getGoals();
+		
 		for (int i = 0; i < ar.length; i++) {
 			String[] typeSplit = ar[i].getType().split("/");
 
@@ -56,6 +59,10 @@ public class AccoladeController {
 							.equals("ca.uwo.csd.cs2212.team13.BestDaysRecord"))
 						checkValues(m, br, i);
 
+					else if (typeSplit[0]
+							.equals("ca.uwo.csd.cs2212.team13.DailyRecord"))
+						checkValues(m, dr, i);
+					
 				} catch (NoSuchMethodException | SecurityException
 						| IllegalArgumentException | IllegalAccessException
 						| InvocationTargetException e) {
