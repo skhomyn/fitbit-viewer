@@ -489,6 +489,20 @@ public class Main {
 			}
 		}
 		
+		//set initial value of date labels on date-dependent pages to today
+		view.setDisplayDate(new Date().toString());
+		
+		//TESTFLAG
+		//DELETE LATER
+		view.addCalendarDateChangeActions(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//do nothing				
+			}});
+			
+		
+		
 		/**
 		 * {@code ActionListener} object is added to the refresh button. When the refresh
 		 * button is clicked, it triggers new API calls using the current date.
