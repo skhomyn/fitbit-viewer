@@ -340,8 +340,18 @@ public class Main {
 				final DailyRecord ddModel = gson.fromJson(data2,
 						DailyRecord.class);
 
+				// Read JSON data for heart rate
+				try (Reader data3 = new InputStreamReader(Main.class.getClassLoader()
+						.getResourceAsStream("cur_heart_data.json"), "UTF-8")) {
+
+					// Parse JSON to Java
+					final HeartRateRecord hrRecord = gson.fromJson(data3,
+							HeartRateRecord.class);
+
+					
 				AccoladeController acController = new AccoladeController(ar,
-						actRecord, ddModel, view);
+						actRecord, ddModel, hrRecord, view);
+				}
 			}
 
 		}

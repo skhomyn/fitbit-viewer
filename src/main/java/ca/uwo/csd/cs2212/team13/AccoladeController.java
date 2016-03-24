@@ -12,15 +12,17 @@ public class AccoladeController {
 	private AccoladeRecord[] ar;
 	private ActivitiesRecord acR;
 	private DailyRecord dr;
-	
+	private HeartRateRecord hr;
+
 	private InterfaceView view;
 
 	AccoladeController(AccoladeRecord[] ar, ActivitiesRecord acR,
-			DailyRecord dr, InterfaceView view) {
+			DailyRecord dr, HeartRateRecord hr, InterfaceView view) {
 		this.ar = ar;
 		this.acR = acR;
 		this.dr = dr;
 		this.view = view;
+		this.hr = hr;
 
 		view.addClickListenerAccolades(new clickListener());
 	}
@@ -40,39 +42,48 @@ public class AccoladeController {
 		BestDaysRecord br = acR.getBest();
 		GoalsRecord gr = dr.getGoals();
 		
+
 		for (int i = 0; i < ar.length; i++) {
 			String[] typeSplit = ar[i].getType().split("/");
 
-			Class thisClass;
-			try {
-				thisClass = Class.forName(typeSplit[0]);
+			if (typeSplit[1].equals("null") || typeSplit[0].equals("ca.uwo.csd.cs2212.team13.HeartRateRecord")) {
 
-				Method m;
+			} else {
+
+				Class thisClass;
 				try {
-					m = thisClass.getDeclaredMethod(typeSplit[1]);
+					thisClass = Class.forName(typeSplit[0]);
 
-					if (typeSplit[0]
-							.equals("ca.uwo.csd.cs2212.team13.LifetimeRecord"))
-						checkValues(m, lr, i);
+					Method m;
+					try {
+						m = thisClass.getDeclaredMethod(typeSplit[1]);
 
-					else if (typeSplit[0]
-							.equals("ca.uwo.csd.cs2212.team13.BestDaysRecord"))
-						checkValues(m, br, i);
+						if (typeSplit[0]
+								.equals("ca.uwo.csd.cs2212.team13.LifetimeRecord"))
+							checkValues(m, lr, i);
 
-					else if (typeSplit[0]
-							.equals("ca.uwo.csd.cs2212.team13.DailyRecord"))
-						checkValues(m, dr, i);
-					
-				} catch (NoSuchMethodException | SecurityException
-						| IllegalArgumentException | IllegalAccessException
-						| InvocationTargetException e) {
+						else if (typeSplit[0]
+								.equals("ca.uwo.csd.cs2212.team13.BestDaysRecord"))
+							checkValues(m, br, i);
+
+						else if (typeSplit[0]
+								.equals("ca.uwo.csd.cs2212.team13.DailyRecord"))
+							checkValues(m, dr, i);
+						else if (typeSplit[0]
+								.equals("ca.uwo.csd.cs2212.team13.HeartRateRecord"))
+							checkValues(m, hr, i);
+
+					} catch (NoSuchMethodException | SecurityException
+							| IllegalArgumentException | IllegalAccessException
+							| InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					e1.printStackTrace();
 				}
-
-			} catch (ClassNotFoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
 			}
 		}
 
