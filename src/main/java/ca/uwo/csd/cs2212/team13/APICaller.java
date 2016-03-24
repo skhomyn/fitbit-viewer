@@ -10,17 +10,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import com.github.scribejava.apis.FitbitApi20;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.oauth.OAuthService;
 import com.github.scribejava.core.model.*; //Request Verb
 import com.github.scribejava.core.oauth.OAuth20Service;
 import com.github.scribejava.apis.service.FitbitOAuth20ServiceImpl;
-
 import java.awt.Desktop;
 import java.net.URI;
-
 import org.json.JSONObject;
 import org.json.JSONArray;
 
@@ -145,9 +142,7 @@ public class APICaller {
 			//System.out.println(request.getBodyContents());
 
 			// This actually sends the request:
-			Response response;
-			try {
-				response = request.send();
+			Response response = request.send();
 
 			// The HTTP response from fitbit will be in HTTP format, meaning that it
 			// has a numeric code indicating
@@ -238,11 +233,6 @@ public class APICaller {
 
 			return response.getBody();
 			
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			return null;
 		}// end request method
 		
 		public void request(String requestUrlSuffix, String filename){
