@@ -290,7 +290,14 @@ public class InterfaceView {
 	
 	private ChartPanel chartPanel;
 	
+	/**
+	 * Constraints for calendar
+	 * rc is for interface
+	 * rc_2 is for API calls next/prev
+	 */
 	private RangeConstraint rc;
+	private RangeConstraint rc_2;
+
 
 
 	/**
@@ -319,13 +326,19 @@ public class InterfaceView {
 	 */
 	private void initialize() {
 		
-		Calendar todayPlusOne = Calendar.getInstance();
-		todayPlusOne.add(Calendar.DATE, 0);
-
+		Calendar todayPlus = Calendar.getInstance();
 		Calendar todayMinusThreeYear = Calendar.getInstance();
 		todayMinusThreeYear.add(Calendar.YEAR, -3);
+		rc = new RangeConstraint(todayMinusThreeYear, todayPlus);
+		
+		Calendar todayMinusOne = Calendar.getInstance();
+		Calendar todayMinusThreeYearPlusOne = Calendar.getInstance();
+		todayMinusOne.add(Calendar.DATE, -1);
+		todayMinusThreeYearPlusOne.add(Calendar.YEAR, -3);
+		todayMinusThreeYearPlusOne.add(Calendar.DATE, 1);
+		rc_2 = new RangeConstraint(todayMinusThreeYearPlusOne, todayMinusOne);
 
-		rc = new RangeConstraint(todayMinusThreeYear, todayPlusOne);
+
 		
 		frame = new JFrame();
 		frame.setMinimumSize(new Dimension(900, 596));
@@ -2239,7 +2252,7 @@ public class InterfaceView {
 		btnNextDate.addActionListener(changeData);
 	}
 	
-	private boolean checkConstraints(CalendarModel model) {
+	public boolean checkConstraints(CalendarModel model) {
 
 
 		if (!rc.isValidSelection(model)) {
@@ -2249,10 +2262,10 @@ public class InterfaceView {
 		return true;
 	}
 	
-	public boolean checkConstraints() {
+	public boolean checkConstraintsMain(CalendarModel model) {
 
 
-		if (!rc.isValidSelection(modelForDay)) {
+		if (!rc_2.isValidSelection(model)) {
 			return false;
 		}
 		
@@ -2706,8 +2719,8 @@ public class InterfaceView {
 		return dateModel.getValue();
 	}
 	
-	public Object getCalendarObject() {
-		return modelForDay.getValue();
+	public CalendarModel getCalendarObject() {
+		return modelForDay;
 	}
 	
 	/**
