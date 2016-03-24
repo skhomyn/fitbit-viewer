@@ -2211,7 +2211,7 @@ public class InterfaceView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if(getDateObject().compareTo(new Date()) <= 1) {
+				//if(getDateObject().compareTo(new Date()) <= 1) {
 					
 					int oldDay = modelForDay.getDay();
 					modelForDay.setDay(modelForDay.getDay()+1);
@@ -2219,6 +2219,7 @@ public class InterfaceView {
 					if (!checkConstraints(modelForDay)) {
 						// rollback
 						modelForDay.setDay(oldDay);
+						System.out.println("noooo! - message from addNextDayActions in InterfaceView");
 					}
 					else
 						setDisplayDate(modelForDay.getValueDate());
@@ -2229,9 +2230,9 @@ public class InterfaceView {
 					setDisplayDate(dateModel.getValue());
 					 */
 
-				}
-				else System.out.println("noooo! - message from addNextDayActions in InterfaceView");
-			}
+				//}
+				//else System.out.println("noooo! - message from addNextDayActions in InterfaceView");
+			//}
 			});
 		
 		btnNextDate.addActionListener(changeData);
