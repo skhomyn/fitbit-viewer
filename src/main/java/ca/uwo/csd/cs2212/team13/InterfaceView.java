@@ -267,7 +267,7 @@ public class InterfaceView {
 
 		menuBar();
 
-		//dashboardView();
+		dashboardView();
 
 		bestDaysView();
 
@@ -489,7 +489,7 @@ public class InterfaceView {
 		panelDashboardView.add(SwitchingPanel);
 		SwitchingPanel.setLayout(new CardLayout(0, 0));
 
-		SwitchingPanel.setVisible(true); //what is this - it makes the panel visible, duh
+		SwitchingPanel.setVisible(true);
 
 		/**
 		 * Layout panel for custom dashboard: 1-panel display
@@ -674,16 +674,11 @@ public class InterfaceView {
 		SixPanel.add(sixPanel_6);
 		sixPanel_6.setLayout(null);
 
-
 		// Add image:
 		JLabel lblPic_6 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
 		SixPanel.add(lblPic_6);
 		lblPic_6.setBounds(0, 0, 640, 360);
 		lblPic_6.setOpaque(false);
-
-
-
-
 
 		/**
 		 * Layout customization, or "settings", menu
@@ -696,10 +691,11 @@ public class InterfaceView {
 		panelDashboardView.add(menuBar);
 
 		JMenu mnNewMenu = new JMenu("");
+		mnNewMenu.setRolloverEnabled(true);
+		mnNewMenu.setRolloverIcon(new ImageIcon("src/main/resources/rotatedGear.png"));
 		mnNewMenu.setBorder(null);
 		mnNewMenu.setBackground(Color.BLACK);
 		mnNewMenu.setIconTextGap(0);
-		//mnNewMenu.setHorizontalAlignment(SwingConstants.CENTER);
 		mnNewMenu.setIcon(new ImageIcon("src/main/resources/settings.png"));
 		menuBar.add(mnNewMenu);
 
@@ -977,9 +973,11 @@ public class InterfaceView {
 		/**
 		 * "Next Date" button to move the date forward by one day	
 		 */
-		JButton btnPrevDate = new JButton("Prev");
+		JButton btnPrevDate = new JButton("");
+		btnPrevDate.setRolloverIcon(new ImageIcon("src/main/resources/larrowWhite.png"));
+		btnPrevDate.setIcon(new ImageIcon("src/main/resources/LArrow.png"));
 		btnPrevDate.setOpaque(true);
-		btnPrevDate.setBounds(217, 105, 50, 30);
+		btnPrevDate.setBounds(217, 93, 50, 50);
 		panelDashboardView.add(btnPrevDate);
 		btnPrevDate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -991,9 +989,11 @@ public class InterfaceView {
 		/**
 		 * "Previous Date" button to move the date back by one day	
 		 */
-		JButton btnNextDate = new JButton("Next");
+		JButton btnNextDate = new JButton("");
+		btnNextDate.setRolloverIcon(new ImageIcon("src/main/resources/rArrowWhite.png"));
+		btnNextDate.setIcon(new ImageIcon("src/main/resources/rArrow.png"));
 		btnNextDate.setOpaque(true);
-		btnNextDate.setBounds(453, 105, 50, 30);
+		btnNextDate.setBounds(460, 93, 50, 50);
 		panelDashboardView.add(btnNextDate);
 		btnNextDate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1052,6 +1052,7 @@ public class InterfaceView {
 		/////KEEP THIS THO.//////////////////////////////////////////////
 
 		btnRefresh = new JButton("");
+		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
 		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
 		btnRefresh.setBounds(630, 10, 50, 50);
 		panelDashboardView.add(btnRefresh);
@@ -1428,38 +1429,42 @@ public class InterfaceView {
 	private void heartratezonesView() {
 
 		lblHeartRest = new JLabel();
-		lblHeartRest.setFont(new Font("Lucida Grande", Font.PLAIN, 44));
+		lblHeartRest.setFont(new Font("Dialog", Font.PLAIN, 20));
 		lblHeartRest.setForeground(Color.WHITE);
 		lblHeartRest.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHeartRest.setBounds(59, 211, 289, 61);
 		panelHeartrateZonesView.add(lblHeartRest);
 
 		lblHeartMins = new JLabel();
-		lblHeartMins.setFont(new Font("Lucida Grande", Font.PLAIN, 44));
+		lblHeartMins.setFont(new Font("Dialog", Font.PLAIN, 20));
 		lblHeartMins.setForeground(Color.WHITE);
 		lblHeartMins.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHeartMins.setBounds(372, 211, 286, 61);
 		panelHeartrateZonesView.add(lblHeartMins);
 
 		lblHeartCardioMaxMin = new JLabel();
+		lblHeartCardioMaxMin.setFont(new Font("Dialog", Font.PLAIN, 20));
 		lblHeartCardioMaxMin.setForeground(Color.WHITE);
 		lblHeartCardioMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblHeartCardioMaxMin.setBounds(59, 318, 289, 45);
 		panelHeartrateZonesView.add(lblHeartCardioMaxMin);
 
 		lblHeartFatBurnMaxMin = new JLabel();
+		lblHeartFatBurnMaxMin.setFont(new Font("Dialog", Font.PLAIN, 20));
 		lblHeartFatBurnMaxMin.setForeground(Color.WHITE);
 		lblHeartFatBurnMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblHeartFatBurnMaxMin.setBounds(372, 318, 286, 45);
 		panelHeartrateZonesView.add(lblHeartFatBurnMaxMin);
 
 		lblHeartPeakMaxMin = new JLabel();
+		lblHeartPeakMaxMin.setFont(new Font("Dialog", Font.PLAIN, 20));
 		lblHeartPeakMaxMin.setForeground(Color.WHITE);
 		lblHeartPeakMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblHeartPeakMaxMin.setBounds(62, 434, 286, 45);
 		panelHeartrateZonesView.add(lblHeartPeakMaxMin);
 
 		lblHeartOORMaxMin = new JLabel();
+		lblHeartOORMaxMin.setFont(new Font("Dialog", Font.PLAIN, 20));
 		lblHeartOORMaxMin.setForeground(Color.WHITE);
 		lblHeartOORMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblHeartOORMaxMin.setBounds(372, 434, 289, 45);
