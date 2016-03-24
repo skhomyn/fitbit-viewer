@@ -106,6 +106,8 @@ public class BestDaysRecord implements Serializable{
 	 * @return dis_value the value for distance traveled on the best day
 	 */
 	public double getDis_value() {
+		
+		dis_value = Math.floor(dis_value * 100) / 100;
 		return dis_value;
 	}
 

@@ -172,6 +172,8 @@ public class Main {
 		/**
 		 * {@code ActionListener} object is added to the "previous" button and triggers new API calls
 		 * for a date one day in the past of the currently displayed date, when the button is clicked.
+		 * The {@link InterfaceView#addPreviousDayActions }method implementation also updates the date 
+		 * displayed on the calendar.
 		 */
 		view.addPreviousDayActions(new ActionListener() {
 
@@ -187,6 +189,8 @@ public class Main {
 		/**
 		 * {@code ActionListener} object is added to "next" button and triggers new API calls
 		 * for a date one day in advance of the currently displayed date, when the button is clicked.
+		 * The {@link InterfaceView#addNextDayActions} method implementation also updates the date 
+		 * displayed on the calendar.
 		 * Does not allow future dates to be selected.
 		 */
 		view.addNextDayActions(new ActionListener() {		
@@ -230,11 +234,7 @@ public class Main {
 			//Last Updated label
 			Date now = new Date();
 			String apiCallDate = now.toString();
-			
-			//TESTFLAG
-			view.setLastUpdatedDash(dateStr);
-			//view.setLastUpdatedDash(apiCallDate);
-			
+			view.setLastUpdatedDash(apiCallDate);
 			view.setLastUpdatedGoals(apiCallDate);
 		}
 		try {
@@ -348,7 +348,7 @@ public class Main {
 		final Gson gson = gsonBuilder.create();
 
 		// Create InterfaceView and set as visible
-		InterfaceView view = new InterfaceView();
+		final InterfaceView view = new InterfaceView();
 		view.setVisible(view);
 
 		// Read JSON data for heart rate
@@ -488,8 +488,59 @@ public class Main {
 				}
 			}
 		}
+		
+		//set initial value of date labels on date-dependent pages to today
+		view.setDisplayDate(new Date());
+		
+		//TESTFLAG
+		//DELETE LATER
+		view.addCalendarDateChangeActions(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//do nothing				
+			}});
+			
+		
+		
+		/**
+		 * {@code ActionListener} object is added to the refresh button. When the refresh
+		 * button is clicked, it triggers new API calls using the current date.
+		 */
+		view.addListenerForRefresh(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String test = "Refresh unavailable in test mode.";
+				view.setLastUpdatedTestMode(test);
+			}	
+		});
+
+		/**
+		 * The {@link InterfaceView#addPreviousDayActions} method implementation updates the date 
+		 * displayed on the calendar.
+		 */
+		view.addPreviousDayActions(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//do nothing here in test mode			
+			}
+		});
+		
+		/**
+		 * The {@link InterfaceView#addNextDayActions} method implementation updates the date 
+		 * displayed on the calendar.
+		 * Does not allow future dates to be selected.
+		 */
+		view.addNextDayActions(new ActionListener() {		
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					//do nothing here in test mode
+		}
+	});
+		
 		//Last updated label
-		String test = "Not Applicable in Test Mode.    ";
+		String test = "Not applicable in test mode.    ";
 		view.setLastUpdatedTestMode(test);
 	}
 }

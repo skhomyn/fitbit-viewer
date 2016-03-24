@@ -175,6 +175,8 @@ public class DailyRecord implements Serializable {
 	 * @return the distance for this record
 	 */
 	public double getDistance() {
+		
+		distance = Math.floor(distance * 100) / 100;
 		return distance;
 	}
 

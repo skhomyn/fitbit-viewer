@@ -103,6 +103,7 @@ public class LifetimeRecord implements Serializable{
 	 * @return the distance lifetime total
 	 */
 	public double getDistance() {
+		distance = Math.floor(distance * 100) / 100;
 		return distance;
 	}
 
