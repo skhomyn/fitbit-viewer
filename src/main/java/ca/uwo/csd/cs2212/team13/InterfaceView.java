@@ -1722,6 +1722,7 @@ public class InterfaceView {
 	 * API calls to change the date of the information displayed across all pages 
 	 * of the application to the previous day.Also attaches an {@code ActionListener} to 
 	 * change the date displayed on the calendar.
+	 * Does not allow date to be changed to a future date.
 	 * 
 	 * @param actionsOnClick 
 	 * 			{@code ActionListener} makes API calls using the date one day in advance 
@@ -1733,9 +1734,13 @@ public class InterfaceView {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(getDateObject().compareTo(new Date()) <= 1) {
+
 					dateModel.setDay(dateModel.getDay()+1);
 					datePicker.getModel().setDay(datePicker.getModel().getDay());
 				}
+				else System.out.println("noooo! - message from addNextDayActions in InterfaceView");
+			}
 			});
 		
 		btnNextDate.addActionListener(changeData);
@@ -2075,6 +2080,10 @@ public class InterfaceView {
 		else return year+"-"+month+"-"+day;
 	}
 	//SHORTCUT
+	
+	public Date getDateObject() {
+		return dateModel.getValue();
+	}
 	
 	/**
 	 * Objects of this inner class format the date to be displayed in the calendar text box.
