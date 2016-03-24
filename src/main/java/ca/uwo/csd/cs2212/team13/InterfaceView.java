@@ -2176,6 +2176,7 @@ public class InterfaceView {
 				if (!checkConstraints(modelForDay)) {
 					// rollback
 					modelForDay.setDay(oldDay);
+					System.out.println("noooo! - message from addPreviousDayActions in InterfaceView");
 				}
 				else
 					setDisplayDate(modelForDay.getValueDate());
@@ -2232,7 +2233,7 @@ public class InterfaceView {
 
 				//}
 				//else System.out.println("noooo! - message from addNextDayActions in InterfaceView");
-			//}
+			}
 			});
 		
 		btnNextDate.addActionListener(changeData);
