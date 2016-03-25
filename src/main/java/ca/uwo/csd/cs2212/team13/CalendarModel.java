@@ -38,7 +38,7 @@ import javax.swing.event.ChangeListener;
  * 
  * @author Juan Heyns
  *
- * @param <T>
+ * @param <T> as you don't know necessarily
  */
 public interface CalendarModel<T> {
 
@@ -48,7 +48,7 @@ public interface CalendarModel<T> {
 	 * dates the internal model changes, which fires a ChangeEvent each time it
 	 * changes.
 	 * 
-	 * @param changeListener
+	 * @param changeListener listner
 	 */
 	public void addChangeListener(ChangeListener changeListener);
 
@@ -56,105 +56,104 @@ public interface CalendarModel<T> {
 	 * Removes the specified ChangeListener. ChangeListeners will be notified
 	 * when the selected date is changed.
 	 * 
-	 * @param changeListener
+	 * @param changeListener listener
 	 */
 	public void removeChangeListener(ChangeListener changeListener);
 
 	/**
 	 * Getters and setters which represent a gregorian date.
 	 * 
-	 * @return
+	 * @return year
 	 */
 	public int getYear();
 	
 	/**
-	 * Getters and setters which represent a gregorian date.
-	 * 
-	 * @return
+	 * setters which represent a gregorian date.
+	 * @param year year
 	 */
 	public void setYear(int year);
 	
 	/**
-	 * Getters and setters which represent a gregorian date.
+	 * Getters which represent a gregorian date.
 	 * 
-	 * @return
+	 * @return int
 	 */
 	public int getMonth();
 	
 	/**
-	 * Getters and setters which represent a gregorian date.
+	 * setters which represent a gregorian date.
 	 * 
-	 * @return
+	 * @param month month to add
 	 */
 	public void setMonth(int month);
 	
 	/**
-	 * Getters and setters which represent a gregorian date.
+	 * Getters which represent a gregorian date.
 	 * 
-	 * @return
+	 * @return int
 	 */
 	public int getDay();
 	
 	/**
-	 * Getters and setters which represent a gregorian date.
-	 * 
-	 * @return
+	 * setters which represent a gregorian date.
+	 * @param day day
 	 */
 	public void setDay(int day);
 	
 	/**
-	 * Getters and setters which represent a gregorian date.
-	 * 
-	 * @return
+	 * setters which represent a gregorian date.
+	 * @param year year
+	 * @param month month
+	 * @param day day
 	 */
 	public void setDate(int year, int month, int day);
 	
 	/**
 	 * Add or substract number of years.
 	 * 
-	 * @param add
+	 * @param add year by this much
 	 */
 	public void addYear(int add);
 	
 	/**
 	 * Add or substract number of months.
 	 * 
-	 * @param add
+	 * @param add month by this much
 	 */
 	public void addMonth(int add);
 	
 	/**
 	 * Add or substract number of day.
 	 * 
-	 * @param add
+	 * @param add  addDay by this much
 	 */
 	public void addDay(int add);
 
 	/**
 	 * Get the value this model represents.
 	 * 
-	 * @return
+	 * @return  value
 	 */
 	public T getValue();
 
 	/**
 	 * Set the value this model represents.
 	 * 
-	 * @param value
+	 * @param value  give value
 	 */
 	public void setValue(T value);
 	
 	/**
 	 * Is the value selected or is it not.
 	 * 
-	 * @return
+	 * @return true or false
 	 */
 	public boolean isSelected();
 	
 	/**
 	 * Set the value as selected.
 	 * 
-	 * @param selected
+	 * @param selected as true or false
 	 */
 	public void setSelected(boolean selected);
 	

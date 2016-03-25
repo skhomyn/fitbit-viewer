@@ -111,6 +111,15 @@ public class Main {
 		// Create InterfaceView and set as visible
 		view = new InterfaceView();
 		view.setVisible(view);
+		
+		//Create controllers with view
+		tsController = new TimeSeriesController(null, null, null, null, view);
+		acController = new AccoladeController(null, null, null, null, view);
+		hrController = new HRZController(null, view);
+		ddController = new DailyDashboardController(null, view);
+		dgController = new GoalsController(null, null, view);
+		bdController = new BestDaysController(null, view);
+		ltController = new LifetimeController(null, view);
 
 		final WriterReader wr = new WriterReader();
 		final APICaller apiCaller = new APICaller("activity%20heartrate",
@@ -120,30 +129,9 @@ public class Main {
 		// Read the JSON data for daily dashboard and daily goals
 
 		refreshInfo(gson, apiCaller, wr, "today");
-
-		// Create controllers
-		hrController = new HRZController(hrRecord, view);
 		
-		// Create Controller for daily goals
-		ddController = new DailyDashboardController(ddModel, view);
-
-		// Create Controller for daily goals
-		dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
-
 		// initialize dashboard on start up of application
 		ddController.dailyDashboardInitialize();
-	
-		// Create Models and Controllers
-		BestDaysRecord bdModel = actRecord.getBest();
-		bdController = new BestDaysController(bdModel, view);
-
-		LifetimeRecord ltModel = actRecord.getLifetime();
-		ltController = new LifetimeController(ltModel, view);
-		
-		acController = new AccoladeController(ar, actRecord, ddModel, hrRecord, view);
-
-		// Create Controller for time series
-		tsController = new TimeSeriesController(dtsRecord, stsRecord, caRecord, hrRecord, view);
 		
 		//add action listener to refresh button, trigger new API calls for current date
 		/**
@@ -248,10 +236,10 @@ public class Main {
 	/**
 	 * Refresh info for API calls
 	 * 
-	 * @param gson
-	 * @param apiCaller
-	 * @param wr
-	 * @param dateStr
+	 * @param gson  for gson parser
+	 * @param apiCaller   for api caller
+	 * @param wr for writing reading java serialization
+	 * @param dateStr  date string for api calls
 	 */
 	public void refreshInfo(Gson gson, APICaller apiCaller, WriterReader wr, String dateStr){
 
@@ -271,7 +259,7 @@ public class Main {
 			// Parse JSON to Java
 			hrRecord = gson.fromJson(hRecord_String, HeartRateRecord.class);
 			//update view with new models
-			hrController = new HRZController(hrRecord, view);
+			hrController.updateHRZ(hrRecord, view);
 			hrController.hrzInitialize();
 			
 			//Last Updated label
@@ -301,9 +289,10 @@ public class Main {
 			// Parse JSON to Java
 			ddModel = gson.fromJson(dRecord_String, DailyRecord.class);
 			//update view with new models
-			ddController = new DailyDashboardController(ddModel, view);
+			ddController.updateDDC(ddModel, view);
 			ddController.dailyDashboardInitialize();
-			dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
+			
+			dgController.updateDGC(ddModel, ddModel.getGoals(), view);
 			dgController.goalsInitialize();
 			
 			//Last Updated label
@@ -334,9 +323,11 @@ public class Main {
 			// Parse JSON to Java
 			actRecord = gson.fromJson(aRecord_String, ActivitiesRecord.class);
 			//update view with new models
-			ltController = new LifetimeController(actRecord.getLifetime(), view);
+			
+			ltController.updateLTC(actRecord.getLifetime(), view);
 			ltController.lifetimeTotalsInitialize();
-			bdController = new BestDaysController(actRecord.getBest(), view);
+			
+			bdController.updateBDC(actRecord.getBest(), view);
 			bdController.bestDaysInitialize();
 			
 			//Last Updated label
@@ -353,9 +344,7 @@ public class Main {
 		
 		ar = new AccoladeRecord[20];
 		ar = null;
-		try {
-			System.out.println("WOW\n");
-			
+		try {			
 			ar = (AccoladeRecord[]) wr
 					.loadRecord("src/main/resources/accoladerecords");
 		} catch (Exception e) {
@@ -391,7 +380,7 @@ public class Main {
 		}
 		
 		
-		acController = new AccoladeController(ar, actRecord, ddModel, hrRecord, view);
+		acController.updateAC(ar, actRecord, ddModel, hrRecord, view);
 		acController.accoladesInitialize();
 		
 		//Last Updated label
@@ -464,7 +453,7 @@ public class Main {
 		}
 		
 		// Create Controller for time series
-		tsController = new TimeSeriesController(dtsRecord, stsRecord, caRecord, hrRecord, view);
+		tsController.updateTSC(dtsRecord, stsRecord, caRecord, hrRecord, view);
 		tsController.timeSeriesInitialize();
 		view.setLastUpdatedTS(apiCallDate);
 	}

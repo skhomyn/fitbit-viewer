@@ -66,7 +66,7 @@ public interface JDateComponentNew {
 	 * Removes the ActionListener. The actionListener is notified when a user
 	 * clicks on a date.
 	 * 
-	 * @param arg
+	 * @param actionListener actionlistener
 	 */
 	public void removeActionListener(ActionListener actionListener);
 

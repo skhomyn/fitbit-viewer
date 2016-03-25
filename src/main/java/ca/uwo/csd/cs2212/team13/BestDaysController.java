@@ -53,6 +53,22 @@ public class BestDaysController {
 	}
 	
 	/**
+	 * Updater, initializes the model and view fields with pointers to
+	 * <code>BestDaysRecord</code> object and <code>InterfaceView</code> object
+	 * respectively
+	 * 
+	 * @param model
+	 *            the <code>BestDaysRecord</code> model containing the Best Days
+	 *            data to be displayed
+	 * @param view
+	 *            the <code>InterfaceView</code> view containing the user
+	 *            interface implementation
+	 */
+	public void updateBDC(BestDaysRecord model, InterfaceView view) {
+		this.model = model;
+		this.view = view;
+	}
+	/**
 	 * Sets the Best Days page display fields in
 	 * <code>InterfaceView</code> with values from the appropriate model
 	 * <code>Best Days</code> fields.

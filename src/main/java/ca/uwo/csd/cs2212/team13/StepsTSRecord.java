@@ -79,7 +79,7 @@ public class StepsTSRecord implements Serializable {
 	}
 
 	/**
-	 * @param dRecords
+	 * @param sRecords
 	 *            the dRecords to set
 	 */
 	public void setsRecords(StepsRecord[] sRecords) {

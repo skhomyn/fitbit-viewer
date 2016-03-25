@@ -42,7 +42,7 @@ import com.google.gson.JsonParseException;
 /**
  * <code>GoalsDeserializer</code> is an interface representing a custom
  * deserializer to parse a JSON file (i.e. with daily goals) into Java object
- * {@link Goals}
+ * {@link GoalsRecord}
  * <p>
  * Custom deserializer is necessary because this is used in
  * {@link DailyRecordDeserializer}, so full control of JSON parsing is required.

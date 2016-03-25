@@ -88,6 +88,22 @@ public class HRZController {
 	}
 	
 	/**
+	 * Updates stuff, initializes the model and view fields with pointers to
+	 * <code>HeartRateRecord</code> object and <code>InterfaceView</code> object
+	 * respectively
+	 * 
+	 * @param mod
+	 *            the <code>HeartRateRecord</code> model containing the heart
+	 *            rate data to be displayed
+	 * @param vw
+	 *            the <code>InterfaceView</code> view containing the user
+	 *            interface implementation
+	 */
+	public void updateHRZ(HeartRateRecord mod, InterfaceView vw) {
+		this.model = mod;
+		this.view = vw;
+	}
+	/**
 	 * Sets the Heart Rate Zones page display fields in
 	 * <code>InterfaceView</code> with values from the appropriate model
 	 * <code>HeartZoneRecord</code> fields.

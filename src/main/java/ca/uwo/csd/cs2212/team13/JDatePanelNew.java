@@ -84,7 +84,6 @@ import org.jdatepicker.util.JDatePickerUtil;
  * @author Juan Heyns
  * @author JC Oosthuizen
  * @author Yue Huang
- * @param <T>
  */
 public class JDatePanelNew extends JPanel implements JDatePanelN {
 
