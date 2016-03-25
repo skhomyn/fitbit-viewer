@@ -397,7 +397,7 @@ public class InterfaceView {
 
 		menuBar();
 
-		//dashboardView();
+		dashboardView();
 
 		bestDaysView();
 
@@ -1535,20 +1535,20 @@ public class InterfaceView {
 		panelDailyGoalsView.add(lblFloorsGoal);
 
 		lblStepsCompare = new JLabel();
-		lblStepsCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		lblStepsCompare.setHorizontalAlignment(SwingConstants.CENTER);
-		lblStepsCompare.setForeground(Color.WHITE);
+		//lblStepsCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
 		lblStepsCompare.setBounds(563, 317, 96, 46);
 		panelDailyGoalsView.add(lblStepsCompare);
 
 		lblDistanceCompare = new JLabel();
-		lblDistanceCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		//lblDistanceCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
 		lblDistanceCompare.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDistanceCompare.setForeground(Color.WHITE);
-		lblDistanceCompare.setBounds(563, 180, 96, 46);
+		lblDistanceCompare.setBounds(563, 180, 96, 48);
 		panelDailyGoalsView.add(lblDistanceCompare);
 
 		lblCaloriesCompare = new JLabel();
+		//lblCaloriesCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
 		lblCaloriesCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		lblCaloriesCompare.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCaloriesCompare.setForeground(Color.WHITE);
@@ -1556,6 +1556,7 @@ public class InterfaceView {
 		panelDailyGoalsView.add(lblCaloriesCompare);
 
 		lblFloorsCompare = new JLabel();
+		//lblFloorsCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
 		lblFloorsCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		lblFloorsCompare.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFloorsCompare.setForeground(Color.WHITE);
@@ -1563,6 +1564,7 @@ public class InterfaceView {
 		panelDailyGoalsView.add(lblFloorsCompare);
 
 		lblActiveMinCompare = new JLabel();
+		//lblActiveMinCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
 		lblActiveMinCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		lblActiveMinCompare.setHorizontalAlignment(SwingConstants.CENTER);
 		lblActiveMinCompare.setForeground(Color.WHITE);
@@ -1596,7 +1598,7 @@ public class InterfaceView {
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/DGdash.png"));
+		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DGdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelDailyGoalsView.add(lblPic);
 
@@ -2132,12 +2134,43 @@ public class InterfaceView {
 		lblDistanceGoal.setText(Double.toString(distance));
 		lblStepsGoal.setText(Integer.toString(steps));
 		lblFloorsGoal.setText(Integer.toString(floors));
+		
+		if (activeMinStatus.equals("N")) {
+			lblActiveMinCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueX.png"));
+		}
+		else {
+			lblActiveMinCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
+		}
+		
+		if (caloriesStatus.equals("N")) {
+			lblCaloriesCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueX.png"));
+		}
+		else {
+			lblCaloriesCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
+		}
+		
+		if (distanceStatus.equals("N")) {
+			lblDistanceCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueX.png"));
+		}
+		else {
+			lblDistanceCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
+		}
+		
+		if (stepsStatus.equals("N")) {
+			lblStepsCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueX.png"));
+		}
+		else {
+			lblStepsCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
+		}
+		
+		if (floorsStatus.equals("N")) {
+			lblFloorsCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueX.png"));
+		}
+		else {
+			lblFloorsCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
+		}
 
-		lblActiveMinCompare.setText(activeMinStatus);
-		lblCaloriesCompare.setText(caloriesStatus);
-		lblDistanceCompare.setText(distanceStatus);
-		lblStepsCompare.setText(stepsStatus);
-		lblFloorsCompare.setText(floorsStatus);
+		
 	}
 	
 	public void setTimeSeriesGraph(DistanceTSRecord dRecords, StepsTSRecord sRecords, CaloriesTSRecord caRecord, HeartRateRecord rRecord)
