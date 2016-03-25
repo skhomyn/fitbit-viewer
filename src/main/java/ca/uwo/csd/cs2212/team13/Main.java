@@ -354,6 +354,8 @@ public class Main {
 		ar = new AccoladeRecord[20];
 		ar = null;
 		try {
+			System.out.println("WOW\n");
+			
 			ar = (AccoladeRecord[]) wr
 					.loadRecord("src/main/resources/accoladerecords");
 		} catch (Exception e) {
@@ -391,6 +393,7 @@ public class Main {
 		
 		acController = new AccoladeController(ar, actRecord, ddModel, hrRecord, view);
 		acController.accoladesInitialize();
+		
 		//Last Updated label
 		Date now = new Date();
 		String apiCallDate = now.toString();

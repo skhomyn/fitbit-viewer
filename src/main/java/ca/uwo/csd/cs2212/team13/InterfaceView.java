@@ -1363,7 +1363,7 @@ public class InterfaceView {
 
 		lblLifetimeTotalsDistVal = new JLabel();
 		lblLifetimeTotalsDistVal.setForeground(Color.WHITE);
-		lblLifetimeTotalsDistVal.setFont(new Font("Lucida Grande", Font.PLAIN, 48));
+		lblLifetimeTotalsDistVal.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
 		lblLifetimeTotalsDistVal
 		.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLifetimeTotalsDistVal.setBounds(486, 384, 158, 101);
@@ -1371,7 +1371,7 @@ public class InterfaceView {
 
 		lblLifetimeTotalsFloorsVal = new JLabel();
 		lblLifetimeTotalsFloorsVal.setForeground(Color.WHITE);
-		lblLifetimeTotalsFloorsVal.setFont(new Font("Lucida Grande", Font.PLAIN, 48));
+		lblLifetimeTotalsFloorsVal.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
 		lblLifetimeTotalsFloorsVal
 		.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLifetimeTotalsFloorsVal.setBounds(278, 384, 167, 101);
@@ -1379,7 +1379,7 @@ public class InterfaceView {
 
 		lblLifetimeTotalsStepsVal = new JLabel();
 		lblLifetimeTotalsStepsVal.setForeground(Color.WHITE);
-		lblLifetimeTotalsStepsVal.setFont(new Font("Lucida Grande", Font.PLAIN, 48));
+		lblLifetimeTotalsStepsVal.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
 		lblLifetimeTotalsStepsVal
 		.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLifetimeTotalsStepsVal.setBounds(71, 384, 167, 101);
