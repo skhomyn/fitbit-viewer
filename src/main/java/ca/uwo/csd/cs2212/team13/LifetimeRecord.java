@@ -31,11 +31,13 @@
  */
 package ca.uwo.csd.cs2212.team13;
 
+import java.io.Serializable;
+
 /**
  * <code>LifetimeRecord</code> is a simple Java object that represents the
  * lifetime totals and the rules that govern access to and updates of this data.
  */
-public class LifetimeRecord {
+public class LifetimeRecord implements Serializable{
 
 	/**
 	 * The activity score lifetime total
@@ -62,6 +64,14 @@ public class LifetimeRecord {
 	 */
 	private int steps;
 
+	LifetimeRecord() {
+		this.activityScore = -1;
+		this.caloriesOut = -1;
+		this.distance = -1;
+		this.floors = -1;
+		this.steps = -1;
+	}
+	
 	/**
 	 * Constructor, previously validated
 	 * 
@@ -93,6 +103,7 @@ public class LifetimeRecord {
 	 * @return the distance lifetime total
 	 */
 	public double getDistance() {
+		distance = Math.floor(distance * 100) / 100;
 		return distance;
 	}
 

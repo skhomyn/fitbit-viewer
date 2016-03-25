@@ -86,7 +86,24 @@ public class HRZController {
 		// button
 		view.addClickListenerHeartRateZones(new clickListener());
 	}
-
+	
+	/**
+	 * Sets the Heart Rate Zones page display fields in
+	 * <code>InterfaceView</code> with values from the appropriate model
+	 * <code>HeartZoneRecord</code> fields.
+	 */
+	public void hrzInitialize(){
+		view.setHeartRateZonesFields(model.getMinuteTotal(), model
+				.getRestingHR(), model.getCardioZone().getMax(), model
+				.getFatBurnZone().getMax(), model.getPeakZone().getMax(),
+				model.getCardioZone().getMin(), model.getFatBurnZone()
+						.getMin(), model.getPeakZone().getMin(), model
+						.getCardioZone().getMinutes(), model
+						.getFatBurnZone().getMinutes(), model.getPeakZone()
+						.getMinutes(), model.getOutRangeZone().getMax(),
+				model.getOutRangeZone().getMin(), model.getOutRangeZone()
+						.getMinutes());
+	}
 	/**
 	 * Local class accessible only by the <code>HRZController</code> object. Its
 	 * purpose is to define which actions should be performed when the Heart

@@ -1,0 +1,14 @@
+package ca.uwo.csd.cs2212.team13;
+
+import java.io.Serializable;
+
+import javax.swing.JPanel;
+
+public class SPanel extends JPanel implements Serializable{
+	
+	public SPanel()
+	{
+		super();
+	}
+
+}

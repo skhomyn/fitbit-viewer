@@ -31,6 +31,8 @@
  */
 package ca.uwo.csd.cs2212.team13;
 
+import java.io.Serializable;
+
 /**
  * <code>DailyRecord</code> is a simple Java object that represents the daily
  * dashboard and the rules that govern access to and updates of this data, but
@@ -42,7 +44,7 @@ package ca.uwo.csd.cs2212.team13;
  * JSON object from API call 
  * </ul>
  */
-public class DailyRecord {
+public class DailyRecord implements Serializable {
 
 	/**
 	 * Floors, steps, minutes, calories - all necessary info for daily dashboard
@@ -57,7 +59,7 @@ public class DailyRecord {
 	/**
 	 * The Record for the Goals
 	 */
-	private Goals goals;
+	private GoalsRecord goals;
 
 	/**
 	 * The Date for this DailyRecord
@@ -82,7 +84,7 @@ public class DailyRecord {
 	 * 
 	 * @return the goals record
 	 */
-	public Goals getGoals() {
+	public GoalsRecord getGoals() {
 		return goals;
 	}
 
@@ -173,6 +175,8 @@ public class DailyRecord {
 	 * @return the distance for this record
 	 */
 	public double getDistance() {
+		
+		distance = Math.floor(distance * 100) / 100;
 		return distance;
 	}
 
@@ -197,7 +201,7 @@ public class DailyRecord {
 	 * @param goals
 	 *            the new value of the field {@code goals} for the daily record
 	 */
-	public void setGoals(Goals goals) {
+	public void setGoals(GoalsRecord goals) {
 		this.goals = goals;
 	}
 

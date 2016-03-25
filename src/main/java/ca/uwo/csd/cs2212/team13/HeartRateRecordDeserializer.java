@@ -86,21 +86,47 @@ public class HeartRateRecordDeserializer implements
 			final JsonObject jsonHeartZoneObject = jsonZoneElement
 					.getAsJsonObject();
 
-			int minutes = jsonHeartZoneObject.get("minutes").getAsInt();
-			int max = jsonHeartZoneObject.get("max").getAsInt();
-			int min = jsonHeartZoneObject.get("min").getAsInt();
-			String name = jsonHeartZoneObject.get("name").getAsString();
+			 int minutes = jsonHeartZoneObject.get("minutes").getAsInt();
+			 int max = jsonHeartZoneObject.get("max").getAsInt();
+			 int min = jsonHeartZoneObject.get("min").getAsInt();
+			 String name = jsonHeartZoneObject.get("name").getAsString();
 
 			zonesArray[i] = new HeartZoneRecord(max, min, minutes, name);
-			minuteTotal += minutes;
+			minuteTotal += zonesArray[i].getMinutes();
 		}
 
 		// get resting Heartrate as an int then create a heartrecord object with
 		// all the information
-		final int restingHR = jsonValue.get("restingHeartRate").getAsInt();
+		final double restingHR = jsonValue.get("restingHeartRate").getAsDouble() ;// 0; //jsonValue.get("value").getAsInt();
+
+		final JsonObject jsonIntraDay = jsonObject
+				.getAsJsonObject("activities-heart-intraday");
+
+		// get heart rate zones as an array and get the size of the array
+		final JsonArray jsonHeartDataIntraDay = jsonIntraDay.get("dataset")
+				.getAsJsonArray();
+
+		final HeartRateInstanceRecord[] heartArray = new HeartRateInstanceRecord[jsonHeartDataIntraDay
+				.size()];
+
+		for (int i = 0; i < heartArray.length; i++) {
+			final JsonElement jsonZoneElement = jsonHeartDataIntraDay.get(i);
+			final JsonObject jsonHeartObject = jsonZoneElement
+					.getAsJsonObject();
+
+			String time = jsonHeartObject.get("time").getAsString();
+			double value = jsonHeartObject.get("value").getAsInt();
+
+			heartArray[i] = new HeartRateInstanceRecord(time, value);
+		}
+
+		final int datasetInterval = jsonIntraDay.get("datasetInterval")
+				.getAsInt();
+		final String datasetType = jsonIntraDay.get("datasetType")
+				.getAsString();
 
 		final HeartRateRecord heartRecord = new HeartRateRecord(dateTime,
-				zonesArray, restingHR, minuteTotal);
+				zonesArray, restingHR, minuteTotal, heartArray, datasetInterval, datasetType);
 
 		return heartRecord;
 	}
