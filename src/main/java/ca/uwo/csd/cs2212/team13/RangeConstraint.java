@@ -70,7 +70,35 @@ public class RangeConstraint implements DateSelectionConstraint {
 
 		return result;
 	}
+	
+	public boolean isUpper(CalendarModel model) {
+		if (model.isSelected() && after != null) {
+            Calendar value = Calendar.getInstance();
+            value.set(model.getYear(), model.getMonth(), model.getDay());
+            value.set(Calendar.HOUR_OF_DAY, 23);
+            value.set(Calendar.MINUTE, 59);
+            value.set(Calendar.SECOND, 59);
+            value.set(Calendar.MILLISECOND, 999);
+            if (value.equals(before))
+            	return true;
+		}
+		return false;
+	}
 
+	public boolean isLower(CalendarModel model) {
+		if (model.isSelected() && before != null) {
+            Calendar value = Calendar.getInstance();
+            value.set(model.getYear(), model.getMonth(), model.getDay());
+            value.set(Calendar.HOUR_OF_DAY, 0);
+            value.set(Calendar.MINUTE, 0);
+            value.set(Calendar.SECOND, 0);
+            value.set(Calendar.MILLISECOND, 0);
+            if (value.equals(after))
+            	return true;
+		}
+		return false;
+	}
+	
 	@Override
 	// Generated with eclipse depending on: after, before
 	public int hashCode() {
