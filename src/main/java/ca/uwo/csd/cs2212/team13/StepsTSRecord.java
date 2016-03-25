@@ -1,5 +1,7 @@
 package ca.uwo.csd.cs2212.team13;
 
+import java.io.Serializable;
+
 /**
  * <code>StepsTSRecord</code> is a simple Java object that represents the steps
  * TS stuff and the rules that govern access to and updates of this data, but
@@ -11,7 +13,7 @@ package ca.uwo.csd.cs2212.team13;
  * object from API call
  * </ul>
  */
-public class StepsTSRecord {
+public class StepsTSRecord implements Serializable {
 
 	/**
 	 * Fields in StepsTSRecord

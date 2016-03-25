@@ -1,12 +1,14 @@
 package ca.uwo.csd.cs2212.team13;
 
+import java.io.Serializable;
+
 /**
  * Model class for time series
  * calories
  * @author Andy
  *
  */
-public class CaloriesTSRecord {
+public class CaloriesTSRecord implements Serializable {
 
     private String dateTime;
     private double value;

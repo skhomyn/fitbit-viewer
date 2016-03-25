@@ -1,6 +1,8 @@
 package ca.uwo.csd.cs2212.team13;
 
-public class CaloriesRecord {
+import java.io.Serializable;
+
+public class CaloriesRecord implements Serializable {
 	
 	/**
 	 * Model class for the Calories

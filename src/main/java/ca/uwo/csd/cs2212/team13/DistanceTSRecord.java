@@ -1,6 +1,8 @@
 package ca.uwo.csd.cs2212.team13;
 
-public class DistanceTSRecord {
+import java.io.Serializable;
+
+public class DistanceTSRecord implements Serializable {
 
 	private String dateTime;
 	private double value;

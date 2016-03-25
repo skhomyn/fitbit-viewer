@@ -51,8 +51,16 @@ import java.util.Date;
  */
 public class Main {
 	
+	/**
+	 * Records
+	 */
 	private ActivitiesRecord actRecord;
 	private DailyRecord ddModel;
+	private HeartRateRecord hrRecord;
+	private AccoladeRecord[] ar;
+	private DistanceTSRecord dtsRecord;
+	private StepsTSRecord stsRecord;
+	private CaloriesTSRecord caRecord;
 	
 	private DailyDashboardController ddController;
 	private GoalsController dgController;
@@ -89,7 +97,15 @@ public class Main {
 		gsonBuilder.registerTypeAdapter(GoalsRecord.class,
 				new GoalsDeserializer());
 
-		gsonBuilder.setPrettyPrinting();
+		gsonBuilder.registerTypeAdapter(CaloriesTSRecord.class,
+				new CaloriesRecordDeserializer());
+
+		gsonBuilder.registerTypeAdapter(DistanceTSRecord.class,
+				new DistanceRecordDeserializer());
+
+		gsonBuilder.registerTypeAdapter(StepsTSRecord.class,
+				new StepsRecordDeserializer());
+
 		final Gson gson = gsonBuilder.create();
 
 		// Create InterfaceView and set as visible
@@ -101,36 +117,13 @@ public class Main {
 				"src/main/resources/Team13Tokens.txt",
 				"src/main/resources/Team13Credentials.txt");
 
-		// test.request("activities/heart/date/today/1d.json",
-		// "src/main/resources/cur_heart_data.json");
-		// test.request("activities/date/today.json",
-		// "src/main/resources/cur_activities_data.json");
-		// test.request("activities.json",
-		// "src/main/resources/cur_totals.json");
-
-		// Read JSON data for heart rate
-		try (Reader data = new InputStreamReader(Main.class.getClassLoader()
-				.getResourceAsStream("cur_heart_data.json"), "UTF-8")) {
-
-			// Parse JSON to Java
-			final HeartRateRecord hrRecord = gson.fromJson(data,
-					HeartRateRecord.class);
-
-			// Create controllers
-			hrController = new HRZController(hrRecord, view);
-
-			// Format to JSON
-			// final String json = gson.toJson(hrRecord);
-			// System.out.println(json);
-			// System.out.println(hrRecord);
-		//	final String json = gson.toJson(hrRecord);
-		//	System.out.println(json);
-		}
-
 		// Read the JSON data for daily dashboard and daily goals
 
 		refreshInfo(gson, apiCaller, wr, "today");
 
+		// Create controllers
+		hrController = new HRZController(hrRecord, view);
+		
 		// Create Controller for daily goals
 		ddController = new DailyDashboardController(ddModel, view);
 
@@ -146,7 +139,12 @@ public class Main {
 
 		LifetimeRecord ltModel = actRecord.getLifetime();
 		ltController = new LifetimeController(ltModel, view);
-				
+		
+		acController = new AccoladeController(ar, actRecord, ddModel, hrRecord, view);
+
+		// Create Controller for time series
+		tsController = new TimeSeriesController(dtsRecord, stsRecord, caRecord, hrRecord, view);
+		
 		//add action listener to refresh button, trigger new API calls for current date
 		/**
 		 * {@code ActionListener} object is added to the refresh button. When the refresh
@@ -247,7 +245,46 @@ public class Main {
 	//TESTFLAG
 	//note to self: limit access to >3 years ago
 	
+	/**
+	 * Refresh info for API calls
+	 * 
+	 * @param gson
+	 * @param apiCaller
+	 * @param wr
+	 * @param dateStr
+	 */
 	public void refreshInfo(Gson gson, APICaller apiCaller, WriterReader wr, String dateStr){
+
+		
+		//make request for heart rate info
+		String hRecord_String = apiCaller.requestJson("activities/heart/date/" + dateStr + "/1d/1min.json");
+		// If Null
+		if (hRecord_String == null) {
+			try {
+				System.out.println("Reading in HeartRateRecord from File\n");
+				hrRecord = (HeartRateRecord) wr
+						.loadRecord("src/main/resources/heartrecord");
+			} catch (Exception e) {
+				System.out.println("Could not read heartrecord from File");
+			}
+		} else {
+			// Parse JSON to Java
+			hrRecord = gson.fromJson(hRecord_String, HeartRateRecord.class);
+			//update view with new models
+			hrController = new HRZController(hrRecord, view);
+			hrController.hrzInitialize();
+			
+			//Last Updated label
+			Date now = new Date();
+			String apiCallDate = now.toString();
+			view.setLastUpdatedHRZ(apiCallDate);
+		}
+		try {
+			wr.writeRecord(hrRecord, "heartrecord");
+		} catch (Exception e) {
+			System.out.println("Could not write to file");
+		}
+		
 		
 		//make request for dashboard info
 		String dRecord_String = apiCaller.requestJson("activities/date/" + dateStr + ".json");
@@ -313,12 +350,119 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println("Could not write to file");
 		}
+		
+		ar = new AccoladeRecord[20];
+		ar = null;
+		try {
+			ar = (AccoladeRecord[]) wr
+					.loadRecord("src/main/resources/accoladerecords");
+		} catch (Exception e) {
+			System.out.println("No accolades previously. Starting them up fresh");
+			
+			ar[0] = new AccoladeRecord(false, null, 3000, "ThousandStepsAcc", "ca.uwo.csd.cs2212.team13.BestDaysRecord/getSteps_value", "Walked 3000 Steps in a Day");
+			ar[1] = new AccoladeRecord(false, null, 5, "maxDistanceAcc", "ca.uwo.csd.cs2212.team13.BestDaysRecord/getDis_value", "Walked 5 km in a Day");
+			ar[2] = new AccoladeRecord(false, null, 20000, "tenThouStepsAcc","ca.uwo.csd.cs2212.team13.LifetimeRecord/getSteps", "Walked 20000 Steps in Total");
+			ar[3] = new AccoladeRecord(false, null, 60, "sedentaryMinsAcc", "ca.uwo.csd.cs2212.team13.DailyRecord/getSedentaryMinutes", "Reached 60 Sedentary Minutes in a Day");
+			ar[4] = new AccoladeRecord(false, null, 0, "zeroSteps","ca.uwo.csd.cs2212.team13.DailyRecord/getSteps", "No Steps in a Day\n");
+			ar[5] = new AccoladeRecord(false, null, 2500, "BurnedsomeCalsAcc", "ca.uwo.csd.cs2212.team13.DailyRecord/getCalories", "Burn 2500 Calories in a Day");
+			ar[6] = new AccoladeRecord(false, null, 4000, "BurnedMaxCalsAcc", "ca.uwo.csd.cs2212.team13.DailyRecord/getCalories", "Burn 4000 Calories in a Day");
+			ar[7] = new AccoladeRecord(false, null, 1000, "maxFloorsAcc", "ca.uwo.csd.cs2212.team13.LifetimeRecord/getFloors", "Climbed 1000 Floors in Total");		
+			ar[8] = new AccoladeRecord(false, null, 25, "CardioHeartAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getMinutes", "Spend 25 minutes in Cardio Heart Rate Zone\n");
+			ar[9] = new AccoladeRecord(false, null, 25, "FatburnHeartAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getMinutes", "Spend 25 minutes in Fat Burn Heart Zone");
+			ar[10] = new AccoladeRecord(false, null, 60, "StayedInBoundsAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getMinutes", "No Out of Range Minutes for One Day");
+			ar[11] = new AccoladeRecord(false, null, 0, "outofRangeHeartAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getMinutes", "Spend 20 minutes in Out of Range");
+			ar[12] = new AccoladeRecord(false, null, 50, "peakHeartAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getMinutes", "Spend 20 minutes in Peak Heart Zone");
+			ar[13] = new AccoladeRecord(false, null, 0, "tooManyCalsAcc", "ca.uwo.csd.cs2212.team13.DailyRecord/getCalories", "Burned Less than 1000 Calories in a Day");
+			ar[14] = new AccoladeRecord(false, null, 25, "christmasAcc", "ca.uwo.csd.cs2212.team13.AccoladeRecord/null", "Log On During Christmas\n");
+			ar[15] = new AccoladeRecord(false, null, 20, "hanukkahAcc", "ca.uwo.csd.cs2212.team13.AccoladeRecord/null", "Log On During Hanukkanh\n");
+			ar[16] = new AccoladeRecord(false, null, 0, "metNoGoalsAcc", "ca.uwo.csd.cs2212.team13.DailyRecord/null", "Did Not Complete Any Daily Goals for One Day");
+			ar[17] = new AccoladeRecord(false, null, 5, "metAllGoalsAcc","ca.uwo.csd.cs2212.team13.DailyRecord/null", "Completed All Daily Goals for One Day");
+			ar[18] = new AccoladeRecord(false, null, 10, "completedHalfAcc", "ca.uwo.csd.cs2212.team13.AccoladeRecord/null", "Achieve Half of the Accolades\n");
+			ar[19] = new AccoladeRecord(false, null, 20, "completedAcc", "ca.uwo.csd.cs2212.team13.AccoladeRecord/null", "Achieve All Other Accolades\n");
+		}
+		
+		try {
+			wr.writeRecord(ar, "accoladerecords");
 
-		// Format to JSON
-		// final String json = gson.toJson(actRecord);
-		// System.out.println(json);
-		// }
-
+		} catch (Exception e) {
+			System.out.println("Could not write to file");
+		}
+		
+		
+		acController = new AccoladeController(ar, actRecord, ddModel, hrRecord, view);
+		//Last Updated label
+		Date now = new Date();
+		String apiCallDate = now.toString();
+		view.setLastUpdatedAccolades(apiCallDate);
+		
+		System.out.println("TEST\n");
+		//make request for distance info
+		String disRecord_String = apiCaller.requestJson("activities/distance/date/" + dateStr + "/1d/1min.json");
+		// If Null
+		if (disRecord_String == null) {
+			try {
+				System.out.println("Reading in distanceTSrecord from File\n");
+				dtsRecord = (DistanceTSRecord) wr
+						.loadRecord("src/main/resources/distanceTSrecord");
+			} catch (Exception e) {
+				System.out.println("Could not read distanceTSrecord from File");
+			}
+		} else {
+			// Parse JSON to Java
+			dtsRecord = gson.fromJson(disRecord_String, DistanceTSRecord.class);
+		}
+		try {
+			wr.writeRecord(dtsRecord, "distanceTSrecord");
+		} catch (Exception e) {
+			System.out.println("Could not write to file");
+		}
+		
+		System.out.println("TEST\n");
+		//make request for calories info
+		String caRecord_String = apiCaller.requestJson("activities/calories/date/" + dateStr + "/1d/1min.json");
+		// If Null
+		if (caRecord_String == null) {
+			try {
+				System.out.println("Reading in caloriesTSrecord from File\n");
+				caRecord = (CaloriesTSRecord) wr
+						.loadRecord("src/main/resources/caloriesTSrecord");
+			} catch (Exception e) {
+				System.out.println("Could not read caloriesTSrecord from File");
+			}
+		} else {
+			// Parse JSON to Java
+			caRecord = gson.fromJson(caRecord_String, CaloriesTSRecord.class);
+		}
+		try {
+			wr.writeRecord(caRecord, "caloriesTSrecord");
+		} catch (Exception e) {
+			System.out.println("Could not write to file");
+		}
+		
+		//make request for calories info
+		String sRecord_String = apiCaller.requestJson("activities/steps/date/" + dateStr + "/1d/1min.json");
+		// If Null
+		if (sRecord_String == null) {
+			try {
+				System.out.println("Reading in StepsTSrecord from File\n");
+				stsRecord = (StepsTSRecord) wr
+						.loadRecord("src/main/resources/stepsTSrecord");
+			} catch (Exception e) {
+				System.out.println("Could not read stepsTSrecord from File");
+			}
+		} else {
+			// Parse JSON to Java
+			stsRecord = gson.fromJson(sRecord_String, StepsTSRecord.class);
+		}
+		try {
+			wr.writeRecord(stsRecord, "stepsTSrecord");
+		} catch (Exception e) {
+			System.out.println("Could not write to file");
+		}
+		
+		// Create Controller for time series
+		tsController = new TimeSeriesController(dtsRecord, stsRecord, caRecord, hrRecord, view);
+		view.setLastUpdatedTS(apiCallDate);
 	}
 
 	/**
@@ -388,7 +532,6 @@ public class Main {
 		gsonBuilder.registerTypeAdapter(StepsTSRecord.class,
 				new StepsRecordDeserializer());
 
-		gsonBuilder.setPrettyPrinting();
 		final Gson gson = gsonBuilder.create();
 
 		// Create InterfaceView and set as visible

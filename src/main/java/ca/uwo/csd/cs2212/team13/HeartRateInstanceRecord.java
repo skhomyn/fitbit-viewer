@@ -1,7 +1,9 @@
 package ca.uwo.csd.cs2212.team13;
 
+import java.io.Serializable;
 
-public class HeartRateInstanceRecord {
+
+public class HeartRateInstanceRecord implements Serializable {
 
 	private String time;
 	private double value;
