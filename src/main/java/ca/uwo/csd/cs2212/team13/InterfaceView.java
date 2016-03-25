@@ -312,6 +312,8 @@ public class InterfaceView {
 	private JDatePickerNew datePicker;
 	private JLabel lblPic_1;
 	private JLabel lblNewLabel_1;
+	private JButton button;
+	private JLabel lblClickAndDrag;
 
 
 	/**
@@ -384,7 +386,7 @@ public class InterfaceView {
 
 		menuBar();
 
-		dashboardView();
+		//dashboardView();
 
 		bestDaysView();
 
@@ -1278,6 +1280,12 @@ public class InterfaceView {
 		lblLastUpdatedBd.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelBestDaysView.add(lblLastUpdatedBd);
 		
+		btnRefresh = new JButton("");
+		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
+		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
+		btnRefresh.setBounds(630, 10, 50, 50);
+		panelBestDaysView.add(btnRefresh);
+		
 		/**
 		 * Background Image Implementation
 		 */
@@ -1293,6 +1301,8 @@ public class InterfaceView {
 	private void accoladesView() {
 
 		panelAccoladesDisplay = new JPanel(new GridBagLayout());
+		panelAccoladesDisplay.setForeground(Color.WHITE);
+		panelAccoladesDisplay.setBackground(Color.DARK_GRAY);
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridwidth = GridBagConstraints.REMAINDER;
 
@@ -1302,6 +1312,7 @@ public class InterfaceView {
 			for (int j = 0; j < 2; j++) {
 				labels[i][j] = new JLabel();
 
+				labels[i][j].setForeground(Color.WHITE);
 				if (j == 1) {
 					gbc.insets = new Insets(70, 40, 40, 40);
 					panelAccoladesDisplay.add(labels[i][j], gbc);
@@ -1312,7 +1323,7 @@ public class InterfaceView {
 		}
 
 		panelAccoladesScroll = new JScrollPane(panelAccoladesDisplay);
-		panelAccoladesScroll.setBounds(50, 50, 625, 450);
+		panelAccoladesScroll.setBounds(40, 70, 640, 450);
 		panelAccoladesView.add(panelAccoladesScroll);
 
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
@@ -1326,10 +1337,16 @@ public class InterfaceView {
 		lblLastUpdatedAccolades.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelAccoladesView.add(lblLastUpdatedAccolades);
 		
+		btnRefresh = new JButton("");
+		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
+		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
+		btnRefresh.setBounds(630, 10, 50, 50);
+		panelAccoladesView.add(btnRefresh);
+		
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/ACCdash.png"));
+		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/ACCdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelAccoladesView.add(lblPic);
 	
@@ -1376,6 +1393,12 @@ public class InterfaceView {
 		lblLastUpdatedLt.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelLifetimeTotalsView.add(lblLastUpdatedLt);
 
+		btnRefresh = new JButton("");
+		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
+		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
+		btnRefresh.setBounds(630, 10, 50, 50);
+		panelLifetimeTotalsView.add(btnRefresh);
+		
 		/**
 		 * Background Image Implementation
 		 */
@@ -1391,14 +1414,19 @@ public class InterfaceView {
 	private void timeseriesView() {
 
 		JToolBar zoom = new JToolBar();
+		zoom.setBorder(null);
 		zoom.setFloatable(false);
-		zoom.setBounds(293, 506, 130, 20);
+		zoom.setBounds(40, 20, 50, 50);
 		panelTimeSeriesView.add(zoom);
 
-		JButton btnZoomIn = new JButton("Zoom In");
-		zoom.add(btnZoomIn);
-
-		JButton btnZoomOut = new JButton("Zoom Out");
+		JButton btnZoomOut = new JButton("");
+		btnZoomOut.setMargin(new Insets(0, -4, 0, 0));
+		btnZoomOut.setHorizontalAlignment(SwingConstants.LEFT);
+		btnZoomOut.setHorizontalTextPosition(SwingConstants.LEFT);
+		btnZoomOut.setBorderPainted(false);
+		btnZoomOut.setIconTextGap(0);
+		btnZoomOut.setBorder(null);
+		btnZoomOut.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/zoomOut40.png"));
 		zoom.add(btnZoomOut);
 		btnZoomOut.addActionListener(new ActionListener() {
 
@@ -1409,7 +1437,8 @@ public class InterfaceView {
 	    });
 		
 		panelGraph = new JPanel();
-		panelGraph.setBounds(47, 93, 643, 401);
+		panelGraph.setBackground(Color.BLACK);
+		panelGraph.setBounds(40, 160, 640, 362);
 		panelTimeSeriesView.add(panelGraph);
 
 
@@ -1424,16 +1453,32 @@ public class InterfaceView {
 		lblLastUpdatedTS.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelTimeSeriesView.add(lblLastUpdatedTS);
 		
+		lblDisplayDateTS = new JLabel();
+		lblDisplayDateTS.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDisplayDateTS.setFont(new Font("Century Gothic", Font.PLAIN, 26));
+		lblDisplayDateTS.setForeground(Color.WHITE);
+		lblDisplayDateTS.setBounds(0, 60, 720, 100);
+		panelTimeSeriesView.add(lblDisplayDateTS);
+		
+		lblClickAndDrag = new JLabel("Click and drag on the graph to zoom in.");
+		lblClickAndDrag.setForeground(Color.WHITE);
+		lblClickAndDrag.setHorizontalAlignment(SwingConstants.CENTER);
+		lblClickAndDrag.setBounds(40, 144, 640, 16);
+		panelTimeSeriesView.add(lblClickAndDrag);
+		
+		btnRefresh = new JButton("");
+		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
+		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
+		btnRefresh.setBounds(630, 10, 50, 50);
+		panelTimeSeriesView.add(btnRefresh);
+		
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/TSdash.png"));
+		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/TSdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelTimeSeriesView.add(lblPic);
-
-		lblDisplayDateTS = new JLabel();
-		lblDisplayDateTS.setBounds(336, 60, 125, 16);
-		panelTimeSeriesView.add(lblDisplayDateTS);
+		
 
 	}
 
@@ -1524,6 +1569,19 @@ public class InterfaceView {
 		lblLastUpdatedGoals.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelDailyGoalsView.add(lblLastUpdatedGoals);
 		
+		btnRefresh = new JButton("");
+		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
+		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
+		btnRefresh.setBounds(630, 10, 50, 50);
+		panelDailyGoalsView.add(btnRefresh);
+		
+		lblDisplayDateGoals = new JLabel();
+		lblDisplayDateGoals.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDisplayDateGoals.setFont(new Font("Century Gothic", Font.PLAIN, 26));
+		lblDisplayDateGoals.setForeground(Color.WHITE);
+		lblDisplayDateGoals.setBounds(0, 60, 720, 100);
+		panelDailyGoalsView.add(lblDisplayDateGoals);
+		
 		/**
 		 * Background Image Implementation
 		 */
@@ -1531,10 +1589,6 @@ public class InterfaceView {
 		lblPic.setBounds(0, 0, 720, 574);
 		panelDailyGoalsView.add(lblPic);
 
-		lblDisplayDateGoals = new JLabel();
-		lblDisplayDateGoals.setBounds(300, 30, 125, 16);
-		panelDailyGoalsView.add(lblDisplayDateGoals);
-		
 	}
 
 	/**
@@ -1543,101 +1597,101 @@ public class InterfaceView {
 	private void heartratezonesView() {
 
 		lblHeartRest = new JLabel();
-		lblHeartRest.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartRest.setFont(new Font("Dialog", Font.PLAIN, 28));
 		lblHeartRest.setForeground(Color.WHITE);
 		lblHeartRest.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHeartRest.setBounds(59, 211, 289, 61);
 		panelHeartrateZonesView.add(lblHeartRest);
 
 		lblHeartMins = new JLabel();
-		lblHeartMins.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartMins.setFont(new Font("Dialog", Font.PLAIN, 28));
 		lblHeartMins.setForeground(Color.WHITE);
 		lblHeartMins.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHeartMins.setBounds(372, 211, 286, 61);
 		panelHeartrateZonesView.add(lblHeartMins);
 
 		lblHeartCardioMax = new JLabel();
-		lblHeartCardioMax.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartCardioMax.setFont(new Font("Dialog", Font.PLAIN, 24));
 		lblHeartCardioMax.setForeground(Color.WHITE);
-		lblHeartCardioMax.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartCardioMax.setBounds(59, 318, 90, 45);
+		lblHeartCardioMax.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartCardioMax.setBounds(59, 318, 104, 45);
 		panelHeartrateZonesView.add(lblHeartCardioMax);
 		
 		lblHeartCardioMin = new JLabel();
-		lblHeartCardioMin.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartCardioMin.setFont(new Font("Dialog", Font.PLAIN, 24));
 		lblHeartCardioMin.setForeground(Color.WHITE);
-		lblHeartCardioMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartCardioMin.setBounds(150, 318, 90, 45);
+		lblHeartCardioMin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartCardioMin.setBounds(162, 318, 88, 45);
 		panelHeartrateZonesView.add(lblHeartCardioMin);
 		
 		lblHeartCardioMinutes = new JLabel();
-		lblHeartCardioMinutes.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartCardioMinutes.setFont(new Font("Dialog", Font.PLAIN, 24));
 		lblHeartCardioMinutes.setForeground(Color.WHITE);
-		lblHeartCardioMinutes.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartCardioMinutes.setBounds(240, 318, 90, 45);
+		lblHeartCardioMinutes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartCardioMinutes.setBounds(253, 318, 96, 45);
 		panelHeartrateZonesView.add(lblHeartCardioMinutes);
 
 		lblHeartFatBurnMax = new JLabel();
-		lblHeartFatBurnMax.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartFatBurnMax.setFont(new Font("Dialog", Font.PLAIN, 24));
 		lblHeartFatBurnMax.setForeground(Color.WHITE);
-		lblHeartFatBurnMax.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartFatBurnMax.setBounds(372, 318, 90, 45);
+		lblHeartFatBurnMax.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartFatBurnMax.setBounds(372, 318, 94, 45);
 		panelHeartrateZonesView.add(lblHeartFatBurnMax);
 		
 		lblHeartFatBurnMin = new JLabel();
-		lblHeartFatBurnMin.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartFatBurnMin.setFont(new Font("Dialog", Font.PLAIN, 24));
 		lblHeartFatBurnMin.setForeground(Color.WHITE);
-		lblHeartFatBurnMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartFatBurnMin.setBounds(462, 318, 90, 45);
+		lblHeartFatBurnMin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartFatBurnMin.setBounds(470, 318, 85, 45);
 		panelHeartrateZonesView.add(lblHeartFatBurnMin);
 		
 		lblHeartFatBurnMinutes = new JLabel();
-		lblHeartFatBurnMinutes.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartFatBurnMinutes.setFont(new Font("Dialog", Font.PLAIN, 24));
 		lblHeartFatBurnMinutes.setForeground(Color.WHITE);
-		lblHeartFatBurnMinutes.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartFatBurnMinutes.setBounds(552, 318, 90, 45);
+		lblHeartFatBurnMinutes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartFatBurnMinutes.setBounds(558, 318, 100, 45);
 		panelHeartrateZonesView.add(lblHeartFatBurnMinutes);
 
 		lblHeartPeakMax = new JLabel();
-		lblHeartPeakMax.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartPeakMax.setFont(new Font("Dialog", Font.PLAIN, 24));
 		lblHeartPeakMax.setForeground(Color.WHITE);
-		lblHeartPeakMax.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartPeakMax.setBounds(62, 434, 90, 45);
+		lblHeartPeakMax.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartPeakMax.setBounds(62, 434, 97, 45);
 		panelHeartrateZonesView.add(lblHeartPeakMax);
 		
 		lblHeartPeakMin = new JLabel();
-		lblHeartPeakMin.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartPeakMin.setFont(new Font("Dialog", Font.PLAIN, 24));
 		lblHeartPeakMin.setForeground(Color.WHITE);
-		lblHeartPeakMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartPeakMin.setBounds(152, 434, 90, 45);
+		lblHeartPeakMin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartPeakMin.setBounds(163, 434, 86, 45);
 		panelHeartrateZonesView.add(lblHeartPeakMin);
 		
 		lblHeartPeakMinutes = new JLabel();
-		lblHeartPeakMinutes.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartPeakMinutes.setFont(new Font("Dialog", Font.PLAIN, 24));
 		lblHeartPeakMinutes.setForeground(Color.WHITE);
-		lblHeartPeakMinutes.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartPeakMinutes.setBounds(242, 434, 90, 45);
+		lblHeartPeakMinutes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartPeakMinutes.setBounds(253, 434, 98, 45);
 		panelHeartrateZonesView.add(lblHeartPeakMinutes);
 		
 		lblHeartOORMax = new JLabel();
-		lblHeartOORMax.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartOORMax.setFont(new Font("Dialog", Font.PLAIN, 24));
 		lblHeartOORMax.setForeground(Color.WHITE);
-		lblHeartOORMax.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartOORMax.setBounds(372, 434, 90, 45);
+		lblHeartOORMax.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartOORMax.setBounds(372, 434, 94, 45);
 		panelHeartrateZonesView.add(lblHeartOORMax);
 		
 		lblHeartOORMin = new JLabel();
-		lblHeartOORMin.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartOORMin.setFont(new Font("Dialog", Font.PLAIN, 24));
 		lblHeartOORMin.setForeground(Color.WHITE);
-		lblHeartOORMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartOORMin.setBounds(462, 434, 90, 45);
+		lblHeartOORMin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartOORMin.setBounds(469, 434, 87, 45);
 		panelHeartrateZonesView.add(lblHeartOORMin);
 		
 		lblHeartOORMinutes = new JLabel();
-		lblHeartOORMinutes.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartOORMinutes.setFont(new Font("Dialog", Font.PLAIN, 24));
 		lblHeartOORMinutes.setForeground(Color.WHITE);
-		lblHeartOORMinutes.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartOORMinutes.setBounds(552, 434, 90, 45);
+		lblHeartOORMinutes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartOORMinutes.setBounds(558, 434, 98, 45);
 		panelHeartrateZonesView.add(lblHeartOORMinutes);
 
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
@@ -1651,16 +1705,27 @@ public class InterfaceView {
 		lblLastUpdatedHRZ.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelHeartrateZonesView.add(lblLastUpdatedHRZ);
 		
+		lblDisplayDateHRZ = new JLabel();
+		lblDisplayDateHRZ.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDisplayDateHRZ.setFont(new Font("Century Gothic", Font.PLAIN, 26));
+		lblDisplayDateHRZ.setForeground(Color.WHITE);
+		lblDisplayDateHRZ.setBounds(0, 60, 720, 100);
+		panelHeartrateZonesView.add(lblDisplayDateHRZ);	
+		
+		btnRefresh = new JButton("");
+		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
+		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
+		btnRefresh.setBounds(630, 10, 50, 50);
+		panelHeartrateZonesView.add(btnRefresh);
+		
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/HRZdash.jpg"));
+		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/HRZdash.jpg"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelHeartrateZonesView.add(lblPic);
-
-		lblDisplayDateHRZ = new JLabel();
-		lblDisplayDateHRZ.setBounds(336, 60, 125, 16);
-		panelHeartrateZonesView.add(lblDisplayDateHRZ);	}
+	}
+		
 
 	/**
 	 * This method controls page navigation, depending on button actions.
@@ -2077,7 +2142,7 @@ public class InterfaceView {
 			  }});
 		
 		chartPanel = new ChartPanel( chart ); 
-		chartPanel.setPreferredSize( new java.awt.Dimension( 560 , 370 ) );         
+		chartPanel.setPreferredSize( new java.awt.Dimension( 620 , 360 ) );         
 		//chartPanel.setMouseZoomable( true , false );   
 		chartPanel.setDomainZoomable(true);
 		
@@ -2755,17 +2820,18 @@ public class InterfaceView {
 				true,              
 				true,              
 				false);
-		 chart.setBackgroundPaint(Color.white);
+		 chart.setBackgroundPaint(Color.BLACK);
 
        final XYPlot plot = chart.getXYPlot();
        //plot.setOutlinePaint(null);
-       plot.setBackgroundPaint(Color.lightGray);
+       plot.setBackgroundPaint(Color.DARK_GRAY);
        plot.setDomainGridlinePaint(Color.white);
        plot.setRangeGridlinePaint(Color.white);
        //plot.setAxisOffset(new Spacer(Spacer.ABSOLUTE, 5.0, 5.0, 5.0, 5.0));
        plot.setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));
        plot.setDomainCrosshairVisible(true);
        plot.setRangeCrosshairVisible(false);
+     
        
        final XYItemRenderer renderer = plot.getRenderer();
        if (renderer instanceof StandardXYItemRenderer) {

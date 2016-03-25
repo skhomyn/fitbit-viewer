@@ -50,17 +50,17 @@ public class GoalsController {
 	}
 	
 	private String compareInt(int goal, int actual){
-		if (actual>goal || actual==goal) return "YAY :D";
-		else return ":(";
+		if (actual>goal || actual==goal) return "Y";
+		else return "N";
 	}
 	
 	private String compareDoubleInt(double goal, int actual){
-		if (actual>goal || actual==goal) return "YAY :D";
-		else return ":(";
+		if (actual>goal || actual==goal) return "Y";
+		else return "N";
 	}
 	
 	private String compareDouble(double goal, double actual){
-		if (actual>goal || actual==goal) return "YAY :D";
-		else return ":(";
+		if (actual>goal || actual==goal) return "Y";
+		else return "N";
 	}
 }
