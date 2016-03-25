@@ -2533,9 +2533,6 @@ public class InterfaceView {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//Date now = new Date();
-				//modelForDay.setDate(now.getYear(), now.getMonth(), now.getDay());
-				//datePicker.set ?
 				setDisplayDate(new Date());	
 			}
 			
