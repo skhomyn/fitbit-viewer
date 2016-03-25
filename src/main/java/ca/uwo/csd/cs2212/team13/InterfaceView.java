@@ -867,7 +867,6 @@ public class InterfaceView {
 		sixPanel_1 = new BackgroundPanel();
 		sixPanel_1.setBounds(40, 24, 160, 144);
 		SixPanel.add(sixPanel_1);
-		sixPanel_1.setLayout(null);
 
 		sixPanel_2 = new BackgroundPanel();
 		sixPanel_2.setBounds(240, 24, 160, 144);
