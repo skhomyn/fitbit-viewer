@@ -2541,7 +2541,7 @@ public class InterfaceView {
 				break;
 			}
 			
-			//save_settings();
+			save_settings();
 
 		}
 
