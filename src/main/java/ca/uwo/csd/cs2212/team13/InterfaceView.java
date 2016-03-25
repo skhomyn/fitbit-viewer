@@ -118,7 +118,7 @@ import javax.swing.Icon;
 public class InterfaceView {
 
 	private UtilDateModel dateModel;
-	private CalendarModel modelForDay;
+	private CalendarModel<Calendar> modelForDay;
 
 	
 	private JFrame frame;
@@ -146,6 +146,9 @@ public class InterfaceView {
 	private JButton btnTimeSeries;
 	private JButton btnHeartRateZones;
 	
+	/**
+	 * JButtons for refresh buttons on every page
+	 */
 	private JButton btnRefresh;
 	
 	/**
@@ -1378,7 +1381,7 @@ public class InterfaceView {
 	 * This method implements the Best Days screen.
 	 */
 	private void bestDaysView() {
-
+		
 		lblBestDaysDistVal = new JLabel();
 		lblBestDaysDistVal.setFont(new Font("Dialog", Font.PLAIN, 40));
 		lblBestDaysDistVal.setForeground(Color.WHITE);
@@ -1432,12 +1435,6 @@ public class InterfaceView {
 		lblLastUpdatedBd.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelBestDaysView.add(lblLastUpdatedBd);
 		
-		btnRefresh = new JButton("");
-		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
-		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
-		btnRefresh.setBounds(630, 10, 50, 50);
-		panelBestDaysView.add(btnRefresh);
-		
 		/**
 		 * Background Image Implementation
 		 */
@@ -1489,12 +1486,6 @@ public class InterfaceView {
 		lblLastUpdatedAccolades.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelAccoladesView.add(lblLastUpdatedAccolades);
 		
-		btnRefresh = new JButton("");
-		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
-		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
-		btnRefresh.setBounds(630, 10, 50, 50);
-		panelAccoladesView.add(btnRefresh);
-		
 		/**
 		 * Background Image Implementation
 		 */
@@ -1544,12 +1535,6 @@ public class InterfaceView {
 		lblLastUpdatedLt.setBounds(486, 540, 222, 16);
 		lblLastUpdatedLt.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelLifetimeTotalsView.add(lblLastUpdatedLt);
-
-		btnRefresh = new JButton("");
-		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
-		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
-		btnRefresh.setBounds(630, 10, 50, 50);
-		panelLifetimeTotalsView.add(btnRefresh);
 		
 		/**
 		 * Background Image Implementation
@@ -1564,7 +1549,7 @@ public class InterfaceView {
 	 * This method implements the Time Series screen.
 	 */
 	private void timeseriesView() {
-
+		
 		JToolBar zoom = new JToolBar();
 		zoom.setBorder(null);
 		zoom.setFloatable(false);
@@ -1611,18 +1596,12 @@ public class InterfaceView {
 		lblDisplayDateTS.setBounds(0, 60, 720, 100);
 		panelTimeSeriesView.add(lblDisplayDateTS);
 		
-		lblClickAndDrag = new JLabel("Click and drag on the graph to zoom in, click and drag left to zoom out.");
+		lblClickAndDrag = new JLabel("Click and drag on the graph to zoom in.");
 		lblClickAndDrag.setForeground(Color.WHITE);
 		lblClickAndDrag.setHorizontalAlignment(SwingConstants.CENTER);
 		lblClickAndDrag.setBounds(40, 144, 640, 16);
 		panelTimeSeriesView.add(lblClickAndDrag);
-		
-		btnRefresh = new JButton("");
-		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
-		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
-		btnRefresh.setBounds(630, 10, 50, 50);
-		panelTimeSeriesView.add(btnRefresh);
-		
+	
 		/**
 		 * Background Image Implementation
 		 */
@@ -1715,12 +1694,6 @@ public class InterfaceView {
 		lblLastUpdatedGoals.setBounds(486, 540, 222, 16);
 		lblLastUpdatedGoals.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelDailyGoalsView.add(lblLastUpdatedGoals);
-		
-		btnRefresh = new JButton("");
-		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
-		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
-		btnRefresh.setBounds(630, 10, 50, 50);
-		panelDailyGoalsView.add(btnRefresh);
 		
 		lblDisplayDateGoals = new JLabel();
 		lblDisplayDateGoals.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1858,12 +1831,6 @@ public class InterfaceView {
 		lblDisplayDateHRZ.setBounds(0, 60, 720, 100);
 		lblDisplayDateHRZ.setForeground(Color.WHITE);
 		panelHeartrateZonesView.add(lblDisplayDateHRZ);	
-		
-		btnRefresh = new JButton("");
-		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
-		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
-		btnRefresh.setBounds(630, 10, 50, 50);
-		panelHeartrateZonesView.add(btnRefresh);
 		
 		/**
 		 * Background Image Implementation
@@ -2557,7 +2524,7 @@ public class InterfaceView {
 	 * date-dependent pages.
 	 * @param refresh
 	 */
-	public void addListenerForRefreshDash(ActionListener refresh){
+	public void addListenerForRefresh(ActionListener refresh){
 		//add API calls trigger
 		btnRefresh.addActionListener(refresh);
 		
@@ -2566,9 +2533,10 @@ public class InterfaceView {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Date now = new Date();
+				//Date now = new Date();
 				//modelForDay.setDate(now.getYear(), now.getMonth(), now.getDay());
-				setDisplayDate(modelForDay.getValueDate());	
+				//datePicker.set ?
+				setDisplayDate(new Date());	
 			}
 			
 		});
