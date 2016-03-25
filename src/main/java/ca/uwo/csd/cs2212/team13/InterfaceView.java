@@ -134,7 +134,8 @@ public class InterfaceView {
 	private JButton btnAccolades;
 	private JButton btnTimeSeries;
 	private JButton btnHeartRateZones;
-	private JButton btnRefresh;
+	
+	private JButton btnRefreshDash;
 	
 	/**
 	 * JButtons for next/previous day on calendar
@@ -310,6 +311,7 @@ public class InterfaceView {
 	 * JDatePickerImpl object for calendar
 	 */
 	private JDatePickerNew datePicker;
+	private JDatePanelNew datePanel;
 	private JLabel lblPic_1;
 	private JLabel lblNewLabel_1;
 
@@ -1066,8 +1068,8 @@ public class InterfaceView {
 		properties.put("text.today", "Today");
 		properties.put("text.month", "Month");
 		properties.put("text.year", "Year");
-		
-		JDatePanelNew datePanel = new JDatePanelNew(modelForDay, properties);
+				
+		datePanel = new JDatePanelNew(modelForDay, properties);
 		datePicker = new JDatePickerNew(datePanel, new DateLabelFormatter());
 		datePicker.setBounds(278,107,163,26);
 
@@ -1146,11 +1148,11 @@ public class InterfaceView {
 		/////////////////////////////////////////////////////////////////
 		/////KEEP THIS THO.//////////////////////////////////////////////
 
-		btnRefresh = new JButton("");
-		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
-		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
-		btnRefresh.setBounds(630, 10, 50, 50);
-		panelDashboardView.add(btnRefresh);
+		btnRefreshDash = new JButton("");
+		btnRefreshDash.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
+		btnRefreshDash.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
+		btnRefreshDash.setBounds(630, 10, 50, 50);
+		panelDashboardView.add(btnRefreshDash);
 		repanel(radioCounter());
 		////////////////////////////////////////////////////////////////////
 
@@ -2330,8 +2332,27 @@ public class InterfaceView {
 		btnDailyGoals.addActionListener(actionsOnClick);
 	}
 
-	public void addListenerForRefresh(ActionListener refresh){
-		btnRefresh.addActionListener(refresh);
+	/**
+	 * Attaches two {@code ActionListener} objects to the refresh button on each
+	 * page. One which triggers new API calls (implemented in {@link Main}), and one
+	 * which updates the date displayed on the date labels of
+	 * date-dependent pages.
+	 * @param refresh
+	 */
+	public void addListenerForRefreshDash(ActionListener refresh){
+		//add API calls trigger
+		btnRefreshDash.addActionListener(refresh);
+		
+		//add display date update to today's date
+		btnRefreshDash.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Date now = new Date();
+				setDisplayDate(modelForDay.getValueDate());	
+			}
+			
+		});
 	}
 
 	/**

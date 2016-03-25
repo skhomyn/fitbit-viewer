@@ -149,10 +149,10 @@ public class Main {
 				
 		//add action listener to refresh button, trigger new API calls for current date
 		/**
-		 * {@code ActionListener} object is added to the refresh button. When the refresh
+		 * {@code ActionListener} object is added to the refresh button on the dashboard. When the refresh
 		 * button is clicked, it triggers new API calls using the current date.
 		 */
-		view.addListenerForRefresh(new ActionListener(){
+		view.addListenerForRefreshDash(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				refreshInfo(gson, apiCaller, wr, "today");
@@ -548,10 +548,10 @@ public class Main {
 		
 		
 		/**
-		 * {@code ActionListener} object is added to the refresh button. When the refresh
+		 * {@code ActionListener} object is added to the refresh button on the dashboard. When the refresh
 		 * button is clicked, it triggers new API calls using the current date.
 		 */
-		view.addListenerForRefresh(new ActionListener(){
+		view.addListenerForRefreshDash(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String test = "Refresh unavailable in test mode.";
