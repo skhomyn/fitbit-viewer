@@ -52,6 +52,7 @@ import java.util.Date;
 public class Main {
 	
 	private DailyRecord ddModel;
+	private DailyDashboardController ddController;
 	private ActivitiesRecord actRecord;
 	private InterfaceView view;
 
@@ -123,7 +124,7 @@ public class Main {
 		refreshInfo(gson, apiCaller, wr, "today");
 
 		// Create Controller for daily goals
-		DailyDashboardController ddController = new DailyDashboardController(ddModel, view);
+		ddController = new DailyDashboardController(ddModel, view);
 
 		// Create Controller for daily goals
 		GoalsController dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
@@ -166,6 +167,7 @@ public class Main {
 				else
 				{
 					refreshInfo(gson, apiCaller, wr, view.getStringDate(null));
+					ddController.DailyDashboardInitialize();
 					System.out.println("\n CALENDAR date change:" + view.getStringDate(null)); //TESTFLAG
 				}
 		
@@ -243,6 +245,7 @@ public class Main {
 		} else {
 			// Parse JSON to Java
 			ddModel = gson.fromJson(dRecord_String, DailyRecord.class);
+			//ddController.DailyDashboardInitialize();
 			//Last Updated label
 			Date now = new Date();
 			String apiCallDate = now.toString();
@@ -390,7 +393,7 @@ public class Main {
 			final DailyRecord ddModel = gson.fromJson(data, DailyRecord.class);
 
 			// Create Controller for daily goals
-			DailyDashboardController ddController = new DailyDashboardController(
+			ddController = new DailyDashboardController(
 					ddModel, view);
 
 			// Create Controller for daily goals
