@@ -625,8 +625,7 @@ public class InterfaceView {
 		SwitchingPanel.add(OnePanel, "name_784837328464246");
 		OnePanel.setLayout(null);
 
-		onePanel_1 = new JPanel();
-		onePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		onePanel_1 = new BackgroundPanel();
 		onePanel_1.setBounds(240, 108, 160, 144);
 		OnePanel.add(onePanel_1);
 		// Add image:
@@ -642,14 +641,12 @@ public class InterfaceView {
 		SwitchingPanel.add(TwoPanel, "name_784837275135018");
 		TwoPanel.setLayout(null);
 
-		twoPanel_1 = new JPanel();
-		twoPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		twoPanel_1 = new BackgroundPanel();
 		twoPanel_1.setBounds(107, 108, 160, 144);
 		TwoPanel.add(twoPanel_1);
 
-		twoPanel_2 = new JPanel();
-		twoPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		twoPanel_2.setBounds(374, 108, 160, 144);
+		twoPanel_2 = new BackgroundPanel();
+		twoPanel_2.setBounds(374, 108, 160, 144);		
 		TwoPanel.add(twoPanel_2);
 		// Add image:
 		JLabel lblPic_2 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
@@ -664,21 +661,18 @@ public class InterfaceView {
 		SwitchingPanel.add(ThreePanel, "name_784837286074452");
 		ThreePanel.setLayout(null);
 
-		threePanel_1 = new JPanel();
+		threePanel_1 = new BackgroundPanel();
 		threePanel_1.setAlignmentX(Component.LEFT_ALIGNMENT);
-		threePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		threePanel_1.setBounds(40, 108, 160, 144);
 		ThreePanel.add(threePanel_1);
 
-		threePanel_2 = new JPanel();
+		threePanel_2 = new BackgroundPanel();
 		threePanel_2.setAlignmentX(Component.LEFT_ALIGNMENT);
-		threePanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		threePanel_2.setBounds(240, 108, 160, 144);
 		ThreePanel.add(threePanel_2);
 
-		threePanel_3 = new JPanel();
+		threePanel_3 = new BackgroundPanel();
 		threePanel_3.setAlignmentX(Component.LEFT_ALIGNMENT);
-		threePanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		threePanel_3.setBounds(440, 108, 160, 144);
 		ThreePanel.add(threePanel_3);
 
@@ -695,23 +689,19 @@ public class InterfaceView {
 		SwitchingPanel.add(FourPanel, "name_784837296062649");
 		FourPanel.setLayout(null);
 
-		fourPanel_1 = new JPanel();
-		fourPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fourPanel_1 = new BackgroundPanel();
 		fourPanel_1.setBounds(107, 24, 160, 144);
 		FourPanel.add(fourPanel_1);
 
-		fourPanel_2 = new JPanel();
-		fourPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fourPanel_2 = new BackgroundPanel();
 		fourPanel_2.setBounds(374, 24, 160, 144);
 		FourPanel.add(fourPanel_2);
 
-		fourPanel_3 = new JPanel();
-		fourPanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fourPanel_3 = new BackgroundPanel();
 		fourPanel_3.setBounds(107, 192, 160, 144);
 		FourPanel.add(fourPanel_3);
 
-		fourPanel_4 = new JPanel();
-		fourPanel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fourPanel_4 = new BackgroundPanel();
 		fourPanel_4.setBounds(374, 192, 160, 144);
 		FourPanel.add(fourPanel_4);
 
@@ -728,28 +718,23 @@ public class InterfaceView {
 		SwitchingPanel.add(FivePanel, "name_784837306362861");
 		FivePanel.setLayout(null);
 
-		fivePanel_1 = new JPanel();
-		fivePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fivePanel_1 = new BackgroundPanel();
 		fivePanel_1.setBounds(40, 24, 160, 144);
 		FivePanel.add(fivePanel_1);
 
-		fivePanel_2 = new JPanel();
-		fivePanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fivePanel_2 = new BackgroundPanel();
 		fivePanel_2.setBounds(240, 24, 160, 144);
 		FivePanel.add(fivePanel_2);
 
-		fivePanel_3 = new JPanel();
-		fivePanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fivePanel_3 = new BackgroundPanel();
 		fivePanel_3.setBounds(440, 24, 160, 144);
 		FivePanel.add(fivePanel_3);
 
-		fivePanel_4 = new JPanel();
-		fivePanel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fivePanel_4 = new BackgroundPanel();
 		fivePanel_4.setBounds(107, 192, 160, 144);
 		FivePanel.add(fivePanel_4);
 
-		fivePanel_5 = new JPanel();
-		fivePanel_5.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fivePanel_5 = new BackgroundPanel();
 		fivePanel_5.setBounds(374, 192, 160, 144);
 		FivePanel.add(fivePanel_5);
 
@@ -766,38 +751,32 @@ public class InterfaceView {
 		SwitchingPanel.add(SixPanel, "name_784837317868029");
 		SixPanel.setLayout(null);
 
-		sixPanel_1 = new JPanel();
-		sixPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		sixPanel_1 = new BackgroundPanel();
 		sixPanel_1.setBounds(40, 24, 160, 144);
 		SixPanel.add(sixPanel_1);
 		sixPanel_1.setLayout(null);
 
-		sixPanel_2 = new JPanel();
+		sixPanel_2 = new BackgroundPanel();
 		sixPanel_2.setBounds(240, 24, 160, 144);
 		SixPanel.add(sixPanel_2);
-		sixPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 
-		sixPanel_3 = new JPanel();
+		sixPanel_3 = new BackgroundPanel();
 		sixPanel_3.setBounds(new Rectangle(0, 0, 180, 160));
-		sixPanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		sixPanel_3.setBounds(440, 24, 160, 144);
 		SixPanel.add(sixPanel_3);
 
-		sixPanel_4 = new JPanel();
+		sixPanel_4 = new BackgroundPanel();
 		sixPanel_4.setBounds(new Rectangle(0, 0, 180, 160));
-		sixPanel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		sixPanel_4.setBounds(40, 192, 160, 144);
 		SixPanel.add(sixPanel_4);
 
-		sixPanel_5 = new JPanel();
+		sixPanel_5 = new BackgroundPanel();
 		sixPanel_5.setBounds(new Rectangle(0, 0, 180, 160));
-		sixPanel_5.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		sixPanel_5.setBounds(240, 192, 160, 144);
 		SixPanel.add(sixPanel_5);
 
-		sixPanel_6 = new JPanel();
+		sixPanel_6 = new BackgroundPanel();
 		sixPanel_6.setBounds(new Rectangle(0, 0, 180, 160));
-		sixPanel_6.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		sixPanel_6.setBounds(440, 192, 160, 144);
 		SixPanel.add(sixPanel_6);
 		sixPanel_6.setLayout(null);
@@ -890,7 +869,6 @@ public class InterfaceView {
 		mnNewMenu.add(radioSteps);
 		radioSteps.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				if (radioCounter() == 0) {
 					radioSteps.setSelected(true);
 				}
@@ -910,7 +888,6 @@ public class InterfaceView {
 					}
 					repanel(radioCounter());
 				}
-
 				else {
 					while (panelArray[radioCounter()] != dailyStepsPanel) {
 						int position = 0;
@@ -931,7 +908,6 @@ public class InterfaceView {
 
 		radioCalories.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				if (radioCounter() == 0) {
 					radioCalories.setSelected(true);
 				}
@@ -951,7 +927,6 @@ public class InterfaceView {
 					}
 					repanel(radioCounter());
 				}
-
 				else {
 					while (panelArray[radioCounter()] != dailyCaloriesPanel) {
 						int position = 0;
@@ -971,7 +946,6 @@ public class InterfaceView {
 		});
 		radioTotalDist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 
 				if (radioCounter() == 0) {
 					radioTotalDist.setSelected(true);
@@ -1011,7 +985,6 @@ public class InterfaceView {
 			}
 		});
 
-
 		radioSedMin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (radioCounter() == 0) {
@@ -1032,7 +1005,6 @@ public class InterfaceView {
 					}
 					repanel(radioCounter());
 				}
-
 				else {
 					while (panelArray[radioCounter()] != dailySedMinPanel) {
 						int position = 0;
@@ -1043,6 +1015,7 @@ public class InterfaceView {
 						}
 						SPanel switcheyPanel = panelArray[position + 1];
 						panelArray[position + 1] = dailySedMinPanel;
+
 						panelArray[position] = switcheyPanel;
 					}
 					repanel(radioCounter());
@@ -1052,7 +1025,6 @@ public class InterfaceView {
 
 		radioActiveMin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				if (radioCounter() == 0) {
 					radioActiveMin.setSelected(true);
 				}
@@ -1071,7 +1043,6 @@ public class InterfaceView {
 					}
 					repanel(radioCounter());
 				}
-
 				else {
 					while (panelArray[radioCounter()] != dailyActiveMinPanel) {
 						int position = 0;
@@ -2466,256 +2437,177 @@ public class InterfaceView {
  * Method switches to a new layout for the custom dashboard.
  * @param count the number of radio buttons selected in the custom layout menu for the dashboard.
  */
-	public void repanel(int count) {
-		switch (count) {
-		case 1:
+	/**
+	 * Method switches to a new layout for the custom dashboard.
+	 * @param count the number of radio buttons selected in the custom layout menu for the dashboard.
+	 */
+		public void repanel(int count) {
+			switch (count) {
+			case 1:
 
-			TwoPanel.setVisible(false);
-			try {
-				twoPanel_1.removeAll();
-				twoPanel_2.removeAll();
-			} catch (Exception e) {
+				TwoPanel.setVisible(false);
+				try {
+					twoPanel_1.removeAll();
+					twoPanel_2.removeAll();
+				} catch (Exception e) {
+				}
+				ThreePanel.setVisible(false);
+				FourPanel.setVisible(false);
+				FivePanel.setVisible(false);
+				SixPanel.setVisible(false);
+
+				onePanel_1.add(panelArray[0]);
+				OnePanel.setVisible(true);
+
+				break;
+
+			case 2:
+				OnePanel.setVisible(false);
+				try {
+					onePanel_1.removeAll();
+				} catch (Exception e) {
+				}
+				ThreePanel.setVisible(false);
+				try {
+					threePanel_1.removeAll();
+					threePanel_2.removeAll();
+					threePanel_3.removeAll();
+				} catch (Exception e) {
+				}
+
+				FourPanel.setVisible(false);
+				FivePanel.setVisible(false);
+				SixPanel.setVisible(false);
+
+				twoPanel_1.add(panelArray[0]);
+				twoPanel_2.add(panelArray[1]);
+				TwoPanel.setVisible(true);
+
+				break;
+
+			case 3:
+				OnePanel.setVisible(false);
+				TwoPanel.setVisible(false);
+				try {
+					twoPanel_1.removeAll();
+					twoPanel_2.removeAll();
+				} catch (Exception e) {
+				}
+
+				FourPanel.setVisible(false);
+				try {
+					fourPanel_1.removeAll();
+					fourPanel_2.removeAll();
+					fourPanel_3.removeAll();
+					fourPanel_4.removeAll();
+
+				} catch (Exception e) {
+				}
+				FivePanel.setVisible(false);
+				SixPanel.setVisible(false);
+
+				threePanel_1.add(panelArray[0]);
+				threePanel_2.add(panelArray[1]);
+				threePanel_3.add(panelArray[2]);
+				ThreePanel.setVisible(true);
+
+				break;
+
+			case 4:
+				OnePanel.setVisible(false);
+				TwoPanel.setVisible(false);
+				ThreePanel.setVisible(false);
+
+				try {
+					threePanel_1.removeAll();
+					threePanel_2.removeAll();
+					threePanel_3.removeAll();
+				} catch (Exception e) {
+				}
+				FivePanel.setVisible(false);
+				try {
+					fivePanel_1.removeAll();
+					fivePanel_2.removeAll();
+					fivePanel_3.removeAll();
+					fivePanel_4.removeAll();
+					fivePanel_5.removeAll();
+
+				} catch (Exception e) {
+				}
+				SixPanel.setVisible(false);
+
+				fourPanel_1.add(panelArray[0]);
+				fourPanel_2.add(panelArray[1]);
+				fourPanel_3.add(panelArray[2]);
+				fourPanel_4.add(panelArray[3]);
+
+				FourPanel.setVisible(true);
+
+				break;
+
+			case 5:
+				OnePanel.setVisible(false);
+				TwoPanel.setVisible(false);
+				ThreePanel.setVisible(false);
+				FourPanel.setVisible(false);
+
+				try {
+					fourPanel_1.removeAll();
+					fourPanel_2.removeAll();
+					fourPanel_3.removeAll();
+					fourPanel_4.removeAll();
+				} catch (Exception e) {
+				}
+				SixPanel.setVisible(false);
+				try {
+					sixPanel_1.removeAll();
+					sixPanel_2.removeAll();
+					sixPanel_3.removeAll();
+					sixPanel_4.removeAll();
+					sixPanel_5.removeAll();
+					sixPanel_6.removeAll();
+				} catch (Exception e) {
+				}
+
+				fivePanel_1.add(panelArray[0]);
+				fivePanel_2.add(panelArray[1]);
+				fivePanel_3.add(panelArray[2]);
+				fivePanel_4.add(panelArray[3]);
+				fivePanel_5.add(panelArray[4]);
+				FivePanel.setVisible(true);
+				break;
+
+			case 6:
+				OnePanel.setVisible(false);
+				TwoPanel.setVisible(false);
+				ThreePanel.setVisible(false);
+				FourPanel.setVisible(false);
+				FivePanel.setVisible(false);
+
+				try{
+					fivePanel_1.removeAll();
+					fivePanel_2.removeAll();
+					fivePanel_3.removeAll();
+					fivePanel_4.removeAll();
+					fivePanel_5.removeAll();
+
+				} catch (Exception e) {
+				}
+
+				sixPanel_1.add(panelArray[0]);
+				sixPanel_2.add(panelArray[1]);
+				sixPanel_3.add(panelArray[2]);
+				sixPanel_4.add(panelArray[3]);
+				sixPanel_5.add(panelArray[4]);
+				sixPanel_6.add(panelArray[5]);
+				SixPanel.setVisible(true);
+
+				break;
 			}
-			ThreePanel.setVisible(false);
-			FourPanel.setVisible(false);
-			FivePanel.setVisible(false);
-			SixPanel.setVisible(false);
-
-			onePanel_1.add(panelArray[0]);
 			
-			// Add images:
-			JLabel img_21 = new ILabel();
-			onePanel_1.setLayout(null);
-			onePanel_1.add(img_21);
-			// ---
-			OnePanel.setVisible(true);
+			save_settings();
 
-			break;
-
-		case 2:
-			OnePanel.setVisible(false);
-			try {
-				onePanel_1.removeAll();
-			} catch (Exception e) {
-			}
-			ThreePanel.setVisible(false);
-			try {
-				threePanel_1.removeAll();
-				threePanel_2.removeAll();
-				threePanel_3.removeAll();
-			} catch (Exception e) {
-			}
-
-			FourPanel.setVisible(false);
-			FivePanel.setVisible(false);
-			SixPanel.setVisible(false);
-
-			twoPanel_1.add(panelArray[0]);
-			twoPanel_2.add(panelArray[1]);
-			
-			// Add images:
-			JLabel img_19 = new ILabel();
-			JLabel img_20 = new ILabel();
-			twoPanel_1.setLayout(null);
-			twoPanel_1.add(img_19);
-			twoPanel_2.setLayout(null);
-			twoPanel_2.add(img_20);
-			// ---
-			TwoPanel.setVisible(true);
-			
-			break;
-
-		case 3:
-			OnePanel.setVisible(false);
-			TwoPanel.setVisible(false);
-			try {
-				twoPanel_1.removeAll();
-				twoPanel_2.removeAll();
-			} catch (Exception e) {
-			}
-
-			FourPanel.setVisible(false);
-			try {
-				fourPanel_1.removeAll();
-				fourPanel_2.removeAll();
-				fourPanel_3.removeAll();
-				fourPanel_4.removeAll();
-
-			} catch (Exception e) {
-			}
-			FivePanel.setVisible(false);
-			SixPanel.setVisible(false);
-
-			threePanel_1.add(panelArray[0]);
-			threePanel_2.add(panelArray[1]);
-			threePanel_3.add(panelArray[2]);
-			
-			// Add images:
-			JLabel img_16 = new ILabel();
-			JLabel img_17 = new ILabel();
-			JLabel img_18 = new ILabel();
-			threePanel_1.setLayout(null);
-			threePanel_1.add(img_16);
-			threePanel_2.setLayout(null);
-			threePanel_2.add(img_17);
-			threePanel_3.setLayout(null);
-			threePanel_3.add(img_18);
-			// ---
-			ThreePanel.setVisible(true);
-
-			break;
-
-		case 4:
-			OnePanel.setVisible(false);
-			TwoPanel.setVisible(false);
-			ThreePanel.setVisible(false);
-
-			try {
-				threePanel_1.removeAll();
-				threePanel_2.removeAll();
-				threePanel_3.removeAll();
-			} catch (Exception e) {
-			}
-			FivePanel.setVisible(false);
-			try {
-				fivePanel_1.removeAll();
-				fivePanel_2.removeAll();
-				fivePanel_3.removeAll();
-				fivePanel_4.removeAll();
-				fivePanel_5.removeAll();
-
-			} catch (Exception e) {
-			}
-			SixPanel.setVisible(false);
-
-			fourPanel_1.add(panelArray[0]);
-			fourPanel_2.add(panelArray[1]);
-			fourPanel_3.add(panelArray[2]);
-			fourPanel_4.add(panelArray[3]);
-			
-			// Add images:
-			JLabel img_12 = new ILabel();
-			JLabel img_13 = new ILabel();
-			JLabel img_14 = new ILabel();
-			JLabel img_15 = new ILabel();
-			fourPanel_1.setLayout(null);
-			fourPanel_1.add(img_12);
-			fourPanel_2.setLayout(null);
-			fourPanel_2.add(img_13);
-			fourPanel_3.setLayout(null);
-			fourPanel_3.add(img_14);
-			fourPanel_4.setLayout(null);
-			fourPanel_4.add(img_15);
-			// ---
-			FourPanel.setVisible(true);
-
-			break;
-
-		case 5:
-			OnePanel.setVisible(false);
-			TwoPanel.setVisible(false);
-			ThreePanel.setVisible(false);
-			FourPanel.setVisible(false);
-
-			try {
-				fourPanel_1.removeAll();
-				fourPanel_2.removeAll();
-				fourPanel_3.removeAll();
-				fourPanel_4.removeAll();
-			} catch (Exception e) {
-			}
-			SixPanel.setVisible(false);
-			try {
-				sixPanel_1.removeAll();
-				sixPanel_2.removeAll();
-				sixPanel_3.removeAll();
-				sixPanel_4.removeAll();
-				sixPanel_5.removeAll();
-				sixPanel_6.removeAll();
-			} catch (Exception e) {
-			}
-
-			fivePanel_1.add(panelArray[0]);
-			fivePanel_2.add(panelArray[1]);
-			fivePanel_3.add(panelArray[2]);
-			fivePanel_4.add(panelArray[3]);
-			fivePanel_5.add(panelArray[4]);
-			
-			// Add images:
-			JLabel img_7 = new ILabel();
-			JLabel img_8 = new ILabel();
-			JLabel img_9 = new ILabel();
-			JLabel img_10 = new ILabel();
-			JLabel img_11 = new ILabel();
-			fivePanel_1.setLayout(null);
-			fivePanel_1.add(img_7);
-			fivePanel_2.setLayout(null);
-			fivePanel_2.add(img_8);
-			fivePanel_3.setLayout(null);
-			fivePanel_3.add(img_9);
-			fivePanel_4.setLayout(null);
-			fivePanel_4.add(img_10);
-			fivePanel_5.setLayout(null);
-			fivePanel_5.add(img_11);
-			// ---
-
-			FivePanel.setVisible(true);
-			break;
-
-		case 6:
-			OnePanel.setVisible(false);
-			TwoPanel.setVisible(false);
-			ThreePanel.setVisible(false);
-			FourPanel.setVisible(false);
-			FivePanel.setVisible(false);
-
-			try{
-				fivePanel_1.removeAll();
-				fivePanel_2.removeAll();
-				fivePanel_3.removeAll();
-				fivePanel_4.removeAll();
-				fivePanel_5.removeAll();
-
-
-			} catch (Exception e) {
-			}
-
-			sixPanel_1.add(panelArray[0]);
-			sixPanel_2.add(panelArray[1]);
-			sixPanel_3.add(panelArray[2]);
-			sixPanel_4.add(panelArray[3]);
-			sixPanel_5.add(panelArray[4]);
-			sixPanel_6.add(panelArray[5]);
-
-			// Add images:
-			JLabel img_1 = new ILabel();
-			JLabel img_2 = new ILabel();
-			JLabel img_3 = new ILabel();
-			JLabel img_4 = new ILabel();
-			JLabel img_5 = new ILabel();
-			JLabel img_6 = new ILabel();
-			sixPanel_1.setLayout(null);
-			sixPanel_1.add(img_1);
-			sixPanel_2.setLayout(null);
-			sixPanel_2.add(img_2);
-			sixPanel_3.setLayout(null);
-			sixPanel_3.add(img_3);
-			sixPanel_4.setLayout(null);
-			sixPanel_4.add(img_4);
-			sixPanel_5.setLayout(null);
-			sixPanel_5.add(img_5);
-			sixPanel_6.setLayout(null);
-			sixPanel_6.add(img_6);
-			// ---
-
-			SixPanel.setVisible(true);
-
-			break;
 		}
-
-		save_settings();
-
-	}
 
 	private XYDataset createDataset(DistanceTSRecord dRecord, StepsTSRecord sRecord, CaloriesTSRecord caRecord, HeartRateRecord rRecord) 
 	{
