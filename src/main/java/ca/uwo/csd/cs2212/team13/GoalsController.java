@@ -17,6 +17,21 @@ public class GoalsController {
 		view.addClickListenerGoals(new clickListener());
 		
 	}
+	/**
+	 * Sets the Daily Dashboard page display fields in
+	 * <code>InterfaceView</code> with values from the appropriate model
+	 * <code>DailyRecord</code> fields.
+	 */
+	public void goalsInitialize() {
+		view.setDailyGoalsFields(goalsModel.getActiveMinutes(), goalsModel.getCaloriesOut(), 
+				goalsModel.getDistance(), goalsModel.getFloors(), goalsModel.getSteps(),
+				compareDouble(goalsModel.getActiveMinutes(), dailyModel.getVeryActiveMinutes()),
+				compareDoubleInt(goalsModel.getCaloriesOut(), dailyModel.getCalories()),
+				compareDouble(goalsModel.getDistance(), dailyModel.getDistance()),
+				compareInt(goalsModel.getFloors(), dailyModel.getFloors()),
+				compareInt(goalsModel.getSteps(), dailyModel.getSteps())
+				);
+	}
 	
 	class clickListener implements ActionListener {
 

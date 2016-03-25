@@ -51,6 +51,18 @@ public class BestDaysController {
 		// call method in view to add an event listener to the best days button
 		view.addClickListenerBestDays(new clickListener());
 	}
+	
+	/**
+	 * Sets the Best Days page display fields in
+	 * <code>InterfaceView</code> with values from the appropriate model
+	 * <code>Best Days</code> fields.
+	 */
+	public void bestDaysInitialize() {
+		view.setBestDaysFields(model.getDis_value(),
+				model.getFloors_value(), model.getSteps_value(),
+				model.getDis_date(), model.getFloors_date(),
+				model.getSteps_date());
+	}
 
 	/**
 	 * Local class accessible only by the <code>BestDaysController</code>

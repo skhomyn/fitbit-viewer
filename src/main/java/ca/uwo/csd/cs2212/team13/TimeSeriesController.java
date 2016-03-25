@@ -63,6 +63,14 @@ public class TimeSeriesController {
 	}
 
 	/**
+	 * Sets the Time Series page display fields in
+	 * <code>InterfaceView</code> with values from the appropriate models:
+	 * {@code CaloriesTSRecord}, {@code DistanceTSRecord}, {@code StepsTSRecord}, {@code HeartRateRecord}
+	 */
+	public void timeSeriesInitialize() {
+		view.setTimeSeriesGraph(distance_model, steps_model, calories_model, rate_model);
+	}
+	/**
 	 * Local class accessible only by the <code>LifetimeController</code>
 	 * object. It's purpose is to define which actions should be performed when
 	 * the Lifetime Totals button in <code>InterfaceView</code> is clicked by
@@ -88,7 +96,6 @@ public class TimeSeriesController {
 			view.setTimeSeriesGraph(distance_model, steps_model, calories_model, rate_model);
 		}
 
-		// TODO: error handling for lifetime totals controller
 	}
 
 }

@@ -37,6 +37,16 @@ public class AccoladeController {
 		}
 	}
 
+	/**
+	 * Sets the Accolades page display fields in
+	 * <code>InterfaceView</code> with values from the appropriate model
+	 * <code>AccoladesRecord</code> fields.
+	 */
+	public void accoladesInitialize() {
+		checkAchieved();
+		view.setAccoladeFields(ar);
+		save();
+	}
 	private void checkAchieved() {
 		LifetimeRecord lr = acR.getLifetime();
 		BestDaysRecord br = acR.getBest();

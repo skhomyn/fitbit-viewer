@@ -306,8 +306,6 @@ public class InterfaceView {
 	 */
 	private RangeConstraint rc;
 
-
-
 	/**
 	 * JDatePickerImpl object for calendar
 	 */
