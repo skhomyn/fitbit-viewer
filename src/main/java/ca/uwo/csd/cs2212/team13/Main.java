@@ -255,8 +255,9 @@ public class Main {
 	 */
 	public void refreshInfo(Gson gson, APICaller apiCaller, WriterReader wr, String dateStr){
 
+		
 		//make request for heart rate info
-		String hRecord_String = apiCaller.requestJson("activities/heart/date/" + dateStr + "1d/1min.json");
+		String hRecord_String = apiCaller.requestJson("activities/heart/date/" + dateStr + "/1d/1min.json");
 		// If Null
 		if (hRecord_String == null) {
 			try {
@@ -283,6 +284,7 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println("Could not write to file");
 		}
+		
 		
 		//make request for dashboard info
 		String dRecord_String = apiCaller.requestJson("activities/date/" + dateStr + ".json");
@@ -393,8 +395,9 @@ public class Main {
 		String apiCallDate = now.toString();
 		view.setLastUpdatedAccolades(apiCallDate);
 		
+		System.out.println("TEST\n");
 		//make request for distance info
-		String disRecord_String = apiCaller.requestJson("activities/distance/date/" + dateStr + "1d/1min.json");
+		String disRecord_String = apiCaller.requestJson("activities/distance/date/" + dateStr + "/1d/1min.json");
 		// If Null
 		if (disRecord_String == null) {
 			try {
@@ -414,8 +417,9 @@ public class Main {
 			System.out.println("Could not write to file");
 		}
 		
+		System.out.println("TEST\n");
 		//make request for calories info
-		String caRecord_String = apiCaller.requestJson("activities/calories/date/" + dateStr + "1d/1min.json");
+		String caRecord_String = apiCaller.requestJson("activities/calories/date/" + dateStr + "/1d/1min.json");
 		// If Null
 		if (caRecord_String == null) {
 			try {
@@ -436,7 +440,7 @@ public class Main {
 		}
 		
 		//make request for calories info
-		String sRecord_String = apiCaller.requestJson("activities/steps/date/" + dateStr + "1d/1min.json");
+		String sRecord_String = apiCaller.requestJson("activities/steps/date/" + dateStr + "/1d/1min.json");
 		// If Null
 		if (sRecord_String == null) {
 			try {

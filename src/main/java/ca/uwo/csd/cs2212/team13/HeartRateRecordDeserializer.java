@@ -86,7 +86,13 @@ public class HeartRateRecordDeserializer implements
 			final JsonObject jsonHeartZoneObject = jsonZoneElement
 					.getAsJsonObject();
 
-			 int minutes = jsonHeartZoneObject.get("minutes").getAsInt();
+			 int minutes;
+			try {
+				minutes = jsonHeartZoneObject.get("minutes").getAsInt();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				minutes = 0;
+			}
 			 int max = jsonHeartZoneObject.get("max").getAsInt();
 			 int min = jsonHeartZoneObject.get("min").getAsInt();
 			 String name = jsonHeartZoneObject.get("name").getAsString();
@@ -97,7 +103,14 @@ public class HeartRateRecordDeserializer implements
 
 		// get resting Heartrate as an int then create a heartrecord object with
 		// all the information
-		final double restingHR = jsonValue.get("restingHeartRate").getAsDouble() ;// 0; //jsonValue.get("value").getAsInt();
+		
+		double restingHR;
+		try {
+			restingHR = jsonValue.get("restingHeartRate").getAsDouble();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			restingHR = 0;
+		}
 
 		final JsonObject jsonIntraDay = jsonObject
 				.getAsJsonObject("activities-heart-intraday");
