@@ -135,7 +135,7 @@ public class InterfaceView {
 	private JButton btnTimeSeries;
 	private JButton btnHeartRateZones;
 	
-	private JButton btnRefreshDash;
+	private JButton btnRefresh;
 	
 	/**
 	 * JButtons for next/previous day on calendar
@@ -1150,11 +1150,11 @@ public class InterfaceView {
 		/////////////////////////////////////////////////////////////////
 		/////KEEP THIS THO.//////////////////////////////////////////////
 
-		btnRefreshDash = new JButton("");
-		btnRefreshDash.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
-		btnRefreshDash.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
-		btnRefreshDash.setBounds(630, 10, 50, 50);
-		panelDashboardView.add(btnRefreshDash);
+		btnRefresh = new JButton("");
+		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
+		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
+		btnRefresh.setBounds(630, 10, 50, 50);
+		panelDashboardView.add(btnRefresh);
 		repanel(radioCounter());
 		////////////////////////////////////////////////////////////////////
 
@@ -1711,7 +1711,6 @@ public class InterfaceView {
 		lblDisplayDateHRZ.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDisplayDateHRZ.setFont(new Font("Century Gothic", Font.PLAIN, 26));
 		lblDisplayDateHRZ.setForeground(Color.WHITE);
-		lblDisplayDateHRZ.setBounds(0, 60, 720, 100);
 		panelHeartrateZonesView.add(lblDisplayDateHRZ);	
 		
 		btnRefresh = new JButton("");
@@ -2406,10 +2405,10 @@ public class InterfaceView {
 	 */
 	public void addListenerForRefreshDash(ActionListener refresh){
 		//add API calls trigger
-		btnRefreshDash.addActionListener(refresh);
+		btnRefresh.addActionListener(refresh);
 		
 		//add display date update to today's date
-		btnRefreshDash.addActionListener(new ActionListener() {
+		btnRefresh.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
