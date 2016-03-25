@@ -305,7 +305,6 @@ public class InterfaceView {
 	 * rc_2 is for API calls next/prev
 	 */
 	private RangeConstraint rc;
-	private RangeConstraint rc_2;
 
 	/**
 	 * JDatePickerImpl object for calendar
@@ -338,14 +337,6 @@ public class InterfaceView {
 		Calendar todayMinusThreeYear = Calendar.getInstance();
 		todayMinusThreeYear.add(Calendar.YEAR, -3);
 		rc = new RangeConstraint(todayMinusThreeYear, todayPlus);
-		
-		Calendar todayMinusOne = Calendar.getInstance();
-		Calendar todayMinusThreeYearPlusOne = Calendar.getInstance();
-		todayMinusOne.add(Calendar.DATE, -1);
-		todayMinusThreeYearPlusOne.add(Calendar.YEAR, -3);
-		todayMinusThreeYearPlusOne.add(Calendar.DATE, 1);
-		rc_2 = new RangeConstraint(todayMinusThreeYearPlusOne, todayMinusOne);
-
 
 		
 		frame = new JFrame();
@@ -2249,11 +2240,21 @@ public class InterfaceView {
 		
 		return true;
 	}
+
 	
-	public boolean checkConstraintsMain(CalendarModel model) {
+	public boolean checkConstraintsLower(CalendarModel model) {
 
 
-		if (!rc_2.isValidSelection(model)) {
+		if (!rc.isLower(model)) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public boolean checkConstraintsUpper(CalendarModel model) {
+
+		if (!rc.isUpper(model)) {
 			return false;
 		}
 		
@@ -2602,7 +2603,7 @@ public class InterfaceView {
 				break;
 			}
 			
-			save_settings();
+			//save_settings();
 
 		}
 

@@ -192,15 +192,20 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				if (!view.checkConstraintsMain(view.getCalendarObject())) {
-					// rollback
-					//view.getCalendarObject().setDay(oldDay);
-					System.out.println("noooo! - message from addPreviousDayActions in Main");
+				if (!view.checkConstraints(view.getCalendarObject())) {
+					System.out.println("\naddPreviousDayActions in Main "); //attempt to change date to future date
 				}
 				else
 				{
-					refreshInfo(gson, apiCaller, wr, view.getStringDate("previous"));
-					System.out.println("\n PREV DAY date change:" + view.getStringDate("previous"));
+					if(view.checkConstraintsLower(view.getCalendarObject()))
+					{
+						System.out.println("Cannot API Call Past Three Years.\n");
+					}
+					else
+					{
+						refreshInfo(gson, apiCaller, wr, view.getStringDate("previous"));
+						System.out.println("\n PREV DAY date change:" + view.getStringDate("previous"));
+					}
 				}
 			}
 		});
@@ -216,14 +221,20 @@ public class Main {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 
-					if (!view.checkConstraintsMain(view.getCalendarObject())) {
-						// rollback
-						System.out.println("noooo! - message from addNextDayActions in Main");
+					if (!view.checkConstraints(view.getCalendarObject())) {
+						System.out.println("\naddNextDayActions in Main "); //attempt to change date to future date
 					}
 					else
 					{
-						refreshInfo(gson, apiCaller, wr, view.getStringDate("next"));
-						System.out.println("\n NEXT DAY day change:" + view.getStringDate("next")); //TESTFLAG
+						if(view.checkConstraintsUpper(view.getCalendarObject()))
+						{
+							System.out.println("Cannot API Call Future Dates.\n");
+						}
+						else
+						{
+							refreshInfo(gson, apiCaller, wr, view.getStringDate("next"));
+							System.out.println("\n NEXT DAY date change:" + view.getStringDate("next")); //TESTFLAG
+						}
 					}
 				}
 	});
