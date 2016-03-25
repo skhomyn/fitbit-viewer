@@ -189,10 +189,18 @@ public class InterfaceView {
 	private JLabel lblZoneThreeVal;
 	private JLabel lblHeartMins;
 	private JLabel lblHeartRest;
-	private JLabel lblHeartCardioMaxMin;
-	private JLabel lblHeartFatBurnMaxMin;
-	private JLabel lblHeartPeakMaxMin;
-	private JLabel lblHeartOORMaxMin;
+	private JLabel lblHeartCardioMax;
+	private JLabel lblHeartFatBurnMax;
+	private JLabel lblHeartPeakMax;
+	private JLabel lblHeartOORMax;
+	private JLabel lblHeartCardioMin;
+	private JLabel lblHeartFatBurnMin;
+	private JLabel lblHeartPeakMin;
+	private JLabel lblHeartOORMin;	
+	private JLabel lblHeartCardioMinutes;
+	private JLabel lblHeartFatBurnMinutes;
+	private JLabel lblHeartPeakMinutes;
+	private JLabel lblHeartOORMinutes;
 
 
 	/**
@@ -494,8 +502,6 @@ public class InterfaceView {
 	 * This method implements the Dashboard screen.
 	 */
 	private void dashboardView() {
-
-		panelDashboardView.setLayout(null);
 
 		panelDashboardView.setLayout(null);
 
@@ -1562,33 +1568,89 @@ public class InterfaceView {
 		lblHeartMins.setBounds(372, 211, 286, 61);
 		panelHeartrateZonesView.add(lblHeartMins);
 
-		lblHeartCardioMaxMin = new JLabel();
-		lblHeartCardioMaxMin.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblHeartCardioMaxMin.setForeground(Color.WHITE);
-		lblHeartCardioMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartCardioMaxMin.setBounds(59, 318, 289, 45);
-		panelHeartrateZonesView.add(lblHeartCardioMaxMin);
+		lblHeartCardioMax = new JLabel();
+		lblHeartCardioMax.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartCardioMax.setForeground(Color.WHITE);
+		lblHeartCardioMax.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartCardioMax.setBounds(59, 318, 90, 45);
+		panelHeartrateZonesView.add(lblHeartCardioMax);
+		
+		lblHeartCardioMin = new JLabel();
+		lblHeartCardioMin.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartCardioMin.setForeground(Color.WHITE);
+		lblHeartCardioMin.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartCardioMin.setBounds(150, 318, 90, 45);
+		panelHeartrateZonesView.add(lblHeartCardioMin);
+		
+		lblHeartCardioMinutes = new JLabel();
+		lblHeartCardioMinutes.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartCardioMinutes.setForeground(Color.WHITE);
+		lblHeartCardioMinutes.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartCardioMinutes.setBounds(240, 318, 90, 45);
+		panelHeartrateZonesView.add(lblHeartCardioMinutes);
 
-		lblHeartFatBurnMaxMin = new JLabel();
-		lblHeartFatBurnMaxMin.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblHeartFatBurnMaxMin.setForeground(Color.WHITE);
-		lblHeartFatBurnMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartFatBurnMaxMin.setBounds(372, 318, 286, 45);
-		panelHeartrateZonesView.add(lblHeartFatBurnMaxMin);
+		lblHeartFatBurnMax = new JLabel();
+		lblHeartFatBurnMax.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartFatBurnMax.setForeground(Color.WHITE);
+		lblHeartFatBurnMax.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartFatBurnMax.setBounds(372, 318, 90, 45);
+		panelHeartrateZonesView.add(lblHeartFatBurnMax);
+		
+		lblHeartFatBurnMin = new JLabel();
+		lblHeartFatBurnMin.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartFatBurnMin.setForeground(Color.WHITE);
+		lblHeartFatBurnMin.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartFatBurnMin.setBounds(462, 318, 90, 45);
+		panelHeartrateZonesView.add(lblHeartFatBurnMin);
+		
+		lblHeartFatBurnMinutes = new JLabel();
+		lblHeartFatBurnMinutes.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartFatBurnMinutes.setForeground(Color.WHITE);
+		lblHeartFatBurnMinutes.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartFatBurnMinutes.setBounds(552, 318, 90, 45);
+		panelHeartrateZonesView.add(lblHeartFatBurnMinutes);
 
-		lblHeartPeakMaxMin = new JLabel();
-		lblHeartPeakMaxMin.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblHeartPeakMaxMin.setForeground(Color.WHITE);
-		lblHeartPeakMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartPeakMaxMin.setBounds(62, 434, 286, 45);
-		panelHeartrateZonesView.add(lblHeartPeakMaxMin);
-
-		lblHeartOORMaxMin = new JLabel();
-		lblHeartOORMaxMin.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblHeartOORMaxMin.setForeground(Color.WHITE);
-		lblHeartOORMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartOORMaxMin.setBounds(372, 434, 289, 45);
-		panelHeartrateZonesView.add(lblHeartOORMaxMin);
+		lblHeartPeakMax = new JLabel();
+		lblHeartPeakMax.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartPeakMax.setForeground(Color.WHITE);
+		lblHeartPeakMax.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartPeakMax.setBounds(62, 434, 90, 45);
+		panelHeartrateZonesView.add(lblHeartPeakMax);
+		
+		lblHeartPeakMin = new JLabel();
+		lblHeartPeakMin.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartPeakMin.setForeground(Color.WHITE);
+		lblHeartPeakMin.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartPeakMin.setBounds(152, 434, 90, 45);
+		panelHeartrateZonesView.add(lblHeartPeakMin);
+		
+		lblHeartPeakMinutes = new JLabel();
+		lblHeartPeakMinutes.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartPeakMinutes.setForeground(Color.WHITE);
+		lblHeartPeakMinutes.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartPeakMinutes.setBounds(242, 434, 90, 45);
+		panelHeartrateZonesView.add(lblHeartPeakMinutes);
+		
+		lblHeartOORMax = new JLabel();
+		lblHeartOORMax.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartOORMax.setForeground(Color.WHITE);
+		lblHeartOORMax.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartOORMax.setBounds(372, 434, 90, 45);
+		panelHeartrateZonesView.add(lblHeartOORMax);
+		
+		lblHeartOORMin = new JLabel();
+		lblHeartOORMin.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartOORMin.setForeground(Color.WHITE);
+		lblHeartOORMin.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartOORMin.setBounds(462, 434, 90, 45);
+		panelHeartrateZonesView.add(lblHeartOORMin);
+		
+		lblHeartOORMinutes = new JLabel();
+		lblHeartOORMinutes.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartOORMinutes.setForeground(Color.WHITE);
+		lblHeartOORMinutes.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblHeartOORMinutes.setBounds(552, 434, 90, 45);
+		panelHeartrateZonesView.add(lblHeartOORMinutes);
 
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setForeground(Color.WHITE);
@@ -1881,19 +1943,21 @@ public class InterfaceView {
 		lblHeartMins.setText(Integer.toString(minutes));
 		lblHeartRest.setText(Double.toString(rate));
 
-		lblHeartCardioMaxMin.setText(Integer.toString(cardio_max) + "/"
-				+ Integer.toString(cardio_min) + "/"
-				+ Integer.toString(cardio_minutes));
-		lblHeartFatBurnMaxMin.setText(Integer.toString(fatburn_max) + "/"
-				+ Integer.toString(fatburn_min) + "/"
-				+ Integer.toString(fatburn_minutes));
-		lblHeartPeakMaxMin.setText(Integer.toString(peak_max) + "/"
-				+ Integer.toString(peak_min) + "/"
-				+ Integer.toString(peak_minutes));
-
-		lblHeartOORMaxMin.setText(Integer.toString(oor_max) + "/"
-				+ Integer.toString(oor_min) + "/"
-				+ Integer.toString(oor_minutes));
+		lblHeartCardioMax.setText(Integer.toString(cardio_max));
+		lblHeartCardioMin.setText(Integer.toString(cardio_min));
+		lblHeartCardioMinutes.setText(Integer.toString(cardio_minutes));
+		
+		lblHeartFatBurnMax.setText(Integer.toString(fatburn_max));
+		lblHeartFatBurnMin.setText(Integer.toString(fatburn_min));
+		lblHeartFatBurnMinutes.setText(Integer.toString(fatburn_minutes));
+		
+		lblHeartPeakMax.setText(Integer.toString(peak_max));
+		lblHeartPeakMin.setText(Integer.toString(peak_min));
+		lblHeartPeakMinutes.setText(Integer.toString(peak_minutes));
+		
+		lblHeartOORMax.setText(Integer.toString(oor_max));
+		lblHeartOORMin.setText(Integer.toString(oor_min));
+		lblHeartOORMinutes.setText(Integer.toString(oor_minutes));
 	}
 
 	/**
