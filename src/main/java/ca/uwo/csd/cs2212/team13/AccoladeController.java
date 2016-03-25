@@ -11,15 +11,47 @@ import org.jdatepicker.impl.UtilDateModel;
 
 import ca.uwo.csd.cs2212.team13.GoalsController.clickListener;
 
+/**
+ * Java Object which passes information a lot of records plus an array of
+ * AccoladeRecord[] to the <code>InterfaceView</code> object.
+ * <p>
+ * <code>AccoladeController</code> contains references to the array with model
+ * object {@link AccoladeRecord}, which contains the data for the accolades, and
+ * the view object {@link InterfaceView}, which implements the user interface
+ * for all pages. Also checks accolades to see if they're done right
+ * <p>
+ * The purpose of this class is to pass the data contained in the model
+ * <code>AccoladeRecord</code> and a bunch of other accoldaes to the view
+ * <code>InterfaceView</code>, so that it can be displayed to the user.
+ */
 public class AccoladeController {
 
+	/**
+	 * Records/Models that Accolade controller needs
+	 */
 	private AccoladeRecord[] ar;
 	private ActivitiesRecord acR;
 	private DailyRecord dr;
 	private HeartRateRecord hr;
 
+	/**
+	 * View as that is the view for entire page.
+	 */
 	private InterfaceView view;
 
+	/**
+	 * Constructor, initializes the model and view fields with pointers to
+	 * various records and <code>InterfaceView</code> object respectively, and
+	 * calls method
+	 * {@link InterfaceView#addClickListenerAccolades(ActionListener)} to add a
+	 * click listener to the Accolades button.
+	 * 
+	 * @param ar
+	 * @param acR
+	 * @param dr
+	 * @param hr
+	 * @param view
+	 */
 	AccoladeController(AccoladeRecord[] ar, ActivitiesRecord acR,
 			DailyRecord dr, HeartRateRecord hr, InterfaceView view) {
 		this.ar = ar;
@@ -31,6 +63,13 @@ public class AccoladeController {
 		view.addClickListenerAccolades(new clickListener());
 	}
 
+	/**
+	 * Local class accessible only by the <code>AccoladeController</code>
+	 * object. Its purpose is to define which actions should be performed when
+	 * the Accolades button in <code>InterfaceView</code> is clicked by the user
+	 *
+	 * @see java.awt.event.ActionListener
+	 */
 	class clickListener implements ActionListener {
 
 		@Override
@@ -51,6 +90,9 @@ public class AccoladeController {
 		save();
 	}
 
+	/**
+	 * Checks if accolades achieved
+	 */
 	private void checkAchieved() {
 		LifetimeRecord lr = acR.getLifetime();
 		BestDaysRecord br = acR.getBest();
@@ -104,8 +146,7 @@ public class AccoladeController {
 								if (checkValues(m, lr, i))
 									counter++;
 							}
-						}
-						else if (typeSplit[0]
+						} else if (typeSplit[0]
 								.equals("ca.uwo.csd.cs2212.team13.HeartZoneRecord")) {
 							if (ar[i].getImage().equals("CardioHeartAcc")) {
 								if (checkValues(m, cardio, i))
@@ -178,6 +219,18 @@ public class AccoladeController {
 
 	}
 
+	/**
+	 * Check if values are fine
+	 * 
+	 * @param m
+	 * @param standard
+	 * @param i
+	 * @return
+	 * @throws NumberFormatException
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 */
 	private boolean checkValues(Method m, Object standard, int i)
 			throws NumberFormatException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException {
@@ -191,6 +244,18 @@ public class AccoladeController {
 
 	}
 
+	/**
+	 * Check if values are fine -> negation version (to check 0)
+	 * 
+	 * @param m
+	 * @param standard
+	 * @param i
+	 * @return
+	 * @throws NumberFormatException
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 */
 	private boolean checkValuesNegate(Method m, Object standard, int i)
 			throws NumberFormatException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException {
@@ -204,6 +269,11 @@ public class AccoladeController {
 
 	}
 
+	/**
+	 * Check how many goals are complete
+	 * 
+	 * @return int num of goals complete
+	 */
 	private int GoalCheck() {
 		GoalsRecord gr = dr.getGoals();
 
@@ -216,6 +286,13 @@ public class AccoladeController {
 		return total;
 	}
 
+	/**
+	 * Checks if goal is complete.
+	 * 
+	 * @param goal
+	 * @param actual
+	 * @return 1 if complete, 0 otherwise
+	 */
 	private int compareInt(int goal, int actual) {
 		if (actual > goal || actual == goal)
 			return 1;
@@ -223,6 +300,13 @@ public class AccoladeController {
 			return 0;
 	}
 
+	/**
+	 * Checks if goal is complete.
+	 * 
+	 * @param goal
+	 * @param actual
+	 * @return 1 if complete, 0 otherwise
+	 */
 	private int compareDoubleInt(double goal, int actual) {
 		if (actual > goal || actual == goal)
 			return 1;
@@ -230,6 +314,13 @@ public class AccoladeController {
 			return 0;
 	}
 
+	/**
+	 * Checks if goal is complete.
+	 * 
+	 * @param goal
+	 * @param actual
+	 * @return 1 if complete, 0 otherwise
+	 */
 	private int compareDouble(double goal, double actual) {
 		if (actual > goal || actual == goal)
 			return 1;
@@ -237,6 +328,9 @@ public class AccoladeController {
 			return 0;
 	}
 
+	/**
+	 * Saves accolade record to file
+	 */
 	private void save() {
 		WriterReader wr = new WriterReader();
 
