@@ -1,11 +1,17 @@
 package ca.uwo.csd.cs2212.team13;
 
+/**
+ * Model for Steps
+ * @author Robin
+ */
+
 public class StepsRecord {
 
 	private String time;
 	private double value;
 	
     /**
+     * method to
 	 * @return the time
 	 */
 	public String getTime() {
@@ -13,13 +19,15 @@ public class StepsRecord {
 	}
 
 	/**
-	 * @param time the time to set
+	 * method to set time
+	 * @param time (the time to set)
 	 */
 	public void setTime(String time) {
 		this.time = time;
 	}
 
 	/**
+	 * method to get steps value
 	 * @return the value
 	 */
 	public double getValue() {
@@ -27,13 +35,15 @@ public class StepsRecord {
 	}
 
 	/**
-	 * @param value the value to set
+	 * method to set steps value
+	 * @param value (the value to set)
 	 */
 	public void setValue(double value) {
 		this.value = value;
 	}
 
 	/**
+	 * Constructor
 	 * @param time
 	 * @param value
 	 */
@@ -51,6 +61,10 @@ public class StepsRecord {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
+	/**
+	 * toString method to format
+	 * time and value to a string
+	 */
 	public String toString() {
 		final StringBuilder formatted = new StringBuilder();		
 		formatted.append(time + "\n");

@@ -1,5 +1,9 @@
 package ca.uwo.csd.cs2212.team13;
 
+/**
+ * Class that serves as model
+ * for Daily Goals page
+ */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

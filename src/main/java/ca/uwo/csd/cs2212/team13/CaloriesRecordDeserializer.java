@@ -9,6 +9,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
+/**
+ * Deserializer for Calories model
+ * @author Andy
+ *
+ */
 public class CaloriesRecordDeserializer implements JsonDeserializer<CaloriesTSRecord> {
 
     @Override

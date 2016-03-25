@@ -3,6 +3,11 @@ package ca.uwo.csd.cs2212.team13;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Class to format the calendar
+ * @author Robin
+ *
+ */
 public class RangeConstraint implements DateSelectionConstraint {
 
 	private final Calendar after;
@@ -46,7 +51,12 @@ public class RangeConstraint implements DateSelectionConstraint {
 		}
 	}
 
+	/**
+	 * Method to validate
+	 * calendar selection
+	 */
 	public boolean isValidSelection(CalendarModel model) {
+
 		boolean result = true;
 
 		if (model.isSelected() && after != null) {
@@ -71,6 +81,12 @@ public class RangeConstraint implements DateSelectionConstraint {
 		return result;
 	}
 	
+	/**
+	 * Method to allow us to move
+	 * forward in the calendar
+	 * @param model
+	 * @return
+	 */
 	public boolean isUpper(CalendarModel model) {
 		if (model.isSelected() && after != null) {
             Calendar value = Calendar.getInstance();
@@ -85,6 +101,13 @@ public class RangeConstraint implements DateSelectionConstraint {
 		return false;
 	}
 
+	/**
+	 * Method to allow us to
+	 * move backwards in the
+	 * calendar
+	 * @param model
+	 * @return
+	 */
 	public boolean isLower(CalendarModel model) {
 		if (model.isSelected() && before != null) {
             Calendar value = Calendar.getInstance();

@@ -388,7 +388,7 @@ public class InterfaceView {
 
 		menuBar();
 
-		//dashboardView();
+		dashboardView();
 
 		bestDaysView();
 

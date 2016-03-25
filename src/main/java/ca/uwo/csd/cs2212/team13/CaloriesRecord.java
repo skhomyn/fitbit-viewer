@@ -1,6 +1,10 @@
 package ca.uwo.csd.cs2212.team13;
 
 public class CaloriesRecord {
+	
+	/**
+	 * Model class for the Calories
+	 */
 
     private String time;
     private double value;
@@ -14,16 +18,23 @@ public class CaloriesRecord {
     }
 
     /**
-     * @param time the time to set
+     * @param time (the time to set)
      */
     public void setTime(String time) {
         this.time = time;
     }
 
+    /**
+     * get Mets
+     * @return
+     */
     public int getMets() {
         return mets;
     }
 
+    /**
+     * @param mets (the mets to set)
+     */
     public void setMets(int mets) {
         this.mets = mets;
     }
@@ -36,13 +47,14 @@ public class CaloriesRecord {
     }
 
     /**
-     * @param value the value to set
+     * @param value (the value to set)
      */
     public void setValue(double value) {
         this.value = value;
     }
 
     /**
+     * Constructor
      * @param time
      * @param value
      */
@@ -61,6 +73,10 @@ public class CaloriesRecord {
      * @see java.lang.Object#toString()
      */
     @Override
+    /**
+     * toString method to convert attributes 
+     * into a string
+     */
     public String toString() {
         final StringBuilder formatted = new StringBuilder();
         formatted.append(mets + "\n");
