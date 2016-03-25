@@ -51,9 +51,17 @@ import java.util.Date;
  */
 public class Main {
 	
-	private DailyRecord ddModel;
-	private DailyDashboardController ddController;
 	private ActivitiesRecord actRecord;
+	private DailyRecord ddModel;
+	
+	private DailyDashboardController ddController;
+	private GoalsController dgController;
+	private AccoladeController acController;
+	private TimeSeriesController tsController;
+	private HRZController hrController;
+	private LifetimeController ltController;
+	private BestDaysController bdController;
+	
 	private InterfaceView view;
 
 	public void run() throws IOException {
@@ -109,7 +117,7 @@ public class Main {
 					HeartRateRecord.class);
 
 			// Create controllers
-			HRZController hrController = new HRZController(hrRecord, view);
+			hrController = new HRZController(hrRecord, view);
 
 			// Format to JSON
 			// final String json = gson.toJson(hrRecord);
@@ -127,17 +135,17 @@ public class Main {
 		ddController = new DailyDashboardController(ddModel, view);
 
 		// Create Controller for daily goals
-		GoalsController dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
+		dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
 
 		// initialize dashboard on start up of application
 		ddController.dailyDashboardInitialize();
 	
 		// Create Models and Controllers
 		BestDaysRecord bdModel = actRecord.getBest();
-		BestDaysController bdController = new BestDaysController(bdModel, view);
+		bdController = new BestDaysController(bdModel, view);
 
 		LifetimeRecord ltModel = actRecord.getLifetime();
-		LifetimeController ltController = new LifetimeController(ltModel, view);
+		ltController = new LifetimeController(ltModel, view);
 				
 		//add action listener to refresh button, trigger new API calls for current date
 		/**
@@ -244,10 +252,12 @@ public class Main {
 		} else {
 			// Parse JSON to Java
 			ddModel = gson.fromJson(dRecord_String, DailyRecord.class);
-			ddController = new DailyDashboardController(ddModel,view);
+			//update view with new models
+			ddController = new DailyDashboardController(ddModel, view);
 			ddController.dailyDashboardInitialize();
-			//TODO add goals controller refresh
-
+			dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
+			dgController.goalsInitialize();
+			
 			//Last Updated label
 			Date now = new Date();
 			String apiCallDate = now.toString();
@@ -275,8 +285,12 @@ public class Main {
 		} else {
 			// Parse JSON to Java
 			actRecord = gson.fromJson(aRecord_String, ActivitiesRecord.class);
-			//TODO update best days model/controller
-			//TODO update liftime totals model/controller
+			//update view with new models
+			ltController = new LifetimeController(actRecord.getLifetime(), view);
+			ltController.lifetimeTotalsInitialize();
+			bdController = new BestDaysController(actRecord.getBest(), view);
+			bdController.bestDaysInitialize();
+			
 			//Last Updated label
 			Date now = new Date();
 			String apiCallDate = now.toString();
@@ -379,7 +393,7 @@ public class Main {
 					HeartRateRecord.class);
 
 			// Create controllers
-			HRZController hrController = new HRZController(hrRecord, view);
+			hrController = new HRZController(hrRecord, view);
 
 			// Format to JSON
 			// final String json = gson.toJson(hrRecord);
@@ -401,7 +415,7 @@ public class Main {
 					ddModel, view);
 
 			// Create Controller for daily goals
-			GoalsController dgController = new GoalsController(ddModel,
+			dgController = new GoalsController(ddModel,
 					ddModel.getGoals(), view);
 
 			// initialize dashboard
@@ -422,11 +436,11 @@ public class Main {
 
 			// Create Models and Controllers
 			BestDaysRecord bdModel = actRecord.getBest();
-			BestDaysController bdController = new BestDaysController(bdModel,
+			bdController = new BestDaysController(bdModel,
 					view);
 
 			LifetimeRecord ltModel = actRecord.getLifetime();
-			LifetimeController ltController = new LifetimeController(ltModel,
+			ltController = new LifetimeController(ltModel,
 					view);
 
 			// Format to JSON
@@ -463,7 +477,7 @@ public class Main {
 							HeartRateRecord.class);
 
 					
-				AccoladeController acController = new AccoladeController(ar,
+				acController = new AccoladeController(ar,
 						actRecord, ddModel, hrRecord, view);
 				}
 			}
@@ -501,7 +515,7 @@ public class Main {
 								CaloriesTSRecord.class);
 
 						// Create Controller for time series
-						TimeSeriesController tsController = new TimeSeriesController(
+						tsController = new TimeSeriesController(
 								dtsRecord, stsRecord, caRecord, hrRecord, view);
 					}
 				}
