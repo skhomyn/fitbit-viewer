@@ -150,7 +150,7 @@ public class Main {
 		 * {@code ActionListener} object is added to the refresh button. When the refresh
 		 * button is clicked, it triggers new API calls using the current date.
 		 */
-		view.addListenerForRefreshDash(new ActionListener(){
+		view.addListenerForRefresh(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				refreshInfo(gson, apiCaller, wr, "today");
@@ -239,11 +239,6 @@ public class Main {
 
 	}
 	
-	//TESTFLAG
-	//given: 23-Mar-2016
-	//GET https://api.fitbitcom/1/user/[user-id]/activities/date/yyyy-MM-dd.json
-	//TESTFLAG
-	//note to self: limit access to >3 years ago
 	
 	/**
 	 * Refresh info for API calls
@@ -680,25 +675,11 @@ public class Main {
 			}
 		}
 		
-		//set initial value of date labels on date-dependent pages to today
-		view.setDisplayDate(new Date());
-		
-		//TESTFLAG
-		//DELETE LATER
-		view.addCalendarDateChangeActions(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				//do nothing				
-			}});
-			
-		
-		
 		/**
 		 * {@code ActionListener} object is added to the refresh button. When the refresh
 		 * button is clicked, it triggers new API calls using the current date.
 		 */
-		view.addListenerForRefreshDash(new ActionListener(){
+		view.addListenerForRefresh(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String test = "Refresh unavailable in test mode.";
@@ -706,6 +687,17 @@ public class Main {
 			}	
 		});
 
+		
+		//set initial value of date labels on date-dependent pages to today
+		view.setDisplayDate(new Date());
+		
+		view.addCalendarDateChangeActions(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//do nothing				
+			}});
+			
 		/**
 		 * The {@link InterfaceView#addPreviousDayActions} method implementation updates the date 
 		 * displayed on the calendar.

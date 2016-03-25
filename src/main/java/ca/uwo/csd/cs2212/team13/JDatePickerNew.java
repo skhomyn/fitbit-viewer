@@ -73,7 +73,7 @@ public class JDatePickerNew extends JPanel implements JDatePickerN {
 	private static final long serialVersionUID = 2814777654384974503L;
 
 	private Popup popup;
-	private JFormattedTextField formattedTextField;
+	public JFormattedTextField formattedTextField;
 	private JButton button;
 
 	private JDatePanelNew datePanel;
@@ -343,7 +343,7 @@ public class JDatePickerNew extends JPanel implements JDatePickerN {
 		datePanel.setShowYearButtons(showYearButtons);
 	}
 
-	private void setTextFieldValue(JFormattedTextField textField, int year,
+	public void setTextFieldValue(JFormattedTextField textField, int year,
 			int month, int day, boolean isSelected) {
 		if (!isSelected) {
 			textField.setValue(null);
