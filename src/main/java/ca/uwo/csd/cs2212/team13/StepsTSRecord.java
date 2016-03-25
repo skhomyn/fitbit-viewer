@@ -1,7 +1,21 @@
 package ca.uwo.csd.cs2212.team13;
 
+/**
+ * <code>StepsTSRecord</code> is a simple Java object that represents the steps
+ * TS stuff and the rules that govern access to and updates of this data, but
+ * also contain the model array for {@link StepsRecord}.
+ * <ul>
+ * <li>Is necessary because JSON call, for a date, contains both that time
+ * series stuff and others
+ * <li>Basically, this Java object holds the combined steps info listed in JSON
+ * object from API call
+ * </ul>
+ */
 public class StepsTSRecord {
 
+	/**
+	 * Fields in StepsTSRecord
+	 */
 	private String dateTime;
 	private double value;
 	private StepsRecord[] sRecords;
@@ -15,8 +29,8 @@ public class StepsTSRecord {
 	 * @param datasetInterval
 	 * @param datasetType
 	 */
-	public StepsTSRecord(String dateTime, double value,
-			StepsRecord[] sRecords, int datasetInterval, String datasetType) {
+	public StepsTSRecord(String dateTime, double value, StepsRecord[] sRecords,
+			int datasetInterval, String datasetType) {
 		super();
 		this.dateTime = dateTime;
 		this.value = value;
@@ -100,15 +114,17 @@ public class StepsTSRecord {
 		this.datasetType = datasetType;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		final StringBuilder formatted = new StringBuilder();		
+		final StringBuilder formatted = new StringBuilder();
 		formatted.append(dateTime + "\n");
 		formatted.append(value + "\n");
-		for (int i = 0; i<sRecords.length;i++)
+		for (int i = 0; i < sRecords.length; i++)
 			formatted.append(sRecords[i].toString() + "\n");
 		formatted.append(datasetInterval + "\n");
 		formatted.append(datasetType + "\n");

@@ -11,6 +11,19 @@ import com.google.gson.JsonParseException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+/**
+ * <code>StepsRecordDeserializer</code> is an interface representing a custom
+ * deserializer to parse a JSON file (i.e. with steps stuff into Java object {@link StepsRecord}
+ * and {@link StepsTSRecord}
+ * <p>
+ * Custom deserializer is necessary because this JSON file, with daily stuff,
+ * contains both steps data, so full control of JSON parsing
+ * is required.
+ * <p>
+ * This interface requires the type <code>StepsTSRecord</code>, which is the type
+ * of object to be parsed. The return type of deserialize is thus this very
+ * type.
+ */
 public class StepsRecordDeserializer implements
 		JsonDeserializer<StepsTSRecord> {
 
