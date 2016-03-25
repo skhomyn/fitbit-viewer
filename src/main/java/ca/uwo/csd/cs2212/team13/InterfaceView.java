@@ -1073,7 +1073,8 @@ public class InterfaceView {
 				
 		datePanel = new JDatePanelNew(modelForDay, properties);
 		datePicker = new JDatePickerNew(datePanel, new DateLabelFormatter());
-		datePicker.setBounds(278,107,163,26);
+		datePicker.setBackground(Color.DARK_GRAY);
+		datePicker.setBounds(284,105,163,30);
 
 		//RangeConstraint range =  new RangeConstraint();
 						
@@ -1348,7 +1349,7 @@ public class InterfaceView {
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/ACCdash.png"));
+		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/ACCdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelAccoladesView.add(lblPic);
 	
@@ -1428,7 +1429,7 @@ public class InterfaceView {
 		btnZoomOut.setBorderPainted(false);
 		btnZoomOut.setIconTextGap(0);
 		btnZoomOut.setBorder(null);
-		btnZoomOut.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/zoomOut40.png"));
+		btnZoomOut.setIcon(new ImageIcon("src/main/resources/zoomOut40.png"));
 		zoom.add(btnZoomOut);
 		btnZoomOut.addActionListener(new ActionListener() {
 
@@ -1442,7 +1443,6 @@ public class InterfaceView {
 		panelGraph.setBackground(Color.BLACK);
 		panelGraph.setBounds(40, 160, 640, 362);
 		panelTimeSeriesView.add(panelGraph);
-
 
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setForeground(Color.WHITE);
@@ -1462,7 +1462,7 @@ public class InterfaceView {
 		lblDisplayDateTS.setBounds(0, 60, 720, 100);
 		panelTimeSeriesView.add(lblDisplayDateTS);
 		
-		lblClickAndDrag = new JLabel("Click and drag on the graph to zoom in.");
+		lblClickAndDrag = new JLabel("Click and drag on the graph to zoom in, click and drag left to zoom out.");
 		lblClickAndDrag.setForeground(Color.WHITE);
 		lblClickAndDrag.setHorizontalAlignment(SwingConstants.CENTER);
 		lblClickAndDrag.setBounds(40, 144, 640, 16);
@@ -1477,10 +1477,9 @@ public class InterfaceView {
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/TSdash.png"));
+		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/TSdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelTimeSeriesView.add(lblPic);
-		
 
 	}
 
@@ -1526,17 +1525,14 @@ public class InterfaceView {
 		panelDailyGoalsView.add(lblFloorsGoal);
 
 		lblStepsCompare = new JLabel();
-		lblStepsCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		lblStepsCompare.setHorizontalAlignment(SwingConstants.CENTER);
-		lblStepsCompare.setForeground(Color.WHITE);
 		lblStepsCompare.setBounds(563, 317, 96, 46);
 		panelDailyGoalsView.add(lblStepsCompare);
 
 		lblDistanceCompare = new JLabel();
-		lblDistanceCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		lblDistanceCompare.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDistanceCompare.setForeground(Color.WHITE);
-		lblDistanceCompare.setBounds(563, 180, 96, 46);
+		lblDistanceCompare.setBounds(563, 180, 96, 48);
 		panelDailyGoalsView.add(lblDistanceCompare);
 
 		lblCaloriesCompare = new JLabel();
@@ -1710,6 +1706,7 @@ public class InterfaceView {
 		lblDisplayDateHRZ = new JLabel();
 		lblDisplayDateHRZ.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDisplayDateHRZ.setFont(new Font("Century Gothic", Font.PLAIN, 26));
+		lblDisplayDateHRZ.setBounds(0, 60, 720, 100);
 		lblDisplayDateHRZ.setForeground(Color.WHITE);
 		panelHeartrateZonesView.add(lblDisplayDateHRZ);	
 		
@@ -1722,7 +1719,7 @@ public class InterfaceView {
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/HRZdash.jpg"));
+		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/HRZdash.jpg"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelHeartrateZonesView.add(lblPic);
 	}
@@ -2122,12 +2119,43 @@ public class InterfaceView {
 		lblDistanceGoal.setText(Double.toString(distance));
 		lblStepsGoal.setText(Integer.toString(steps));
 		lblFloorsGoal.setText(Integer.toString(floors));
+		
+		if (activeMinStatus.equals("N")) {
+			lblActiveMinCompare.setIcon(new ImageIcon("src/main/resources/blueX.png"));
+		}
+		else {
+			lblActiveMinCompare.setIcon(new ImageIcon("src/main/resources/blueCheck.png"));
+		}
+		
+		if (caloriesStatus.equals("N")) {
+			lblCaloriesCompare.setIcon(new ImageIcon("src/main/resources/blueX.png"));
+		}
+		else {
+			lblCaloriesCompare.setIcon(new ImageIcon("src/main/resources/blueCheck.png"));
+		}
+		
+		if (distanceStatus.equals("N")) {
+			lblDistanceCompare.setIcon(new ImageIcon("src/main/resources/blueX.png"));
+		}
+		else {
+			lblDistanceCompare.setIcon(new ImageIcon("src/main/resources/blueCheck.png"));
+		}
+		
+		if (stepsStatus.equals("N")) {
+			lblStepsCompare.setIcon(new ImageIcon("src/main/resources/blueX.png"));
+		}
+		else {
+			lblStepsCompare.setIcon(new ImageIcon("src/main/resources/blueCheck.png"));
+		}
+		
+		if (floorsStatus.equals("N")) {
+			lblFloorsCompare.setIcon(new ImageIcon("src/main/resources/blueX.png"));
+		}
+		else {
+			lblFloorsCompare.setIcon(new ImageIcon("src/main/resources/blueCheck.png"));
+		}
 
-		lblActiveMinCompare.setText(activeMinStatus);
-		lblCaloriesCompare.setText(caloriesStatus);
-		lblDistanceCompare.setText(distanceStatus);
-		lblStepsCompare.setText(stepsStatus);
-		lblFloorsCompare.setText(floorsStatus);
+		
 	}
 	
 	public void setTimeSeriesGraph(DistanceTSRecord dRecords, StepsTSRecord sRecords, CaloriesTSRecord caRecord, HeartRateRecord rRecord)
@@ -2413,6 +2441,7 @@ public class InterfaceView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Date now = new Date();
+				//modelForDay.setDate(now.getYear(), now.getMonth(), now.getDay());
 				setDisplayDate(modelForDay.getValueDate());	
 			}
 			
