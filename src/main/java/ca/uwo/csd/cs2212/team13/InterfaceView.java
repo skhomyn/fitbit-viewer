@@ -123,10 +123,21 @@ public class InterfaceView {
 	
 	private JFrame frame;
 
+	
+	/**
+	 * XYPlot plot for plot and chart
+	 */
+	XYPlot plot;
+	JFreeChart chart;
+	XYDataset dataset;
+	TimeSeries s1;
+	TimeSeries s2;
+	TimeSeries s3;
+	TimeSeries s4;
+	
 	/**
 	 * JButtons for menu
 	 */
-
 	private JButton btnBestDays;
 	private JButton btnDailyDashboard;
 	private JButton btnDailyGoals;
@@ -1480,7 +1491,7 @@ public class InterfaceView {
 		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/TSdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelTimeSeriesView.add(lblPic);
-
+		
 	}
 
 	/**
@@ -2157,29 +2168,6 @@ public class InterfaceView {
 
 		
 	}
-	
-	public void setTimeSeriesGraph(DistanceTSRecord dRecords, StepsTSRecord sRecords, CaloriesTSRecord caRecord, HeartRateRecord rRecord)
-	{
-		// Generate Graph:
-		final XYDataset dataset = createDataset(dRecords, sRecords, caRecord, rRecord);         
-		final JFreeChart chart = createChart( dataset );      
-		chart.getPlot().addChangeListener(new PlotChangeListener(){
-			  @Override
-			  public void plotChanged(PlotChangeEvent event)
-			  {
-			    System.out.println("I am called after a zoom event (and some other events too).");
-			  }});
-		
-		chartPanel = new ChartPanel( chart ); 
-		chartPanel.setPreferredSize( new java.awt.Dimension( 620 , 360 ) );         
-		//chartPanel.setMouseZoomable( true , false );   
-		chartPanel.setDomainZoomable(true);
-		
-		
-
-		//chartPanel.setZoomInFactor(10);
-		panelGraph.add( chartPanel );
-	}
 
 	public void setAccoladeFields(AccoladeRecord[] ar) {
 
@@ -2721,18 +2709,140 @@ public class InterfaceView {
 
 		}
 
+
+		/**
+		 * Converts the {@code UtilDateModel} object, which represents the date selected
+		 * on the calendar, to a string, and returns the string.
+		 * @param incrementFlag flag to determine if the day field should be incremented or decremented
+		 * 		to reflect in the {@code UtilDateModel} object that date has been changed to the previous
+		 * 		or next day.
+		 * @return a String representing the date selected on the calendar.
+		 */
+		public String getStringDate(String incrementFlag){
+			
+			//int year = dateModel.getYear();
+			//int day = dateModel.getDay();
+			int year = modelForDay.getYear();
+			int day = modelForDay.getDay();
+			
+			if(incrementFlag == "previous") day-=1;
+			else if(incrementFlag == "next") day+=1;
+					
+			//convert int (0-11) to int(1-12) for MM
+			//int month = dateModel.getMonth();
+			int month = modelForDay.getMonth();
+			month+=1;
+			
+			//prefix 0 to single-digit months and days
+			if (month<=9 && day<=9) return year+"-0"+month+"-0"+day;
+			
+			else if (month<=9)return year+"-0"+month+"-"+day;
+			else if (day<=9) return year+"-"+month+"-0"+day;
+			
+			else return year+"-"+month+"-"+day;
+		}
+		//SHORTCUT
+		
+		/**
+		 * Make data object get it
+		 * @return
+		 */
+		public Date getDateObject() {
+			return dateModel.getValue();
+		}
+		
+		/**
+		 * Get calendar model
+		 * 
+		 * @return
+		 */
+		public CalendarModel getCalendarObject() {
+			return modelForDay;
+		}
+		
+		/**
+		 * Objects of this inner class format the date to be displayed in the calendar text box.
+		 * A {@DateLabelFormatter} object is required as a parameter in the
+		 * {@code JDatePickerImpl} constructor called in the {@link #dashboardView} method.
+		 *
+		 */
+		class DateLabelFormatter extends AbstractFormatter {
+
+		    private String datePattern = "dd-MMM-yyyy";
+		    private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
+		  
+		    @Override
+		    public Object stringToValue(String text) throws ParseException {
+		        return dateFormatter.parseObject(text);
+		    }
+
+		    @Override
+		    public String valueToString(Object value) throws ParseException {
+		        if (value != null) {
+		            Calendar cal = (Calendar) value;
+		            return dateFormatter.format(cal.getTime());
+		        }
+
+		        return "";
+		    }
+
+		}
+		
+		/**
+		 * Set time series graph
+		 * 
+		 * @param dRecords
+		 * @param sRecords
+		 * @param caRecord
+		 * @param rRecord
+		 */
+		public void setTimeSeriesGraph(DistanceTSRecord dRecords, StepsTSRecord sRecords, CaloriesTSRecord caRecord, HeartRateRecord rRecord)
+		{		
+			// Generate Graph:
+			dataset = createDataset(dRecords, sRecords, caRecord, rRecord);         
+			chart = createChart( dataset ); 
+			
+			chart.getPlot().addChangeListener(new PlotChangeListener(){
+				  @Override
+				  public void plotChanged(PlotChangeEvent event)
+				  {
+						chartPanel.repaint();
+				  }});
+			
+			chartPanel = new ChartPanel( chart ); 
+			chartPanel.setPreferredSize( new java.awt.Dimension( 620 , 360 ) );         
+			//chartPanel.setMouseZoomable( true , false );   
+			chartPanel.setDomainZoomable(true);
+			
+			//chartPanel.setZoomInFactor(10);
+			panelGraph.add( chartPanel );
+		}
+		
+		/**
+		 * Make xy dataset
+		 * 
+		 * @param dRecord
+		 * @param sRecord
+		 * @param caRecord
+		 * @param rRecord
+		 * @return
+		 */
 	private XYDataset createDataset(DistanceTSRecord dRecord, StepsTSRecord sRecord, CaloriesTSRecord caRecord, HeartRateRecord rRecord) 
 	{
-		final TimeSeriesCollection dataset = new TimeSeriesCollection();
+		TimeSeriesCollection dataset = new TimeSeriesCollection();
         dataset.setDomainIsPointsInTime(true);
         
         //Minute(int minute, int hour, int day, int month, int year) 
         
-        final TimeSeries s1 = new TimeSeries("Distance");
-        final TimeSeries s2 = new TimeSeries("Steps");
-        final TimeSeries s3 = new TimeSeries("Calories");
-        final TimeSeries s4 = new TimeSeries("Heart Rate");
-
+        s1 = new TimeSeries("Distance");
+        s2 = new TimeSeries("Steps");
+        s3 = new TimeSeries("Calories");
+        s4 = new TimeSeries("Heart Rate");
+        s1.clear();
+        s2.clear();
+        s3.clear();
+        s4.clear();
+        
     	String str[] = dRecord.getDateTime().split("-");
     	int year = Integer.parseInt(str[0]);
     	int month = Integer.parseInt(str[1]);
@@ -2750,27 +2860,19 @@ public class InterfaceView {
         	int minute = Integer.parseInt(str2[1]);
         	//System.out.println(hour + " " + minute);
         	double value = distance_arr[i].getValue();
-        	s1.add(new Minute(minute, hour, day, month, year), value);
-        	
-        	value = steps_arr[i].getValue();
-        	s2.add(new Minute(minute, hour, day, month, year), value);
-        	
-
-        	//value = calories_arr[i].getValue();
-        	//s3.add(new Minute(minute, hour, day, month, year), value);
-
+        	s1.addOrUpdate(new Minute(minute, hour, day, month, year), value);
         }
         
-        for(int i = 0; i < rate_arr.length ; i++)
+        for(int i = 0; i < steps_arr.length ; i++)
         {
-        	String str2[] = rate_arr[i].getTime().split(":");
+        	String str2[] = steps_arr[i].getTime().split(":");
         	int hour = Integer.parseInt(str2[0]);
         	int minute = Integer.parseInt(str2[1]);
         	
-        	double value = rate_arr[i].getValue();
-        	s4.add(new Minute(minute, hour, day, month, year), value);
+        	double value = steps_arr[i].getValue();
+        	s2.addOrUpdate(new Minute(minute, hour, day, month, year), value);
         }
-        
+  
         for(int i = 0; i < calories_arr.length ; i++)
         {
         	String str2[] = calories_arr[i].getTime().split(":");
@@ -2778,8 +2880,17 @@ public class InterfaceView {
         	int minute = Integer.parseInt(str2[1]);
         	
         	double value = calories_arr[i].getValue();
-        	s3.add(new Minute(minute, hour, day, month, year), value);
+        	s3.addOrUpdate(new Minute(minute, hour, day, month, year), value);
 
+        }
+        for(int i = 0; i < rate_arr.length ; i++)
+        {
+        	String str2[] = rate_arr[i].getTime().split(":");
+        	int hour = Integer.parseInt(str2[0]);
+        	int minute = Integer.parseInt(str2[1]);
+        	
+        	double value = rate_arr[i].getValue();
+        	s4.addOrUpdate(new Minute(minute, hour, day, month, year), value);
         }
         
         dataset.addSeries(s1);
@@ -2790,78 +2901,15 @@ public class InterfaceView {
         return dataset;
 	}
 
+
 	/**
-	 * Converts the {@code UtilDateModel} object, which represents the date selected
-	 * on the calendar, to a string, and returns the string.
-	 * @param incrementFlag flag to determine if the day field should be incremented or decremented
-	 * 		to reflect in the {@code UtilDateModel} object that date has been changed to the previous
-	 * 		or next day.
-	 * @return a String representing the date selected on the calendar.
+	 * Make Jfreechart
+	 * @param dataset
+	 * @return
 	 */
-	public String getStringDate(String incrementFlag){
-		
-		//int year = dateModel.getYear();
-		//int day = dateModel.getDay();
-		int year = modelForDay.getYear();
-		int day = modelForDay.getDay();
-		
-		if(incrementFlag == "previous") day-=1;
-		else if(incrementFlag == "next") day+=1;
-				
-		//convert int (0-11) to int(1-12) for MM
-		//int month = dateModel.getMonth();
-		int month = modelForDay.getMonth();
-		month+=1;
-		
-		//prefix 0 to single-digit months and days
-		if (month<=9 && day<=9) return year+"-0"+month+"-0"+day;
-		
-		else if (month<=9)return year+"-0"+month+"-"+day;
-		else if (day<=9) return year+"-"+month+"-0"+day;
-		
-		else return year+"-"+month+"-"+day;
-	}
-	//SHORTCUT
-	
-	public Date getDateObject() {
-		return dateModel.getValue();
-	}
-	
-	public CalendarModel getCalendarObject() {
-		return modelForDay;
-	}
-	
-	/**
-	 * Objects of this inner class format the date to be displayed in the calendar text box.
-	 * A {@DateLabelFormatter} object is required as a parameter in the
-	 * {@code JDatePickerImpl} constructor called in the {@link #dashboardView} method.
-	 *
-	 */
-	class DateLabelFormatter extends AbstractFormatter {
-
-	    private String datePattern = "dd-MMM-yyyy";
-	    private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
-	  
-	    @Override
-	    public Object stringToValue(String text) throws ParseException {
-	        return dateFormatter.parseObject(text);
-	    }
-
-	    @Override
-	    public String valueToString(Object value) throws ParseException {
-	        if (value != null) {
-	            Calendar cal = (Calendar) value;
-	            return dateFormatter.format(cal.getTime());
-	        }
-
-	        return "";
-	    }
-
-	}
-
-	private JFreeChart createChart( final XYDataset dataset ) 
+	private JFreeChart createChart( XYDataset dataset ) 
 	{
-		final JFreeChart chart = ChartFactory.createTimeSeriesChart(             
+		chart = ChartFactory.createTimeSeriesChart(             
 				"", 
 				"Time",              
 				"Value",              
@@ -2871,7 +2919,7 @@ public class InterfaceView {
 				false);
 		 chart.setBackgroundPaint(Color.BLACK);
 
-       final XYPlot plot = chart.getXYPlot();
+       plot = chart.getXYPlot();
        //plot.setOutlinePaint(null);
        plot.setBackgroundPaint(Color.DARK_GRAY);
        plot.setDomainGridlinePaint(Color.white);
@@ -2881,10 +2929,9 @@ public class InterfaceView {
        plot.setDomainCrosshairVisible(true);
        plot.setRangeCrosshairVisible(false);
      
-       
-       final XYItemRenderer renderer = plot.getRenderer();
+       XYItemRenderer renderer = plot.getRenderer();
        if (renderer instanceof StandardXYItemRenderer) {
-           final StandardXYItemRenderer rr = (StandardXYItemRenderer) renderer;
+           StandardXYItemRenderer rr = (StandardXYItemRenderer) renderer;
            rr.setBaseShapesVisible(true); //PlotShapes(true);
            rr.setShapesFilled(true);
            renderer.setSeriesStroke(0, new BasicStroke(2.0f));
@@ -2892,14 +2939,13 @@ public class InterfaceView {
 
           }
        
-       final DateAxis axis = (DateAxis) plot.getDomainAxis();
+       DateAxis axis = (DateAxis) plot.getDomainAxis();
        DateTickUnit stu = new DateTickUnit(DateTickUnit.HOUR,1); 
-       //axis.setAutoTickUnitSelection(false);
-       //axis.setVerticalTickLabels(true);
-       //axis.setTickUnit(stu); 
-       //axis.setDateFormatOverride(new SimpleDateFormat("hh:mma"));
+       axis.setAutoTickUnitSelection(false);
+       axis.setVerticalTickLabels(true);
+       axis.setTickUnit(stu); 
+       axis.setDateFormatOverride(new SimpleDateFormat("hh:mma"));
        
        return chart;
-
    }
 }
