@@ -53,10 +53,9 @@ public class DailyDashboardController {
 	/**
 	 * Sets the Daily Dashboard page display fields in
 	 * <code>InterfaceView</code> with values from the appropriate model
-	 * <code>DailyRecord</code> fields upon initial load of the application,
-	 * since the Daily Dashboard is the first page to be displayed.
+	 * <code>DailyRecord</code> fields.
 	 */
-	public void DailyDashboardInitialize() {
+	public void dailyDashboardInitialize() {
 		view.setDailyDashFields(model.getDate(), model.getDistance(),
 				model.getCalories(), model.getFloors(), model.getSteps(),
 				model.getVeryActiveMinutes(), model.getSedentaryMinutes());

@@ -54,6 +54,15 @@ public class LifetimeController {
 	}
 
 	/**
+	 * Sets the Liftetime Totals page display fields in
+	 * <code>InterfaceView</code> with values from the appropriate model
+	 * <code>LifetimeRecord</code> fields.
+	 */
+	public void lifetimeTotalsInitialize(){
+		view.setLifetimeTotalsFields(model.getDistance(), model.getFloors(), model.getSteps());
+	}
+	
+	/**
 	 * Local class accessible only by the <code>LifetimeController</code>
 	 * object. It's purpose is to define which actions should be performed when
 	 * the Lifetime Totals button in <code>InterfaceView</code> is clicked by

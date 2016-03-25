@@ -777,7 +777,6 @@ public class InterfaceView {
 		sixPanel_6.setBounds(new Rectangle(0, 0, 180, 160));
 		sixPanel_6.setBounds(440, 192, 160, 144);
 		SixPanel.add(sixPanel_6);
-		sixPanel_6.setLayout(null);
 
 		// Add image:
 		JLabel lblPic_6 = new JLabel(new ImageIcon("src/main/resources/rect.png"));

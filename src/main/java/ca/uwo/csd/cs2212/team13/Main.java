@@ -129,8 +129,8 @@ public class Main {
 		// Create Controller for daily goals
 		GoalsController dgController = new GoalsController(ddModel, ddModel.getGoals(), view);
 
-		// initialize dashboard
-		ddController.DailyDashboardInitialize();
+		// initialize dashboard on start up of application
+		ddController.dailyDashboardInitialize();
 	
 		// Create Models and Controllers
 		BestDaysRecord bdModel = actRecord.getBest();
@@ -167,7 +167,6 @@ public class Main {
 				else
 				{
 					refreshInfo(gson, apiCaller, wr, view.getStringDate(null));
-					ddController.DailyDashboardInitialize();
 					System.out.println("\n CALENDAR date change:" + view.getStringDate(null)); //TESTFLAG
 				}
 		
@@ -245,7 +244,10 @@ public class Main {
 		} else {
 			// Parse JSON to Java
 			ddModel = gson.fromJson(dRecord_String, DailyRecord.class);
-			//ddController.DailyDashboardInitialize();
+			ddController = new DailyDashboardController(ddModel,view);
+			ddController.dailyDashboardInitialize();
+			//TODO add goals controller refresh
+
 			//Last Updated label
 			Date now = new Date();
 			String apiCallDate = now.toString();
@@ -273,6 +275,8 @@ public class Main {
 		} else {
 			// Parse JSON to Java
 			actRecord = gson.fromJson(aRecord_String, ActivitiesRecord.class);
+			//TODO update best days model/controller
+			//TODO update liftime totals model/controller
 			//Last Updated label
 			Date now = new Date();
 			String apiCallDate = now.toString();
@@ -401,7 +405,7 @@ public class Main {
 					ddModel.getGoals(), view);
 
 			// initialize dashboard
-			ddController.DailyDashboardInitialize();
+			ddController.dailyDashboardInitialize();
 			
 			// Format to JSON
 			// final String json = gson.toJson(ddModel);
