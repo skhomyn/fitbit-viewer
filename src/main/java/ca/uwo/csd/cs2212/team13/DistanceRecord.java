@@ -7,10 +7,9 @@ public class DistanceRecord implements Serializable{
 	/**
 	 * Model for the distance
 	 * to assist the distance
-	 * controller & interface 
+	 * controller and interface 
 	 * view
 	 */
-
 	private String time;
 	private double value;
 	

@@ -59,6 +59,7 @@ import org.jfree.ui.RefineryUtilities;
 
 
 
+
 import java.awt.Insets;
 import java.awt.Rectangle;
 
@@ -90,7 +91,9 @@ import java.awt.FlowLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.util.Date;
+
 import javax.swing.Icon;
+
 import java.awt.Point;
 import java.text.DateFormat;
 import java.text.Format;
@@ -98,6 +101,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 //import org.jdatepicker.constraints;
+
 
 
 
@@ -123,21 +127,10 @@ public class InterfaceView {
 	
 	private JFrame frame;
 
-	
-	/**
-	 * XYPlot plot for plot and chart
-	 */
-	XYPlot plot;
-	JFreeChart chart;
-	XYDataset dataset;
-	TimeSeries s1;
-	TimeSeries s2;
-	TimeSeries s3;
-	TimeSeries s4;
-	
 	/**
 	 * JButtons for menu
 	 */
+
 	private JButton btnBestDays;
 	private JButton btnDailyDashboard;
 	private JButton btnDailyGoals;
@@ -309,9 +302,11 @@ public class InterfaceView {
 	private SPanel[] panelArray;
 
 	
+	/**
+	 * For graphs
+	 */
 	private JPanel distpanel;
 	private JPanel panelGraph;
-	
 	private ChartPanel chartPanel;
 	
 	/**
@@ -515,7 +510,6 @@ public class InterfaceView {
 		/**
 		 * Soemthing something grid bag layout
 		 */
-		/*
 		dailyActiveMinPanel = new SPanel();
 		dailyActiveMinPanel.setBounds(374, 477, 120, 100);
 		GridBagLayout gbl_dailyActiveMinPanel = new GridBagLayout();
@@ -539,200 +533,67 @@ public class InterfaceView {
 		gbc_label_1.gridx = 1;
 		gbc_label_1.gridy = 0;
 		dailyActiveMinPanel.add(label_1, gbc_label_1);
-		*/
-		dailyActiveMinPanel = new SPanel();
-		dailyActiveMinPanel.setBounds(374, 477, 120, 100);
-		GridBagLayout gbl_dailyActiveMinPanel = new GridBagLayout();
-		dailyActiveMinPanel.setLayout(gbl_dailyActiveMinPanel);
-		dailyActiveMinPanel.setOpaque(false);
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.gridwidth = GridBagConstraints.REMAINDER;
-		//gbc.insets = new Insets(10, 10, 20, 10);
-		lblDailyVeryActMinVal = new SLabel();
-		lblDailyVeryActMinVal.setForeground(Color.WHITE);
-		lblDailyVeryActMinVal.setFont(new Font("Century Gothic", Font.PLAIN, 38));
-		
-		JLabel label_1 = new JLabel("Very Active");
-		JLabel label_1a = new JLabel("Minutes");
-		
-		label_1.setForeground(Color.WHITE);
-		label_1a.setForeground(Color.WHITE);
-		
-		JLabel label_1c = new JLabel(" ");
-		dailyActiveMinPanel.add(label_1c);
-		label_1c.setForeground(Color.WHITE);
-		label_1c.setFont(new Font("Century Gothic", Font.PLAIN, 8));
-		
-		
-		label_1.setFont(new Font("Century Gothic", Font.PLAIN, 28));
-		label_1a.setFont(new Font("Century Gothic", Font.PLAIN, 28));
-		
-		dailyActiveMinPanel.add(label_1, gbc);
-		dailyActiveMinPanel.add(label_1a, gbc);
-		dailyActiveMinPanel.add(label_1c, gbc);
-		dailyActiveMinPanel.add(lblDailyVeryActMinVal, gbc);
-
-		lblDailyVeryActMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
-		
 
 		/**
 		 * All the individual panels and labels for dashboard fields
 		 */
 		dailyStepsPanel = new SPanel();
 		dailyStepsPanel.setBounds(496, 453, 120, 100);
-		GridBagLayout gbl_stepsPanel = new GridBagLayout();
-		dailyStepsPanel.setLayout(gbl_stepsPanel);
-		dailyStepsPanel.setOpaque(false);
 
-		JLabel topSpace = new JLabel(" ");
-		dailyStepsPanel.add(topSpace);
-		topSpace.setForeground(Color.WHITE);
-		topSpace.setFont(new Font("Century Gothic", Font.PLAIN, 8));
-		
-		JLabel label_3 = new JLabel("Steps");
-		dailyStepsPanel.add(label_3);
-		label_3.setForeground(Color.WHITE);
-		label_3.setFont(new Font("Century Gothic", Font.PLAIN, 38));
-		
-		JLabel label_3a = new JLabel(" ");
-		dailyStepsPanel.add(label_3a);
-		label_3a.setForeground(Color.WHITE);
-		label_3a.setFont(new Font("Century Gothic", Font.PLAIN, 18));
-		
 		lblDailyStepsVal = new SLabel();
 		dailyStepsPanel.add(lblDailyStepsVal);
-		lblDailyStepsVal.setForeground(Color.WHITE);
-		lblDailyStepsVal.setFont(new Font("Century Gothic", Font.PLAIN, 38));
-		
-		dailyStepsPanel.add(topSpace, gbc);
-		dailyStepsPanel.add(label_3, gbc);
-		dailyStepsPanel.add(label_3a, gbc);
-		dailyStepsPanel.add(lblDailyStepsVal, gbc);
+		lblDailyStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
 
-		//Calories Burned Panel
+		JLabel label_3 = new JLabel("Steps");
+		dailyStepsPanel.add(label_3);
+
 		dailyCaloriesPanel = new SPanel();
 		dailyCaloriesPanel.setBounds(608, 452, 120, 100);
-		GridBagLayout gbl_caloriesPanel = new GridBagLayout();
-		dailyCaloriesPanel.setLayout(gbl_caloriesPanel);
-		dailyCaloriesPanel.setOpaque(false);
 
-		JLabel label_2a = new JLabel("Calories");
-		dailyCaloriesPanel.add(label_2a);
-		label_2a.setForeground(Color.WHITE);
-		label_2a.setFont(new Font("Century Gothic", Font.PLAIN, 28));
-		
-		JLabel label_2b = new JLabel("Burned");
-		dailyCaloriesPanel.add(label_2b);
-		label_2b.setForeground(Color.WHITE);
-		label_2b.setFont(new Font("Century Gothic", Font.PLAIN, 28));
-		
-		JLabel label_2c = new JLabel(" ");
-		dailyCaloriesPanel.add(label_2c);
-		label_2c.setFont(new Font("Century Gothic", Font.PLAIN, 8));
-		
 		lblDailyCaloriesVal = new SLabel();
 		dailyCaloriesPanel.add(lblDailyCaloriesVal);
-		lblDailyCaloriesVal.setForeground(Color.WHITE);
-		lblDailyCaloriesVal.setFont(new Font("Century Gothic", Font.PLAIN, 38));
+		lblDailyCaloriesVal.setHorizontalAlignment(SwingConstants.TRAILING);
 
-		dailyCaloriesPanel.add(label_2a, gbc);
-		dailyCaloriesPanel.add(label_2b, gbc);
-		dailyCaloriesPanel.add(label_2c, gbc);
-		dailyCaloriesPanel.add(lblDailyCaloriesVal, gbc);
+		JLabel label = new JLabel("Calories Burned");
+		dailyCaloriesPanel.add(label);
 
-		//Sedentary Minutes Panel
 		dailySedMinPanel = new SPanel();
 		dailySedMinPanel.setBounds(264, 448, 120, 100);
-		GridBagLayout gbl_dailySedMinPanel = new GridBagLayout();
-		dailySedMinPanel.setLayout(gbl_dailySedMinPanel);
-		dailySedMinPanel.setOpaque(false);
 
-		JLabel lblSedMin1 = new JLabel("Sedentary");
-		dailySedMinPanel.add(lblSedMin1);
-		lblSedMin1.setForeground(Color.WHITE);
-		lblSedMin1.setFont(new Font("Century Gothic", Font.PLAIN, 28));
-		
-		JLabel lblSedMin2 = new JLabel("Minutes");
-		dailySedMinPanel.add(lblSedMin2);
-		lblSedMin2.setForeground(Color.WHITE);
-		lblSedMin2.setFont(new Font("Century Gothic", Font.PLAIN, 28));
-		
-		JLabel space1 = new JLabel(" ");
-		dailySedMinPanel.add(space1);
-		space1.setFont(new Font("Century Gothic", Font.PLAIN, 8));
-		
 		lblDailySedenteryMinVal = new SLabel();
+		lblDailySedenteryMinVal.setBounds(3, 34, 97, 16);
 		dailySedMinPanel.add(lblDailySedenteryMinVal);
-		lblDailySedenteryMinVal.setForeground(Color.WHITE);
-		lblDailySedenteryMinVal.setFont(new Font("Century Gothic", Font.PLAIN, 38));
-		
-		dailySedMinPanel.add(lblSedMin1, gbc);
-		dailySedMinPanel.add(lblSedMin2, gbc);
-		dailySedMinPanel.add(space1, gbc);
-		dailySedMinPanel.add(lblDailySedenteryMinVal, gbc);
+		lblDailySedenteryMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
 
-		//Floor Panel
+		JLabel lblSedMin = new JLabel("Sedentary Minutes");
+		lblSedMin.setBounds(3, 0, 106, 16);
+		dailySedMinPanel.add(lblSedMin);
+
 		dailyFloorsPanel = new SPanel();
 		dailyFloorsPanel.setBounds(0, 448, 120, 100);
-		GridBagLayout gbl_floorsPanel = new GridBagLayout();
-		dailyFloorsPanel.setLayout(gbl_floorsPanel);
-		dailyFloorsPanel.setOpaque(false);
 
-		JLabel lblFloor1 = new JLabel("Floors");
-		dailyFloorsPanel.add(lblFloor1);
-		lblFloor1.setForeground(Color.WHITE);
-		lblFloor1.setFont(new Font("Century Gothic", Font.PLAIN, 28));
-		
-		JLabel lblFloor2 = new JLabel("Climbed");
-		dailyFloorsPanel.add(lblFloor2);
-		lblFloor2.setForeground(Color.WHITE);
-		lblFloor2.setFont(new Font("Century Gothic", Font.PLAIN, 28));
-		
-		JLabel space2 = new JLabel(" ");
-		dailyCaloriesPanel.add(space2);
-		space2.setFont(new Font("Century Gothic", Font.PLAIN, 8));
+		JLabel lblFloorsClimbed = new JLabel("Floors Climbed");
+		lblFloorsClimbed.setBounds(15, 5, 85, 16);
+		dailyFloorsPanel.add(lblFloorsClimbed);
 
 		lblDailyFloorsVal = new SLabel();
+		lblDailyFloorsVal.setBounds(10, 34, 70, 16);
 		dailyFloorsPanel.add(lblDailyFloorsVal);
-		lblDailyFloorsVal.setForeground(Color.WHITE);
-		lblDailyFloorsVal.setFont(new Font("Century Gothic", Font.PLAIN, 38));
-		
-		dailyFloorsPanel.add(lblFloor1, gbc);
-		dailyFloorsPanel.add(lblFloor2, gbc);
-		dailyFloorsPanel.add(space2, gbc);
-		dailyFloorsPanel.add(lblDailyFloorsVal, gbc);
+		lblDailyFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
 
-		//Distance Panel
 		dailyTotalDistPanel = new SPanel();
 		dailyTotalDistPanel.setBounds(126, 477, 120, 100);
-		GridBagLayout gbl_DistancePanel = new GridBagLayout();
-		dailyTotalDistPanel.setLayout(gbl_DistancePanel);
-		dailyTotalDistPanel.setOpaque(false);
-		
-		JLabel lblTotalDist1 = new JLabel("Total");
-		dailyTotalDistPanel.add(lblTotalDist1);
-		lblTotalDist1.setForeground(Color.WHITE);
-		lblTotalDist1.setFont(new Font("Century Gothic", Font.PLAIN, 28));
-		
-		JLabel lblTotalDist2 = new JLabel("Distance");
-		dailyTotalDistPanel.add(lblTotalDist2);
-		lblTotalDist2.setForeground(Color.WHITE);
-		lblTotalDist2.setFont(new Font("Century Gothic", Font.PLAIN, 28));
-		
-		JLabel space3 = new JLabel(" ");
-		dailyCaloriesPanel.add(space3);
-		space3.setFont(new Font("Century Gothic", Font.PLAIN, 8));
-		
-		lblDailyDistVal = new SLabel();
-		dailyTotalDistPanel.add(lblDailyDistVal);
-		lblDailyDistVal.setForeground(Color.WHITE);
-		lblDailyDistVal.setFont(new Font("Century Gothic", Font.PLAIN, 38));
-		
-		dailyTotalDistPanel.add(lblTotalDist1, gbc);
-		dailyTotalDistPanel.add(lblTotalDist2, gbc);
-		dailyTotalDistPanel.add(space3, gbc);
-		dailyTotalDistPanel.add(lblDailyDistVal, gbc);
 
+
+		lblDailyDistVal = new SLabel();
+		lblDailyDistVal.setBounds(19, 34, 70, 16);
+		dailyTotalDistPanel.add(lblDailyDistVal);
+		lblDailyDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
+
+		JLabel lblTotalDist = new JLabel("Total Distance");
+		lblTotalDist.setBounds(19, 5, 81, 16);
+		dailyTotalDistPanel.add(lblTotalDist);
+		
 		/**
 		 * "Last Updated" Field
 		 */
@@ -895,6 +756,7 @@ public class InterfaceView {
 		sixPanel_1 = new BackgroundPanel();
 		sixPanel_1.setBounds(40, 24, 160, 144);
 		SixPanel.add(sixPanel_1);
+		sixPanel_1.setLayout(null);
 
 		sixPanel_2 = new BackgroundPanel();
 		sixPanel_2.setBounds(240, 24, 160, 144);
@@ -1290,11 +1152,6 @@ public class InterfaceView {
 
 			radioCalories.setSelected(true);
 			radioActiveMin.setSelected(true);
-			radioSedMin.setSelected(true);
-			radioTotalDist.setSelected(true);
-			radioFloors.setSelected(true);
-			radioSteps.setSelected(true);
-			
 		}
 
 		//radioCalories.setSelected(true);
@@ -2313,7 +2170,7 @@ public class InterfaceView {
 	 * API calls to change the date of the information displayed across all pages 
 	 * of the application, when the user selects a new date on the calendar.
 	 * 
-	 * @param actionsOnClick 
+	 * @param changeData 
 	 * 			{@code ActionListener} makes API calls using the selected date and is defined in {@link Main}
 	 */
 	public void addCalendarDateChangeActions(ActionListener changeData) {
@@ -2338,7 +2195,7 @@ public class InterfaceView {
 	 * of the application to the previous day. Also attaches an {@code ActionListener} to 
 	 * change the date displayed on the calendar.
 	 * 
-	 * @param actionsOnClick 
+	 * @param changeData 
 	 * 			{@code ActionListener} makes API calls using the date previous to the one
 	 * 			currently displayed, and is defined in {@link Main}
 	 */
@@ -2380,7 +2237,7 @@ public class InterfaceView {
 	 * change the date displayed on the calendar.
 	 * Does not allow date to be changed to a future date.
 	 * 
-	 * @param actionsOnClick 
+	 * @param changeData 
 	 * 			{@code ActionListener} makes API calls using the date one day in advance 
 	 * 			of the date currently displayed, and is defined in {@link Main}
 	 */
@@ -2812,140 +2669,56 @@ public class InterfaceView {
 
 		}
 
-
-		/**
-		 * Converts the {@code UtilDateModel} object, which represents the date selected
-		 * on the calendar, to a string, and returns the string.
-		 * @param incrementFlag flag to determine if the day field should be incremented or decremented
-		 * 		to reflect in the {@code UtilDateModel} object that date has been changed to the previous
-		 * 		or next day.
-		 * @return a String representing the date selected on the calendar.
-		 */
-		public String getStringDate(String incrementFlag){
-			
-			//int year = dateModel.getYear();
-			//int day = dateModel.getDay();
-			int year = modelForDay.getYear();
-			int day = modelForDay.getDay();
-			
-			if(incrementFlag == "previous") day-=1;
-			else if(incrementFlag == "next") day+=1;
-					
-			//convert int (0-11) to int(1-12) for MM
-			//int month = dateModel.getMonth();
-			int month = modelForDay.getMonth();
-			month+=1;
-			
-			//prefix 0 to single-digit months and days
-			if (month<=9 && day<=9) return year+"-0"+month+"-0"+day;
-			
-			else if (month<=9)return year+"-0"+month+"-"+day;
-			else if (day<=9) return year+"-"+month+"-0"+day;
-			
-			else return year+"-"+month+"-"+day;
-		}
-		//SHORTCUT
-		
-		/**
-		 * Make data object get it
-		 * @return
-		 */
-		public Date getDateObject() {
-			return dateModel.getValue();
-		}
-		
-		/**
-		 * Get calendar model
-		 * 
-		 * @return
-		 */
-		public CalendarModel getCalendarObject() {
-			return modelForDay;
-		}
-		
-		/**
-		 * Objects of this inner class format the date to be displayed in the calendar text box.
-		 * A {@DateLabelFormatter} object is required as a parameter in the
-		 * {@code JDatePickerImpl} constructor called in the {@link #dashboardView} method.
-		 *
-		 */
-		class DateLabelFormatter extends AbstractFormatter {
-
-		    private String datePattern = "dd-MMM-yyyy";
-		    private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
-		  
-		    @Override
-		    public Object stringToValue(String text) throws ParseException {
-		        return dateFormatter.parseObject(text);
-		    }
-
-		    @Override
-		    public String valueToString(Object value) throws ParseException {
-		        if (value != null) {
-		            Calendar cal = (Calendar) value;
-		            return dateFormatter.format(cal.getTime());
-		        }
-
-		        return "";
-		    }
-
-		}
-		
-		/**
-		 * Set time series graph
-		 * 
-		 * @param dRecords
-		 * @param sRecords
-		 * @param caRecord
-		 * @param rRecord
-		 */
-		public void setTimeSeriesGraph(DistanceTSRecord dRecords, StepsTSRecord sRecords, CaloriesTSRecord caRecord, HeartRateRecord rRecord)
+		public void setTimeSeriesGraph(final DistanceTSRecord dRecords, final StepsTSRecord sRecords, final CaloriesTSRecord caRecord, final HeartRateRecord rRecord)
 		{		
+			try {
+				panelGraph.removeAll();
+			} catch (Exception e) {
+				System.out.println("\n");
+			}
+			panelGraph.revalidate(); // This removes the old chart 
+			
 			// Generate Graph:
-			dataset = createDataset(dRecords, sRecords, caRecord, rRecord);         
-			chart = createChart( dataset ); 
+			final XYDataset dataset = createDataset(dRecords, sRecords, caRecord, rRecord);         
+			final JFreeChart chart = createChart( dataset );
+			
+			//chart.getXYPlot().setDataset(createDataset(dRecords, sRecords, caRecord, rRecord));
 			
 			chart.getPlot().addChangeListener(new PlotChangeListener(){
 				  @Override
 				  public void plotChanged(PlotChangeEvent event)
 				  {
-						chartPanel.repaint();
+						panelGraph.revalidate();
+						panelGraph.repaint();
+
 				  }});
-			
+
 			chartPanel = new ChartPanel( chart ); 
 			chartPanel.setPreferredSize( new java.awt.Dimension( 620 , 360 ) );         
 			//chartPanel.setMouseZoomable( true , false );   
 			chartPanel.setDomainZoomable(true);
-			
+		
 			//chartPanel.setZoomInFactor(10);
 			panelGraph.add( chartPanel );
+			panelGraph.revalidate(); // This checks the chart 
+			panelGraph.repaint();
+
 		}
 		
-		/**
-		 * Make xy dataset
-		 * 
-		 * @param dRecord
-		 * @param sRecord
-		 * @param caRecord
-		 * @param rRecord
-		 * @return
-		 */
-	private XYDataset createDataset(DistanceTSRecord dRecord, StepsTSRecord sRecord, CaloriesTSRecord caRecord, HeartRateRecord rRecord) 
+	private XYDataset createDataset(final DistanceTSRecord dRecord, final StepsTSRecord sRecord, final CaloriesTSRecord caRecord, final HeartRateRecord rRecord) 
 	{
-		TimeSeriesCollection dataset = new TimeSeriesCollection();
-        dataset.setDomainIsPointsInTime(true);
+		System.out.println(dRecord.getDateTime());
+
+		final TimeSeriesCollection datasetTS = new TimeSeriesCollection();
+        datasetTS.setDomainIsPointsInTime(true);
         
         //Minute(int minute, int hour, int day, int month, int year) 
         
-        s1 = new TimeSeries("Distance");
-        s2 = new TimeSeries("Steps");
-        s3 = new TimeSeries("Calories");
-        s4 = new TimeSeries("Heart Rate");
-        s1.clear();
-        s2.clear();
-        s3.clear();
-        s4.clear();
-        
+        final TimeSeries s1 = new TimeSeries("Distance");
+        final TimeSeries s2 = new TimeSeries("Steps");
+        final TimeSeries s3 = new TimeSeries("Calories");
+        final TimeSeries s4 = new TimeSeries("Heart Rate");
+
     	String str[] = dRecord.getDateTime().split("-");
     	int year = Integer.parseInt(str[0]);
     	int month = Integer.parseInt(str[1]);
@@ -2963,7 +2736,7 @@ public class InterfaceView {
         	int minute = Integer.parseInt(str2[1]);
         	//System.out.println(hour + " " + minute);
         	double value = distance_arr[i].getValue();
-        	s1.addOrUpdate(new Minute(minute, hour, day, month, year), value);
+        	s1.add(new Minute(minute, hour, day, month, year), value);
         }
         
         for(int i = 0; i < steps_arr.length ; i++)
@@ -2973,19 +2746,9 @@ public class InterfaceView {
         	int minute = Integer.parseInt(str2[1]);
         	
         	double value = steps_arr[i].getValue();
-        	s2.addOrUpdate(new Minute(minute, hour, day, month, year), value);
+        	s2.add(new Minute(minute, hour, day, month, year), value);
         }
-  
-        for(int i = 0; i < calories_arr.length ; i++)
-        {
-        	String str2[] = calories_arr[i].getTime().split(":");
-        	int hour = Integer.parseInt(str2[0]);
-        	int minute = Integer.parseInt(str2[1]);
-        	
-        	double value = calories_arr[i].getValue();
-        	s3.addOrUpdate(new Minute(minute, hour, day, month, year), value);
-
-        }
+        
         for(int i = 0; i < rate_arr.length ; i++)
         {
         	String str2[] = rate_arr[i].getTime().split(":");
@@ -2993,26 +2756,99 @@ public class InterfaceView {
         	int minute = Integer.parseInt(str2[1]);
         	
         	double value = rate_arr[i].getValue();
-        	s4.addOrUpdate(new Minute(minute, hour, day, month, year), value);
+        	s4.add(new Minute(minute, hour, day, month, year), value);
         }
         
-        dataset.addSeries(s1);
-        dataset.addSeries(s2);
-        dataset.addSeries(s3);
-        dataset.addSeries(s4);
+        for(int i = 0; i < calories_arr.length ; i++)
+        {
+        	String str2[] = calories_arr[i].getTime().split(":");
+        	int hour = Integer.parseInt(str2[0]);
+        	int minute = Integer.parseInt(str2[1]);
+        	
+        	double value = calories_arr[i].getValue();
+        	s3.add(new Minute(minute, hour, day, month, year), value);
 
-        return dataset;
+        }
+        
+        datasetTS.addSeries(s1);
+        datasetTS.addSeries(s2);
+        datasetTS.addSeries(s3);
+        datasetTS.addSeries(s4);
+
+        return datasetTS;
 	}
 
-
 	/**
-	 * Make Jfreechart
-	 * @param dataset
-	 * @return
+	 * Converts the {@code UtilDateModel} object, which represents the date selected
+	 * on the calendar, to a string, and returns the string.
+	 * @param incrementFlag flag to determine if the day field should be incremented or decremented
+	 * 		to reflect in the {@code UtilDateModel} object that date has been changed to the previous
+	 * 		or next day.
+	 * @return a String representing the date selected on the calendar.
 	 */
-	private JFreeChart createChart( XYDataset dataset ) 
+	public String getStringDate(String incrementFlag){
+		
+		//int year = dateModel.getYear();
+		//int day = dateModel.getDay();
+		int year = modelForDay.getYear();
+		int day = modelForDay.getDay();
+		
+		if(incrementFlag == "previous") day-=1;
+		else if(incrementFlag == "next") day+=1;
+				
+		//convert int (0-11) to int(1-12) for MM
+		//int month = dateModel.getMonth();
+		int month = modelForDay.getMonth();
+		month+=1;
+		
+		//prefix 0 to single-digit months and days
+		if (month<=9 && day<=9) return year+"-0"+month+"-0"+day;
+		
+		else if (month<=9)return year+"-0"+month+"-"+day;
+		else if (day<=9) return year+"-"+month+"-0"+day;
+		
+		else return year+"-"+month+"-"+day;
+	}
+	//SHORTCUT
+	
+	public Date getDateObject() {
+		return dateModel.getValue();
+	}
+	
+	public CalendarModel getCalendarObject() {
+		return modelForDay;
+	}
+	
+	/**
+	 * Objects of this inner class format the date to be displayed in the calendar text box.
+	 * A {@link DateLabelFormatter} object is required as a parameter in the
+	 * {@code JDatePickerImpl} constructor called in the {@link #dashboardView} method.
+	 */
+	class DateLabelFormatter extends AbstractFormatter {
+
+	    private String datePattern = "dd-MMM-yyyy";
+	    private SimpleDateFormat dateFormatter = new SimpleDateFormat(datePattern);
+	  
+	    @Override
+	    public Object stringToValue(String text) throws ParseException {
+	        return dateFormatter.parseObject(text);
+	    }
+
+	    @Override
+	    public String valueToString(Object value) throws ParseException {
+	        if (value != null) {
+	            Calendar cal = (Calendar) value;
+	            return dateFormatter.format(cal.getTime());
+	        }
+
+	        return "";
+	    }
+
+	}
+
+	private JFreeChart createChart(final XYDataset dataset ) 
 	{
-		chart = ChartFactory.createTimeSeriesChart(             
+		final JFreeChart chart = ChartFactory.createTimeSeriesChart(             
 				"", 
 				"Time",              
 				"Value",              
@@ -3022,7 +2858,7 @@ public class InterfaceView {
 				false);
 		 chart.setBackgroundPaint(Color.BLACK);
 
-       plot = chart.getXYPlot();
+	   final XYPlot plot = chart.getXYPlot();
        //plot.setOutlinePaint(null);
        plot.setBackgroundPaint(Color.DARK_GRAY);
        plot.setDomainGridlinePaint(Color.white);
@@ -3032,7 +2868,8 @@ public class InterfaceView {
        plot.setDomainCrosshairVisible(true);
        plot.setRangeCrosshairVisible(false);
      
-       XYItemRenderer renderer = plot.getRenderer();
+       
+       final XYItemRenderer renderer = plot.getRenderer();
        if (renderer instanceof StandardXYItemRenderer) {
            StandardXYItemRenderer rr = (StandardXYItemRenderer) renderer;
            rr.setBaseShapesVisible(true); //PlotShapes(true);
@@ -3042,7 +2879,7 @@ public class InterfaceView {
 
           }
        
-       DateAxis axis = (DateAxis) plot.getDomainAxis();
+       final DateAxis axis = (DateAxis) plot.getDomainAxis();
        DateTickUnit stu = new DateTickUnit(DateTickUnit.HOUR,1); 
        axis.setAutoTickUnitSelection(false);
        axis.setVerticalTickLabels(true);
@@ -3050,5 +2887,6 @@ public class InterfaceView {
        axis.setDateFormatOverride(new SimpleDateFormat("hh:mma"));
        
        return chart;
+
    }
 }

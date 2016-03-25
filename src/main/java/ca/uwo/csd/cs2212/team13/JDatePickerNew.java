@@ -66,7 +66,6 @@ import javax.swing.*;
  * @author Juan Heyns
  * @author JC Oosthuizen
  * @author Yue Huang
- * @param <T>
  */
 public class JDatePickerNew extends JPanel implements JDatePickerN {
 

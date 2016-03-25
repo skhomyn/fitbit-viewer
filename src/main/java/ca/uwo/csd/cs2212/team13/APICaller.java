@@ -49,8 +49,6 @@ public class APICaller {
 		/**
 		 * constructor
 		 * 
-		 * @param callBackURI
-		 * @param callBackPort
 		 * @param scope
 		 * @param tokenFile
 		 * @param credentialsFile

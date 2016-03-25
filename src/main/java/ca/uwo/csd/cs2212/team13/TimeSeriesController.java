@@ -35,31 +35,36 @@ public class TimeSeriesController {
 
 	/**
 	 * Constructor, initializes the model and view fields with pointers to
-	 * <code>LifetimeRecord</code> object and <code>InterfaceView</code> object
+	 * various time series record object and <code>InterfaceView</code> object
 	 * respectively, and calls method
-	 * {@link InterfaceView#addClickListenerLifetimeTotals(ActionListener)} to
-	 * add a click listener to the Lifetime Totals button.
+	 * {@link InterfaceView#addClickListenerTimeSeries(ActionListener)} to
+	 * add a click listener to the TS button.
 	 * 
-	 * @param model
-	 *            the <code>LifetimeRecord</code> model containing the Best Days
-	 *            data to be displayed
-	 * @param view
-	 *            the <code>InterfaceView</code> view containing the user
-	 *            interface implementation
-	 * 
-	 * @see InterfaceView#addClickListenerLifetimeTotals(ActionListener)
+	 * @param distance_model distance
+	 * @param steps_model steps ts
+	 * @param calories_model calories ts
+	 * @param rate_model rate ts
+	 * @param view view obv
 	 */
 	public TimeSeriesController(DistanceTSRecord distance_model, StepsTSRecord steps_model, CaloriesTSRecord calories_model, HeartRateRecord rate_model, InterfaceView view) {
 		this.distance_model = distance_model;
 		this.steps_model = steps_model;
 		this.calories_model = calories_model;
 		this.rate_model = rate_model;
-
 		this.view = view;
 
 		// call method in view to add an event listener to the lifetime totals
 		// button
 		view.addClickListenerTimeSeries(new clickListener());
+	}
+	
+	public void updateTSC(DistanceTSRecord distance_model, StepsTSRecord steps_model, CaloriesTSRecord calories_model, HeartRateRecord rate_model, InterfaceView view)
+	{
+		this.distance_model = distance_model;
+		this.steps_model = steps_model;
+		this.calories_model = calories_model;
+		this.rate_model = rate_model;
+		this.view = view;
 	}
 
 	/**

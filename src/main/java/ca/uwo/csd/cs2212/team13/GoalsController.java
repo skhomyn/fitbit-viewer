@@ -9,17 +9,39 @@ import java.awt.event.ActionListener;
 
 public class GoalsController {
 	
+	/**
+	 * Records and view
+	 */
 	private DailyRecord dailyModel;
 	private GoalsRecord goalsModel;
 	private InterfaceView view;
 	
-	GoalsController(DailyRecord dailyModel, GoalsRecord goalsModel, InterfaceView view){
+	/**
+	 * This is the constructor for goals
+	 * 
+	 * @param dailyModel
+	 * @param goalsModel
+	 * @param view
+	 */
+	public GoalsController(DailyRecord dailyModel, GoalsRecord goalsModel, InterfaceView view){
 		this.dailyModel = dailyModel;
 		this.goalsModel = goalsModel;
 		this.view = view;
 		
 		view.addClickListenerGoals(new clickListener());
-		
+	}
+	
+	/**
+	 * This updates goals controller.
+	 * 
+	 * @param dailyModel
+	 * @param goalsModel
+	 * @param view
+	 */
+	public void updateDGC(DailyRecord dailyModel, GoalsRecord goalsModel, InterfaceView view){
+		this.dailyModel = dailyModel;
+		this.goalsModel = goalsModel;
+		this.view = view;
 	}
 	/**
 	 * Sets the Daily Dashboard page display fields in

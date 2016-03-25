@@ -89,6 +89,21 @@ public class AccoladeController {
 		view.setAccoladeFields(ar);
 		save();
 	}
+	
+	/**
+	 * Sets the Accolades page display fields in <code>InterfaceView</code> with
+	 * values from the appropriate model <code>AccoladesRecord</code> fields.
+	 * 
+	 * Updates fields manually (so no new action listner)
+	 */
+	public void updateAC(AccoladeRecord[] ar, ActivitiesRecord acR,
+			DailyRecord dr, HeartRateRecord hr, InterfaceView view) {
+		this.ar = ar;
+		this.acR = acR;
+		this.dr = dr;
+		this.view = view;
+		this.hr = hr;
+	}
 
 	/**
 	 * Checks if accolades achieved
@@ -241,7 +256,7 @@ public class AccoladeController {
 	}
 
 	/**
-	 * Check if values are fine -> negation version (to check 0)
+	 * Check if values are fine, negation version (to check 0)
 	 * 
 	 * @param m
 	 * @param standard

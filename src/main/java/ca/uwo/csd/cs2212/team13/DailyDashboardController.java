@@ -49,6 +49,22 @@ public class DailyDashboardController {
 		this.view = view;
 		view.addClickListenerDashboard(new clickListener());
 	}
+	/**
+	 * Updates initializes the model and view fields with pointers to
+	 * <code>DailyRecord</code> object and <code>InterfaceView</code> object
+	 * respectively
+	 * 
+	 * @param model
+	 *            the <code>DailyRecord</code> model containing the Best Days
+	 *            data to be displayed
+	 * @param view
+	 *            the <code>InterfaceView</code> view containing the user
+	 *            interface implementation
+	 */
+	public void updateDDC (DailyRecord model, InterfaceView view) {
+		this.model = model;
+		this.view = view;
+	}
 
 	/**
 	 * Sets the Daily Dashboard page display fields in
