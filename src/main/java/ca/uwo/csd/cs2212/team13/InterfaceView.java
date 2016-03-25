@@ -1462,7 +1462,7 @@ public class InterfaceView {
 		lblDisplayDateTS.setBounds(0, 60, 720, 100);
 		panelTimeSeriesView.add(lblDisplayDateTS);
 		
-		lblClickAndDrag = new JLabel("Click and drag on the graph to zoom in.");
+		lblClickAndDrag = new JLabel("Click and drag on the graph to zoom in, click and drag left to zoom out.");
 		lblClickAndDrag.setForeground(Color.WHITE);
 		lblClickAndDrag.setHorizontalAlignment(SwingConstants.CENTER);
 		lblClickAndDrag.setBounds(40, 144, 640, 16);
@@ -1706,6 +1706,7 @@ public class InterfaceView {
 		lblDisplayDateHRZ = new JLabel();
 		lblDisplayDateHRZ.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDisplayDateHRZ.setFont(new Font("Century Gothic", Font.PLAIN, 26));
+		lblDisplayDateHRZ.setBounds(0, 60, 720, 100);
 		lblDisplayDateHRZ.setForeground(Color.WHITE);
 		panelHeartrateZonesView.add(lblDisplayDateHRZ);	
 		
@@ -2440,6 +2441,7 @@ public class InterfaceView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Date now = new Date();
+				//modelForDay.setDate(now.getYear(), now.getMonth(), now.getDay());
 				setDisplayDate(modelForDay.getValueDate());	
 			}
 			
