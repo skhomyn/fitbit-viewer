@@ -189,10 +189,18 @@ public class InterfaceView {
 	private JLabel lblZoneThreeVal;
 	private JLabel lblHeartMins;
 	private JLabel lblHeartRest;
-	private JLabel lblHeartCardioMaxMin;
-	private JLabel lblHeartFatBurnMaxMin;
-	private JLabel lblHeartPeakMaxMin;
-	private JLabel lblHeartOORMaxMin;
+	private JLabel lblHeartCardioMax;
+	private JLabel lblHeartFatBurnMax;
+	private JLabel lblHeartPeakMax;
+	private JLabel lblHeartOORMax;
+	private JLabel lblHeartCardioMin;
+	private JLabel lblHeartFatBurnMin;
+	private JLabel lblHeartPeakMin;
+	private JLabel lblHeartOORMin;	
+	private JLabel lblHeartCardioMinutes;
+	private JLabel lblHeartFatBurnMinutes;
+	private JLabel lblHeartPeakMinutes;
+	private JLabel lblHeartOORMinutes;
 
 
 	/**
@@ -307,6 +315,8 @@ public class InterfaceView {
 	private JDatePickerNew datePicker;
 	private JLabel lblPic_1;
 	private JLabel lblNewLabel_1;
+	private JButton button;
+	private JLabel lblClickAndDrag;
 
 
 	/**
@@ -387,7 +397,7 @@ public class InterfaceView {
 
 		menuBar();
 
-		dashboardView();
+		//dashboardView();
 
 		bestDaysView();
 
@@ -494,8 +504,6 @@ public class InterfaceView {
 	 * This method implements the Dashboard screen.
 	 */
 	private void dashboardView() {
-
-		panelDashboardView.setLayout(null);
 
 		panelDashboardView.setLayout(null);
 
@@ -619,8 +627,7 @@ public class InterfaceView {
 		SwitchingPanel.add(OnePanel, "name_784837328464246");
 		OnePanel.setLayout(null);
 
-		onePanel_1 = new JPanel();
-		onePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		onePanel_1 = new BackgroundPanel();
 		onePanel_1.setBounds(240, 108, 160, 144);
 		OnePanel.add(onePanel_1);
 		// Add image:
@@ -636,14 +643,12 @@ public class InterfaceView {
 		SwitchingPanel.add(TwoPanel, "name_784837275135018");
 		TwoPanel.setLayout(null);
 
-		twoPanel_1 = new JPanel();
-		twoPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		twoPanel_1 = new BackgroundPanel();
 		twoPanel_1.setBounds(107, 108, 160, 144);
 		TwoPanel.add(twoPanel_1);
 
-		twoPanel_2 = new JPanel();
-		twoPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		twoPanel_2.setBounds(374, 108, 160, 144);
+		twoPanel_2 = new BackgroundPanel();
+		twoPanel_2.setBounds(374, 108, 160, 144);		
 		TwoPanel.add(twoPanel_2);
 		// Add image:
 		JLabel lblPic_2 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
@@ -658,21 +663,18 @@ public class InterfaceView {
 		SwitchingPanel.add(ThreePanel, "name_784837286074452");
 		ThreePanel.setLayout(null);
 
-		threePanel_1 = new JPanel();
+		threePanel_1 = new BackgroundPanel();
 		threePanel_1.setAlignmentX(Component.LEFT_ALIGNMENT);
-		threePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		threePanel_1.setBounds(40, 108, 160, 144);
 		ThreePanel.add(threePanel_1);
 
-		threePanel_2 = new JPanel();
+		threePanel_2 = new BackgroundPanel();
 		threePanel_2.setAlignmentX(Component.LEFT_ALIGNMENT);
-		threePanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		threePanel_2.setBounds(240, 108, 160, 144);
 		ThreePanel.add(threePanel_2);
 
-		threePanel_3 = new JPanel();
+		threePanel_3 = new BackgroundPanel();
 		threePanel_3.setAlignmentX(Component.LEFT_ALIGNMENT);
-		threePanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		threePanel_3.setBounds(440, 108, 160, 144);
 		ThreePanel.add(threePanel_3);
 
@@ -689,23 +691,19 @@ public class InterfaceView {
 		SwitchingPanel.add(FourPanel, "name_784837296062649");
 		FourPanel.setLayout(null);
 
-		fourPanel_1 = new JPanel();
-		fourPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fourPanel_1 = new BackgroundPanel();
 		fourPanel_1.setBounds(107, 24, 160, 144);
 		FourPanel.add(fourPanel_1);
 
-		fourPanel_2 = new JPanel();
-		fourPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fourPanel_2 = new BackgroundPanel();
 		fourPanel_2.setBounds(374, 24, 160, 144);
 		FourPanel.add(fourPanel_2);
 
-		fourPanel_3 = new JPanel();
-		fourPanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fourPanel_3 = new BackgroundPanel();
 		fourPanel_3.setBounds(107, 192, 160, 144);
 		FourPanel.add(fourPanel_3);
 
-		fourPanel_4 = new JPanel();
-		fourPanel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fourPanel_4 = new BackgroundPanel();
 		fourPanel_4.setBounds(374, 192, 160, 144);
 		FourPanel.add(fourPanel_4);
 
@@ -722,28 +720,23 @@ public class InterfaceView {
 		SwitchingPanel.add(FivePanel, "name_784837306362861");
 		FivePanel.setLayout(null);
 
-		fivePanel_1 = new JPanel();
-		fivePanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fivePanel_1 = new BackgroundPanel();
 		fivePanel_1.setBounds(40, 24, 160, 144);
 		FivePanel.add(fivePanel_1);
 
-		fivePanel_2 = new JPanel();
-		fivePanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fivePanel_2 = new BackgroundPanel();
 		fivePanel_2.setBounds(240, 24, 160, 144);
 		FivePanel.add(fivePanel_2);
 
-		fivePanel_3 = new JPanel();
-		fivePanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fivePanel_3 = new BackgroundPanel();
 		fivePanel_3.setBounds(440, 24, 160, 144);
 		FivePanel.add(fivePanel_3);
 
-		fivePanel_4 = new JPanel();
-		fivePanel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fivePanel_4 = new BackgroundPanel();
 		fivePanel_4.setBounds(107, 192, 160, 144);
 		FivePanel.add(fivePanel_4);
 
-		fivePanel_5 = new JPanel();
-		fivePanel_5.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		fivePanel_5 = new BackgroundPanel();
 		fivePanel_5.setBounds(374, 192, 160, 144);
 		FivePanel.add(fivePanel_5);
 
@@ -760,41 +753,34 @@ public class InterfaceView {
 		SwitchingPanel.add(SixPanel, "name_784837317868029");
 		SixPanel.setLayout(null);
 
-		sixPanel_1 = new JPanel();
-		sixPanel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		sixPanel_1 = new BackgroundPanel();
 		sixPanel_1.setBounds(40, 24, 160, 144);
 		SixPanel.add(sixPanel_1);
 		sixPanel_1.setLayout(null);
 
-		sixPanel_2 = new JPanel();
+		sixPanel_2 = new BackgroundPanel();
 		sixPanel_2.setBounds(240, 24, 160, 144);
 		SixPanel.add(sixPanel_2);
-		sixPanel_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 
-		sixPanel_3 = new JPanel();
+		sixPanel_3 = new BackgroundPanel();
 		sixPanel_3.setBounds(new Rectangle(0, 0, 180, 160));
-		sixPanel_3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		sixPanel_3.setBounds(440, 24, 160, 144);
 		SixPanel.add(sixPanel_3);
 
-		sixPanel_4 = new JPanel();
+		sixPanel_4 = new BackgroundPanel();
 		sixPanel_4.setBounds(new Rectangle(0, 0, 180, 160));
-		sixPanel_4.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		sixPanel_4.setBounds(40, 192, 160, 144);
 		SixPanel.add(sixPanel_4);
 
-		sixPanel_5 = new JPanel();
+		sixPanel_5 = new BackgroundPanel();
 		sixPanel_5.setBounds(new Rectangle(0, 0, 180, 160));
-		sixPanel_5.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		sixPanel_5.setBounds(240, 192, 160, 144);
 		SixPanel.add(sixPanel_5);
 
-		sixPanel_6 = new JPanel();
+		sixPanel_6 = new BackgroundPanel();
 		sixPanel_6.setBounds(new Rectangle(0, 0, 180, 160));
-		sixPanel_6.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		sixPanel_6.setBounds(440, 192, 160, 144);
 		SixPanel.add(sixPanel_6);
-		sixPanel_6.setLayout(null);
 
 		// Add image:
 		JLabel lblPic_6 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
@@ -884,7 +870,6 @@ public class InterfaceView {
 		mnNewMenu.add(radioSteps);
 		radioSteps.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				if (radioCounter() == 0) {
 					radioSteps.setSelected(true);
 				}
@@ -904,7 +889,6 @@ public class InterfaceView {
 					}
 					repanel(radioCounter());
 				}
-
 				else {
 					while (panelArray[radioCounter()] != dailyStepsPanel) {
 						int position = 0;
@@ -925,7 +909,6 @@ public class InterfaceView {
 
 		radioCalories.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				if (radioCounter() == 0) {
 					radioCalories.setSelected(true);
 				}
@@ -945,7 +928,6 @@ public class InterfaceView {
 					}
 					repanel(radioCounter());
 				}
-
 				else {
 					while (panelArray[radioCounter()] != dailyCaloriesPanel) {
 						int position = 0;
@@ -965,7 +947,6 @@ public class InterfaceView {
 		});
 		radioTotalDist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 
 				if (radioCounter() == 0) {
 					radioTotalDist.setSelected(true);
@@ -1005,7 +986,6 @@ public class InterfaceView {
 			}
 		});
 
-
 		radioSedMin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (radioCounter() == 0) {
@@ -1026,7 +1006,6 @@ public class InterfaceView {
 					}
 					repanel(radioCounter());
 				}
-
 				else {
 					while (panelArray[radioCounter()] != dailySedMinPanel) {
 						int position = 0;
@@ -1037,6 +1016,7 @@ public class InterfaceView {
 						}
 						SPanel switcheyPanel = panelArray[position + 1];
 						panelArray[position + 1] = dailySedMinPanel;
+
 						panelArray[position] = switcheyPanel;
 					}
 					repanel(radioCounter());
@@ -1046,7 +1026,6 @@ public class InterfaceView {
 
 		radioActiveMin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				if (radioCounter() == 0) {
 					radioActiveMin.setSelected(true);
 				}
@@ -1065,7 +1044,6 @@ public class InterfaceView {
 					}
 					repanel(radioCounter());
 				}
-
 				else {
 					while (panelArray[radioCounter()] != dailyActiveMinPanel) {
 						int position = 0;
@@ -1313,6 +1291,12 @@ public class InterfaceView {
 		lblLastUpdatedBd.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelBestDaysView.add(lblLastUpdatedBd);
 		
+		btnRefresh = new JButton("");
+		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
+		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
+		btnRefresh.setBounds(630, 10, 50, 50);
+		panelBestDaysView.add(btnRefresh);
+		
 		/**
 		 * Background Image Implementation
 		 */
@@ -1364,6 +1348,12 @@ public class InterfaceView {
 		lblLastUpdatedAccolades.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelAccoladesView.add(lblLastUpdatedAccolades);
 		
+		btnRefresh = new JButton("");
+		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
+		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
+		btnRefresh.setBounds(630, 10, 50, 50);
+		panelAccoladesView.add(btnRefresh);
+		
 		/**
 		 * Background Image Implementation
 		 */
@@ -1414,6 +1404,12 @@ public class InterfaceView {
 		lblLastUpdatedLt.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelLifetimeTotalsView.add(lblLastUpdatedLt);
 
+		btnRefresh = new JButton("");
+		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
+		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
+		btnRefresh.setBounds(630, 10, 50, 50);
+		panelLifetimeTotalsView.add(btnRefresh);
+		
 		/**
 		 * Background Image Implementation
 		 */
@@ -1429,11 +1425,19 @@ public class InterfaceView {
 	private void timeseriesView() {
 
 		JToolBar zoom = new JToolBar();
+		zoom.setBorder(null);
 		zoom.setFloatable(false);
-		zoom.setBounds(47, 61, 130, 20);
+		zoom.setBounds(40, 20, 50, 50);
 		panelTimeSeriesView.add(zoom);
 
-		JButton btnZoomOut = new JButton("Zoom Out");
+		JButton btnZoomOut = new JButton("");
+		btnZoomOut.setMargin(new Insets(0, -4, 0, 0));
+		btnZoomOut.setHorizontalAlignment(SwingConstants.LEFT);
+		btnZoomOut.setHorizontalTextPosition(SwingConstants.LEFT);
+		btnZoomOut.setBorderPainted(false);
+		btnZoomOut.setIconTextGap(0);
+		btnZoomOut.setBorder(null);
+		btnZoomOut.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/zoomOut40.png"));
 		zoom.add(btnZoomOut);
 		btnZoomOut.addActionListener(new ActionListener() {
 
@@ -1445,7 +1449,7 @@ public class InterfaceView {
 		
 		panelGraph = new JPanel();
 		panelGraph.setBackground(Color.BLACK);
-		panelGraph.setBounds(40, 160, 640, 360);
+		panelGraph.setBounds(40, 160, 640, 362);
 		panelTimeSeriesView.add(panelGraph);
 
 
@@ -1461,15 +1465,31 @@ public class InterfaceView {
 		panelTimeSeriesView.add(lblLastUpdatedTS);
 		
 		lblDisplayDateTS = new JLabel();
+		lblDisplayDateTS.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDisplayDateTS.setFont(new Font("Century Gothic", Font.PLAIN, 26));
 		lblDisplayDateTS.setForeground(Color.WHITE);
-		lblDisplayDateTS.setBounds(336, 60, 125, 16);
+		lblDisplayDateTS.setBounds(0, 60, 720, 100);
 		panelTimeSeriesView.add(lblDisplayDateTS);
+		
+		lblClickAndDrag = new JLabel("Click and drag on the graph to zoom in.");
+		lblClickAndDrag.setForeground(Color.WHITE);
+		lblClickAndDrag.setHorizontalAlignment(SwingConstants.CENTER);
+		lblClickAndDrag.setBounds(40, 144, 640, 16);
+		panelTimeSeriesView.add(lblClickAndDrag);
+		
+		btnRefresh = new JButton("");
+		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
+		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
+		btnRefresh.setBounds(630, 10, 50, 50);
+		panelTimeSeriesView.add(btnRefresh);
+		
 		/**
 		 * Background Image Implementation
 		 */
 		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/TSdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelTimeSeriesView.add(lblPic);
+		
 
 	}
 
@@ -1560,6 +1580,19 @@ public class InterfaceView {
 		lblLastUpdatedGoals.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelDailyGoalsView.add(lblLastUpdatedGoals);
 		
+		btnRefresh = new JButton("");
+		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
+		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
+		btnRefresh.setBounds(630, 10, 50, 50);
+		panelDailyGoalsView.add(btnRefresh);
+		
+		lblDisplayDateGoals = new JLabel();
+		lblDisplayDateGoals.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDisplayDateGoals.setFont(new Font("Century Gothic", Font.PLAIN, 26));
+		lblDisplayDateGoals.setForeground(Color.WHITE);
+		lblDisplayDateGoals.setBounds(0, 60, 720, 100);
+		panelDailyGoalsView.add(lblDisplayDateGoals);
+		
 		/**
 		 * Background Image Implementation
 		 */
@@ -1567,10 +1600,6 @@ public class InterfaceView {
 		lblPic.setBounds(0, 0, 720, 574);
 		panelDailyGoalsView.add(lblPic);
 
-		lblDisplayDateGoals = new JLabel();
-		lblDisplayDateGoals.setBounds(300, 30, 125, 16);
-		panelDailyGoalsView.add(lblDisplayDateGoals);
-		
 	}
 
 	/**
@@ -1579,46 +1608,102 @@ public class InterfaceView {
 	private void heartratezonesView() {
 
 		lblHeartRest = new JLabel();
-		lblHeartRest.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartRest.setFont(new Font("Dialog", Font.PLAIN, 28));
 		lblHeartRest.setForeground(Color.WHITE);
 		lblHeartRest.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHeartRest.setBounds(59, 211, 289, 61);
 		panelHeartrateZonesView.add(lblHeartRest);
 
 		lblHeartMins = new JLabel();
-		lblHeartMins.setFont(new Font("Dialog", Font.PLAIN, 20));
+		lblHeartMins.setFont(new Font("Dialog", Font.PLAIN, 28));
 		lblHeartMins.setForeground(Color.WHITE);
 		lblHeartMins.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHeartMins.setBounds(372, 211, 286, 61);
 		panelHeartrateZonesView.add(lblHeartMins);
 
-		lblHeartCardioMaxMin = new JLabel();
-		lblHeartCardioMaxMin.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblHeartCardioMaxMin.setForeground(Color.WHITE);
-		lblHeartCardioMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartCardioMaxMin.setBounds(59, 318, 289, 45);
-		panelHeartrateZonesView.add(lblHeartCardioMaxMin);
+		lblHeartCardioMax = new JLabel();
+		lblHeartCardioMax.setFont(new Font("Dialog", Font.PLAIN, 24));
+		lblHeartCardioMax.setForeground(Color.WHITE);
+		lblHeartCardioMax.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartCardioMax.setBounds(59, 318, 104, 45);
+		panelHeartrateZonesView.add(lblHeartCardioMax);
+		
+		lblHeartCardioMin = new JLabel();
+		lblHeartCardioMin.setFont(new Font("Dialog", Font.PLAIN, 24));
+		lblHeartCardioMin.setForeground(Color.WHITE);
+		lblHeartCardioMin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartCardioMin.setBounds(162, 318, 88, 45);
+		panelHeartrateZonesView.add(lblHeartCardioMin);
+		
+		lblHeartCardioMinutes = new JLabel();
+		lblHeartCardioMinutes.setFont(new Font("Dialog", Font.PLAIN, 24));
+		lblHeartCardioMinutes.setForeground(Color.WHITE);
+		lblHeartCardioMinutes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartCardioMinutes.setBounds(253, 318, 96, 45);
+		panelHeartrateZonesView.add(lblHeartCardioMinutes);
 
-		lblHeartFatBurnMaxMin = new JLabel();
-		lblHeartFatBurnMaxMin.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblHeartFatBurnMaxMin.setForeground(Color.WHITE);
-		lblHeartFatBurnMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartFatBurnMaxMin.setBounds(372, 318, 286, 45);
-		panelHeartrateZonesView.add(lblHeartFatBurnMaxMin);
+		lblHeartFatBurnMax = new JLabel();
+		lblHeartFatBurnMax.setFont(new Font("Dialog", Font.PLAIN, 24));
+		lblHeartFatBurnMax.setForeground(Color.WHITE);
+		lblHeartFatBurnMax.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartFatBurnMax.setBounds(372, 318, 94, 45);
+		panelHeartrateZonesView.add(lblHeartFatBurnMax);
+		
+		lblHeartFatBurnMin = new JLabel();
+		lblHeartFatBurnMin.setFont(new Font("Dialog", Font.PLAIN, 24));
+		lblHeartFatBurnMin.setForeground(Color.WHITE);
+		lblHeartFatBurnMin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartFatBurnMin.setBounds(470, 318, 85, 45);
+		panelHeartrateZonesView.add(lblHeartFatBurnMin);
+		
+		lblHeartFatBurnMinutes = new JLabel();
+		lblHeartFatBurnMinutes.setFont(new Font("Dialog", Font.PLAIN, 24));
+		lblHeartFatBurnMinutes.setForeground(Color.WHITE);
+		lblHeartFatBurnMinutes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartFatBurnMinutes.setBounds(558, 318, 100, 45);
+		panelHeartrateZonesView.add(lblHeartFatBurnMinutes);
 
-		lblHeartPeakMaxMin = new JLabel();
-		lblHeartPeakMaxMin.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblHeartPeakMaxMin.setForeground(Color.WHITE);
-		lblHeartPeakMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartPeakMaxMin.setBounds(62, 434, 286, 45);
-		panelHeartrateZonesView.add(lblHeartPeakMaxMin);
-
-		lblHeartOORMaxMin = new JLabel();
-		lblHeartOORMaxMin.setFont(new Font("Dialog", Font.PLAIN, 20));
-		lblHeartOORMaxMin.setForeground(Color.WHITE);
-		lblHeartOORMaxMin.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblHeartOORMaxMin.setBounds(372, 434, 289, 45);
-		panelHeartrateZonesView.add(lblHeartOORMaxMin);
+		lblHeartPeakMax = new JLabel();
+		lblHeartPeakMax.setFont(new Font("Dialog", Font.PLAIN, 24));
+		lblHeartPeakMax.setForeground(Color.WHITE);
+		lblHeartPeakMax.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartPeakMax.setBounds(62, 434, 97, 45);
+		panelHeartrateZonesView.add(lblHeartPeakMax);
+		
+		lblHeartPeakMin = new JLabel();
+		lblHeartPeakMin.setFont(new Font("Dialog", Font.PLAIN, 24));
+		lblHeartPeakMin.setForeground(Color.WHITE);
+		lblHeartPeakMin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartPeakMin.setBounds(163, 434, 86, 45);
+		panelHeartrateZonesView.add(lblHeartPeakMin);
+		
+		lblHeartPeakMinutes = new JLabel();
+		lblHeartPeakMinutes.setFont(new Font("Dialog", Font.PLAIN, 24));
+		lblHeartPeakMinutes.setForeground(Color.WHITE);
+		lblHeartPeakMinutes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartPeakMinutes.setBounds(253, 434, 98, 45);
+		panelHeartrateZonesView.add(lblHeartPeakMinutes);
+		
+		lblHeartOORMax = new JLabel();
+		lblHeartOORMax.setFont(new Font("Dialog", Font.PLAIN, 24));
+		lblHeartOORMax.setForeground(Color.WHITE);
+		lblHeartOORMax.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartOORMax.setBounds(372, 434, 94, 45);
+		panelHeartrateZonesView.add(lblHeartOORMax);
+		
+		lblHeartOORMin = new JLabel();
+		lblHeartOORMin.setFont(new Font("Dialog", Font.PLAIN, 24));
+		lblHeartOORMin.setForeground(Color.WHITE);
+		lblHeartOORMin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartOORMin.setBounds(469, 434, 87, 45);
+		panelHeartrateZonesView.add(lblHeartOORMin);
+		
+		lblHeartOORMinutes = new JLabel();
+		lblHeartOORMinutes.setFont(new Font("Dialog", Font.PLAIN, 24));
+		lblHeartOORMinutes.setForeground(Color.WHITE);
+		lblHeartOORMinutes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHeartOORMinutes.setBounds(558, 434, 98, 45);
+		panelHeartrateZonesView.add(lblHeartOORMinutes);
 
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setForeground(Color.WHITE);
@@ -1632,9 +1717,17 @@ public class InterfaceView {
 		panelHeartrateZonesView.add(lblLastUpdatedHRZ);
 		
 		lblDisplayDateHRZ = new JLabel();
+		lblDisplayDateHRZ.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDisplayDateHRZ.setFont(new Font("Century Gothic", Font.PLAIN, 26));
 		lblDisplayDateHRZ.setForeground(Color.WHITE);
-		lblDisplayDateHRZ.setBounds(336, 60, 125, 16);
+		lblDisplayDateHRZ.setBounds(0, 60, 720, 100);
 		panelHeartrateZonesView.add(lblDisplayDateHRZ);	
+		
+		btnRefresh = new JButton("");
+		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
+		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
+		btnRefresh.setBounds(630, 10, 50, 50);
+		panelHeartrateZonesView.add(btnRefresh);
 		
 		/**
 		 * Background Image Implementation
@@ -1914,19 +2007,21 @@ public class InterfaceView {
 		lblHeartMins.setText(Integer.toString(minutes));
 		lblHeartRest.setText(Double.toString(rate));
 
-		lblHeartCardioMaxMin.setText(Integer.toString(cardio_max) + "/"
-				+ Integer.toString(cardio_min) + "/"
-				+ Integer.toString(cardio_minutes));
-		lblHeartFatBurnMaxMin.setText(Integer.toString(fatburn_max) + "/"
-				+ Integer.toString(fatburn_min) + "/"
-				+ Integer.toString(fatburn_minutes));
-		lblHeartPeakMaxMin.setText(Integer.toString(peak_max) + "/"
-				+ Integer.toString(peak_min) + "/"
-				+ Integer.toString(peak_minutes));
-
-		lblHeartOORMaxMin.setText(Integer.toString(oor_max) + "/"
-				+ Integer.toString(oor_min) + "/"
-				+ Integer.toString(oor_minutes));
+		lblHeartCardioMax.setText(Integer.toString(cardio_max));
+		lblHeartCardioMin.setText(Integer.toString(cardio_min));
+		lblHeartCardioMinutes.setText(Integer.toString(cardio_minutes));
+		
+		lblHeartFatBurnMax.setText(Integer.toString(fatburn_max));
+		lblHeartFatBurnMin.setText(Integer.toString(fatburn_min));
+		lblHeartFatBurnMinutes.setText(Integer.toString(fatburn_minutes));
+		
+		lblHeartPeakMax.setText(Integer.toString(peak_max));
+		lblHeartPeakMin.setText(Integer.toString(peak_min));
+		lblHeartPeakMinutes.setText(Integer.toString(peak_minutes));
+		
+		lblHeartOORMax.setText(Integer.toString(oor_max));
+		lblHeartOORMin.setText(Integer.toString(oor_min));
+		lblHeartOORMinutes.setText(Integer.toString(oor_minutes));
 	}
 
 	/**
@@ -2406,256 +2501,177 @@ public class InterfaceView {
  * Method switches to a new layout for the custom dashboard.
  * @param count the number of radio buttons selected in the custom layout menu for the dashboard.
  */
-	public void repanel(int count) {
-		switch (count) {
-		case 1:
+	/**
+	 * Method switches to a new layout for the custom dashboard.
+	 * @param count the number of radio buttons selected in the custom layout menu for the dashboard.
+	 */
+		public void repanel(int count) {
+			switch (count) {
+			case 1:
 
-			TwoPanel.setVisible(false);
-			try {
-				twoPanel_1.removeAll();
-				twoPanel_2.removeAll();
-			} catch (Exception e) {
+				TwoPanel.setVisible(false);
+				try {
+					twoPanel_1.removeAll();
+					twoPanel_2.removeAll();
+				} catch (Exception e) {
+				}
+				ThreePanel.setVisible(false);
+				FourPanel.setVisible(false);
+				FivePanel.setVisible(false);
+				SixPanel.setVisible(false);
+
+				onePanel_1.add(panelArray[0]);
+				OnePanel.setVisible(true);
+
+				break;
+
+			case 2:
+				OnePanel.setVisible(false);
+				try {
+					onePanel_1.removeAll();
+				} catch (Exception e) {
+				}
+				ThreePanel.setVisible(false);
+				try {
+					threePanel_1.removeAll();
+					threePanel_2.removeAll();
+					threePanel_3.removeAll();
+				} catch (Exception e) {
+				}
+
+				FourPanel.setVisible(false);
+				FivePanel.setVisible(false);
+				SixPanel.setVisible(false);
+
+				twoPanel_1.add(panelArray[0]);
+				twoPanel_2.add(panelArray[1]);
+				TwoPanel.setVisible(true);
+
+				break;
+
+			case 3:
+				OnePanel.setVisible(false);
+				TwoPanel.setVisible(false);
+				try {
+					twoPanel_1.removeAll();
+					twoPanel_2.removeAll();
+				} catch (Exception e) {
+				}
+
+				FourPanel.setVisible(false);
+				try {
+					fourPanel_1.removeAll();
+					fourPanel_2.removeAll();
+					fourPanel_3.removeAll();
+					fourPanel_4.removeAll();
+
+				} catch (Exception e) {
+				}
+				FivePanel.setVisible(false);
+				SixPanel.setVisible(false);
+
+				threePanel_1.add(panelArray[0]);
+				threePanel_2.add(panelArray[1]);
+				threePanel_3.add(panelArray[2]);
+				ThreePanel.setVisible(true);
+
+				break;
+
+			case 4:
+				OnePanel.setVisible(false);
+				TwoPanel.setVisible(false);
+				ThreePanel.setVisible(false);
+
+				try {
+					threePanel_1.removeAll();
+					threePanel_2.removeAll();
+					threePanel_3.removeAll();
+				} catch (Exception e) {
+				}
+				FivePanel.setVisible(false);
+				try {
+					fivePanel_1.removeAll();
+					fivePanel_2.removeAll();
+					fivePanel_3.removeAll();
+					fivePanel_4.removeAll();
+					fivePanel_5.removeAll();
+
+				} catch (Exception e) {
+				}
+				SixPanel.setVisible(false);
+
+				fourPanel_1.add(panelArray[0]);
+				fourPanel_2.add(panelArray[1]);
+				fourPanel_3.add(panelArray[2]);
+				fourPanel_4.add(panelArray[3]);
+
+				FourPanel.setVisible(true);
+
+				break;
+
+			case 5:
+				OnePanel.setVisible(false);
+				TwoPanel.setVisible(false);
+				ThreePanel.setVisible(false);
+				FourPanel.setVisible(false);
+
+				try {
+					fourPanel_1.removeAll();
+					fourPanel_2.removeAll();
+					fourPanel_3.removeAll();
+					fourPanel_4.removeAll();
+				} catch (Exception e) {
+				}
+				SixPanel.setVisible(false);
+				try {
+					sixPanel_1.removeAll();
+					sixPanel_2.removeAll();
+					sixPanel_3.removeAll();
+					sixPanel_4.removeAll();
+					sixPanel_5.removeAll();
+					sixPanel_6.removeAll();
+				} catch (Exception e) {
+				}
+
+				fivePanel_1.add(panelArray[0]);
+				fivePanel_2.add(panelArray[1]);
+				fivePanel_3.add(panelArray[2]);
+				fivePanel_4.add(panelArray[3]);
+				fivePanel_5.add(panelArray[4]);
+				FivePanel.setVisible(true);
+				break;
+
+			case 6:
+				OnePanel.setVisible(false);
+				TwoPanel.setVisible(false);
+				ThreePanel.setVisible(false);
+				FourPanel.setVisible(false);
+				FivePanel.setVisible(false);
+
+				try{
+					fivePanel_1.removeAll();
+					fivePanel_2.removeAll();
+					fivePanel_3.removeAll();
+					fivePanel_4.removeAll();
+					fivePanel_5.removeAll();
+
+				} catch (Exception e) {
+				}
+
+				sixPanel_1.add(panelArray[0]);
+				sixPanel_2.add(panelArray[1]);
+				sixPanel_3.add(panelArray[2]);
+				sixPanel_4.add(panelArray[3]);
+				sixPanel_5.add(panelArray[4]);
+				sixPanel_6.add(panelArray[5]);
+				SixPanel.setVisible(true);
+
+				break;
 			}
-			ThreePanel.setVisible(false);
-			FourPanel.setVisible(false);
-			FivePanel.setVisible(false);
-			SixPanel.setVisible(false);
-
-			onePanel_1.add(panelArray[0]);
 			
-			// Add images:
-			JLabel img_21 = new ILabel();
-			onePanel_1.setLayout(null);
-			onePanel_1.add(img_21);
-			// ---
-			OnePanel.setVisible(true);
+			//save_settings();
 
-			break;
-
-		case 2:
-			OnePanel.setVisible(false);
-			try {
-				onePanel_1.removeAll();
-			} catch (Exception e) {
-			}
-			ThreePanel.setVisible(false);
-			try {
-				threePanel_1.removeAll();
-				threePanel_2.removeAll();
-				threePanel_3.removeAll();
-			} catch (Exception e) {
-			}
-
-			FourPanel.setVisible(false);
-			FivePanel.setVisible(false);
-			SixPanel.setVisible(false);
-
-			twoPanel_1.add(panelArray[0]);
-			twoPanel_2.add(panelArray[1]);
-			
-			// Add images:
-			JLabel img_19 = new ILabel();
-			JLabel img_20 = new ILabel();
-			twoPanel_1.setLayout(null);
-			twoPanel_1.add(img_19);
-			twoPanel_2.setLayout(null);
-			twoPanel_2.add(img_20);
-			// ---
-			TwoPanel.setVisible(true);
-			
-			break;
-
-		case 3:
-			OnePanel.setVisible(false);
-			TwoPanel.setVisible(false);
-			try {
-				twoPanel_1.removeAll();
-				twoPanel_2.removeAll();
-			} catch (Exception e) {
-			}
-
-			FourPanel.setVisible(false);
-			try {
-				fourPanel_1.removeAll();
-				fourPanel_2.removeAll();
-				fourPanel_3.removeAll();
-				fourPanel_4.removeAll();
-
-			} catch (Exception e) {
-			}
-			FivePanel.setVisible(false);
-			SixPanel.setVisible(false);
-
-			threePanel_1.add(panelArray[0]);
-			threePanel_2.add(panelArray[1]);
-			threePanel_3.add(panelArray[2]);
-			
-			// Add images:
-			JLabel img_16 = new ILabel();
-			JLabel img_17 = new ILabel();
-			JLabel img_18 = new ILabel();
-			threePanel_1.setLayout(null);
-			threePanel_1.add(img_16);
-			threePanel_2.setLayout(null);
-			threePanel_2.add(img_17);
-			threePanel_3.setLayout(null);
-			threePanel_3.add(img_18);
-			// ---
-			ThreePanel.setVisible(true);
-
-			break;
-
-		case 4:
-			OnePanel.setVisible(false);
-			TwoPanel.setVisible(false);
-			ThreePanel.setVisible(false);
-
-			try {
-				threePanel_1.removeAll();
-				threePanel_2.removeAll();
-				threePanel_3.removeAll();
-			} catch (Exception e) {
-			}
-			FivePanel.setVisible(false);
-			try {
-				fivePanel_1.removeAll();
-				fivePanel_2.removeAll();
-				fivePanel_3.removeAll();
-				fivePanel_4.removeAll();
-				fivePanel_5.removeAll();
-
-			} catch (Exception e) {
-			}
-			SixPanel.setVisible(false);
-
-			fourPanel_1.add(panelArray[0]);
-			fourPanel_2.add(panelArray[1]);
-			fourPanel_3.add(panelArray[2]);
-			fourPanel_4.add(panelArray[3]);
-			
-			// Add images:
-			JLabel img_12 = new ILabel();
-			JLabel img_13 = new ILabel();
-			JLabel img_14 = new ILabel();
-			JLabel img_15 = new ILabel();
-			fourPanel_1.setLayout(null);
-			fourPanel_1.add(img_12);
-			fourPanel_2.setLayout(null);
-			fourPanel_2.add(img_13);
-			fourPanel_3.setLayout(null);
-			fourPanel_3.add(img_14);
-			fourPanel_4.setLayout(null);
-			fourPanel_4.add(img_15);
-			// ---
-			FourPanel.setVisible(true);
-
-			break;
-
-		case 5:
-			OnePanel.setVisible(false);
-			TwoPanel.setVisible(false);
-			ThreePanel.setVisible(false);
-			FourPanel.setVisible(false);
-
-			try {
-				fourPanel_1.removeAll();
-				fourPanel_2.removeAll();
-				fourPanel_3.removeAll();
-				fourPanel_4.removeAll();
-			} catch (Exception e) {
-			}
-			SixPanel.setVisible(false);
-			try {
-				sixPanel_1.removeAll();
-				sixPanel_2.removeAll();
-				sixPanel_3.removeAll();
-				sixPanel_4.removeAll();
-				sixPanel_5.removeAll();
-				sixPanel_6.removeAll();
-			} catch (Exception e) {
-			}
-
-			fivePanel_1.add(panelArray[0]);
-			fivePanel_2.add(panelArray[1]);
-			fivePanel_3.add(panelArray[2]);
-			fivePanel_4.add(panelArray[3]);
-			fivePanel_5.add(panelArray[4]);
-			
-			// Add images:
-			JLabel img_7 = new ILabel();
-			JLabel img_8 = new ILabel();
-			JLabel img_9 = new ILabel();
-			JLabel img_10 = new ILabel();
-			JLabel img_11 = new ILabel();
-			fivePanel_1.setLayout(null);
-			fivePanel_1.add(img_7);
-			fivePanel_2.setLayout(null);
-			fivePanel_2.add(img_8);
-			fivePanel_3.setLayout(null);
-			fivePanel_3.add(img_9);
-			fivePanel_4.setLayout(null);
-			fivePanel_4.add(img_10);
-			fivePanel_5.setLayout(null);
-			fivePanel_5.add(img_11);
-			// ---
-
-			FivePanel.setVisible(true);
-			break;
-
-		case 6:
-			OnePanel.setVisible(false);
-			TwoPanel.setVisible(false);
-			ThreePanel.setVisible(false);
-			FourPanel.setVisible(false);
-			FivePanel.setVisible(false);
-
-			try{
-				fivePanel_1.removeAll();
-				fivePanel_2.removeAll();
-				fivePanel_3.removeAll();
-				fivePanel_4.removeAll();
-				fivePanel_5.removeAll();
-
-
-			} catch (Exception e) {
-			}
-
-			sixPanel_1.add(panelArray[0]);
-			sixPanel_2.add(panelArray[1]);
-			sixPanel_3.add(panelArray[2]);
-			sixPanel_4.add(panelArray[3]);
-			sixPanel_5.add(panelArray[4]);
-			sixPanel_6.add(panelArray[5]);
-
-			// Add images:
-			JLabel img_1 = new ILabel();
-			JLabel img_2 = new ILabel();
-			JLabel img_3 = new ILabel();
-			JLabel img_4 = new ILabel();
-			JLabel img_5 = new ILabel();
-			JLabel img_6 = new ILabel();
-			sixPanel_1.setLayout(null);
-			sixPanel_1.add(img_1);
-			sixPanel_2.setLayout(null);
-			sixPanel_2.add(img_2);
-			sixPanel_3.setLayout(null);
-			sixPanel_3.add(img_3);
-			sixPanel_4.setLayout(null);
-			sixPanel_4.add(img_4);
-			sixPanel_5.setLayout(null);
-			sixPanel_5.add(img_5);
-			sixPanel_6.setLayout(null);
-			sixPanel_6.add(img_6);
-			// ---
-
-			SixPanel.setVisible(true);
-
-			break;
 		}
-
-		save_settings();
-
-	}
 
 	private XYDataset createDataset(DistanceTSRecord dRecord, StepsTSRecord sRecord, CaloriesTSRecord caRecord, HeartRateRecord rRecord) 
 	{
