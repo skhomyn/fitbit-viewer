@@ -1,6 +1,13 @@
 package ca.uwo.csd.cs2212.team13;
 
 public class DistanceRecord {
+	
+	/**
+	 * Model for the distance
+	 * to assist the distance
+	 * controller & interface 
+	 * view
+	 */
 
 	private String time;
 	private double value;
@@ -13,7 +20,7 @@ public class DistanceRecord {
 	}
 
 	/**
-	 * @param time the time to set
+	 * @param time (the time to set)
 	 */
 	public void setTime(String time) {
 		this.time = time;
@@ -27,7 +34,7 @@ public class DistanceRecord {
 	}
 
 	/**
-	 * @param value the value to set
+	 * @param value (the value to set)
 	 */
 	public void setValue(double value) {
 		this.value = value;
@@ -51,6 +58,9 @@ public class DistanceRecord {
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
+	/**
+	 * toString method to format distance into a string
+	 */
 	public String toString() {
 		final StringBuilder formatted = new StringBuilder();		
 		formatted.append(time + "\n");

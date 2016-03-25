@@ -1,10 +1,13 @@
 package ca.uwo.csd.cs2212.team13;
 
 import java.io.Serializable;
-
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+/**
+ * Model class for Dashboard Settings
+ * @author Robin
+ */
 public class SettingsRecord implements Serializable {
 
 
@@ -32,6 +35,7 @@ public class SettingsRecord implements Serializable {
 	private SLabel lblDailyVeryActMinVal;
 
 	/**
+	 * Constructor
 	 * @param radioTotalDist
 	 * @param radioCalories
 	 * @param radioSedMin
@@ -86,6 +90,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
+	 * Method to get Daily Distance label
 	 * @return the lblDailyDistVal
 	 */
 	public SLabel getLblDailyDistVal() {
@@ -93,13 +98,15 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param lblDailyDistVal the lblDailyDistVal to set
+	 * Method to set Daily Distance label
+	 * @param lblDailyDistVal (the lblDailyDistVal to set)
 	 */
 	public void setLblDailyDistVal(SLabel lblDailyDistVal) {
 		this.lblDailyDistVal = lblDailyDistVal;
 	}
 
 	/**
+	 * Method to get Daily Calories label
 	 * @return the lblDailyCaloriesVal
 	 */
 	public SLabel getLblDailyCaloriesVal() {
@@ -107,7 +114,8 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param lblDailyCaloriesVal the lblDailyCaloriesVal to set
+	 * Method to set Daily Calories label
+	 * @param lblDailyCaloriesVal (the lblDailyCaloriesVal to set)
 	 */
 	public void setLblDailyCaloriesVal(SLabel lblDailyCaloriesVal) {
 		this.lblDailyCaloriesVal = lblDailyCaloriesVal;
@@ -121,7 +129,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param lblDailyStepsVal the lblDailyStepsVal to set
+	 * @param lblDailyStepsVal (the lblDailyStepsVal to set)
 	 */
 	public void setLblDailyStepsVal(SLabel lblDailyStepsVal) {
 		this.lblDailyStepsVal = lblDailyStepsVal;
@@ -135,7 +143,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param lblDailyFloorsVal the lblDailyFloorsVal to set
+	 * @param lblDailyFloorsVal (the lblDailyFloorsVal to set)
 	 */
 	public void setLblDailyFloorsVal(SLabel lblDailyFloorsVal) {
 		this.lblDailyFloorsVal = lblDailyFloorsVal;
@@ -149,7 +157,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param lblDailySedenteryMinVal the lblDailySedenteryMinVal to set
+	 * @param lblDailySedenteryMinVal (the lblDailySedenteryMinVal to set)
 	 */
 	public void setLblDailySedenteryMinVal(SLabel lblDailySedenteryMinVal) {
 		this.lblDailySedenteryMinVal = lblDailySedenteryMinVal;
@@ -163,7 +171,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param lblDailyVeryActMinVal the lblDailyVeryActMinVal to set
+	 * @param lblDailyVeryActMinVal (the lblDailyVeryActMinVal to set)
 	 */
 	public void setLblDailyVeryActMinVal(SLabel lblDailyVeryActMinVal) {
 		this.lblDailyVeryActMinVal = lblDailyVeryActMinVal;
@@ -177,7 +185,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param dailyCaloriesPanel the dailyCaloriesPanel to set
+	 * @param dailyCaloriesPanel (the dailyCaloriesPanel to set)
 	 */
 	public void setDailyCaloriesPanel(SPanel dailyCaloriesPanel) {
 		this.dailyCaloriesPanel = dailyCaloriesPanel;
@@ -191,7 +199,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param dailyTotalDistPanel the dailyTotalDistPanel to set
+	 * @param dailyTotalDistPanel (the dailyTotalDistPanel to set)
 	 */
 	public void setDailyTotalDistPanel(SPanel dailyTotalDistPanel) {
 		this.dailyTotalDistPanel = dailyTotalDistPanel;
@@ -205,7 +213,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param dailyActiveMinPanel the dailyActiveMinPanel to set
+	 * @param dailyActiveMinPanel (the dailyActiveMinPanel to set)
 	 */
 	public void setDailyActiveMinPanel(SPanel dailyActiveMinPanel) {
 		this.dailyActiveMinPanel = dailyActiveMinPanel;
@@ -219,7 +227,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param dailySedMinPanel the dailySedMinPanel to set
+	 * @param dailySedMinPanel (the dailySedMinPanel to set)
 	 */
 	public void setDailySedMinPanel(SPanel dailySedMinPanel) {
 		this.dailySedMinPanel = dailySedMinPanel;
@@ -233,7 +241,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param dailyFloorsPanel the dailyFloorsPanel to set
+	 * @param dailyFloorsPanel (the dailyFloorsPanel to set)
 	 */
 	public void setDailyFloorsPanel(SPanel dailyFloorsPanel) {
 		this.dailyFloorsPanel = dailyFloorsPanel;
@@ -247,7 +255,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param dailyStepsPanel the dailyStepsPanel to set
+	 * @param dailyStepsPanel (the dailyStepsPanel to set)
 	 */
 	public void setDailyStepsPanel(SPanel dailyStepsPanel) {
 		this.dailyStepsPanel = dailyStepsPanel;
@@ -261,7 +269,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param count the count to set
+	 * @param count (the count to set)
 	 */
 	public void setCount(int count) {
 		this.count = count;
@@ -275,7 +283,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param panelArray the panelArray to set
+	 * @param panelArray (the panelArray to set)
 	 */
 	public void setPanelArray(SPanel[] panelArray) {
 		this.panelArray = panelArray;
@@ -289,8 +297,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param radioTotalDist
-	 *            the radioTotalDist to set
+	 * @param radioTotalDist (the radioTotalDist to set)
 	 */
 	public void setRadioTotalDist(boolean radioTotalDist) {
 		this.radioTotalDist = radioTotalDist;
@@ -304,8 +311,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param radioCalories
-	 *            the radioCalories to set
+	 * @param radioCalories (the radioCalories to set)
 	 */
 	public void setRadioCalories(boolean radioCalories) {
 		this.radioCalories = radioCalories;
@@ -319,8 +325,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param radioSedMin
-	 *            the radioSedMin to set
+	 * @param radioSedMin (the radioSedMin to set)
 	 */
 	public void setRadioSedMin(boolean radioSedMin) {
 		this.radioSedMin = radioSedMin;
@@ -334,8 +339,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param radioActiveMin
-	 *            the radioActiveMin to set
+	 * @param radioActiveMin (the radioActiveMin to set)
 	 */
 	public void setRadioActiveMin(boolean radioActiveMin) {
 		this.radioActiveMin = radioActiveMin;
@@ -349,8 +353,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param radioFloors
-	 *            the radioFloors to set
+	 * @param radioFloors (the radioFloors to set)
 	 */
 	public void setRadioFloors(boolean radioFloors) {
 		this.radioFloors = radioFloors;
@@ -364,8 +367,7 @@ public class SettingsRecord implements Serializable {
 	}
 
 	/**
-	 * @param radioSteps
-	 *            the radioSteps to set
+	 * @param radioSteps (the radioSteps to set)
 	 */
 	public void setRadioSteps(boolean radioSteps) {
 		this.radioSteps = radioSteps;

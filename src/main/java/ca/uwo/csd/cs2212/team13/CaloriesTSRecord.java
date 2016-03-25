@@ -1,5 +1,11 @@
 package ca.uwo.csd.cs2212.team13;
 
+/**
+ * Model class for time series
+ * calories
+ * @author Andy
+ *
+ */
 public class CaloriesTSRecord {
 
     private String dateTime;

@@ -12,6 +12,11 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+/**
+ * Class to display the background panel of the app
+ * @author Robin
+ *
+ */
 public class BackgroundPanel extends JPanel implements Serializable{
 
 	private Image background;
