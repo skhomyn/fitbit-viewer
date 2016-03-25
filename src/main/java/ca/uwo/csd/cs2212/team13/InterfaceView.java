@@ -501,6 +501,7 @@ public class InterfaceView {
 		/**
 		 * Soemthing something grid bag layout
 		 */
+		/*
 		dailyActiveMinPanel = new SPanel();
 		dailyActiveMinPanel.setBounds(374, 477, 120, 100);
 		GridBagLayout gbl_dailyActiveMinPanel = new GridBagLayout();
@@ -524,67 +525,200 @@ public class InterfaceView {
 		gbc_label_1.gridx = 1;
 		gbc_label_1.gridy = 0;
 		dailyActiveMinPanel.add(label_1, gbc_label_1);
+		*/
+		dailyActiveMinPanel = new SPanel();
+		dailyActiveMinPanel.setBounds(374, 477, 120, 100);
+		GridBagLayout gbl_dailyActiveMinPanel = new GridBagLayout();
+		dailyActiveMinPanel.setLayout(gbl_dailyActiveMinPanel);
+		dailyActiveMinPanel.setOpaque(false);
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridwidth = GridBagConstraints.REMAINDER;
+		//gbc.insets = new Insets(10, 10, 20, 10);
+		lblDailyVeryActMinVal = new SLabel();
+		lblDailyVeryActMinVal.setForeground(Color.WHITE);
+		lblDailyVeryActMinVal.setFont(new Font("Century Gothic", Font.PLAIN, 38));
+		
+		JLabel label_1 = new JLabel("Very Active");
+		JLabel label_1a = new JLabel("Minutes");
+		
+		label_1.setForeground(Color.WHITE);
+		label_1a.setForeground(Color.WHITE);
+		
+		JLabel label_1c = new JLabel(" ");
+		dailyActiveMinPanel.add(label_1c);
+		label_1c.setForeground(Color.WHITE);
+		label_1c.setFont(new Font("Century Gothic", Font.PLAIN, 8));
+		
+		
+		label_1.setFont(new Font("Century Gothic", Font.PLAIN, 28));
+		label_1a.setFont(new Font("Century Gothic", Font.PLAIN, 28));
+		
+		dailyActiveMinPanel.add(label_1, gbc);
+		dailyActiveMinPanel.add(label_1a, gbc);
+		dailyActiveMinPanel.add(label_1c, gbc);
+		dailyActiveMinPanel.add(lblDailyVeryActMinVal, gbc);
+
+		lblDailyVeryActMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		
 
 		/**
 		 * All the individual panels and labels for dashboard fields
 		 */
 		dailyStepsPanel = new SPanel();
 		dailyStepsPanel.setBounds(496, 453, 120, 100);
+		GridBagLayout gbl_stepsPanel = new GridBagLayout();
+		dailyStepsPanel.setLayout(gbl_stepsPanel);
+		dailyStepsPanel.setOpaque(false);
 
-		lblDailyStepsVal = new SLabel();
-		dailyStepsPanel.add(lblDailyStepsVal);
-		lblDailyStepsVal.setHorizontalAlignment(SwingConstants.TRAILING);
-
+		JLabel topSpace = new JLabel(" ");
+		dailyStepsPanel.add(topSpace);
+		topSpace.setForeground(Color.WHITE);
+		topSpace.setFont(new Font("Century Gothic", Font.PLAIN, 8));
+		
 		JLabel label_3 = new JLabel("Steps");
 		dailyStepsPanel.add(label_3);
+		label_3.setForeground(Color.WHITE);
+		label_3.setFont(new Font("Century Gothic", Font.PLAIN, 38));
+		
+		JLabel label_3a = new JLabel(" ");
+		dailyStepsPanel.add(label_3a);
+		label_3a.setForeground(Color.WHITE);
+		label_3a.setFont(new Font("Century Gothic", Font.PLAIN, 18));
+		
+		lblDailyStepsVal = new SLabel();
+		dailyStepsPanel.add(lblDailyStepsVal);
+		lblDailyStepsVal.setForeground(Color.WHITE);
+		lblDailyStepsVal.setFont(new Font("Century Gothic", Font.PLAIN, 38));
+		
+		dailyStepsPanel.add(topSpace, gbc);
+		dailyStepsPanel.add(label_3, gbc);
+		dailyStepsPanel.add(label_3a, gbc);
+		dailyStepsPanel.add(lblDailyStepsVal, gbc);
 
+		//Calories Burned Panel
 		dailyCaloriesPanel = new SPanel();
 		dailyCaloriesPanel.setBounds(608, 452, 120, 100);
+		GridBagLayout gbl_caloriesPanel = new GridBagLayout();
+		dailyCaloriesPanel.setLayout(gbl_caloriesPanel);
+		dailyCaloriesPanel.setOpaque(false);
 
+		JLabel label_2a = new JLabel("Calories");
+		dailyCaloriesPanel.add(label_2a);
+		label_2a.setForeground(Color.WHITE);
+		label_2a.setFont(new Font("Century Gothic", Font.PLAIN, 28));
+		
+		JLabel label_2b = new JLabel("Burned");
+		dailyCaloriesPanel.add(label_2b);
+		label_2b.setForeground(Color.WHITE);
+		label_2b.setFont(new Font("Century Gothic", Font.PLAIN, 28));
+		
+		JLabel label_2c = new JLabel(" ");
+		dailyCaloriesPanel.add(label_2c);
+		label_2c.setFont(new Font("Century Gothic", Font.PLAIN, 8));
+		
 		lblDailyCaloriesVal = new SLabel();
 		dailyCaloriesPanel.add(lblDailyCaloriesVal);
-		lblDailyCaloriesVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailyCaloriesVal.setForeground(Color.WHITE);
+		lblDailyCaloriesVal.setFont(new Font("Century Gothic", Font.PLAIN, 38));
 
-		JLabel label = new JLabel("Calories Burned");
-		dailyCaloriesPanel.add(label);
+		dailyCaloriesPanel.add(label_2a, gbc);
+		dailyCaloriesPanel.add(label_2b, gbc);
+		dailyCaloriesPanel.add(label_2c, gbc);
+		dailyCaloriesPanel.add(lblDailyCaloriesVal, gbc);
 
+		//Sedentary Minutes Panel
 		dailySedMinPanel = new SPanel();
 		dailySedMinPanel.setBounds(264, 448, 120, 100);
+		GridBagLayout gbl_dailySedMinPanel = new GridBagLayout();
+		dailySedMinPanel.setLayout(gbl_dailySedMinPanel);
+		dailySedMinPanel.setOpaque(false);
 
+		JLabel lblSedMin1 = new JLabel("Sedentary");
+		dailySedMinPanel.add(lblSedMin1);
+		lblSedMin1.setForeground(Color.WHITE);
+		lblSedMin1.setFont(new Font("Century Gothic", Font.PLAIN, 28));
+		
+		JLabel lblSedMin2 = new JLabel("Minutes");
+		dailySedMinPanel.add(lblSedMin2);
+		lblSedMin2.setForeground(Color.WHITE);
+		lblSedMin2.setFont(new Font("Century Gothic", Font.PLAIN, 28));
+		
+		JLabel space1 = new JLabel(" ");
+		dailySedMinPanel.add(space1);
+		space1.setFont(new Font("Century Gothic", Font.PLAIN, 8));
+		
 		lblDailySedenteryMinVal = new SLabel();
-		lblDailySedenteryMinVal.setBounds(3, 34, 97, 16);
 		dailySedMinPanel.add(lblDailySedenteryMinVal);
-		lblDailySedenteryMinVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailySedenteryMinVal.setForeground(Color.WHITE);
+		lblDailySedenteryMinVal.setFont(new Font("Century Gothic", Font.PLAIN, 38));
+		
+		dailySedMinPanel.add(lblSedMin1, gbc);
+		dailySedMinPanel.add(lblSedMin2, gbc);
+		dailySedMinPanel.add(space1, gbc);
+		dailySedMinPanel.add(lblDailySedenteryMinVal, gbc);
 
-		JLabel lblSedMin = new JLabel("Sedentary Minutes");
-		lblSedMin.setBounds(3, 0, 106, 16);
-		dailySedMinPanel.add(lblSedMin);
-
+		//Floor Panel
 		dailyFloorsPanel = new SPanel();
 		dailyFloorsPanel.setBounds(0, 448, 120, 100);
+		GridBagLayout gbl_floorsPanel = new GridBagLayout();
+		dailyFloorsPanel.setLayout(gbl_floorsPanel);
+		dailyFloorsPanel.setOpaque(false);
 
-		JLabel lblFloorsClimbed = new JLabel("Floors Climbed");
-		lblFloorsClimbed.setBounds(15, 5, 85, 16);
-		dailyFloorsPanel.add(lblFloorsClimbed);
+		JLabel lblFloor1 = new JLabel("Floors");
+		dailyFloorsPanel.add(lblFloor1);
+		lblFloor1.setForeground(Color.WHITE);
+		lblFloor1.setFont(new Font("Century Gothic", Font.PLAIN, 28));
+		
+		JLabel lblFloor2 = new JLabel("Climbed");
+		dailyFloorsPanel.add(lblFloor2);
+		lblFloor2.setForeground(Color.WHITE);
+		lblFloor2.setFont(new Font("Century Gothic", Font.PLAIN, 28));
+		
+		JLabel space2 = new JLabel(" ");
+		dailyCaloriesPanel.add(space2);
+		space2.setFont(new Font("Century Gothic", Font.PLAIN, 8));
 
 		lblDailyFloorsVal = new SLabel();
-		lblDailyFloorsVal.setBounds(10, 34, 70, 16);
 		dailyFloorsPanel.add(lblDailyFloorsVal);
-		lblDailyFloorsVal.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblDailyFloorsVal.setForeground(Color.WHITE);
+		lblDailyFloorsVal.setFont(new Font("Century Gothic", Font.PLAIN, 38));
+		
+		dailyFloorsPanel.add(lblFloor1, gbc);
+		dailyFloorsPanel.add(lblFloor2, gbc);
+		dailyFloorsPanel.add(space2, gbc);
+		dailyFloorsPanel.add(lblDailyFloorsVal, gbc);
 
+		//Distance Panel
 		dailyTotalDistPanel = new SPanel();
 		dailyTotalDistPanel.setBounds(126, 477, 120, 100);
-
-
-		lblDailyDistVal = new SLabel();
-		lblDailyDistVal.setBounds(19, 34, 70, 16);
-		dailyTotalDistPanel.add(lblDailyDistVal);
-		lblDailyDistVal.setHorizontalAlignment(SwingConstants.TRAILING);
-
-		JLabel lblTotalDist = new JLabel("Total Distance");
-		lblTotalDist.setBounds(19, 5, 81, 16);
-		dailyTotalDistPanel.add(lblTotalDist);
+		GridBagLayout gbl_DistancePanel = new GridBagLayout();
+		dailyTotalDistPanel.setLayout(gbl_DistancePanel);
+		dailyTotalDistPanel.setOpaque(false);
 		
+		JLabel lblTotalDist1 = new JLabel("Total");
+		dailyTotalDistPanel.add(lblTotalDist1);
+		lblTotalDist1.setForeground(Color.WHITE);
+		lblTotalDist1.setFont(new Font("Century Gothic", Font.PLAIN, 28));
+		
+		JLabel lblTotalDist2 = new JLabel("Distance");
+		dailyTotalDistPanel.add(lblTotalDist2);
+		lblTotalDist2.setForeground(Color.WHITE);
+		lblTotalDist2.setFont(new Font("Century Gothic", Font.PLAIN, 28));
+		
+		JLabel space3 = new JLabel(" ");
+		dailyCaloriesPanel.add(space3);
+		space3.setFont(new Font("Century Gothic", Font.PLAIN, 8));
+		
+		lblDailyDistVal = new SLabel();
+		dailyTotalDistPanel.add(lblDailyDistVal);
+		lblDailyDistVal.setForeground(Color.WHITE);
+		lblDailyDistVal.setFont(new Font("Century Gothic", Font.PLAIN, 38));
+		
+		dailyTotalDistPanel.add(lblTotalDist1, gbc);
+		dailyTotalDistPanel.add(lblTotalDist2, gbc);
+		dailyTotalDistPanel.add(space3, gbc);
+		dailyTotalDistPanel.add(lblDailyDistVal, gbc);
+
 		/**
 		 * "Last Updated" Field
 		 */
@@ -747,7 +881,6 @@ public class InterfaceView {
 		sixPanel_1 = new BackgroundPanel();
 		sixPanel_1.setBounds(40, 24, 160, 144);
 		SixPanel.add(sixPanel_1);
-		sixPanel_1.setLayout(null);
 
 		sixPanel_2 = new BackgroundPanel();
 		sixPanel_2.setBounds(240, 24, 160, 144);
@@ -1143,6 +1276,11 @@ public class InterfaceView {
 
 			radioCalories.setSelected(true);
 			radioActiveMin.setSelected(true);
+			radioSedMin.setSelected(true);
+			radioTotalDist.setSelected(true);
+			radioFloors.setSelected(true);
+			radioSteps.setSelected(true);
+			
 		}
 
 		//radioCalories.setSelected(true);
