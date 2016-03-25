@@ -74,41 +74,6 @@ public class App {
 		logger.warn("Hello Maven/log4j World");
 		logger.info("My username is team13");
 
-		AccoladeRecord[] ar = new AccoladeRecord[20];
-		WriterReader wr = new WriterReader();
-
-		ar[0] = new AccoladeRecord(false, null, 3000, "ThousandStepsAcc", "ca.uwo.csd.cs2212.team13.BestDaysRecord/getSteps_value", "Walked 3000 Steps in a Day");
-		ar[1] = new AccoladeRecord(false, null, 5, "maxDistanceAcc", "ca.uwo.csd.cs2212.team13.BestDaysRecord/getDis_value", "Walked 5 km in a Day");
-		ar[2] = new AccoladeRecord(false, null, 20000, "tenThouStepsAcc","ca.uwo.csd.cs2212.team13.LifetimeRecord/getSteps", "Walked 20000 Steps in Total");
-		ar[3] = new AccoladeRecord(false, null, 60, "sedentaryMinsAcc", "ca.uwo.csd.cs2212.team13.DailyRecord/getSedentaryMinutes", "Reached 60 Sedentary Minutes in a Day");
-		ar[4] = new AccoladeRecord(false, null, 0, "zeroSteps","ca.uwo.csd.cs2212.team13.DailyRecord/getSteps", "No Steps in a Day\n");
-		ar[5] = new AccoladeRecord(false, null, 2500, "BurnedsomeCalsAcc", "ca.uwo.csd.cs2212.team13.DailyRecord/getCalories", "Burn 2500 Calories in a Day");
-		ar[6] = new AccoladeRecord(false, null, 4000, "BurnedMaxCalsAcc", "ca.uwo.csd.cs2212.team13.DailyRecord/getCalories", "Burn 4000 Calories in a Day");
-		ar[7] = new AccoladeRecord(false, null, 1000, "maxFloorsAcc", "ca.uwo.csd.cs2212.team13.LifetimeRecord/getFloors", "Climbed 1000 Floors in Total");		
-		ar[8] = new AccoladeRecord(false, null, 25, "CardioHeartAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getMinutes", "Spend 25 minutes in Cardio Heart Rate Zone\n");
-		ar[9] = new AccoladeRecord(false, null, 25, "FatburnHeartAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getMinutes", "Spend 25 minutes in Fat Burn Heart Zone");
-		ar[10] = new AccoladeRecord(false, null, 60, "StayedInBoundsAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getMinutes", "No Out of Range Minutes for One Day");
-		ar[11] = new AccoladeRecord(false, null, 0, "outofRangeHeartAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getMinutes", "Spend 20 minutes in Out of Range");
-		ar[12] = new AccoladeRecord(false, null, 50, "peakHeartAcc", "ca.uwo.csd.cs2212.team13.HeartZoneRecord/getMinutes", "Spend 20 minutes in Peak Heart Zone");
-		ar[13] = new AccoladeRecord(false, null, 0, "tooManyCalsAcc", "ca.uwo.csd.cs2212.team13.DailyRecord/getCalories", "Burned Less than 1000 Calories in a Day");
-
-		//TO DO
-
-		ar[14] = new AccoladeRecord(false, null, 25, "christmasAcc", "ca.uwo.csd.cs2212.team13.AccoladeRecord/null", "Log On During Christmas\n");
-		ar[15] = new AccoladeRecord(false, null, 20, "hanukkahAcc", "ca.uwo.csd.cs2212.team13.AccoladeRecord/null", "Log On During Hanukkanh\n");
-		
-		ar[16] = new AccoladeRecord(false, null, 0, "metNoGoalsAcc", "ca.uwo.csd.cs2212.team13.DailyRecord/null", "Did Not Complete Any Daily Goals for One Day");
-		ar[17] = new AccoladeRecord(false, null, 5, "metAllGoalsAcc","ca.uwo.csd.cs2212.team13.DailyRecord/null", "Completed All Daily Goals for One Day");
-
-		ar[18] = new AccoladeRecord(false, null, 10, "completedHalfAcc", "ca.uwo.csd.cs2212.team13.AccoladeRecord/null", "Achieve Half of the Accolades\n");
-		ar[19] = new AccoladeRecord(false, null, 20, "completedAcc", "ca.uwo.csd.cs2212.team13.AccoladeRecord/null", "Achieve All Other Accolades\n");
-		
-		try {
-			wr.writeRecord(ar, "accoladerecords");
-
-		} catch (Exception e) {
-			System.out.println("Could not write to file");
-		}
 		
 		Main run = new Main();
 

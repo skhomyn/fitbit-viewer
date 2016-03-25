@@ -1,11 +1,13 @@
 package ca.uwo.csd.cs2212.team13;
 
+import java.io.Serializable;
+
 /**
  * Model for Steps
  * @author Robin
  */
 
-public class StepsRecord {
+public class StepsRecord implements Serializable {
 
 	private String time;
 	private double value;

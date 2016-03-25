@@ -1,6 +1,8 @@
 package ca.uwo.csd.cs2212.team13;
 
-public class DistanceRecord {
+import java.io.Serializable;
+
+public class DistanceRecord implements Serializable{
 	
 	/**
 	 * Model for the distance
