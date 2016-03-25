@@ -1328,6 +1328,8 @@ public class InterfaceView {
 	private void accoladesView() {
 
 		panelAccoladesDisplay = new JPanel(new GridBagLayout());
+		panelAccoladesDisplay.setForeground(Color.WHITE);
+		panelAccoladesDisplay.setBackground(Color.DARK_GRAY);
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridwidth = GridBagConstraints.REMAINDER;
 
@@ -1337,6 +1339,7 @@ public class InterfaceView {
 			for (int j = 0; j < 2; j++) {
 				labels[i][j] = new JLabel();
 
+				labels[i][j].setForeground(Color.WHITE);
 				if (j == 1) {
 					gbc.insets = new Insets(70, 40, 40, 40);
 					panelAccoladesDisplay.add(labels[i][j], gbc);
@@ -1347,7 +1350,7 @@ public class InterfaceView {
 		}
 
 		panelAccoladesScroll = new JScrollPane(panelAccoladesDisplay);
-		panelAccoladesScroll.setBounds(50, 50, 625, 450);
+		panelAccoladesScroll.setBounds(40, 70, 640, 450);
 		panelAccoladesView.add(panelAccoladesScroll);
 
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
@@ -1364,7 +1367,7 @@ public class InterfaceView {
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/ACCdash.png"));
+		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/ACCdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelAccoladesView.add(lblPic);
 	
@@ -1427,11 +1430,8 @@ public class InterfaceView {
 
 		JToolBar zoom = new JToolBar();
 		zoom.setFloatable(false);
-		zoom.setBounds(293, 506, 130, 20);
+		zoom.setBounds(47, 61, 130, 20);
 		panelTimeSeriesView.add(zoom);
-
-		JButton btnZoomIn = new JButton("Zoom In");
-		zoom.add(btnZoomIn);
 
 		JButton btnZoomOut = new JButton("Zoom Out");
 		zoom.add(btnZoomOut);
@@ -1444,7 +1444,8 @@ public class InterfaceView {
 	    });
 		
 		panelGraph = new JPanel();
-		panelGraph.setBounds(47, 93, 643, 401);
+		panelGraph.setBackground(Color.BLACK);
+		panelGraph.setBounds(40, 160, 640, 360);
 		panelTimeSeriesView.add(panelGraph);
 
 
@@ -1459,16 +1460,16 @@ public class InterfaceView {
 		lblLastUpdatedTS.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelTimeSeriesView.add(lblLastUpdatedTS);
 		
+		lblDisplayDateTS = new JLabel();
+		lblDisplayDateTS.setForeground(Color.WHITE);
+		lblDisplayDateTS.setBounds(336, 60, 125, 16);
+		panelTimeSeriesView.add(lblDisplayDateTS);
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/TSdash.png"));
+		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/TSdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelTimeSeriesView.add(lblPic);
-
-		lblDisplayDateTS = new JLabel();
-		lblDisplayDateTS.setBounds(336, 60, 125, 16);
-		panelTimeSeriesView.add(lblDisplayDateTS);
 
 	}
 
@@ -1630,16 +1631,19 @@ public class InterfaceView {
 		lblLastUpdatedHRZ.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelHeartrateZonesView.add(lblLastUpdatedHRZ);
 		
+		lblDisplayDateHRZ = new JLabel();
+		lblDisplayDateHRZ.setForeground(Color.WHITE);
+		lblDisplayDateHRZ.setBounds(336, 60, 125, 16);
+		panelHeartrateZonesView.add(lblDisplayDateHRZ);	
+		
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/HRZdash.jpg"));
+		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/HRZdash.jpg"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelHeartrateZonesView.add(lblPic);
-
-		lblDisplayDateHRZ = new JLabel();
-		lblDisplayDateHRZ.setBounds(336, 60, 125, 16);
-		panelHeartrateZonesView.add(lblDisplayDateHRZ);	}
+	}
+		
 
 	/**
 	 * This method controls page navigation, depending on button actions.
@@ -2054,7 +2058,7 @@ public class InterfaceView {
 			  }});
 		
 		chartPanel = new ChartPanel( chart ); 
-		chartPanel.setPreferredSize( new java.awt.Dimension( 560 , 370 ) );         
+		chartPanel.setPreferredSize( new java.awt.Dimension( 620 , 360 ) );         
 		//chartPanel.setMouseZoomable( true , false );   
 		chartPanel.setDomainZoomable(true);
 		
@@ -2801,17 +2805,18 @@ public class InterfaceView {
 				true,              
 				true,              
 				false);
-		 chart.setBackgroundPaint(Color.white);
+		 chart.setBackgroundPaint(Color.BLACK);
 
        final XYPlot plot = chart.getXYPlot();
        //plot.setOutlinePaint(null);
-       plot.setBackgroundPaint(Color.lightGray);
+       plot.setBackgroundPaint(Color.DARK_GRAY);
        plot.setDomainGridlinePaint(Color.white);
        plot.setRangeGridlinePaint(Color.white);
        //plot.setAxisOffset(new Spacer(Spacer.ABSOLUTE, 5.0, 5.0, 5.0, 5.0));
        plot.setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));
        plot.setDomainCrosshairVisible(true);
        plot.setRangeCrosshairVisible(false);
+     
        
        final XYItemRenderer renderer = plot.getRenderer();
        if (renderer instanceof StandardXYItemRenderer) {
