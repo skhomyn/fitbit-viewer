@@ -1082,7 +1082,8 @@ public class InterfaceView {
 		
 		JDatePanelNew datePanel = new JDatePanelNew(modelForDay, properties);
 		datePicker = new JDatePickerNew(datePanel, new DateLabelFormatter());
-		datePicker.setBounds(278,107,163,26);
+		datePicker.setBackground(Color.DARK_GRAY);
+		datePicker.setBounds(284,105,163,30);
 
 		//RangeConstraint range =  new RangeConstraint();
 						
@@ -1357,7 +1358,7 @@ public class InterfaceView {
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/ACCdash.png"));
+		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/ACCdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelAccoladesView.add(lblPic);
 	
@@ -1437,7 +1438,7 @@ public class InterfaceView {
 		btnZoomOut.setBorderPainted(false);
 		btnZoomOut.setIconTextGap(0);
 		btnZoomOut.setBorder(null);
-		btnZoomOut.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/zoomOut40.png"));
+		btnZoomOut.setIcon(new ImageIcon("src/main/resources/zoomOut40.png"));
 		zoom.add(btnZoomOut);
 		btnZoomOut.addActionListener(new ActionListener() {
 
@@ -1451,7 +1452,6 @@ public class InterfaceView {
 		panelGraph.setBackground(Color.BLACK);
 		panelGraph.setBounds(40, 160, 640, 362);
 		panelTimeSeriesView.add(panelGraph);
-
 
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setForeground(Color.WHITE);
@@ -1486,10 +1486,9 @@ public class InterfaceView {
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/TSdash.png"));
+		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/TSdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelTimeSeriesView.add(lblPic);
-		
 
 	}
 
@@ -1536,19 +1535,16 @@ public class InterfaceView {
 
 		lblStepsCompare = new JLabel();
 		lblStepsCompare.setHorizontalAlignment(SwingConstants.CENTER);
-		//lblStepsCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
 		lblStepsCompare.setBounds(563, 317, 96, 46);
 		panelDailyGoalsView.add(lblStepsCompare);
 
 		lblDistanceCompare = new JLabel();
-		//lblDistanceCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
 		lblDistanceCompare.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDistanceCompare.setForeground(Color.WHITE);
 		lblDistanceCompare.setBounds(563, 180, 96, 48);
 		panelDailyGoalsView.add(lblDistanceCompare);
 
 		lblCaloriesCompare = new JLabel();
-		//lblCaloriesCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
 		lblCaloriesCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		lblCaloriesCompare.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCaloriesCompare.setForeground(Color.WHITE);
@@ -1556,7 +1552,6 @@ public class InterfaceView {
 		panelDailyGoalsView.add(lblCaloriesCompare);
 
 		lblFloorsCompare = new JLabel();
-		//lblFloorsCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
 		lblFloorsCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		lblFloorsCompare.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFloorsCompare.setForeground(Color.WHITE);
@@ -1564,7 +1559,6 @@ public class InterfaceView {
 		panelDailyGoalsView.add(lblFloorsCompare);
 
 		lblActiveMinCompare = new JLabel();
-		//lblActiveMinCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
 		lblActiveMinCompare.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		lblActiveMinCompare.setHorizontalAlignment(SwingConstants.CENTER);
 		lblActiveMinCompare.setForeground(Color.WHITE);
@@ -1598,7 +1592,7 @@ public class InterfaceView {
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/DGdash.png"));
+		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/DGdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelDailyGoalsView.add(lblPic);
 
@@ -1734,7 +1728,7 @@ public class InterfaceView {
 		/**
 		 * Background Image Implementation
 		 */
-		JLabel lblPic = new JLabel(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/HRZdash.jpg"));
+		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/HRZdash.jpg"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelHeartrateZonesView.add(lblPic);
 	}
@@ -2136,38 +2130,38 @@ public class InterfaceView {
 		lblFloorsGoal.setText(Integer.toString(floors));
 		
 		if (activeMinStatus.equals("N")) {
-			lblActiveMinCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueX.png"));
+			lblActiveMinCompare.setIcon(new ImageIcon("src/main/resources/blueX.png"));
 		}
 		else {
-			lblActiveMinCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
+			lblActiveMinCompare.setIcon(new ImageIcon("src/main/resources/blueCheck.png"));
 		}
 		
 		if (caloriesStatus.equals("N")) {
-			lblCaloriesCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueX.png"));
+			lblCaloriesCompare.setIcon(new ImageIcon("src/main/resources/blueX.png"));
 		}
 		else {
-			lblCaloriesCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
+			lblCaloriesCompare.setIcon(new ImageIcon("src/main/resources/blueCheck.png"));
 		}
 		
 		if (distanceStatus.equals("N")) {
-			lblDistanceCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueX.png"));
+			lblDistanceCompare.setIcon(new ImageIcon("src/main/resources/blueX.png"));
 		}
 		else {
-			lblDistanceCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
+			lblDistanceCompare.setIcon(new ImageIcon("src/main/resources/blueCheck.png"));
 		}
 		
 		if (stepsStatus.equals("N")) {
-			lblStepsCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueX.png"));
+			lblStepsCompare.setIcon(new ImageIcon("src/main/resources/blueX.png"));
 		}
 		else {
-			lblStepsCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
+			lblStepsCompare.setIcon(new ImageIcon("src/main/resources/blueCheck.png"));
 		}
 		
 		if (floorsStatus.equals("N")) {
-			lblFloorsCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueX.png"));
+			lblFloorsCompare.setIcon(new ImageIcon("src/main/resources/blueX.png"));
 		}
 		else {
-			lblFloorsCompare.setIcon(new ImageIcon("/Users/Step/courses/cs2212/team13/src/main/resources/blueCheck.png"));
+			lblFloorsCompare.setIcon(new ImageIcon("src/main/resources/blueCheck.png"));
 		}
 
 		
