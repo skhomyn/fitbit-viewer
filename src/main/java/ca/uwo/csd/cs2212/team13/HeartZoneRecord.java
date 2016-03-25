@@ -3,11 +3,13 @@
  * */
 package ca.uwo.csd.cs2212.team13;
 
+import java.io.Serializable;
+
 /**
  * <code>HeartZoneRecord</code> is a simple Java object that represents the
  * heart zone record and the rules that govern access to and updates of this data.
  */
-public class HeartZoneRecord {
+public class HeartZoneRecord implements Serializable {
 
 	/**
 	 * the name of the zone

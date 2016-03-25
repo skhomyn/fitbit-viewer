@@ -170,10 +170,6 @@ public class AccoladeController {
 						} else if (typeSplit[0]
 								.equals("ca.uwo.csd.cs2212.team13.BestDaysRecord")) {
 
-							System.out.println("typeSplit[1]");
-							System.out.println(ar[i].getValue() + " "
-									+ br.getSteps_value());
-
 							if (ar[i].getImage().equals("zeroSteps")) {
 								if (checkValuesNegate(m, br, i))
 									counter++;

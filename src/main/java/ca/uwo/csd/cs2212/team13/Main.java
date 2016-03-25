@@ -354,6 +354,8 @@ public class Main {
 		ar = new AccoladeRecord[20];
 		ar = null;
 		try {
+			System.out.println("WOW\n");
+			
 			ar = (AccoladeRecord[]) wr
 					.loadRecord("src/main/resources/accoladerecords");
 		} catch (Exception e) {
@@ -390,12 +392,13 @@ public class Main {
 		
 		
 		acController = new AccoladeController(ar, actRecord, ddModel, hrRecord, view);
+		acController.accoladesInitialize();
+		
 		//Last Updated label
 		Date now = new Date();
 		String apiCallDate = now.toString();
 		view.setLastUpdatedAccolades(apiCallDate);
 		
-		System.out.println("TEST\n");
 		//make request for distance info
 		String disRecord_String = apiCaller.requestJson("activities/distance/date/" + dateStr + "/1d/1min.json");
 		// If Null
@@ -462,6 +465,7 @@ public class Main {
 		
 		// Create Controller for time series
 		tsController = new TimeSeriesController(dtsRecord, stsRecord, caRecord, hrRecord, view);
+		tsController.timeSeriesInitialize();
 		view.setLastUpdatedTS(apiCallDate);
 	}
 
