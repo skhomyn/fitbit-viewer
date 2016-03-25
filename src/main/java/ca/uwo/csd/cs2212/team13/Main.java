@@ -149,7 +149,7 @@ public class Main {
 				
 		//add action listener to refresh button, trigger new API calls for current date
 		/**
-		 * {@code ActionListener} object is added to the refresh button on the dashboard. When the refresh
+		 * {@code ActionListener} object is added to the refresh button. When the refresh
 		 * button is clicked, it triggers new API calls using the current date.
 		 */
 		view.addListenerForRefreshDash(new ActionListener(){
@@ -548,7 +548,7 @@ public class Main {
 		
 		
 		/**
-		 * {@code ActionListener} object is added to the refresh button on the dashboard. When the refresh
+		 * {@code ActionListener} object is added to the refresh button. When the refresh
 		 * button is clicked, it triggers new API calls using the current date.
 		 */
 		view.addListenerForRefreshDash(new ActionListener(){
