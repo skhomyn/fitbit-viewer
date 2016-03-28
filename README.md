@@ -1,8 +1,13 @@
-# How to Run Team 13's Prototype
+#CS2212 - Team 13's Final Submission
 
-Team 13 has developed a user-friendly and innovative new application that receives Fitbit data. The user can use this application for tracking statistics, reviewing accolades and monitoring their goals.
+#A Fitbit Application
 
-This application has been developed for Mac OS X.
+Team 13 has developed a user-friendly and innovative new application that receives Fitbit data. The user of this application can use it for tracking statistics, reviewing accolades and monitoring their goals.
+
+This application has been developed for Mac OS X and implemented by connecting to Fitbit's API. It was built using the programming language Java. Some libraries used to build this application included: Java.io, Java.beans, Java.lang, Java.awt, Javax.swing, Java.util.
+
+
+#Installation
 
 First, we need to generate an ssh key. In Git Bash or Terminal, type: 
 
@@ -42,4 +47,22 @@ java -jar target/team13-fitbitApp-1.0-SNAPSHOT-jar-with-dependencies.jar test
 To run the prototype in normal mode: 
 
 java -jar target/team13-fitbitApp-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+
+#Construction
+
+This application was built using the programming language Java and the UI Design was constructed using Adobe Photoshop CS6.  
+
+
+#Video
+
+Here is a video of our application in action:
+
+
+#Documentaion
+
+
+
+
+
 
