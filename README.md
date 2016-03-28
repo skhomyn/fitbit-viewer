@@ -1,5 +1,9 @@
 # How to Run Team 13's Prototype
 
+Team 13 has developed a user-friendly and innovative new application that receives Fitbit data. The user can use this application for tracking statistics, reviewing accolades and monitoring their goals.
+
+This application has been developed for Mac OS X.
+
 First, we need to generate an ssh key. In Git Bash or Terminal, type: 
 
 "ssh-keygen -t rsa -b 4096" 
@@ -33,9 +37,9 @@ The above codes placed Team 13’s code into a .jar file. Type:
 	
 To run the prototype in test mode type:
 
-"java -jar team13-fitbitApp-1.0-SNAPSHOT-jar-with-dependencies.jar test"
+java -jar target/team13-fitbitApp-1.0-SNAPSHOT-jar-with-dependencies.jar test
 
 To run the prototype in normal mode: 
 
-"java -jar team13-fitbitApp-1.0-SNAPSHOT-jar-with-dependencies.jar"
+java -jar target/team13-fitbitApp-1.0-SNAPSHOT-jar-with-dependencies.jar
 

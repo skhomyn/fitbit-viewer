@@ -51,6 +51,34 @@ public class BestDaysController {
 		// call method in view to add an event listener to the best days button
 		view.addClickListenerBestDays(new clickListener());
 	}
+	
+	/**
+	 * Updater, initializes the model and view fields with pointers to
+	 * <code>BestDaysRecord</code> object and <code>InterfaceView</code> object
+	 * respectively
+	 * 
+	 * @param model
+	 *            the <code>BestDaysRecord</code> model containing the Best Days
+	 *            data to be displayed
+	 * @param view
+	 *            the <code>InterfaceView</code> view containing the user
+	 *            interface implementation
+	 */
+	public void updateBDC(BestDaysRecord model, InterfaceView view) {
+		this.model = model;
+		this.view = view;
+	}
+	/**
+	 * Sets the Best Days page display fields in
+	 * <code>InterfaceView</code> with values from the appropriate model
+	 * <code>Best Days</code> fields.
+	 */
+	public void bestDaysInitialize() {
+		view.setBestDaysFields(model.getDis_value(),
+				model.getFloors_value(), model.getSteps_value(),
+				model.getDis_date(), model.getFloors_date(),
+				model.getSteps_date());
+	}
 
 	/**
 	 * Local class accessible only by the <code>BestDaysController</code>

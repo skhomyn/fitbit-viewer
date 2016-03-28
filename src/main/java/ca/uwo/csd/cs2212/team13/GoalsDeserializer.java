@@ -42,7 +42,7 @@ import com.google.gson.JsonParseException;
 /**
  * <code>GoalsDeserializer</code> is an interface representing a custom
  * deserializer to parse a JSON file (i.e. with daily goals) into Java object
- * {@link Goals}
+ * {@link GoalsRecord}
  * <p>
  * Custom deserializer is necessary because this is used in
  * {@link DailyRecordDeserializer}, so full control of JSON parsing is required.
@@ -63,7 +63,7 @@ import com.google.gson.JsonParseException;
  * <p>
  * Gson will then receive an object from this deserializer.
  */
-public class GoalsDeserializer implements JsonDeserializer<Goals> {
+public class GoalsDeserializer implements JsonDeserializer<GoalsRecord> {
 
 	/*
 	 * (non-Javadoc)
@@ -73,16 +73,18 @@ public class GoalsDeserializer implements JsonDeserializer<Goals> {
 	 * java.lang.reflect.Type, com.google.gson.JsonDeserializationContext)
 	 */
 	@Override
-	public Goals deserialize(final JsonElement json, final Type typeOfT,
+	public GoalsRecord deserialize(final JsonElement json, final Type typeOfT,
 			final JsonDeserializationContext context) throws JsonParseException {
 		final JsonObject jsonObject = json.getAsJsonObject();
 
-		final Goals goal = new Goals();
+		final GoalsRecord goal = new GoalsRecord();
 		goal.setActiveMinutes(jsonObject.get("activeMinutes").getAsInt());
 		goal.setCaloriesOut(jsonObject.get("caloriesOut").getAsInt());
 		goal.setDistance(jsonObject.get("distance").getAsDouble());
 		goal.setFloors(jsonObject.get("floors").getAsInt());
 		goal.setSteps(jsonObject.get("steps").getAsInt());
+		goal.setGoalMet(false);
+		goal.setGoalNotMet(false);
 		return goal;
 	}
 }

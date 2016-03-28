@@ -1,10 +1,12 @@
 package ca.uwo.csd.cs2212.team13;
 
+import java.io.Serializable;
+
 /**
  * <code>BestDaysRecord</code> is a simple Java object that represents the
  * lifetime totals and the rules that govern access to and updates of this data
  */
-public class BestDaysRecord {
+public class BestDaysRecord implements Serializable{
 
 	/**
 	 * The date of the best recorded day for distance traveled
@@ -36,6 +38,15 @@ public class BestDaysRecord {
 	 */
 	private int steps_value;
 
+	public BestDaysRecord() {
+		this.dis_date = null;
+		this.dis_value = -1;
+		this.floors_date = null;
+		this.floors_value = -1;
+		this.steps_date = null;
+		this.steps_value = -1;
+	}
+	
 	/**
 	 * Constructor initializes the data fields for this object from the JSON
 	 * file. Constructor is called from {@link ActivitiesRecordDeserializer}
@@ -95,6 +106,8 @@ public class BestDaysRecord {
 	 * @return dis_value the value for distance traveled on the best day
 	 */
 	public double getDis_value() {
+		
+		dis_value = Math.floor(dis_value * 100) / 100;
 		return dis_value;
 	}
 

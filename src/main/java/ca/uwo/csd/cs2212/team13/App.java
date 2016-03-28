@@ -32,6 +32,7 @@
 package ca.uwo.csd.cs2212.team13;
 
 import java.io.IOException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -73,13 +74,17 @@ public class App {
 		logger.warn("Hello Maven/log4j World");
 		logger.info("My username is team13");
 
+		
 		Main run = new Main();
 
 		// If no arguments, then actual run. But we don't have that working yet
 		if (args.length == 0) {
-			logger.trace("No arguments passed");
-			logger.warn("We need to build a program. And we have to do it quickly");
-			logger.warn("Run with argument test to test");
+			//logger.trace("No arguments passed");
+			//logger.warn("We need to build a program. And we have to do it quickly");
+			//logger.warn("Run with argument test to test");
+			logger.trace("Running main program");
+			
+			run.run();
 		}
 		// Check if argument is test. If so, run in test mode
 		else if (args.length == 1 && args[0].equals("test")) {

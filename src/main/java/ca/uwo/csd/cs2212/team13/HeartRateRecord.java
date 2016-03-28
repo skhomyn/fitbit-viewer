@@ -31,6 +31,8 @@
  */
 package ca.uwo.csd.cs2212.team13;
 
+import java.io.Serializable;
+
 /**
  * <code>HeartRateRecord</code> is a simple Java object that represents the
  * heart rate stuff and the rules that govern access to and updates of this
@@ -42,7 +44,7 @@ package ca.uwo.csd.cs2212.team13;
  * object from API call 
  * </ul>
  */
-public class HeartRateRecord {
+public class HeartRateRecord implements Serializable{
 
 	/**
 	 * Date of this HeartRateRecord
@@ -52,7 +54,7 @@ public class HeartRateRecord {
 	/**
 	 * reseting heart rate for this record
 	 */
-	private int restingHR;
+	private double restingHR;
 
 	/**
 	 * minutes TOTALED from each zone for this record
@@ -63,6 +65,52 @@ public class HeartRateRecord {
 	 * All the heart zones for this record
 	 */
 	private HeartZoneRecord[] heart_zones;
+
+	private HeartRateInstanceRecord[] heart_rates;
+	private int datasetInterval;
+	private String datasetType;
+	
+	/**
+	 * @return the dRecords
+	 */
+	public HeartRateInstanceRecord[] getdRecords() {
+		return heart_rates;
+	}
+
+	/**
+	 * @param dRecords the dRecords to set
+	 */
+	public void setdRecords(HeartRateInstanceRecord[] dRecords) {
+		this.heart_rates = dRecords;
+	}
+
+	/**
+	 * @return the datasetInterval
+	 */
+	public int getDatasetInterval() {
+		return datasetInterval;
+	}
+
+	/**
+	 * @param datasetInterval the datasetInterval to set
+	 */
+	public void setDatasetInterval(int datasetInterval) {
+		this.datasetInterval = datasetInterval;
+	}
+
+	/**
+	 * @return the datasetType
+	 */
+	public String getDatasetType() {
+		return datasetType;
+	}
+
+	/**
+	 * @param datasetType the datasetType to set
+	 */
+	public void setDatasetType(String datasetType) {
+		this.datasetType = datasetType;
+	}
 
 	/**
 	 * Default Constructor, previously validated
@@ -88,14 +136,18 @@ public class HeartRateRecord {
 	 * @param total
 	 *            the total minutes from JSON file
 	 */
-	HeartRateRecord(String da, HeartZoneRecord[] heart_zones, int rhr, int total) {
+	HeartRateRecord(String da, HeartZoneRecord[] heart_zones, double rhr, int total, HeartRateInstanceRecord[] heart_rates, int datasetInterval, String datasetType ) {
 		super();
 		this.heart_zones = heart_zones;
 		this.date = da;
 		this.restingHR = rhr;
 		this.minuteTotal = total;
+		this.heart_rates = heart_rates;
+		this.datasetInterval = datasetInterval;
+		this.datasetType = datasetType;
 	}
 
+	
 	/**
 	 * Gets the <code>heart_zones</code> field.
 	 * <p>
@@ -154,7 +206,7 @@ public class HeartRateRecord {
 	 * 
 	 * @return the resting heart rate for this record
 	 */
-	public int getRestingHR() {
+	public double getRestingHR() {
 		return restingHR;
 	}
 

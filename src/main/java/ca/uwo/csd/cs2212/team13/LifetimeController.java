@@ -52,7 +52,33 @@ public class LifetimeController {
 		// button
 		view.addClickListenerLifetimeTotals(new clickListener());
 	}
+	
+	/**
+	 * Updater, initializes the model and view fields with pointers to
+	 * <code>LifetimeRecord</code> object and <code>InterfaceView</code> object
+	 * respectively
+	 * 
+	 * @param model
+	 *            the <code>LifetimeRecord</code> model containing the Best Days
+	 *            data to be displayed
+	 * @param view
+	 *            the <code>InterfaceView</code> view containing the user
+	 *            interface implementation
+	 */
+	public void updateLTC(LifetimeRecord model, InterfaceView view) {
+		this.model = model;
+		this.view = view;
+	}
 
+	/**
+	 * Sets the Liftetime Totals page display fields in
+	 * <code>InterfaceView</code> with values from the appropriate model
+	 * <code>LifetimeRecord</code> fields.
+	 */
+	public void lifetimeTotalsInitialize(){
+		view.setLifetimeTotalsFields(model.getDistance(), model.getFloors(), model.getSteps());
+	}
+	
 	/**
 	 * Local class accessible only by the <code>LifetimeController</code>
 	 * object. It's purpose is to define which actions should be performed when
