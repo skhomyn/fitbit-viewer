@@ -238,6 +238,9 @@ public class Main {
 	 */
 	public void refreshInfo(Gson gson, APICaller apiCaller, WriterReader wr, String dateStr){
 
+		//Last Updated label
+		Date now = new Date();
+		String apiCallDate = now.toString();
 		
 		//make request for heart rate info
 		String hRecord_String = apiCaller.requestJson("activities/heart/date/" + dateStr + "/1d/1min.json");
@@ -253,14 +256,6 @@ public class Main {
 		} else {
 			// Parse JSON to Java
 			hrRecord = gson.fromJson(hRecord_String, HeartRateRecord.class);
-			//update view with new models
-			hrController.updateHRZ(hrRecord, view);
-			hrController.hrzInitialize();
-			
-			//Last Updated label
-			Date now = new Date();
-			String apiCallDate = now.toString();
-			view.setLastUpdatedHRZ(apiCallDate);
 		}
 		try {
 			wr.writeRecord(hrRecord, "heartrecord");
@@ -268,6 +263,10 @@ public class Main {
 			System.out.println("Could not write to file");
 		}
 		
+		//update view with new models
+		hrController.updateHRZ(hrRecord, view);
+		hrController.hrzInitialize();
+		view.setLastUpdatedHRZ(apiCallDate);
 		
 		//make request for dashboard info
 		String dRecord_String = apiCaller.requestJson("activities/date/" + dateStr + ".json");
@@ -283,18 +282,6 @@ public class Main {
 		} else {
 			// Parse JSON to Java
 			ddModel = gson.fromJson(dRecord_String, DailyRecord.class);
-			//update view with new models
-			ddController.updateDDC(ddModel, view);
-			ddController.dailyDashboardInitialize();
-			
-			dgController.updateDGC(ddModel, ddModel.getGoals(), view);
-			dgController.goalsInitialize();
-			
-			//Last Updated label
-			Date now = new Date();
-			String apiCallDate = now.toString();
-			view.setLastUpdatedDash(apiCallDate);
-			view.setLastUpdatedGoals(apiCallDate);
 		}
 		try {
 			wr.writeRecord(ddModel, "dailyrecord");
@@ -302,6 +289,16 @@ public class Main {
 			System.out.println("Could not write to file");
 		}
 
+		//update view with new models
+		ddController.updateDDC(ddModel, view);
+		ddController.dailyDashboardInitialize();
+		
+		dgController.updateDGC(ddModel, ddModel.getGoals(), view);
+		dgController.goalsInitialize();
+		
+		view.setLastUpdatedDash(apiCallDate);
+		view.setLastUpdatedGoals(apiCallDate);
+		
 		// Read the JSON data for best days and lifetime totals
 		String aRecord_String = apiCaller.requestJson("activities.json");
 
@@ -317,25 +314,23 @@ public class Main {
 		} else {
 			// Parse JSON to Java
 			actRecord = gson.fromJson(aRecord_String, ActivitiesRecord.class);
-			//update view with new models
-			
-			ltController.updateLTC(actRecord.getLifetime(), view);
-			ltController.lifetimeTotalsInitialize();
-			
-			bdController.updateBDC(actRecord.getBest(), view);
-			bdController.bestDaysInitialize();
-			
-			//Last Updated label
-			Date now = new Date();
-			String apiCallDate = now.toString();
-			view.setLastUpdatedBd(apiCallDate);
-			view.setLastUpdatedLt(apiCallDate);
 		}
 		try {
 			wr.writeRecord(actRecord, "activityrecord");
 		} catch (Exception e) {
 			System.out.println("Could not write to file");
 		}
+		
+		//update view with new models
+		
+		ltController.updateLTC(actRecord.getLifetime(), view);
+		ltController.lifetimeTotalsInitialize();
+		
+		bdController.updateBDC(actRecord.getBest(), view);
+		bdController.bestDaysInitialize();
+		
+		view.setLastUpdatedBd(apiCallDate);
+		view.setLastUpdatedLt(apiCallDate);		
 		
 		ar = new AccoladeRecord[20];
 		ar = null;
@@ -378,9 +373,7 @@ public class Main {
 		acController.updateAC(ar, actRecord, ddModel, hrRecord, view);
 		acController.accoladesInitialize();
 		
-		//Last Updated label
-		Date now = new Date();
-		String apiCallDate = now.toString();
+
 		view.setLastUpdatedAccolades(apiCallDate);
 		
 		//make request for distance info
