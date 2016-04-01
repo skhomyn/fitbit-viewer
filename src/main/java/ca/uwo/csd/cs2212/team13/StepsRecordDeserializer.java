@@ -59,7 +59,12 @@ public class StepsRecordDeserializer implements
 					.getAsJsonObject();
 
 			String time = jsonStepsObject.get("time").getAsString();
-			double value = jsonStepsObject.get("value").getAsInt();
+			double value;
+			try {
+				value = jsonStepsObject.get("value").getAsDouble();
+			} catch (Exception e) {
+				value = jsonStepsObject.get("value").getAsInt();
+			}
 
 			stepsArray[i] = new StepsRecord(time, value);
 		}
