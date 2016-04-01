@@ -1209,7 +1209,7 @@ public class InterfaceView {
 		btnPrevDate.setIcon(new ImageIcon("src/main/resources/LArrow.png"));
 		btnPrevDate.setOpaque(true);
 		btnPrevDate.setBounds(217, 93, 50, 50);
-		panelDashboardView.add(btnPrevDate);
+		//panelDashboardView.add(btnPrevDate);
 						
 		/**
 		 * "Next Date" button moves the date forward by one day on the calendar.	
@@ -1219,7 +1219,7 @@ public class InterfaceView {
 		btnNextDate.setIcon(new ImageIcon("src/main/resources/rArrow.png"));
 		btnNextDate.setOpaque(true);
 		btnNextDate.setBounds(460, 93, 50, 50);
-		panelDashboardView.add(btnNextDate);
+		//panelDashboardView.add(btnNextDate);
 
 
 		/////////////LOOK AT THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//////////////////
@@ -2199,8 +2199,8 @@ public class InterfaceView {
 	 */
 	public void setDailyGoalsFields(int activeMinutes, double caloriesOut,
 			double distance, int floors, int steps, String activeMinStatus,
-			String caloriesStatus, String distanceStatus, String stepsStatus,
-			String floorsStatus) {
+			String caloriesStatus, String distanceStatus, String floorsStatus, String stepsStatus
+			) {
 		lblActiveMinGoal.setText(Integer.toString(activeMinutes));
 		lblCaloriesGoal.setText(Double.toString(caloriesOut));
 		lblDistanceGoal.setText(Double.toString(distance));
@@ -2237,6 +2237,7 @@ public class InterfaceView {
 		
 		if (floorsStatus.equals("N")) {
 			lblFloorsCompare.setIcon(new ImageIcon("src/main/resources/blueX.png"));
+			
 		}
 		else {
 			lblFloorsCompare.setIcon(new ImageIcon("src/main/resources/blueCheck.png"));
