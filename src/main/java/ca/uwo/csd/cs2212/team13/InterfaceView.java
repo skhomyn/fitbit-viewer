@@ -2850,7 +2850,7 @@ public class InterfaceView {
         	int hour = Integer.parseInt(str2[0]);
         	int minute = Integer.parseInt(str2[1]);
         	//System.out.println(hour + " " + minute);
-        	double value = distance_arr[i].getValue();
+        	double value = (distance_arr[i].getValue() * 1000);
         	s1.add(new Minute(minute, hour, day, month, year), value);
         }
         
