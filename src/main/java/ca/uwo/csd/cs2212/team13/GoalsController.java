@@ -57,7 +57,6 @@ public class GoalsController {
 				compareInt(goalsModel.getFloors(), dailyModel.getFloors()),
 				compareInt(goalsModel.getSteps(), dailyModel.getSteps())
 				);
-		System.out.println("===== "+dailyModel.getFloors() + " " + goalsModel.getFloors());
 	}
 	
 	class clickListener implements ActionListener {

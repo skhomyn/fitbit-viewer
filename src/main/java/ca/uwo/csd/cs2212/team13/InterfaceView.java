@@ -2822,7 +2822,7 @@ public class InterfaceView {
 		
 	private XYDataset createDataset(final DistanceTSRecord dRecord, final StepsTSRecord sRecord, final CaloriesTSRecord caRecord, final HeartRateRecord rRecord) 
 	{
-		System.out.println(dRecord.getDateTime());
+		//System.out.println(dRecord.getDateTime());
 
 		final TimeSeriesCollection datasetTS = new TimeSeriesCollection();
         datasetTS.setDomainIsPointsInTime(true);
