@@ -145,6 +145,9 @@ public class Main {
 			}	
 		});
 
+		//Set today's date as initial value for date labels on date-dependent pages
+		view.setDisplayDate(new Date());
+		
 		/**
 		 * {@code ActionListener} object is added to calendar and triggers new API calls
 		 * for the date selected, when the user chooses a new date on the calendar interface.
