@@ -21,6 +21,11 @@ public class RangeConstraint implements DateSelectionConstraint {
 		cleanTime();
 	}
 
+	/**
+	 * Constraints for the calander
+	 * @param after
+	 * @param before
+     */
 	public RangeConstraint(Date after, Date before) {
 		Calendar _after = Calendar.getInstance();
 		Calendar _before = Calendar.getInstance();
@@ -35,6 +40,9 @@ public class RangeConstraint implements DateSelectionConstraint {
 		cleanTime();
 	}
 
+	/**
+	 * Clear the time
+	 */
 	private void cleanTime() {
 		if (after != null) {
 			after.set(Calendar.HOUR_OF_DAY, 0);

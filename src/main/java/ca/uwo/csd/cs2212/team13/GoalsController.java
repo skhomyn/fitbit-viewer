@@ -81,17 +81,35 @@ public class GoalsController {
 			
 		}
 	}
-	
+
+	/**
+	 * compare method for ints
+	 * @param goal
+	 * @param actual
+     * @return y or n
+     */
 	private String compareInt(int goal, int actual){
 		if (actual>goal || actual==goal) return "Y";
 		else return "N";
 	}
-	
+
+	/**
+	 * compare method for doubleints
+	 * @param goal
+	 * @param actual
+     * @return y or n
+     */
 	private String compareDoubleInt(double goal, int actual){
 		if (actual>goal || actual==goal) return "Y";
 		else return "N";
 	}
-	
+
+	/**
+	 * compare method for doubles
+	 * @param goal
+	 * @param actual
+     * @return y or n
+     */
 	private String compareDouble(double goal, double actual){
 		if (actual>goal || actual==goal) return "Y";
 		else return "N";

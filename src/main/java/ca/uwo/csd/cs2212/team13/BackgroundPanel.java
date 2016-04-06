@@ -21,7 +21,9 @@ public class BackgroundPanel extends JPanel implements Serializable{
 
 	private Image background;
 
-
+	/**
+	 * constructor
+	 */
 	public BackgroundPanel()
 	{
 	    try {
@@ -31,12 +33,20 @@ public class BackgroundPanel extends JPanel implements Serializable{
 			e.printStackTrace();
 		}            
 	}
-	
+
+	/**
+	 * get the backround of the preferred dimensions
+	 * @return backround
+     */
 	@Override
 	public Dimension getPreferredSize() {
 	    return background == null ? new Dimension(0, 0) : new Dimension(background.getWidth(this), background.getHeight(this));            
 	}
 
+	/**
+	 * paints the componenet
+	 * @param g
+     */
 	@Override
 	protected void paintComponent(Graphics g) {
 
