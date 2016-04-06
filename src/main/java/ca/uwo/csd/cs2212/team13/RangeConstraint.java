@@ -31,8 +31,8 @@ public class RangeConstraint implements DateSelectionConstraint {
 
 	/**
 	 * Constraints for the calender
-	 * @param after
-	 * @param before
+	 * @param after used for constraint
+	 * @param before used for constraint
      */
 	public RangeConstraint(Date after, Date before) {
 		Calendar _after = Calendar.getInstance();
