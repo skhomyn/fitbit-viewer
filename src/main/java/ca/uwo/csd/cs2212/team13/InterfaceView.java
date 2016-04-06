@@ -508,10 +508,8 @@ public class InterfaceView {
 		panelDashboardView.setLayout(null);
 
 		/**
-		 * Soemthing something grid bag layout
+		 * Something something grid bag layout
 		 */
-		
-
 		dailyActiveMinPanel = new SPanel();
 		dailyActiveMinPanel.setBounds(374, 477, 120, 100);
 		GridBagLayout gbl_dailyActiveMinPanel = new GridBagLayout();
@@ -1291,6 +1289,10 @@ public class InterfaceView {
 		panelDashboardView.add(lblPic);
 	}
 
+	/**
+	 * @param sr
+	 * This method is used when loading settings
+	 */
 	private void load_settings(SettingsRecord sr)
 	{
 
@@ -1328,6 +1330,9 @@ public class InterfaceView {
 		lblDailyVeryActMinVal = sr.getLblDailyVeryActMinVal();
 	}
 
+	/**
+	 * This method is used when selecting the settings to be displayed.
+	 */
 	private void save_settings()
 	{
 
@@ -2246,6 +2251,10 @@ public class InterfaceView {
 		
 	}
 
+	/**
+	 * @param ar
+	 * Makes sure the accolade fields are set up
+	 */
 	public void setAccoladeFields(AccoladeRecord[] ar) {
 
 		for (int i = 0; i < 20; i++) {
@@ -2390,6 +2399,10 @@ public class InterfaceView {
 		btnNextDate.addActionListener(changeData);
 	}
 	
+	/**
+	 * @param model
+	 * @return if there it is a valid selection
+	 */
 	public boolean checkConstraints(CalendarModel model) {
 
 
@@ -2401,6 +2414,10 @@ public class InterfaceView {
 	}
 
 	
+	/**
+	 * @param model
+	 * @return if the constrains are lower
+	 */
 	public boolean checkConstraintsLower(CalendarModel model) {
 
 
@@ -2411,6 +2428,10 @@ public class InterfaceView {
 		return true;
 	}
 	
+	/**
+	 * @param model
+	 * @return if the constraints are upper
+	 */
 	public boolean checkConstraintsUpper(CalendarModel model) {
 
 		if (!rc.isUpper(model)) {
@@ -2820,6 +2841,13 @@ public class InterfaceView {
 
 		}
 		
+	/**
+	 * @param dRecord
+	 * @param sRecord
+	 * @param caRecord
+	 * @param rRecord
+	 * @return the data sets
+	 */
 	private XYDataset createDataset(final DistanceTSRecord dRecord, final StepsTSRecord sRecord, final CaloriesTSRecord caRecord, final HeartRateRecord rRecord) 
 	{
 		//System.out.println(dRecord.getDateTime());
@@ -2926,10 +2954,16 @@ public class InterfaceView {
 	}
 	//SHORTCUT
 	
+	/**
+	 * @return the date
+	 */
 	public Date getDateObject() {
 		return dateModel.getValue();
 	}
 	
+	/**
+	 * @return the calender
+	 */
 	public CalendarModel getCalendarObject() {
 		return modelForDay;
 	}
@@ -2961,6 +2995,10 @@ public class InterfaceView {
 
 	}
 
+	/**
+	 * @param dataset
+	 * @return the time series chart
+	 */
 	private JFreeChart createChart(final XYDataset dataset ) 
 	{
 		final JFreeChart chart = ChartFactory.createTimeSeriesChart(             
