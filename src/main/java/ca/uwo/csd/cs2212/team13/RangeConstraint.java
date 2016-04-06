@@ -10,9 +10,17 @@ import java.util.Date;
  */
 public class RangeConstraint implements DateSelectionConstraint {
 
+	/**
+	 * variables used for calender
+	 */
 	private final Calendar after;
 	private final Calendar before;
 
+	/**
+	 * @param after
+	 * @param before
+	 * 		parameters used for constraint
+	 */
 	public RangeConstraint(Calendar after, Calendar before) {
 		this.after = after;
 		this.before = before;

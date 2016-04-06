@@ -11,6 +11,9 @@ import javax.swing.JRadioButton;
 public class SettingsRecord implements Serializable {
 
 
+	/**
+	 * These are used for implementing the settings record
+	 */
 	private boolean radioTotalDist;
 	private boolean radioCalories;
 	private boolean radioSedMin;
