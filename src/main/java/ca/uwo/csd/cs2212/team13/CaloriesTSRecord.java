@@ -8,6 +8,9 @@ import java.io.Serializable;
  */
 public class CaloriesTSRecord implements Serializable {
 
+    /**
+     * the date and time, value of CaloriesTS, array of records, the dataset interval and dataset type
+     */
     private String dateTime;
     private double value;
     private CaloriesRecord[] cRecords;
