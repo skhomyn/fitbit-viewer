@@ -50,6 +50,9 @@ public class HeartRateInstanceRecord implements Serializable {
 		this.value = value;
 	}
 
+	/**
+	 * unused hrz instance record
+	 */
 	public HeartRateInstanceRecord() {
 
     }

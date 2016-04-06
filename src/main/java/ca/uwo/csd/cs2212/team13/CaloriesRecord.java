@@ -70,6 +70,7 @@ public class CaloriesRecord implements Serializable {
         this.mets = mets;
     }
 
+    //unused calories record
     public CaloriesRecord() {
 
     }

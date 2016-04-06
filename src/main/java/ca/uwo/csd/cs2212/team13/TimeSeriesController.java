@@ -58,6 +58,18 @@ public class TimeSeriesController {
 		view.addClickListenerTimeSeries(new clickListener());
 	}
 	
+	/**
+	 * @param distance_model
+	 * 			model for distance
+	 * @param steps_model
+	 * 			model fot steps
+	 * @param calories_model
+	 * 			model for calories
+	 * @param rate_model
+	 * 			rate model
+	 * @param view
+	 * 			view
+	 */
 	public void updateTSC(DistanceTSRecord distance_model, StepsTSRecord steps_model, CaloriesTSRecord calories_model, HeartRateRecord rate_model, InterfaceView view)
 	{
 		this.distance_model = distance_model;
