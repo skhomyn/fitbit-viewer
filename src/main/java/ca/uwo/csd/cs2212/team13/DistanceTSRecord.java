@@ -2,6 +2,11 @@ package ca.uwo.csd.cs2212.team13;
 
 import java.io.Serializable;
 
+
+/**
+ * <code>DistanceTS</code> is a simple Java object that represents the
+ * DistanceTS and the rules that govern access to and updates of this data.
+ */
 public class DistanceTSRecord implements Serializable {
 
 	private String dateTime;

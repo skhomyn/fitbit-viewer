@@ -58,7 +58,14 @@ public class GoalsController {
 				compareInt(goalsModel.getSteps(), dailyModel.getSteps())
 				);
 	}
-	
+
+	/**
+	 * Local class accessible only by the <code>GoalsController</code> object. Its
+	 * purpose is to define which actions should be performed when the Goals
+	 * button in <code>InterfaceView</code> is clicked by the user
+	 *
+	 * @see java.awt.event.ActionListener
+	 */
 	class clickListener implements ActionListener {
 
 		@Override

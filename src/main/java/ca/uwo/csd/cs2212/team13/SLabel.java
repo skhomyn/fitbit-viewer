@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 
 public class SLabel extends JLabel implements Serializable {
 
+	/**
+	 *
+	 */
 	public SLabel()
 	{
 		super();
