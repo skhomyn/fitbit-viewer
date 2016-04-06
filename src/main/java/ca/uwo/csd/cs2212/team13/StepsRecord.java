@@ -5,6 +5,9 @@ import java.io.Serializable;
 /**
  * Model for Steps
  * @author Robin
+ * 
+ * 
+ * 
  */
 
 public class StepsRecord implements Serializable {
@@ -55,17 +58,18 @@ public class StepsRecord implements Serializable {
 		this.value = value;
 	}
 
+	/*
+	 * constructor not used
+	 */
 	public StepsRecord() {
-
+		
     }
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	/**
 	 * toString method to format
 	 * time and value to a string
+	 * @return formatted string
 	 */
 	public String toString() {
 		final StringBuilder formatted = new StringBuilder();		
