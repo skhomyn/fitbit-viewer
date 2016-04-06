@@ -92,7 +92,7 @@ public class RangeConstraint implements DateSelectionConstraint {
 	/**
 	 * Method to allow us to move
 	 * forward in the calendar
-	 * @param model
+	 * @param model the calender model
 	 * @return
 	 */
 	public boolean isUpper(CalendarModel model) {
