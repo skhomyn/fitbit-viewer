@@ -2,6 +2,10 @@ package ca.uwo.csd.cs2212.team13;
 
 import java.io.Serializable;
 
+/**
+ * Creates in instance object for heart rate
+ */
+
 
 public class HeartRateInstanceRecord implements Serializable {
 

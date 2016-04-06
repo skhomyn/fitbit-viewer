@@ -2,11 +2,14 @@ package ca.uwo.csd.cs2212.team13;
 
 import java.io.Serializable;
 
+/**
+ * Model for the Calories
+ * to assist the Calories
+ * controller and interface
+ * view
+ */
 public class CaloriesRecord implements Serializable {
 	
-	/**
-	 * Model class for the Calories
-	 */
 
     private String time;
     private double value;

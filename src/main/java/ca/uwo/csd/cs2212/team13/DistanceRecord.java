@@ -2,14 +2,12 @@ package ca.uwo.csd.cs2212.team13;
 
 import java.io.Serializable;
 
+/**
+ * Model for the distance to assist the distance controller and interface view
+ */
+
 public class DistanceRecord implements Serializable{
-	
-	/**
-	 * Model for the distance
-	 * to assist the distance
-	 * controller and interface 
-	 * view
-	 */
+
 	private String time;
 	private double value;
 	

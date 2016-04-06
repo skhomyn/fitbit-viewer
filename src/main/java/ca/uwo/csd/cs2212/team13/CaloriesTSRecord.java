@@ -3,10 +3,8 @@ package ca.uwo.csd.cs2212.team13;
 import java.io.Serializable;
 
 /**
- * Model class for time series
- * calories
- * @author Andy
- *
+ * <code>CaloriesTS</code> is a simple Java object that represents the
+ * CaloriesTS and the rules that govern access to and updates of this data.
  */
 public class CaloriesTSRecord implements Serializable {
 

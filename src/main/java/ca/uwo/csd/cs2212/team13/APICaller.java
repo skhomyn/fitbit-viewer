@@ -24,6 +24,9 @@ import java.net.URI;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
+/**
+ * Allows us to receive the information from Fitbit
+ */
 public class APICaller {
 	
 		private String CALL_BACK_URI = "http://localhost:8080";
