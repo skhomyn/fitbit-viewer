@@ -22,7 +22,7 @@ public class RangeConstraint implements DateSelectionConstraint {
 	}
 
 	/**
-	 * Constraints for the calander
+	 * Constraints for the calender
 	 * @param after
 	 * @param before
      */

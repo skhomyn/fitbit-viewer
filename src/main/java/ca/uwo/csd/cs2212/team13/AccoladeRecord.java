@@ -10,16 +10,22 @@ import java.io.Serializable;
  */
 
 public class AccoladeRecord implements Serializable {
-	
-	//true/false value for if you have acquired accolade or not
+
+	/**
+	 * True/false if acheived value or not and the date
+	 */
 	private boolean achieved; 
 	private String date;
-	
-	//value associated with each image
+
+	/**
+	 * value associated with each image
+	 */
 	private int value;
 	private String image;
 
-	//desc
+	/**
+	 * desc
+	 */
 	private String desc;
 	
 

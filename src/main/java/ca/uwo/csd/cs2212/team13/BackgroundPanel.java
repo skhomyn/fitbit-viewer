@@ -19,6 +19,9 @@ import javax.swing.JPanel;
  */
 public class BackgroundPanel extends JPanel implements Serializable{
 
+	/**
+	 * Attribute for the backround
+	 */
 	private Image background;
 
 	/**
