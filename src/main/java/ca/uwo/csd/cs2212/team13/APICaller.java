@@ -29,6 +29,9 @@ import org.json.JSONArray;
  */
 public class APICaller {
 	
+		/**
+		 * attributes used for getting info
+		 */
 		private String CALL_BACK_URI = "http://localhost:8080";
 		private int CALL_BACK_PORT = 8080;
 		
@@ -113,6 +116,10 @@ public class APICaller {
 			
 		} //end constructor
 		
+		/**
+		 * @param requestUrlSuffix
+		 * @return null if request doesn't work
+		 */
 		public String requestJson(String requestUrlSuffix){
 			// The access token contains everything you will need to authenticate your requests
 			// It can expire - at which point you will use the refresh token to refresh it
@@ -246,6 +253,11 @@ public class APICaller {
 			return null;
 		}// end request method
 		
+		/**
+		 * @param requestUrlSuffix
+		 * @param filename
+		 * This is used for requesting the data
+		 */
 		public void request(String requestUrlSuffix, String filename){
 			// The access token contains everything you will need to authenticate your requests
 			// It can expire - at which point you will use the refresh token to refresh it
