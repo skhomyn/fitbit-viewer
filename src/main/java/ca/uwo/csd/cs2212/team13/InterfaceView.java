@@ -1209,7 +1209,7 @@ public class InterfaceView {
 		btnPrevDate.setIcon(new ImageIcon("src/main/resources/LArrow.png"));
 		btnPrevDate.setOpaque(true);
 		btnPrevDate.setBounds(217, 93, 50, 50);
-		panelDashboardView.add(btnPrevDate);
+		//panelDashboardView.add(btnPrevDate);
 						
 		/**
 		 * "Next Date" button moves the date forward by one day on the calendar.	
@@ -1219,7 +1219,7 @@ public class InterfaceView {
 		btnNextDate.setIcon(new ImageIcon("src/main/resources/rArrow.png"));
 		btnNextDate.setOpaque(true);
 		btnNextDate.setBounds(460, 93, 50, 50);
-		panelDashboardView.add(btnNextDate);
+		//panelDashboardView.add(btnNextDate);
 
 
 		/////////////LOOK AT THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//////////////////
@@ -2199,8 +2199,8 @@ public class InterfaceView {
 	 */
 	public void setDailyGoalsFields(int activeMinutes, double caloriesOut,
 			double distance, int floors, int steps, String activeMinStatus,
-			String caloriesStatus, String distanceStatus, String stepsStatus,
-			String floorsStatus) {
+			String caloriesStatus, String distanceStatus, String floorsStatus, String stepsStatus
+			) {
 		lblActiveMinGoal.setText(Integer.toString(activeMinutes));
 		lblCaloriesGoal.setText(Double.toString(caloriesOut));
 		lblDistanceGoal.setText(Double.toString(distance));
@@ -2237,6 +2237,7 @@ public class InterfaceView {
 		
 		if (floorsStatus.equals("N")) {
 			lblFloorsCompare.setIcon(new ImageIcon("src/main/resources/blueX.png"));
+			
 		}
 		else {
 			lblFloorsCompare.setIcon(new ImageIcon("src/main/resources/blueCheck.png"));
@@ -2821,7 +2822,7 @@ public class InterfaceView {
 		
 	private XYDataset createDataset(final DistanceTSRecord dRecord, final StepsTSRecord sRecord, final CaloriesTSRecord caRecord, final HeartRateRecord rRecord) 
 	{
-		System.out.println(dRecord.getDateTime());
+		//System.out.println(dRecord.getDateTime());
 
 		final TimeSeriesCollection datasetTS = new TimeSeriesCollection();
         datasetTS.setDomainIsPointsInTime(true);
@@ -2849,7 +2850,7 @@ public class InterfaceView {
         	int hour = Integer.parseInt(str2[0]);
         	int minute = Integer.parseInt(str2[1]);
         	//System.out.println(hour + " " + minute);
-        	double value = distance_arr[i].getValue();
+        	double value = (distance_arr[i].getValue() * 1000);
         	s1.add(new Minute(minute, hour, day, month, year), value);
         }
         

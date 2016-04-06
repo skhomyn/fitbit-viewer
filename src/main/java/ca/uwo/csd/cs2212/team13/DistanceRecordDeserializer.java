@@ -50,7 +50,12 @@ public class DistanceRecordDeserializer implements
 					.getAsJsonObject();
 
 			String time = jsonDistanceObject.get("time").getAsString();
-			double value = jsonDistanceObject.get("value").getAsInt();
+			double value;
+			try {
+				value = jsonDistanceObject.get("value").getAsDouble();
+			} catch (Exception e) {
+				value = jsonDistanceObject.get("value").getAsInt();
+			}
 
 			distanceArray[i] = new DistanceRecord(time, value);
 		}
