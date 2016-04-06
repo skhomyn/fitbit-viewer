@@ -9,6 +9,9 @@ import java.io.Serializable;
  */
 public class DistanceTSRecord implements Serializable {
 
+	/**
+	 * date and time, value of the DistanceTS, array of records, the dataset interval and the dataset type
+	 */
 	private String dateTime;
 	private double value;
 	private DistanceRecord[] dRecords;

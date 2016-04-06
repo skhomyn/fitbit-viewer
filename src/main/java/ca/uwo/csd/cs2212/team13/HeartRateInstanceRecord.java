@@ -5,8 +5,6 @@ import java.io.Serializable;
 /**
  * Creates in instance object for heart rate
  */
-
-
 public class HeartRateInstanceRecord implements Serializable {
 
 	private String time;

@@ -9,8 +9,10 @@ import java.io.Serializable;
  * view
  */
 public class CaloriesRecord implements Serializable {
-	
 
+    /**
+     * Time, value of calories, and mets
+     */
     private String time;
     private double value;
     private int mets;
