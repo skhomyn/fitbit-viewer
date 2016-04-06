@@ -59,6 +59,7 @@ Our Maven Dependencies and programs required include: json-20160212.jar, scribej
 
 Here is a video of our application in action:
 
+https://www.youtube.com/watch?v=qzcRYc9y8GQ&feature=youtu.be 
 
 #Documentaion
 
