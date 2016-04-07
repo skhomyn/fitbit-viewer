@@ -40,7 +40,9 @@ public class HeartRateInstanceRecord implements Serializable {
 
 	/**
 	 * @param time
+	 * 	the time
 	 * @param value
+	 * 	the heart rate instance record value
 	 */
 	public HeartRateInstanceRecord(String time, double value) {
 		super();
@@ -49,7 +51,7 @@ public class HeartRateInstanceRecord implements Serializable {
 	}
 
 	/**
-	 * unused hrz instance record
+	 * unused heart rate zone instance record
 	 */
 	public HeartRateInstanceRecord() {
 

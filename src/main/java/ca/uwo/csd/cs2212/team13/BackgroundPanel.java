@@ -20,12 +20,12 @@ import javax.swing.JPanel;
 public class BackgroundPanel extends JPanel implements Serializable{
 
 	/**
-	 * Attribute for the backround
+	 * Attribute for the background
 	 */
 	private Image background;
 
 	/**
-	 * constructor
+	 * constructor of the background
 	 */
 	public BackgroundPanel()
 	{
@@ -38,8 +38,8 @@ public class BackgroundPanel extends JPanel implements Serializable{
 	}
 
 	/**
-	 * get the backround of the preferred dimensions
-	 * @return backround
+	 * get the background of the preferred dimensions
+	 * @return background
      */
 	@Override
 	public Dimension getPreferredSize() {
@@ -47,8 +47,9 @@ public class BackgroundPanel extends JPanel implements Serializable{
 	}
 
 	/**
-	 * paints the componenet
+	 * paints the component
 	 * @param g
+	 * 		graphic images
      */
 	@Override
 	protected void paintComponent(Graphics g) {

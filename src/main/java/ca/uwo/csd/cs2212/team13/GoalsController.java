@@ -20,8 +20,11 @@ public class GoalsController {
 	 * This is the constructor for goals
 	 * 
 	 * @param dailyModel
+	 * 		daily record model
 	 * @param goalsModel
+	 * 		goals record model
 	 * @param view
+	 * 		interface view 
 	 */
 	public GoalsController(DailyRecord dailyModel, GoalsRecord goalsModel, InterfaceView view){
 		this.dailyModel = dailyModel;
@@ -35,8 +38,11 @@ public class GoalsController {
 	 * This updates goals controller.
 	 * 
 	 * @param dailyModel
+	 * 		daily record model
 	 * @param goalsModel
+	 * 		goals record model
 	 * @param view
+	 * 		interface view
 	 */
 	public void updateDGC(DailyRecord dailyModel, GoalsRecord goalsModel, InterfaceView view){
 		this.dailyModel = dailyModel;
@@ -83,9 +89,11 @@ public class GoalsController {
 	}
 
 	/**
-	 * compare method for ints
+	 * compare method for integers
 	 * @param goal
+	 * 		the goal
 	 * @param actual
+	 * 		the actual value
      * @return y or n
      */
 	private String compareInt(int goal, int actual){
@@ -94,9 +102,11 @@ public class GoalsController {
 	}
 
 	/**
-	 * compare method for doubleints
+	 * compare method for double
 	 * @param goal
+	 * 		the goal
 	 * @param actual
+	 * 		the actual value
      * @return y or n
      */
 	private String compareDoubleInt(double goal, int actual){
@@ -107,7 +117,9 @@ public class GoalsController {
 	/**
 	 * compare method for doubles
 	 * @param goal
+	 * 		the goal
 	 * @param actual
+	 * 		the actual value
      * @return y or n
      */
 	private String compareDouble(double goal, double actual){

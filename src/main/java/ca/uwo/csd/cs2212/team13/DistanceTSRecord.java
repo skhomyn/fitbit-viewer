@@ -20,10 +20,15 @@ public class DistanceTSRecord implements Serializable {
 
 	/**
 	 * @param dateTime
+	 * 		the date's time
 	 * @param value
+	 * 		the value of the time
 	 * @param dRecords
+	 * 		the recorded times
 	 * @param datasetInterval
+	 * 		the intervals of time
 	 * @param datasetType
+	 * 		the data set type
 	 */
 	public DistanceTSRecord(String dateTime, double value,
 			DistanceRecord[] dRecords, int datasetInterval, String datasetType) {
