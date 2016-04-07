@@ -20,7 +20,7 @@ Fitbit Viewer also uses several open source libraries:
 - [jDatePicker](https://jdatepicker.org) for the built-in calendar, including some minor modifications of the [constraints](https://github.com/JDatePicker/JDatePicker/tree/master/src/main/java/org/jdatepicker/constraints) classes not included in release 1.3.4
 - [log4j](http://logging.apache.org/log4j/2.x/) for logging
 
-Full documentation of this application can be found in our [javadoc](src/doc).
+Full documentation of this application can be found in our [javadoc](doc).
 
 ### Modes of Operation
 ###### Test mode
