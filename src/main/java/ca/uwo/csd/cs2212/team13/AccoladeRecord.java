@@ -91,7 +91,8 @@ public class AccoladeRecord implements Serializable {
 	
 	/**
 	 * Set the date
-	 * @param d the date
+	 * @param d 
+	 * 		the date
 	 */
 	public void setDate(String d) {
 		this.date = d;
@@ -107,7 +108,8 @@ public class AccoladeRecord implements Serializable {
 	
 	/**
 	 * Set image's value
-	 * @param v image value
+	 * @param v 
+	 * 		image value
 	 */
 	public void setValue(int v) {
 		this.value = v;

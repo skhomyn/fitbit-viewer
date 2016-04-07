@@ -41,7 +41,9 @@ public class DistanceRecord implements Serializable{
 
 	/**
 	 * @param time
+	 * 		the time
 	 * @param value
+	 * 		the value
 	 */
 	public DistanceRecord(String time, double value) {
 		super();

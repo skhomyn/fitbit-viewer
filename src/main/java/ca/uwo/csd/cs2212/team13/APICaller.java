@@ -255,8 +255,9 @@ public class APICaller {
 		
 		/**
 		 * @param requestUrlSuffix
+		 * 		This is used for requesting the URL suffix 
 		 * @param filename
-		 * This is used for requesting the data
+		 * 		This is used for requesting the data
 		 */
 		public void request(String requestUrlSuffix, String filename){
 			// The access token contains everything you will need to authenticate your requests

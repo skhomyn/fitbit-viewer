@@ -19,8 +19,10 @@ public class WriterReader{
 	/**
 	 * Write Record from object to filename
 	 * 
-	 * @param standard object to write
-	 * @param filename filename to write
+	 * @param standard 
+	 * 			object to write
+	 * @param filename 
+	 * 			filename to write
 	 * @throws Exception if write fails
 	 * 
 	 * 
@@ -35,7 +37,8 @@ public class WriterReader{
 	  /**
 	   * Loads Record to object
 	   * 
-	   * @param filename filename of record
+	   * @param filename 
+	   * 	filename of record
 	   *
 	   * @return object that was loaded
 	   * @throws Exception if load fails

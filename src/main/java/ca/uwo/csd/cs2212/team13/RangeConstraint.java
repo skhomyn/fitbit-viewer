@@ -100,8 +100,10 @@ public class RangeConstraint implements DateSelectionConstraint {
 	/**
 	 * Method to allow us to move
 	 * forward in the calendar
-	 * @param model the calender model
+	 * @param model 
+	 * 			the calendar model
 	 * @return
+	 * 			if it is the upper model
 	 */
 	public boolean isUpper(CalendarModel model) {
 		if (model.isSelected() && after != null) {
@@ -122,7 +124,9 @@ public class RangeConstraint implements DateSelectionConstraint {
 	 * move backwards in the
 	 * calendar
 	 * @param model
+	 * 			to help set the time
 	 * @return
+	 * 			If it's lower
 	 */
 	public boolean isLower(CalendarModel model) {
 		if (model.isSelected() && before != null) {

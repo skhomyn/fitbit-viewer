@@ -34,6 +34,7 @@ public class CaloriesRecord implements Serializable {
     /**
      * get Mets
      * @return
+     * 		the Mets set
      */
     public int getMets() {
         return mets;
@@ -63,7 +64,9 @@ public class CaloriesRecord implements Serializable {
     /**
      * Constructor
      * @param time
+     * 			the time
      * @param value
+     * 			the value
      */
     public CaloriesRecord(String time, double value, int mets) {
         super();
