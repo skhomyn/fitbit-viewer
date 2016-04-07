@@ -2328,10 +2328,15 @@ public class InterfaceView {
 	 * @param steps
 	 *            daily goal for steps taken
 	 * @param activeMinStatus
+	 * 				status for active minutes
 	 * @param caloriesStatus
+	 * 				status for calories
 	 * @param distanceStatus
+	 * 				status for distance
 	 * @param stepsStatus
-	 * @param floorsStatus
+	 * 				status for steps
+	 * @param floorsStatus	
+	 * 				status for floors
 	 */
 	public void setDailyGoalsFields(int activeMinutes, double caloriesOut,
 			double distance, int floors, int steps, String activeMinStatus,
@@ -2522,6 +2527,7 @@ public class InterfaceView {
 	
 	/**
 	 * @param model
+	 * 		the calendar model 
 	 * @return if there it is a valid selection
 	 */
 	public boolean checkConstraints(CalendarModel model) {
@@ -2536,6 +2542,7 @@ public class InterfaceView {
 
 	/**
 	 * @param model
+	 * 			the calendar model
 	 * @return if the constrains are lower
 	 */
 	public boolean checkConstraintsLower(CalendarModel model) {
@@ -2550,6 +2557,7 @@ public class InterfaceView {
 	
 	/**
 	 * @param model
+	 * 		the calendar model
 	 * @return if the constraints are upper
 	 */
 	public boolean checkConstraintsUpper(CalendarModel model) {
@@ -2703,7 +2711,9 @@ public class InterfaceView {
 	 * Preferences / custom layout menu for dashboard.
 	 * 
 	 * @param component
+	 * 		the component of the pop-up
 	 * @param popup
+	 * 		the JPopupMenu popup
 	 */
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
@@ -2929,6 +2939,16 @@ public class InterfaceView {
 
 		}
 
+		/**
+		 * @param dRecords
+		 * 		time series distance record
+		 * @param sRecords
+		 * 		time series steps record
+		 * @param caRecord
+		 * 		time series calories record
+		 * @param rRecord
+		 * 		time series heart rate record
+		 */
 		public void setTimeSeriesGraph(final DistanceTSRecord dRecords, final StepsTSRecord sRecords, final CaloriesTSRecord caRecord, final HeartRateRecord rRecord)
 		{		
 			try {
@@ -2970,9 +2990,13 @@ public class InterfaceView {
 		
 	/**
 	 * @param dRecord
+	 * 		time series distance record
 	 * @param sRecord
+	 *		 time series steps record
 	 * @param caRecord
+	 * 		time series calories record
 	 * @param rRecord
+	 * 		time series heart rate record
 	 * @return the data sets
 	 */
 	private XYDataset createDataset(final DistanceTSRecord dRecord, final StepsTSRecord sRecord, final CaloriesTSRecord caRecord, final HeartRateRecord rRecord) 
@@ -3120,6 +3144,7 @@ public class InterfaceView {
 
 	/**
 	 * @param dataset
+	 * 		the data set defined
 	 * @return the time series chart
 	 */
 	private JFreeChart createChart(final XYDataset dataset ) 

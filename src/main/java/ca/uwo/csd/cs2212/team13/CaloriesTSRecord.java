@@ -19,10 +19,15 @@ public class CaloriesTSRecord implements Serializable {
 
     /**
      * @param dateTime
+     * 		the time of date
      * @param value
+     * 		the value
      * @param cRecords
+     * 		calorie records array
      * @param datasetInterval
+     * 		data set interval
      * @param datasetType
+     * 		data set type
      */
     public CaloriesTSRecord(String dateTime, double value,
                             CaloriesRecord[] cRecords, int datasetInterval, String datasetType) {

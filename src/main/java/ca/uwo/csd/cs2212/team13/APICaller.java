@@ -55,9 +55,9 @@ public class APICaller {
 		/**
 		 * constructor
 		 * 
-		 * @param scope string
-		 * @param tokenFile string
-		 * @param credentialsFile string
+		 * @param scope string for scope
+		 * @param tokenFile string for token file
+		 * @param credentialsFile string for credentials file
 		 */
 		public APICaller(String scope, String tokenFile, String credentialsFile){
 						
@@ -118,6 +118,7 @@ public class APICaller {
 		
 		/**
 		 * @param requestUrlSuffix
+		 * 			For requesting URL suffix
 		 * @return null if request doesn't work
 		 */
 		public String requestJson(String requestUrlSuffix){

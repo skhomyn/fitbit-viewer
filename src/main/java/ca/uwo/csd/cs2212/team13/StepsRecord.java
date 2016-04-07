@@ -50,7 +50,9 @@ public class StepsRecord implements Serializable {
 	/**
 	 * Constructor
 	 * @param time
+	 * 		the time
 	 * @param value
+	 * 		the value
 	 */
 	public StepsRecord(String time, double value) {
 		super();

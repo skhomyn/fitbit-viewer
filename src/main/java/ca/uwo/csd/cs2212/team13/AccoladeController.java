@@ -99,7 +99,7 @@ public class AccoladeController {
 	 * Sets the Accolades page display fields in <code>InterfaceView</code> with
 	 * values from the appropriate model <code>AccoladesRecord</code> fields.
 	 * 
-	 * Updates fields manually (so no new action listner)
+	 * Updates fields manually (so no new action listener)
 	 */
 	public void updateAC(AccoladeRecord[] ar, ActivitiesRecord acR,
 			DailyRecord dr, HeartRateRecord hr, InterfaceView view) {
@@ -240,9 +240,10 @@ public class AccoladeController {
 	 * 
 	 * @param m method
 	 * @param standard
+	 * 			the standard object
 	 * @param i
 	 * 			integer
-	 * @return the chcked boolean value
+	 * @return the checked boolean value
 	 * 
 	 * Exceptions: 
 	 * @throws NumberFormatException
@@ -271,9 +272,13 @@ public class AccoladeController {
 	 * Check if values are fine, negation version (to check 0)
 	 * 
 	 * @param m
+	 * 		method
 	 * @param standard
+	 * 		standard object
 	 * @param i
+	 * 		integer value
 	 * @return
+	 * 		If the values are negated
 	 * @throws NumberFormatException
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
@@ -295,7 +300,7 @@ public class AccoladeController {
 	/**
 	 * Check how many goals are complete
 	 * 
-	 * @return int num of goals complete
+	 * @return integer number of goals complete
 	 */
 	private int GoalCheck() {
 		GoalsRecord gr = dr.getGoals();
@@ -313,7 +318,9 @@ public class AccoladeController {
 	 * Checks if goal is complete.
 	 * 
 	 * @param goal
+	 * 		the goal
 	 * @param actual
+	 * 		the actual value
 	 * @return 1 if complete, 0 otherwise
 	 */
 	private int compareInt(int goal, int actual) {
@@ -327,7 +334,9 @@ public class AccoladeController {
 	 * Checks if goal is complete.
 	 * 
 	 * @param goal
+	 * 		the goal
 	 * @param actual
+	 * 		the actual value
 	 * @return 1 if complete, 0 otherwise
 	 */
 	private int compareDoubleInt(double goal, int actual) {
@@ -341,7 +350,9 @@ public class AccoladeController {
 	 * Checks if goal is complete.
 	 * 
 	 * @param goal
+	 * 		the goal
 	 * @param actual
+	 * 		the actual value
 	 * @return 1 if complete, 0 otherwise
 	 */
 	private int compareDouble(double goal, double actual) {
