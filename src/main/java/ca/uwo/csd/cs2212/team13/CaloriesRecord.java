@@ -2,12 +2,17 @@ package ca.uwo.csd.cs2212.team13;
 
 import java.io.Serializable;
 
+/**
+ * Model for the Calories
+ * to assist the Calories
+ * controller and interface
+ * view
+ */
 public class CaloriesRecord implements Serializable {
-	
-	/**
-	 * Model class for the Calories
-	 */
 
+    /**
+     * Time, value of calories, and mets
+     */
     private String time;
     private double value;
     private int mets;
@@ -29,6 +34,7 @@ public class CaloriesRecord implements Serializable {
     /**
      * get Mets
      * @return
+     * 		the Mets set
      */
     public int getMets() {
         return mets;
@@ -58,7 +64,9 @@ public class CaloriesRecord implements Serializable {
     /**
      * Constructor
      * @param time
+     * 			the time
      * @param value
+     * 			the value
      */
     public CaloriesRecord(String time, double value, int mets) {
         super();
@@ -67,6 +75,7 @@ public class CaloriesRecord implements Serializable {
         this.mets = mets;
     }
 
+    //unused calories record
     public CaloriesRecord() {
 
     }

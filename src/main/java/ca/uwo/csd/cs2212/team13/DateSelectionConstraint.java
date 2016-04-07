@@ -8,6 +8,11 @@ package ca.uwo.csd.cs2212.team13;
  */
 public interface DateSelectionConstraint {
 
+	/**
+	 * boolean method to confirm the date is correct or not
+	 * @param model the calander
+	 * @return t or f
+     */
 	boolean isValidSelection(CalendarModel model);
 
 }

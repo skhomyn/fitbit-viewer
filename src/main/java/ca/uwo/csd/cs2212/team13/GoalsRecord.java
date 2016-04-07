@@ -210,12 +210,6 @@ public class GoalsRecord implements Serializable {
 		this.goalMet = goalMet;
 	}
 	
-	
-
-
-	
-
-
 
 
 }

@@ -10,9 +10,17 @@ import java.util.Date;
  */
 public class RangeConstraint implements DateSelectionConstraint {
 
+	/**
+	 * variables used for calender
+	 */
 	private final Calendar after;
 	private final Calendar before;
 
+	/**
+	 * @param after
+	 * @param before
+	 * 		parameters used for constraint
+	 */
 	public RangeConstraint(Calendar after, Calendar before) {
 		this.after = after;
 		this.before = before;
@@ -21,6 +29,11 @@ public class RangeConstraint implements DateSelectionConstraint {
 		cleanTime();
 	}
 
+	/**
+	 * Constraints for the calender
+	 * @param after used for constraint
+	 * @param before used for constraint
+     */
 	public RangeConstraint(Date after, Date before) {
 		Calendar _after = Calendar.getInstance();
 		Calendar _before = Calendar.getInstance();
@@ -35,6 +48,9 @@ public class RangeConstraint implements DateSelectionConstraint {
 		cleanTime();
 	}
 
+	/**
+	 * Clear the time
+	 */
 	private void cleanTime() {
 		if (after != null) {
 			after.set(Calendar.HOUR_OF_DAY, 0);
@@ -84,8 +100,10 @@ public class RangeConstraint implements DateSelectionConstraint {
 	/**
 	 * Method to allow us to move
 	 * forward in the calendar
-	 * @param model
+	 * @param model 
+	 * 			the calendar model
 	 * @return
+	 * 			if it is the upper model
 	 */
 	public boolean isUpper(CalendarModel model) {
 		if (model.isSelected() && after != null) {
@@ -106,7 +124,9 @@ public class RangeConstraint implements DateSelectionConstraint {
 	 * move backwards in the
 	 * calendar
 	 * @param model
+	 * 			to help set the time
 	 * @return
+	 * 			If it's lower
 	 */
 	public boolean isLower(CalendarModel model) {
 		if (model.isSelected() && before != null) {

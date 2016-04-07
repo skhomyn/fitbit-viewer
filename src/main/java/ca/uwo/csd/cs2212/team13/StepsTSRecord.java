@@ -26,10 +26,16 @@ public class StepsTSRecord implements Serializable {
 
 	/**
 	 * @param dateTime
+	 * 			string to assist date
 	 * @param value
+	 * 			value to set
 	 * @param sRecords
+	 * 			steps record
 	 * @param datasetInterval
+	 * 			data set interval
 	 * @param datasetType
+	 * 			data set type
+	 * 
 	 */
 	public StepsTSRecord(String dateTime, double value, StepsRecord[] sRecords,
 			int datasetInterval, String datasetType) {

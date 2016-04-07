@@ -212,7 +212,7 @@ public class InterfaceView {
 
 
 	/**
-	 * Label for goals
+	 * Labels for daily goals
 	 */
 	private JLabel lblActiveMinGoal;
 	private JLabel lblCaloriesGoal;
@@ -310,7 +310,7 @@ public class InterfaceView {
 	private ChartPanel chartPanel;
 	
 	/**
-	 * Constraints for calendar
+	 * Constraints for calendar:
 	 * rc is for interface
 	 * rc_2 is for API calls next/prev
 	 */
@@ -335,14 +335,14 @@ public class InterfaceView {
 	}
 
 	/**
-	 * This method implements the GUI of the fibit program. The frame is the
+	 * This method implements the GUI of the FitBit program. The frame is the
 	 * foundation, making up the whole window that holds the ContentPane. The
-	 * ContentPane holds the CardLayout and the MenuBar toolbar. The Cardlayout
+	 * ContentPane holds the CardLayout and the MenuBar tool bar. The Cardlayout
 	 * contains multiple different panels which make up different screens of the
 	 * program. The Cardlayout allows page navigation between these panels, by
-	 * setting the visibility of every screen. The MenuBar is a tooldbar menu
+	 * setting the visibility of every screen. The MenuBar is a tool bar menu
 	 * holding the buttons used for page navigation. This method sets up the
-	 * prame and panels, then calls other methods for each screen and the menu.
+	 * frame and panels, then calls other methods for each screen and the menu.
 	 */
 	private void initialize() {
 		
@@ -395,6 +395,9 @@ public class InterfaceView {
 		CardLayout.add(panelHeartrateZonesView, "name_1456529539691360000");
 		panelHeartrateZonesView.setLayout(null);
 
+		/**
+		 * These methods are here to initialize the view of the application.
+		 */
 		menuBar();
 
 		dashboardView();
@@ -415,8 +418,8 @@ public class InterfaceView {
 	}
 
 	/**
-	 * This method implements the buttons used for page navigation. The buttons
-	 * are held in a toolbar.
+	 * This method implements the buttons used for page navigation. 
+	 * The buttons are held in a tool bar.
 	 */
 	private void menuBar() {
 		JToolBar MenuBar = new JToolBar();
@@ -427,6 +430,10 @@ public class InterfaceView {
 		MenuBar.setOrientation(SwingConstants.VERTICAL);
 		frame.getContentPane().add(MenuBar);
 
+		/**
+		 * Buttons & associated images for
+		 * the Daily Dashboard page
+		 */
 		btnDailyDashboard = new JButton("");
 		btnDailyDashboard.setRolloverSelectedIcon(new ImageIcon("src/main/resources/DDselect.png"));
 		btnDailyDashboard.setRolloverIcon(new ImageIcon("src/main/resources/DDselect.png"));
@@ -438,6 +445,10 @@ public class InterfaceView {
 		MenuBar.add(btnDailyDashboard);
 		btnDailyDashboard.setSelected(true);
 
+		/**
+		 * Buttons & associated images for
+		 * the Best Days page
+		 */
 		btnBestDays = new JButton("");
 		btnBestDays.setRolloverSelectedIcon(new ImageIcon("src/main/resources/BestDaysSelect.png"));
 		btnBestDays.setRolloverIcon(new ImageIcon("src/main/resources/BestDaysSelect.png"));
@@ -448,6 +459,10 @@ public class InterfaceView {
 		btnBestDays.setBorder(null);
 		MenuBar.add(btnBestDays);
 
+		/**
+		 * Buttons & associated images for
+		 * the Daily Goals page
+		 */
 		btnDailyGoals = new JButton("");
 		btnDailyGoals.setRolloverSelectedIcon(new ImageIcon("src/main/resources/DailyGoalsSelected.png"));
 		btnDailyGoals.setRolloverIcon(new ImageIcon("src/main/resources/DailyGoalsSelected.png"));
@@ -458,6 +473,10 @@ public class InterfaceView {
 		btnDailyGoals.setBorder(null);
 		MenuBar.add(btnDailyGoals);
 
+		/**
+		 * Buttons & associated images for
+		 * the Lifetime Totals page
+		 */
 		btnLifetimeTotals = new JButton("");
 		btnLifetimeTotals.setRolloverSelectedIcon(new ImageIcon("src/main/resources/lifetimeTotalsSelect.png"));
 		btnLifetimeTotals.setRolloverIcon(new ImageIcon("src/main/resources/lifetimeTotalsSelect.png"));
@@ -468,6 +487,10 @@ public class InterfaceView {
 		btnLifetimeTotals.setBorder(null);
 		MenuBar.add(btnLifetimeTotals);
 
+		/**
+		 * Buttons & associated images for
+		 * the Accolades page
+		 */
 		btnAccolades = new JButton("");
 		btnAccolades.setRolloverSelectedIcon(new ImageIcon("src/main/resources/accoladeSelect.png"));
 		btnAccolades.setRolloverIcon(new ImageIcon("src/main/resources/accoladeSelect.png"));
@@ -478,6 +501,10 @@ public class InterfaceView {
 		btnAccolades.setBorder(null);
 		MenuBar.add(btnAccolades);
 
+		/**
+		 * Buttons & associated images for
+		 * the Time Series page
+		 */
 		btnTimeSeries = new JButton("");
 		btnTimeSeries.setRolloverSelectedIcon(new ImageIcon("src/main/resources/timeseriesSelected.png"));
 		btnTimeSeries.setRolloverIcon(new ImageIcon("src/main/resources/timeseriesSelected.png"));
@@ -488,6 +515,10 @@ public class InterfaceView {
 		btnTimeSeries.setBorder(null);
 		MenuBar.add(btnTimeSeries);
 
+		/**
+		 * Buttons & associated images for
+		 * the Heart Rate Zones page
+		 */
 		btnHeartRateZones = new JButton("");
 		btnHeartRateZones.setRolloverSelectedIcon(new ImageIcon("src/main/resources/HRZ-select.png"));
 		btnHeartRateZones.setRolloverIcon(new ImageIcon("src/main/resources/HRZ-select.png"));
@@ -508,10 +539,8 @@ public class InterfaceView {
 		panelDashboardView.setLayout(null);
 
 		/**
-		 * Soemthing something grid bag layout
+		 * Something something grid bag layout
 		 */
-		
-
 		dailyActiveMinPanel = new SPanel();
 		dailyActiveMinPanel.setBounds(374, 477, 120, 100);
 		GridBagLayout gbl_dailyActiveMinPanel = new GridBagLayout();
@@ -571,6 +600,9 @@ public class InterfaceView {
 		label_3a.setForeground(Color.WHITE);
 		label_3a.setFont(new Font("Century Gothic", Font.PLAIN, 18));
 		
+		/**
+		 * Panel for daily steps
+		 */
 		lblDailyStepsVal = new SLabel();
 		dailyStepsPanel.add(lblDailyStepsVal);
 		lblDailyStepsVal.setForeground(Color.WHITE);
@@ -581,7 +613,9 @@ public class InterfaceView {
 		dailyStepsPanel.add(label_3a, gbc);
 		dailyStepsPanel.add(lblDailyStepsVal, gbc);
 
-		//Calories Burned Panel
+		/**
+		 * Panel for calories
+		 */
 		dailyCaloriesPanel = new SPanel();
 		dailyCaloriesPanel.setBounds(608, 452, 120, 100);
 		GridBagLayout gbl_caloriesPanel = new GridBagLayout();
@@ -612,7 +646,9 @@ public class InterfaceView {
 		dailyCaloriesPanel.add(label_2c, gbc);
 		dailyCaloriesPanel.add(lblDailyCaloriesVal, gbc);
 
-		//Sedentary Minutes Panel
+		/**
+		 * Panel for sedentary minutes
+		 */
 		dailySedMinPanel = new SPanel();
 		dailySedMinPanel.setBounds(264, 448, 120, 100);
 		GridBagLayout gbl_dailySedMinPanel = new GridBagLayout();
@@ -643,7 +679,9 @@ public class InterfaceView {
 		dailySedMinPanel.add(space1, gbc);
 		dailySedMinPanel.add(lblDailySedenteryMinVal, gbc);
 
-		//Floor Panel
+		/**
+		 * Panel for floors
+		 */
 		dailyFloorsPanel = new SPanel();
 		dailyFloorsPanel.setBounds(0, 448, 120, 100);
 		GridBagLayout gbl_floorsPanel = new GridBagLayout();
@@ -674,7 +712,9 @@ public class InterfaceView {
 		dailyFloorsPanel.add(space2, gbc);
 		dailyFloorsPanel.add(lblDailyFloorsVal, gbc);
 
-		//Distance Panel
+		/**
+		 * Panel for total distance
+		 */
 		dailyTotalDistPanel = new SPanel();
 		dailyTotalDistPanel.setBounds(126, 477, 120, 100);
 		GridBagLayout gbl_DistancePanel = new GridBagLayout();
@@ -706,7 +746,7 @@ public class InterfaceView {
 		dailyTotalDistPanel.add(lblDailyDistVal, gbc);
 
 		/**
-		 * "Last Updated" Field
+		 * Panel for "Last Updated" Field
 		 */
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setForeground(Color.WHITE);
@@ -741,7 +781,9 @@ public class InterfaceView {
 		onePanel_1 = new BackgroundPanel();
 		onePanel_1.setBounds(240, 108, 160, 144);
 		OnePanel.add(onePanel_1);
-		// Add image:
+		/**
+		 * Allows the adding of an image:
+		 */
 		JLabel lblPic_1 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
 		OnePanel.add(lblPic_1);
 		lblPic_1.setBounds(0, 0, 640, 360);
@@ -789,7 +831,9 @@ public class InterfaceView {
 		threePanel_3.setBounds(440, 108, 160, 144);
 		ThreePanel.add(threePanel_3);
 
-		// Add image:
+		/**
+		 * Adds an image:
+		 */
 		JLabel lblPic_3 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
 		ThreePanel.add(lblPic_3);
 		lblPic_3.setBounds(0, 0, 640, 360);
@@ -818,7 +862,9 @@ public class InterfaceView {
 		fourPanel_4.setBounds(374, 192, 160, 144);
 		FourPanel.add(fourPanel_4);
 
-		// Add image:
+		/**
+		 * Adds an image:
+		 */
 		JLabel lblPic_4 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
 		FourPanel.add(lblPic_4);
 		lblPic_4.setBounds(0, 0, 640, 360);
@@ -851,7 +897,9 @@ public class InterfaceView {
 		fivePanel_5.setBounds(374, 192, 160, 144);
 		FivePanel.add(fivePanel_5);
 
-		// Add image:
+		/**
+		 * Adds an image:
+		 */
 		JLabel lblPic_5 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
 		FivePanel.add(lblPic_5);
 		lblPic_5.setBounds(0, 0, 640, 360);
@@ -892,7 +940,9 @@ public class InterfaceView {
 		sixPanel_6.setBounds(440, 192, 160, 144);
 		SixPanel.add(sixPanel_6);
 
-		// Add image:
+		/**
+		 * Adds an image:
+		 */
 		JLabel lblPic_6 = new JLabel(new ImageIcon("src/main/resources/rect.png"));
 		SixPanel.add(lblPic_6);
 		lblPic_6.setBounds(0, 0, 640, 360);
@@ -923,7 +973,6 @@ public class InterfaceView {
 		radioActiveMin = new JRadioButton("Very Active Minutes");
 		mnNewMenu.add(radioActiveMin);
 
-
 		radioTotalDist = new JRadioButton("Total Distance");
 		mnNewMenu.add(radioTotalDist);
 
@@ -934,7 +983,7 @@ public class InterfaceView {
 		mnNewMenu.add(radioFloors);
 
 		/**
-		 * Change which custom layout panel is being displayed based on the 
+		 * Changes which custom layout panel is being displayed based on the 
 		 * count of the number of radio buttons selected in the "settings" menu.
 		 */
 		radioFloors.addActionListener(new ActionListener() {
@@ -1181,10 +1230,10 @@ public class InterfaceView {
 		
 		Calendar calForDay = Calendar.getInstance();
 		modelForDay = new DefaultCalendarModel(calForDay);
-				
-		//utilModel.setDate(2000, 02, 22);
-		//System.out.println(utilModel.getMonth());
 		
+		/**
+		 * Text to appear to label the date
+		 */
 		Properties properties = new Properties();
 		properties.put("text.today", "Today");
 		properties.put("text.month", "Month");
@@ -1195,12 +1244,8 @@ public class InterfaceView {
 		datePicker.setBackground(Color.DARK_GRAY);
 		datePicker.setBounds(284,105,163,30);
 
-		//RangeConstraint range =  new RangeConstraint();
-						
 		panelDashboardView.add(datePicker);
-												
-		//SHORTCUT
-
+		
 		/**
 		 * "Previous Date" button moves the date forward by one day on the calendar.
 		 */
@@ -1209,7 +1254,6 @@ public class InterfaceView {
 		btnPrevDate.setIcon(new ImageIcon("src/main/resources/LArrow.png"));
 		btnPrevDate.setOpaque(true);
 		btnPrevDate.setBounds(217, 93, 50, 50);
-		panelDashboardView.add(btnPrevDate);
 						
 		/**
 		 * "Next Date" button moves the date forward by one day on the calendar.	
@@ -1219,27 +1263,6 @@ public class InterfaceView {
 		btnNextDate.setIcon(new ImageIcon("src/main/resources/rArrow.png"));
 		btnNextDate.setOpaque(true);
 		btnNextDate.setBounds(460, 93, 50, 50);
-		panelDashboardView.add(btnNextDate);
-
-
-		/////////////LOOK AT THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//////////////////
-
-		/////THIS NEEDS TO BE REPLACED WITH THE ARRAY WHICH IS PASSED IN/////////
-
-		/**
-
-						panelArray = new SPanel[6];
-						panelArray[0]=dailyActiveMinPanel;
-						panelArray[1]=dailyCaloriesPanel;
-						panelArray[2]=dailySedMinPanel;
-						panelArray[3]=dailyFloorsPanel;
-						panelArray[4]=dailyStepsPanel;
-						panelArray[5]=dailyTotalDistPanel;
-		 */
-		////////////////////////////////////////////////////////////////
-		/////ALSO MAKE SURE TO SET THE APPROPRIATE RADIOBUTTONS//////////
-
-
 
 		SettingsRecord sr = null;
 
@@ -1268,21 +1291,16 @@ public class InterfaceView {
 			radioTotalDist.setSelected(true);
 		}
 
-		//radioCalories.setSelected(true);
-		//radioActiveMin.setSelected(true);
-
-		/////////////////////////////////////////////////////////////////
-		/////KEEP THIS THO.//////////////////////////////////////////////
-
+		/**
+		 * Refresh button for Daily Dashboard page
+		 */
 		btnRefresh = new JButton("");
 		btnRefresh.setRolloverIcon(new ImageIcon("src/main/resources/refrot.png"));
 		btnRefresh.setIcon(new ImageIcon("src/main/resources/refreshButton.png"));
 		btnRefresh.setBounds(630, 10, 50, 50);
 		panelDashboardView.add(btnRefresh);
 		repanel(radioCounter());
-		////////////////////////////////////////////////////////////////////
 
-		//---
 		/**
 		 * Background Image Implementation
 		 */
@@ -1291,6 +1309,10 @@ public class InterfaceView {
 		panelDashboardView.add(lblPic);
 	}
 
+	/**
+	 * @param sr
+	 * This method is used when loading settings
+	 */
 	private void load_settings(SettingsRecord sr)
 	{
 
@@ -1328,6 +1350,9 @@ public class InterfaceView {
 		lblDailyVeryActMinVal = sr.getLblDailyVeryActMinVal();
 	}
 
+	/**
+	 * This method is used when selecting the settings to be displayed.
+	 */
 	private void save_settings()
 	{
 
@@ -1353,6 +1378,9 @@ public class InterfaceView {
 	 */
 	private void bestDaysView() {
 		
+		/**
+		 * Label for best days' distance
+		 */
 		lblBestDaysDistVal = new JLabel();
 		lblBestDaysDistVal.setFont(new Font("Dialog", Font.PLAIN, 40));
 		lblBestDaysDistVal.setForeground(Color.WHITE);
@@ -1360,6 +1388,9 @@ public class InterfaceView {
 		lblBestDaysDistVal.setBounds(474, 375, 184, 112);
 		panelBestDaysView.add(lblBestDaysDistVal);
 
+		/**
+		 * Label for best day's date
+		 */
 		lblBestDaysDistDate = new JLabel();
 		lblBestDaysDistDate.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		lblBestDaysDistDate.setForeground(Color.WHITE);
@@ -1367,6 +1398,9 @@ public class InterfaceView {
 		lblBestDaysDistDate.setBounds(484, 321, 162, 42);
 		panelBestDaysView.add(lblBestDaysDistDate);
 
+		/**
+		 * Label for Floors value
+		 */
 		lblBestDaysFloorsVal = new JLabel();
 		lblBestDaysFloorsVal.setFont(new Font("Dialog", Font.PLAIN, 40));
 		lblBestDaysFloorsVal.setForeground(Color.WHITE);
@@ -1374,6 +1408,9 @@ public class InterfaceView {
 		lblBestDaysFloorsVal.setBounds(268, 375, 184, 112);
 		panelBestDaysView.add(lblBestDaysFloorsVal);
 
+		/**
+		 * Label for date of floors' best day
+		 */
 		lblBestDaysFloorsDate = new JLabel();
 		lblBestDaysFloorsDate.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		lblBestDaysFloorsDate.setForeground(Color.WHITE);
@@ -1381,6 +1418,9 @@ public class InterfaceView {
 		lblBestDaysFloorsDate.setBounds(280, 321, 162, 42);
 		panelBestDaysView.add(lblBestDaysFloorsDate);
 
+		/**
+		 * Label for best steps value
+		 */
 		lblBestDaysStepsVal = new JLabel();
 		lblBestDaysStepsVal.setFont(new Font("Dialog", Font.PLAIN, 40));
 		lblBestDaysStepsVal.setForeground(Color.WHITE);
@@ -1388,6 +1428,9 @@ public class InterfaceView {
 		lblBestDaysStepsVal.setBounds(62, 375, 184, 112);
 		panelBestDaysView.add(lblBestDaysStepsVal);
 
+		/**
+		 * Label for best steps date
+		 */
 		lblBestDaysStepsDate = new JLabel();
 		lblBestDaysStepsDate.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		lblBestDaysStepsDate.setForeground(Color.WHITE);
@@ -1395,6 +1438,9 @@ public class InterfaceView {
 		lblBestDaysStepsDate.setBounds(74, 321, 162, 42);
 		panelBestDaysView.add(lblBestDaysStepsDate);
 
+		/**
+		 * Label for "Last Updated: "
+		 */
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setForeground(Color.WHITE);
 		lblLastUpdated.setBounds(410, 540, 90, 16);
@@ -1439,13 +1485,19 @@ public class InterfaceView {
 				} else
 					panelAccoladesDisplay.add(labels[i][j]);
 			}
-			// gbc.gridx++;
+
 		}
 
+		/**
+		 * Scroll bar for displaying accolades
+		 */
 		panelAccoladesScroll = new JScrollPane(panelAccoladesDisplay);
 		panelAccoladesScroll.setBounds(40, 70, 640, 450);
 		panelAccoladesView.add(panelAccoladesScroll);
 
+		/**
+		 * Last Updated label
+		 */
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setForeground(Color.WHITE);
 		lblLastUpdated.setBounds(410, 540, 90, 16);
@@ -1463,8 +1515,6 @@ public class InterfaceView {
 		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/ACCdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelAccoladesView.add(lblPic);
-	
-
 	}
 
 	/**
@@ -1472,30 +1522,39 @@ public class InterfaceView {
 	 */
 	private void lifetimeTotalsView() {
 
+		/**
+		 * Label for lifetime distance value
+		 */
 		lblLifetimeTotalsDistVal = new JLabel();
 		lblLifetimeTotalsDistVal.setForeground(Color.WHITE);
 		lblLifetimeTotalsDistVal.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
-		lblLifetimeTotalsDistVal
-		.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLifetimeTotalsDistVal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLifetimeTotalsDistVal.setBounds(486, 384, 158, 101);
 		panelLifetimeTotalsView.add(lblLifetimeTotalsDistVal);
 
+		/**
+		 * Label for lifetime floors value
+		 */
 		lblLifetimeTotalsFloorsVal = new JLabel();
 		lblLifetimeTotalsFloorsVal.setForeground(Color.WHITE);
 		lblLifetimeTotalsFloorsVal.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
-		lblLifetimeTotalsFloorsVal
-		.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLifetimeTotalsFloorsVal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLifetimeTotalsFloorsVal.setBounds(278, 384, 167, 101);
 		panelLifetimeTotalsView.add(lblLifetimeTotalsFloorsVal);
 
+		/**
+		 * Label for lifetime steps value
+		 */
 		lblLifetimeTotalsStepsVal = new JLabel();
 		lblLifetimeTotalsStepsVal.setForeground(Color.WHITE);
 		lblLifetimeTotalsStepsVal.setFont(new Font("Lucida Grande", Font.PLAIN, 40));
-		lblLifetimeTotalsStepsVal
-		.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLifetimeTotalsStepsVal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLifetimeTotalsStepsVal.setBounds(71, 384, 167, 101);
 		panelLifetimeTotalsView.add(lblLifetimeTotalsStepsVal);
 
+		/**
+		 * Last Updated label
+		 */
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setForeground(Color.WHITE);
 		lblLastUpdated.setBounds(410, 540, 90, 16);
@@ -1513,7 +1572,6 @@ public class InterfaceView {
 		JLabel lblPic = new JLabel(new ImageIcon("src/main/resources/LTdash.png"));
 		lblPic.setBounds(0, 0, 720, 574);
 		panelLifetimeTotalsView.add(lblPic);
-	
 	}
 
 	/**
@@ -1521,12 +1579,18 @@ public class InterfaceView {
 	 */
 	private void timeseriesView() {
 		
+		/**
+		 * 	Creates toolbar to allow zooming into the graph
+		 */
 		JToolBar zoom = new JToolBar();
 		zoom.setBorder(null);
 		zoom.setFloatable(false);
 		zoom.setBounds(40, 20, 50, 50);
 		panelTimeSeriesView.add(zoom);
 
+		/**
+		 * Button to zoom out of the graph
+		 */
 		JButton btnZoomOut = new JButton("");
 		btnZoomOut.setMargin(new Insets(0, -4, 0, 0));
 		btnZoomOut.setHorizontalAlignment(SwingConstants.LEFT);
@@ -1544,6 +1608,9 @@ public class InterfaceView {
 	            }
 	    });
 		
+		/**
+		 * Creating graph display
+		 */
 		panelGraph = new JPanel();
 		panelGraph.setBackground(Color.BLACK);
 		panelGraph.setBounds(40, 160, 640, 362);
@@ -1587,14 +1654,19 @@ public class InterfaceView {
 	 */
 	private void dailygoalsView() {
 
+		/**
+		 * Label for active minutes goal value
+		 */
 		lblActiveMinGoal = new JLabel();
 		lblActiveMinGoal.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
 		lblActiveMinGoal.setHorizontalAlignment(SwingConstants.CENTER);
 		lblActiveMinGoal.setForeground(Color.WHITE);
 		lblActiveMinGoal.setBounds(325, 454, 232, 46);
-
 		panelDailyGoalsView.add(lblActiveMinGoal);
 
+		/**
+		 * Label for steps goal
+		 */
 		lblStepsGoal = new JLabel();
 		lblStepsGoal.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
 		lblStepsGoal.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1602,6 +1674,9 @@ public class InterfaceView {
 		lblStepsGoal.setBounds(325, 317, 232, 46);
 		panelDailyGoalsView.add(lblStepsGoal);
 
+		/**
+		 * Label for distance goal
+		 */
 		lblDistanceGoal = new JLabel();
 		lblDistanceGoal.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
 		lblDistanceGoal.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1609,6 +1684,9 @@ public class InterfaceView {
 		lblDistanceGoal.setBounds(325, 180, 232, 46);
 		panelDailyGoalsView.add(lblDistanceGoal);
 
+		/**
+		 * Label for calories goal
+		 */
 		lblCaloriesGoal = new JLabel();
 		lblCaloriesGoal.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
 		lblCaloriesGoal.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1616,6 +1694,9 @@ public class InterfaceView {
 		lblCaloriesGoal.setBounds(325, 385, 232, 46);
 		panelDailyGoalsView.add(lblCaloriesGoal);
 
+		/**
+		 * Label for floors goal
+		 */
 		lblFloorsGoal = new JLabel();
 		lblFloorsGoal.setFont(new Font("Lucida Grande", Font.PLAIN, 28));
 		lblFloorsGoal.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1623,6 +1704,9 @@ public class InterfaceView {
 		lblFloorsGoal.setBounds(325, 248, 232, 46);
 		panelDailyGoalsView.add(lblFloorsGoal);
 
+		/**
+		 * Labels to check if goals have been met
+		 */
 		lblStepsCompare = new JLabel();
 		lblStepsCompare.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStepsCompare.setBounds(563, 317, 96, 46);
@@ -1655,6 +1739,9 @@ public class InterfaceView {
 		lblActiveMinCompare.setBounds(563, 454, 96, 46);
 		panelDailyGoalsView.add(lblActiveMinCompare);
 
+		/**
+		 * Labels to display last updated
+		 */
 		JLabel lblLastUpdated = new JLabel("Last Updated:");
 		lblLastUpdated.setForeground(Color.WHITE);
 		lblLastUpdated.setBounds(410, 540, 90, 16);
@@ -1666,6 +1753,9 @@ public class InterfaceView {
 		lblLastUpdatedGoals.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelDailyGoalsView.add(lblLastUpdatedGoals);
 		
+		/**
+		 * Labels for dates that goals were achieved
+		 */
 		lblDisplayDateGoals = new JLabel();
 		lblDisplayDateGoals.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDisplayDateGoals.setFont(new Font("Century Gothic", Font.PLAIN, 26));
@@ -1687,6 +1777,9 @@ public class InterfaceView {
 	 */
 	private void heartratezonesView() {
 
+		/**
+		 * Labels for minutes spent in heart rate zones
+		 */
 		lblHeartRest = new JLabel();
 		lblHeartRest.setFont(new Font("Dialog", Font.PLAIN, 28));
 		lblHeartRest.setForeground(Color.WHITE);
@@ -1819,7 +1912,10 @@ public class InterfaceView {
 
 		btnBestDays.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Set Visibility of panels:
+				
+				/**
+				 *  Set Visibility of panels:
+				 */
 				panelDashboardView.setVisible(false);
 				panelBestDaysView.setVisible(true);
 				panelLifetimeTotalsView.setVisible(false);
@@ -1827,7 +1923,10 @@ public class InterfaceView {
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(false);
 				panelHeartrateZonesView.setVisible(false);
-				// Set selection of buttons:
+				
+				/**
+				 *  Set selection of buttons:
+				 */
 				btnDailyDashboard.setSelected(false);
 				btnBestDays.setSelected(true);
 				btnDailyGoals.setSelected(false);
@@ -1841,7 +1940,10 @@ public class InterfaceView {
 
 		btnDailyDashboard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Set Visibility of panels:
+				
+				/**
+				 *  Set Visibility of panels:
+				 */
 				panelDashboardView.setVisible(true);
 				panelBestDaysView.setVisible(false);
 				panelLifetimeTotalsView.setVisible(false);
@@ -1849,7 +1951,10 @@ public class InterfaceView {
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(false);
 				panelHeartrateZonesView.setVisible(false);
-				// Set selection of buttons:
+				
+				/**
+				 *  Set selection of buttons:
+				 */
 				btnDailyDashboard.setSelected(true);
 				btnBestDays.setSelected(false);
 				btnDailyGoals.setSelected(false);
@@ -1865,7 +1970,10 @@ public class InterfaceView {
 		 */
 		btnLifetimeTotals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Set Visibility of panels:
+				
+				/**
+				 *  Set Visibility of panels:
+				 */
 				panelDashboardView.setVisible(false);
 				panelBestDaysView.setVisible(false);
 				panelLifetimeTotalsView.setVisible(true);
@@ -1873,7 +1981,10 @@ public class InterfaceView {
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(false);
 				panelHeartrateZonesView.setVisible(false);
-				// Set selection of buttons:
+				
+				/**
+				 *  Set selection of buttons:
+				 */
 				btnDailyDashboard.setSelected(false);
 				btnBestDays.setSelected(false);
 				btnDailyGoals.setSelected(false);
@@ -1886,7 +1997,10 @@ public class InterfaceView {
 
 		btnDailyGoals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Set Visibility of panels:
+				
+				/**
+				 *  Set Visibility of panels:
+				 */
 				panelDashboardView.setVisible(false);
 				panelBestDaysView.setVisible(false);
 				panelLifetimeTotalsView.setVisible(false);
@@ -1894,7 +2008,10 @@ public class InterfaceView {
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(false);
 				panelHeartrateZonesView.setVisible(false);
-				// Set selection of buttons:
+				
+				/**
+				 *  Set selection of buttons:
+				 */
 				btnDailyDashboard.setSelected(false);
 				btnBestDays.setSelected(false);
 				btnDailyGoals.setSelected(true);
@@ -1910,7 +2027,9 @@ public class InterfaceView {
 		 */
 		btnAccolades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Set Visibility of panels:
+				/**
+				 *  Set Visibility of panels:
+				 */
 				panelDashboardView.setVisible(false);
 				panelBestDaysView.setVisible(false);
 				panelLifetimeTotalsView.setVisible(false);
@@ -1918,7 +2037,10 @@ public class InterfaceView {
 				panelAccoladesView.setVisible(true);
 				panelTimeSeriesView.setVisible(false);
 				panelHeartrateZonesView.setVisible(false);
-				// Set selection of buttons:
+				
+				/**
+				 *  Set selection of buttons:
+				 */
 				btnDailyDashboard.setSelected(false);
 				btnBestDays.setSelected(false);
 				btnDailyGoals.setSelected(false);
@@ -1934,7 +2056,10 @@ public class InterfaceView {
 		 */
 		btnTimeSeries.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Set Visibility of panels:
+				
+				/**
+				 *  Set Visibility of panels:
+				 */
 				panelDashboardView.setVisible(false);
 				panelBestDaysView.setVisible(false);
 				panelLifetimeTotalsView.setVisible(false);
@@ -1942,7 +2067,10 @@ public class InterfaceView {
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(true);
 				panelHeartrateZonesView.setVisible(false);
-				// Set selection of buttons:
+				
+				/**
+				 *  Set selection of buttons:
+				 */
 				btnDailyDashboard.setSelected(false);
 				btnBestDays.setSelected(false);
 				btnDailyGoals.setSelected(false);
@@ -1958,7 +2086,10 @@ public class InterfaceView {
 		 */
 		btnHeartRateZones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Set Visibility of panels:
+				
+				/**
+				 *  Set Visibility of panels:
+				 */
 				panelDashboardView.setVisible(false);
 				panelBestDaysView.setVisible(false);
 				panelLifetimeTotalsView.setVisible(false);
@@ -1966,7 +2097,10 @@ public class InterfaceView {
 				panelAccoladesView.setVisible(false);
 				panelTimeSeriesView.setVisible(false);
 				panelHeartrateZonesView.setVisible(true);
-				// Set selection of buttons:
+				
+				/**
+				 *  Set selection of buttons:
+				 */
 				btnDailyDashboard.setSelected(false);
 				btnBestDays.setSelected(false);
 				btnDailyGoals.setSelected(false);
@@ -1979,7 +2113,10 @@ public class InterfaceView {
 
 	}
 
-	// Setters
+	/**
+	 * 										Setter Methods
+	 *
+	 */
 	/**
 	 * Setter method for the 'Display Date' labels on time-dependent pages, which
 	 * indicate which date the current information on the page is from.
@@ -2000,7 +2137,7 @@ public class InterfaceView {
 	/**
 	 * Setter methods for the 'Last Updated' label on each page, indicating when the
 	 * last API call was successfully made.
-	 * @param date time of the last successful API call
+	 * @param date and time of the last successful API call
 	 */
 	public void setLastUpdatedDash(String date){
 		lblLastUpdatedDash.setText(date);
@@ -2042,8 +2179,7 @@ public class InterfaceView {
 	/**
 	 * Sets JLabel values for Heart Rate Zones page with data from
 	 * {@code HeartRateRecord}. Called when "Heart Rate Zones" menu button is
-	 * clicked, as defined in {@code HRZController}. For now, zones will be left
-	 * out (hardcoded in currently)
+	 * clicked, as defined in {@code HRZController}. 
 	 * 
 	 * @param minutes
 	 *            total minutes in all heart rate zones
@@ -2139,7 +2275,7 @@ public class InterfaceView {
 	 */
 	public void setDailyDashFields(String date, double distance, int calories,
 			int floors, int steps, int veryActMin, int sedenteryMin) {
-		//lblLastUpdated.setText(date); -- this should actually be the calendar date
+
 		lblDailyDistVal.setText(Double.toString(distance));
 		lblDailyCaloriesVal.setText(Integer.toString(calories));
 		lblDailyFloorsVal.setText(Integer.toString(floors));
@@ -2192,15 +2328,20 @@ public class InterfaceView {
 	 * @param steps
 	 *            daily goal for steps taken
 	 * @param activeMinStatus
+	 * 				status for active minutes
 	 * @param caloriesStatus
+	 * 				status for calories
 	 * @param distanceStatus
+	 * 				status for distance
 	 * @param stepsStatus
-	 * @param floorsStatus
+	 * 				status for steps
+	 * @param floorsStatus	
+	 * 				status for floors
 	 */
 	public void setDailyGoalsFields(int activeMinutes, double caloriesOut,
 			double distance, int floors, int steps, String activeMinStatus,
-			String caloriesStatus, String distanceStatus, String stepsStatus,
-			String floorsStatus) {
+			String caloriesStatus, String distanceStatus, String floorsStatus, String stepsStatus
+			) {
 		lblActiveMinGoal.setText(Integer.toString(activeMinutes));
 		lblCaloriesGoal.setText(Double.toString(caloriesOut));
 		lblDistanceGoal.setText(Double.toString(distance));
@@ -2237,14 +2378,18 @@ public class InterfaceView {
 		
 		if (floorsStatus.equals("N")) {
 			lblFloorsCompare.setIcon(new ImageIcon("src/main/resources/blueX.png"));
+			
 		}
 		else {
 			lblFloorsCompare.setIcon(new ImageIcon("src/main/resources/blueCheck.png"));
 		}
 
-		
 	}
 
+	/**
+	 * @param ar
+	 * Makes sure the accolade fields are set up
+	 */
 	public void setAccoladeFields(AccoladeRecord[] ar) {
 
 		for (int i = 0; i < 20; i++) {
@@ -2277,7 +2422,9 @@ public class InterfaceView {
 		}
 	}
 
-	// ActionListeners
+	/**
+	 * 											 ActionListeners
+	 */
 
 	/**
 	 * Attaches an {@code ActionListner} object to the calendar that will trigger
@@ -2295,7 +2442,6 @@ public class InterfaceView {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//setDisplayDate(dateModel.getValue());
 				setDisplayDate(modelForDay.getValueDate());
 			}
 			
@@ -2324,7 +2470,7 @@ public class InterfaceView {
 				modelForDay.setDay(modelForDay.getDay()-1);
 
 				if (!checkConstraints(modelForDay)) {
-					// rollback
+
 					modelForDay.setDay(oldDay);
 					System.out.println("noooo! - message from addPreviousDayActions in InterfaceView");
 				}
@@ -2361,34 +2507,29 @@ public class InterfaceView {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				//if(getDateObject().compareTo(new Date()) <= 1) {
 					
 					int oldDay = modelForDay.getDay();
 					modelForDay.setDay(modelForDay.getDay()+1);
 
 					if (!checkConstraints(modelForDay)) {
-						// rollback
+
 						modelForDay.setDay(oldDay);
 						System.out.println("noooo! - message from addNextDayActions in InterfaceView");
 					}
 					else
 						setDisplayDate(modelForDay.getValueDate());
 
-					/**
-					dateModel.setDay(dateModel.getDay()-1);
-					datePicker.getModel().setDay(datePicker.getModel().getDay());
-					setDisplayDate(dateModel.getValue());
-					 */
-
-				//}
-				//else System.out.println("noooo! - message from addNextDayActions in InterfaceView");
-			}
+				}
 			});
 		
 		btnNextDate.addActionListener(changeData);
 	}
 	
+	/**
+	 * @param model
+	 * 		the calendar model 
+	 * @return if there it is a valid selection
+	 */
 	public boolean checkConstraints(CalendarModel model) {
 
 
@@ -2399,7 +2540,11 @@ public class InterfaceView {
 		return true;
 	}
 
-	
+	/**
+	 * @param model
+	 * 			the calendar model
+	 * @return if the constrains are lower
+	 */
 	public boolean checkConstraintsLower(CalendarModel model) {
 
 
@@ -2410,6 +2555,11 @@ public class InterfaceView {
 		return true;
 	}
 	
+	/**
+	 * @param model
+	 * 		the calendar model
+	 * @return if the constraints are upper
+	 */
 	public boolean checkConstraintsUpper(CalendarModel model) {
 
 		if (!rc.isUpper(model)) {
@@ -2496,10 +2646,14 @@ public class InterfaceView {
 	 * @param refresh
 	 */
 	public void addListenerForRefresh(ActionListener refresh){
-		//add API calls trigger
+		/**
+		 * adds API calls trigger
+		 */
 		btnRefresh.addActionListener(refresh);
 		
-		//add display date update to today's date
+		/**
+		 * adds display date update to today's date
+		 */
 		btnRefresh.addActionListener(new ActionListener() {
 
 			@Override
@@ -2533,12 +2687,12 @@ public class InterfaceView {
 	 */
 	public void addClickListenerTimeSeries(ActionListener actionsOnClick) {
 
-		// the btnLifetimeTotals.addActionListner() call is encapsulated by a
-		// method
-		// so that it can be accessed by the controller;
-		// the controller passes in the clicklistener, which contains the method
-		// that updates the view;
-		// this method gets executed when the controller is initialized
+		/** The btnLifetimeTotals.addActionListner() call is encapsulated by a
+		* method, so that it can be accessed by the controller.
+		* The controller passes in the clicklistener, which contains the method
+		* that updates the view. This method gets executed when the controller 
+		* is initialized.
+		*/
 
 		btnTimeSeries.addActionListener(actionsOnClick);
 	}
@@ -2557,7 +2711,9 @@ public class InterfaceView {
 	 * Preferences / custom layout menu for dashboard.
 	 * 
 	 * @param component
+	 * 		the component of the pop-up
 	 * @param popup
+	 * 		the JPopupMenu popup
 	 */
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
@@ -2783,6 +2939,16 @@ public class InterfaceView {
 
 		}
 
+		/**
+		 * @param dRecords
+		 * 		time series distance record
+		 * @param sRecords
+		 * 		time series steps record
+		 * @param caRecord
+		 * 		time series calories record
+		 * @param rRecord
+		 * 		time series heart rate record
+		 */
 		public void setTimeSeriesGraph(final DistanceTSRecord dRecords, final StepsTSRecord sRecords, final CaloriesTSRecord caRecord, final HeartRateRecord rRecord)
 		{		
 			try {
@@ -2790,13 +2956,16 @@ public class InterfaceView {
 			} catch (Exception e) {
 				System.out.println("\n");
 			}
-			panelGraph.revalidate(); // This removes the old chart 
+			/**
+			 * Remove the old chart:
+			 */
+			panelGraph.revalidate(); 
 			
-			// Generate Graph:
+			/**
+			 *  Generate Graph:
+			 */
 			final XYDataset dataset = createDataset(dRecords, sRecords, caRecord, rRecord);         
 			final JFreeChart chart = createChart( dataset );
-			
-			//chart.getXYPlot().setDataset(createDataset(dRecords, sRecords, caRecord, rRecord));
 			
 			chart.getPlot().addChangeListener(new PlotChangeListener(){
 				  @Override
@@ -2809,24 +2978,32 @@ public class InterfaceView {
 
 			chartPanel = new ChartPanel( chart ); 
 			chartPanel.setPreferredSize( new java.awt.Dimension( 620 , 360 ) );         
-			//chartPanel.setMouseZoomable( true , false );   
 			chartPanel.setDomainZoomable(true);
-		
-			//chartPanel.setZoomInFactor(10);
 			panelGraph.add( chartPanel );
-			panelGraph.revalidate(); // This checks the chart 
+			/**
+			 * Checks the chart:
+			 */
+			panelGraph.revalidate(); 
 			panelGraph.repaint();
 
 		}
 		
+	/**
+	 * @param dRecord
+	 * 		time series distance record
+	 * @param sRecord
+	 *		 time series steps record
+	 * @param caRecord
+	 * 		time series calories record
+	 * @param rRecord
+	 * 		time series heart rate record
+	 * @return the data sets
+	 */
 	private XYDataset createDataset(final DistanceTSRecord dRecord, final StepsTSRecord sRecord, final CaloriesTSRecord caRecord, final HeartRateRecord rRecord) 
 	{
-		System.out.println(dRecord.getDateTime());
 
 		final TimeSeriesCollection datasetTS = new TimeSeriesCollection();
         datasetTS.setDomainIsPointsInTime(true);
-        
-        //Minute(int minute, int hour, int day, int month, int year) 
         
         final TimeSeries s1 = new TimeSeries("Distance");
         final TimeSeries s2 = new TimeSeries("Steps");
@@ -2848,8 +3025,7 @@ public class InterfaceView {
         	String str2[] = distance_arr[i].getTime().split(":");
         	int hour = Integer.parseInt(str2[0]);
         	int minute = Integer.parseInt(str2[1]);
-        	//System.out.println(hour + " " + minute);
-        	double value = distance_arr[i].getValue();
+        	double value = (distance_arr[i].getValue() * 1000);
         	s1.add(new Minute(minute, hour, day, month, year), value);
         }
         
@@ -2901,21 +3077,22 @@ public class InterfaceView {
 	 * @return a String representing the date selected on the calendar.
 	 */
 	public String getStringDate(String incrementFlag){
-		
-		//int year = dateModel.getYear();
-		//int day = dateModel.getDay();
+
 		int year = modelForDay.getYear();
 		int day = modelForDay.getDay();
 		
 		if(incrementFlag == "previous") day-=1;
 		else if(incrementFlag == "next") day+=1;
 				
-		//convert int (0-11) to int(1-12) for MM
-		//int month = dateModel.getMonth();
+		/**
+		 * convert int (0-11) to int(1-12) for MM:
+		 */
 		int month = modelForDay.getMonth();
 		month+=1;
 		
-		//prefix 0 to single-digit months and days
+		/**
+		 * prefix is 0 to single-digit months and days
+		 */
 		if (month<=9 && day<=9) return year+"-0"+month+"-0"+day;
 		
 		else if (month<=9)return year+"-0"+month+"-"+day;
@@ -2923,12 +3100,17 @@ public class InterfaceView {
 		
 		else return year+"-"+month+"-"+day;
 	}
-	//SHORTCUT
 	
+	/**
+	 * @return the date
+	 */
 	public Date getDateObject() {
 		return dateModel.getValue();
 	}
 	
+	/**
+	 * @return the calendar
+	 */
 	public CalendarModel getCalendarObject() {
 		return modelForDay;
 	}
@@ -2960,6 +3142,11 @@ public class InterfaceView {
 
 	}
 
+	/**
+	 * @param dataset
+	 * 		the data set defined
+	 * @return the time series chart
+	 */
 	private JFreeChart createChart(final XYDataset dataset ) 
 	{
 		final JFreeChart chart = ChartFactory.createTimeSeriesChart(             
@@ -2973,11 +3160,9 @@ public class InterfaceView {
 		 chart.setBackgroundPaint(Color.BLACK);
 
 	   final XYPlot plot = chart.getXYPlot();
-       //plot.setOutlinePaint(null);
        plot.setBackgroundPaint(Color.DARK_GRAY);
        plot.setDomainGridlinePaint(Color.white);
        plot.setRangeGridlinePaint(Color.white);
-       //plot.setAxisOffset(new Spacer(Spacer.ABSOLUTE, 5.0, 5.0, 5.0, 5.0));
        plot.setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));
        plot.setDomainCrosshairVisible(true);
        plot.setRangeCrosshairVisible(false);

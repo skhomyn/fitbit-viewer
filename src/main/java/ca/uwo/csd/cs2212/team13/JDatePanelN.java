@@ -52,7 +52,7 @@ public interface JDatePanelN extends JDateComponentNew {
 	/**
 	 * Is a double click required to throw a ActionEvent.
 	 * 
-	 * @return
+	 * @return 
 	 */
 	public abstract boolean isDoubleClickAction();
 

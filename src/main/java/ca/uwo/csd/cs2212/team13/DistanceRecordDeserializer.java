@@ -1,6 +1,32 @@
 package ca.uwo.csd.cs2212.team13;
 
 /**
+ * <code>DistanceRecordDeserializer</code> is an interface representing a
+ * custom deserializer to parse a JSON file into Java object {@link DistanceTSRecord}
+ * <p>
+ * Custom deserializer is necessary because this JSON file, with activities,
+ * contains data, so full control of JSON parsing is required.
+ * <p>
+ * This interface requires the type <code>DistanceTSRecord</code>, which is the
+ * type of object to be parsed. The return type of deserialize is thus this very
+ * type.
+ * <p>
+ * Implementation notes
+ * <p>
+ * In order to be able to parse JSON to Java, need to create instance of this
+ * JsonDeserializer interface and register it with GsonBuilder.
+ * <p>
+ * Whenever Gson is requested to deserialize a JSON file to the
+ * <code>DistanceTSRecord</code> class, Gson will use this deserializer. The
+ * method deserialize(), once given the necessary parameters, will then create
+ * an object of type <code>DistanceTSRecord</code> from the given JsonElement.
+ * <p>
+ * Gson will then receive an object from this deserializer.
+ */
+
+
+
+/**
  * This class is our deserializer
  * for the Distance model
  */
@@ -50,7 +76,12 @@ public class DistanceRecordDeserializer implements
 					.getAsJsonObject();
 
 			String time = jsonDistanceObject.get("time").getAsString();
-			double value = jsonDistanceObject.get("value").getAsInt();
+			double value;
+			try {
+				value = jsonDistanceObject.get("value").getAsDouble();
+			} catch (Exception e) {
+				value = jsonDistanceObject.get("value").getAsInt();
+			}
 
 			distanceArray[i] = new DistanceRecord(time, value);
 		}

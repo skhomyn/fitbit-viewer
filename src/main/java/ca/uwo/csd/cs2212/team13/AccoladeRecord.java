@@ -10,16 +10,22 @@ import java.io.Serializable;
  */
 
 public class AccoladeRecord implements Serializable {
-	
-	//true/false value for if you have acquired accolade or not
+
+	/**
+	 * True/false if achieved value or not and the date
+	 */
 	private boolean achieved; 
 	private String date;
-	
-	//value associated with each image
+
+	/**
+	 * value associated with each image
+	 */
 	private int value;
 	private String image;
 
-	//desc
+	/**
+	 * desc
+	 */
 	private String desc;
 	
 
@@ -69,7 +75,7 @@ public class AccoladeRecord implements Serializable {
 	
 	/**
 	 * Set achievement
-	 * @param a
+	 * @param a t or f
 	 */
 	public void setAchieved(boolean a) {
 		this.achieved = a;
@@ -85,7 +91,8 @@ public class AccoladeRecord implements Serializable {
 	
 	/**
 	 * Set the date
-	 * @param d
+	 * @param d 
+	 * 		the date
 	 */
 	public void setDate(String d) {
 		this.date = d;
@@ -101,7 +108,8 @@ public class AccoladeRecord implements Serializable {
 	
 	/**
 	 * Set image's value
-	 * @param v
+	 * @param v 
+	 * 		image value
 	 */
 	public void setValue(int v) {
 		this.value = v;
@@ -116,7 +124,7 @@ public class AccoladeRecord implements Serializable {
 	
 	/**
 	 * set image via string
-	 * @param i
+	 * @param i image as string
 	 */
 	public void setImage(String i) {
 		this.image = i;
@@ -131,7 +139,7 @@ public class AccoladeRecord implements Serializable {
 	
 	/**
 	 * set the type of the image
-	 * @param t
+	 * @param t type of the image
 	 */
 	public void setType(String t) {
 		this.type = t;
