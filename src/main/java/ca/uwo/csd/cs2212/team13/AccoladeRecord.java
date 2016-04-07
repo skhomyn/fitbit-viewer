@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class AccoladeRecord implements Serializable {
 
 	/**
-	 * True/false if acheived value or not and the date
+	 * True/false if achieved value or not and the date
 	 */
 	private boolean achieved; 
 	private String date;

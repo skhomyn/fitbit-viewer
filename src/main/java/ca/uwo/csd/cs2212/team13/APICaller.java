@@ -55,9 +55,9 @@ public class APICaller {
 		/**
 		 * constructor
 		 * 
-		 * @param scope
-		 * @param tokenFile
-		 * @param credentialsFile
+		 * @param scope string
+		 * @param tokenFile string
+		 * @param credentialsFile string
 		 */
 		public APICaller(String scope, String tokenFile, String credentialsFile){
 						
