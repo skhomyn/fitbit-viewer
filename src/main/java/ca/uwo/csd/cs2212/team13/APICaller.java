@@ -24,8 +24,14 @@ import java.net.URI;
 import org.json.JSONObject;
 import org.json.JSONArray;
 
+/**
+ * Allows us to receive the information from Fitbit
+ */
 public class APICaller {
 	
+		/**
+		 * attributes used for getting info
+		 */
 		private String CALL_BACK_URI = "http://localhost:8080";
 		private int CALL_BACK_PORT = 8080;
 		
@@ -49,9 +55,9 @@ public class APICaller {
 		/**
 		 * constructor
 		 * 
-		 * @param scope
-		 * @param tokenFile
-		 * @param credentialsFile
+		 * @param scope string for scope
+		 * @param tokenFile string for token file
+		 * @param credentialsFile string for credentials file
 		 */
 		public APICaller(String scope, String tokenFile, String credentialsFile){
 						
@@ -110,6 +116,11 @@ public class APICaller {
 			
 		} //end constructor
 		
+		/**
+		 * @param requestUrlSuffix
+		 * 			For requesting URL suffix
+		 * @return null if request doesn't work
+		 */
 		public String requestJson(String requestUrlSuffix){
 			// The access token contains everything you will need to authenticate your requests
 			// It can expire - at which point you will use the refresh token to refresh it
@@ -243,6 +254,12 @@ public class APICaller {
 			return null;
 		}// end request method
 		
+		/**
+		 * @param requestUrlSuffix
+		 * 		This is used for requesting the URL suffix 
+		 * @param filename
+		 * 		This is used for requesting the data
+		 */
 		public void request(String requestUrlSuffix, String filename){
 			// The access token contains everything you will need to authenticate your requests
 			// It can expire - at which point you will use the refresh token to refresh it

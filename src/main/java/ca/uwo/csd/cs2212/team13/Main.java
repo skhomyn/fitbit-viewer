@@ -72,6 +72,10 @@ public class Main {
 	
 	private InterfaceView view;
 
+	/**
+	 * runs the app
+	 * @throws IOException
+     */
 	public void run() throws IOException {
 
 		// Configure GSON

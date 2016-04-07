@@ -19,11 +19,16 @@ public class WriterReader{
 	/**
 	 * Write Record from object to filename
 	 * 
-	 * @param standard
-	 * @param filename
-	 * @throws Exception
+	 * @param standard 
+	 * 			object to write
+	 * @param filename 
+	 * 			filename to write
+	 * @throws Exception if write fails
+	 * 
+	 * 
 	 */
 	  public void writeRecord(Object standard, String filename) throws Exception {
+		  
 		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/main/resources/" + filename));
 		out.writeObject(standard);
 		out.close();
@@ -32,9 +37,11 @@ public class WriterReader{
 	  /**
 	   * Loads Record to object
 	   * 
-	   * @param filename
-	   * @return
-	   * @throws Exception
+	   * @param filename 
+	   * 	filename of record
+	   *
+	   * @return object that was loaded
+	   * @throws Exception if load fails
 	   */
 	 public Object loadRecord(String filename) throws Exception {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename));

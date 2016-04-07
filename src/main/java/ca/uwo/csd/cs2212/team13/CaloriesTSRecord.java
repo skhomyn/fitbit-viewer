@@ -3,13 +3,14 @@ package ca.uwo.csd.cs2212.team13;
 import java.io.Serializable;
 
 /**
- * Model class for time series
- * calories
- * @author Andy
- *
+ * <code>CaloriesTS</code> is a simple Java object that represents the
+ * CaloriesTS and the rules that govern access to and updates of this data.
  */
 public class CaloriesTSRecord implements Serializable {
 
+    /**
+     * the date and time, value of CaloriesTS, array of records, the dataset interval and dataset type
+     */
     private String dateTime;
     private double value;
     private CaloriesRecord[] cRecords;
@@ -18,10 +19,15 @@ public class CaloriesTSRecord implements Serializable {
 
     /**
      * @param dateTime
+     * 		the time of date
      * @param value
+     * 		the value
      * @param cRecords
+     * 		calorie records array
      * @param datasetInterval
+     * 		data set interval
      * @param datasetType
+     * 		data set type
      */
     public CaloriesTSRecord(String dateTime, double value,
                             CaloriesRecord[] cRecords, int datasetInterval, String datasetType) {

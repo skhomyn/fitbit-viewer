@@ -22,6 +22,10 @@ authors and should not be interpreted as representing official policies, either 
 or implied, of Juan Heyns.
 */
 
+/**
+ * Allows user to pick the date using a calander on the daily dashboard
+ */
+
 import java.util.Calendar;
 
 

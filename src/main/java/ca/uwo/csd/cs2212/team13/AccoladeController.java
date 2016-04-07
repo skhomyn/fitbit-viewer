@@ -21,7 +21,7 @@ import ca.uwo.csd.cs2212.team13.GoalsController.clickListener;
  * for all pages. Also checks accolades to see if they're done right
  * <p>
  * The purpose of this class is to pass the data contained in the model
- * <code>AccoladeRecord</code> and a bunch of other accoldaes to the view
+ * <code>AccoladeRecord</code> and a bunch of other accolades to the view
  * <code>InterfaceView</code>, so that it can be displayed to the user.
  */
 public class AccoladeController {
@@ -47,10 +47,15 @@ public class AccoladeController {
 	 * click listener to the Accolades button.
 	 * 
 	 * @param ar
+	 * 			accolade record
 	 * @param acR
+	 * 			activities record 
 	 * @param dr
+	 * 			daily record
 	 * @param hr
+	 * 			heart rate record
 	 * @param view
+	 * 			interface view
 	 */
 	AccoladeController(AccoladeRecord[] ar, ActivitiesRecord acR,
 			DailyRecord dr, HeartRateRecord hr, InterfaceView view) {
@@ -94,7 +99,7 @@ public class AccoladeController {
 	 * Sets the Accolades page display fields in <code>InterfaceView</code> with
 	 * values from the appropriate model <code>AccoladesRecord</code> fields.
 	 * 
-	 * Updates fields manually (so no new action listner)
+	 * Updates fields manually (so no new action listener)
 	 */
 	public void updateAC(AccoladeRecord[] ar, ActivitiesRecord acR,
 			DailyRecord dr, HeartRateRecord hr, InterfaceView view) {
@@ -233,10 +238,14 @@ public class AccoladeController {
 	/**
 	 * Check if values are fine
 	 * 
-	 * @param m
+	 * @param m method
 	 * @param standard
+	 * 			the standard object
 	 * @param i
-	 * @return
+	 * 			integer
+	 * @return the checked boolean value
+	 * 
+	 * Exceptions: 
 	 * @throws NumberFormatException
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
@@ -256,12 +265,20 @@ public class AccoladeController {
 	}
 
 	/**
+	 * 
+	 * Params same as above: 
+	 * 
+	 * 
 	 * Check if values are fine, negation version (to check 0)
 	 * 
 	 * @param m
+	 * 		method
 	 * @param standard
+	 * 		standard object
 	 * @param i
+	 * 		integer value
 	 * @return
+	 * 		If the values are negated
 	 * @throws NumberFormatException
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
@@ -283,7 +300,7 @@ public class AccoladeController {
 	/**
 	 * Check how many goals are complete
 	 * 
-	 * @return int num of goals complete
+	 * @return integer number of goals complete
 	 */
 	private int GoalCheck() {
 		GoalsRecord gr = dr.getGoals();
@@ -301,7 +318,9 @@ public class AccoladeController {
 	 * Checks if goal is complete.
 	 * 
 	 * @param goal
+	 * 		the goal
 	 * @param actual
+	 * 		the actual value
 	 * @return 1 if complete, 0 otherwise
 	 */
 	private int compareInt(int goal, int actual) {
@@ -315,7 +334,9 @@ public class AccoladeController {
 	 * Checks if goal is complete.
 	 * 
 	 * @param goal
+	 * 		the goal
 	 * @param actual
+	 * 		the actual value
 	 * @return 1 if complete, 0 otherwise
 	 */
 	private int compareDoubleInt(double goal, int actual) {
@@ -329,7 +350,9 @@ public class AccoladeController {
 	 * Checks if goal is complete.
 	 * 
 	 * @param goal
+	 * 		the goal
 	 * @param actual
+	 * 		the actual value
 	 * @return 1 if complete, 0 otherwise
 	 */
 	private int compareDouble(double goal, double actual) {
