@@ -2,9 +2,14 @@
 
 Team 13 has developed a user-friendly and innovative new application that receives Fitbit data. The user of this application can use it for tracking statistics, reviewing accolades and monitoring their goals.
 
+[Demo Video](https://www.youtube.com/watch?v=YdT6j8WAM5M)
+
+* Please note: Graphics of this application are optimized for Mac OS X only.*
+
 ### Specs & Dependencies 
 
-This application is written entirely in Java and uses a modified MVC pattern for integration with Java Swing. The online mode of this application uses OAuth 2.0 for authentication. Maven is used for build automation.
+This application is written entirely in Java and uses a modified MVC pattern for integration with Java Swing. The online mode of this application uses OAuth 2.0 for authentication. Maven is used for build automation. 
+
 
 Fitbit Viewer also uses several open source libraries: 
 - [gson](https://github.com/google/gson) for JSON encoding/decoding 
@@ -15,6 +20,8 @@ Fitbit Viewer also uses several open source libraries:
 - [jDatePicker](https://jdatepicker.org) for the built-in calendar, including some minor modifications of the [constraints](https://github.com/JDatePicker/JDatePicker/tree/master/src/main/java/org/jdatepicker/constraints) classes not included in release 1.3.4
 - [log4j](http://logging.apache.org/log4j/2.x/) for logging
 
+Full documentation of this application can be found in our [javadoc](/src/doc).
+
 ### Modes of Operation
 ###### Test mode
 Offline version of the application; no access to a user account.
@@ -24,7 +31,7 @@ Fully functional version of the application.
 
 
 ### Build
-First, you will need to [install Maven](https://maven.apache.org/install.html)
+First, you will need to [install Maven](https://maven.apache.org/install.html).
 Next, generate an ssh key. 
 In Git Bash or Terminal, type: 
 ```
@@ -65,14 +72,4 @@ From the root directory of the repository:
 ###### Online Mode:
 `java -jar target/team13-fitbitApp-1.0-SNAPSHOT-jar-with-dependencies.jar`
 
-
-### Video
-
-Here is a video of our application in action:
- 
-https://www.youtube.com/watch?v=YdT6j8WAM5M
-
-### Documentation
-
-Developers, please view our JavaDoc folder by visiting: team13/doc
 
