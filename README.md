@@ -61,10 +61,7 @@ Here is a video of our application in action:
  
 https://www.youtube.com/watch?v=YdT6j8WAM5M
 
-#Documentaion
+<h1>Documentation</h1>
 
 Developers, please view our JavaDoc folder by visiting: team13/doc
-
-
-
 
