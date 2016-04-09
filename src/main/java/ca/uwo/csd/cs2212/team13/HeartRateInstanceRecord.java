@@ -2,7 +2,9 @@ package ca.uwo.csd.cs2212.team13;
 
 import java.io.Serializable;
 
-
+/**
+ * Creates in instance object for heart rate
+ */
 public class HeartRateInstanceRecord implements Serializable {
 
 	private String time;
@@ -38,7 +40,9 @@ public class HeartRateInstanceRecord implements Serializable {
 
 	/**
 	 * @param time
+	 * 	the time
 	 * @param value
+	 * 	the heart rate instance record value
 	 */
 	public HeartRateInstanceRecord(String time, double value) {
 		super();
@@ -46,6 +50,9 @@ public class HeartRateInstanceRecord implements Serializable {
 		this.value = value;
 	}
 
+	/**
+	 * unused heart rate zone instance record
+	 */
 	public HeartRateInstanceRecord() {
 
     }

@@ -11,6 +11,9 @@ import javax.swing.JRadioButton;
 public class SettingsRecord implements Serializable {
 
 
+	/**
+	 * These are used for implementing the settings record
+	 */
 	private boolean radioTotalDist;
 	private boolean radioCalories;
 	private boolean radioSedMin;
@@ -37,25 +40,45 @@ public class SettingsRecord implements Serializable {
 	/**
 	 * Constructor
 	 * @param radioTotalDist
+	 * 			boolean variable for distance
 	 * @param radioCalories
+	 * 			boolean variable for calories
 	 * @param radioSedMin
+	 * 			boolean variable for sedentary minutes 
 	 * @param radioActiveMin
+	 * 			boolean variable for active minutes
 	 * @param radioFloors
+	 * 			boolean variable for floors
 	 * @param radioSteps
+	 * 			boolean variable for steps
 	 * @param panelArray
+	 * 			SPanel array to hold SPanels
 	 * @param count
+	 * 			to help increment
 	 * @param dailyCaloriesPanel
+	 * 			SPanel for calories
 	 * @param dailyTotalDistPanel
+	 * 			SPanel for total distance
 	 * @param dailyActiveMinPanel
+	 * 			SPanel for active minutes
 	 * @param dailySedMinPanel
+	 * 			SPanel for sedentary minutes
 	 * @param dailyFloorsPanel
+	 * 			SPanel for floors
 	 * @param dailyStepsPanel
+	 * 			SPanel for daily steps
 	 * @param lblDailyDistVal
+	 * 			SLabel for daily distance 
 	 * @param lblDailyCaloriesVal
+	 * 			SLabel for daily calories
 	 * @param lblDailyStepsVal
+	 * 			SLabel for daily steps
 	 * @param lblDailyFloorsVal
+	 * 			SLabel for daily floors
 	 * @param lblDailySedenteryMinVal
+	 * 			SLabel for daily sedentary minutes
 	 * @param lblDailyVeryActMinVal
+	 * 			SLabel for very active minutes
 	 */
 	public SettingsRecord(boolean radioTotalDist, boolean radioCalories,
 			boolean radioSedMin, boolean radioActiveMin, boolean radioFloors,

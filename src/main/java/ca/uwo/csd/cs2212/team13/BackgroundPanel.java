@@ -19,9 +19,14 @@ import javax.swing.JPanel;
  */
 public class BackgroundPanel extends JPanel implements Serializable{
 
+	/**
+	 * Attribute for the background
+	 */
 	private Image background;
 
-
+	/**
+	 * constructor of the background
+	 */
 	public BackgroundPanel()
 	{
 	    try {
@@ -31,12 +36,21 @@ public class BackgroundPanel extends JPanel implements Serializable{
 			e.printStackTrace();
 		}            
 	}
-	
+
+	/**
+	 * get the background of the preferred dimensions
+	 * @return background
+     */
 	@Override
 	public Dimension getPreferredSize() {
 	    return background == null ? new Dimension(0, 0) : new Dimension(background.getWidth(this), background.getHeight(this));            
 	}
 
+	/**
+	 * paints the component
+	 * @param g
+	 * 		graphic images
+     */
 	@Override
 	protected void paintComponent(Graphics g) {
 

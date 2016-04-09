@@ -2,8 +2,16 @@ package ca.uwo.csd.cs2212.team13;
 
 import java.io.Serializable;
 
+
+/**
+ * <code>DistanceTS</code> is a simple Java object that represents the
+ * DistanceTS and the rules that govern access to and updates of this data.
+ */
 public class DistanceTSRecord implements Serializable {
 
+	/**
+	 * date and time, value of the DistanceTS, array of records, the dataset interval and the dataset type
+	 */
 	private String dateTime;
 	private double value;
 	private DistanceRecord[] dRecords;
@@ -12,10 +20,15 @@ public class DistanceTSRecord implements Serializable {
 
 	/**
 	 * @param dateTime
+	 * 		the date's time
 	 * @param value
+	 * 		the value of the time
 	 * @param dRecords
+	 * 		the recorded times
 	 * @param datasetInterval
+	 * 		the intervals of time
 	 * @param datasetType
+	 * 		the data set type
 	 */
 	public DistanceTSRecord(String dateTime, double value,
 			DistanceRecord[] dRecords, int datasetInterval, String datasetType) {

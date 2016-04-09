@@ -20,8 +20,11 @@ public class GoalsController {
 	 * This is the constructor for goals
 	 * 
 	 * @param dailyModel
+	 * 		daily record model
 	 * @param goalsModel
+	 * 		goals record model
 	 * @param view
+	 * 		interface view 
 	 */
 	public GoalsController(DailyRecord dailyModel, GoalsRecord goalsModel, InterfaceView view){
 		this.dailyModel = dailyModel;
@@ -35,8 +38,11 @@ public class GoalsController {
 	 * This updates goals controller.
 	 * 
 	 * @param dailyModel
+	 * 		daily record model
 	 * @param goalsModel
+	 * 		goals record model
 	 * @param view
+	 * 		interface view
 	 */
 	public void updateDGC(DailyRecord dailyModel, GoalsRecord goalsModel, InterfaceView view){
 		this.dailyModel = dailyModel;
@@ -58,7 +64,14 @@ public class GoalsController {
 				compareInt(goalsModel.getSteps(), dailyModel.getSteps())
 				);
 	}
-	
+
+	/**
+	 * Local class accessible only by the <code>GoalsController</code> object. Its
+	 * purpose is to define which actions should be performed when the Goals
+	 * button in <code>InterfaceView</code> is clicked by the user
+	 *
+	 * @see java.awt.event.ActionListener
+	 */
 	class clickListener implements ActionListener {
 
 		@Override
@@ -74,17 +87,41 @@ public class GoalsController {
 			
 		}
 	}
-	
+
+	/**
+	 * compare method for integers
+	 * @param goal
+	 * 		the goal
+	 * @param actual
+	 * 		the actual value
+     * @return y or n
+     */
 	private String compareInt(int goal, int actual){
 		if (actual>goal || actual==goal) return "Y";
 		else return "N";
 	}
-	
+
+	/**
+	 * compare method for double
+	 * @param goal
+	 * 		the goal
+	 * @param actual
+	 * 		the actual value
+     * @return y or n
+     */
 	private String compareDoubleInt(double goal, int actual){
 		if (actual>goal || actual==goal) return "Y";
 		else return "N";
 	}
-	
+
+	/**
+	 * compare method for doubles
+	 * @param goal
+	 * 		the goal
+	 * @param actual
+	 * 		the actual value
+     * @return y or n
+     */
 	private String compareDouble(double goal, double actual){
 		if (actual>goal || actual==goal) return "Y";
 		else return "N";

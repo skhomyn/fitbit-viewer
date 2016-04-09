@@ -38,6 +38,9 @@ public class BestDaysRecord implements Serializable{
 	 */
 	private int steps_value;
 
+	/**
+	 * values for best days
+	 */
 	public BestDaysRecord() {
 		this.dis_date = null;
 		this.dis_value = -1;

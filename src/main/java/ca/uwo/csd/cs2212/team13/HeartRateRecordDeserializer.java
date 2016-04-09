@@ -128,7 +128,12 @@ public class HeartRateRecordDeserializer implements
 					.getAsJsonObject();
 
 			String time = jsonHeartObject.get("time").getAsString();
-			double value = jsonHeartObject.get("value").getAsInt();
+			double value;
+			try {
+				value = jsonHeartObject.get("value").getAsDouble();
+			} catch (Exception e) {
+				value = jsonHeartObject.get("value").getAsInt();
+			}
 
 			heartArray[i] = new HeartRateInstanceRecord(time, value);
 		}
