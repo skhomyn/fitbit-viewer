@@ -1,15 +1,14 @@
 # Fitbit Viewer: Interactive Desktop Application 
 
-Team 13 has developed a user-friendly and innovative new application that receives Fitbit data. The user of this application can use it for tracking statistics, reviewing accolades and monitoring their goals.
+**Project for Beth Locke's Intro to Software Engineering class at UWO.**
 
-[Demo Video](https://www.youtube.com/watch?v=YdT6j8WAM5M)
+Fitbit Viewer is a cross-platform desktop application that and displays and analyzes health metrics from a user's Fitbit account. It provides a user-friendly solution for tracking statistics, reviewing accolades and monitoring goals. 
 
-_Please note: Graphics of this application are optimized for Mac OS X only._
+*__Note:__ Although this application will run on any platform, graphics are optimized for Mac OS X only.*
 
 ### Specs & Dependencies 
 
-This application is written entirely in Java and uses a modified MVC pattern for integration with Java Swing. The online mode of this application uses OAuth 2.0 for authentication. Maven is used for build automation. 
-
+This application is written entirely in Java and uses a modified MVC pattern for integration with Java Swing. The online mode of this application uses OAuth 2.0 for authentication. Maven is used for build automation.
 
 Fitbit Viewer also uses several open source libraries: 
 - [gson](https://github.com/google/gson) for JSON encoding/decoding 
@@ -20,7 +19,19 @@ Fitbit Viewer also uses several open source libraries:
 - [jDatePicker](https://jdatepicker.org) for the built-in calendar, including some minor modifications of the [constraints](https://github.com/JDatePicker/JDatePicker/tree/master/src/main/java/org/jdatepicker/constraints) classes not included in release 1.3.4
 - [log4j](http://logging.apache.org/log4j/2.x/) for logging
 
-Full documentation of this application can be found in our [javadoc](doc).
+### Contributors
+
+###### Code Written by:
+- Andy Yu
+- Robin Wakeman
+- Stepan Khomyn
+- Johnny Zapras
+
+###### UI Design By:
+- [Hannah Russworm](https://github.com/hrusswurm)
+- Stepan Khomyn
+- [Jenni Street](https://github.com/jstreet2)
+- Robin Wakeman
 
 ### Modes of Operation
 ###### Test mode
@@ -28,40 +39,36 @@ Offline version of the application; no access to a user account.
 
 ###### Online mode 
 Fully functional version of the application.  
+__To connect to a user account, you will need to:__
 
+1. Log into Fitbit website, and get a Request code from the Authorization server.
+2. Trade the request for and Access/Refresh Token pair.
+3. Get credentials for the Authorization server: This includes your App ID and a key/secret pair.
+4. Place credentials in `/src/main/resources/Team13Credentials.txt`, place refresh/access tokens in `/src/main/resources/Team13Tokens.txt`.
+
+*__Note:__ If everything goes as planned you will get an HTTP response with the code 200, its body will contain a JSON object describing the data you asked for. If it doesn't, and your access token has expired, you will need to ask for a new pair from the authorization server.*
 
 ### Build
-First, you will need to [install Maven](https://maven.apache.org/install.html).
-Next, generate an ssh key. 
-In Git Bash or Terminal, type: 
+
+If you would just like to run the project, you can skip this step. 
+A pre-packaged `.jar` file has been provided in the /target directory.  
+
+__However, if you would like to build the project yourself:__
+
+First [install Maven](https://maven.apache.org/install.html).  
+In the console:
 ```
-"ssh-keygen -t rsa -b 4096" 
-"cd ~/.ssh"
-"chmod 600 id_rsa"
-"cat ~/.ssh/id_rsa.pub"
-```
+# make a local copy of this repository
+git clone https://github.com/robin-wakeman/fitbitViewer.git
 
-Go to your repository on the BitBucket website. Add the public key.
-Next, you need to make a directory, type:
-				
-`mkdir cs2212`
+# enter the root directory of the respository
+cd fitbitViewer
 
-Next, change directory into the directory you just created, type:
-
-`cd cs2212`
-
-To clone team 13’s repository, type:
-
-`git clone ssh://git@repo.gaul.csd.uwo.ca:7999/cs2212_w2016/team13.git`
-
-Now you have successfully cloned the repository. You have access to team 13’s files. 
-To create the .jar file, type:
-```
-cd team13
-mvn compile
+# build project and generate .jar file using maven
+mvn compile 
 mvn package
 ```
-	
+
 ### Run
 
 From the root directory of the repository:
@@ -73,3 +80,14 @@ From the root directory of the repository:
 `java -jar target/team13-fitbitApp-1.0-SNAPSHOT-jar-with-dependencies.jar`
 
 
+### Screenshots 
+![Daily Dashboard](../master/screens/Dashboard1.png)
+![Daily Dashboard Customization](../master/screens/Dashboard2.png)
+![Daily Dashboard Date Change](../master/screens/Dashboard3.png)
+![Best Days](../master/screens/BD.png)
+![Daily Goals](../master/screens/Goals.png)
+![Lifetime Totals](../master/screens/Lifetime.png)
+![Accolades](../master/screens/Accolades.png)
+![Time Series](../master/screens/TS1.png)
+![Time Series Zoom In](../master/screens/TS2.png)
+![Heart Rate Zones](../master/screens/HRZ.png)
