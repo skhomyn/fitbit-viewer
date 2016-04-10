@@ -4,6 +4,10 @@
 
 Fitbit Viewer is a cross-platform desktop application that and displays and analyzes health metrics from a user's Fitbit account. It provides a user-friendly solution for tracking statistics, reviewing accolades and monitoring goals. 
 
+[Demo Video](https://www.youtube.com/watch?v=YdT6j8WAM5M)
+
+Full documentation of this application can be found in our [javadoc](doc).
+
 *__Note:__ Although this application will run on any platform, graphics are optimized for Mac OS X only.*
 
 ### Specs & Dependencies 
@@ -81,13 +85,13 @@ From the root directory of the repository:
 
 
 ### Screenshots 
-![Daily Dashboard](../master/screens/Dashboard1.png)
-![Daily Dashboard Customization](../master/screens/Dashboard2.png)
-![Daily Dashboard Date Change](../master/screens/Dashboard3.png)
-![Best Days](../master/screens/BD.png)
-![Daily Goals](../master/screens/Goals.png)
-![Lifetime Totals](../master/screens/Lifetime.png)
-![Accolades](../master/screens/Accolades.png)
-![Time Series](../master/screens/TS1.png)
-![Time Series Zoom In](../master/screens/TS2.png)
-![Heart Rate Zones](../master/screens/HRZ.png)
+![Daily Dashboard](../AcceptanceTesting/screens/Dashboard1.png)
+![Daily Dashboard Customization](../AcceptanceTesting/screens/Dashboard2.png)
+![Daily Dashboard Date Change](../AcceptanceTesting/screens/Dashboard3.png)
+![Best Days](../AcceptanceTesting/screens/BD.png)
+![Daily Goals](../AcceptanceTesting/screens/Goals.png)
+![Lifetime Totals](../AcceptanceTesting/screens/Lifetime.png)
+![Accolades](../AcceptanceTesting/screens/Accolades.png)
+![Time Series](../AcceptanceTesting/screens/TS1.png)
+![Time Series Zoom In](../AcceptanceTesting/screens/TS2.png)
+![Heart Rate Zones](../AcceptanceTesting/screens/HRZ.png)
