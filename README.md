@@ -6,7 +6,7 @@ Fitbit Viewer is a cross-platform desktop application that and displays and anal
 
 [Demo Video](https://www.youtube.com/watch?v=YdT6j8WAM5M)
 
-Full documentation of this application can be found in our [javadoc](doc).
+Full documentation of this application can be found in the [javadoc](doc).
 
 *__Note:__ Although this application will run on any platform, graphics are optimized for Mac OS X only.*
 
